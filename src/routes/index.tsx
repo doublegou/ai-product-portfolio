@@ -148,7 +148,3 @@ function NumberField({
 function LegendDot({ color }: { color: string }) {
   return <span className="h-2.5 w-2.5 rounded-full" style={{ background: color }} />;
 }
-
-function LegendDot({ color }: { color: string }) {
-  return <span className="h-2.5 w-2.5 rounded-full" style={{ background: color }} />;
-}
