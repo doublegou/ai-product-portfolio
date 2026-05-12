@@ -1,23 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { ProbabilityMap, getPeak } from "@/components/ProbabilityMap";
-import { Slider } from "@/components/ui/slider";
+import { useState } from "react";
+import { ProbabilityMap, type Range } from "@/components/ProbabilityMap";
 import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Probabilis — SR/O Probability Map" },
-      { name: "description", content: "Scientific map tool: input SR and O parameters to visualize the maximum probability region across the globe." },
+      { title: "Probabilis — Sr/O Isotope Domain Map (Asia)" },
+      { name: "description", content: "Enter Sr (87Sr/86Sr) and δ18O ranges to visualize the most likely isotope domain across Asia." },
     ],
   }),
   component: Index,
 });
 
 function Index() {
-  const [sr, setSr] = useState(50);
-  const [o, setO] = useState(50);
-  const peak = useMemo(() => getPeak(sr, o), [sr, o]);
+  const [sr, setSr] = useState<Range>({ min: 0.7095, max: 0.7125 });
+  const [o, setO] = useState<Range>({ min: -9, max: -6 });
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-background">
@@ -29,7 +27,7 @@ function Index() {
           <div className="flex items-center gap-2.5">
             <div className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_12px] shadow-primary" />
             <h1 className="text-sm font-semibold tracking-tight">Probabilis</h1>
-            <span className="text-xs text-muted-foreground">· Probability Field Explorer</span>
+            <span className="text-xs text-muted-foreground">· Isotope Domain Explorer · Asia</span>
           </div>
         </div>
         <div className="glass-panel pointer-events-auto hidden rounded-2xl px-4 py-2.5 md:block">
@@ -38,96 +36,117 @@ function Index() {
       </header>
 
       {/* Control panel */}
-      <section className="absolute left-5 top-20 z-[400] w-[340px] max-w-[calc(100vw-2.5rem)]">
+      <section className="absolute right-5 top-20 z-[400] w-[360px] max-w-[calc(100vw-2.5rem)]">
         <div className="glass-panel rounded-3xl p-6">
           <div className="mb-5">
-            <h2 className="text-lg font-semibold tracking-tight">Parameters</h2>
+            <h2 className="text-lg font-semibold tracking-tight">Sample Query</h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              Adjust SR and O to compute the spatial probability distribution.
+              Enter sample value ranges to query likely isotope domains.
             </p>
           </div>
 
-          <ParamControl label="SR" hint="Spatial response" value={sr} onChange={setSr} />
+          <ParamRow
+            title="Strontium"
+            sub="⁸⁷Sr / ⁸⁶Sr"
+            step={0.0001}
+            range={sr}
+            onChange={setSr}
+            decimals={4}
+          />
           <div className="my-5 h-px bg-border" />
-          <ParamControl label="O" hint="Observation factor" value={o} onChange={setO} />
-
-          <div className="mt-6 rounded-2xl bg-secondary/60 p-4">
-            <div className="mb-2 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-              Peak Probability Region
-            </div>
-            <div className="flex items-baseline gap-3 font-mono">
-              <Coord label="LAT" value={peak.lat} suffix="°" />
-              <Coord label="LNG" value={peak.lng} suffix="°" />
-            </div>
-            <div className="mt-2 text-[11px] text-muted-foreground">
-              Spread σ ≈ {peak.sigma.toFixed(2)}°
-            </div>
-          </div>
+          <ParamRow
+            title="Oxygen"
+            sub="δ¹⁸O ‰ (VSMOW)"
+            step={0.01}
+            range={o}
+            onChange={setO}
+            decimals={2}
+          />
         </div>
 
         <div className="glass-panel mt-3 flex items-center gap-3 rounded-2xl px-4 py-3">
-          <LegendDot color="hsl(220, 90%, 55%)" />
-          <div className="h-1.5 flex-1 rounded-full bg-gradient-to-r from-[hsl(220,90%,55%)] via-[hsl(120,90%,55%)] to-[hsl(0,90%,55%)]" />
-          <LegendDot color="hsl(0, 90%, 55%)" />
-          <span className="ml-1 text-[11px] text-muted-foreground">low → high</span>
+          <LegendDot color="hsl(45, 90%, 52%)" />
+          <div className="h-1.5 flex-1 rounded-full bg-gradient-to-r from-[hsl(45,90%,52%)] to-[hsl(0,90%,52%)]" />
+          <LegendDot color="hsl(0, 90%, 52%)" />
+          <span className="ml-1 text-[11px] text-muted-foreground">match → strong match</span>
         </div>
       </section>
     </main>
   );
 }
 
-function ParamControl({
-  label,
-  hint,
-  value,
+function ParamRow({
+  title,
+  sub,
+  step,
+  range,
   onChange,
+  decimals,
 }: {
-  label: string;
-  hint: string;
-  value: number;
-  onChange: (v: number) => void;
+  title: string;
+  sub: string;
+  step: number;
+  range: Range;
+  onChange: (r: Range) => void;
+  decimals: number;
 }) {
+  const update = (k: "min" | "max", v: number) => {
+    if (Number.isNaN(v)) return;
+    onChange({ ...range, [k]: v });
+  };
   return (
     <div>
-      <div className="mb-2 flex items-baseline justify-between">
-        <div>
-          <span className="text-sm font-semibold">{label}</span>
-          <span className="ml-2 text-[11px] text-muted-foreground">{hint}</span>
-        </div>
-        <Input
-          type="number"
-          min={0}
-          max={100}
-          step={0.1}
-          value={value}
-          onChange={(e) => {
-            const v = Number(e.target.value);
-            if (!Number.isNaN(v)) onChange(Math.max(0, Math.min(100, v)));
-          }}
-          className="h-8 w-20 rounded-lg text-right font-mono text-sm"
+      <div className="mb-2 flex items-baseline gap-2">
+        <span className="text-sm font-semibold">{title}</span>
+        <span className="text-[11px] text-muted-foreground">{sub}</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <NumberField
+          value={range.min}
+          step={step}
+          decimals={decimals}
+          onChange={(v) => update("min", v)}
+        />
+        <span className="text-xs text-muted-foreground">to</span>
+        <NumberField
+          value={range.max}
+          step={step}
+          decimals={decimals}
+          onChange={(v) => update("max", v)}
         />
       </div>
-      <Slider
-        value={[value]}
-        min={0}
-        max={100}
-        step={0.1}
-        onValueChange={([v]) => onChange(v)}
-      />
     </div>
   );
 }
 
-function Coord({ label, value, suffix }: { label: string; value: number; suffix?: string }) {
+function NumberField({
+  value,
+  step,
+  decimals,
+  onChange,
+}: {
+  value: number;
+  step: number;
+  decimals: number;
+  onChange: (v: number) => void;
+}) {
   return (
-    <div>
-      <div className="text-[10px] font-medium tracking-wider text-muted-foreground">{label}</div>
-      <div className="text-lg font-semibold tabular-nums">
-        {value.toFixed(2)}
-        {suffix}
-      </div>
-    </div>
+    <Input
+      type="number"
+      step={step}
+      defaultValue={value.toFixed(decimals)}
+      key={value}
+      onChange={(e) => {
+        const v = Number(e.target.value);
+        if (!Number.isNaN(v)) onChange(v);
+      }}
+      className="h-9 flex-1 rounded-lg bg-background/60 text-right font-mono text-sm"
+    />
   );
+}
+
+function LegendDot({ color }: { color: string }) {
+  return <span className="h-2.5 w-2.5 rounded-full" style={{ background: color }} />;
 }
 
 function LegendDot({ color }: { color: string }) {
