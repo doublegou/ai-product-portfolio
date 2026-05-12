@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ProbabilityMap, type Range } from "@/components/ProbabilityMap";
+import { ProbabilityMap } from "@/components/ProbabilityMap";
 import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/")({
@@ -14,8 +14,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [sr, setSr] = useState<Range>({ min: 0.7095, max: 0.7125 });
-  const [o, setO] = useState<Range>({ min: -9, max: -6 });
+  const [sr, setSr] = useState<number>(0.7110);
+  const [o, setO] = useState<number>(-7.5);
 
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-background">
@@ -49,7 +49,7 @@ function Index() {
             title="Strontium"
             sub="⁸⁷Sr / ⁸⁶Sr"
             step={0.0001}
-            range={sr}
+            value={sr}
             onChange={setSr}
             decimals={4}
           />
@@ -58,7 +58,7 @@ function Index() {
             title="Oxygen"
             sub="δ¹⁸O ‰ (VSMOW)"
             step={0.01}
-            range={o}
+            value={o}
             onChange={setO}
             decimals={2}
           />
@@ -79,42 +79,31 @@ function ParamRow({
   title,
   sub,
   step,
-  range,
+  value,
   onChange,
   decimals,
 }: {
   title: string;
   sub: string;
   step: number;
-  range: Range;
-  onChange: (r: Range) => void;
+  value: number;
+  onChange: (v: number) => void;
   decimals: number;
 }) {
-  const update = (k: "min" | "max", v: number) => {
-    if (Number.isNaN(v)) return;
-    onChange({ ...range, [k]: v });
-  };
   return (
     <div>
-      <div className="mb-2 flex items-baseline gap-2">
-        <span className="text-sm font-semibold">{title}</span>
-        <span className="text-[11px] text-muted-foreground">{sub}</span>
+      <div className="mb-2 flex items-baseline justify-between gap-2">
+        <div className="flex items-baseline gap-2">
+          <span className="text-sm font-semibold">{title}</span>
+          <span className="text-[11px] text-muted-foreground">{sub}</span>
+        </div>
       </div>
-      <div className="flex items-center gap-2">
-        <NumberField
-          value={range.min}
-          step={step}
-          decimals={decimals}
-          onChange={(v) => update("min", v)}
-        />
-        <span className="text-xs text-muted-foreground">to</span>
-        <NumberField
-          value={range.max}
-          step={step}
-          decimals={decimals}
-          onChange={(v) => update("max", v)}
-        />
-      </div>
+      <NumberField
+        value={value}
+        step={step}
+        decimals={decimals}
+        onChange={onChange}
+      />
     </div>
   );
 }

@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import type * as LType from "leaflet";
 
-export interface Range {
-  min: number;
-  max: number;
-}
-
 interface Props {
-  sr: Range;
-  o: Range;
+  sr: number;
+  o: number;
+  srTol?: number;
+  oTol?: number;
 }
 
 // Asia bounding box for the synthetic field.
@@ -30,17 +27,12 @@ function fieldAt(lat: number, lng: number) {
   return { sr, o };
 }
 
-function inRangeScore(value: number, r: Range) {
-  const lo = Math.min(r.min, r.max);
-  const hi = Math.max(r.min, r.max);
-  const mid = (lo + hi) / 2;
-  const half = Math.max((hi - lo) / 2, 1e-9);
-  // 1.0 in the middle, ~0.6 at the edge, falls off outside
-  const x = (value - mid) / half;
-  return Math.exp(-(x * x) * 0.9);
+function closenessScore(value: number, target: number, tol: number) {
+  const x = (value - target) / Math.max(tol, 1e-9);
+  return Math.exp(-(x * x));
 }
 
-export function ProbabilityMap({ sr, o }: Props) {
+export function ProbabilityMap({ sr, o, srTol = 0.0015, oTol = 1.5 }: Props) {
   const mapEl = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LType.Map | null>(null);
   const layerRef = useRef<LType.LayerGroup | null>(null);
@@ -98,7 +90,7 @@ export function ProbabilityMap({ sr, o }: Props) {
         const cLat = lat + step / 2;
         const cLng = lng + step / 2;
         const v = fieldAt(cLat, cLng);
-        const p = inRangeScore(v.sr, sr) * inRangeScore(v.o, o);
+        const p = closenessScore(v.sr, sr, srTol) * closenessScore(v.o, o, oTol);
         if (p < 0.55) continue;
         const t = (p - 0.55) / 0.45; // 0..1
         const hue = 45 - t * 45; // gold -> red
@@ -133,7 +125,7 @@ export function ProbabilityMap({ sr, o }: Props) {
           { direction: "top", offset: [0, -10] }
         );
     }
-  }, [L, sr.min, sr.max, o.min, o.max]);
+  }, [L, sr, o, srTol, oTol]);
 
   return <div ref={mapEl} className="absolute inset-0" />;
 }
