@@ -42,11 +42,14 @@ if ("IntersectionObserver" in window && sections.length > 0) {
 
       if (!visible) return;
 
+      const activeLink = navLinks.find(
+        (link) => link.getAttribute("href") === `#${visible.target.id}`
+      );
+
+      if (!activeLink) return;
+
       navLinks.forEach((link) => {
-        link.classList.toggle(
-          "is-active",
-          link.getAttribute("href") === `#${visible.target.id}`
-        );
+        link.classList.toggle("is-active", link === activeLink);
       });
     },
     {
