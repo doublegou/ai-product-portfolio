@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 
 
-DEFAULT_MODEL = "gpt-4.1-mini"
+DEFAULT_MODEL = "deepseek-v4-flash"
 
 
 def call_llm(messages: list[dict[str, str]]) -> str:
@@ -16,7 +16,12 @@ def call_llm(messages: list[dict[str, str]]) -> str:
         raise RuntimeError("Missing OPENAI_API_KEY. Please set it in .env.")
 
     model = os.getenv("MODEL", DEFAULT_MODEL).strip() or DEFAULT_MODEL
-    client = OpenAI(api_key=api_key)
+    base_url = os.getenv("OPENAI_BASE_URL", "").strip()
+    client_kwargs = {"api_key": api_key}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+
+    client = OpenAI(**client_kwargs)
 
     response = client.chat.completions.create(
         model=model,

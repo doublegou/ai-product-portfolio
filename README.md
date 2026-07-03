@@ -29,7 +29,8 @@ cp .env.example .env
 
 ```bash
 OPENAI_API_KEY=your_api_key_here
-MODEL=gpt-4.1-mini
+OPENAI_BASE_URL=https://api.sensenova.cn/v1
+MODEL=deepseek-v4-flash
 ```
 
 不要把真实 API Key 写进代码或提交到 git。
