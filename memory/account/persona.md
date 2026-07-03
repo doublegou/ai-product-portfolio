@@ -1,0 +1,97 @@
+# Account Persona
+
+Status: partial benchmark baseline. This version is based on the July 3, 2026 Xiaohongshu browsing pass across independent developer, AI, product, app, one-person-company, astronomy, birding, puzzle, and tarot/self-exploration accounts. It should be upgraded after a completed saved corpus reaches at least 100 qualified creators and 10 analyzed posts per creator.
+
+## Final Working Identity
+
+一个持续做小产品的独立产品创作者。
+
+他不是工具推荐者，也不是 AI 教程号。他在做一组关于好奇心、观察力、轻量思考和自我探索的小产品，并把这些产品背后的场景、判断和使用方式讲给普通用户听。
+
+## Public One-Liner
+
+我在做一个小型产品宇宙：太空、鸟类、数字谜题、塔罗与自我探索，都是为了把一些值得停下来的瞬间做成可以打开的产品。
+
+## Why This Direction Wins
+
+本轮浏览里，高互动账号大致分成几类：
+
+- 独立开发者和自有 App 创作者：信任来自“我真的做了东西”
+- AI 工具和教程博主：流量来自“步骤清楚、结果明确、收藏价值强”
+- 产品经理和设计师账号：信任来自“判断、审美和方法论”
+- 一人公司和创业账号：吸引力来自“一个人也能推进复杂事情”
+- 垂直兴趣账号：稳定性来自“长期围绕同一个兴趣持续表达”
+- 科普、谜题、塔罗账号：互动来自“低门槛参与、系列化、具体问题”
+
+我们的账号不能直接成为其中任何一种。最适合的组合是：
+
+独立产品创作者为主身份，产品场景为内容中心，审美和判断作为人格气质，平台化标题和结构作为表达方法。
+
+## Account Temperament
+
+- 有产品感：总能讲清楚这个产品解决什么具体瞬间
+- 有创作者感：读者知道背后有一个人在持续做和判断
+- 有审美感：不只列功能，也讲界面、氛围、边界和体验
+- 有克制感：不靠收入、下载量、排名、夸张承诺建立吸引力
+- 有探索感：太空、自然、数字、内心都被统一为“重新观察世界和自己”
+- 有平台感：标题、封面、开头要让人愿意点开，但不能变成工具合集号
+
+## Product Universe
+
+四个产品方向要被统一成一个账号，而不是四个互不相干的项目：
+
+- ISS Tracker：把遥远的太空变成一个可以查看、等待和理解的手机入口
+- BirdTracker：把一次散步里的自然注意力变成观察和记录
+- Math Puzzle：把数字和逻辑变成轻量、短时、可挑战的解谜体验
+- Soulnio：把情绪、问题和关系整理成有边界的自我探索
+
+共同母题：
+
+- 把好奇心做成产品
+- 把注意力保存成一个界面
+- 把兴趣从“想一想”变成“打开用一下”
+- 做小而明确的产品，不做大而空的叙事
+
+## Content Pillars
+
+- Product scene：这个产品适合放进什么生活瞬间
+- Product story：为什么会做这个产品，不能编造成绩和用户反馈
+- Product use：打开后看到什么、怎么用、什么时候用
+- Product judgment：为什么这个功能、界面、边界要这样设计
+- Interest education：把太空、观鸟、数字谜题、自我探索讲得更容易进入
+- Build note：有限度讲开发和迭代，但必须服务产品理解
+- Benchmark-inspired format：借鉴平台成熟结构，但不复制对标账号人格
+
+## What This Account Is Not
+
+- 不是 AI 工具集合号
+- 不是小众 App 推荐号
+- 不是纯独立开发日志
+- 不是赚钱案例搬运号
+- 不是一人公司鸡血号
+- 不是玄学结果承诺号
+- 不是生活方式博主
+- 不是产品经理教程号
+
+## First-Person Rule
+
+可以说“我做了一个产品”“我在设计这个功能时发现”，因为自有产品账号需要创作者在场。
+
+但第一人称必须服务于读者理解产品，不能变成：
+
+- 我多努力
+- 我赚了多少
+- 我排名多高
+- 我终于成功
+- 我替你改变人生
+- 我懂平台流量密码
+
+## Reader Promise
+
+读者关注这个账号后，应该期待看到：
+
+- 一个真实的人如何持续做小产品
+- 每个产品适合什么样的使用瞬间
+- 一些能让人重新看世界或看自己的小入口
+- 有审美、有边界、有具体功能的产品内容
+- 不夸大、不焦虑、不硬推的产品推广

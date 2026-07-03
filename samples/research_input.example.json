@@ -1,0 +1,40 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "分析独立产品创作者账号如何包装产品故事、产品场景和用户行动建议",
+  "source": "manual",
+  "accounts": [
+    {
+      "account_name": "示例账号A",
+      "account_url": "https://www.xiaohongshu.com/user/profile/example",
+      "bio": "这里填写账号主页简介",
+      "follower_count": 0,
+      "following_count": 0,
+      "liked_count": 0,
+      "positioning_notes": [
+        "这里填写你观察到的人设气质，例如独立开发者、产品设计师、AI创业者等",
+        "这里填写主页视觉风格、选题集中度、商业化痕迹"
+      ],
+      "notes": [
+        {
+          "account_name": "示例账号A",
+          "title": "这里填写笔记标题",
+          "note_url": "https://www.xiaohongshu.com/explore/example",
+          "cover_text": "这里填写封面文字",
+          "body_excerpt": "这里填写笔记正文摘要或你手动摘录的关键结构，不要复制整篇长文。",
+          "hashtags": ["#独立开发", "#产品设计"],
+          "likes": 0,
+          "comments": 0,
+          "saves": 0,
+          "publish_time": "可选，例如 2026-07-03",
+          "visible_comments": [
+            "这里填写少量高价值可见评论，用于分析用户需求"
+          ],
+          "observed_signals": [
+            "这里填写你观察到的结构，例如标题用反差，正文先讲场景再讲产品"
+          ]
+        }
+      ]
+    }
+  ],
+  "loose_notes": []
+}

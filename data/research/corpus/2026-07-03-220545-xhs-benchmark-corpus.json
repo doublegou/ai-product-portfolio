@@ -1,0 +1,140 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_benchmark",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 2,
+    "target_notes": 2
+  },
+  "coverage": {
+    "creator_count": 1,
+    "note_count": 2,
+    "keywords": [
+      "独立产品"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "独立产品",
+        "candidate_count": 3,
+        "collected_at": "2026-07-03T22:05:16.932698+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_name": "三此君",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5b81915b712ac00001e5ee82?xsec_token=ABVJw5R4ShZ8ny-i2lALRPgiJGNljDJIA1CuqRnEdC5Ic=&xsec_source=pc_search",
+      "bio": "AI、代码与山河：在路上探索与创造\n\n#独立开发 #AI出海 #环国旅居 #6年大厂程序员\n29岁\n广东深圳\n程序员",
+      "follower_count": 5769,
+      "following_count": 32,
+      "liked_count": null,
+      "positioning_notes": [
+        "AI、代码与山河：在路上探索与创造\n\n#独立开发 #AI出海 #环国旅居 #6年大厂程序员",
+        "29岁\n广东深圳\n程序员"
+      ],
+      "notes": [
+        {
+          "account_name": "三此君",
+          "title": "微信读书最强插件年度更新来啦！一个字！绝",
+          "note_url": "https://www.xiaohongshu.com/user/profile/5b81915b712ac00001e5ee82/660cad5b000000001a01444c?xsec_token=ABEXtDSwI9np7wTiDoLMsGq3UD9hjNnC26-RvhvAHv_gE=&xsec_source=pc_user",
+          "cover_text": "微信读书最强插件年度更新来啦！一个字！绝",
+          "body_excerpt": "全网唯一可以导出图文笔记的微信读书插件年度更新来啦！\n🔥 重磅更新：支持全量导出微信读书笔记；\n📌 导出全书标注：支持导出全书图文 Markdown 笔记；\n📒 同步 Notion：支持图文笔记导出到 Notion；\n❤ 导出热门标注：导出本书图文热门笔记，快速了解全书精华内容；\n💻 调整读书页屏幕宽度；\n本次年度更新分为三个版本，这是第一个版本。\n\t\n#微信读书    #读书    #notion    #世界读书日    #效率神器    #读书笔记",
+          "hashtags": [
+            "#微信读书",
+            "#读书",
+            "#notion",
+            "#世界读书日",
+            "#效率神器",
+            "#读书笔记"
+          ],
+          "comments": 1739,
+          "saves": 5307,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 微信读书最强插件年度更新来啦！一个字！绝",
+            "visible_likes: 4831"
+          ],
+          "likes": 4831,
+          "detail_collected": true,
+          "resolved_url": "https://www.xiaohongshu.com/explore/660cad5b000000001a01444c?xsec_token=ABEXtDSwI9np7wTiDoLMsGq3UD9hjNnC26-RvhvAHv_gE=&xsec_source=pc_user",
+          "detail_title": "微信读书最强插件年度更新来啦！一个字！绝",
+          "detail_body": "全网唯一可以导出图文笔记的微信读书插件年度更新来啦！\n🔥 重磅更新：支持全量导出微信读书笔记；\n📌 导出全书标注：支持导出全书图文 Markdown 笔记；\n📒 同步 Notion：支持图文笔记导出到 Notion；\n❤ 导出热门标注：导出本书图文热门笔记，快速了解全书精华内容；\n💻 调整读书页屏幕宽度；\n本次年度更新分为三个版本，这是第一个版本。\n\t\n#微信读书    #读书    #notion    #世界读书日    #效率神器    #读书笔记",
+          "detail_hashtags": [
+            "#微信读书",
+            "#读书",
+            "#notion",
+            "#世界读书日",
+            "#效率神器",
+            "#读书笔记"
+          ],
+          "detail_author": "三此君",
+          "detail_like_text": "4831",
+          "detail_comment_text": "1739",
+          "detail_collect_text": "5307"
+        },
+        {
+          "account_name": "三此君",
+          "title": "🆕 2025 小宇宙播客每个分类 TOP 50 频道",
+          "note_url": "https://www.xiaohongshu.com/user/profile/5b81915b712ac00001e5ee82/6901d2c70000000004011445?xsec_token=ABLOFK8M2_-3HuoF9fqPnGRZ2Q2-3iUfDrZnX1yOutIrk=&xsec_source=pc_user",
+          "cover_text": "🆕 2025 小宇宙播客每个分类 TOP 50 频道",
+          "body_excerpt": "小宇宙 App 中找到优质播客真的是大海捞针😭\n\t\n于是，程序员的 DNA 动了！开发了一个网站，每周动态更新小宇宙播客榜单。\n\t\n今天必须单独拎出我最最最爱的功能——分类 Top 50 榜单！\n优质播客“一网打尽”，帮你10秒找到“梦中情播”！\n\t\n✨ 每个分类下 Top 50 的播客频道 ✨你听的播客上榜了吗？\n\t\n✅ 精准入坑: 想听哪个领域，闭眼听都不会错！\n✅ 高效挖宝: 每个分类下的宝藏播客，一目了然，再也不用大海捞针！\n✅ 拒绝“烂尾”: 帮你过滤掉昙花一现的节目。\n\t\n榜单不是播客好坏的评判标准，只是给大家一个参考的维度。\n\t\n肯定还有很多沧海遗珠，大家还有没有小众优质播客推荐？求安利！\n\t\n#小宇宙 #播客 #播客推荐 #信息差 #宝藏播客 #中文播客 #通勤 #自我提升 #女性成长 #睡前",
+          "hashtags": [
+            "#小宇宙",
+            "#播客",
+            "#播客推荐",
+            "#信息差",
+            "#宝藏播客",
+            "#中文播客",
+            "#通勤",
+            "#自我提升",
+            "#女性成长",
+            "#睡前"
+          ],
+          "comments": 272,
+          "saves": 5077,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 🆕 2025 小宇宙播客每个分类 TOP 50 频道",
+            "visible_likes: 4187"
+          ],
+          "likes": 4187,
+          "detail_collected": true,
+          "resolved_url": "https://www.xiaohongshu.com/explore/6901d2c70000000004011445?xsec_token=ABLOFK8M2_-3HuoF9fqPnGRZ2Q2-3iUfDrZnX1yOutIrk=&xsec_source=pc_user",
+          "detail_title": "🆕 2025 小宇宙播客每个分类 TOP 50 频道",
+          "detail_body": "小宇宙 App 中找到优质播客真的是大海捞针😭\n\t\n于是，程序员的 DNA 动了！开发了一个网站，每周动态更新小宇宙播客榜单。\n\t\n今天必须单独拎出我最最最爱的功能——分类 Top 50 榜单！\n优质播客“一网打尽”，帮你10秒找到“梦中情播”！\n\t\n✨ 每个分类下 Top 50 的播客频道 ✨你听的播客上榜了吗？\n\t\n✅ 精准入坑: 想听哪个领域，闭眼听都不会错！\n✅ 高效挖宝: 每个分类下的宝藏播客，一目了然，再也不用大海捞针！\n✅ 拒绝“烂尾”: 帮你过滤掉昙花一现的节目。\n\t\n榜单不是播客好坏的评判标准，只是给大家一个参考的维度。\n\t\n肯定还有很多沧海遗珠，大家还有没有小众优质播客推荐？求安利！\n\t\n#小宇宙 #播客 #播客推荐 #信息差 #宝藏播客 #中文播客 #通勤 #自我提升 #女性成长 #睡前",
+          "detail_hashtags": [
+            "#小宇宙",
+            "#播客",
+            "#播客推荐",
+            "#信息差",
+            "#宝藏播客",
+            "#中文播客",
+            "#通勤",
+            "#自我提升",
+            "#女性成长",
+            "#睡前"
+          ],
+          "detail_author": "三此君",
+          "detail_like_text": "4187",
+          "detail_comment_text": "272",
+          "detail_collect_text": "5077"
+        }
+      ],
+      "seed_keyword": "独立产品",
+      "discovered_from_note": {
+        "title": "为什么还没有拿到第一桶金？看看这10条准则",
+        "note_url": "https://www.xiaohongshu.com/explore/69b5706300000000220020d1",
+        "card_text": "为什么还没有拿到第一桶金？看看这10条准则 / 三此君 / 03-16 / 548"
+      }
+    }
+  ],
+  "collector_meta": {
+    "collected_at": "2026-07-03T22:05:45.936545+08:00",
+    "chrome_profile": "user_current_logged_in_chrome",
+    "collection_note": "Only visible page data from the user's logged-in Chrome was collected. The script does not bypass login, CAPTCHA, or platform protections."
+  }
+}

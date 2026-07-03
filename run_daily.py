@@ -1,23 +1,31 @@
 from src.file_store import save_draft
-from src.memory import load_banned_phrases
-from src.validator import validate_draft
-from src.writer import generate_draft
+from src.pipeline import create_approved_draft
 
 
 def main() -> int:
     print("Agent started.")
 
     try:
-        draft = generate_draft()
-        banned_phrases = load_banned_phrases()
-        validated_draft = validate_draft(draft, banned_phrases)
-        saved_path = save_draft(validated_draft)
+        result = create_approved_draft()
+        validated_draft = result["draft"]
+        saved_path = save_draft(
+            validated_draft,
+            status="approved",
+            metadata={
+                "final_score": result["final_score"],
+                "iterations": result["iterations"],
+                "review_rounds": result["review_rounds"],
+            },
+        )
     except (FileNotFoundError, RuntimeError, ValueError) as exc:
         print(exc)
         return 1
 
     print(f"topic: {validated_draft['topic']}")
     print(f"title: {validated_draft['title']}")
+    print(f"cover_text: {validated_draft['cover_text']}")
+    print(f"final_score: {result['final_score']}")
+    print(f"iterations: {result['iterations']}")
     print(f"saved_path: {saved_path}")
     print("Done.")
     return 0

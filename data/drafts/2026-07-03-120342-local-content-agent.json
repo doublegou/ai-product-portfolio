@@ -1,0 +1,65 @@
+{
+  "id": "c43deacf-8edf-451d-abb7-c79aa2aedfef",
+  "created_at": "2026-07-03T12:03:42+08:00",
+  "topic": "我为什么要做一个本地内容 Agent",
+  "audience": "想用 AI 提升内容产出效率、但不想被复杂工具绑架的创作者和职场人",
+  "title": "我给自己做了一个本地内容 Agent，用 AI 审稿改稿",
+  "hook": "以前我总觉得写东西靠灵感，后来发现灵感最不可靠——真正稳定的是你搭建的系统。",
+  "body": "这几周我做了一个小项目：一个代码和记忆文件都跑在本地的内容 Agent。不是那种大厂的全自动机器人，就是一个 Python 脚本，每次从我的记忆文件里抓主题、生成草稿、再让 AI 审稿改稿，直到通过才保存。\n\n为什么要在本地管理？\n市面上的 AI 写作工具很多，但真正用起来总会遇到几个别扭的地方：要么数据全都上传到云端，要么生成的风格千篇一律，要么改稿流程依赖人工。我想要的是一套底层文件由自己管理、模型调用在线 API 的系统——这样我的记忆文件、草稿版本、审稿标准都由自己把控，不依赖任何平台。\n\n具体怎么做？\n1. 准备记忆：我在本地建了几个 Markdown 文件，放项目事实、个人 profile、写作风格、话题库。每次生成前 Agent 会先读取这些文件，保证内容有根有据。\n2. 生成初稿：用 `python run_once.py \"主题\"` 触发，模型根据记忆和提示生成一篇完整的帖子草稿。\n3. 自动审稿：初稿出来后，AI reviewer 会按结构、事实、语气打分，如果低于阈值就退回重写。AI editor 根据评审意见修改，迭代直到通过。整个过程我不需要介入。\n4. 保存成果：通过的草稿存为 JSON，状态标为 approved，附上分数和迭代次数。我随时能翻出历史，看到迭代过程。\n\n这套流程最大的好处是：它把“写一篇好内容”从一个神秘的灵感事件，变成了一个可重复、可监控的生产步骤。我可以先在某个主题上跑通一次，生成一个经过审核的起点，然后继续调整。\n\n如果你也想试试，建议先从一个小步骤开始：整理一个你最熟悉的话题的本地记忆文件，然后用一个最简单的 API 调用让它生成一版初稿。不用追求完美，先跑通一次。\n\n你不必一次性搭建整个系统，但可以现在就做一个“最小可运行版本”。",
+  "takeaways": [
+    "本地记忆文件让 AI 输出更像自己，而不是通用机器文",
+    "自动审稿改稿由 AI 完成，人只需调整方向",
+    "跑通一次生成流程，就拥有了一个可迭代的起点",
+    "从最小步骤开始：先整理一个记忆文件，再跑一次生成"
+  ],
+  "hashtags": [
+    "#AI写作",
+    "#内容创作",
+    "#个人效率",
+    "#本地Agent",
+    "#写作系统"
+  ],
+  "cover_text": "AI 自动审稿改稿",
+  "reason": "这个主题结合了 profile 中目标读者（想用 AI 提升效率的创作者）和 topics 中的方向（用 AI 搭建每日内容草稿流、本地文件作为记忆），同时 project.md 提供了具体的实现细节和限制，能写出真实可操作的步骤，避免空泛。",
+  "final_score": 8.6,
+  "iterations": 2,
+  "review_rounds": [
+    {
+      "overall_score": 6.0,
+      "passed": false,
+      "summary": "Local quality guard found unsupported factual claims.",
+      "strengths": [],
+      "issues": [
+        "Unsupported time or usage claim: 每天运行",
+        "Unsupported workflow claim: 人工审核"
+      ],
+      "blocking_issues": [
+        "Unsupported time or usage claim: 每天运行",
+        "Unsupported workflow claim: 人工审核"
+      ],
+      "revision_brief": "Remove unsupported time, usage, offline, privacy, or capability claims. Rewrite with grounded statements based on Local Memory and the user topic.",
+      "round": 1
+    },
+    {
+      "overall_score": 8.6,
+      "passed": true,
+      "summary": "草稿真实具体，逻辑清晰，步骤可执行，且没有事实错误或违规表述，符合发布标准。",
+      "strengths": [
+        "标题具体且无夸张，直接点出核心功能：本地内容Agent + AI审稿改稿",
+        "开头用“靠灵感 vs 搭系统”这个真实痛点做钩子，切中创作者日常",
+        "正文分步解释了本地管理的原因和具体做法，逻辑清晰，有命令、有文件说明",
+        "结尾给出了最小行动建议（整理一个记忆文件），符合profile要求",
+        "语气克制、个人化，没有空泛承诺，符合voice指引",
+        "标签合适，banned_phrases里没有出现违规词"
+      ],
+      "issues": [
+        "体开头“以前我总觉得写东西靠灵感”比较常见，可以改为更具体的个人观察",
+        "文中“这种方式最大好处是…”一段偏总结性，可以稍微压缩，让实操部分更突出"
+      ],
+      "blocking_issues": [],
+      "revision_brief": "1. 开头可更具体，例如写作中真实的卡点观察，而非泛泛而谈； 2. 第四段总结部分可浓缩，重点放在步骤上； 3. 其他内容保持，已通过审核。",
+      "round": 2
+    }
+  ],
+  "status": "approved"
+}

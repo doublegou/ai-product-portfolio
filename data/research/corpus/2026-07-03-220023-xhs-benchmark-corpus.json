@@ -1,0 +1,78 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_benchmark",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1
+  },
+  "coverage": {
+    "creator_count": 1,
+    "note_count": 1,
+    "keywords": [
+      "独立产品"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "独立产品",
+        "candidate_count": 3,
+        "collected_at": "2026-07-03T22:00:03.281483+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_name": "V Yoga",
+      "account_url": "https://www.xiaohongshu.com/user/profile/61370c360000000002021826?xsec_token=ABOX7ayOKtLMaTWJ64ezAUI-pl4dN288fgcL0IuYRm_gQ=&xsec_source=pc_search",
+      "bio": "首页 / 点点 / ai / RED / 直播 / 发布 / 通知 / 我 / 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 / © 2014-2026 / 行吟信息科技（上海）有限公司 / 地址：上海市黄浦区马当路388号C座 / 电话：9501-3888 / 更多 / 关于我们 / 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 / © 2014-2026 / 行吟信息科技（上海）有限公司 / 地址：上海市黄浦区马当路388号C座 / 电话：9501-3888",
+      "follower_count": null,
+      "following_count": null,
+      "liked_count": null,
+      "positioning_notes": [
+        "首页",
+        "点点",
+        "ai",
+        "RED",
+        "直播",
+        "发布",
+        "通知",
+        "我",
+        "沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号",
+        "© 2014-2026",
+        "行吟信息科技（上海）有限公司",
+        "地址：上海市黄浦区马当路388号C座"
+      ],
+      "notes": [
+        {
+          "account_name": "V Yoga",
+          "title": "AI品牌片—大学生的视频课已经卷成这样了？",
+          "note_url": "https://www.xiaohongshu.com/explore/6933b610000000001e0156be",
+          "cover_text": "AI品牌片—大学生的视频课已经卷成这样了？",
+          "body_excerpt": "AI品牌片—大学生的视频课已经卷成这样了？ / V Yoga / 65",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "‰∏ªÈ°µÂèØËßÅÁ¨îËÆ∞Ê†áÈ¢ò: AI品牌片—大学生的视频课已经卷成这样了？"
+          ],
+          "likes": null
+        }
+      ],
+      "seed_keyword": "独立产品",
+      "discovered_from_note": {
+        "title": "为了活得更久，我做了一个App",
+        "note_url": "https://www.xiaohongshu.com/explore/69369605000000001e006201",
+        "card_text": "为了活得更久，我做了一个App / V Yoga / 2025-12-08 / 2.1万"
+      }
+    }
+  ],
+  "collector_meta": {
+    "collected_at": "2026-07-03T22:00:23.780414+08:00",
+    "chrome_profile": "user_current_logged_in_chrome",
+    "collection_note": "Only visible page data from the user's logged-in Chrome was collected. The script does not bypass login, CAPTCHA, or platform protections."
+  }
+}

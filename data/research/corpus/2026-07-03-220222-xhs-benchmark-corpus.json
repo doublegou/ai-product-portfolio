@@ -1,0 +1,136 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_benchmark",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 5,
+    "target_notes": 5
+  },
+  "coverage": {
+    "creator_count": 1,
+    "note_count": 5,
+    "keywords": [
+      "独立产品"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "独立产品",
+        "candidate_count": 3,
+        "collected_at": "2026-07-03T22:02:01.656097+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_name": "龙-独立开发",
+      "account_url": "https://www.xiaohongshu.com/user/profile/613c2f960000000002027767?xsec_token=ABEwfoGrRjA1thNHRlOLPP_-yfsN6nrluKtjIuROaA2sQ=&xsec_source=pc_search",
+      "bio": "SuperPublic.org创始人，独立开发者\n4个出海SaaS，$20k MRR\n专注分享大陆开发者出海实战经验 🔥\n✅ Stripe注册变现 | ✅ 冷启动获客 | ✅ 美国公司注册",
+      "follower_count": 1424,
+      "following_count": 606,
+      "liked_count": 5000,
+      "positioning_notes": [
+        "SuperPublic.org创始人，独立开发者\n4个出海SaaS，$20k MRR\n专注分享大陆开发者出海实战经验 🔥\n✅ Stripe注册变现 | ✅ 冷启动获客 | ✅ 美国公司注册"
+      ],
+      "notes": [
+        {
+          "account_name": "龙-独立开发",
+          "title": "💡干货！大陆开发者的Stripe注册变现指南",
+          "note_url": "https://www.xiaohongshu.com/explore/67524137000000000703233b",
+          "cover_text": "💡干货！大陆开发者的Stripe注册变现指南",
+          "body_excerpt": "💡干货！大陆开发者的Stripe注册变现指南 / 龙-独立开发 / 342",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 💡干货！大陆开发者的Stripe注册变现指南",
+            "visible_likes: 342"
+          ],
+          "likes": 342
+        },
+        {
+          "account_name": "龙-独立开发",
+          "title": "💡干货！独立开发软件如何变现💰",
+          "note_url": "https://www.xiaohongshu.com/explore/6750c5b60000000007031403",
+          "cover_text": "💡干货！独立开发软件如何变现💰",
+          "body_excerpt": "💡干货！独立开发软件如何变现💰 / 龙-独立开发 / 329",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 💡干货！独立开发软件如何变现💰",
+            "visible_likes: 329"
+          ],
+          "likes": 329
+        },
+        {
+          "account_name": "龙-独立开发",
+          "title": "🔥干货！独立开发如何免费获得前1000个用户！",
+          "note_url": "https://www.xiaohongshu.com/explore/67554c1d000000000700cc09",
+          "cover_text": "🔥干货！独立开发如何免费获得前1000个用户！",
+          "body_excerpt": "🔥干货！独立开发如何免费获得前1000个用户！ / 龙-独立开发 / 160",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 🔥干货！独立开发如何免费获得前1000个用户！",
+            "visible_likes: 160"
+          ],
+          "likes": 160
+        },
+        {
+          "account_name": "龙-独立开发",
+          "title": "记录下自己的产品to the moon时刻",
+          "note_url": "https://www.xiaohongshu.com/explore/674ab5e100000000070296f6",
+          "cover_text": "记录下自己的产品to the moon时刻",
+          "body_excerpt": "记录下自己的产品to the moon时刻 / 龙-独立开发 / 95",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 记录下自己的产品to the moon时刻",
+            "visible_likes: 95"
+          ],
+          "likes": 95
+        },
+        {
+          "account_name": "龙-独立开发",
+          "title": "💡干货！独立开发Web App最佳技术栈",
+          "note_url": "https://www.xiaohongshu.com/explore/6752c0100000000007027c3a",
+          "cover_text": "💡干货！独立开发Web App最佳技术栈",
+          "body_excerpt": "💡干货！独立开发Web App最佳技术栈 / 龙-独立开发 / 94",
+          "hashtags": [],
+          "comments": null,
+          "saves": null,
+          "publish_time": null,
+          "visible_comments": [],
+          "observed_signals": [
+            "profile_note_title: 💡干货！独立开发Web App最佳技术栈",
+            "visible_likes: 94"
+          ],
+          "likes": 94
+        }
+      ],
+      "seed_keyword": "独立产品",
+      "discovered_from_note": {
+        "title": "💡干货！独立app开发，如何获取得种子用户",
+        "note_url": "https://www.xiaohongshu.com/explore/674cf8fd0000000007035385",
+        "card_text": "💡干货！独立app开发，如何获取得种子用户 / 龙-独立开发 / 2024-12-02 / 54"
+      }
+    }
+  ],
+  "collector_meta": {
+    "collected_at": "2026-07-03T22:02:22.181664+08:00",
+    "chrome_profile": "user_current_logged_in_chrome",
+    "collection_note": "Only visible page data from the user's logged-in Chrome was collected. The script does not bypass login, CAPTCHA, or platform protections."
+  }
+}
