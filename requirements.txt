@@ -1,4 +1,9 @@
-openai
-python-dotenv
-pydantic
-playwright
+# LLM client and .env loading
+openai>=1.30.0
+python-dotenv>=1.0.0
+
+# Structured model outputs and runtime validation
+pydantic>=2.7.0
+
+# Browser automation for current/fallback Chrome collection
+playwright>=1.45.0

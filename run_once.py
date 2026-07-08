@@ -1,8 +1,11 @@
 import argparse
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
-from src.file_store import save_draft
-from src.pipeline import create_approved_draft
-from src.prewrite_research import run_prewrite_research
+from src.base.file_store import save_draft
+from src.create.runtime import create_approved_draft
+from src.research.topic_research import discover_topic
+from src.research.writing_research import run_writing_research
 
 
 def main() -> int:
@@ -14,7 +17,13 @@ def main() -> int:
         help="Skip fresh platform research before writing.",
     )
     parser.add_argument("--research-limit", type=int, default=10)
-    parser.add_argument("--min-research-notes", type=int, default=5)
+    parser.add_argument("--min-research-notes", type=int, default=10)
+    parser.add_argument("--research-attempts", type=int, default=5)
+    parser.add_argument(
+        "--persist-research-artifacts",
+        action="store_true",
+        help="Persist topic discovery and writing research files for debugging.",
+    )
     parser.add_argument(
         "--fallback-browser",
         action="store_true",
@@ -32,16 +41,41 @@ def main() -> int:
     try:
         research_brief = None
         if not args.no_research:
-            print("Prewrite research started.")
-            research_result = run_prewrite_research(
+            if args.persist_research_artifacts:
+                output_dir = Path("data/research/writing")
+                output_dir.mkdir(parents=True, exist_ok=True)
+                temp_context = None
+            else:
+                temp_context = TemporaryDirectory(prefix="content-agent-once-research-")
+                output_dir = Path(temp_context.name)
+
+            print("Topic discovery started.")
+            discovery_result = discover_topic(
                 user_topic,
+                output_dir=output_dir,
+            )
+            topic_plan = discovery_result["topic_plan"]
+            print("Writing research started.")
+            research_result = run_writing_research(
+                topic_plan,
                 limit=args.research_limit,
                 min_notes=args.min_research_notes,
+                max_attempts=args.research_attempts,
                 allow_dedicated_browser_fallback=args.fallback_browser,
+                persist_artifacts=args.persist_research_artifacts,
+                output_dir=output_dir,
             )
+            if temp_context:
+                temp_context.cleanup()
             research_brief = research_result["analysis"]
-            print(f"research_input: {research_result['input_path']}")
-            print(f"research_report: {research_result['report_path']}")
+            print(f"planned_product: {topic_plan['product']}")
+            print(f"planned_topic: {topic_plan['planned_topic']}")
+            print(f"research_used_query: {research_result['used_query']}")
+            print(f"research_sample_count: {research_result['sample_count']}")
+            if research_result.get("input_path"):
+                print(f"research_input: {research_result['input_path']}")
+            if research_result.get("report_path"):
+                print(f"research_report: {research_result['report_path']}")
 
         result = create_approved_draft(
             user_topic=user_topic,
@@ -53,9 +87,6 @@ def main() -> int:
             status="approved",
             metadata={
                 "final_score": result["final_score"],
-                "iterations": result["iterations"],
-                "review_rounds": result["review_rounds"],
-                "research_brief": research_brief,
             },
         )
     except (FileNotFoundError, RuntimeError, ValueError) as exc:

@@ -5,7 +5,11 @@
 要求：
 
 - 只输出一个合法 JSON 对象，不要输出 Markdown，不要使用代码块
-- JSON 必须包含 topic、audience、title、hook、body、takeaways、hashtags、cover_text、reason
+- JSON 必须包含 product、post_archetype、target_scene、traffic_hook、topic、audience、title、hook、body、takeaways、hashtags、cover_text、reason
+- product 必须是 ISS Tracker、BirdTracker、Math Puzzle、Soulnio、Product Universe 之一；如果写具体产品，不要用 Product Universe
+- post_archetype 是内容类型，例如 场景种草、功能解释、使用教程、产品故事、设计取舍、兴趣入门、系列栏目
+- target_scene 是这篇帖子瞄准的具体使用场景或读者瞬间
+- traffic_hook 是标题/封面/开头背后的点击理由或传播钩子，不要写空泛营销词
 - topic 是本次内容主题
 - audience 是这篇帖子最适合的读者
 - title 是适合小红书的中文标题，吸引人但不要标题党
@@ -16,7 +20,7 @@
 - hashtags 是字符串数组，至少 4 个标签，每个标签以 # 开头
 - cover_text 是封面文案，12 个中文字符以内，适合放在小红书封面上
 - reason 简要说明为什么选择这个主题和角度
-- 不要输出 id、created_at、status，这些字段由本地程序补充
+- 不要输出 id、created_at、status、review fields，这些字段由本地程序补充
 - 不要照抄任何产品资产里的示例角度，要重新组织成当前主题的发布草稿
 - 不要制造焦虑，不要夸大收益，不要使用禁用词
 - 写作重点是产品使用场景、目标用户痛点、真实功能和行动建议，不要写成开发日志或工具说明书
@@ -34,6 +38,10 @@
 输出格式示例：
 
 {
+  "product": "ISS Tracker",
+  "post_archetype": "场景种草",
+  "target_scene": "晚上抬头前想知道空间站在哪",
+  "traffic_hook": "把遥远的国际空间站变成手机里能查看的位置和过境提醒",
   "topic": "用手机追踪国际空间站",
   "audience": "对太空、卫星和天文观察感兴趣的普通用户",
   "title": "我把国际空间站装进了手机里的小控制台",

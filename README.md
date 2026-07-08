@@ -45,6 +45,23 @@ MODEL=deepseek-v4-flash
 python run_daily.py
 ```
 
+`run_daily.py` 默认会为每个产品独立生成一篇草稿。每个产品都会先做自动选题发现，再规划搜索方向，然后做小规模小红书搜索分析，默认目标是采集 10 条可用样本，并最多重试 5 次，再进入写作、审稿和改稿。
+
+自动选题分两层：
+
+- 先做 broad hotspot discovery，看全局热点是否能自然连接某个产品
+- 再做 related field discovery，看产品相关领域最近有哪些可直接写的热度点和用户语言
+
+Broad hotspot discovery 当前优先使用当前登录 Chrome 做小红书泛热点搜索。后续要接微博、抖音、YouTube 等热点页时，也应优先扩展 Chrome 浏览器采集，而不是并行维护一套零散 HTTP/API 抓取脚本。
+
+只跑某个产品：
+
+```bash
+python run_daily.py --product "Math Puzzle"
+```
+
+单篇写作前的 research input/report 默认是临时中间过程，不会长期保存；调试时可以加 `--persist-research-artifacts`。
+
 ## 指定主题运行
 
 ```bash
@@ -71,6 +88,10 @@ Missing OPENAI_API_KEY. Please set it in .env.
 {
   "id": "...",
   "created_at": "...",
+  "product": "Math Puzzle",
+  "post_archetype": "场景种草",
+  "target_scene": "睡前想玩一点轻量数字谜题",
+  "traffic_hook": "不是数学考试，而是轻松填数字的短休游戏",
   "topic": "...",
   "audience": "...",
   "title": "...",
@@ -80,25 +101,17 @@ Missing OPENAI_API_KEY. Please set it in .env.
   "hashtags": ["#...", "#...", "#...", "#..."],
   "cover_text": "...",
   "reason": "...",
-  "final_score": 8.5,
-  "iterations": 2,
-  "review_rounds": ["..."],
+  "final_score": 8.6,
   "status": "approved"
 }
 ```
 
-## 对标研究分析
+## 长期策略研究
 
-自动采集小红书搜索样本：
-
-```bash
-python run_collect.py xhs "独立开发者" --limit 10
-```
-
-优先使用你已经登录的普通 Chrome：
+长期策略研究使用当前已登录的普通 Chrome 采集创作者和笔记样本：
 
 ```bash
-python run_collect.py xhs-current "独立开发者" --limit 10
+python run_strategy_research.py collect --target-creators 50 --notes-per-creator 10
 ```
 
 如果提示 Chrome 不允许 Apple Events 执行 JavaScript，需要在 Chrome 菜单打开：
@@ -109,15 +122,13 @@ View > Developer > Allow JavaScript from Apple Events
 
 这是一次性设置。打开后，采集器可以使用当前已登录 Chrome 自动搜索、滚动并抽取可见笔记卡片。
 
-先把小红书账号和笔记样本整理成 JSON：
+采集完成后分析长期策略样本：
 
 ```bash
-cp samples/research_input.example.json data/research-input.json
-python run_research.py data/research-input.json --validate-only
-python run_research.py data/research-input.json
+python run_strategy_research.py analyze data/research/corpus/your-corpus.json
 ```
 
-成功后会在 `data/research/reports/` 下生成平台研究报告。`data/research/` 已进入 `.gitignore`，不会提交。
+成功后会生成 strategy analysis，并可生成待人工确认的 strategy review。`data/research/` 已进入 `.gitignore`，不会提交。
 
 稳定的研究结论可以沉淀到：
 

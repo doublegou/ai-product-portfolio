@@ -1,7 +1,5 @@
 # Platform Strategy: Xiaohongshu
 
-Status: partial benchmark baseline. Stable conclusions were updated after a July 3, 2026 browsing pass that reached independent developer, AI, product, app, one-person-company, astronomy, birding, puzzle, and tarot/self-exploration samples. Because Xiaohongshu limited frequent access before the full 100 x 10 corpus completed, treat this as a practical operating baseline, not the final statistical rulebook.
-
 ## Current Principle
 
 不要凭“小红书刻板印象”写内容。每次重要写作前，应尽量采集相似选题或相似账号的真实笔记，拆解它们的标题、封面、开头、正文结构、互动需求，再把机制迁移到我们的产品内容里。

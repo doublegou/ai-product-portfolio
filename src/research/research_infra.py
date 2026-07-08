@@ -6,8 +6,8 @@ from zoneinfo import ZoneInfo
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from src.json_utils import call_json_model
-from src.memory import load_memory
+from src.base.json_utils import call_json_model
+from src.base.memory import load_memory
 
 
 class NoteSample(BaseModel):
@@ -146,7 +146,7 @@ def load_research_input(path: Path | str) -> ResearchInput:
 
 def analyze_research(
     research_input: ResearchInput,
-    prompt_path: Path | str = "prompts/research_analyzer.md",
+    prompt_path: Path | str = "skills/research_analyzer.md",
 ) -> dict[str, Any]:
     prompt_file = Path(prompt_path)
     if not prompt_file.exists():

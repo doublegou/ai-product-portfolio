@@ -6,11 +6,11 @@ from zoneinfo import ZoneInfo
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from src.json_utils import call_json_model
-from src.memory import load_memory
+from src.base.json_utils import call_json_model
+from src.base.memory import load_memory
 
 
-class BenchmarkAnalysis(BaseModel):
+class StrategyResearchAnalysis(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     platform: Literal["xiaohongshu"]
@@ -81,7 +81,7 @@ class ProposedMemoryChange(BaseModel):
 class StrategyReview(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    review_type: Literal["weekly_benchmark_strategy_review"]
+    review_type: Literal["weekly_strategy_research_review"]
     trigger: Literal[
         "weekly",
         "account_data_change",
@@ -92,7 +92,6 @@ class StrategyReview(BaseModel):
         "manual",
     ] = "weekly"
     trigger_reason: str = Field(min_length=2)
-    benchmark_analysis_path: str | None = None
     corpus_path: str | None = None
     generated_at: str
     status: Literal["pending_human_decision", "approved", "rejected"] = "pending_human_decision"
@@ -109,14 +108,14 @@ class StrategyReview(BaseModel):
         return [item.strip() for item in value if item.strip()]
 
 
-def load_benchmark_corpus(path: Path | str) -> dict[str, Any]:
+def load_strategy_corpus(path: Path | str) -> dict[str, Any]:
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
-def validate_benchmark_threshold(
+def validate_strategy_corpus_threshold(
     corpus: dict[str, Any],
     *,
-    min_creators: int = 100,
+    min_creators: int = 50,
     min_notes_per_creator: int = 10,
 ) -> dict[str, int]:
     accounts = corpus.get("accounts", [])
@@ -135,16 +134,16 @@ def validate_benchmark_threshold(
     }
 
 
-def analyze_benchmark_corpus(
+def analyze_strategy_corpus(
     corpus: dict[str, Any],
     *,
-    min_creators: int = 100,
+    min_creators: int = 50,
     min_notes_per_creator: int = 10,
     allow_partial: bool = False,
     batch_size: int = 5,
-    prompt_path: Path | str = "prompts/benchmark_analyzer.md",
+    prompt_path: Path | str = "skills/strategy_researcher.md",
 ) -> dict[str, Any]:
-    threshold = validate_benchmark_threshold(
+    threshold = validate_strategy_corpus_threshold(
         corpus,
         min_creators=min_creators,
         min_notes_per_creator=min_notes_per_creator,
@@ -154,7 +153,7 @@ def analyze_benchmark_corpus(
         or threshold["qualified_creator_count"] < threshold["target_creators"]
     ):
         raise RuntimeError(
-            "Benchmark corpus is not large enough for final persona/rules. "
+            "Strategy corpus is not large enough for final persona/rules. "
             f"Creators: {threshold['creator_count']}/{threshold['target_creators']}; "
             f"qualified creators with >= {min_notes_per_creator} notes: "
             f"{threshold['qualified_creator_count']}/{threshold['target_creators']}; "
@@ -184,7 +183,7 @@ def analyze_benchmark_corpus(
                 },
             }
             batch_analyses.append(
-                _call_benchmark_model(
+                _call_strategy_model(
                     prompt=prompt,
                     payload={
                         "mode": "batch_analysis",
@@ -194,7 +193,7 @@ def analyze_benchmark_corpus(
                 )
             )
 
-        final_analysis = _call_benchmark_model(
+        final_analysis = _call_strategy_model(
             prompt=prompt,
             payload={
                 "mode": "final_synthesis_from_batches",
@@ -211,7 +210,7 @@ def analyze_benchmark_corpus(
         }
         return final_analysis
 
-    analysis = _call_benchmark_model(
+    analysis = _call_strategy_model(
         prompt=prompt,
         payload={
             "mode": "single_pass_analysis",
@@ -228,7 +227,7 @@ def analyze_benchmark_corpus(
     return analysis
 
 
-def _call_benchmark_model(*, prompt: str, payload: dict[str, Any]) -> dict[str, Any]:
+def _call_strategy_model(*, prompt: str, payload: dict[str, Any]) -> dict[str, Any]:
     memory = load_memory()
     memory_block = "\n\n".join(
         f"## {filename}\n{content}" for filename, content in memory.items()
@@ -254,8 +253,8 @@ def _call_benchmark_model(*, prompt: str, payload: dict[str, Any]) -> dict[str, 
             ),
         },
     ]
-    parsed = call_json_model(messages, "Benchmark analyzer")
-    return BenchmarkAnalysis.model_validate(parsed).model_dump()
+    parsed = call_json_model(messages, "Strategy researcher")
+    return StrategyResearchAnalysis.model_validate(parsed).model_dump()
 
 
 def _compact_corpus(corpus: dict[str, Any]) -> dict[str, Any]:
@@ -295,26 +294,13 @@ def _compact_corpus(corpus: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def save_benchmark_analysis(
-    analysis: dict[str, Any],
-    output_dir: Path | str = "data/research/benchmark",
-) -> Path:
-    base_dir = Path(output_dir)
-    base_dir.mkdir(parents=True, exist_ok=True)
-    now = datetime.now(ZoneInfo("Asia/Shanghai"))
-    path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-benchmark-analysis.json"
-    path.write_text(json.dumps(analysis, ensure_ascii=False, indent=2), encoding="utf-8")
-    return path
-
-
 def generate_strategy_review(
     analysis: dict[str, Any],
     *,
     corpus_path: str | None = None,
-    analysis_path: str | None = None,
     trigger: str = "weekly",
-    trigger_reason: str = "Weekly benchmark review.",
-    prompt_path: Path | str = "prompts/strategy_reviewer.md",
+    trigger_reason: str = "Weekly strategy research review.",
+    prompt_path: Path | str = "skills/strategy_reviewer.md",
 ) -> dict[str, Any]:
     prompt_file = Path(prompt_path)
     if not prompt_file.exists():
@@ -339,20 +325,18 @@ def generate_strategy_review(
                 f"{prompt}\n\n"
                 "# Current Memory\n"
                 f"{json.dumps(memory, ensure_ascii=False, indent=2)}\n\n"
-                "# Benchmark Analysis\n"
+                "# Strategy Research Analysis\n"
                 f"{json.dumps(analysis, ensure_ascii=False, indent=2)}\n\n"
                 "# Trigger\n"
                 f"trigger: {trigger}\n"
                 f"trigger_reason: {trigger_reason}\n\n"
                 "# Paths\n"
-                f"corpus_path: {corpus_path or ''}\n"
-                f"analysis_path: {analysis_path or ''}"
+                f"corpus_path: {corpus_path or ''}"
             ),
         },
     ]
     parsed = call_json_model(messages, "Strategy reviewer")
     parsed["generated_at"] = datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()
-    parsed["benchmark_analysis_path"] = analysis_path
     parsed["corpus_path"] = corpus_path
     parsed["trigger"] = trigger
     parsed["trigger_reason"] = trigger_reason
@@ -360,13 +344,27 @@ def generate_strategy_review(
     return StrategyReview.model_validate(parsed).model_dump()
 
 
-def save_strategy_review(
-    review: dict[str, Any],
-    output_dir: Path | str = "data/strategy_reviews",
+def save_strategy_result(
+    *,
+    analysis: dict[str, Any],
+    review: dict[str, Any] | None,
+    corpus_path: str | None = None,
+    trigger: str = "weekly",
+    trigger_reason: str = "Weekly strategy research review.",
+    output_dir: Path | str = "data/strategy_results",
 ) -> Path:
     base_dir = Path(output_dir)
     base_dir.mkdir(parents=True, exist_ok=True)
     now = datetime.now(ZoneInfo("Asia/Shanghai"))
-    path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-strategy-review.json"
-    path.write_text(json.dumps(review, ensure_ascii=False, indent=2), encoding="utf-8")
+    result = {
+        "result_type": "strategy_research_result",
+        "generated_at": now.isoformat(),
+        "trigger": trigger,
+        "trigger_reason": trigger_reason,
+        "corpus_path": corpus_path,
+        "analysis": analysis,
+        "review": review,
+    }
+    path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-strategy-result.json"
+    path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     return path

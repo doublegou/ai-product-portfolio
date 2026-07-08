@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from src.llm import call_llm
+from src.base.llm import call_llm
 
 
 def parse_json_object(raw_output: str, label: str) -> dict[str, Any]:

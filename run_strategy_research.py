@@ -2,23 +2,22 @@ import argparse
 
 from pydantic import ValidationError
 
-from src.benchmark import (
-    analyze_benchmark_corpus,
+from src.research.strategy_research import (
+    analyze_strategy_corpus,
     generate_strategy_review,
-    load_benchmark_corpus,
-    save_benchmark_analysis,
-    save_strategy_review,
-    validate_benchmark_threshold,
+    load_strategy_corpus,
+    save_strategy_result,
+    validate_strategy_corpus_threshold,
 )
-from src.collectors.xhs_benchmark import (
-    DEFAULT_BENCHMARK_KEYWORDS,
-    collect_xhs_benchmark_current_chrome,
+from src.collect.xhs import (
+    DEFAULT_STRATEGY_RESEARCH_KEYWORDS,
+    collect_xhs_strategy_corpus_current_chrome,
 )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Collect and analyze Xiaohongshu benchmark creators."
+        description="Collect and analyze Xiaohongshu creators for long-term strategy research."
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -36,7 +35,7 @@ def main() -> int:
     collect_parser.add_argument(
         "--keywords",
         nargs="*",
-        default=list(DEFAULT_BENCHMARK_KEYWORDS),
+        default=list(DEFAULT_STRATEGY_RESEARCH_KEYWORDS),
         help="Seed search keywords. Defaults cover startup, AI, product, app, and related niches.",
     )
 
@@ -48,7 +47,7 @@ def main() -> int:
     analyze_parser.add_argument(
         "--skip-strategy-review",
         action="store_true",
-        help="Only save benchmark analysis, without producing a human-review proposal.",
+        help="Save one analysis-only result, without producing a human-review proposal.",
     )
     analyze_parser.add_argument(
         "--trigger",
@@ -62,12 +61,12 @@ def main() -> int:
             "manual",
         ],
         default="weekly",
-        help="Why this benchmark analysis was triggered.",
+        help="Why this strategy research was triggered.",
     )
     analyze_parser.add_argument(
         "--trigger-reason",
-        default="Weekly benchmark review.",
-        help="Human-readable reason for this benchmark run.",
+        default="Weekly strategy research review.",
+        help="Human-readable reason for this strategy research run.",
     )
     analyze_parser.add_argument(
         "--allow-partial",
@@ -79,8 +78,8 @@ def main() -> int:
 
     try:
         if args.command == "collect":
-            print("Benchmark collection started.")
-            path = collect_xhs_benchmark_current_chrome(
+            print("Strategy research collection started.")
+            path = collect_xhs_strategy_corpus_current_chrome(
                 keywords=args.keywords,
                 target_creators=args.target_creators,
                 notes_per_creator=args.notes_per_creator,
@@ -95,9 +94,9 @@ def main() -> int:
             return 0
 
         if args.command == "analyze":
-            print("Benchmark analysis started.")
-            corpus = load_benchmark_corpus(args.corpus_json)
-            threshold = validate_benchmark_threshold(
+            print("Strategy research analysis started.")
+            corpus = load_strategy_corpus(args.corpus_json)
+            threshold = validate_strategy_corpus_threshold(
                 corpus,
                 min_creators=args.min_creators,
                 min_notes_per_creator=args.min_notes_per_creator,
@@ -108,27 +107,31 @@ def main() -> int:
                 f"{threshold['qualified_creator_count']}/{threshold['target_creators']}"
             )
             print(f"notes: {threshold['note_count']}/{threshold['target_notes']}")
-            analysis = analyze_benchmark_corpus(
+            analysis = analyze_strategy_corpus(
                 corpus,
                 min_creators=args.min_creators,
                 min_notes_per_creator=args.min_notes_per_creator,
                 allow_partial=args.allow_partial,
                 batch_size=args.batch_size,
             )
-            path = save_benchmark_analysis(analysis)
             print(f"ready_for_persona: {analysis['ready_for_persona']}")
             print(f"confidence: {analysis['confidence']}")
-            print(f"saved_path: {path}")
+            review = None
             if not args.skip_strategy_review:
                 review = generate_strategy_review(
                     analysis,
                     corpus_path=args.corpus_json,
-                    analysis_path=str(path),
                     trigger=args.trigger,
                     trigger_reason=args.trigger_reason,
                 )
-                review_path = save_strategy_review(review)
-                print(f"strategy_review_path: {review_path}")
+            path = save_strategy_result(
+                analysis=analysis,
+                review=review,
+                corpus_path=args.corpus_json,
+                trigger=args.trigger,
+                trigger_reason=args.trigger_reason,
+            )
+            print(f"saved_path: {path}")
             print("Done.")
             return 0
 

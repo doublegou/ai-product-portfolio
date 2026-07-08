@@ -1,7 +1,5 @@
 # Account Persona
 
-Status: partial benchmark baseline. This version is based on the July 3, 2026 Xiaohongshu browsing pass across independent developer, AI, product, app, one-person-company, astronomy, birding, puzzle, and tarot/self-exploration accounts. It should be upgraded after a completed saved corpus reaches at least 100 qualified creators and 10 analyzed posts per creator.
-
 ## Final Working Identity
 
 一个持续做小产品的独立产品创作者。

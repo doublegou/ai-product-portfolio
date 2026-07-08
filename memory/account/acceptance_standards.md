@@ -1,7 +1,5 @@
 # Acceptance Standards
 
-Status: partial benchmark baseline. These standards define when a generated note can be saved as an approved draft.
-
 ## Minimum Passing Standard
 
 一篇草稿必须同时通过：
@@ -12,8 +10,29 @@ Status: partial benchmark baseline. These standards define when a generated note
 - Specificity：正文有具体场景、功能、动作和边界
 - Factual safety：所有产品事实都能被产品资产支持
 - Usefulness：读者看完知道它适合谁、什么时候用、怎么开始
+- Spreadability：标题、封面、开头和正文结构要有明确点击理由、保存价值或自然讨论点
 
 ## Required Fields Quality
+
+product:
+
+- 必须是 ISS Tracker、BirdTracker、Math Puzzle、Soulnio、Product Universe 之一
+- 单产品帖子必须写具体产品，不要用 Product Universe 回避选择
+
+post_archetype:
+
+- 必须说明本篇内容类型，例如 场景种草、功能解释、使用教程、产品故事、设计取舍、兴趣入门、系列栏目
+- 内容类型要和正文结构一致
+
+target_scene:
+
+- 必须命名一个具体使用场景或读者瞬间
+- 不要只写“产品推广”“独立开发者”“普通用户”
+
+traffic_hook:
+
+- 必须说明本篇的点击理由、封面理由、讨论点或收藏理由
+- 不要写空泛营销判断，例如“吸引用户点击”
 
 topic:
 
@@ -64,12 +83,25 @@ reason:
 通过标准：
 
 - overall_score >= 8.2
+- overall_score >= 8.6
+- safety_score >= 9.2
+- publishability_score >= 8.4
+- virality_score >= 8.2
+- title_score >= 8.0
+- hook_score >= 8.0
+- save_value_score >= 7.8
+- differentiation_score >= 7.8
 - blocking_issues 为空
 - 本地 quality_guard 没有事实风险
 
 优秀标准：
 
-- overall_score >= 8.6
+- overall_score >= 8.8
+- virality_score >= 8.5
+- title_score >= 8.4
+- hook_score >= 8.4
+- save_value_score >= 8.2
+- comment_potential_score >= 8.0
 - 读者场景清楚
 - 产品边界清楚
 - 标题和正文有一个可复用的方法

@@ -1,16 +1,24 @@
 import json
 import re
+import subprocess
+import tempfile
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
-from src.collectors.xhs_browser import XHS_BASE_URL, _parse_count
-from src.collectors.xhs_current_chrome import _execute_chrome_js, _run_chrome_applescript
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import sync_playwright
 
 
-DEFAULT_BENCHMARK_KEYWORDS = (
+XHS_BASE_URL = "https://www.xiaohongshu.com"
+CHROME_EXECUTABLE = (
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+)
+
+DEFAULT_STRATEGY_RESEARCH_KEYWORDS = (
     "独立开发者",
     "独立产品",
     "个人开发者",
@@ -32,7 +40,199 @@ DEFAULT_BENCHMARK_KEYWORDS = (
 )
 
 
-def collect_xhs_benchmark_current_chrome(
+def collect_xhs_search(
+    keyword: str,
+    *,
+    limit: int = 10,
+    output_dir: Path | str = "data/research/inputs",
+    user_data_dir: Path | str = "data/browser/xhs-chrome",
+    headless: bool = False,
+) -> Path:
+    """Collect visible Xiaohongshu search note cards through real Chrome."""
+    keyword = keyword.strip()
+    if not keyword:
+        raise ValueError("keyword cannot be empty")
+
+    output_base = Path(output_dir)
+    output_base.mkdir(parents=True, exist_ok=True)
+    Path(user_data_dir).mkdir(parents=True, exist_ok=True)
+
+    with sync_playwright() as playwright:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir=str(user_data_dir),
+            executable_path=CHROME_EXECUTABLE,
+            headless=headless,
+            viewport={"width": 1440, "height": 1000},
+            locale="zh-CN",
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-first-run",
+                "--no-default-browser-check",
+            ],
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        search_url = f"{XHS_BASE_URL}/search_result?keyword={quote(keyword)}"
+        try:
+            page.goto(search_url, wait_until="commit", timeout=45000)
+        except PlaywrightTimeoutError:
+            if keyword not in page.url:
+                raise
+
+        _wait_for_search_or_login(page)
+        _scroll_for_results(page, target_count=limit)
+        cards = _extract_note_cards(page, limit=limit)
+        title = page.title()
+        url = page.url
+        context.close()
+
+    research_input = {
+        "platform": "xiaohongshu",
+        "research_goal": f"自动分析与「{keyword}」相关的小红书笔记结构和流量表达",
+        "source": "xhs_browser",
+        "accounts": [],
+        "loose_notes": [
+            {
+                "account_name": card.get("account_name") or "unknown",
+                "title": card["title"],
+                "note_url": card.get("note_url"),
+                "cover_text": card.get("cover_text"),
+                "body_excerpt": card.get("body_excerpt"),
+                "hashtags": [],
+                "likes": _parse_count(card.get("likes")),
+                "comments": None,
+                "saves": None,
+                "publish_time": None,
+                "visible_comments": [],
+                "observed_signals": card.get("observed_signals", []),
+            }
+            for card in cards
+        ],
+        "collector_meta": {
+            "keyword": keyword,
+            "page_title": title,
+            "page_url": url,
+            "collected_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(),
+            "requested_limit": limit,
+            "collected_count": len(cards),
+        },
+    }
+
+    now = datetime.now(ZoneInfo("Asia/Shanghai"))
+    safe_keyword = re.sub(r"[^0-9A-Za-z\u4e00-\u9fff]+", "-", keyword).strip("-")[:40]
+    path = output_base / f"{now.strftime('%Y-%m-%d-%H%M%S')}-xhs-{safe_keyword}.json"
+    path.write_text(json.dumps(research_input, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def collect_xhs_current_chrome(
+    keyword: str,
+    *,
+    limit: int = 10,
+    output_dir: Path | str = "data/research/inputs",
+) -> Path:
+    """Collect Xiaohongshu search notes from the user's current logged-in Chrome."""
+    keyword = keyword.strip()
+    if not keyword:
+        raise ValueError("keyword cannot be empty")
+
+    output_base = Path(output_dir)
+    output_base.mkdir(parents=True, exist_ok=True)
+
+    search_url = f"{XHS_BASE_URL}/search_result?keyword={quote(keyword)}"
+    _run_chrome_applescript(
+        f'tell application "Google Chrome" to set URL of active tab of front window to "{search_url}"'
+    )
+    time.sleep(8)
+    for _ in range(6):
+        _execute_chrome_js("window.scrollBy(0, 900); 'ok';")
+        time.sleep(1.5)
+
+    page_info = json.loads(
+        _execute_chrome_js(
+            """
+            JSON.stringify({
+              title: document.title,
+              url: location.href,
+              text: document.body ? document.body.innerText.slice(0, 1200) : '',
+              cards: (() => {
+                const anchors = Array.from(document.querySelectorAll('a[href*="/explore/"]'));
+                const seen = new Set();
+                const cards = [];
+                for (const anchor of anchors) {
+                  const href = anchor.href;
+                  const match = href.match(/\\/explore\\/([A-Za-z0-9]+)/);
+                  if (!match || seen.has(match[1])) continue;
+                  seen.add(match[1]);
+                  const container = anchor.closest('section, article, div') || anchor;
+                  const text = (container.innerText || anchor.innerText || '').trim();
+                  const lines = text.split('\\n').map((line) => line.trim()).filter(Boolean);
+                  const img = container.querySelector('img');
+                  const title = lines.find((line) => line.length >= 4 && !/^\\d+$/.test(line)) || anchor.getAttribute('title') || img?.alt || '';
+                  const likes = lines.find((line) => /^\\d+(\\.\\d+)?万?$/.test(line)) || null;
+                  const account = lines.find((line) => line !== title && line !== likes && line.length >= 2 && line.length <= 24) || '';
+                  if (!title) continue;
+                  cards.push({
+                    title,
+                    note_url: href,
+                    cover_text: img?.alt || title,
+                    body_excerpt: lines.slice(0, 6).join(' / '),
+                    account_name: account,
+                    likes,
+                    observed_signals: [
+                      `search_card_title: ${title}`,
+                      img?.alt ? `cover_alt: ${img.alt}` : '',
+                    ].filter(Boolean),
+                  });
+                }
+                return cards;
+              })()
+            })
+            """
+        )
+    )
+
+    cards = page_info.get("cards", [])[:limit]
+    research_input = {
+        "platform": "xiaohongshu",
+        "research_goal": f"自动分析与「{keyword}」相关的小红书笔记结构和流量表达",
+        "source": "xhs_current_chrome",
+        "accounts": [],
+        "loose_notes": [
+            {
+                "account_name": card.get("account_name") or "unknown",
+                "title": card["title"],
+                "note_url": card.get("note_url"),
+                "cover_text": card.get("cover_text"),
+                "body_excerpt": card.get("body_excerpt"),
+                "hashtags": [],
+                "likes": _parse_count(card.get("likes")),
+                "comments": None,
+                "saves": None,
+                "publish_time": None,
+                "visible_comments": [],
+                "observed_signals": card.get("observed_signals", []),
+            }
+            for card in cards
+        ],
+        "collector_meta": {
+            "keyword": keyword,
+            "page_title": page_info.get("title"),
+            "page_url": page_info.get("url"),
+            "page_text_sample": page_info.get("text"),
+            "collected_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(),
+            "requested_limit": limit,
+            "collected_count": len(cards),
+        },
+    }
+
+    now = datetime.now(ZoneInfo("Asia/Shanghai"))
+    safe_keyword = re.sub(r"[^0-9A-Za-z\u4e00-\u9fff]+", "-", keyword).strip("-")[:40]
+    path = output_base / f"{now.strftime('%Y-%m-%d-%H%M%S')}-xhs-current-{safe_keyword}.json"
+    path.write_text(json.dumps(research_input, ensure_ascii=False, indent=2), encoding="utf-8")
+    return path
+
+
+def collect_xhs_strategy_corpus_current_chrome(
     *,
     keywords: list[str] | None = None,
     target_creators: int = 50,
@@ -44,8 +244,8 @@ def collect_xhs_benchmark_current_chrome(
     note_pause_seconds: float = 1.5,
     output_dir: Path | str = "data/research/corpus",
 ) -> Path:
-    """Collect creator-level Xiaohongshu benchmark samples from current Chrome."""
-    cleaned_keywords = [item.strip() for item in (keywords or DEFAULT_BENCHMARK_KEYWORDS) if item.strip()]
+    """Collect creator-level Xiaohongshu strategy samples from current Chrome."""
+    cleaned_keywords = [item.strip() for item in (keywords or DEFAULT_STRATEGY_RESEARCH_KEYWORDS) if item.strip()]
     if not cleaned_keywords:
         raise ValueError("keywords cannot be empty")
     if target_creators < 1:
@@ -57,7 +257,7 @@ def collect_xhs_benchmark_current_chrome(
     output_base.mkdir(parents=True, exist_ok=True)
     now = datetime.now(ZoneInfo("Asia/Shanghai"))
     safe_started_at = now.strftime("%Y-%m-%d-%H%M%S")
-    path = output_base / f"{safe_started_at}-xhs-benchmark-corpus.json"
+    path = output_base / f"{safe_started_at}-xhs-strategy-corpus.json"
 
     creator_candidates: dict[str, dict] = {}
     searched_keywords: list[dict] = []
@@ -131,12 +331,12 @@ def collect_xhs_benchmark_current_chrome(
                         f"  Detail {note_index}/{len(account_sample.get('notes', []))}: "
                         f"{note.get('title', '')[:32]}",
                         flush=True,
-                )
+                    )
                 note.update(_extract_note_detail(note.get("note_url")))
                 if note_pause_seconds > 0:
                     time.sleep(note_pause_seconds)
         accounts.append(account_sample)
-        _save_benchmark_corpus(
+        _save_strategy_corpus(
             path,
             keywords=cleaned_keywords,
             searched_keywords=searched_keywords,
@@ -149,7 +349,7 @@ def collect_xhs_benchmark_current_chrome(
         if account_pause_seconds > 0:
             time.sleep(account_pause_seconds)
 
-    _save_benchmark_corpus(
+    _save_strategy_corpus(
         path,
         keywords=cleaned_keywords,
         searched_keywords=searched_keywords,
@@ -162,7 +362,135 @@ def collect_xhs_benchmark_current_chrome(
     return path
 
 
-def _save_benchmark_corpus(
+def _wait_for_search_or_login(page: Any) -> None:
+    """Wait until the page shows search content or a login state."""
+    try:
+        page.wait_for_load_state("networkidle", timeout=15000)
+    except PlaywrightTimeoutError:
+        pass
+
+    page.wait_for_timeout(4000)
+    visible_text = _page_visible_text(page)
+    if "登录" in visible_text and "搜索" not in visible_text and "笔记" not in visible_text:
+        raise RuntimeError(
+            "Xiaohongshu opened, but the automation Chrome appears to need login. "
+            "Please log in once in the opened Chrome window, then rerun the command."
+        )
+
+
+def _scroll_for_results(page: Any, *, target_count: int) -> None:
+    for _ in range(8):
+        count = page.evaluate(
+            """() => Array.from(document.querySelectorAll('a[href*="/explore/"]')).length"""
+        )
+        if count >= target_count:
+            return
+        page.mouse.wheel(0, 900)
+        page.wait_for_timeout(1500)
+
+
+def _extract_note_cards(page: Any, *, limit: int) -> list[dict[str, Any]]:
+    raw_cards = page.evaluate(
+        """
+        (limit) => {
+          const anchors = Array.from(document.querySelectorAll('a[href*="/explore/"]'));
+          const seen = new Set();
+          const cards = [];
+          for (const anchor of anchors) {
+            const href = anchor.href;
+            const match = href.match(/\\/explore\\/([A-Za-z0-9]+)/);
+            if (!match || seen.has(match[1])) continue;
+            seen.add(match[1]);
+
+            const container = anchor.closest('section, article, div') || anchor;
+            const text = (container.innerText || anchor.innerText || '').trim();
+            const lines = text.split('\\n').map((line) => line.trim()).filter(Boolean);
+            const img = container.querySelector('img');
+            const title = lines.find((line) => line.length >= 4 && !/^\\d+$/.test(line)) || anchor.getAttribute('title') || '';
+            const likes = lines.find((line) => /^\\d+(\\.\\d+)?万?$/.test(line)) || null;
+            const account = lines.find((line) => line !== title && line !== likes && line.length >= 2 && line.length <= 24) || '';
+
+            if (!title) continue;
+            cards.push({
+              title,
+              note_url: href,
+              cover_text: img?.alt || title,
+              body_excerpt: lines.slice(0, 6).join(' / '),
+              account_name: account,
+              likes,
+              observed_signals: [
+                `搜索结果卡片标题: ${title}`,
+                img?.alt ? `封面alt: ${img.alt}` : '',
+              ].filter(Boolean),
+            });
+            if (cards.length >= limit) break;
+          }
+          return cards;
+        }
+        """,
+        limit,
+    )
+
+    return [
+        card
+        for card in raw_cards
+        if isinstance(card, dict) and card.get("title") and card.get("note_url")
+    ][:limit]
+
+
+def _page_visible_text(page: Any) -> str:
+    return page.evaluate(
+        """() => document.body ? document.body.innerText.slice(0, 3000) : ''"""
+    )
+
+
+def _parse_count(value: str | None) -> int | None:
+    if not value:
+        return None
+    value = value.strip().replace("+", "")
+    try:
+        if value.endswith("万"):
+            return int(float(value[:-1]) * 10000)
+        return int(value)
+    except ValueError:
+        return None
+
+
+def _execute_chrome_js(script: str) -> str:
+    with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as tmp:
+        tmp.write(script)
+        tmp_path = Path(tmp.name)
+
+    try:
+        return _run_chrome_applescript(
+            f'set jsSource to read POSIX file "{tmp_path}"\n'
+            'tell application "Google Chrome" to execute active tab of front window javascript jsSource'
+        )
+    finally:
+        tmp_path.unlink(missing_ok=True)
+
+
+def _run_chrome_applescript(script: str) -> str:
+    result = subprocess.run(
+        ["osascript", "-e", script],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        message = result.stderr.strip() or result.stdout.strip()
+        if "Executing JavaScript through AppleScript is turned off" in message:
+            raise RuntimeError(
+                "Current Chrome collection can use your existing Xiaohongshu login, "
+                "but DOM extraction needs one Chrome setting: "
+                "View > Developer > Allow JavaScript from Apple Events. "
+                "Turn it on once, keep your logged-in Xiaohongshu tab available, then rerun."
+            )
+        raise RuntimeError(message)
+    return result.stdout.strip()
+
+
+def _save_strategy_corpus(
     path: Path,
     *,
     keywords: list[str],
@@ -176,7 +504,7 @@ def _save_benchmark_corpus(
     note_count = sum(len(account.get("notes", [])) for account in accounts)
     corpus = {
         "platform": "xiaohongshu",
-        "corpus_type": "creator_benchmark",
+        "corpus_type": "creator_strategy_research",
         "research_goal": (
             "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、"
             "写作规则、平台方法和验收标准。"
@@ -293,7 +621,6 @@ def _extract_account_sample(
         _execute_chrome_js(
             f"""
             JSON.stringify((() => {{
-              const bodyText = document.body ? document.body.innerText : '';
               const parseCountText = (value) => {{
                 if (!value) return null;
                 const cleaned = String(value).trim().replace('+', '');

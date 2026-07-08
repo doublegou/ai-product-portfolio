@@ -1,18 +1,15 @@
 from typing import Any
 
-from src.editor import revise_draft
-from src.memory import load_banned_phrases
-from src.quality_guard import find_quality_guard_issues
-from src.reviewer import review_draft
-from src.validator import validate_draft
-from src.writer import generate_draft
+from src.create.review import find_quality_guard_issues, review_draft, validate_draft
+from src.create.write import generate_draft, revise_draft
+from src.base.memory import load_banned_phrases
 
 
 def create_approved_draft(
     user_topic: str | None = None,
     research_brief: dict[str, Any] | None = None,
     max_rounds: int = 5,
-    passing_score: float = 8.2,
+    passing_score: float = 8.6,
 ) -> dict[str, Any]:
     """Generate, review, revise, and return an approved draft package."""
     banned_phrases = load_banned_phrases()
@@ -27,10 +24,24 @@ def create_approved_draft(
         if guard_issues:
             review = {
                 "overall_score": 6.0,
+                "safety_score": 5.0,
+                "publishability_score": 6.0,
+                "virality_score": 5.8,
+                "specificity_score": 6.0,
+                "persona_score": 6.5,
+                "title_score": 6.0,
+                "cover_score": 6.0,
+                "hook_score": 6.0,
+                "save_value_score": 5.5,
+                "comment_potential_score": 5.5,
+                "differentiation_score": 5.5,
                 "passed": False,
                 "summary": "Local quality guard found unsupported factual claims.",
                 "strengths": [],
                 "issues": guard_issues,
+                "improvement_issues": [
+                    "Fix factual grounding before optimizing title, hook, or spreadability."
+                ],
                 "blocking_issues": guard_issues,
                 "revision_brief": (
                     "Remove unsupported time, usage, offline, privacy, or capability claims. "
@@ -41,14 +52,25 @@ def create_approved_draft(
                 ),
             }
         else:
-            review = review_draft(draft, user_topic=user_topic)
+            review = review_draft(
+                draft,
+                user_topic=user_topic,
+                research_brief=research_brief,
+            )
         review["round"] = round_index
         review_rounds.append(review)
 
         blocking_issues = review.get("blocking_issues", [])
         if (
             review["passed"]
-            and review["overall_score"] >= passing_score
+            and review["overall_score"] >= max(passing_score, 8.6)
+            and review.get("safety_score", 0) >= 9.2
+            and review.get("publishability_score", 0) >= 8.4
+            and review.get("virality_score", 0) >= 8.2
+            and review.get("title_score", 0) >= 8.0
+            and review.get("hook_score", 0) >= 8.0
+            and review.get("save_value_score", 0) >= 7.8
+            and review.get("differentiation_score", 0) >= 7.8
             and not blocking_issues
         ):
             return {
@@ -60,7 +82,12 @@ def create_approved_draft(
 
         if round_index < max_rounds:
             draft = validate_draft(
-                revise_draft(draft, review, user_topic=user_topic),
+                revise_draft(
+                    draft,
+                    review,
+                    user_topic=user_topic,
+                    research_brief=research_brief,
+                ),
                 banned_phrases,
             )
 

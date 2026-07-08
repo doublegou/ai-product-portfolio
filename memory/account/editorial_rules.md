@@ -1,7 +1,5 @@
 # Editorial Rules
 
-Status: partial benchmark baseline. These rules were rebuilt after the July 3, 2026 Xiaohongshu browsing pass. They are the current operating rulebook until a larger saved benchmark corpus replaces them.
-
 ## Core Rule
 
 每篇笔记必须同时满足三件事：
@@ -85,6 +83,21 @@ Status: partial benchmark baseline. These rules were rebuilt after the July 3, 2
 - 一个真实功能
 - 一个读者可执行动作
 - 一个产品边界
+
+## Spreadability Rules
+
+每篇笔记都要有一个明确的传播理由。传播理由不是夸张承诺，而是让读者愿意点开、收藏、评论或继续看系列的结构性原因。
+
+优先增强：
+
+- 标题里的具体场景、具体问题或具体反差
+- 封面文字的一眼可懂
+- 开头的生活瞬间或好奇心缺口
+- 正文里的可保存步骤、判断清单或使用边界
+- 结尾的自然讨论点，不要诱导互动
+- 系列化潜力，例如同一产品可以持续拆成多个场景、功能或设计取舍
+
+不要为了传播力牺牲事实安全，不要使用恐吓、夸张收益、虚假数据或结果承诺。
 
 ## Cover Text Rules
 

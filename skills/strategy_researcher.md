@@ -1,4 +1,4 @@
-# Benchmark Analyzer Prompt
+# Strategy Researcher Prompt
 
 你要基于一个足量的小红书对标资料库，反推出 content-agent 的最终账号人设、写作方法和验收标准。
 

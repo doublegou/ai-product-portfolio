@@ -1,109 +1,163 @@
-# Content Strategy Loop
+# Content Agent Architecture
 
-这个 Agent 使用两层研究机制：周期性 benchmark 管长期设定，日常小采集管单篇写作。
+这个项目现在分成四层：
 
-## Benchmark Triggers
-
-大规模 benchmark 管长期设定。它有两类触发方式：固定周期和事件触发。
-
-### Fixed Weekly Trigger
-
-目标：
-
-- 每周一次
-- 默认采集 50 个对标博主
-- 每个博主采集 10 篇主页可见高互动笔记
-- 采集结果增量保存，避免中途限流导致数据丢失
-
-默认命令：
-
-```bash
-python run_benchmark.py collect
+```text
+src/base/      基础设施：LLM 调用、JSON 解析、memory 读取、草稿保存
+src/collect/   平台采集：当前主要是小红书 Chrome 采集
+src/research/  研究流程：选题研究、写作研究、长期策略研究
+src/create/    创作流程：写初稿、审核、改稿、运行循环
 ```
 
-分析命令：
+运行入口只有三个：
 
-```bash
-python run_benchmark.py analyze data/research/corpus/xxx.json
+```text
+run_daily.py              每天为产品批量生成帖子
+run_once.py               按指定主题生成一篇帖子
+run_strategy_research.py  长周期策略研究
 ```
 
-### Event Triggers
+## Daily Content Flow
 
-除了每周固定 benchmark，出现以下事件时也应该触发专项 benchmark：
+`run_daily.py` 默认会为这些产品各自生成一篇：
 
-- 账号数据明显变化：某类内容突然爆了、曝光明显下降、收藏点赞比例异常、评论问题集中变化、转粉率明显变化
-- 新产品加入：需要判断新产品是否适合当前账号人设、放进哪个栏目、是否新增内容支柱
-- 平台风格变化：小红书标题、封面、笔记结构、互动方式明显变化
-- 某类内容连续表现不好：例如某个产品连续 5 篇表现弱，需要判断是角度、标题、场景还是产品表达问题
-- 策略假设需要验证：例如“小产品宇宙”是否成立、多产品是否稀释关注、产品手记和使用教程哪个更适合
+```text
+ISS Tracker
+BirdTracker
+Math Puzzle
+Soulnio
+```
 
-事件触发分析示例：
+每个产品的流程是：
+
+```text
+topic_research
+  -> broad hotspot discovery
+  -> related field discovery
+  -> topic_plan
+
+writing_research
+  -> 根据 topic_plan 搜索小规模样本
+  -> 分析标题、开头、正文结构、封面、用户问题
+  -> writing research brief
+
+create
+  -> write 初稿
+  -> review 审核
+  -> revise 改稿
+  -> 通过后保存 approved draft
+```
+
+只跑某个产品：
 
 ```bash
-python run_benchmark.py analyze data/research/corpus/xxx.json \
+python run_daily.py --product "Math Puzzle"
+```
+
+临时跳过平台研究：
+
+```bash
+python run_daily.py --no-research
+```
+
+## Single Post Flow
+
+`run_once.py` 用于临时写一篇指定主题：
+
+```bash
+python run_once.py "给 BirdTracker 写一篇适合周末户外散步场景的小红书帖"
+```
+
+默认也会先做：
+
+```text
+topic_research -> writing_research -> create
+```
+
+## Research Layers
+
+研究分三层：
+
+```text
+topic_research.py
+  决定今天写什么。先看泛热点，再看产品相关领域，输出 topic_plan。
+
+writing_research.py
+  决定这篇怎么写。围绕 topic_plan 做小规模样本研究，输出给 create 使用的 brief。
+
+strategy_research.py
+  决定长期怎么进化。采集更大规模的创作者和笔记样本，生成 strategy result。
+```
+
+`research_infra.py` 不是第四层研究，它只提供样本结构、输入校验和通用样本分析能力。
+
+## Strategy Research
+
+长期策略研究用于更新账号人设、语气、栏目、写作规则和验收标准的判断依据。它不参与每次日常写作，也不会自动改 `memory/`。
+
+采集长期样本：
+
+```bash
+python run_strategy_research.py collect --target-creators 50 --notes-per-creator 10
+```
+
+分析长期样本：
+
+```bash
+python run_strategy_research.py analyze data/research/corpus/xxx.json
+```
+
+带触发原因的专项分析：
+
+```bash
+python run_strategy_research.py analyze data/research/corpus/xxx.json \
   --trigger content_underperformance \
   --trigger-reason "ISS Tracker 连续 5 篇曝光和收藏率低于账号均值"
 ```
 
-分析完成后会生成两类文件：
+每次分析只保存一个结果文件：
 
-- `data/research/benchmark/*-benchmark-analysis.json`
-- `data/strategy_reviews/*-strategy-review.json`
-
-策略 review 是人工审批文件。它只提出建议，不自动修改 `memory/`。
-
-策略 review 必须包含：
-
-- trigger：触发类型
-- trigger_reason：触发原因
-- evidence：证据
-- recommendations：建议
-- proposed_memory_changes：建议修改哪些长期记忆
-- risk：风险
-- do_not_change：哪些设定不要改
-
-## Human Decision
-
-每次 weekly benchmark 之后，先看 strategy review：
-
-- evidence：有什么证据
-- recommendations：建议改什么
-- proposed_memory_changes：建议改哪些记忆文件
-- risk：可能副作用
-- do_not_change：建议保持不变的部分
-
-只有人工同意后，才把建议写入：
-
-- `memory/account/persona.md`
-- `memory/account/editorial_rules.md`
-- `memory/account/acceptance_standards.md`
-- `memory/platforms/xiaohongshu.md`
-
-## Daily Prewrite Research
-
-日常写每篇帖子之前，可以做小规模采集。
-
-目标：
-
-- 看最近类似内容如何写
-- 找标题和开头表达
-- 找近期热点或可借势角度
-- 只服务当前这一篇，不沉淀为长期人设
-
-当前稳定写作命令：
-
-```bash
-python run_once.py "给某个产品写一篇具体角度的小红书帖" --no-research
+```text
+data/strategy_results/*-strategy-result.json
 ```
 
-等小规模采集稳定后，可以去掉 `--no-research`。
+这个文件包含：
+
+```text
+analysis
+review
+trigger
+trigger_reason
+corpus_path
+generated_at
+```
+
+人工确认后，才把稳定结论写入 `memory/`。
+
+## Persistence Rules
+
+默认只保留最终内容产物：
+
+```text
+data/drafts/
+```
+
+日常 topic research 和 writing research 默认使用临时目录，跑完清理。只有显式传入：
+
+```bash
+--persist-research-artifacts
+```
+
+才会保存本次研究中间文件，用于排查采集或分析问题。
+
+最终 draft 不保存审核轮次、改稿过程、research input 或 research report。
 
 ## Quality Model
 
-这套机制不能保证每篇都爆，但能保障：
+这套机制不能保证每篇都爆，但要保障：
 
 - 不跑偏成 AI 教程号、工具推荐号、搞钱号
-- 不编造产品事实、下载量、收入或用户反馈
+- 不编造产品事实、下载量、收入、用户反馈或官方合作
 - 每篇有具体场景、真实功能、使用动作和边界
-- 大规模研究用于长期策略，小规模研究用于单篇策略
-- 人工审批控制长期人格，避免被短期样本带偏
+- 小规模研究服务单篇内容，长期策略研究服务账号方向
+- 长期策略变更必须经过人工确认
