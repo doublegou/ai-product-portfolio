@@ -1,0 +1,718 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书笔记结构、正文、标签和互动表达",
+  "source": "xhs_current_chrome_deep",
+  "accounts": [],
+  "loose_notes": [
+    {
+      "account_name": "奔跑的勺子",
+      "title": "观鸟app推荐！观鸟入门必备，识别&记录",
+      "note_url": "https://www.xiaohongshu.com/explore/68b63e60000000001c010022",
+      "cover_text": "观鸟app推荐！观鸟入门必备，识别&记录",
+      "body_excerpt": "🔍【鸟类识别】 【懂鸟】图像、音频识别💯 国内使用率top，有APP和小程序，识别全球上万种鸟类，支持野外离线识别（资料包2G+） 【观鸟君】图像、特征识别 腾讯公益基金×国家地理联合出品小程序，识别中国 1516种鸟，特色是观鸟、护鸟知识栏目 【Merlin Bird ID】图像、音频、特征识别💯 康奈尔大学鸟类实验室出品，全球观鸟必备。离线资料包比懂鸟小1/2，便携度up 【BirdNET】音频识别 康奈尔大学鸟类实验室出品，基于神经网络识别3000+种鸟类鸣声（远超一般应用1000+种），音频记录可上传数据库 可申请成为录音注释员，帮助训练AI模型 【Birda】图像、特征识别 会员40刀/年可以但没必要，免费功能够用 提供观鸟点地图+社区人工鉴别，需要科学上网 📊【鸟类数据库】 【观鸟记录中心】中国观鸟数据库💯 国内观鸟必备，查鸟种观测记录，上传数据生成个人观鸟报告 【eBird】全球最大的观鸟数据库💯 数十亿条观测记录，观鸟记录经审核后可录入数据库，用于科学研究(发表在2025年《Science》的一项研究就是使用eBird数据） 【Wren】鸟鸣数据库 音源来自xeno-canto（公众野生动物声音网站，任何人都可以上传和勘误音频，提供API接口） 相比同类型APP【Avesvox】，Wren中文友好，功能相对更丰富 ✨【特色小程序】 【本地观鸟】鸟类环志板块 【鸟类防捕记录】上报鸟类防捕工具,守护鸟类 【鸟典】纯鸟类名录查询，可跳转懂鸟 #观鸟 #鸟类 #鸟类图鉴 #懂鸟 #观鸟入门 #观鸟记录 #户外 #这是什么鸟 #鸟类识别 #观鸟爱好者",
+      "hashtags": [
+        "#观鸟",
+        "#鸟类",
+        "#鸟类图鉴",
+        "#懂鸟",
+        "#观鸟入门",
+        "#观鸟记录",
+        "#户外",
+        "#这是什么鸟",
+        "#鸟类识别",
+        "#观鸟爱好者"
+      ],
+      "likes": 1051,
+      "comments": 9,
+      "saves": 1160,
+      "shares": null,
+      "publish_time": "编辑于 2025-09-07",
+      "author_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?channel_type=web_search_result_notes&xsec_token=AB5T34QKKBRtqYQPyZf33Dlx8gUT6nut3aB2B511JP7i8%3D&xsec_source=pc_note",
+      "images": [
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31lmmlnq3ku0g5q4gebna5g26kuasg30?imageView2/2/w/120/format/webp|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/02ce0b9779f3e9e2f7153a01a7de8f0b/spectrum/1040g0k031ltl22qpks4g5q4gebna5g26m8jcnp0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/604b9061308bb8079a6b51fec67ab5fe/spectrum/1040g34o31m4mhb3c4s105q4gebna5g26ie1rsd8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/b1d0acc06bc9ee4744f1decbe97ccabc/spectrum/1040g0k031ltl22qpks2g5q4gebna5g26qjb2llo!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/bc7e8bf89c5c345c03eec672ac454c7d/spectrum/1040g0k031ltl22qpks405q4gebna5g26knfsp9o!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/9723cb7ed49159bd4506f703b65a3c7c/spectrum/1040g0k031ltl22qpks205q4gebna5g26o0o187o!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/ff457351fbe2c4eb9374c6d428be3564/spectrum/1040g0k031ltl22qpks105q4gebna5g26768trug!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/13b864b57591051c77d1d1f5fd20b589/spectrum/1040g0k031ltl22qpks0g5q4gebna5g265p8pho0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/019745c640d6210aba263f2001e37765/spectrum/1040g0k031ltl22qpks3g5q4gebna5g2622voam8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/73eee8438ebd9e489059cc87a141d1a8/spectrum/1040g0k031ltl22qpks1g5q4gebna5g26t3s3m4g!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/16fe5e3e435a6770542f64990387501e/spectrum/1040g0k031m4mooackq005q4gebna5g2625vs4p0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/3fa4364fd6131f9a5453a6e5cf791602/spectrum/1040g0k031m4mljg450005q4gebna5g26nvrfo1o!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/1b81c5ec3f7006f6b8baf7c006773f5f9d1ab6d7.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/c255f0ae809f8045561a80737b6aec25139f7607.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/391438d25580a034707791b5f165c27f8899025a.png",
+          "alt": "",
+          "title": "",
+          "width": 209,
+          "height": 209
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/ab059229949e73619961c5ee1f7ee10d2318c170.png",
+          "alt": "",
+          "title": "",
+          "width": 209,
+          "height": 209
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo317cvhh6a0q5g5ogu9bg4154d4fc34p8?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/7af09b35703253fb71e8e526832b7500/comment/1040g2h0320pvfainmo005ogu9bg4154dqprtacg!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/71351275c6ee62c5a17f9fcd2b664f32/comment/1040g2h0320pvfainmo0g5ogu9bg4154dv052qqo!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092346/fa70ef4d57c0cf6df44faf0e247b8384/comment/1040g2h0320pvfainmo105ogu9bg4154drqphvb8!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/53ba1722242c3e9344db7b0fc2e1005f.jpg?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31lmmlnq3ku0g5q4gebna5g26kuasg30?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/60211a9973072576c8880c6c.jpg?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/219fe9d7e40b14dd7a6712203143bb1f9972bc5c.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        }
+      ],
+      "visible_comments": [
+        "共 9 条评论 AI您说的对AI 您好！请帮我看一下这是什么鸟类，谢谢您！ 05-30北京 赞 回复 难得一呆 wren刚更新了…… 2025-09-07浙江 赞 1 奔跑的勺子 作者 已编辑，感谢提醒～ 2025-09-07广东 赞 回复 Jina 学习了，宝藏博主 2025-09-05广东 赞 1 奔跑的勺子 作者 2025-09-06广东 赞 回复 已老实 @咕咾的爬虫脑 2025-09-07福建 2 回复 大肠菌 @阿雷x 2025-09-14浙江 1 回复 李猪猪（被黑眉苇莺逼疯 观鸟君好像没有app 2025-09-08北京 赞 1 奔跑的勺子 作者 是小程序 2025-09-08广东 赞 回复 - THE END -",
+        "AI您说的对AI 您好！请帮我看一下这是什么鸟类，谢谢您！ 05-30北京 赞 回复",
+        "难得一呆 wren刚更新了…… 2025-09-07浙江 赞 1 奔跑的勺子 作者 已编辑，感谢提醒～ 2025-09-07广东 赞 回复",
+        "难得一呆 wren刚更新了…… 2025-09-07浙江 赞 1",
+        "奔跑的勺子 作者 已编辑，感谢提醒～ 2025-09-07广东 赞 回复",
+        "Jina 学习了，宝藏博主 2025-09-05广东 赞 1 奔跑的勺子 作者 2025-09-06广东 赞 回复",
+        "Jina 学习了，宝藏博主 2025-09-05广东 赞 1",
+        "奔跑的勺子 作者 2025-09-06广东 赞 回复",
+        "已老实 @咕咾的爬虫脑 2025-09-07福建 2 回复",
+        "大肠菌 @阿雷x 2025-09-14浙江 1 回复",
+        "李猪猪（被黑眉苇莺逼疯 观鸟君好像没有app 2025-09-08北京 赞 1 奔跑的勺子 作者 是小程序 2025-09-08广东 赞 回复",
+        "李猪猪（被黑眉苇莺逼疯 观鸟君好像没有app 2025-09-08北京 赞 1",
+        "奔跑的勺子 作者 是小程序 2025-09-08广东 赞 回复"
+      ],
+      "observed_signals": [
+        "visible_search_card_title: 观鸟app推荐！观鸟入门必备，识别&记录",
+        "visible_likes: 1051",
+        "detail_collected",
+        ""
+      ]
+    },
+    {
+      "account_name": "財来",
+      "title": "人的第一本观鸟日记📔",
+      "note_url": "https://www.xiaohongshu.com/explore/69b8173a000000001f004dd9",
+      "cover_text": "人的第一本观鸟日记📔",
+      "body_excerpt": "期待有一天能画到爆本！！ 今天公园又见到两只不认识的小鸟嘻嘻 回来查了查 可能是白颊噪鹛和某种鹀？#这是什么鸟 我的手机拍照好糊[抽泣R] 钱包扁扁的用望远镜古法观之 #观鸟爱好者 #昆虫小记 #鸟类图鉴",
+      "hashtags": [
+        "#这是什么鸟",
+        "#观鸟爱好者",
+        "#昆虫小记",
+        "#鸟类图鉴"
+      ],
+      "likes": 1,
+      "comments": 307,
+      "saves": 527,
+      "shares": null,
+      "publish_time": "03-16",
+      "author_url": "https://www.xiaohongshu.com/user/profile/57a7fba3bd0da5766332c038?channel_type=web_search_result_notes&xsec_token=ABCnkyjk49Tx-2oy5Tkn970LrNrwQOjHol4SCnVgkN6Wc%3D&xsec_source=pc_note",
+      "images": [
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31tlgjvs0ne0048kft0tq7g1oq9u679g?imageView2/2/w/120/format/webp|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/48e64ea73c2131bd4949c438ccbeebfc/note_pre_post_uhdr/1040g3r831tpf0oct787g48kft0tq7g1oqf2u1sg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/577635796dad646d3cd79813cbe2070e/note_pre_post_uhdr/1040g3r831tpec3o7n8bg48kft0tq7g1odg9o8hg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/ff8f1af15a0edde4cd3d613edbcf5750/note_pre_post_uhdr/1040g3r831tpec3o7n8c048kft0tq7g1o9u19vfg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/b2e74423c6145f03bf884353b707fc73/note_pre_post_uhdr/1040g3r831tpec3o7n8cg48kft0tq7g1o4t762rg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/4d032e4cad8e6fa338f3a3a57d86bcfb/note_pre_post_uhdr/1040g3r831tpec3o7n8d048kft0tq7g1on957uf0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/9af204eb577639b194df3a7d4f73b467/note_pre_post_uhdr/1040g3r831tpec3o7n8dg48kft0tq7g1onhq4dto!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/2c862a6d3d28995963c41276acb8401b/note_pre_post_uhdr/1040g3r831tpf0oct787048kft0tq7g1osn90jrg!nd_dft_wgth_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31l5i5avqj4005q2d1jq7bepd16ogcvo?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/81cedd016ad9d8bef38b2cd0c1e725454df53598.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/07908cbda4d85773bc2b326212de5b7b/comment/1040g2h031tq1n9fa7e005q2d1jq7bepdshd77eo!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 661
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31tlgjvs0ne0048kft0tq7g1oq9u679g?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/9947b46c380c005d3e61f704574a1b9b/comment/1040g2h031tq442u8780048kft0tq7g1o1uruga8!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 210,
+          "height": 210
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/bff1743555c76a439f4dc954a0f549c4/comment/1040g2h031vcuatmv2g0048kft0tq7g1omkpposg!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 640
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/238271771c806047fc928b6ba49a6d8e7a741e5e.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/c255f0ae809f8045561a80737b6aec25139f7607.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/f73d2abc34ad382913742253fc478ad4/comment/1040g2h031tqcm0vbn2605p9d83e0hl9kifcvc3o!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 640
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/51a0717ff6cd95eb73e41c284f6b0c51/comment/1040g4b831tqfbhcb727048kft0tq7g1o53ij5eg!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo311ipm1j26i005op3i8rovm9jgceoctg?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/e0771182c12362d41f70356f714d84dccc4d07bc.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/f1a9178c064ccfe64bd9eefd02ab63dd/comment/1040g4b831tq2l8ug7e705op3i8rovm9jedfvqto!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853
+        },
+        {
+          "src": "http://sns-webpic-qc.xhscdn.com/202607092347/66667699ac3820220a9e786d0e7149c0/comment/1040g2h031tq442u8780g48kft0tq7g1o1bmpspg!nc_n_webp_mw_1",
+          "alt": "",
+          "title": "",
+          "width": 160,
+          "height": 120
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30qkvs2j6ga6g46ka2oqusg3g7s26hq0?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/5cedf92dafb7c30001723b6b.jpg?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "visible_comments": [
+        "共 307 条评论 j1407b 天呐！老师画得小鸟好萌好可爱！超像的！ 03-17江苏 1 3 財来 作者 谢谢你！！但是这个表情包是哪位小鸟 鸫子吗 03-17上海 赞 回复 展开 2 条回复 荔枝水果糖 好生动好厉害！！这个线条这个色彩，太形象了，我也想要这样的画技呜呜，好伟大……小鸟的特别好的！ 04-25广东 2 1 財来 作者 啊啊啊啊啊老师您的钢琴技巧也好伟大 令人羡慕的左右手协调… 我也想要这个琴技啊啊啊啊 04-25上海 1 回复 梅川酷紫 画得好好！超可爱超传神！(倒数第二张图感觉应该是灰头鹀) 附上古法黄腰柳莺 03-17上海 3 3 財来 作者 哇！！你拍的好清楚！！我今天古法到了丝瓜椋鸟（好糊） 嘿嘿嘿等我通通画进去！ 03-17上海 1 回复 展开 2 条回复 虚无 同道中人 03-17浙江 22 1 財来 作者 噢你画的也好可爱啊！！哈哈哈哈我们牛牛的！ 03-17上海 2 回复 Mr.raindrop 太厉害了……我连镜头都来不及掏，而你已经画下来了…… 03-22湖南 赞 1 財来 作者 我也来不及！回家反刍一下哈哈哈哈 03-22江苏 1 回复 我叫大Z 同一个世界同一种观鸟人 我们观鸟人可真是太棒了！！希望我也有机会爆本！ 03-17浙江 24 5 財来 作者 哈哈哈哈哈鸫子！我今天也画了！ 03-17上海 10 回复 展开 4 条回复 糊焦贝贝 感觉还有意思 03-18四川 1 1 財来 作者 03-18上海 赞 回复 陆家小富婆 跟你们这些会画画的人拼了，怎么那么可爱 03-18广东 33 3 財来 作者 嘿嘿嘿你养的小鸟也好可爱！！ 03-18上海 2 回复 展开 2 条回复 晴天 会画画的果然就是好 03-18重庆 赞 1 財来 作者 努力画小鸟 03-18上海 3 回复 朵朵最近喜欢串珠子 好可爱呀，我能拿你图绣花吗？ 03-18广东 1 2 財来 作者 哇！绣花！可以呀[超喜欢R] 但我画的这么不精致也能当花样子吗 03-18上海 赞 回复 展开 1 条回复",
+        "j1407b 天呐！老师画得小鸟好萌好可爱！超像的！ 03-17江苏 1 3 財来 作者 谢谢你！！但是这个表情包是哪位小鸟 鸫子吗 03-17上海 赞 回复 展开 2 条回复",
+        "j1407b 天呐！老师画得小鸟好萌好可爱！超像的！ 03-17江苏 1 3",
+        "財来 作者 谢谢你！！但是这个表情包是哪位小鸟 鸫子吗 03-17上海 赞 回复",
+        "荔枝水果糖 好生动好厉害！！这个线条这个色彩，太形象了，我也想要这样的画技呜呜，好伟大……小鸟的特别好的！ 04-25广东 2 1 財来 作者 啊啊啊啊啊老师您的钢琴技巧也好伟大 令人羡慕的左右手协调… 我也想要这个琴技啊啊啊啊 04-25上海 1 回复",
+        "荔枝水果糖 好生动好厉害！！这个线条这个色彩，太形象了，我也想要这样的画技呜呜，好伟大……小鸟的特别好的！ 04-25广东 2 1",
+        "財来 作者 啊啊啊啊啊老师您的钢琴技巧也好伟大 令人羡慕的左右手协调… 我也想要这个琴技啊啊啊啊 04-25上海 1 回复",
+        "梅川酷紫 画得好好！超可爱超传神！(倒数第二张图感觉应该是灰头鹀) 附上古法黄腰柳莺 03-17上海 3 3 財来 作者 哇！！你拍的好清楚！！我今天古法到了丝瓜椋鸟（好糊） 嘿嘿嘿等我通通画进去！ 03-17上海 1 回复 展开 2 条回复",
+        "梅川酷紫 画得好好！超可爱超传神！(倒数第二张图感觉应该是灰头鹀) 附上古法黄腰柳莺 03-17上海 3 3",
+        "財来 作者 哇！！你拍的好清楚！！我今天古法到了丝瓜椋鸟（好糊） 嘿嘿嘿等我通通画进去！ 03-17上海 1 回复",
+        "虚无 同道中人 03-17浙江 22 1 財来 作者 噢你画的也好可爱啊！！哈哈哈哈我们牛牛的！ 03-17上海 2 回复",
+        "虚无 同道中人 03-17浙江 22 1",
+        "財来 作者 噢你画的也好可爱啊！！哈哈哈哈我们牛牛的！ 03-17上海 2 回复",
+        "Mr.raindrop 太厉害了……我连镜头都来不及掏，而你已经画下来了…… 03-22湖南 赞 1 財来 作者 我也来不及！回家反刍一下哈哈哈哈 03-22江苏 1 回复",
+        "Mr.raindrop 太厉害了……我连镜头都来不及掏，而你已经画下来了…… 03-22湖南 赞 1",
+        "財来 作者 我也来不及！回家反刍一下哈哈哈哈 03-22江苏 1 回复",
+        "我叫大Z 同一个世界同一种观鸟人 我们观鸟人可真是太棒了！！希望我也有机会爆本！ 03-17浙江 24 5 財来 作者 哈哈哈哈哈鸫子！我今天也画了！ 03-17上海 10 回复 展开 4 条回复",
+        "我叫大Z 同一个世界同一种观鸟人 我们观鸟人可真是太棒了！！希望我也有机会爆本！ 03-17浙江 24 5",
+        "財来 作者 哈哈哈哈哈鸫子！我今天也画了！ 03-17上海 10 回复",
+        "糊焦贝贝 感觉还有意思 03-18四川 1 1 財来 作者 03-18上海 赞 回复",
+        "糊焦贝贝 感觉还有意思 03-18四川 1 1",
+        "財来 作者 03-18上海 赞 回复",
+        "陆家小富婆 跟你们这些会画画的人拼了，怎么那么可爱 03-18广东 33 3 財来 作者 嘿嘿嘿你养的小鸟也好可爱！！ 03-18上海 2 回复 展开 2 条回复",
+        "陆家小富婆 跟你们这些会画画的人拼了，怎么那么可爱 03-18广东 33 3",
+        "財来 作者 嘿嘿嘿你养的小鸟也好可爱！！ 03-18上海 2 回复",
+        "晴天 会画画的果然就是好 03-18重庆 赞 1 財来 作者 努力画小鸟 03-18上海 3 回复",
+        "晴天 会画画的果然就是好 03-18重庆 赞 1",
+        "財来 作者 努力画小鸟 03-18上海 3 回复",
+        "朵朵最近喜欢串珠子 好可爱呀，我能拿你图绣花吗？ 03-18广东 1 2 財来 作者 哇！绣花！可以呀[超喜欢R] 但我画的这么不精致也能当花样子吗 03-18上海 赞 回复 展开 1 条回复",
+        "朵朵最近喜欢串珠子 好可爱呀，我能拿你图绣花吗？ 03-18广东 1 2"
+      ],
+      "observed_signals": [
+        "visible_search_card_title: 人的第一本观鸟日记📔",
+        "visible_likes: 3703",
+        "detail_collected",
+        ""
+      ]
+    },
+    {
+      "account_name": "小红书成长笔记",
+      "title": "鸟门，集合！",
+      "note_url": "https://www.xiaohongshu.com/explore/680df6530000000021003434",
+      "cover_text": "鸟门，集合！",
+      "body_excerpt": "在小红书上 观鸟，正在成为一种“抬头就能参与” 的新生活方式 据统计，“观鸟”相关笔记阅读量已经超过10亿 过去一个月主动搜索“观鸟”的人数，同比增长了19倍 观鸟如何从“小众硬核”走向“大众上头”？ 哪些明星小鸟成为了大家公认的心头好？ 为什么晒鸟的热情居然比晒娃还高涨？ 成为一名“鸟人”，需要哪几步？ 普通人如何解锁观鸟的快乐？ 欢迎来到「小红书人类观察」栏目第一期 滑动图片，解锁完整《小红书观鸟趋势报告》~ 原来，爱上观鸟，只需要一次偶然的抬头🐦🍃 ps:再次感谢本次报告中 各位观鸟人提供的丰富有趣小鸟素材 祝全体观鸟人观鸟顺利，加新多多~ #观鸟 #观鸟日常 #鸟门 #一人一个观鸟宝地 #小红书自然拍摄倡议 #我在小红书拍自然",
+      "hashtags": [
+        "#观鸟",
+        "#观鸟日常",
+        "#鸟门",
+        "#一人一个观鸟宝地",
+        "#小红书自然拍摄倡议",
+        "#我在小红书拍自然"
+      ],
+      "likes": 831,
+      "comments": 111,
+      "saves": 350,
+      "shares": null,
+      "publish_time": "编辑于 2025-04-27",
+      "author_url": "https://www.xiaohongshu.com/user/profile/58d62a3c50c4b475a9b2415e?channel_type=web_search_result_notes&xsec_token=ABfWMRdk1k2mDhuQEoAO9U-WyGqPtLX11Pvt53_hR93DU%3D&xsec_source=pc_note",
+      "images": [
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/5ed9bd3bf32ed5000144d091.jpg?imageView2/2/w/120/format/webp|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/c7875cbf629bfb339b19da98069b1e52/spectrum/1040g34o31gpaeb2njc0049bd0ol3ogauj40qhs8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/e28552ebd6d88b841d727ccbf805b2aa/spectrum/1040g34o31gpadb3s3c0g49bd0ol3ogautlom8go!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/9b2ddbb2cccb38082d47b7b51e0a5841/spectrum/1040g0k031gpadcrfk20049bd0ol3ogaue1qfhfg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/8ad72066bbe674982a684088a735f63c/spectrum/1040g34o31gpadebrj40049bd0ol3ogaujnlj1v8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 1080,
+          "height": 1440
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/73c493f767005080b30ebe082ed325cb/spectrum/1040g34o31gpadirkk20g49bd0ol3ogaue9q6ha8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/2eb6a6046ff04314ab20583cdfbda69d/spectrum/1040g0k031gpdt0a6420049bd0ol3ogauiqqbjc8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/88ddc397032da2af5071c4727e7abb31/spectrum/1040g34o31gpdt4rvk20g49bd0ol3ogaujr5vmt8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/e991e9ea1a07ef81230a0f8895111a88/spectrum/1040g0k031gpadnb9j40049bd0ol3ogauqv4qhgo!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/c68a1450b6326255beee981aed3e4087/spectrum/1040g0k031gpdtdatjc0049bd0ol3ogaus7if9co!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/cb3eb0dba510a36e37064a114a5bc44d/spectrum/1040g0k031gpadr1uj80049bd0ol3ogautmpceqo!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/991b49b167911d7f5d191234659bfcf9/spectrum/1040g34o31gpadsq53a0g49bd0ol3ogau3jhjlg8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/e9bd9c4d9469c51e47e086957772311a/spectrum/1040g0k031gpaduer340049bd0ol3ogaul41ss08!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/135709c3bcbcaaafaca1e8bb3c5f5f4e/spectrum/1040g0k031gpae04dj40049bd0ol3ogauv1d61n8!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/84b8f682d3d279a9e75836e3ae3b68c8/spectrum/1040g0k031gpae1n7j40049bd0ol3ogauhm5tmjo!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/f1b13d2267dabf347eceae3d73feb188/spectrum/1040g34o31gpae3193a0g49bd0ol3ogaukk9fc4o!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/1407881dc7ad391643fd1c59c5420881/spectrum/1040g34o31gpae4tt340g49bd0ol3ogauf2li2h0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/fdc437e4d98126c0d62a32b07430ddd1/spectrum/1040g0k031gpae718340049bd0ol3ogauvrnu8i0!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607092347/7c410fb7b56b68c1022e8b90fca4b9c9/spectrum/1040g0k031gpae97bjc0049bd0ol3ogaujq0qkdg!nd_dft_wlteh_webp_3",
+          "alt": "",
+          "title": "",
+          "width": 613,
+          "height": 817
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/e0771182c12362d41f70356f714d84dccc4d07bc.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/7a6287c7f65fabdc15fa8f06b2696cccc21e86f2.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://picasso-static.xiaohongshu.com/fe-platform/c255f0ae809f8045561a80737b6aec25139f7607.png",
+          "alt": "",
+          "title": "",
+          "width": 200,
+          "height": 200
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31tpdrpee7e6g5ovqt29l1h3jpoqmnp8?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        },
+        {
+          "src": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo30n8ig3i4lk005nui9vr094ra5lnu20o?imageView2/2/w/120/format/jpg|imageMogr2/strip",
+          "alt": "",
+          "title": "",
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "visible_comments": [
+        "共 111 条评论 一万两千鸻｜伏特鲸 啊？我l 2025-04-28北京 赞 1 WolStame韩 哈哈哈 2025-04-28北京 赞 回复 鲍大神 好朋鸟在此 2025-04-27上海 20 6 大聪明蛋i 啊啊啊好可爱的毛茸茸 2025-05-11上海 3 回复 展开 5 条回复 抱根甘蔗逛街 观鸟三年了，以后观鸟的人肯定会越来越多，因为它是一项休闲轻松快乐的活动 2025-04-27陕西 32 3 小红薯645A7160 它是丰俭由人的轻松运动。可以一个人玩，也可以人玩 2025-04-28湖南 8 回复 展开 2 条回复 M. 2025-06-15四川 1 1 M. 芜湖，起飞 2025-06-15四川 赞 回复 山楂卷儿 破水了 ， 2025-05-19内蒙古 赞 回复 赵一块 2025-06-06山东 赞 回复 晚宁 想养 2025-05-15江西 赞 回复 卢小慢 最近刷到好多观鸟笔记，抬头发现小区里的鸟都变可爱了，原来快乐真的可以很简单！ 02-03陕西 赞 回复 nono 喜欢！非常可爱 好萌好萌 2025-06-10中国台湾 赞 回复 梨亚的脑洞日常 本人也是鸟，不信你听，叽叽叽叽叽叽 2025-05-16北京 赞 回复",
+        "一万两千鸻｜伏特鲸 啊？我l 2025-04-28北京 赞 1 WolStame韩 哈哈哈 2025-04-28北京 赞 回复",
+        "一万两千鸻｜伏特鲸 啊？我l 2025-04-28北京 赞 1",
+        "WolStame韩 哈哈哈 2025-04-28北京 赞 回复",
+        "鲍大神 好朋鸟在此 2025-04-27上海 20 6 大聪明蛋i 啊啊啊好可爱的毛茸茸 2025-05-11上海 3 回复 展开 5 条回复",
+        "鲍大神 好朋鸟在此 2025-04-27上海 20 6",
+        "大聪明蛋i 啊啊啊好可爱的毛茸茸 2025-05-11上海 3 回复",
+        "抱根甘蔗逛街 观鸟三年了，以后观鸟的人肯定会越来越多，因为它是一项休闲轻松快乐的活动 2025-04-27陕西 32 3 小红薯645A7160 它是丰俭由人的轻松运动。可以一个人玩，也可以人玩 2025-04-28湖南 8 回复 展开 2 条回复",
+        "抱根甘蔗逛街 观鸟三年了，以后观鸟的人肯定会越来越多，因为它是一项休闲轻松快乐的活动 2025-04-27陕西 32 3",
+        "小红薯645A7160 它是丰俭由人的轻松运动。可以一个人玩，也可以人玩 2025-04-28湖南 8 回复",
+        "M. 2025-06-15四川 1 1 M. 芜湖，起飞 2025-06-15四川 赞 回复",
+        "M. 2025-06-15四川 1 1",
+        "M. 芜湖，起飞 2025-06-15四川 赞 回复",
+        "山楂卷儿 破水了 ， 2025-05-19内蒙古 赞 回复",
+        "赵一块 2025-06-06山东 赞 回复",
+        "晚宁 想养 2025-05-15江西 赞 回复",
+        "卢小慢 最近刷到好多观鸟笔记，抬头发现小区里的鸟都变可爱了，原来快乐真的可以很简单！ 02-03陕西 赞 回复",
+        "nono 喜欢！非常可爱 好萌好萌 2025-06-10中国台湾 赞 回复",
+        "梨亚的脑洞日常 本人也是鸟，不信你听，叽叽叽叽叽叽 2025-05-16北京 赞 回复"
+      ],
+      "observed_signals": [
+        "visible_search_card_title: 鸟门，集合！",
+        "visible_likes: 831",
+        "detail_collected",
+        ""
+      ]
+    }
+  ],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "searched_queries": [
+      {
+        "query": "观鸟日记 记录",
+        "scanned_card_count": 9,
+        "qualified_card_count": 3,
+        "detail_requested_count": 3,
+        "detail_success_count": 3,
+        "scroll_count": 2,
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51"
+      }
+    ],
+    "page_title": "观鸟日记 记录 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51",
+    "page_text_sample": "首页 点点 ai RED 直播 发布 通知 我 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 更多 关于我们 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 全部 图文 视频 用户 筛选 综合 今天 作文范文 自然笔记 鸟类图鉴 照片 价格 绘画 观鸟app推荐！观鸟入门必备，识别&记录 奔跑的勺子 2025-09-07 1051 湾区观鸟｜一年半总结 住在山里的长臂猿 2025-12-02 114 大门牙拉拉 2025-03-07 347 人的第一本观鸟日记📔 財来 03-16 3703 🦅观鸟人私藏！这个印章模板救大命 NgaiDih 2025-07-22 112 我开发的观鸟收集图鉴，图文版功能介绍！ Pori在修bug 06-29 14 大家都在搜 观鸟日记记录方式 今日观鸟记录 观鸟日记打卡记录 观鸟日记现场记录 《观鸟笔记》识别能力大升级！ 观鸟小周 05-15 173 边走边记，观鸟人必备的手账工具推荐 爱鸟君 2025-09-19 34 鸟门，集合！ 小红书成长笔记 2025-04-27 831 浵浵爸爸 06-07 5 观鸟人的The Best of 2025 姬風則 01-10 624 城市鸟类观察日记 桃金吉士 2025-10-18 7 观鸟让我意识到过去的我失去了什么。 nono 03-21 ",
+    "collected_at": "2026-07-09T23:47:10.080748+08:00",
+    "requested_limit": 3,
+    "collected_count": 3,
+    "search_card_count": 9,
+    "detail_requested_count": 3,
+    "detail_success_count": 3,
+    "detail_error_count": 0,
+    "detail_errors": [],
+    "quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "extraction_method": "linear_visible_card_click",
+    "extraction_confidence": 0.85,
+    "field_coverage": {
+      "account_name": 3,
+      "body_excerpt": 3,
+      "comments": 3,
+      "cover_text": 3,
+      "hashtags": 3,
+      "images": 3,
+      "likes": 3,
+      "note_url": 3,
+      "observed_signals": 3,
+      "author_url": 3,
+      "saves": 3,
+      "shares": 0,
+      "title": 3,
+      "visible_comments": 3
+    },
+    "extraction_warnings": []
+  }
+}

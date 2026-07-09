@@ -2,7 +2,6 @@
 __pycache__/
 *.pyc
 .DS_Store
-data/logs/
 data/browser/
 .pytest_cache/
 *.log

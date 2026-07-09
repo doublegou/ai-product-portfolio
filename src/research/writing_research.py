@@ -3,7 +3,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Any
 
-from src.collect.xhs import collect_xhs_current_chrome, collect_xhs_search
+from src.base.run_log import log_event
+from src.collect.xhs import collect_xhs_deep_search_current_chrome
 from src.research.research_infra import analyze_research, load_research_input, save_research_report
 
 
@@ -14,7 +15,6 @@ def run_writing_research(
     limit: int = 10,
     min_notes: int = 10,
     max_attempts: int = 5,
-    allow_dedicated_browser_fallback: bool = False,
     persist_artifacts: bool = False,
     artifact_dir: Path | str = "data/research/writing",
     output_dir: Path | None = None,
@@ -32,7 +32,6 @@ def run_writing_research(
             limit=limit,
             min_notes=min_notes,
             max_attempts=max_attempts,
-            allow_dedicated_browser_fallback=allow_dedicated_browser_fallback,
             output_dir=research_dir,
             persist_artifacts=True,
         )
@@ -44,7 +43,6 @@ def run_writing_research(
             limit=limit,
             min_notes=min_notes,
             max_attempts=max_attempts,
-            allow_dedicated_browser_fallback=allow_dedicated_browser_fallback,
             output_dir=output_dir,
             persist_artifacts=False,
         )
@@ -56,7 +54,6 @@ def run_writing_research(
             limit=limit,
             min_notes=min_notes,
             max_attempts=max_attempts,
-            allow_dedicated_browser_fallback=allow_dedicated_browser_fallback,
             output_dir=Path(tmp_dir),
             persist_artifacts=False,
         )
@@ -76,7 +73,6 @@ def _collect_and_analyze(
     limit: int,
     min_notes: int,
     max_attempts: int,
-    allow_dedicated_browser_fallback: bool,
     output_dir: Path,
     persist_artifacts: bool,
 ) -> dict[str, Any]:
@@ -93,12 +89,26 @@ def _collect_and_analyze(
         attempted_queries.append(query)
         for attempt in range(1, max_attempts + 1):
             try:
-                input_path = collect_xhs_current_chrome(
+                input_path = collect_xhs_deep_search_current_chrome(
                     query,
                     limit=limit,
                     output_dir=output_dir,
                 )
                 research_input = load_research_input(input_path)
+                log_event(
+                    "collect_attempt",
+                    level="info" if research_input.note_count >= min_notes else "warning",
+                    phase="writing_research",
+                    platform="xhs",
+                    collector="current_chrome_deep",
+                    query=query,
+                    attempt=attempt,
+                    requested_limit=limit,
+                    min_notes=min_notes,
+                    collected_count=research_input.note_count,
+                    enough_samples=research_input.note_count >= min_notes,
+                    input_path=input_path,
+                )
                 if research_input.note_count >= min_notes:
                     break
                 current_chrome_error = (
@@ -106,22 +116,24 @@ def _collect_and_analyze(
                 )
             except RuntimeError as exc:
                 current_chrome_error = f"Query '{query}' failed: {exc}"
+                log_event(
+                    "collect_attempt",
+                    level="error",
+                    phase="writing_research",
+                    platform="xhs",
+                    collector="current_chrome",
+                    query=query,
+                    attempt=attempt,
+                    requested_limit=limit,
+                    min_notes=min_notes,
+                    success=False,
+                    error_type=type(exc).__name__,
+                    error_message=str(exc),
+                )
             if attempt < max_attempts:
                 time.sleep(min(3 * attempt, 12))
         if research_input is not None and research_input.note_count >= min_notes:
             break
-
-    if (
-        (research_input is None or research_input.note_count < min_notes)
-        and allow_dedicated_browser_fallback
-    ):
-        fallback_query = attempted_queries[0] if attempted_queries else topic_plan["primary_query"]
-        input_path = collect_xhs_search(
-            fallback_query,
-            limit=limit,
-            output_dir=output_dir,
-        )
-        research_input = load_research_input(input_path)
 
     if research_input is None or input_path is None:
         raise RuntimeError(

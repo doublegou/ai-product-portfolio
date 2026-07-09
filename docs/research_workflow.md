@@ -19,8 +19,8 @@ strategy_research.py   长期策略研究
 writing_goal
 product
 memory/
-小红书泛热点搜索样本
-产品相关领域搜索样本
+全网泛热点样本
+产品相关领域热点样本
 ```
 
 输出：
@@ -56,7 +56,7 @@ topic_plan
 动作：
 
 ```text
-按 primary_query / supporting_queries 搜索小规模样本
+按 primary_query / supporting_queries 做平台内小规模深度样本采集
 检查是否达到 min_notes
 最多重试 max_attempts
 调用 research_infra.analyze_research

@@ -3,6 +3,7 @@ from typing import Any
 from src.create.review import find_quality_guard_issues, review_draft, validate_draft
 from src.create.write import generate_draft, revise_draft
 from src.base.memory import load_banned_phrases
+from src.base.run_log import log_event
 
 
 def create_approved_draft(
@@ -61,6 +62,22 @@ def create_approved_draft(
         review_rounds.append(review)
 
         blocking_issues = review.get("blocking_issues", [])
+        log_event(
+            "review_round",
+            product=draft.get("product"),
+            round=round_index,
+            passed=review.get("passed"),
+            overall_score=review.get("overall_score"),
+            safety_score=review.get("safety_score"),
+            publishability_score=review.get("publishability_score"),
+            virality_score=review.get("virality_score"),
+            title_score=review.get("title_score"),
+            hook_score=review.get("hook_score"),
+            save_value_score=review.get("save_value_score"),
+            differentiation_score=review.get("differentiation_score"),
+            blocking_issues_count=len(blocking_issues),
+            blocking_issues=blocking_issues[:5],
+        )
         if (
             review["passed"]
             and review["overall_score"] >= max(passing_score, 8.6)

@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 from src.base.llm import call_llm
+from src.base.run_log import log_event
 
 
 def parse_json_object(raw_output: str, label: str) -> dict[str, Any]:
@@ -26,12 +27,20 @@ def call_json_model(
     current_messages = list(messages)
     last_error: ValueError | None = None
 
-    for _ in range(max_attempts):
-        raw_output = call_llm(current_messages)
+    for attempt in range(1, max_attempts + 1):
+        raw_output = call_llm(current_messages, label=label, attempt=attempt)
         try:
             return parse_json_object(raw_output, label)
         except ValueError as exc:
             last_error = exc
+            log_event(
+                "llm_json_parse_failed",
+                level="warning",
+                label=label,
+                attempt=attempt,
+                response_chars=len(raw_output),
+                error_type=type(exc).__name__,
+            )
             current_messages = [
                 *current_messages,
                 {

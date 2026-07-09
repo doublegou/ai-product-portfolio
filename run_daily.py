@@ -1,9 +1,12 @@
 import argparse
+import time
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from src.base.file_store import save_draft
+from src.base.run_log import log_event, log_exception, set_run_context
 from src.create.runtime import create_approved_draft
+from src.publish.xhs import publish_draft_to_xhs
 from src.research.topic_research import (
     DAILY_PRODUCTS,
     collect_broad_hotspot_samples,
@@ -50,12 +53,34 @@ def main() -> int:
         help="Persist topic discovery and writing research files for debugging.",
     )
     parser.add_argument(
-        "--fallback-browser",
+        "--no-publish",
         action="store_true",
-        help="If current Chrome collection fails, try the dedicated automation Chrome profile.",
+        help="Generate and save approved drafts, but do not publish them.",
+    )
+    parser.add_argument(
+        "--publish-dry-run",
+        action="store_true",
+        help="Prepare publish pages but do not click the final publish button.",
     )
     args = parser.parse_args()
 
+    started_at = time.perf_counter()
+    set_run_context(
+        "daily",
+        args={
+            "product": args.product,
+            "no_research": args.no_research,
+            "research_limit": args.research_limit,
+            "min_research_notes": args.min_research_notes,
+            "research_attempts": args.research_attempts,
+            "broad_hotspot_limit": args.broad_hotspot_limit,
+            "broad_hotspot_queries": args.broad_hotspot_queries,
+            "persist_research_artifacts": args.persist_research_artifacts,
+            "publish": not args.no_publish,
+            "publish_dry_run": args.publish_dry_run,
+        },
+    )
+    log_event("run_start")
     print("Agent started.")
 
     saved_paths = []
@@ -117,7 +142,6 @@ def main() -> int:
                     limit=args.research_limit,
                     min_notes=args.min_research_notes,
                     max_attempts=args.research_attempts,
-                    allow_dedicated_browser_fallback=args.fallback_browser,
                     persist_artifacts=args.persist_research_artifacts,
                     output_dir=discovery_dir,
                 )
@@ -149,6 +173,12 @@ def main() -> int:
                     "final_score": result["final_score"],
                 },
             )
+            publish_result = None
+            if not args.no_publish:
+                publish_result = publish_draft_to_xhs(
+                    saved_path,
+                    dry_run=args.publish_dry_run,
+                )
             saved_paths.append(saved_path)
             print(f"topic: {validated_draft['topic']}")
             print(f"title: {validated_draft['title']}")
@@ -156,8 +186,12 @@ def main() -> int:
             print(f"final_score: {result['final_score']}")
             print(f"iterations: {result['iterations']}")
             print(f"saved_path: {saved_path}")
+            if publish_result:
+                print(f"publish_status: {publish_result.status}")
+                print(f"publish_page_url: {publish_result.page_url}")
         except (FileNotFoundError, RuntimeError, ValueError) as exc:
             failures.append((product, str(exc)))
+            log_exception("exception", exc, phase="daily_product", product=product)
             print(f"product_failed: {product}")
             print(exc)
             continue
@@ -170,9 +204,26 @@ def main() -> int:
     if not saved_paths:
         if temp_context:
             temp_context.cleanup()
+        log_event(
+            "run_end",
+            level="error",
+            status="failed",
+            duration_ms=int((time.perf_counter() - started_at) * 1000),
+            saved_count=len(saved_paths),
+            failed_count=len(failures),
+        )
         return 1
     if temp_context:
         temp_context.cleanup()
+    log_event(
+        "run_end",
+        level="warning" if failures else "info",
+        status="partial_success" if failures else "success",
+        duration_ms=int((time.perf_counter() - started_at) * 1000),
+        saved_count=len(saved_paths),
+        failed_count=len(failures),
+        failed_products=[product for product, _ in failures],
+    )
     print("Done.")
     return 0
 

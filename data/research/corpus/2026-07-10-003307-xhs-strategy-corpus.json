@@ -1,0 +1,63 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 8000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    }
+  },
+  "coverage": {
+    "creator_count": 0,
+    "rejected_creator_count": 3,
+    "note_count": 0,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "candidate_count": 3,
+        "collected_at": "2026-07-10T00:33:19.565524+08:00"
+      }
+    ]
+  },
+  "accounts": [],
+  "rejected_creators": [
+    {
+      "account_name": "奔跑的勺子",
+      "account_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?xsec_token=ABHAS1INWeh-ioyJtVPd2V--TkjDRhW8yH1UcfROVMzHI=&xsec_source=pc_search",
+      "follower_count": 34,
+      "reason": "follower_count_not_above_8000: 34",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_name": "提玖",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5efdf2c6000000000101cbf7?xsec_token=ABFo6CCb802V0IbED382B2ucbD4e9TGCS6ngrUUItF8Cw=&xsec_source=pc_search",
+      "follower_count": 167,
+      "reason": "follower_count_not_above_8000: 167",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_name": "姬風則",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5ef6bfdc000000000101ccbf?xsec_token=ABizgEyUrssmiRw0qg9Z35Wfj2uSD2WlPVPw957yh3QDo=&xsec_source=pc_search",
+      "follower_count": 1223,
+      "reason": "follower_count_not_above_8000: 1223",
+      "seed_keyword": "观鸟"
+    }
+  ],
+  "collector_meta": {
+    "started_at": "2026-07-10T00:33:07.293557+08:00",
+    "last_saved_at": "2026-07-10T00:33:41.269663+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "collection_note": "Only visible page data from the user's logged-in Chrome was collected. The script does not bypass login, CAPTCHA, or platform protections."
+  }
+}

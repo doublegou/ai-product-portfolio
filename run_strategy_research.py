@@ -1,7 +1,9 @@
 import argparse
+import time
 
 from pydantic import ValidationError
 
+from src.base.run_log import log_event, log_exception, set_run_context
 from src.research.strategy_research import (
     analyze_strategy_corpus,
     generate_strategy_review,
@@ -76,6 +78,16 @@ def main() -> int:
 
     args = parser.parse_args()
 
+    started_at = time.perf_counter()
+    command_name = f"strategy_{args.command}"
+    safe_args = {
+        key: value
+        for key, value in vars(args).items()
+        if key not in {"trigger_reason", "corpus_json"}
+    }
+    set_run_context(command_name, args=safe_args)
+    log_event("run_start")
+
     try:
         if args.command == "collect":
             print("Strategy research collection started.")
@@ -90,6 +102,12 @@ def main() -> int:
                 note_pause_seconds=args.note_pause_seconds,
             )
             print(f"corpus_path: {path}")
+            log_event(
+                "run_end",
+                status="success",
+                duration_ms=int((time.perf_counter() - started_at) * 1000),
+                corpus_path=path,
+            )
             print("Done.")
             return 0
 
@@ -132,11 +150,28 @@ def main() -> int:
                 trigger_reason=args.trigger_reason,
             )
             print(f"saved_path: {path}")
+            log_event(
+                "run_end",
+                status="success",
+                duration_ms=int((time.perf_counter() - started_at) * 1000),
+                saved_path=path,
+                ready_for_persona=analysis["ready_for_persona"],
+                confidence=analysis["confidence"],
+            )
             print("Done.")
             return 0
 
         raise ValueError(f"Unsupported command: {args.command}")
     except (FileNotFoundError, RuntimeError, ValueError, ValidationError) as exc:
+        log_exception("exception", exc, phase=command_name)
+        log_event(
+            "run_end",
+            level="error",
+            status="failed",
+            duration_ms=int((time.perf_counter() - started_at) * 1000),
+            error_type=type(exc).__name__,
+            error_message=str(exc),
+        )
         print(exc)
         return 1
 

@@ -47,12 +47,26 @@ python run_daily.py
 
 `run_daily.py` 默认会为每个产品独立生成一篇草稿。每个产品都会先做自动选题发现，再规划搜索方向，然后做小规模小红书搜索分析，默认目标是采集 10 条可用样本，并最多重试 5 次，再进入写作、审稿和改稿。
 
+草稿通过审稿并保存后，默认会继续使用当前已登录 Chrome 发布到小红书。发布模块会优先使用草稿里的素材；如果草稿没有素材，会生成一张文字卡片图作为兜底发布图片。
+
+只生成和保存草稿，不发布：
+
+```bash
+python run_daily.py --no-publish
+```
+
+调试发布页填充，但不点击最终发布：
+
+```bash
+python run_daily.py --publish-dry-run
+```
+
 自动选题分两层：
 
-- 先做 broad hotspot discovery，看全局热点是否能自然连接某个产品
+- 先做 broad hotspot discovery，看全网热点是否能自然连接某个产品
 - 再做 related field discovery，看产品相关领域最近有哪些可直接写的热度点和用户语言
 
-Broad hotspot discovery 当前优先使用当前登录 Chrome 做小红书泛热点搜索。后续要接微博、抖音、YouTube 等热点页时，也应优先扩展 Chrome 浏览器采集，而不是并行维护一套零散 HTTP/API 抓取脚本。
+Broad hotspot discovery 当前使用外部全网热点源，包括 Google Trends RSS、Google News RSS、百度实时热点、微博实时热搜、YouTube mostPopular，以及 TikTok / 抖音预留源。小红书采集主要服务后续 writing research 和 strategy research。
 
 只跑某个产品：
 
@@ -68,10 +82,16 @@ python run_daily.py --product "Math Puzzle"
 python run_once.py "给 BirdTracker 写一篇小红书推广帖，角度是：把一次普通散步变成观鸟记录"
 ```
 
-`run_once.py` 默认会先做一次小红书同题研究，采集相似笔记并生成临时研究 brief，再进入写作和审稿。调试时可以跳过研究：
+`run_once.py` 默认会先做一次小红书同题研究，采集相似笔记并生成临时研究 brief，再进入写作和审稿。通过审稿并保存后，默认会继续发布到小红书。调试时可以跳过研究：
 
 ```bash
 python run_once.py "给 BirdTracker 写一篇小红书推广帖" --no-research
+```
+
+只生成草稿不发布：
+
+```bash
+python run_once.py "给 BirdTracker 写一篇小红书推广帖" --no-publish
 ```
 
 成功后会在 `data/drafts/` 下生成一个通过审稿的 JSON 草稿文件。

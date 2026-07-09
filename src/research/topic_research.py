@@ -4,10 +4,9 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from src.collect.xhs import collect_xhs_current_chrome
 from src.base.json_utils import call_json_model
 from src.base.memory import load_memory
-from src.research.research_infra import load_research_input
+from src.collect.topic import collect_external_hotspots
 
 
 DAILY_PRODUCTS = (
@@ -16,6 +15,37 @@ DAILY_PRODUCTS = (
     "Math Puzzle",
     "Soulnio",
 )
+
+PRODUCT_ALIASES = {
+    "ISS Tracker": (
+        "ISS Tracker",
+        "ISS-Tracker",
+        "ISS",
+        "国际空间站",
+        "空间站",
+    ),
+    "BirdTracker": (
+        "BirdTracker",
+        "Bird Tracker",
+        "观鸟",
+        "鸟类",
+    ),
+    "Math Puzzle": (
+        "Math Puzzle",
+        "MathPuzzle",
+        "Math-Puzzle",
+        "数字谜题",
+        "数学谜题",
+        "交叉算式",
+    ),
+    "Soulnio": (
+        "Soulnio",
+        "塔罗",
+        "自我探索",
+        "时间罗盘",
+        "关系星网",
+    ),
+}
 
 PRODUCT_DISCOVERY_QUERIES = {
     "ISS Tracker": (
@@ -49,12 +79,11 @@ PRODUCT_DISCOVERY_QUERIES = {
 }
 
 BROAD_HOTSPOT_QUERIES = (
-    "今日热点",
-    "最近很火",
     "生活方式 热点",
     "AI 科技 热点",
-    "户外 自然 热门",
-    "情绪 关系 热门",
+    "户外 自然",
+    "情绪 关系",
+    "天文 国际空间站",
 )
 
 
@@ -96,6 +125,26 @@ def get_daily_products(product: str | None = None) -> list[str]:
     return [product]
 
 
+def infer_product_from_writing_goal(writing_goal: str | None) -> str | None:
+    """Infer an explicitly named product from a writing goal."""
+    if not writing_goal:
+        return None
+
+    normalized_goal = writing_goal.lower()
+    matches = []
+    for product, aliases in PRODUCT_ALIASES.items():
+        for alias in aliases:
+            if alias.lower() in normalized_goal:
+                matches.append((product, len(alias)))
+                break
+
+    if not matches:
+        return None
+
+    matches.sort(key=lambda item: item[1], reverse=True)
+    return matches[0][0]
+
+
 def get_product_discovery_queries(product: str, *, limit: int = 4) -> list[str]:
     queries = PRODUCT_DISCOVERY_QUERIES.get(product)
     if not queries:
@@ -119,20 +168,21 @@ def discover_topic(
     related_field_queries: int = 4,
 ) -> dict[str, Any]:
     """Run broad and related-field discovery, then choose today's topic."""
+    resolved_product = product or infer_product_from_writing_goal(writing_goal)
     broad_samples = broad_hotspot_samples or collect_broad_hotspot_samples(
         output_dir=output_dir,
         limit=broad_hotspot_limit,
         query_limit=broad_hotspot_queries,
     )
     related_samples = collect_related_field_samples(
-        product=product,
+        product=resolved_product,
         output_dir=output_dir,
         limit=related_field_limit,
         query_limit=related_field_queries,
     )
     topic_plan = plan_topic(
         writing_goal,
-        product=product,
+        product=resolved_product,
         broad_hotspot_samples=broad_samples,
         related_field_samples=related_samples,
     )
@@ -167,8 +217,9 @@ def plan_topic(
         {
             "role": "system",
             "content": (
-                "You are a sharp Chinese content strategist for Xiaohongshu. "
-                "Select today's post topic for one product, then plan the focused writing research. "
+                "You are a sharp Chinese topic strategist. "
+                "Select today's post topic from cross-platform trend signals and product-adjacent field signals, "
+                "then plan the focused Xiaohongshu writing research. "
                 "Return valid JSON only."
             ),
         },
@@ -185,8 +236,8 @@ def plan_topic(
                 f"{json.dumps(related_field_samples or {}, ensure_ascii=False, indent=2)}\n\n"
                 "# Planning Rules\n"
                 "- If Product Constraint names a product, you must plan for that product only\n"
-                "- There are two topic layers: broad_hotspot means connecting the product upward to a broad current hotspot; related_field means writing directly from product-adjacent field signals\n"
-                "- First inspect Broad Hotspot Samples for a timely trend the product can naturally connect to\n"
+                "- There are two topic layers: broad_hotspot means connecting the product upward to a broad cross-platform current hotspot; related_field means writing directly from product-adjacent field signals\n"
+                "- First inspect Broad Hotspot Samples from external cross-platform sources for a timely trend the product can naturally connect to\n"
                 "- Then inspect Related Field Samples for product-adjacent signals, user language, content formats, and field heat\n"
                 "- If a broad hotspot has hotspot_fit_score >= 8 and low risk, choose topic_source=broad_hotspot\n"
                 "- Otherwise choose topic_source=related_field and write from the strongest product-adjacent signal\n"
@@ -225,27 +276,19 @@ def collect_broad_hotspot_samples(
     limit: int,
     query_limit: int,
 ) -> dict[str, Any]:
-    notes: list[dict[str, Any]] = []
-    errors: list[str] = []
     queries = get_broad_hotspot_queries(limit=query_limit)
-    for query in queries:
-        try:
-            input_path = collect_xhs_current_chrome(
-                query,
-                limit=limit,
-                output_dir=output_dir,
-            )
-            research_input = load_research_input(input_path)
-            for note in research_input.loose_notes[:limit]:
-                notes.append(_compact_discovery_note(query, note))
-        except RuntimeError as exc:
-            errors.append(f"{query}: {exc}")
+    hotspot_result = collect_external_hotspots(
+        limit_per_source=limit,
+        google_news_queries=queries,
+    )
     return {
         "mode": "broad_hotspot_discovery",
-        "source": "current_chrome_xiaohongshu_broad_search",
+        "source": "external_cross_platform_hotspot_sources",
         "queries": queries,
-        "notes": notes,
-        "errors": errors,
+        "sources": hotspot_result["source_results"],
+        "notes": _compact_external_hotspot_items(hotspot_result["items"]),
+        "errors": _external_source_errors(hotspot_result["source_results"]),
+        "collected_at": hotspot_result["collected_at"],
     }
 
 
@@ -265,36 +308,50 @@ def collect_related_field_samples(
         }
 
     notes: list[dict[str, Any]] = []
-    errors: list[str] = []
     queries = get_product_discovery_queries(product, limit=query_limit)
-    for query in queries:
-        try:
-            input_path = collect_xhs_current_chrome(
-                query,
-                limit=limit,
-                output_dir=output_dir,
-            )
-            research_input = load_research_input(input_path)
-            for note in research_input.loose_notes[:limit]:
-                notes.append(_compact_discovery_note(query, note))
-        except RuntimeError as exc:
-            errors.append(f"{query}: {exc}")
+    field_result = collect_external_hotspots(
+        limit_per_source=limit,
+        sources=("google_news_rss",),
+        google_news_queries=queries,
+    )
+    notes.extend(_compact_external_hotspot_items(field_result["items"]))
     return {
         "mode": "related_field_topic_discovery",
         "product": product,
+        "source": "external_product_adjacent_field_sources",
         "queries": queries,
+        "sources": field_result["source_results"],
         "notes": notes,
-        "errors": errors,
+        "errors": _external_source_errors(field_result["source_results"]),
+        "collected_at": field_result["collected_at"],
     }
 
 
-def _compact_discovery_note(query: str, note: Any) -> dict[str, Any]:
-    return {
-        "query": query,
-        "title": note.title,
-        "account_name": note.account_name,
-        "cover_text": note.cover_text,
-        "body_excerpt": note.body_excerpt,
-        "likes": note.likes,
-        "observed_signals": note.observed_signals,
-    }
+def _compact_external_hotspot_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "source": item.get("source"),
+            "query": item.get("query"),
+            "geo": item.get("geo"),
+            "title": item.get("title"),
+            "summary": item.get("summary"),
+            "url": item.get("url"),
+            "channel": item.get("channel"),
+            "views": item.get("views"),
+        }
+        for item in items
+        if item.get("title")
+    ]
+
+
+def _external_source_errors(source_results: list[dict[str, Any]]) -> list[str]:
+    errors: list[str] = []
+    for result in source_results:
+        source = result.get("source", "unknown")
+        if result.get("status") == "error":
+            errors.append(f"{source}: {result.get('error')}")
+        for error in result.get("errors", []):
+            errors.append(f"{source}: {error}")
+        if result.get("status") == "skipped":
+            errors.append(f"{source}: skipped - {result.get('reason')}")
+    return errors

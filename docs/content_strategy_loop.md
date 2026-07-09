@@ -80,10 +80,10 @@ topic_research -> writing_research -> create
 
 ```text
 topic_research.py
-  决定今天写什么。先看泛热点，再看产品相关领域，输出 topic_plan。
+  决定今天写什么。先看全网泛热点，再看产品相关领域，输出 topic_plan。
 
 writing_research.py
-  决定这篇怎么写。围绕 topic_plan 做小规模样本研究，输出给 create 使用的 brief。
+  决定这篇怎么写。围绕 topic_plan 做目标平台的小规模深度样本研究，输出给 create 使用的 brief。
 
 strategy_research.py
   决定长期怎么进化。采集更大规模的创作者和笔记样本，生成 strategy result。
