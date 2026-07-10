@@ -262,25 +262,41 @@ def _compact_corpus(corpus: dict[str, Any]) -> dict[str, Any]:
     for account in corpus.get("accounts", []):
         compact_notes = []
         for note in account.get("notes", []):
-            body = note.get("detail_body") or note.get("body_excerpt") or ""
+            body = (
+                note.get("body")
+                or note.get("detail_body")
+                or note.get("body_excerpt")
+                or ""
+            )
             compact_notes.append(
                 {
+                    "note_id": note.get("note_id"),
+                    "note_url": note.get("note_url"),
                     "title": note.get("title"),
-                    "body_excerpt": body[:700],
+                    "subtitle": note.get("subtitle"),
+                    "body": body[:1200],
                     "hashtags": note.get("hashtags") or note.get("detail_hashtags") or [],
                     "likes": note.get("likes"),
                     "comments": note.get("comments"),
                     "saves": note.get("saves"),
-                    "cover_text": note.get("cover_text"),
-                    "visible_comments": note.get("visible_comments", [])[:3],
+                    "shares": note.get("shares"),
+                    "publish_time": note.get("publish_time"),
+                    "location": note.get("location"),
+                    "images": note.get("images", [])[:12],
+                    "video": note.get("video"),
+                    "comment_items": note.get("comment_items", [])[:10],
                 }
             )
         compact_accounts.append(
             {
+                "account_id": account.get("account_id"),
                 "account_name": account.get("account_name"),
+                "account_url": account.get("account_url"),
                 "bio": account.get("bio"),
                 "follower_count": account.get("follower_count"),
+                "following_count": account.get("following_count"),
                 "liked_count": account.get("liked_count"),
+                "positioning_notes": account.get("positioning_notes", []),
                 "seed_keyword": account.get("seed_keyword"),
                 "notes": compact_notes,
             }

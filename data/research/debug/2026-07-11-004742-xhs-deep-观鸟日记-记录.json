@@ -1,0 +1,102 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书完整笔记内容与互动表达",
+  "source": "xhs_current_chrome_visible_detail",
+  "accounts": [],
+  "loose_notes": [
+    {
+      "note_id": "68b63e60000000001c010022",
+      "note_url": "https://www.xiaohongshu.com/explore/68b63e60000000001c010022?xsec_token=AB7dHg4xB64OaF4lpmA0VJEOzaq8v88p2Ckc28P2r1VYQ=&xsec_source=pc_search",
+      "account_name": "住在山里的长臂猿",
+      "author_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABHAS1INWeh-ioyJtVPd2V--GMY84RLPYP4wYUfe0uerE=&xsec_source=pc_search",
+      "title": "观鸟日记 记录搜索",
+      "subtitle": "",
+      "body": "",
+      "hashtags": [],
+      "likes": 1052,
+      "comments": null,
+      "saves": null,
+      "shares": null,
+      "publish_time": "",
+      "location": "",
+      "images": [
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607110047/a92928b18f728eea49c61ded46312e7e/notes_pre_post/1040g3k031pj59bf54k205nqo8d508pnhhuihiuo!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 266,
+          "height": 355,
+          "index": 1
+        }
+      ],
+      "video": null,
+      "comment_items": [],
+      "collection_meta": {
+        "source_page": "search",
+        "source_query": "观鸟日记 记录",
+        "detail_completion_reason": "reached_detail_bottom",
+        "gallery_completion_reason": "single_image",
+        "viewport_advance_count": 0,
+        "gallery_advance_count": 0,
+        "expanded_control_count": 0,
+        "unavailable_fields": [
+          "comments",
+          "saves",
+          "shares"
+        ],
+        "collected_at": "2026-07-11T00:47:40.310634+08:00",
+        "complete": true,
+        "missing_fields": []
+      }
+    }
+  ],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "searched_queries": [
+      {
+        "query": "观鸟日记 记录",
+        "observed_card_count": 7,
+        "qualified_card_count": 1,
+        "detail_requested_count": 1,
+        "detail_success_count": 1,
+        "viewport_advance_count": 0,
+        "completion_reason": "target_reached",
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51"
+      }
+    ],
+    "page_title": "观鸟日记 记录 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51",
+    "collected_at": "2026-07-11T00:47:42.197102+08:00",
+    "requested_limit": 1,
+    "collected_count": 1,
+    "detail_error_count": 0,
+    "detail_errors": [],
+    "quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "browsing_method": "visible_observe_click_read_return",
+    "field_coverage": {
+      "account_name": 1,
+      "author_url": 1,
+      "body": 0,
+      "comment_items": 0,
+      "comments": 0,
+      "hashtags": 0,
+      "images": 1,
+      "likes": 1,
+      "location": 0,
+      "note_id": 1,
+      "note_url": 1,
+      "publish_time": 0,
+      "saves": 0,
+      "shares": 0,
+      "subtitle": 0,
+      "title": 1,
+      "video": 0
+    },
+    "warnings": []
+  }
+}

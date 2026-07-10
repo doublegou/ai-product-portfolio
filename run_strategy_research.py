@@ -30,11 +30,6 @@ def main() -> int:
     collect_parser.add_argument("--account-pause-seconds", type=float, default=10)
     collect_parser.add_argument("--note-pause-seconds", type=float, default=1.5)
     collect_parser.add_argument(
-        "--skip-note-details",
-        action="store_true",
-        help="Only collect profile note cards, without opening each note detail page.",
-    )
-    collect_parser.add_argument(
         "--keywords",
         nargs="*",
         default=list(DEFAULT_STRATEGY_RESEARCH_KEYWORDS),
@@ -96,7 +91,6 @@ def main() -> int:
                 target_creators=args.target_creators,
                 notes_per_creator=args.notes_per_creator,
                 creators_per_keyword=args.creators_per_keyword,
-                collect_note_details=not args.skip_note_details,
                 progress=True,
                 account_pause_seconds=args.account_pause_seconds,
                 note_pause_seconds=args.note_pause_seconds,

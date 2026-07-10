@@ -13,16 +13,28 @@ from src.base.memory import load_memory
 class NoteSample(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    note_id: str | None = None
     account_name: str = Field(min_length=1)
+    author_url: str | None = None
     title: str = Field(min_length=1)
+    subtitle: str | None = None
     note_url: str | None = None
+    body: str | None = None
+    # Kept for loading older research artifacts. New collectors write `body` directly.
     cover_text: str | None = None
     body_excerpt: str | None = None
     hashtags: list[str] = Field(default_factory=list)
     likes: int | None = Field(default=None, ge=0)
     comments: int | None = Field(default=None, ge=0)
     saves: int | None = Field(default=None, ge=0)
+    shares: int | None = Field(default=None, ge=0)
     publish_time: str | None = None
+    location: str | None = None
+    images: list[dict[str, Any]] = Field(default_factory=list)
+    video: dict[str, Any] | None = None
+    comment_items: list[dict[str, Any]] = Field(default_factory=list)
+    collection_meta: dict[str, Any] = Field(default_factory=dict)
+    # Kept for loading older research artifacts.
     visible_comments: list[str] = Field(default_factory=list)
     observed_signals: list[str] = Field(default_factory=list)
 

@@ -140,7 +140,10 @@ python run_strategy_research.py collect --target-creators 50 --notes-per-creator
 View > Developer > Allow JavaScript from Apple Events
 ```
 
-这是一次性设置。打开后，采集器可以使用当前已登录 Chrome 自动搜索、滚动并抽取可见笔记卡片。
+这是一次性设置。打开后，采集器会使用当前已登录 Chrome 的真实滚轮和点击：
+writing 先按搜索卡片的可见点赞筛选笔记，再完整读取详情正文、图片、高价值评论和回复；
+strategy 从相关领域搜索结果逐个点击作者头像/名称，筛选粉丝数大于 5000 的博主，再从主页
+采集高互动笔记，页面信息不足时进入详情复核。采集结束后会关闭本轮新增标签并恢复原页面。
 
 采集完成后分析长期策略样本：
 

@@ -1,0 +1,1040 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome_visible_detail",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 5000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "note_detail_required": true
+  },
+  "coverage": {
+    "creator_count": 1,
+    "rejected_creator_count": 0,
+    "note_count": 1,
+    "target_met": true,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "inspected_creator_count": 1,
+        "qualified_creator_count": 1,
+        "viewport_advance_count": 0,
+        "completion_reason": "qualified_creator_target_reached",
+        "warnings": [],
+        "collected_at": "2026-07-11T01:59:36.990103+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_id": "5b03ce896b58b73721510560",
+      "account_name": "阿布罗狄",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5b03ce896b58b73721510560?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABZ6WVFbkFu_hYeY2AHOanqoUZ5yEB2m-65r3a04wgjaw=&xsec_source=pc_search",
+      "avatar_url": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo3168ven880q004a5i5b78i1b07kse680?imageView2/2/w/540/format/webp|imageMogr2/strip2/blur/1x56",
+      "red_id": "183968945",
+      "ip_location": "北京",
+      "bio": "鸟类摄影 所有作品皆原创 📷 nikon z8 z863 转载需要注明出处 头像 画画等非商业用途都🉑",
+      "follower_count": 8762,
+      "following_count": 508,
+      "liked_count": 110000,
+      "positioning_notes": [
+        "鸟类摄影 所有作品皆原创 📷 nikon z8 z863 转载需要注明出处 头像 画画等非商业用途都🉑",
+        "43岁 北京东城 摄影博主",
+        "43岁",
+        "43岁",
+        "北京东城",
+        "摄影博主"
+      ],
+      "notes": [
+        {
+          "note_id": "682ad5ac000000002300e2b2",
+          "note_url": "https://www.xiaohongshu.com/explore/682ad5ac000000002300e2b2?xsec_token=AB_TuVGTQ0ced68ev4mSQ8JPe9dKtBaAikQf_jOTU5wKM=&xsec_source=pc_user",
+          "account_name": "阿布罗狄",
+          "author_url": "https://www.xiaohongshu.com/user/profile/5b03ce896b58b73721510560?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABZ6WVFbkFu_hYeY2AHOanqoUZ5yEB2m-65r3a04wgjaw=&xsec_source=pc_search",
+          "title": "花彩雀莺｜多巴胺小鸟",
+          "subtitle": "花彩莺雀图片",
+          "body": "高原上最迷人的小鸟之一，花彩雀莺 （英文名：White-browed Tit-warbler，学名：Leptopoecile sophiae），是雀形目长尾山雀科雀莺属的小型鸟类。其特征为胸部栗色帽，淡粉色腹部，以及并不总是显著的浅灰色眉纹。分布于中国、印度、哈萨克斯坦等国，主要栖息于高海拔森林和灌木丛。 曾看到别人拍的花彩雀莺，被它的美丽所深深打动，此次若尔盖之行自然将它列为主要目标之一。好在运气不错，第一天就拍到了小家伙，大大方方也不怕人各种角度都让你拍到满意它才飞走。 拍摄于川主寺镇 #鸟类摄影 #观鸟 #神奇的鸟类 #晒出我的多巴胺小鸟 #花彩雀莺 #川主寺",
+          "hashtags": [
+            "#鸟类摄影",
+            "#观鸟",
+            "#神奇的鸟类",
+            "#晒出我的多巴胺小鸟",
+            "#花彩雀莺",
+            "#川主寺"
+          ],
+          "likes": 44000,
+          "comments": 2129,
+          "saves": 12000,
+          "shares": null,
+          "publish_time": "2025-11-16",
+          "location": "",
+          "images": [
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110157/080092f37798e59e639b522295c4856b/notes_pre_post/1040g3k831hlgildj3aag4a5i5b78i1b0pe25r4o!nc_n_webp_mw_1",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 640,
+              "height": 853,
+              "index": 1
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110158/e8d70fd0967a8a5e800b2fb358507d9a/notes_pre_post/1040g3k831hlgildj3ab04a5i5b78i1b0lke6dq0!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 2
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110158/0c4c64781a03a9c0012e2eff38a05db7/notes_pre_post/1040g3k831hlgildj3abg4a5i5b78i1b0ql1l6ho!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 3
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110158/12622fdfb25e9e53631f264679840fe7/notes_pre_post/1040g3k831hlgildj3ac04a5i5b78i1b00id6jbo!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 4
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110158/76cee975323340251c6f34aa621e5f5a/notes_pre_post/1040g3k831hlgildj3acg4a5i5b78i1b09jbl9go!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 5
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110158/8bdd807be5a55cf0c8a7c97f758d25be/notes_pre_post/1040g3k831hlgildj3ad04a5i5b78i1b0lmduu7g!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 6
+            }
+          ],
+          "video": null,
+          "comment_items": [
+            {
+              "author": "知足常乐",
+              "text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 96,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍 2025-05-20美国 1015 97",
+              "likes": 1015,
+              "source_index": 1,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "谢谢 这小鸟挺好看的 有机会就去拍",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": 96,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 谢谢 这小鸟挺好看的 有机会就去拍 2025-05-20四川 119 回复",
+              "likes": 119,
+              "source_index": 2,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "月下一只猹",
+              "text": "博主您好，不知为何在网上搜来有写它是莺科的，所以画完后标注了莺科，怕标错了，看您判断的就是长尾山雀科吗？",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 2,
+              "is_author_reply": false,
+              "raw_text": "月下一只猹 博主您好，不知为何在网上搜来有写它是莺科的，所以画完后标注了莺科，怕标错了，看您判断的就是长尾山雀科吗？ 2025-09-25甘肃 3 3",
+              "likes": 3,
+              "source_index": 3,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "月下一只猹",
+              "text": "我还是改成长尾山雀科了，感觉更靠谱",
+              "is_reply": true,
+              "parent_author": "月下一只猹",
+              "parent_text": "博主您好，不知为何在网上搜来有写它是莺科的，所以画完后标注了莺科，怕标错了，看您判断的就是长尾山雀科吗？",
+              "reply_count": 2,
+              "is_author_reply": false,
+              "raw_text": "月下一只猹 我还是改成长尾山雀科了，感觉更靠谱 2025-09-25甘肃 1 回复",
+              "likes": 1,
+              "source_index": 4,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "啦啦啦没人看见我",
+              "text": "噢这可爱的小屁屁",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 15,
+              "is_author_reply": false,
+              "raw_text": "啦啦啦没人看见我 噢这可爱的小屁屁 2025-05-20江苏 596 16",
+              "likes": 596,
+              "source_index": 5,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "邈邈喵喵",
+              "text": "作者赞过哈哈哈哈哈",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": 15,
+              "is_author_reply": true,
+              "raw_text": "邈邈喵喵 作者赞过哈哈哈哈哈 2025-05-20山东 103 回复",
+              "likes": 103,
+              "source_index": 6,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "老坛杉菜",
+              "text": "像这个",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 6,
+              "is_author_reply": false,
+              "raw_text": "老坛杉菜 像这个 2025-05-21河北 64 7",
+              "likes": 64,
+              "source_index": 7,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "小豆",
+              "text": "我就知道点进来会看到茉",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": 6,
+              "is_author_reply": false,
+              "raw_text": "小豆 我就知道点进来会看到茉 2025-05-21河南 14 回复",
+              "likes": 14,
+              "source_index": 8,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "珺柳",
+              "text": "拍的真好画下来了",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 5,
+              "is_author_reply": false,
+              "raw_text": "珺柳 拍的真好画下来了 2025-05-31辽宁 80 6",
+              "likes": 80,
+              "source_index": 9,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "画的好可爱",
+              "is_reply": true,
+              "parent_author": "珺柳",
+              "parent_text": "拍的真好画下来了",
+              "reply_count": 5,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 画的好可爱 2025-05-31北京 6 回复",
+              "likes": 6,
+              "source_index": 10,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "^游戏漏洞日记",
+              "text": "您好 我觉得您拍摄的这只小鸟很漂亮 希望能得到允许去制作一些美工类的作品 不涉及商用 请问可以吗",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 1,
+              "is_author_reply": false,
+              "raw_text": "^游戏漏洞日记 您好 我觉得您拍摄的这只小鸟很漂亮 希望能得到允许去制作一些美工类的作品 不涉及商用 请问可以吗 02-16黑龙江 2 2",
+              "likes": 2,
+              "source_index": 11,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "可以的",
+              "is_reply": true,
+              "parent_author": "^游戏漏洞日记",
+              "parent_text": "您好 我觉得您拍摄的这只小鸟很漂亮 希望能得到允许去制作一些美工类的作品 不涉及商用 请问可以吗",
+              "reply_count": 1,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 可以的 02-16北京 赞 回复",
+              "likes": null,
+              "source_index": 12,
+              "value_signals": [
+                "author_reply",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "暴暴蓝",
+              "text": "戴丝巾的鸟",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 2,
+              "is_author_reply": false,
+              "raw_text": "暴暴蓝 戴丝巾的鸟 2025-05-20上海 4 3",
+              "likes": 4,
+              "source_index": 13,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "Cloudchichi",
+              "text": "是不是珠颈斑鸠",
+              "is_reply": true,
+              "parent_author": "暴暴蓝",
+              "parent_text": "戴丝巾的鸟",
+              "reply_count": 2,
+              "is_author_reply": false,
+              "raw_text": "Cloudchichi 是不是珠颈斑鸠 2025-05-20上海 13 回复",
+              "likes": 13,
+              "source_index": 14,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "蘇蘇",
+              "text": "您拍的鸟鸟真好看，忍不住画画写生",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 3,
+              "is_author_reply": false,
+              "raw_text": "蘇蘇 您拍的鸟鸟真好看，忍不住画画写生 02-25广西 12 4",
+              "likes": 12,
+              "source_index": 15,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "谢谢 画得好好看",
+              "is_reply": true,
+              "parent_author": "蘇蘇",
+              "parent_text": "您拍的鸟鸟真好看，忍不住画画写生",
+              "reply_count": 3,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 谢谢 画得好好看 02-25北京 赞 回复",
+              "likes": null,
+              "source_index": 16,
+              "value_signals": [
+                "author_reply",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "80后的唐波波",
+              "text": "拍得太好了，这么漂亮的多巴胺小鸟值得被记录下来感谢作者发出来，我忍不住画了它",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 13,
+              "is_author_reply": true,
+              "raw_text": "80后的唐波波 拍得太好了，这么漂亮的多巴胺小鸟值得被记录下来感谢作者发出来，我忍不住画了它 2025-05-24河北 473 14",
+              "likes": 473,
+              "source_index": 17,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "谢谢 您画的真好",
+              "is_reply": true,
+              "parent_author": "80后的唐波波",
+              "parent_text": "拍得太好了，这么漂亮的多巴胺小鸟值得被记录下来感谢作者发出来，我忍不住画了它",
+              "reply_count": 13,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 谢谢 您画的真好 2025-05-24北京 36 回复",
+              "likes": 36,
+              "source_index": 18,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "理想一万丈",
+              "text": "这个小鸟和我的头发颜色一样",
+              "is_reply": false,
+              "parent_author": null,
+              "parent_text": null,
+              "reply_count": 7,
+              "is_author_reply": false,
+              "raw_text": "理想一万丈 这个小鸟和我的头发颜色一样 2025-06-04江西 4 8",
+              "likes": 4,
+              "source_index": 19,
+              "value_signals": [
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "紫色么好特别",
+              "is_reply": true,
+              "parent_author": "理想一万丈",
+              "parent_text": "这个小鸟和我的头发颜色一样",
+              "reply_count": 7,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 紫色么好特别 2025-06-04北京 2 回复",
+              "likes": 2,
+              "source_index": 20,
+              "value_signals": [
+                "author_reply",
+                "liked_comment",
+                "active_reply_thread"
+              ]
+            },
+            {
+              "author": "抽象大赛冠军",
+              "text": "好奇特 这是什么🐦",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "抽象大赛冠军 好奇特 这是什么🐦 2025-05-20加拿大 赞 回复",
+              "likes": null,
+              "source_index": 21,
+              "value_signals": []
+            },
+            {
+              "author": "知足常乐",
+              "text": "回复 抽象大赛冠军 : Red-crested cardinal这是英文叫法，我查了翻译叫红冠红雀。说是1930年从巴西引进夏威夷的，现在整个夏威夷都有这种鸟儿",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 回复 抽象大赛冠军 : Red-crested cardinal这是英文叫法，我查了翻译叫红冠红雀。说是1930年从巴西引进夏威夷的，现在整个夏威夷都有这种鸟儿 2025-05-20美国 15 回复",
+              "likes": 15,
+              "source_index": 22,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "W ～小p",
+              "text": "回复 知足常乐 : 对比全红cardinal 嘿嘿",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "W ～小p 回复 知足常乐 : 对比全红cardinal 嘿嘿 2025-05-20美国 40 回复",
+              "likes": 40,
+              "source_index": 23,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "知足常乐",
+              "text": "回复 W ～小p : 哇，全红的好漂亮",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 回复 W ～小p : 哇，全红的好漂亮 2025-05-20美国 1 回复",
+              "likes": 1,
+              "source_index": 24,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "W ～小p",
+              "text": "回复 知足常乐 : 还有这种红头的小啄木鸟",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "W ～小p 回复 知足常乐 : 还有这种红头的小啄木鸟 2025-05-20美国 23 回复",
+              "likes": 23,
+              "source_index": 25,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "知足常乐",
+              "text": "回复 W ～小p : 自然界果然很多漂亮的动植物，感谢分享",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 回复 W ～小p : 自然界果然很多漂亮的动植物，感谢分享 2025-05-20美国 7 回复",
+              "likes": 7,
+              "source_index": 26,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "好运来这里",
+              "text": "好精神的小鸟",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "好运来这里 好精神的小鸟 2025-05-20重庆 赞 回复",
+              "likes": null,
+              "source_index": 27,
+              "value_signals": []
+            },
+            {
+              "author": "知足常乐",
+              "text": "回复 好运来这里 : 这鸟儿性格挺暴躁的",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 回复 好运来这里 : 这鸟儿性格挺暴躁的 2025-05-20美国 1 回复",
+              "likes": 1,
+              "source_index": 28,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "🐑happy ever after",
+              "text": "看着像是谁给它套的帽子",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "🐑happy ever after 看着像是谁给它套的帽子 2025-05-20四川 赞 回复",
+              "likes": null,
+              "source_index": 29,
+              "value_signals": []
+            },
+            {
+              "author": "飞鸟不知鱼",
+              "text": "愤怒的小鸟",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "飞鸟不知鱼 愤怒的小鸟 2025-05-20江苏 1 回复",
+              "likes": 1,
+              "source_index": 30,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "血咲 ",
+              "text": "回复 W ～小p : 愤怒的小鸟",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "血咲  回复 W ～小p : 愤怒的小鸟 2025-05-20广东 3 回复",
+              "likes": 3,
+              "source_index": 31,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "知足常乐",
+              "text": "回复 阿布罗狄 : Aloha ，欢迎你来",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "知足常乐 回复 阿布罗狄 : Aloha ，欢迎你来 2025-05-20美国 赞 回复",
+              "likes": null,
+              "source_index": 32,
+              "value_signals": []
+            },
+            {
+              "author": "浙大求是鹅",
+              "text": "愤怒的小鸟？",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "浙大求是鹅 愤怒的小鸟？ 2025-05-20安徽 赞 回复",
+              "likes": null,
+              "source_index": 33,
+              "value_signals": []
+            },
+            {
+              "author": "谷子生",
+              "text": "这不是愤怒的小鸟本鸟嘛",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "谷子生 这不是愤怒的小鸟本鸟嘛 2025-05-20江苏 1 回复",
+              "likes": 1,
+              "source_index": 34,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "纯爱自己战士668",
+              "text": "啊啊啊太像神奇宝贝了！",
+              "is_reply": true,
+              "parent_author": "知足常乐",
+              "parent_text": "你把鸟拍得太漂亮了，大自然真得是鬼斧神工。这种像一怒冲冠的小鸟，在夏威夷经常见到，有机会来夏威夷拍",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "纯爱自己战士668 啊啊啊太像神奇宝贝了！ 2025-05-20广东 赞 回复",
+              "likes": null,
+              "source_index": 35,
+              "value_signals": []
+            },
+            {
+              "author": "阿布罗狄 作者",
+              "text": "回复 月下一只猹 : 您好 是长尾山雀科 雀莺属",
+              "is_reply": true,
+              "parent_author": "月下一只猹",
+              "parent_text": "博主您好，不知为何在网上搜来有写它是莺科的，所以画完后标注了莺科，怕标错了，看您判断的就是长尾山雀科吗？",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "阿布罗狄 作者 回复 月下一只猹 : 您好 是长尾山雀科 雀莺属 2025-09-25北京 赞 回复",
+              "likes": null,
+              "source_index": 36,
+              "value_signals": [
+                "author_reply"
+              ]
+            },
+            {
+              "author": "月下一只猹",
+              "text": "回复 阿布罗狄 : 收到感谢",
+              "is_reply": true,
+              "parent_author": "月下一只猹",
+              "parent_text": "博主您好，不知为何在网上搜来有写它是莺科的，所以画完后标注了莺科，怕标错了，看您判断的就是长尾山雀科吗？",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "月下一只猹 回复 阿布罗狄 : 收到感谢 2025-09-25甘肃 1 回复",
+              "likes": 1,
+              "source_index": 37,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "蜡笔小糕🥕",
+              "text": "我也盯着屁屁看了@猜猜寻的吃饭日记",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "蜡笔小糕🥕 我也盯着屁屁看了@猜猜寻的吃饭日记 2025-05-20福建 1 回复",
+              "likes": 1,
+              "source_index": 38,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "小🐑",
+              "text": "@是个好宝！ [捂嘴笑R]好可爱",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "小🐑 @是个好宝！ [捂嘴笑R]好可爱 2025-05-20云南 1 回复",
+              "likes": 1,
+              "source_index": 39,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "momo",
+              "text": "我以为是嘴巴",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "momo 我以为是嘴巴 2025-05-20四川 1 回复",
+              "likes": 1,
+              "source_index": 40,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "啦啦啦没人看见我",
+              "text": "回复 momo : 这是可爱的鸡美丽",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "啦啦啦没人看见我 回复 momo : 这是可爱的鸡美丽 2025-05-20江苏 1 回复",
+              "likes": 1,
+              "source_index": 41,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "不知名路人小饼干",
+              "text": "@小橙子卖完了",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "不知名路人小饼干 @小橙子卖完了 2025-05-20北京 赞 回复",
+              "likes": null,
+              "source_index": 42,
+              "value_signals": []
+            },
+            {
+              "author": "两个苹果（准备淡游了）",
+              "text": "我也想说",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "两个苹果（准备淡游了） 我也想说 2025-05-21广东 1 回复",
+              "likes": 1,
+              "source_index": 43,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "老坛杉菜",
+              "text": "回复 小豆 : 哈哈哈哈哈哈哈",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "老坛杉菜 回复 小豆 : 哈哈哈哈哈哈哈 2025-05-21河北 赞 回复",
+              "likes": null,
+              "source_index": 44,
+              "value_signals": []
+            },
+            {
+              "author": "老坛杉菜",
+              "text": "回复 两个苹果（准备淡游了） :",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "老坛杉菜 回复 两个苹果（准备淡游了） : 2025-05-21河北 赞 回复",
+              "likes": null,
+              "source_index": 45,
+              "value_signals": []
+            },
+            {
+              "author": "落落（已卸载停游停氪）",
+              "text": "还真有这种鸟",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "落落（已卸载停游停氪） 还真有这种鸟 2025-05-24河南 赞 回复",
+              "likes": null,
+              "source_index": 46,
+              "value_signals": []
+            },
+            {
+              "author": "小粽子闪亮亮",
+              "text": "我就知道我不会无缘无故刷到这个",
+              "is_reply": true,
+              "parent_author": "老坛杉菜",
+              "parent_text": "像这个",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "小粽子闪亮亮 我就知道我不会无缘无故刷到这个 2025-05-24广东 赞 回复",
+              "likes": null,
+              "source_index": 47,
+              "value_signals": []
+            },
+            {
+              "author": "猫猫头",
+              "text": "小鸟：救救我有变态",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "猫猫头 小鸟：救救我有变态 2025-05-20江苏 2 回复",
+              "likes": 2,
+              "source_index": 48,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "是个好宝！",
+              "text": "回复 小🐑 : 这宝宝配色真可爱",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "是个好宝！ 回复 小🐑 : 这宝宝配色真可爱 2025-05-20北京 赞 回复",
+              "likes": null,
+              "source_index": 49,
+              "value_signals": []
+            },
+            {
+              "author": "啦啦啦没人看见我",
+              "text": "回复 猫猫头 : 一把薅过来吧唧一口 你可以走了",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "啦啦啦没人看见我 回复 猫猫头 : 一把薅过来吧唧一口 你可以走了 2025-05-20江苏 赞 回复",
+              "likes": null,
+              "source_index": 50,
+              "value_signals": []
+            },
+            {
+              "author": "落黛汐",
+              "text": "@陈樱雪（黄子深圳演唱会让我抢到票好吗好的版） @momo",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "落黛汐 @陈樱雪（黄子深圳演唱会让我抢到票好吗好的版） @momo 2025-05-22广东 赞 回复",
+              "likes": null,
+              "source_index": 51,
+              "value_signals": []
+            },
+            {
+              "author": "你们都别拦着我",
+              "text": "嘻嘻嘻嘻嘻",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "你们都别拦着我 嘻嘻嘻嘻嘻 2025-05-23江苏 赞 回复",
+              "likes": null,
+              "source_index": 52,
+              "value_signals": []
+            },
+            {
+              "author": "洋芋",
+              "text": "@J31 @景景 @肖🐰白又白. 好漂亮",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "洋芋 @J31 @景景 @肖🐰白又白. 好漂亮 2025-05-24广东 赞 回复",
+              "likes": null,
+              "source_index": 53,
+              "value_signals": []
+            },
+            {
+              "author": "年糕",
+              "text": "@Adiós",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "年糕 @Adiós 2025-05-27江苏 1 回复",
+              "likes": 1,
+              "source_index": 54,
+              "value_signals": [
+                "liked_comment"
+              ]
+            },
+            {
+              "author": "Abschied",
+              "text": "回复 年糕 : 哦哦哦哦好可爱",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "Abschied 回复 年糕 : 哦哦哦哦好可爱 2025-05-28江苏 赞 回复",
+              "likes": null,
+              "source_index": 55,
+              "value_signals": []
+            },
+            {
+              "author": "mono",
+              "text": "要是正好拍到拉屎就好啦",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "mono 要是正好拍到拉屎就好啦 2025-06-05重庆 赞 回复",
+              "likes": null,
+              "source_index": 56,
+              "value_signals": []
+            },
+            {
+              "author": "啦啦啦没人看见我",
+              "text": "回复 mono : 那你可以得到一个更加圆润紧翘的屁股蛋子",
+              "is_reply": true,
+              "parent_author": "啦啦啦没人看见我",
+              "parent_text": "噢这可爱的小屁屁",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "啦啦啦没人看见我 回复 mono : 那你可以得到一个更加圆润紧翘的屁股蛋子 2025-06-05江苏 赞 回复",
+              "likes": null,
+              "source_index": 57,
+              "value_signals": []
+            }
+          ],
+          "collection_meta": {
+            "source_page": "profile",
+            "source_query": null,
+            "detail_completion_reason": "reached_detail_bottom",
+            "gallery_completion_reason": "reached_last_image",
+            "viewport_advance_count": 13,
+            "gallery_advance_count": 6,
+            "expanded_control_count": 13,
+            "expanded_reply_control_count": 13,
+            "expanded_body_control_count": 0,
+            "comment_completion_reason": "reached_comment_bottom",
+            "gallery_total": 6,
+            "gallery_last_position": 6,
+            "image_resource_count": 6,
+            "comment_item_count": 57,
+            "reported_comment_count": 2129,
+            "unavailable_fields": [
+              "shares"
+            ],
+            "collected_at": "2026-07-11T01:59:33.147844+08:00",
+            "complete": true,
+            "missing_fields": [],
+            "homepage_position": 1,
+            "pinned": true
+          }
+        }
+      ],
+      "seed_keyword": "观鸟",
+      "discovered_from_note": {
+        "note_id": "682ad5ac000000002300e2b2",
+        "title": "花彩雀莺｜多巴胺小鸟",
+        "note_url": "https://www.xiaohongshu.com/explore/682ad5ac000000002300e2b2",
+        "likes": 44000,
+        "comments": null,
+        "saves": null
+      },
+      "collection_meta": {
+        "profile_complete": true,
+        "target_creator_min_followers": 5000,
+        "note_target": 1,
+        "note_count": 1,
+        "note_completion_reason": "target_reached",
+        "note_errors": [],
+        "viewport_advance_count": 0,
+        "collected_at": "2026-07-11T01:59:35.207216+08:00"
+      }
+    }
+  ],
+  "rejected_creators": [],
+  "collector_meta": {
+    "started_at": "2026-07-11T01:57:42.711749+08:00",
+    "last_saved_at": "2026-07-11T01:59:36.991030+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "browsing_method": "visible_observe_click_read_return",
+    "collection_note": "Creators were inspected one by one through the visible page. Qualified creator notes contain complete detail-page data."
+  }
+}

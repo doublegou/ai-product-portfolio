@@ -1,0 +1,47 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome_visible_detail",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 5000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "note_detail_required": true
+  },
+  "coverage": {
+    "creator_count": 0,
+    "rejected_creator_count": 0,
+    "note_count": 0,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "inspected_creator_count": 0,
+        "qualified_creator_count": 0,
+        "viewport_advance_count": 1,
+        "completion_reason": "feed_end",
+        "warnings": [],
+        "collected_at": "2026-07-10T23:44:06.037093+08:00"
+      }
+    ]
+  },
+  "accounts": [],
+  "rejected_creators": [],
+  "collector_meta": {
+    "started_at": "2026-07-10T23:44:01.085369+08:00",
+    "last_saved_at": "2026-07-10T23:44:06.037438+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "browsing_method": "visible_observe_click_read_return",
+    "collection_note": "Creators were inspected one by one through the visible page. Qualified creator notes contain complete detail-page data."
+  }
+}

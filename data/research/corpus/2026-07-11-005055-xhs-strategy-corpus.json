@@ -1,0 +1,356 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome_visible_detail",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 5000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "note_detail_required": true
+  },
+  "coverage": {
+    "creator_count": 1,
+    "rejected_creator_count": 2,
+    "note_count": 1,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "inspected_creator_count": 3,
+        "qualified_creator_count": 1,
+        "viewport_advance_count": 0,
+        "completion_reason": "qualified_creator_target_reached",
+        "warnings": [],
+        "collected_at": "2026-07-11T00:52:31.300258+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_id": "6534fd39000000000400bb26",
+      "account_name": "woohoo杂学家",
+      "account_url": "https://www.xiaohongshu.com/user/profile/6534fd39000000000400bb26?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB8S0Pq392FRr78Jr1FKRDm2KPoW9-LHIcD8SHd1Veokc=&xsec_source=pc_search",
+      "avatar_url": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31cr9lfqi0c005p9kvksh1ep6ep9p2i8?imageView2/2/w/540/format/webp|imageMogr2/strip2/blur/1x56",
+      "red_id": "8437095114",
+      "ip_location": "广东",
+      "bio": "🌟WooHoo～ 我们来啦！ 💡专注分享大湾区的有趣杂学，让知识更贴近生活！ 👀禁商用、搬运、二改、投喂AI",
+      "follower_count": 34000,
+      "following_count": 38,
+      "liked_count": 406000,
+      "positioning_notes": [
+        "🌟WooHoo～ 我们来啦！ 💡专注分享大湾区的有趣杂学，让知识更贴近生活！ 👀禁商用、搬运、二改、投喂AI"
+      ],
+      "notes": [
+        {
+          "note_id": "6a4a5675000000000f01dfe5",
+          "note_url": "https://www.xiaohongshu.com/explore/6a4a5675000000000f01dfe5?xsec_token=ABMCQKMpYWJenI52L4ilSu0sEcgUwk1zmsK173eXP63uo=&xsec_source=pc_user",
+          "account_name": "woohoo杂学家",
+          "author_url": "https://www.xiaohongshu.com/user/profile/6534fd39000000000400bb26?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB8S0Pq392FRr78Jr1FKRDm2KPoW9-LHIcD8SHd1Veokc=&xsec_source=pc_search",
+          "title": "观鸟，从宝宝抓起",
+          "subtitle": "为什么喜欢拍鸟",
+          "body": "刚出生的宝宝，是天生的远视眼（生理性远视），突发奇想，这不是天选观鸟人嘛~ 但实际上，刚出生的宝宝不管是看近的远的，都非常模糊，虽然焦点落在视网膜的后方，但因为眼睛肌肉和控制神经还太稚嫩，没有调节聚焦的能力，所以不管看近看远都是模糊的散焦画面。不仅如此，由于视锥细胞尚未发育完全，他们眼中的世界是黑白灰的，哪怕眼睛捕捉到了微弱的色彩，也没有办法传送给大脑。 · 这是一种宝宝自我保护机制，防止不成熟的大脑突然看到过于复杂的世界而信息超载。不过，只有不断受到外界的光线和画面的刺激，大脑的神经才会链接，逐渐看清这个世界，观鸟就是不错的方式~看看你们想起了哪些合适的鸟儿 · 0-1月的宝宝，能看20-30cm，可以选择观看黑白对比强烈的小鸟，移动的小鸟就如同一张移动的黑白卡~ · 2-3月的宝宝，红、绿色的视锥细胞率先发育，宝宝会首先认出红色，且追视能力增强，可以全景追踪，这个月龄可以优先选择性大只的、会缓慢移动的、带有一些红色的小鸟 · 4-6月的宝宝，逐渐能看出色彩，对红黄蓝绿的色彩也更加感兴趣，也有了立体视觉，能区分远近，可以去寻找彩色的鸟儿~ · 7-12月的宝宝，开始观鸟进阶！已经解锁远距离对焦，不再仅被大鸟吸引，也会注意到鸟类的细微动作，如果我们指着小鸟告诉他，他们也会顺着方向看小鸟，还会很激动地与你分享他的发现~ · 观鸟的意义，或许不仅仅是鸟（也是户外哄睡法[doge]） 每一次抬头看鸟，都是大脑连接世界的一小步；对于我们来说，每一次陪他一起看鸟，都是陪伴成长的一大步~观鸟，从宝宝抓起[萌萌哒R] #育儿经验howto #新手妈妈 #自然教育 #人类幼崽 #呼叫野生科学家 #观鸟 #鸟鸟教 #治愈系动物 #小鸟友好计划 #观鸟爱好者 @HOWTO薯 @生活薯 @知识薯 @小红书REDesign",
+          "hashtags": [
+            "#育儿经验howto",
+            "#新手妈妈",
+            "#自然教育",
+            "#人类幼崽",
+            "#呼叫野生科学家",
+            "#观鸟",
+            "#鸟鸟教",
+            "#治愈系动物",
+            "#小鸟友好计划",
+            "#观鸟爱好者"
+          ],
+          "likes": 1057,
+          "comments": 51,
+          "saves": 129,
+          "shares": null,
+          "publish_time": "5天前",
+          "location": "广东",
+          "images": [
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/c6dbb889d02306fa36512e5b852c4568/spectrum/1040g0k032275cl8f74005p9kvksh1ep6a6ovdv0!nd_prv_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 539,
+              "height": 719,
+              "index": 1
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/3d5268c431e30837017c4921070ea1a2/spectrum/1040g0k032275cl8f740g5p9kvksh1ep6k9pi7cg!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 2
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/7804b819b7d8641e7d3f00e0f6dd91c7/spectrum/1040g34o32289s4f06s0g5p9kvksh1ep6lud5epg!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 3
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/a7ce103bd8fe5952305ed8c54018e761/spectrum/1040g0k032275cl8f741g5p9kvksh1ep6jbmqtpo!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 4
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/d9f40c71802cbbd51dd34438806eecb1/spectrum/1040g0k032275cl8f74205p9kvksh1ep6t6v7pk8!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 5
+            },
+            {
+              "src": "https://sns-webpic-qc.xhscdn.com/202607110051/d0db35c69c86323d2805fa584846500b/spectrum/1040g0k032275cl8f742g5p9kvksh1ep67v4vv8o!nd_dft_wlteh_webp_3",
+              "srcset": null,
+              "alt": "",
+              "title": "",
+              "width": 1080,
+              "height": 1440,
+              "index": 6
+            }
+          ],
+          "video": null,
+          "comment_items": [
+            {
+              "author": "鲜芋仙冰冰",
+              "text": "来了",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "鲜芋仙冰冰 来了 1天前江苏 2 2",
+              "likes": 2
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "这在哪里呀，好多~~",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 这在哪里呀，好多~~ 昨天 10:38广东 赞 回复",
+              "likes": null
+            },
+            {
+              "author": "Helen Ding",
+              "text": "我人生早期记忆就是去动物园看鸟",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "Helen Ding 我人生早期记忆就是去动物园看鸟 3天前广东 5 2",
+              "likes": 5
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "那是不是三岁的时候呀，还是更小的时候~",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 那是不是三岁的时候呀，还是更小的时候~ 2天前广东 赞 回复",
+              "likes": null
+            },
+            {
+              "author": "野花",
+              "text": "外甥女2岁会认识乌鸫和红耳鹎啦（家门口这两种最常见），然后送了她一只乌鸫玩偶",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "野花 外甥女2岁会认识乌鸫和红耳鹎啦（家门口这两种最常见），然后送了她一只乌鸫玩偶 昨天 01:37内蒙古 3 1",
+              "likes": 3
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "好厉害啊！！！礼物也赞哈哈哈哈~",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 好厉害啊！！！礼物也赞哈哈哈哈~ 昨天 10:38广东 赞 回复",
+              "likes": null
+            },
+            {
+              "author": "蟹蟹蟹蟹宝（停更版）",
+              "text": "太棒了！我现在怀孕每天带着我肚子里的宝宝隔空观鸟行不",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "蟹蟹蟹蟹宝（停更版） 太棒了！我现在怀孕每天带着我肚子里的宝宝隔空观鸟行不 4天前浙江 61 2",
+              "likes": 61
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "支持支持~~！妈妈也会被大自然疗愈！！心情好宝宝就更开心~",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 支持支持~~！妈妈也会被大自然疗愈！！心情好宝宝就更开心~ 4天前广东 14 回复",
+              "likes": 14
+            },
+            {
+              "author": "小红薯6A2DCAD3",
+              "text": "可以从小学培养辨认柳莺",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "小红薯6A2DCAD3 可以从小学培养辨认柳莺 1天前广东 1 回复",
+              "likes": 1
+            },
+            {
+              "author": "我不是贝拉",
+              "text": "P3 夜鹭 “鸠鸽科副斑鸠属”？",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "我不是贝拉 P3 夜鹭 “鸠鸽科副斑鸠属”？ 5天前福建 1 2",
+              "likes": 1
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "哎呀妈呀忘记改了！！明天修改一下~~鹭科夜鹭属",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 哎呀妈呀忘记改了！！明天修改一下~~鹭科夜鹭属 5天前广东 1 回复",
+              "likes": 1
+            },
+            {
+              "author": "八宝粽粽",
+              "text": "首先 我要有个宝宝",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "八宝粽粽 首先 我要有个宝宝 3天前日本 赞 2",
+              "likes": null
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "自己就是宝宝~",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 自己就是宝宝~ 2天前广东 赞 回复",
+              "likes": null
+            },
+            {
+              "author": "港口上盗窃薯片的海欧",
+              "text": "0-1月的宝宝也观鸟真是太强悍了（话说人类幼崽这时候应该可以睁眼了吧，不像鸟小时候）",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "港口上盗窃薯片的海欧 0-1月的宝宝也观鸟真是太强悍了（话说人类幼崽这时候应该可以睁眼了吧，不像鸟小时候） 4天前四川 11 2",
+              "likes": 11
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "已经睁眼了哈哈哈~就是看东西非常模糊！因为刚从肚子里出来还没适应这个世界",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 已经睁眼了哈哈哈~就是看东西非常模糊！因为刚从肚子里出来还没适应这个世界 4天前广东 4 回复",
+              "likes": 4
+            },
+            {
+              "author": "欢喜和她的朋友们",
+              "text": "有的鸟模模糊糊，却已经知道是啥了",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "欢喜和她的朋友们 有的鸟模模糊糊，却已经知道是啥了 5天前广东 53 1",
+              "likes": 53
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "哈哈哈哈而且大大只行动还有点缓慢",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 哈哈哈哈而且大大只行动还有点缓慢 5天前广东 5 回复",
+              "likes": 5
+            },
+            {
+              "author": "质子假（花开富贵版）",
+              "text": "一个月能看到白鹡鸰三个月能看到宏伟水渠长大可以去当狙击手或者飞行员了",
+              "reply_count": null,
+              "is_author_reply": false,
+              "raw_text": "质子假（花开富贵版） 一个月能看到白鹡鸰三个月能看到宏伟水渠长大可以去当狙击手或者飞行员了 4天前四川 43 1",
+              "likes": 43
+            },
+            {
+              "author": "woohoo杂学家 作者",
+              "text": "哈哈哈哈哈一个模糊的小小身影闪过",
+              "reply_count": null,
+              "is_author_reply": true,
+              "raw_text": "woohoo杂学家 作者 哈哈哈哈哈一个模糊的小小身影闪过 3天前广东 3 回复",
+              "likes": 3
+            }
+          ],
+          "collection_meta": {
+            "source_page": "profile",
+            "source_query": null,
+            "detail_completion_reason": "reached_detail_bottom",
+            "gallery_completion_reason": "reached_last_image",
+            "viewport_advance_count": 11,
+            "gallery_advance_count": 5,
+            "expanded_control_count": 0,
+            "unavailable_fields": [
+              "shares"
+            ],
+            "collected_at": "2026-07-11T00:52:24.364864+08:00",
+            "complete": true,
+            "missing_fields": [],
+            "homepage_position": 1,
+            "pinned": false
+          }
+        }
+      ],
+      "seed_keyword": "观鸟",
+      "discovered_from_note": {
+        "note_id": "69b6c24a000000001b0034b7",
+        "title": "小鸟为什么喜欢歪头杀？🦉",
+        "note_url": "https://www.xiaohongshu.com/explore/69b6c24a000000001b0034b7",
+        "likes": 16000,
+        "comments": null,
+        "saves": null
+      },
+      "collection_meta": {
+        "profile_complete": true,
+        "target_creator_min_followers": 5000,
+        "note_target": 1,
+        "note_count": 1,
+        "note_completion_reason": "target_reached",
+        "note_errors": [],
+        "viewport_advance_count": 0,
+        "collected_at": "2026-07-11T00:52:29.508383+08:00"
+      }
+    }
+  ],
+  "rejected_creators": [
+    {
+      "account_id": "5ef6bfdc000000000101ccbf",
+      "account_name": "姬風則",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5ef6bfdc000000000101ccbf?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABizgEyUrssmiRw0qg9Z35WSraABnUhM3AAYau4DV6F_g=&xsec_source=pc_search",
+      "follower_count": 1225,
+      "reason": "follower_count_not_above_5000: 1225",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "689072ee000000002802c046",
+      "account_name": "奔跑的勺子",
+      "account_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?xsec_token=ABHAS1INWeh-ioyJtVPd2V--GMY84RLPYP4wYUfe0uerE=&xsec_source=pc_search",
+      "follower_count": 34,
+      "reason": "follower_count_not_above_5000: 34",
+      "seed_keyword": "观鸟"
+    }
+  ],
+  "collector_meta": {
+    "started_at": "2026-07-11T00:50:55.114825+08:00",
+    "last_saved_at": "2026-07-11T00:52:31.300775+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "browsing_method": "visible_observe_click_read_return",
+    "collection_note": "Creators were inspected one by one through the visible page. Qualified creator notes contain complete detail-page data."
+  }
+}

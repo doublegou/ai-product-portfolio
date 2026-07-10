@@ -1,0 +1,625 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书完整笔记内容与互动表达",
+  "source": "xhs_current_chrome_visible_detail",
+  "accounts": [],
+  "loose_notes": [
+    {
+      "note_id": "68b63e60000000001c010022",
+      "note_url": "https://www.xiaohongshu.com/explore/68b63e60000000001c010022?xsec_token=AB7dHg4xB64OaF4lpmA0VJEKjpn6zHTjVXIjhSKU-YPZg=&xsec_source=pc_search",
+      "account_name": "奔跑的勺子",
+      "author_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?channel_type=web_search_result_notes&xsec_token=AB5T34QKKBRtqYQPyZf33Dl1S9oXjzpTs77qCwFZLoCVM%3D&xsec_source=pc_note",
+      "title": "观鸟app推荐！观鸟入门必备，识别&记录",
+      "subtitle": "中国观鸟记录中心app",
+      "body": "🔍【鸟类识别】 【懂鸟】图像、音频识别💯 国内使用率top，有APP和小程序，识别全球上万种鸟类，支持野外离线识别（资料包2G+） 【观鸟君】图像、特征识别 腾讯公益基金×国家地理联合出品小程序，识别中国 1516种鸟，特色是观鸟、护鸟知识栏目 【Merlin Bird ID】图像、音频、特征识别💯 康奈尔大学鸟类实验室出品，全球观鸟必备。离线资料包比懂鸟小1/2，便携度up 【BirdNET】音频识别 康奈尔大学鸟类实验室出品，基于神经网络识别3000+种鸟类鸣声（远超一般应用1000+种），音频记录可上传数据库 可申请成为录音注释员，帮助训练AI模型 【Birda】图像、特征识别 会员40刀/年可以但没必要，免费功能够用 提供观鸟点地图+社区人工鉴别，需要科学上网 📊【鸟类数据库】 【观鸟记录中心】中国观鸟数据库💯 国内观鸟必备，查鸟种观测记录，上传数据生成个人观鸟报告 【eBird】全球最大的观鸟数据库💯 数十亿条观测记录，观鸟记录经审核后可录入数据库，用于科学研究(发表在2025年《Science》的一项研究就是使用eBird数据） 【Wren】鸟鸣数据库 音源来自xeno-canto（公众野生动物声音网站，任何人都可以上传和勘误音频，提供API接口） 相比同类型APP【Avesvox】，Wren中文友好，功能相对更丰富 ✨【特色小程序】 【本地观鸟】鸟类环志板块 【鸟类防捕记录】上报鸟类防捕工具,守护鸟类 【鸟典】纯鸟类名录查询，可跳转懂鸟 #观鸟 #鸟类 #鸟类图鉴 #懂鸟 #观鸟入门 #观鸟记录 #户外 #这是什么鸟 #鸟类识别 #观鸟爱好者",
+      "hashtags": [
+        "#观鸟",
+        "#鸟类",
+        "#鸟类图鉴",
+        "#懂鸟",
+        "#观鸟入门",
+        "#观鸟记录",
+        "#户外",
+        "#这是什么鸟",
+        "#鸟类识别",
+        "#观鸟爱好者"
+      ],
+      "likes": 0,
+      "comments": 9,
+      "saves": 1163,
+      "shares": null,
+      "publish_time": "编辑于 2025-09-07",
+      "location": "北京",
+      "images": [
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/bb9932d7fb8aa1b615f045d9c2d75d61/spectrum/1040g34o31m4mhb3c4s105q4gebna5g26ie1rsd8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 1
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/771ee46daa6063a167ccbd3d781a8c5e/notes_pre_post/1040g3k0322eqbkvbnk0041bm0me39ob1ojpf0s0!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 818,
+          "index": 2
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/df605f60e38953d13d9db6467cf43ced/notes_pre_post/1040g3k031pj59bf54k205nqo8d508pnhhuihiuo!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 3
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/929356b93ccdcfd326af2306e53740a6/1040g00831encrjsc5s6g49f2mr4t0er762qpen8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 4
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/09e4241dc6b10505c188608242b084c9/note_pre_post_uhdr/1040g3r031k84b3geig3g4bisuthurau2lgsvp38!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 5
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/86f839cfb066c3852015e2db461cdbfe/1040g00831vrjv505jq0049519lebstupgbfqr7o!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 6
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/94553761fc869f7d051f5f1019d9bc1a/note_pre_post_uhdr/1040g3r831tpec3o7n8bg48kft0tq7g1odg9o8hg!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 7
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/ab091119c723d6a2043da2d8154df32c/notes_pre_post/1040g3k0321tqoj2onu205obfmvngjd138s85pa8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 8
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/176cbb4c5b9a7671db1b6fe03a7d89d8/notes_pre_post/1040g3k83220j8oio7kf05ndeo4q08g29dkhthmg!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 9
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/8669f4499dcdc29a467751f60447856e/1040g00831kpiio9j36005onj103nona8is9rue8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 10
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/013b35675fa878ce0003b15f3fc8791e/spectrum/1040g0k03212fghhdn4105o0vtj1gbm60gmu6lf8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 11
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/7ca3eb2d84e2950242eaeeb8fa602aaf/notes_pre_post/1040g3k031tkcmpgl72005o96ak208fchdrm24k8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 12
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/e250c4cd5e3f823b95b229ad2e6e3b1e/notes_pre_post/1040g3k03205hjgdo2q2g5o3iltigbmphofnijlo!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 267,
+          "index": 13
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/644b0246cd2a982a3ef6cab9e9e8a139/spectrum/1040g34o31gpadb3s3c0g49bd0ol3ogautlom8go!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 14
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/04f816688465bd67d2a031f2ea510796/spectrum/1040g34o322en5nsqms105o4h1hm09bo6mhhuo5g!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 855,
+          "index": 15
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/6a39fa1e1215494c161e164708a0e249/1040g2sg31va3647d2ge05o7ul0po5665l770h7g!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 1067,
+          "index": 16
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/611bb5ac53a09a29d9d517cad15452b8/notes_pre_post/1040g3k831vrnjep72q005nnmnve0bj5voaiv3ao!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 17
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/67de058542b33b5df6ab9066ad8744c0/notes_pre_post/1040g3k831r1p4m4a7g405qa3nfpqjts3ebojle0!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 18
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/12212dee154ef916232e91c6df245e2b/notes_pre_post/1040g3k831q6om4s7g2a05ndlol2g96g0r8598c8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 19
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/12b5d282a1262760f60fce0b724658ce/notes_pre_post/1040g3k8320ta6mgink705obfmvngjd13ms5asd8!nc_n_webp_prv_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 267,
+          "height": 356,
+          "index": 20
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/496b00b15e50a1cdc8bb302be3744b14/spectrum/1040g34o31m4mhb3c4s105q4gebna5g26ie1rsd8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 21
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/352896842b76e1f0fff0581c57368ff4/notes_pre_post/1040g3k0322eqbkvbnk0041bm0me39ob1ojpf0s0!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 818,
+          "index": 22
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/4632c8dbfe7231e81ba1d1c656fafba9/notes_pre_post/1040g3k031pj59bf54k205nqo8d508pnhhuihiuo!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 855,
+          "index": 23
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/de2d32aa4ff9ee7a4b85ee7d41c5250d/1040g00831encrjsc5s6g49f2mr4t0er762qpen8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 24
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/1d1065aea6ddfc27285983e30fd40852/note_pre_post_uhdr/1040g3r031k84b3geig3g4bisuthurau2lgsvp38!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 25
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/d0f605a311a22044c80150b87f96c016/1040g00831vrjv505jq0049519lebstupgbfqr7o!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 26
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/f75c877e03bfab2da35118fbc6782bc4/note_pre_post_uhdr/1040g3r831tpec3o7n8bg48kft0tq7g1odg9o8hg!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 27
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/d93d3d205e161fa66818fa013b47c694/notes_pre_post/1040g3k0321tqoj2onu205obfmvngjd138s85pa8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 28
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/bd673d436c3f9a91d6bab682d6aa1e74/notes_pre_post/1040g3k83220j8oio7kf05ndeo4q08g29dkhthmg!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 29
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/71adae1a32a21312a4030600cf94273d/1040g00831kpiio9j36005onj103nona8is9rue8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 30
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/8e805ddff501c563f684a06a90e70836/spectrum/1040g0k03212fghhdn4105o0vtj1gbm60gmu6lf8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 1067,
+          "index": 31
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/e6c483b59db5700b2e1a7039fbc510b9/notes_pre_post/1040g3k031tkcmpgl72005o96ak208fchdrm24k8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 32
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/dc0a18e508b4606adb584c5dd723ea6b/notes_pre_post/1040g3k03205hjgdo2q2g5o3iltigbmphofnijlo!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 579,
+          "height": 579,
+          "index": 33
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/279fcec97b9f82dbe4e12d7f02ab42dd/spectrum/1040g34o31gpadb3s3c0g49bd0ol3ogautlom8go!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 853,
+          "index": 34
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/96e7bf863d66e5a30f8b6cce5417f58b/spectrum/1040g34o322en5nsqms105o4h1hm09bo6mhhuo5g!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 855,
+          "index": 35
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/107ae2bb183dd8cccadbe400ea12e2a7/1040g2sg31va3647d2ge05o7ul0po5665l770h7g!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 640,
+          "height": 1067,
+          "index": 36
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/dd3344750bc7f952b481e99ed06a4f74/spectrum/1040g0k031ltl22qpks4g5q4gebna5g26m8jcnp0!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 37
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/38fa64349274ee56c21e8e066d2a1cda/spectrum/1040g34o31m4mhb3c4s105q4gebna5g26ie1rsd8!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 38
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/4b9734b8764eecaf523ad4d1cd6d6c86/spectrum/1040g0k031ltl22qpks2g5q4gebna5g26qjb2llo!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 39
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/cf1dd2d5b6e961f884eb714ba00066c4/spectrum/1040g0k031ltl22qpks405q4gebna5g26knfsp9o!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 40
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/263e05377ee68b15790b65e53c23550e/spectrum/1040g0k031ltl22qpks205q4gebna5g26o0o187o!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 41
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/c6ced392cc4385f8b2f075267738f776/spectrum/1040g0k031ltl22qpks105q4gebna5g26768trug!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 42
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/e3ac50e67c27ddc99f872119015e5393/spectrum/1040g0k031ltl22qpks0g5q4gebna5g265p8pho0!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 43
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/3437e8905ace06ddde5edf104914c067/spectrum/1040g0k031ltl22qpks3g5q4gebna5g2622voam8!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 44
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/1dd29210d2b0cf565db18f55b004745c/spectrum/1040g0k031ltl22qpks1g5q4gebna5g26t3s3m4g!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 45
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/2cdcd7574b93802a77ccacbe454547b6/spectrum/1040g0k031m4mooackq005q4gebna5g2625vs4p0!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 46
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/42256f4653b891f795b4ddb069ddbd71/spectrum/1040g0k031m4mljg450005q4gebna5g26nvrfo1o!nd_dft_wlteh_webp_3",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 526,
+          "height": 756,
+          "index": 47
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/d98cf6c162cbecaec34762a6359c68ea/comment/1040g2h0320pvfainmo005ogu9bg4154dqprtacg!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512,
+          "index": 48
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/f279f12d462256c6506129a730d7589f/comment/1040g2h0320pvfainmo0g5ogu9bg4154dv052qqo!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512,
+          "index": 49
+        },
+        {
+          "src": "https://sns-webpic-qc.xhscdn.com/202607102328/dd2b9896e7741a4b5e6af71fb79ddc74/comment/1040g2h0320pvfainmo105ogu9bg4154drqphvb8!nc_n_webp_mw_1",
+          "srcset": null,
+          "alt": "",
+          "title": "",
+          "width": 512,
+          "height": 512,
+          "index": 50
+        }
+      ],
+      "video": null,
+      "comment_items": [
+        {
+          "author": "AI您说的对AI",
+          "text": "您好！请帮我看一下这是什么鸟类，谢谢您！",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "AI您说的对AI 您好！请帮我看一下这是什么鸟类，谢谢您！ 05-30北京 赞 回复",
+          "likes": 0
+        },
+        {
+          "author": "难得一呆",
+          "text": "wren刚更新了……",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "难得一呆 wren刚更新了…… 2025-09-07浙江 赞 1",
+          "likes": 0
+        },
+        {
+          "author": "奔跑的勺子 作者",
+          "text": "已编辑，感谢提醒～",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "奔跑的勺子 作者 已编辑，感谢提醒～ 2025-09-07广东 赞 回复",
+          "likes": 0
+        },
+        {
+          "author": "Jina",
+          "text": "学习了，宝藏博主",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "Jina 学习了，宝藏博主 2025-09-05广东 赞 1",
+          "likes": 0
+        },
+        {
+          "author": "奔跑的勺子 作者",
+          "text": "奔跑的勺子 作者 2025-09-06广东 赞 回复",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "奔跑的勺子 作者 2025-09-06广东 赞 回复",
+          "likes": 0
+        },
+        {
+          "author": "已老实",
+          "text": "@咕咾的爬虫脑",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "已老实 @咕咾的爬虫脑 2025-09-07福建 2 回复",
+          "likes": 2
+        },
+        {
+          "author": "大肠菌",
+          "text": "@阿雷x",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "大肠菌 @阿雷x 2025-09-14浙江 1 回复",
+          "likes": 1
+        },
+        {
+          "author": "李猪猪（被黑眉苇莺逼疯",
+          "text": "观鸟君好像没有app",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "李猪猪（被黑眉苇莺逼疯 观鸟君好像没有app 2025-09-08北京 赞 1",
+          "likes": 0
+        },
+        {
+          "author": "奔跑的勺子 作者",
+          "text": "是小程序",
+          "reply_count": null,
+          "is_author_reply": false,
+          "raw_text": "奔跑的勺子 作者 是小程序 2025-09-08广东 赞 回复",
+          "likes": 0
+        }
+      ],
+      "collection_meta": {
+        "source_page": "search",
+        "source_query": "观鸟日记 记录",
+        "detail_completion_reason": "reached_detail_bottom",
+        "gallery_completion_reason": "all_image_resources_loaded",
+        "viewport_advance_count": 6,
+        "gallery_advance_count": 0,
+        "expanded_control_count": 0,
+        "unavailable_fields": [
+          "shares"
+        ],
+        "collected_at": "2026-07-10T23:29:03.708216+08:00",
+        "complete": true,
+        "missing_fields": []
+      }
+    }
+  ],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "searched_queries": [
+      {
+        "query": "观鸟日记 记录",
+        "observed_card_count": 6,
+        "qualified_card_count": 1,
+        "detail_requested_count": 1,
+        "detail_success_count": 1,
+        "viewport_advance_count": 0,
+        "completion_reason": "target_reached",
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51"
+      }
+    ],
+    "page_title": "观鸟日记 记录 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51",
+    "collected_at": "2026-07-10T23:29:05.123969+08:00",
+    "requested_limit": 1,
+    "collected_count": 1,
+    "detail_error_count": 0,
+    "detail_errors": [],
+    "quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "browsing_method": "visible_observe_click_read_return",
+    "field_coverage": {
+      "account_name": 1,
+      "author_url": 1,
+      "body": 1,
+      "comment_items": 1,
+      "comments": 1,
+      "hashtags": 1,
+      "images": 1,
+      "likes": 1,
+      "location": 1,
+      "note_id": 1,
+      "note_url": 1,
+      "publish_time": 1,
+      "saves": 1,
+      "shares": 0,
+      "subtitle": 1,
+      "title": 1,
+      "video": 0
+    },
+    "warnings": []
+  }
+}

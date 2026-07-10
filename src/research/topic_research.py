@@ -337,6 +337,7 @@ def _compact_external_hotspot_items(items: list[dict[str, Any]]) -> list[dict[st
             "summary": item.get("summary"),
             "url": item.get("url"),
             "channel": item.get("channel"),
+            "published_at": item.get("published_at"),
             "views": item.get("views"),
         }
         for item in items

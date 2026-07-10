@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 
 
 DEFAULT_TIMEOUT_SECONDS = 20
+GOOGLE_NEWS_FRESHNESS_DAYS = 7
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36"
@@ -116,6 +117,7 @@ def _collect_google_trends_rss(
                         "title": item.get("title"),
                         "url": item.get("link"),
                         "summary": item.get("description"),
+                        "published_at": item.get("published_at"),
                     }
                 )
         except Exception as exc:
@@ -134,7 +136,7 @@ def _collect_google_news_rss(
     for query in queries:
         params = urlencode(
             {
-                "q": query,
+                "q": f"{query} when:{GOOGLE_NEWS_FRESHNESS_DAYS}d",
                 "hl": "zh-CN",
                 "gl": "CN",
                 "ceid": "CN:zh-Hans",
@@ -150,6 +152,7 @@ def _collect_google_news_rss(
                         "title": item.get("title"),
                         "url": item.get("link"),
                         "summary": item.get("description"),
+                        "published_at": item.get("published_at"),
                     }
                 )
         except Exception as exc:
@@ -236,6 +239,7 @@ def _collect_youtube_most_popular(*, limit_per_source: int) -> dict[str, Any]:
                 "title": snippet.get("title"),
                 "summary": snippet.get("description"),
                 "channel": snippet.get("channelTitle"),
+                "published_at": snippet.get("publishedAt"),
                 "views": _safe_int(stats.get("viewCount")),
                 "url": f"https://www.youtube.com/watch?v={video_id}" if video_id else None,
             }
@@ -276,6 +280,7 @@ def _read_rss_items(url: str, *, limit: int) -> list[dict[str, str | None]]:
                 "title": _element_text(item, "title"),
                 "link": _element_text(item, "link"),
                 "description": _strip_tags(_element_text(item, "description") or ""),
+                "published_at": _element_text(item, "pubDate"),
             }
         )
     return items
