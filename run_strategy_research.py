@@ -40,7 +40,12 @@ def main() -> int:
     analyze_parser.add_argument("corpus_json")
     analyze_parser.add_argument("--min-creators", type=int, default=50)
     analyze_parser.add_argument("--min-notes-per-creator", type=int, default=10)
-    analyze_parser.add_argument("--batch-size", type=int, default=5)
+    analyze_parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+        help="Creators per multimodal analysis call. Defaults to one creator per call.",
+    )
     analyze_parser.add_argument(
         "--skip-strategy-review",
         action="store_true",

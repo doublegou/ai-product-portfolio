@@ -4,53 +4,169 @@ from pathlib import Path
 from typing import Any, Literal
 from zoneinfo import ZoneInfo
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from src.base.json_utils import call_json_model
 from src.base.memory import load_memory
+from src.research.research_infra import (
+    AccountSample,
+    ResearchImageReference,
+    build_multimodal_research_message,
+    call_structured_research_model,
+    load_research_prompt,
+)
 
 
-class StrategyResearchAnalysis(BaseModel):
+MAX_STRATEGY_BODY_CHARS = 8000
+MAX_STRATEGY_COMMENTS_PER_NOTE = 24
+MAX_STRATEGY_IMAGES_PER_NOTE = 16
+STRATEGY_PRODUCTS = {
+    "ISS Tracker",
+    "BirdTracker",
+    "Math Puzzle",
+    "Soulnio",
+}
+
+
+class CreatorStrategyInsight(BaseModel):
+    """Ephemeral analysis of one creator and the creator's detailed notes."""
+
     model_config = ConfigDict(extra="forbid")
 
-    platform: Literal["xiaohongshu"]
-    corpus_size: dict[str, int]
-    ready_for_persona: bool
-    confidence: Literal["low", "medium", "high"]
-    summary: str = Field(min_length=6)
-    account_archetypes: list[str] = Field(default_factory=list)
-    winning_persona_patterns: list[str] = Field(default_factory=list)
-    note_level_patterns: list[str] = Field(default_factory=list)
-    title_methods: list[str] = Field(default_factory=list)
-    hook_methods: list[str] = Field(default_factory=list)
-    body_structures: list[str] = Field(default_factory=list)
-    cover_methods: list[str] = Field(default_factory=list)
-    comment_triggers: list[str] = Field(default_factory=list)
-    final_persona: str = Field(min_length=6)
-    writing_rules: list[str] = Field(default_factory=list)
-    acceptance_standards: list[str] = Field(default_factory=list)
-    rejection_rules: list[str] = Field(default_factory=list)
-    product_mapping: list[str] = Field(default_factory=list)
-    open_questions: list[str] = Field(default_factory=list)
+    creator_index: int = Field(ge=1)
+    account_archetype: str = Field(min_length=4)
+    positioning: str = Field(min_length=6)
+    trust_source: str = Field(min_length=6)
+    target_audience: str = Field(min_length=4)
+    content_pillars: list[str] = Field(min_length=2, max_length=8)
+    recurring_formats: list[str] = Field(min_length=2, max_length=8)
+    title_patterns: list[str] = Field(min_length=2, max_length=8)
+    cover_patterns: list[str] = Field(min_length=2, max_length=8)
+    visual_storytelling_patterns: list[str] = Field(min_length=2, max_length=8)
+    hook_patterns: list[str] = Field(min_length=2, max_length=8)
+    body_patterns: list[str] = Field(min_length=2, max_length=8)
+    interaction_patterns: list[str] = Field(min_length=2, max_length=8)
+    strengths_to_transfer: list[str] = Field(min_length=2, max_length=8)
+    risks_to_avoid: list[str] = Field(min_length=1, max_length=8)
 
     @field_validator(
-        "account_archetypes",
-        "winning_persona_patterns",
-        "note_level_patterns",
-        "title_methods",
-        "hook_methods",
-        "body_structures",
-        "cover_methods",
-        "comment_triggers",
-        "writing_rules",
-        "acceptance_standards",
-        "rejection_rules",
-        "product_mapping",
-        "open_questions",
+        "content_pillars",
+        "recurring_formats",
+        "title_patterns",
+        "cover_patterns",
+        "visual_storytelling_patterns",
+        "hook_patterns",
+        "body_patterns",
+        "interaction_patterns",
+        "strengths_to_transfer",
+        "risks_to_avoid",
+        mode="before",
     )
     @classmethod
     def clean_items(cls, value: list[str]) -> list[str]:
-        return [item.strip() for item in value if item.strip()]
+        return _clean_string_list(value)
+
+
+class CreatorStrategyInsightBatch(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    insights: list[CreatorStrategyInsight] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def creator_indices_must_be_unique(self) -> "CreatorStrategyInsightBatch":
+        indices = [item.creator_index for item in self.insights]
+        if len(indices) != len(set(indices)):
+            raise ValueError("creator insight indices must be unique")
+        return self
+
+
+class StrategyCorpusSize(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    creators: int = Field(ge=0)
+    qualified_creators: int = Field(ge=0)
+    notes: int = Field(ge=0)
+
+
+class ContentPillarGuidance(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(min_length=2)
+    strategic_role: str = Field(min_length=6)
+    audience_value: str = Field(min_length=6)
+    suitable_products: list[str] = Field(min_length=1, max_length=4)
+
+    @field_validator("suitable_products", mode="before")
+    @classmethod
+    def clean_products(cls, value: list[str]) -> list[str]:
+        return _clean_string_list(value)
+
+
+class ProductStrategyMapping(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    product: str = Field(min_length=2)
+    content_role: str = Field(min_length=6)
+    recommended_angles: list[str] = Field(min_length=2, max_length=6)
+    avoid: list[str] = Field(min_length=1, max_length=5)
+
+    @field_validator("recommended_angles", "avoid", mode="before")
+    @classmethod
+    def clean_items(cls, value: list[str]) -> list[str]:
+        return _clean_string_list(value)
+
+
+class StrategyGuidance(BaseModel):
+    """Long-term strategy research output for the product account."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    platform: Literal["xiaohongshu"] = "xiaohongshu"
+    corpus_size: StrategyCorpusSize
+    ready_for_persona: bool
+    confidence: Literal["low", "medium", "high"]
+    summary: str = Field(min_length=8)
+    strategy_thesis: str = Field(min_length=10)
+    final_persona: str = Field(min_length=8)
+    account_promise: str = Field(min_length=8)
+    target_audience: str = Field(min_length=6)
+    content_pillars: list[ContentPillarGuidance] = Field(min_length=3, max_length=8)
+    persona_rules: list[str] = Field(min_length=3, max_length=10)
+    title_rules: list[str] = Field(min_length=3, max_length=10)
+    cover_rules: list[str] = Field(min_length=3, max_length=10)
+    visual_rules: list[str] = Field(min_length=3, max_length=10)
+    hook_rules: list[str] = Field(min_length=3, max_length=10)
+    body_rules: list[str] = Field(min_length=3, max_length=10)
+    interaction_rules: list[str] = Field(min_length=3, max_length=10)
+    product_mapping: list[ProductStrategyMapping] = Field(min_length=4, max_length=4)
+    acceptance_standards: list[str] = Field(min_length=4, max_length=12)
+    rejection_rules: list[str] = Field(min_length=4, max_length=12)
+    open_questions: list[str] = Field(default_factory=list, max_length=10)
+
+    @field_validator(
+        "persona_rules",
+        "title_rules",
+        "cover_rules",
+        "visual_rules",
+        "hook_rules",
+        "body_rules",
+        "interaction_rules",
+        "acceptance_standards",
+        "rejection_rules",
+        "open_questions",
+        mode="before",
+    )
+    @classmethod
+    def clean_items(cls, value: list[str]) -> list[str]:
+        return _clean_string_list(value)
+
+    @model_validator(mode="after")
+    def product_mapping_must_cover_product_matrix(self) -> "StrategyGuidance":
+        products = [item.product for item in self.product_mapping]
+        if len(products) != len(set(products)) or set(products) != STRATEGY_PRODUCTS:
+            raise ValueError(
+                "product_mapping must contain each strategy product exactly once"
+            )
+        return self
 
 
 class StrategyEvidence(BaseModel):
@@ -94,7 +210,9 @@ class StrategyReview(BaseModel):
     trigger_reason: str = Field(min_length=2)
     corpus_path: str | None = None
     generated_at: str
-    status: Literal["pending_human_decision", "approved", "rejected"] = "pending_human_decision"
+    status: Literal["pending_human_decision", "approved", "rejected"] = (
+        "pending_human_decision"
+    )
     summary: str = Field(min_length=6)
     evidence: list[StrategyEvidence] = Field(default_factory=list)
     recommendations: list[StrategyRecommendation] = Field(default_factory=list)
@@ -102,10 +220,10 @@ class StrategyReview(BaseModel):
     do_not_change: list[str] = Field(default_factory=list)
     human_decision_notes: str = ""
 
-    @field_validator("do_not_change")
+    @field_validator("do_not_change", mode="before")
     @classmethod
     def clean_do_not_change(cls, value: list[str]) -> list[str]:
-        return [item.strip() for item in value if item.strip()]
+        return _clean_string_list(value)
 
 
 def load_strategy_corpus(path: Path | str) -> dict[str, Any]:
@@ -124,13 +242,12 @@ def validate_strategy_corpus_threshold(
     qualified_creator_count = sum(
         1 for account in accounts if len(account.get("notes", [])) >= min_notes_per_creator
     )
-    target_note_count = min_creators * min_notes_per_creator
     return {
         "creator_count": creator_count,
         "note_count": note_count,
         "qualified_creator_count": qualified_creator_count,
         "target_creators": min_creators,
-        "target_notes": target_note_count,
+        "target_notes": min_creators * min_notes_per_creator,
     }
 
 
@@ -140,18 +257,25 @@ def analyze_strategy_corpus(
     min_creators: int = 50,
     min_notes_per_creator: int = 10,
     allow_partial: bool = False,
-    batch_size: int = 5,
+    batch_size: int = 1,
     prompt_path: Path | str = "skills/strategy_researcher.md",
 ) -> dict[str, Any]:
+    """Turn creator-level multimodal research data into StrategyGuidance."""
+    if min_creators < 1 or min_notes_per_creator < 1:
+        raise ValueError("strategy research thresholds must be >= 1")
+    if batch_size < 1:
+        raise ValueError("batch_size must be >= 1")
+
     threshold = validate_strategy_corpus_threshold(
         corpus,
         min_creators=min_creators,
         min_notes_per_creator=min_notes_per_creator,
     )
-    if not allow_partial and (
-        threshold["creator_count"] < threshold["target_creators"]
-        or threshold["qualified_creator_count"] < threshold["target_creators"]
-    ):
+    threshold_met = (
+        threshold["creator_count"] >= threshold["target_creators"]
+        and threshold["qualified_creator_count"] >= threshold["target_creators"]
+    )
+    if not allow_partial and not threshold_met:
         raise RuntimeError(
             "Strategy corpus is not large enough for final persona/rules. "
             f"Creators: {threshold['creator_count']}/{threshold['target_creators']}; "
@@ -160,154 +284,198 @@ def analyze_strategy_corpus(
             f"notes: {threshold['note_count']}/{threshold['target_notes']}."
         )
 
-    prompt_file = Path(prompt_path)
-    if not prompt_file.exists():
-        raise FileNotFoundError(f"Missing prompt file: {prompt_file}")
-    prompt = prompt_file.read_text(encoding="utf-8").strip()
-    if not prompt:
-        raise ValueError(f"Prompt file is empty: {prompt_file}")
-
-    accounts = corpus.get("accounts", [])
-    if len(accounts) > batch_size:
-        batch_analyses = []
-        for start in range(0, len(accounts), batch_size):
-            batch_accounts = accounts[start : start + batch_size]
-            batch_corpus = {
-                **corpus,
-                "accounts": batch_accounts,
-                "coverage": {
-                    **corpus.get("coverage", {}),
-                    "creator_count": len(batch_accounts),
-                    "note_count": sum(len(account.get("notes", [])) for account in batch_accounts),
-                    "batch_index": len(batch_analyses) + 1,
-                },
-            }
-            batch_analyses.append(
-                _call_strategy_model(
-                    prompt=prompt,
-                    payload={
-                        "mode": "batch_analysis",
-                        "threshold": threshold,
-                        "corpus": _compact_corpus(batch_corpus),
-                    },
-                )
-            )
-
-        final_analysis = _call_strategy_model(
-            prompt=prompt,
-            payload={
-                "mode": "final_synthesis_from_batches",
-                "threshold": threshold,
-                "batch_analyses": batch_analyses,
-                "product_memory": load_memory(),
-            },
-        )
-        final_analysis["batch_reports"] = batch_analyses
-        final_analysis["corpus_size"] = {
-            "creators": threshold["creator_count"],
-            "qualified_creators": threshold["qualified_creator_count"],
-            "notes": threshold["note_count"],
-        }
-        return final_analysis
-
-    analysis = _call_strategy_model(
-        prompt=prompt,
-        payload={
-            "mode": "single_pass_analysis",
-            "threshold": threshold,
-            "corpus": _compact_corpus(corpus),
-            "product_memory": load_memory(),
-        },
-    )
-    analysis["corpus_size"] = {
-        "creators": threshold["creator_count"],
-        "qualified_creators": threshold["qualified_creator_count"],
-        "notes": threshold["note_count"],
-    }
-    return analysis
-
-
-def _call_strategy_model(*, prompt: str, payload: dict[str, Any]) -> dict[str, Any]:
-    memory = load_memory()
-    memory_block = "\n\n".join(
-        f"## {filename}\n{content}" for filename, content in memory.items()
-    )
-
-    messages = [
-        {
-            "role": "system",
-            "content": (
-                "You are a strict Chinese social content strategist. "
-                "Infer account positioning and writing rules only from the provided corpus. "
-                "Return valid JSON only."
-            ),
-        },
-        {
-            "role": "user",
-            "content": (
-                f"{prompt}\n\n"
-                "# Current Product Memory\n"
-                f"{memory_block}\n\n"
-                "# Analysis Payload\n"
-                f"{json.dumps(payload, ensure_ascii=False, indent=2)}"
-            ),
-        },
+    all_accounts = [
+        AccountSample.model_validate(account) for account in corpus.get("accounts", [])
     ]
-    parsed = call_json_model(messages, "Strategy researcher")
-    return StrategyResearchAnalysis.model_validate(parsed).model_dump()
+    qualified_accounts = [
+        account for account in all_accounts if len(account.notes) >= min_notes_per_creator
+    ]
+    analysis_accounts = qualified_accounts
+    if allow_partial and not threshold_met:
+        analysis_accounts = [account for account in all_accounts if account.notes]
+    if not analysis_accounts:
+        raise RuntimeError("Strategy corpus has no creator with analyzable detailed notes.")
 
+    prompt = load_research_prompt(prompt_path)
+    analysis_as_of = datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()
+    indexed_accounts = list(enumerate(analysis_accounts, start=1))
+    creator_insights: list[CreatorStrategyInsight] = []
 
-def _compact_corpus(corpus: dict[str, Any]) -> dict[str, Any]:
-    compact_accounts = []
-    for account in corpus.get("accounts", []):
-        compact_notes = []
-        for note in account.get("notes", []):
-            body = (
-                note.get("body")
-                or note.get("detail_body")
-                or note.get("body_excerpt")
-                or ""
-            )
-            compact_notes.append(
-                {
-                    "note_id": note.get("note_id"),
-                    "note_url": note.get("note_url"),
-                    "title": note.get("title"),
-                    "subtitle": note.get("subtitle"),
-                    "body": body[:1200],
-                    "hashtags": note.get("hashtags") or note.get("detail_hashtags") or [],
-                    "likes": note.get("likes"),
-                    "comments": note.get("comments"),
-                    "saves": note.get("saves"),
-                    "shares": note.get("shares"),
-                    "publish_time": note.get("publish_time"),
-                    "location": note.get("location"),
-                    "images": note.get("images", [])[:12],
-                    "video": note.get("video"),
-                    "comment_items": note.get("comment_items", [])[:10],
-                }
-            )
-        compact_accounts.append(
+    for start in range(0, len(indexed_accounts), batch_size):
+        batch = indexed_accounts[start : start + batch_size]
+        account_payloads = [
+            _compact_strategy_account(account, creator_index=creator_index)
+            for creator_index, account in batch
+        ]
+        payload = {
+            "mode": "creator_analysis",
+            "analysis_as_of": analysis_as_of,
+            "corpus_context": {
+                "platform": corpus.get("platform"),
+                "research_goal": corpus.get("research_goal"),
+                "source": corpus.get("source"),
+            },
+            "threshold": threshold,
+            "accounts": account_payloads,
+        }
+        result = call_structured_research_model(
+            [
+                {"role": "system", "content": prompt},
+                build_multimodal_research_message(
+                    payload,
+                    _strategy_image_references(account_payloads),
+                ),
+            ],
+            output_model=CreatorStrategyInsightBatch,
+            label=f"Strategy creator researcher batch {start // batch_size + 1}",
+        )
+        _validate_creator_insight_coverage(account_payloads, result.insights)
+        creator_insights.extend(result.insights)
+
+    corpus_size = StrategyCorpusSize(
+        creators=threshold["creator_count"],
+        qualified_creators=threshold["qualified_creator_count"],
+        notes=threshold["note_count"],
+    )
+    synthesis_payload = {
+        "mode": "strategy_synthesis",
+        "analysis_as_of": analysis_as_of,
+        "threshold": threshold,
+        "threshold_met": threshold_met,
+        "corpus_size": corpus_size.model_dump(),
+        "creator_insights": [item.model_dump() for item in creator_insights],
+        "local_memory": load_memory(),
+    }
+    guidance = call_structured_research_model(
+        [
+            {"role": "system", "content": prompt},
             {
-                "account_id": account.get("account_id"),
-                "account_name": account.get("account_name"),
-                "account_url": account.get("account_url"),
-                "bio": account.get("bio"),
-                "follower_count": account.get("follower_count"),
-                "following_count": account.get("following_count"),
-                "liked_count": account.get("liked_count"),
-                "positioning_notes": account.get("positioning_notes", []),
-                "seed_keyword": account.get("seed_keyword"),
-                "notes": compact_notes,
+                "role": "user",
+                "content": json.dumps(synthesis_payload, ensure_ascii=False, indent=2),
+            },
+        ],
+        output_model=StrategyGuidance,
+        label="Strategy guidance synthesizer",
+    )
+    guidance_payload = guidance.model_dump()
+    guidance_payload["corpus_size"] = corpus_size.model_dump()
+    if not threshold_met:
+        guidance_payload["ready_for_persona"] = False
+        guidance_payload["confidence"] = "low"
+    return StrategyGuidance.model_validate(guidance_payload).model_dump()
+
+
+def _compact_strategy_account(
+    account: AccountSample,
+    *,
+    creator_index: int,
+) -> dict[str, Any]:
+    notes = []
+    for note_index, note in enumerate(account.notes, start=1):
+        notes.append(
+            {
+                "note_index": note_index,
+                "title": note.title,
+                "subtitle": note.subtitle,
+                "body": note.full_body[:MAX_STRATEGY_BODY_CHARS],
+                "hashtags": note.hashtags,
+                "engagement": {
+                    "likes": note.likes,
+                    "comments": note.comments,
+                    "saves": note.saves,
+                    "shares": note.shares,
+                },
+                "publish_time": note.publish_time,
+                "images": [
+                    {
+                        **image.model_dump(exclude_none=True),
+                        "multimodal_label": _strategy_image_label(
+                            creator_index,
+                            note_index,
+                            image_position,
+                        ),
+                    }
+                    for image_position, image in enumerate(
+                        note.images[:MAX_STRATEGY_IMAGES_PER_NOTE],
+                        start=1,
+                    )
+                ],
+                "video": note.video,
+                "comments": [
+                    comment.model_dump(exclude_none=True)
+                    for comment in note.comment_items[:MAX_STRATEGY_COMMENTS_PER_NOTE]
+                ],
             }
         )
     return {
-        "platform": corpus.get("platform"),
-        "corpus_type": corpus.get("corpus_type"),
-        "research_goal": corpus.get("research_goal"),
-        "coverage": corpus.get("coverage"),
-        "accounts": compact_accounts,
+        "creator_index": creator_index,
+        "account": {
+            "account_name": account.account_name,
+            "bio": account.bio,
+            "follower_count": account.follower_count,
+            "following_count": account.following_count,
+            "liked_count": account.liked_count,
+            "positioning_notes": account.positioning_notes,
+            "seed_keyword": account.seed_keyword,
+            "profile_image": (
+                {
+                    "src": account.avatar_url,
+                    "multimodal_label": f"creator_{creator_index}_profile_image",
+                }
+                if account.avatar_url
+                else None
+            ),
+        },
+        "notes": notes,
     }
+
+
+def _strategy_image_references(
+    account_payloads: list[dict[str, Any]],
+) -> list[ResearchImageReference]:
+    references: list[ResearchImageReference] = []
+    for account in account_payloads:
+        profile_image = account.get("account", {}).get("profile_image") or {}
+        profile_url = str(profile_image.get("src") or "").strip()
+        profile_label = str(profile_image.get("multimodal_label") or "").strip()
+        if profile_url and profile_label:
+            references.append(
+                ResearchImageReference(
+                    label=profile_label,
+                    url=profile_url,
+                    detail="high",
+                )
+            )
+        for note in account.get("notes", []):
+            for image in note.get("images", []):
+                url = str(image.get("src") or "").strip()
+                label = str(image.get("multimodal_label") or "").strip()
+                if url and label:
+                    references.append(
+                        ResearchImageReference(label=label, url=url, detail="high")
+                    )
+    return references
+
+
+def _strategy_image_label(
+    creator_index: int,
+    note_index: int,
+    image_position: int,
+) -> str:
+    return f"creator_{creator_index}_note_{note_index}_image_{image_position}"
+
+
+def _validate_creator_insight_coverage(
+    account_payloads: list[dict[str, Any]],
+    insights: list[CreatorStrategyInsight],
+) -> None:
+    expected = {int(item["creator_index"]) for item in account_payloads}
+    actual = {item.creator_index for item in insights}
+    if actual != expected:
+        raise ValueError(
+            "Strategy creator analysis did not cover the requested creators. "
+            f"Expected indices: {sorted(expected)}; got: {sorted(actual)}."
+        )
 
 
 def generate_strategy_review(
@@ -316,48 +484,39 @@ def generate_strategy_review(
     corpus_path: str | None = None,
     trigger: str = "weekly",
     trigger_reason: str = "Weekly strategy research review.",
-    prompt_path: Path | str = "skills/strategy_reviewer.md",
+    prompt_path: Path | str = "skills/strategy_researcher.md",
 ) -> dict[str, Any]:
-    prompt_file = Path(prompt_path)
-    if not prompt_file.exists():
-        raise FileNotFoundError(f"Missing prompt file: {prompt_file}")
-    prompt = prompt_file.read_text(encoding="utf-8").strip()
-    if not prompt:
-        raise ValueError(f"Prompt file is empty: {prompt_file}")
-
-    memory = load_memory()
-    messages = [
+    prompt = load_research_prompt(prompt_path)
+    payload = {
+        "mode": "strategy_review",
+        "current_memory": load_memory(),
+        "strategy_guidance": StrategyGuidance.model_validate(analysis).model_dump(),
+        "trigger": trigger,
+        "trigger_reason": trigger_reason,
+        "corpus_path": corpus_path,
+    }
+    review = call_structured_research_model(
+        [
+            {"role": "system", "content": prompt},
+            {
+                "role": "user",
+                "content": json.dumps(payload, ensure_ascii=False, indent=2),
+            },
+        ],
+        output_model=StrategyReview,
+        label="Strategy reviewer",
+    )
+    review_payload = review.model_dump()
+    review_payload.update(
         {
-            "role": "system",
-            "content": (
-                "You are a strict content strategy reviewer. "
-                "Create a human-reviewable strategy change proposal. "
-                "Do not directly rewrite memory files. Return valid JSON only."
-            ),
-        },
-        {
-            "role": "user",
-            "content": (
-                f"{prompt}\n\n"
-                "# Current Memory\n"
-                f"{json.dumps(memory, ensure_ascii=False, indent=2)}\n\n"
-                "# Strategy Research Analysis\n"
-                f"{json.dumps(analysis, ensure_ascii=False, indent=2)}\n\n"
-                "# Trigger\n"
-                f"trigger: {trigger}\n"
-                f"trigger_reason: {trigger_reason}\n\n"
-                "# Paths\n"
-                f"corpus_path: {corpus_path or ''}"
-            ),
-        },
-    ]
-    parsed = call_json_model(messages, "Strategy reviewer")
-    parsed["generated_at"] = datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()
-    parsed["corpus_path"] = corpus_path
-    parsed["trigger"] = trigger
-    parsed["trigger_reason"] = trigger_reason
-    parsed["status"] = "pending_human_decision"
-    return StrategyReview.model_validate(parsed).model_dump()
+            "generated_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(),
+            "corpus_path": corpus_path,
+            "trigger": trigger,
+            "trigger_reason": trigger_reason,
+            "status": "pending_human_decision",
+        }
+    )
+    return StrategyReview.model_validate(review_payload).model_dump()
 
 
 def save_strategy_result(
@@ -378,9 +537,18 @@ def save_strategy_result(
         "trigger": trigger,
         "trigger_reason": trigger_reason,
         "corpus_path": corpus_path,
-        "analysis": analysis,
+        "analysis": StrategyGuidance.model_validate(analysis).model_dump(),
         "review": review,
     }
     path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-strategy-result.json"
     path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     return path
+
+
+def _clean_string_list(value: list[str]) -> list[str]:
+    cleaned: list[str] = []
+    for item in value:
+        item = item.strip()
+        if item and item not in cleaned:
+            cleaned.append(item)
+    return cleaned

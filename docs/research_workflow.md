@@ -3,10 +3,18 @@
 研究模块对应当前 `src/research/`：
 
 ```text
-research_infra.py      样本结构、读取校验、通用样本分析
+research_infra.py      共享样本结构、输入统计/校验、结构化研究模型调用
 topic_research.py      选题研究
 writing_research.py    写作研究
 strategy_research.py   长期策略研究
+```
+
+LLM 研究规则不写在 Python 中：
+
+```text
+skills/topic_researcher.md      选题研究规则
+skills/writing_researcher.md    单篇写作研究规则
+skills/strategy_researcher.md   创作者分析、长期策略综合和策略 review 规则
 ```
 
 ## Topic Research
@@ -51,6 +59,8 @@ reason
 
 ```text
 topic_plan
+同选题详细笔记
+对应产品、账号和平台记忆
 ```
 
 动作：
@@ -59,16 +69,21 @@ topic_plan
 按 primary_query / supporting_queries 做平台内小规模深度样本采集
 检查是否达到 min_notes
 最多重试 max_attempts
-调用 research_infra.analyze_research
+分批生成临时 NoteInsight
+把每篇笔记的实际图片按稳定标签发送给多模态模型
+综合全部 NoteInsight 与 topic_plan
 ```
 
 输出：
 
 ```text
-writing research brief
+WritingGuidance
 ```
 
-这个 brief 会传给 `src/create/`，用于写初稿、审核和改稿。
+`WritingGuidance` 包含本篇的流量逻辑、目标场景、标题/封面/开头指导、
+整组图片指导、正文结构、产品连接、收藏与讨论机制、表达规则和禁区。
+
+`NoteInsight` 只在当前进程中用于综合，不是正式研究产物，也不会默认保存。
 
 默认不保存 writing research 的 input/report。只有加 `--persist-research-artifacts` 才保存调试文件。
 
@@ -87,6 +102,19 @@ python run_strategy_research.py collect --target-creators 50 --notes-per-creator
 ```bash
 python run_strategy_research.py analyze data/research/corpus/xxx.json
 ```
+
+动作：
+
+```text
+逐个或小批次分析创作者主页资料、完整笔记和实际图片
+生成只存在于当前进程的 CreatorStrategyInsight
+综合全部 CreatorStrategyInsight 与本地产品记忆
+生成 StrategyGuidance
+可选生成 StrategyReview
+```
+
+`--batch-size` 表示每次多模态分析包含多少个创作者，默认是 1，避免单次请求
+混入过多账号和图片。
 
 输出：
 
@@ -123,4 +151,6 @@ View > Developer > Allow JavaScript from Apple Events
 
 以后接微博、百度热搜、抖音、TikTok、YouTube、Google Trends 或 RSS 时，应优先新增 `src/collect/` 下的平台采集能力。
 
-上层 `topic_research / writing_research / strategy_research` 只负责研究策略，不直接写平台采集细节。
+`plan_topic(...)`、`analyze_writing_research(...)` 和
+`analyze_strategy_corpus(...)` 都可以直接接收已经采集的数据，独立完成研究。
+外层 run 函数可以继续组合采集与研究，但平台页面细节仍只属于 `src/collect/`。

@@ -1,16 +1,55 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, TypeVar
 from zoneinfo import ZoneInfo
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from src.base.json_utils import call_json_model
-from src.base.memory import load_memory
+from src.base.run_log import log_event
+
+
+class ImageSample(BaseModel):
+    """One image resource made available by a collector."""
+
+    model_config = ConfigDict(extra="allow")
+
+    src: str | None = None
+    srcset: str | None = None
+    alt: str | None = None
+    title: str | None = None
+    width: int | None = Field(default=None, ge=0)
+    height: int | None = Field(default=None, ge=0)
+    index: int | None = Field(default=None, ge=1)
+
+
+class CommentSample(BaseModel):
+    """One visible comment or reply attached to a research note."""
+
+    model_config = ConfigDict(extra="allow")
+
+    author: str | None = None
+    text: str = ""
+    is_reply: bool = False
+    parent_author: str | None = None
+    parent_text: str | None = None
+    reply_count: int | None = Field(default=None, ge=0)
+    is_author_reply: bool = False
+    raw_text: str | None = None
+    likes: int | None = Field(default=None, ge=0)
+    source_index: int | None = Field(default=None, ge=1)
+    value_signals: list[str] = Field(default_factory=list)
+
+    @field_validator("value_signals")
+    @classmethod
+    def clean_value_signals(cls, value: list[str]) -> list[str]:
+        return [item.strip() for item in value if item.strip()]
 
 
 class NoteSample(BaseModel):
+    """Shared validated representation of one collected note."""
+
     model_config = ConfigDict(extra="forbid")
 
     note_id: str | None = None
@@ -20,7 +59,7 @@ class NoteSample(BaseModel):
     subtitle: str | None = None
     note_url: str | None = None
     body: str | None = None
-    # Kept for loading older research artifacts. New collectors write `body` directly.
+    # Compatibility fields for older research artifacts.
     cover_text: str | None = None
     body_excerpt: str | None = None
     hashtags: list[str] = Field(default_factory=list)
@@ -30,11 +69,11 @@ class NoteSample(BaseModel):
     shares: int | None = Field(default=None, ge=0)
     publish_time: str | None = None
     location: str | None = None
-    images: list[dict[str, Any]] = Field(default_factory=list)
+    images: list[ImageSample] = Field(default_factory=list)
     video: dict[str, Any] | None = None
-    comment_items: list[dict[str, Any]] = Field(default_factory=list)
+    comment_items: list[CommentSample] = Field(default_factory=list)
     collection_meta: dict[str, Any] = Field(default_factory=dict)
-    # Kept for loading older research artifacts.
+    # Compatibility fields for older research artifacts.
     visible_comments: list[str] = Field(default_factory=list)
     observed_signals: list[str] = Field(default_factory=list)
 
@@ -43,17 +82,30 @@ class NoteSample(BaseModel):
     def clean_list(cls, value: list[str]) -> list[str]:
         return [item.strip() for item in value if item.strip()]
 
+    @property
+    def full_body(self) -> str:
+        return (self.body or self.body_excerpt or "").strip()
+
 
 class AccountSample(BaseModel):
+    """Shared validated representation of one collected account."""
+
     model_config = ConfigDict(extra="forbid")
 
+    account_id: str | None = None
     account_name: str = Field(min_length=1)
     account_url: str | None = None
+    avatar_url: str | None = None
+    red_id: str | None = None
+    ip_location: str | None = None
     bio: str | None = None
     follower_count: int | None = Field(default=None, ge=0)
     following_count: int | None = Field(default=None, ge=0)
     liked_count: int | None = Field(default=None, ge=0)
     positioning_notes: list[str] = Field(default_factory=list)
+    seed_keyword: str | None = None
+    discovered_from_note: dict[str, Any] = Field(default_factory=dict)
+    collection_meta: dict[str, Any] = Field(default_factory=dict)
     notes: list[NoteSample] = Field(default_factory=list)
 
     @field_validator("positioning_notes")
@@ -63,92 +115,54 @@ class AccountSample(BaseModel):
 
 
 class ResearchInput(BaseModel):
+    """Validated collector payload shared by research workflows."""
+
     model_config = ConfigDict(extra="forbid")
 
-    platform: Literal["xiaohongshu"] = "xiaohongshu"
+    platform: str = Field(default="xiaohongshu", min_length=2)
     research_goal: str = Field(min_length=4)
-    source: str = Field(default="manual")
+    source: str = Field(default="manual", min_length=2)
     accounts: list[AccountSample] = Field(default_factory=list)
     loose_notes: list[NoteSample] = Field(default_factory=list)
     collector_meta: dict[str, Any] = Field(default_factory=dict)
 
     @property
+    def notes(self) -> list[NoteSample]:
+        return [
+            *self.loose_notes,
+            *(note for account in self.accounts for note in account.notes),
+        ]
+
+    @property
     def note_count(self) -> int:
-        return len(self.loose_notes) + sum(len(account.notes) for account in self.accounts)
+        return len(self.notes)
 
 
-class PatternItem(BaseModel):
+class ResearchDatasetStats(BaseModel):
+    """Deterministic readiness statistics for a research dataset."""
+
     model_config = ConfigDict(extra="forbid")
 
-    pattern: str = Field(min_length=2)
-    evidence: str = Field(min_length=2)
-    why_it_works: str = Field(min_length=2)
+    account_count: int = Field(ge=0)
+    note_count: int = Field(ge=0)
+    complete_note_count: int = Field(ge=0)
+    notes_with_body: int = Field(ge=0)
+    notes_with_engagement: int = Field(ge=0)
+    image_count: int = Field(ge=0)
+    comment_item_count: int = Field(ge=0)
 
 
-class NotePatternItem(BaseModel):
+class ResearchImageReference(BaseModel):
+    """One labeled image passed to a multimodal research model."""
+
     model_config = ConfigDict(extra="forbid")
 
-    pattern: str = Field(min_length=2)
-    title_mechanism: str = Field(min_length=2)
-    hook_mechanism: str = Field(min_length=2)
-    body_structure: str = Field(min_length=2)
-    visual_or_cover_signal: str = Field(min_length=2)
-    evidence: str = Field(min_length=2)
+    label: str = Field(min_length=2)
+    url: str = Field(min_length=4)
+    detail: Literal["auto", "low", "high"] = "high"
 
 
-class ProductOpportunity(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    product: str = Field(min_length=1)
-    opportunity: str = Field(min_length=2)
-    example_topic: str = Field(min_length=2)
-    risk: str = Field(min_length=2)
-
-
-class RecommendedTest(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    test_name: str = Field(min_length=2)
-    hypothesis: str = Field(min_length=2)
-    product: str = Field(min_length=1)
-    post_angle: str = Field(min_length=2)
-    success_signal: str = Field(min_length=2)
-
-
-class ResearchAnalysis(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-
-    platform: Literal["xiaohongshu"]
-    research_goal: str = Field(min_length=4)
-    sample_size: dict[str, int]
-    confidence: Literal["low", "medium", "high"]
-    summary: str = Field(min_length=6)
-    account_patterns: list[PatternItem] = Field(default_factory=list)
-    note_patterns: list[NotePatternItem] = Field(default_factory=list)
-    persona_findings: list[str] = Field(default_factory=list)
-    traffic_hooks: list[str] = Field(default_factory=list)
-    content_formats: list[str] = Field(default_factory=list)
-    visual_patterns: list[str] = Field(default_factory=list)
-    audience_questions: list[str] = Field(default_factory=list)
-    opportunities_for_our_products: list[ProductOpportunity] = Field(default_factory=list)
-    recommended_tests: list[RecommendedTest] = Field(default_factory=list)
-    do: list[str] = Field(default_factory=list)
-    avoid: list[str] = Field(default_factory=list)
-    next_research_targets: list[str] = Field(default_factory=list)
-
-    @field_validator(
-        "persona_findings",
-        "traffic_hooks",
-        "content_formats",
-        "visual_patterns",
-        "audience_questions",
-        "do",
-        "avoid",
-        "next_research_targets",
-    )
-    @classmethod
-    def clean_text_items(cls, value: list[str]) -> list[str]:
-        return [item.strip() for item in value if item.strip()]
+StructuredModelT = TypeVar("StructuredModelT", bound=BaseModel)
 
 
 def load_research_input(path: Path | str) -> ResearchInput:
@@ -156,66 +170,130 @@ def load_research_input(path: Path | str) -> ResearchInput:
     return ResearchInput.model_validate(raw)
 
 
-def analyze_research(
-    research_input: ResearchInput,
-    prompt_path: Path | str = "skills/research_analyzer.md",
-) -> dict[str, Any]:
-    prompt_file = Path(prompt_path)
+def summarize_research_input(research_input: ResearchInput) -> ResearchDatasetStats:
+    notes = research_input.notes
+    return ResearchDatasetStats(
+        account_count=len(research_input.accounts),
+        note_count=len(notes),
+        complete_note_count=sum(
+            1 for note in notes if note.collection_meta.get("complete") is True
+        ),
+        notes_with_body=sum(1 for note in notes if note.full_body),
+        notes_with_engagement=sum(
+            1
+            for note in notes
+            if any(
+                value is not None
+                for value in (note.likes, note.comments, note.saves, note.shares)
+            )
+        ),
+        image_count=sum(len(note.images) for note in notes),
+        comment_item_count=sum(len(note.comment_items) for note in notes),
+    )
+
+
+def load_research_prompt(path: Path | str) -> str:
+    prompt_file = Path(path)
     if not prompt_file.exists():
         raise FileNotFoundError(f"Missing prompt file: {prompt_file}")
-
     prompt = prompt_file.read_text(encoding="utf-8").strip()
     if not prompt:
         raise ValueError(f"Prompt file is empty: {prompt_file}")
+    return prompt
 
-    memory = load_memory()
-    memory_block = "\n\n".join(
-        f"## {filename}\n{content}" for filename, content in memory.items()
-    )
-    sample_block = json.dumps(
-        research_input.model_dump(),
-        ensure_ascii=False,
-        indent=2,
-    )
 
-    messages = [
+def build_multimodal_research_message(
+    payload: dict[str, Any],
+    image_references: list[ResearchImageReference],
+) -> dict[str, Any]:
+    """Build one labeled text-and-image user message for a vision-capable model."""
+    content: list[dict[str, Any]] = [
         {
-            "role": "system",
-            "content": (
-                "You are a strict Xiaohongshu content strategy analyst. "
-                "Analyze only the provided samples and return valid JSON only."
-            ),
-        },
-        {
-            "role": "user",
-            "content": (
-                f"{prompt}\n\n"
-                "# Our Account And Product Memory\n"
-                f"{memory_block}\n\n"
-                "# Research Samples\n"
-                f"{sample_block}"
-            ),
-        },
+            "type": "text",
+            "text": json.dumps(payload, ensure_ascii=False, indent=2),
+        }
     ]
-    parsed = call_json_model(messages, "Research analyzer")
-    analysis = ResearchAnalysis.model_validate(parsed).model_dump()
-    analysis["sample_size"] = {
-        "accounts": len(research_input.accounts),
-        "notes": research_input.note_count,
-    }
-    return analysis
+    for reference in image_references:
+        content.extend(
+            [
+                {
+                    "type": "text",
+                    "text": f"Multimodal image label: {reference.label}",
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": reference.url,
+                        "detail": reference.detail,
+                    },
+                },
+            ]
+        )
+    return {"role": "user", "content": content}
 
 
-def save_research_report(
-    analysis: dict[str, Any],
-    output_dir: Path | str = "data/research/reports",
+def call_structured_research_model(
+    messages: list[dict[str, Any]],
+    *,
+    output_model: type[StructuredModelT],
+    label: str,
+    max_schema_attempts: int = 2,
+) -> StructuredModelT:
+    """Call a research model and retry JSON that fails its business schema."""
+    if max_schema_attempts < 1:
+        raise ValueError("max_schema_attempts must be >= 1")
+
+    current_messages = list(messages)
+    last_error: ValidationError | None = None
+    for schema_attempt in range(1, max_schema_attempts + 1):
+        parsed = call_json_model(current_messages, label)
+        try:
+            return output_model.model_validate(parsed)
+        except ValidationError as exc:
+            last_error = exc
+            errors = exc.errors(include_url=False)
+            log_event(
+                "llm_schema_validation_failed",
+                level="warning",
+                label=label,
+                schema=output_model.__name__,
+                schema_attempt=schema_attempt,
+                error_count=len(errors),
+            )
+            if schema_attempt >= max_schema_attempts:
+                break
+            current_messages = [
+                *current_messages,
+                {
+                    "role": "assistant",
+                    "content": json.dumps(parsed, ensure_ascii=False),
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        "The JSON is valid but does not match the required output schema. "
+                        "Correct only the schema violations and return one JSON object. "
+                        "Validation errors: "
+                        f"{json.dumps(errors, ensure_ascii=False, default=str)}"
+                    ),
+                },
+            ]
+
+    raise ValueError(
+        f"{label} output does not match {output_model.__name__}: {last_error}"
+    ) from last_error
+
+
+def save_debug_research_artifact(
+    payload: dict[str, Any],
+    *,
+    output_dir: Path | str,
+    filename_label: str,
 ) -> Path:
+    """Persist a research result only when a caller explicitly enables debugging."""
     base_dir = Path(output_dir)
     base_dir.mkdir(parents=True, exist_ok=True)
     now = datetime.now(ZoneInfo("Asia/Shanghai"))
-    path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-xiaohongshu-research.json"
-    path.write_text(
-        json.dumps(analysis, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    path = base_dir / f"{now.strftime('%Y-%m-%d-%H%M%S')}-{filename_label}.json"
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return path

@@ -1,12 +1,17 @@
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Literal
+from zoneinfo import ZoneInfo
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-from src.base.json_utils import call_json_model
 from src.base.memory import load_memory
 from src.collect.topic import collect_external_hotspots
+from src.research.research_infra import (
+    call_structured_research_model,
+    load_research_prompt,
+)
 
 
 DAILY_PRODUCTS = (
@@ -94,7 +99,7 @@ class TopicPlan(BaseModel):
     topic_source: Literal["broad_hotspot", "related_field"]
     planned_topic: str = Field(min_length=4)
     primary_query: str = Field(min_length=2)
-    supporting_queries: list[str] = Field(min_length=2, max_length=5)
+    supporting_queries: list[str] = Field(default_factory=list, max_length=3)
     broad_hotspot_signal: str = Field(min_length=6)
     hotspot_fit_score: float = Field(ge=0, le=10)
     hot_angle_hypothesis: str = Field(min_length=6)
@@ -104,7 +109,7 @@ class TopicPlan(BaseModel):
     risk: str = Field(min_length=4)
     reason: str = Field(min_length=6)
 
-    @field_validator("supporting_queries")
+    @field_validator("supporting_queries", mode="before")
     @classmethod
     def clean_queries(cls, value: list[str]) -> list[str]:
         cleaned = []
@@ -112,8 +117,6 @@ class TopicPlan(BaseModel):
             item = item.strip()
             if item and item not in cleaned:
                 cleaned.append(item)
-        if len(cleaned) < 2:
-            raise ValueError("supporting_queries must include at least 2 useful queries")
         return cleaned
 
 
@@ -199,6 +202,7 @@ def plan_topic(
     product: str | None = None,
     broad_hotspot_samples: dict[str, Any] | None = None,
     related_field_samples: dict[str, Any] | None = None,
+    prompt_path: Path | str = "skills/topic_researcher.md",
 ) -> dict[str, Any]:
     """Select today's product topic and plan the final writing research search."""
     if product and product not in DAILY_PRODUCTS:
@@ -208,66 +212,31 @@ def plan_topic(
         if writing_goal and writing_goal.strip()
         else "自动选择今天的小红书产品帖选题"
     )
-    memory = load_memory()
-    memory_block = "\n\n".join(
-        f"## {filename}\n{content}" for filename, content in memory.items()
-    )
+    prompt = load_research_prompt(prompt_path)
+    research_payload = {
+        "analysis_as_of": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(),
+        "writing_goal": goal,
+        "product_constraint": product,
+        "broad_hotspot_samples": broad_hotspot_samples or {},
+        "related_field_samples": related_field_samples or {},
+        "local_memory": load_memory(),
+    }
 
     messages = [
         {
             "role": "system",
-            "content": (
-                "You are a sharp Chinese topic strategist. "
-                "Select today's post topic from cross-platform trend signals and product-adjacent field signals, "
-                "then plan the focused Xiaohongshu writing research. "
-                "Return valid JSON only."
-            ),
+            "content": prompt,
         },
         {
             "role": "user",
-            "content": (
-                "# Writing Goal\n"
-                f"{goal}\n\n"
-                "# Product Constraint\n"
-                f"{product or 'Choose the best matching product from Local Memory.'}\n\n"
-                "# Broad Hotspot Samples\n"
-                f"{json.dumps(broad_hotspot_samples or {}, ensure_ascii=False, indent=2)}\n\n"
-                "# Related Field Samples\n"
-                f"{json.dumps(related_field_samples or {}, ensure_ascii=False, indent=2)}\n\n"
-                "# Planning Rules\n"
-                "- If Product Constraint names a product, you must plan for that product only\n"
-                "- There are two topic layers: broad_hotspot means connecting the product upward to a broad cross-platform current hotspot; related_field means writing directly from product-adjacent field signals\n"
-                "- First inspect Broad Hotspot Samples from external cross-platform sources for a timely trend the product can naturally connect to\n"
-                "- Then inspect Related Field Samples for product-adjacent signals, user language, content formats, and field heat\n"
-                "- If a broad hotspot has hotspot_fit_score >= 8 and low risk, choose topic_source=broad_hotspot\n"
-                "- Otherwise choose topic_source=related_field and write from the strongest product-adjacent signal\n"
-                "- Do not force a broad hotspot if the connection is weak, sensational, or unsupported by product memory\n"
-                "- primary_query should search the final planned topic, not just the product name\n"
-                "- supporting_queries should help inspect adjacent formats, user language, and competing angles\n"
-                "- Keep the plan grounded in Local Memory and do not invent product facts\n\n"
-                "# Output JSON Schema\n"
-                "{\n"
-                '  "product": "Math Puzzle",\n'
-                '  "topic_source": "related_field",\n'
-                '  "planned_topic": "睡前轻量数字谜题",\n'
-                '  "primary_query": "睡前 数字谜题",\n'
-                '  "supporting_queries": ["数学游戏", "睡前放松", "逻辑谜题"],\n'
-                '  "broad_hotspot_signal": "没有发现足够自然的大热点连接",\n'
-                '  "hotspot_fit_score": 5.8,\n'
-                '  "hot_angle_hypothesis": "用睡前放松和轻量脑力题连接产品，而不是写成数学训练",\n'
-                '  "audience_hypothesis": "喜欢轻量游戏但不想有考试压力的用户",\n'
-                '  "trend_opportunity": "睡前放松和轻量游戏内容适合转化成收藏型帖子",\n'
-                '  "related_field_signal": "数字谜题、逻辑题和睡前放松内容都在争夺短休场景",\n'
-                '  "risk": "避免承诺提升智力或数学成绩",\n'
-                '  "reason": "这个搜索计划能同时观察同类内容、场景语言和用户保存理由"\n'
-                "}\n\n"
-                "# Local Memory\n"
-                f"{memory_block}"
-            ),
+            "content": json.dumps(research_payload, ensure_ascii=False, indent=2),
         },
     ]
-    parsed = call_json_model(messages, "Topic discovery planner")
-    return TopicPlan.model_validate(parsed).model_dump()
+    return call_structured_research_model(
+        messages,
+        output_model=TopicPlan,
+        label="Topic researcher",
+    ).model_dump()
 
 
 def collect_broad_hotspot_samples(

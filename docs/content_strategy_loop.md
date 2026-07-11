@@ -38,8 +38,9 @@ topic_research
 
 writing_research
   -> 根据 topic_plan 搜索小规模样本
-  -> 分析标题、开头、正文结构、封面、用户问题
-  -> writing research brief
+  -> 分批生成临时 NoteInsight
+  -> 综合标题、开头、正文结构、互动价值和可用视觉信号
+  -> WritingGuidance
 
 create
   -> write 初稿
@@ -83,13 +84,14 @@ topic_research.py
   决定今天写什么。先看全网泛热点，再看产品相关领域，输出 topic_plan。
 
 writing_research.py
-  决定这篇怎么写。围绕 topic_plan 做目标平台的小规模深度样本研究，输出给 create 使用的 brief。
+  决定这篇怎么写。围绕 topic_plan 做目标平台的多模态深度样本研究，输出 WritingGuidance。
 
 strategy_research.py
-  决定长期怎么进化。采集更大规模的创作者和笔记样本，生成 strategy result。
+  决定长期怎么进化。先生成临时 CreatorStrategyInsight，再综合为 StrategyGuidance。
 ```
 
-`research_infra.py` 不是第四层研究，它只提供样本结构、输入校验和通用样本分析能力。
+`research_infra.py` 不是第四层研究。它只提供共享样本结构、输入统计/校验、
+研究提示词加载和结构化模型调用，不定义 topic、writing 或 strategy 的业务结论。
 
 ## Strategy Research
 
@@ -106,6 +108,10 @@ python run_strategy_research.py collect --target-creators 50 --notes-per-creator
 ```bash
 python run_strategy_research.py analyze data/research/corpus/xxx.json
 ```
+
+策略分析会把每个创作者的主页资料、详细笔记、评论和实际图片交给多模态模型，
+生成临时 `CreatorStrategyInsight`。所有创作者洞察再与本地产品记忆综合，输出
+`StrategyGuidance`；临时洞察不进入最终结果文件。
 
 带触发原因的专项分析：
 

@@ -3,6 +3,7 @@ import json
 import subprocess
 import time
 from pathlib import Path
+from typing import Any
 from urllib.parse import urlparse
 from urllib import error, request
 
@@ -16,14 +17,16 @@ DEFAULT_MODEL = "deepseek-v4-flash"
 
 
 def call_llm(
-    messages: list[dict[str, str]],
+    messages: list[dict[str, Any]],
     *,
     label: str | None = None,
     attempt: int | None = None,
 ) -> str:
     """Call OpenAI and return the assistant text."""
     started_at = time.perf_counter()
-    prompt_chars = sum(len(message.get("content", "")) for message in messages)
+    prompt_chars = sum(
+        _content_text_length(message.get("content", "")) for message in messages
+    )
     load_dotenv(dotenv_path=Path(".env"))
 
     api_key = os.getenv("OPENAI_API_KEY", "").strip()
@@ -145,7 +148,7 @@ def _call_openai_compatible_http(
     base_url: str,
     api_key: str,
     model: str,
-    messages: list[dict[str, str]],
+    messages: list[dict[str, Any]],
 ) -> str:
     """Fallback for OpenAI-compatible providers when the SDK transport fails."""
     url = f"{base_url.rstrip('/')}/chat/completions"
@@ -195,6 +198,19 @@ def _call_openai_compatible_http(
         raise RuntimeError("LLM returned empty content.")
 
     return content
+
+
+def _content_text_length(content: Any) -> int:
+    """Estimate prompt text size for both text-only and multimodal messages."""
+    if isinstance(content, str):
+        return len(content)
+    if isinstance(content, list):
+        return sum(
+            len(str(block.get("text") or ""))
+            for block in content
+            if isinstance(block, dict)
+        )
+    return len(str(content))
 
 
 def _call_openai_compatible_curl(

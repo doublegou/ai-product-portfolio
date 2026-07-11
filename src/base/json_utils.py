@@ -19,7 +19,7 @@ def parse_json_object(raw_output: str, label: str) -> dict[str, Any]:
 
 
 def call_json_model(
-    messages: list[dict[str, str]],
+    messages: list[dict[str, Any]],
     label: str,
     max_attempts: int = 2,
 ) -> dict[str, Any]:

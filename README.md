@@ -74,7 +74,7 @@ Broad hotspot discovery 当前使用外部全网热点源，包括 Google Trends
 python run_daily.py --product "Math Puzzle"
 ```
 
-单篇写作前的 research input/report 默认是临时中间过程，不会长期保存；调试时可以加 `--persist-research-artifacts`。
+单篇写作前的样本、临时 NoteInsight 和 WritingGuidance 默认不会长期保存；调试时可以加 `--persist-research-artifacts`。
 
 ## 指定主题运行
 
@@ -82,7 +82,7 @@ python run_daily.py --product "Math Puzzle"
 python run_once.py "给 BirdTracker 写一篇小红书推广帖，角度是：把一次普通散步变成观鸟记录"
 ```
 
-`run_once.py` 默认会先做一次小红书同题研究，采集相似笔记并生成临时研究 brief，再进入写作和审稿。通过审稿并保存后，默认会继续发布到小红书。调试时可以跳过研究：
+`run_once.py` 默认会先做一次小红书同题研究，采集相似笔记并生成 WritingGuidance，再进入写作和审稿。通过审稿并保存后，默认会继续发布到小红书。调试时可以跳过研究：
 
 ```bash
 python run_once.py "给 BirdTracker 写一篇小红书推广帖" --no-research
@@ -151,7 +151,9 @@ strategy 从相关领域搜索结果逐个点击作者头像/名称，筛选粉�
 python run_strategy_research.py analyze data/research/corpus/your-corpus.json
 ```
 
-成功后会生成 strategy analysis，并可生成待人工确认的 strategy review。`data/research/` 已进入 `.gitignore`，不会提交。
+分析会先通过多模态模型生成临时 CreatorStrategyInsight，再综合成 StrategyGuidance，
+并可生成待人工确认的 strategy review。临时创作者洞察不会写入最终结果。
+`data/research/` 已进入 `.gitignore`，不会提交。
 
 稳定的研究结论可以沉淀到：
 
