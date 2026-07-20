@@ -1,0 +1,4 @@
+interface:
+  display_name: "全网热点雷达"
+  short_description: "聚合全网多平台实时热点，识别趋势共振并生成可执行的内容选题建议"
+  default_prompt: "使用 $daily-trend-radar 获取今天的热点，识别跨平台趋势并给出带来源的选题建议。"

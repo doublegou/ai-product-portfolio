@@ -1,0 +1,11 @@
+{
+  "default": ["aihot", "github", "hackernews", "producthunt", "v2ex", "juejin", "sspai", "ithome", "36kr-quick", "baidu", "weibo", "zhihu", "douyin", "bilibili-hot-search", "toutiao"],
+  "core": ["aihot", "github", "hackernews", "producthunt", "v2ex", "juejin", "sspai", "ithome", "baidu"],
+  "all": ["aihot", "github", "hackernews", "producthunt", "v2ex", "juejin", "sspai", "ithome", "36kr-quick", "36kr-renqi", "baidu", "weibo", "zhihu", "douyin", "bilibili-hot-search", "bilibili-hot-video", "bilibili-ranking", "toutiao"],
+  "ai": ["aihot", "github", "hackernews", "producthunt"],
+  "tech": ["aihot", "github", "hackernews", "v2ex", "sspai", "ithome", "36kr-quick", "zhihu", "bilibili-hot-video"],
+  "developer": ["github", "hackernews", "v2ex", "juejin"],
+  "china-hot": ["baidu", "weibo", "zhihu", "douyin", "bilibili-hot-search", "toutiao", "ithome", "36kr-quick"],
+  "social": ["baidu", "weibo", "zhihu", "douyin", "bilibili-hot-search", "toutiao"],
+  "creator": ["aihot", "sspai", "baidu", "weibo", "zhihu", "douyin", "bilibili-hot-search", "toutiao", "producthunt"]
+}
