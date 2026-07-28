@@ -22,9 +22,11 @@ struct StayWordTests {
         )
         recording.processingState = .summarizing
         recording.summaryKind = .extractive
+        recording.summaryFailureMessage = "Summary unavailable"
 
         #expect(recording.processingState == .summarizing)
         #expect(recording.summaryKind == .extractive)
+        #expect(recording.summaryFailureMessage == "Summary unavailable")
         #expect(recording.waveform == [0.1, 0.5, 0.9])
     }
 

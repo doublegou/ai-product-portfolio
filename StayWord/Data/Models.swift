@@ -92,6 +92,7 @@ final class AudioRecording {
     var summarySubject: String
     var summaryText: String
     var failureMessage: String?
+    var summaryFailureMessage: String?
     var waveformData: Data?
     var deletedAt: Date?
 
@@ -142,6 +143,7 @@ final class AudioRecording {
         summarySubject: String = "",
         summaryText: String = "",
         failureMessage: String? = nil,
+        summaryFailureMessage: String? = nil,
         waveform: [Double] = [],
         folder: RecordingFolder? = nil,
         deletedAt: Date? = nil
@@ -157,6 +159,7 @@ final class AudioRecording {
         self.summarySubject = summarySubject
         self.summaryText = summaryText
         self.failureMessage = failureMessage
+        self.summaryFailureMessage = summaryFailureMessage
         self.folder = folder
         self.deletedAt = deletedAt
         self.waveformData = try? JSONEncoder().encode(waveform)

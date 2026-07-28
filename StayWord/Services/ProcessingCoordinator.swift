@@ -108,11 +108,22 @@ final class ProcessingCoordinator {
         recording.summarySubject = ""
         recording.summaryText = ""
         recording.summaryKind = .none
+        recording.summaryFailureMessage = nil
         try context.save()
 
-        let summary = try await summaryService.summarize(
-            transcript: transcript
-        )
+        let summary: SummaryDraft
+        do {
+            summary = try await summaryService.summarize(
+                transcript: transcript
+            )
+        } catch is CancellationError {
+            throw CancellationError()
+        } catch {
+            recording.processingState = .completed
+            recording.summaryFailureMessage = error.localizedDescription
+            try context.save()
+            return
+        }
 
         // Preserve edits the user makes while the model is running.
         if recording.summarySubject.isEmpty {
@@ -125,6 +136,7 @@ final class ProcessingCoordinator {
 
         recording.processingState = .completed
         recording.failureMessage = nil
+        recording.summaryFailureMessage = nil
         try context.save()
     }
 }

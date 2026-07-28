@@ -418,6 +418,9 @@ struct RecordingDetailView: View {
     }
 
     private func emptySummaryDescription(for recording: AudioRecording) -> String {
+        if let summaryFailureMessage = recording.summaryFailureMessage {
+            return summaryFailureMessage
+        }
         if recording.processingState == .failed {
             return recording.failureMessage
                 ?? String(localized: "Try processing the recording again.")

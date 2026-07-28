@@ -423,8 +423,15 @@
     "On-Device Summary" : {
 
     },
-    "On-device summary requires a physical iPhone." : {
-
+    "On-device summary is unavailable in the iOS Simulator. Use a physical iPhone." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS 模拟器暂不支持设备端摘要，请使用实体 iPhone。"
+          }
+        }
+      }
     },
     "On-device transcription is not available for the current language." : {
 

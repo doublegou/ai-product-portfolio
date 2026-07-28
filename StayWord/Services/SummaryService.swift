@@ -70,9 +70,9 @@ actor OnDeviceSummaryService: SummaryService {
 
         #if targetEnvironment(simulator)
         Self.logger.notice(
-            "Bundled MLX summary is skipped in the iOS Simulator; use a physical device."
+            "Bundled MLX summary is unavailable in the iOS Simulator."
         )
-        throw LocalSummaryError.requiresPhysicalDevice
+        throw LocalSummaryError.simulatorUnsupported
         #else
         do {
             return try await generateLocalSummary(transcript: cleaned)
@@ -290,7 +290,7 @@ private enum LocalSummaryError: LocalizedError {
     case missingModel
     case invalidOutput
     case generationFailed
-    case requiresPhysicalDevice
+    case simulatorUnsupported
 
     var errorDescription: String? {
         switch self {
@@ -300,8 +300,8 @@ private enum LocalSummaryError: LocalizedError {
             String(localized: "The on-device model did not produce a usable summary.")
         case .generationFailed:
             String(localized: "The on-device summary could not be generated. Try again.")
-        case .requiresPhysicalDevice:
-            String(localized: "On-device summary requires a physical iPhone.")
+        case .simulatorUnsupported:
+            String(localized: "On-device summary is unavailable in the iOS Simulator. Use a physical iPhone.")
         }
     }
 }
