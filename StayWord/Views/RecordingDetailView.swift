@@ -357,6 +357,7 @@ struct RecordingDetailView: View {
                     Spacer()
                     transcriptCopyButton(recording)
                 }
+                .listRowSeparator(.hidden)
                 ForEach(segments) { segment in
                     Button {
                         preparePlayerIfNeeded(recording)
@@ -380,6 +381,10 @@ struct RecordingDetailView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                    .listRowInsets(
+                        EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
+                    )
+                    .listRowSeparator(.hidden)
                     .accessibilityHint("Seeks audio to this transcript segment")
                 }
             }

@@ -791,12 +791,12 @@
     "Unfavorite" : {
 
     },
-    "Upload" : {
+    "Import" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "上传"
+            "value" : "导入"
           }
         }
       }

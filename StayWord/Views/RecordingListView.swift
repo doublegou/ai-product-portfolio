@@ -243,7 +243,7 @@ struct RecordingListView: View {
                         Button {
                             showsImporter = true
                         } label: {
-                            Label("Upload", systemImage: "square.and.arrow.up")
+                            Label("Import", systemImage: "square.and.arrow.up")
                         }
                     } label: {
                         Label("More", systemImage: "ellipsis")
