@@ -5,7 +5,7 @@ iOS 26 system appearance and APIs when available.
 
 ## Open and run
 
-1. Open `StayWord.xcodeproj` with Xcode 26.6 or newer.
+1. Open `StayWord.xcodeproj` with Xcode 26.2 or newer.
 2. Select the `StayWord` scheme.
 3. Choose a development team for the app, test targets, and
    `StayWordRecordingActivity` extension.
