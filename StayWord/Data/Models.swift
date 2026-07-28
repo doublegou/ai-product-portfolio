@@ -6,8 +6,6 @@ enum ProcessingState: String, Codable, CaseIterable {
     case preparing
     case vad
     case transcribing
-    case diarizing
-    case aligning
     case summarizing
     case completed
     case failed
@@ -18,19 +16,31 @@ enum ProcessingState: String, Codable, CaseIterable {
         case .preparing: String(localized: "Preparing")
         case .vad: String(localized: "Detecting Speech")
         case .transcribing: String(localized: "Transcribing")
-        case .diarizing: String(localized: "Identifying Speakers")
-        case .aligning: String(localized: "Aligning Transcript")
         case .summarizing: String(localized: "Generating Summary")
         case .completed: String(localized: "Completed")
         case .failed: String(localized: "Processing Failed")
         }
     }
 
-    var isProcessing: Bool {
+    /// The recording still has work left before its final result is available.
+    /// `ready` is included because it represents a queued recording that has
+    /// not started its first processing stage yet.
+    var isOverallProcessing: Bool {
         switch self {
-        case .preparing, .vad, .transcribing, .diarizing, .aligning, .summarizing:
+        case .ready, .preparing, .vad, .transcribing, .summarizing:
             true
-        case .ready, .completed, .failed:
+        case .completed, .failed:
+            false
+        }
+    }
+
+    /// The transcript itself is still being produced or finalized.
+    /// Summary generation happens after this lifecycle has finished.
+    var isTranscriptionProcessing: Bool {
+        switch self {
+        case .ready, .preparing, .vad, .transcribing:
+            true
+        case .summarizing, .completed, .failed:
             false
         }
     }
@@ -38,7 +48,6 @@ enum ProcessingState: String, Codable, CaseIterable {
 
 enum SummaryKind: String, Codable {
     case none
-    case foundationModel
     case localLanguageModel
     case extractive
 
@@ -46,8 +55,6 @@ enum SummaryKind: String, Codable {
         switch self {
         case .none:
             nil
-        case .foundationModel:
-            String(localized: "On-Device Intelligent Summary")
         case .localLanguageModel:
             String(localized: "On-Device Summary")
         case .extractive:
@@ -187,7 +194,6 @@ final class TranscriptSegment {
     var duration: TimeInterval
     var text: String
     var sortOrder: Int
-    var speakerIndex: Int?
     var recording: AudioRecording?
 
     init(
@@ -196,7 +202,6 @@ final class TranscriptSegment {
         duration: TimeInterval = 0,
         text: String,
         sortOrder: Int = 0,
-        speakerIndex: Int? = nil,
         recording: AudioRecording? = nil
     ) {
         self.id = id
@@ -204,7 +209,6 @@ final class TranscriptSegment {
         self.duration = duration
         self.text = text
         self.sortOrder = sortOrder
-        self.speakerIndex = speakerIndex
         self.recording = recording
     }
 }

@@ -35,6 +35,7 @@
 		B0010000000000000000001C /* AudioPCMPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001C /* AudioPCMPreparer.swift */; };
 		B0010000000000000000001D /* SherpaOnnxRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001D /* SherpaOnnxRuntime.swift */; };
 		B0010000000000000000001F /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001F /* Models */; };
+		B00100000000000000000020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000020 /* Assets.xcassets */; };
 		B00200000000000000000001 /* RecordingActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000001 /* RecordingActivityBundle.swift */; };
 		B00200000000000000000002 /* RecordingLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000002 /* RecordingLiveActivityWidget.swift */; };
 		B00200000000000000000003 /* RecordingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000005 /* RecordingActivityAttributes.swift */; };
@@ -119,6 +120,7 @@
 		F0010000000000000000001D /* SherpaOnnxRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SherpaOnnxRuntime.swift; sourceTree = "<group>"; };
 		F0010000000000000000001E /* StayWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		F0010000000000000000001F /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
+		F00100000000000000000020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00200000000000000000001 /* RecordingActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingActivityBundle.swift; sourceTree = "<group>"; };
 		F00200000000000000000002 /* RecordingLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingLiveActivityWidget.swift; sourceTree = "<group>"; };
 		F00200000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -204,7 +206,7 @@
 		};
 		G00100000000000000000006 /* System */ = {isa = PBXGroup; children = (F00100000000000000000018, ); path = System; sourceTree = "<group>"; };
 		G00100000000000000000007 /* Support */ = {isa = PBXGroup; children = (F00100000000000000000004, F0010000000000000000001A, F0010000000000000000001B, F0010000000000000000001E, ); path = Support; sourceTree = "<group>"; };
-		G00100000000000000000008 /* Resources */ = {isa = PBXGroup; children = (F00100000000000000000019, F0010000000000000000001F, ); path = Resources; sourceTree = "<group>"; };
+		G00100000000000000000008 /* Resources */ = {isa = PBXGroup; children = (F00100000000000000000019, F0010000000000000000001F, F00100000000000000000020, ); path = Resources; sourceTree = "<group>"; };
 		G00200000000000000000001 /* Shared */ = {isa = PBXGroup; children = (F00100000000000000000005, F00100000000000000000006, ); path = Shared; sourceTree = "<group>"; };
 		G00300000000000000000001 /* StayWordRecordingActivity */ = {isa = PBXGroup; children = (F00200000000000000000001, F00200000000000000000002, F00200000000000000000003, ); path = StayWordRecordingActivity; sourceTree = "<group>"; };
 		G00400000000000000000001 /* StayWordTests */ = {isa = PBXGroup; children = (F00300000000000000000001, ); path = StayWordTests; sourceTree = "<group>"; };
@@ -320,7 +322,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		P00100000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00100000000000000000019, B0010000000000000000001F, ); runOnlyForDeploymentPostprocessing = 0; };
+		P00100000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00100000000000000000019, B0010000000000000000001F, B00100000000000000000020, ); runOnlyForDeploymentPostprocessing = 0; };
 		P00200000000000000000004 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		P00300000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		P00400000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
@@ -360,6 +362,7 @@
 		C00100000000000000000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StayWord/Support/StayWord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -388,6 +391,7 @@
 		C00100000000000000000002 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = StayWord/Support/StayWord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;

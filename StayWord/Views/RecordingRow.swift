@@ -19,17 +19,18 @@ struct RecordingRow: View {
                             .year()
                     )
 
-                    if !recording.transcriptSegments.isEmpty {
-                        Image(systemName: "quote.bubble")
-                            .accessibilityLabel("Transcript available")
-                    } else if recording.processingState.isProcessing {
-                        ProgressView()
-                            .controlSize(.mini)
-                            .accessibilityLabel(recording.processingState.localizedTitle)
-                    } else if recording.processingState == .failed {
+                    if recording.processingState == .failed {
                         Image(systemName: "exclamationmark.triangle")
                             .foregroundStyle(.red)
                             .accessibilityLabel("Processing Failed")
+                    } else if recording.processingState.isOverallProcessing {
+                        PersistentActivityIndicator()
+                            .scaleEffect(0.7)
+                            .frame(width: 14, height: 14)
+                            .accessibilityLabel(recording.processingState.localizedTitle)
+                    } else if !recording.transcriptSegments.isEmpty {
+                        Image(systemName: "quote.bubble")
+                            .accessibilityLabel("Transcript available")
                     }
                 }
                 .font(.subheadline)

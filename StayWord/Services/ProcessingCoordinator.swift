@@ -3,10 +3,17 @@ import SwiftData
 
 @MainActor
 final class ProcessingCoordinator {
+    private struct PendingJob {
+        let recording: AudioRecording
+        let context: ModelContext
+    }
+
     private let fileStore: AudioFileStore
     private let transcriptionService: TranscriptionService
     private let summaryService: any SummaryService
     private var jobs: [UUID: Task<Void, Never>] = [:]
+    private var pendingJobs: [UUID: PendingJob] = [:]
+    private var isApplicationActive = true
     private var didRestoreInterruptedJobs = false
 
     init(
@@ -21,12 +28,49 @@ final class ProcessingCoordinator {
 
     func enqueue(_ recording: AudioRecording, in context: ModelContext) {
         let recordingID = recording.id
-        guard jobs[recordingID] == nil else { return }
+        pendingJobs[recordingID] = PendingJob(
+            recording: recording,
+            context: context
+        )
+        startJobIfPossible(recordingID)
+    }
+
+    func setApplicationActive(_ isActive: Bool) {
+        guard isApplicationActive != isActive else { return }
+        isApplicationActive = isActive
+
+        if isActive {
+            for recordingID in pendingJobs.keys {
+                startJobIfPossible(recordingID)
+            }
+        } else {
+            for job in jobs.values {
+                job.cancel()
+            }
+        }
+    }
+
+    private func startJobIfPossible(_ recordingID: UUID) {
+        guard isApplicationActive,
+              jobs[recordingID] == nil,
+              let pendingJob = pendingJobs[recordingID]
+        else {
+            return
+        }
 
         jobs[recordingID] = Task(priority: .utility) { [weak self] in
             guard let self else { return }
-            await self.process(recording, in: context)
+            await self.process(
+                pendingJob.recording,
+                in: pendingJob.context
+            )
             self.jobs[recordingID] = nil
+
+            if pendingJob.recording.processingState.isOverallProcessing {
+                self.startJobIfPossible(recordingID)
+            } else {
+                self.pendingJobs[recordingID] = nil
+            }
         }
     }
 
@@ -37,7 +81,7 @@ final class ProcessingCoordinator {
         guard !didRestoreInterruptedJobs else { return }
         didRestoreInterruptedJobs = true
 
-        for recording in recordings where recording.processingState.isProcessing {
+        for recording in recordings where recording.processingState.isOverallProcessing {
             enqueue(recording, in: context)
         }
     }
@@ -45,16 +89,26 @@ final class ProcessingCoordinator {
     private func process(_ recording: AudioRecording, in context: ModelContext) async {
 
         do {
+            try Task.checkCancellation()
             recording.failureMessage = nil
 
-            let existingTranscript = recording.transcriptText
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            if !existingTranscript.isEmpty,
+            let existingSegments = recording.transcriptSegments
+                .sorted { $0.startTime < $1.startTime }
+                .map {
+                    TranscriptDraft(
+                        startTime: $0.startTime,
+                        duration: $0.duration,
+                        text: $0.text
+                    )
+                }
+            if existingSegments.contains(where: {
+                !$0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            }),
                recording.summaryText.isEmpty,
                recording.transcriptionCheckpointSample == 0 {
                 try await generateSummary(
                     for: recording,
-                    transcript: existingTranscript,
+                    segments: existingSegments,
                     in: context
                 )
                 return
@@ -100,8 +154,7 @@ final class ProcessingCoordinator {
                     TranscriptDraft(
                         startTime: $0.startTime,
                         duration: $0.duration,
-                        text: $0.text,
-                        speakerIndex: $0.speakerIndex
+                        text: $0.text
                     )
                 }
             let drafts = try await transcriptionService.transcribe(
@@ -118,7 +171,6 @@ final class ProcessingCoordinator {
                         duration: draft.duration,
                         text: draft.text,
                         sortOrder: recording.transcriptSegments.count,
-                        speakerIndex: nil,
                         recording: recording
                     )
                     context.insert(segment)
@@ -128,6 +180,8 @@ final class ProcessingCoordinator {
                     emission.committedSampleOffset
                 try context.save()
             }
+
+            try Task.checkCancellation()
 
             reconcileTranscript(
                 drafts,
@@ -140,11 +194,16 @@ final class ProcessingCoordinator {
             recording.transcriptionCheckpointProfileVersion = 0
             try context.save()
 
+            try Task.checkCancellation()
             try await generateSummary(
                 for: recording,
-                transcript: drafts.map(\.text).joined(separator: "\n"),
+                segments: drafts,
                 in: context
             )
+        } catch is CancellationError {
+            // Keep the current processing state and any checkpointed work.
+            // The pending job restarts when the app becomes active again.
+            try? context.save()
         } catch {
             recording.processingState = .failed
             recording.failureMessage = error.localizedDescription
@@ -181,7 +240,6 @@ final class ProcessingCoordinator {
                     duration: draft.duration,
                     text: draft.text,
                     sortOrder: index,
-                    speakerIndex: draft.speakerIndex,
                     recording: recording
                 )
                 context.insert(segment)
@@ -192,7 +250,6 @@ final class ProcessingCoordinator {
             segment.duration = draft.duration
             segment.text = draft.text
             segment.sortOrder = index
-            segment.speakerIndex = draft.speakerIndex
         }
 
         if persisted.count > drafts.count {
@@ -205,9 +262,10 @@ final class ProcessingCoordinator {
 
     private func generateSummary(
         for recording: AudioRecording,
-        transcript: String,
+        segments: [TranscriptDraft],
         in context: ModelContext
     ) async throws {
+        try Task.checkCancellation()
         recording.processingState = .summarizing
         recording.summarySubject = ""
         recording.summaryText = ""
@@ -217,9 +275,7 @@ final class ProcessingCoordinator {
 
         let summary: SummaryDraft
         do {
-            summary = try await summaryService.summarize(
-                transcript: transcript
-            )
+            summary = try await summaryService.summarize(segments: segments)
         } catch is CancellationError {
             throw CancellationError()
         } catch {
@@ -228,6 +284,8 @@ final class ProcessingCoordinator {
             try context.save()
             return
         }
+
+        try Task.checkCancellation()
 
         // Preserve edits the user makes while the model is running.
         if recording.summarySubject.isEmpty {

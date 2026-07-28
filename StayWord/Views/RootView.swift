@@ -37,11 +37,22 @@ struct RootView: View {
             )
         }
         .task {
-            consumePendingIntent()
+            let isActive = scenePhase == .active
+            services.processor.setApplicationActive(isActive)
+            if isActive {
+                consumePendingIntent()
+            }
         }
         .onChange(of: scenePhase) { _, phase in
-            guard phase == .active else { return }
-            consumePendingIntent()
+            switch phase {
+            case .active:
+                services.processor.setApplicationActive(true)
+                consumePendingIntent()
+            case .inactive, .background:
+                services.processor.setApplicationActive(false)
+            @unknown default:
+                services.processor.setApplicationActive(false)
+            }
         }
         .alert(
             "Couldn't Complete the Action",

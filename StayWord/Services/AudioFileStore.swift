@@ -48,6 +48,19 @@ struct AudioFileStore: Sendable {
             .appendingPathExtension("m4a")
     }
 
+    func newImportedAudioURL(for sourceURL: URL) throws -> URL {
+        let sourceExtension = sourceURL.pathExtension
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .lowercased()
+        guard !sourceExtension.isEmpty else {
+            throw StayWordError.invalidAudioFile
+        }
+
+        return try recordingsDirectory
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension(sourceExtension)
+    }
+
     func relativePath(for url: URL) -> String {
         "\(folderName)/\(url.lastPathComponent)"
     }
@@ -82,7 +95,7 @@ actor AudioImportService: AudioImportServiceProtocol {
             }
         }
 
-        let destination = try fileStore.newRecordingURL()
+        let destination = try fileStore.newImportedAudioURL(for: sourceURL)
         do {
             try FileManager.default.copyItem(at: sourceURL, to: destination)
             let audioFile = try AVAudioFile(forReading: destination)

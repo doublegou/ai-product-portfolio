@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "-%@" : {
 
     },
@@ -55,9 +58,6 @@
           }
         }
       }
-    },
-    "Aligning Transcript" : {
-
     },
     "All Recordings" : {
       "localizations" : {
@@ -135,6 +135,9 @@
 
     },
     "Couldn't Save the Recording" : {
+
+    },
+    "Currently Playing" : {
 
     },
     "Delete" : {
@@ -271,6 +274,9 @@
         }
       }
     },
+    "Follow Playback" : {
+
+    },
     "Forward 15 Seconds" : {
 
     },
@@ -284,8 +290,15 @@
         }
       }
     },
-    "Identifying Speakers" : {
-
+    "Import" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入"
+          }
+        }
+      }
     },
     "Import Audio" : {
       "localizations" : {
@@ -409,16 +422,6 @@
     },
     "OK" : {
 
-    },
-    "On-Device Intelligent Summary" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "端侧智能摘要"
-          }
-        }
-      }
     },
     "On-Device Summary" : {
 
@@ -620,6 +623,9 @@
         }
       }
     },
+    "Scrolls to the current transcript segment" : {
+
+    },
     "Search" : {
 
     },
@@ -648,16 +654,6 @@
     },
     "Shows actions for this folder" : {
 
-    },
-    "Speaker %lld · %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Speaker %1$lld · %2$@"
-          }
-        }
-      }
     },
     "Start Recording" : {
 
@@ -740,9 +736,6 @@
     "Title" : {
 
     },
-    "Title or transcript" : {
-
-    },
     "Transcribing" : {
       "localizations" : {
         "zh-Hans" : {
@@ -790,16 +783,6 @@
     },
     "Unfavorite" : {
 
-    },
-    "Import" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "导入"
-          }
-        }
-      }
     },
     "Voice Recording" : {
       "extractionState" : "stale",

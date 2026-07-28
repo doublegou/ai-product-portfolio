@@ -1,7 +1,11 @@
 # StayWord for iOS
 
-StayWord is a SwiftUI-first voice recording app targeting iOS 18 and adopting
-iOS 26 system appearance and APIs when available.
+StayWord is a private, on-device voice recording and transcription app. It
+targets iOS 18 and adopts iOS 26 system appearance and APIs when available.
+
+Record or import audio, keep timestamped transcript segments synchronized with
+playback, and generate a concise summary without uploading the recording or
+generated content to a server.
 
 ## Open and run
 
@@ -21,16 +25,36 @@ extension uses `com.rivendell.stayword.RecordingActivity`.
 - SwiftData local persistence
 - AVFoundation recording and playback with interruption/route handling
 - MediaPlayer lock-screen and Control Center playback commands
-- SpeechAnalyzer and system-managed speech assets on iOS 26
-- On-device SFSpeechRecognizer fallback on iOS 18–25
-- Foundation Models structured summaries on supported iOS 26 devices
-- Bundled MLX/Qwen 0.8B summaries when Foundation Models are unavailable
+- Bundled Silero VAD and SenseVoice models for timestamped, segmented,
+  on-device transcription
+- Bundled MLX/Qwen 0.8B summaries
 - ActivityKit and WidgetKit recording Live Activity
 - App Intents for starting a recording and opening the latest recording
 
 Only the recording and static audio waveforms are custom drawn. Standard
 navigation, controls, materials, dialogs, and transitions are owned by the
 system so iOS 26 can apply Liquid Glass automatically.
+
+## Supported audio imports
+
+StayWord publicly supports these mainstream audio formats:
+
+- MP3 (`.mp3`)
+- MPEG-4 audio and AAC (`.m4a`, `.aac`)
+- Waveform Audio (`.wav`)
+- AIFF and AIFC (`.aif`, `.aiff`, `.aifc`)
+- Core Audio Format (`.caf`)
+- FLAC (`.flac`)
+
+Imported files keep their original container and extension; StayWord does not
+rename or recompress them just to fit an internal format. For transcription,
+iOS decodes the source locally and StayWord streams it into a normalized 16 kHz
+mono PCM representation before voice detection and recognition.
+
+This published list intentionally focuses on formats that are useful to most
+people and are supported across import, playback, and processing. iOS can read
+additional specialist containers, but those are not part of StayWord's public
+compatibility promise.
 
 ## Verification commands
 

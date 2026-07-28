@@ -160,7 +160,7 @@ struct LibraryView: View {
 
             services.processor.restoreInterruptedJobs(
                 from: activeRecordings.filter {
-                    $0.processingState.isProcessing
+                    $0.processingState.isOverallProcessing
                 },
                 in: modelContext
             )

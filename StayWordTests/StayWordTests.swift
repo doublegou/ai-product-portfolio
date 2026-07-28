@@ -13,6 +13,17 @@ struct StayWordTests {
     }
 
     @Test
+    func importedAudioKeepsItsSourceExtension() throws {
+        let fileStore = AudioFileStore()
+        let importedURL = try fileStore.newImportedAudioURL(
+            for: URL(fileURLWithPath: "/tmp/interview.MP3")
+        )
+
+        #expect(importedURL.pathExtension == "mp3")
+        #expect(try fileStore.newRecordingURL().pathExtension == "m4a")
+    }
+
+    @Test
     func recordingDerivedState() {
         let recording = AudioRecording(
             title: "Test",
@@ -31,15 +42,86 @@ struct StayWordTests {
     }
 
     @Test
-    func transcriptCannotBePersistedAsItsOwnSummary() {
-        #expect(!SummaryContentPolicy.isDistinctSummary(
-            "今天 下午 三点开会。",
-            from: "今天下午三点开会"
-        ))
-        #expect(SummaryContentPolicy.isDistinctSummary(
-            "会议安排在今天下午三点。",
-            from: "大家讨论了项目进度，最后决定今天下午三点开会。"
-        ))
+    func processingStagesHaveIndependentDisplayLifecycles() {
+        let transcriptionStages: [ProcessingState] = [
+            .ready,
+            .preparing,
+            .vad,
+            .transcribing,
+        ]
+
+        for state in transcriptionStages {
+            #expect(state.isTranscriptionProcessing)
+            #expect(state.isOverallProcessing)
+        }
+
+        #expect(!ProcessingState.summarizing.isTranscriptionProcessing)
+        #expect(ProcessingState.summarizing.isOverallProcessing)
+
+        for state in [ProcessingState.completed, .failed] {
+            #expect(!state.isTranscriptionProcessing)
+            #expect(!state.isOverallProcessing)
+        }
+    }
+
+    @Test
+    @MainActor
+    func processingPausesInBackgroundAndResumesWhenActive() async throws {
+        let schema = Schema([
+            RecordingFolder.self,
+            AudioRecording.self,
+            TranscriptSegment.self,
+            RecordingMarker.self,
+        ])
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: schema, configurations: configuration)
+        let context = container.mainContext
+        let summaryService = LifecycleSummaryService()
+        let coordinator = ProcessingCoordinator(
+            fileStore: AudioFileStore(),
+            summaryService: summaryService
+        )
+        let recording = AudioRecording(
+            title: "Background Test",
+            duration: 10,
+            audioRelativePath: "Recordings/background-test.m4a",
+            processingState: .summarizing
+        )
+        let segment = TranscriptSegment(
+            startTime: 0,
+            duration: 2,
+            text: "A transcript that can be summarized.",
+            recording: recording
+        )
+        context.insert(recording)
+        context.insert(segment)
+        recording.transcriptSegments.append(segment)
+        try context.save()
+
+        coordinator.enqueue(recording, in: context)
+        for _ in 0..<100 {
+            if await summaryService.attemptCount() == 1 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await summaryService.attemptCount() == 1)
+
+        coordinator.setApplicationActive(false)
+        for _ in 0..<100 {
+            if await summaryService.cancellationCount() == 1 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await summaryService.cancellationCount() == 1)
+        #expect(recording.processingState == .summarizing)
+
+        coordinator.setApplicationActive(true)
+        for _ in 0..<100 {
+            if recording.processingState == .completed { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+
+        #expect(await summaryService.attemptCount() == 2)
+        #expect(recording.processingState == .completed)
+        #expect(recording.summaryText == "Resumed summary")
     }
 
     @Test
@@ -72,130 +154,104 @@ struct StayWordTests {
     }
 
     @Test
-    func speakerTurnsAreAlignedAndNormalizedByFirstAppearance() {
-        let units = TranscriptionSegmentPlanner.makeUnits(
-            speech: [
-                SherpaSpeechInterval(start: 0, end: 8),
-            ],
-            speakerTurns: [
-                SherpaSpeakerTurn(start: 0, end: 3, speaker: 7),
-                SherpaSpeakerTurn(start: 3, end: 8, speaker: 2),
-            ],
-            audioDuration: 8
-        )
-
-        #expect(units == [
-            TranscriptionUnit(start: 0, end: 3, speaker: 0),
-            TranscriptionUnit(start: 3, end: 8, speaker: 1),
-        ])
-    }
-
-    @Test
-    func speechWithoutDiarizationRemainsTranscribable() {
-        let units = TranscriptionSegmentPlanner.makeUnits(
-            speech: [
-                SherpaSpeechInterval(start: 1, end: 2.5),
-            ],
-            speakerTurns: [],
-            audioDuration: 4
-        )
-
-        #expect(units == [
-            TranscriptionUnit(start: 1, end: 2.5, speaker: nil),
-        ])
-    }
-
-    @Test
-    func provisionalTranscriptsReceiveDominantSpeakerAfterDiarization() {
+    func transcriptDraftRetainsSegmentTiming() {
         let drafts = [
             TranscriptDraft(
                 startTime: 10,
                 duration: 4,
-                text: "Hello",
-                speakerIndex: nil
+                text: "Hello"
             ),
             TranscriptDraft(
                 startTime: 14,
                 duration: 3,
-                text: "World",
-                speakerIndex: nil
+                text: "World"
             ),
         ]
 
-        let assigned = TranscriptionService.assignSpeakers(
-            to: drafts,
-            from: [
-                SherpaSpeakerTurn(start: 10, end: 11, speaker: 0),
-                SherpaSpeakerTurn(start: 11, end: 14, speaker: 1),
-                SherpaSpeakerTurn(start: 14, end: 17, speaker: 0),
-            ]
-        )
-
-        #expect(assigned.map(\.speakerIndex) == [1, 0])
-        #expect(assigned.map(\.text) == ["Hello", "World"])
+        #expect(drafts.map(\.startTime) == [10, 14])
+        #expect(drafts.map(\.duration) == [4, 3])
+        #expect(drafts.map(\.text) == ["Hello", "World"])
     }
 
     @Test
-    func speakerWindowOverlapKeepsSingleSpeakerStable() {
-        let mapper = SpeakerWindowMapper()
-        mapper.consume(
-            [SherpaSpeakerTurn(start: 0, end: 90, speaker: 4)],
-            commitRange: 0..<80
-        )
-        mapper.consume(
-            [SherpaSpeakerTurn(start: 80, end: 170, speaker: 9)],
-            commitRange: 80..<170
+    func summaryChunksKeepTranscriptSegmentsWholeAndOrdered() {
+        let segments = [
+            TranscriptDraft(startTime: 0, duration: 1, text: "First"),
+            TranscriptDraft(startTime: 1, duration: 1, text: "Second"),
+            TranscriptDraft(startTime: 2, duration: 1, text: "Third"),
+        ]
+
+        let chunks = SummaryInputChunker.chunks(
+            from: segments,
+            targetCharacterCount: 12
         )
 
-        #expect(mapper.finish() == [
-            SherpaSpeakerTurn(start: 0, end: 170, speaker: 0),
-        ])
+        #expect(chunks == ["First\nSecond", "Third"])
     }
 
     @Test
-    func speakerWindowOverlapMapsRemainingKnownSpeaker() {
-        let mapper = SpeakerWindowMapper()
-        mapper.consume(
-            [
-                SherpaSpeakerTurn(start: 0, end: 45, speaker: 3),
-                SherpaSpeakerTurn(start: 45, end: 90, speaker: 8),
-            ],
-            commitRange: 0..<80
-        )
-        mapper.consume(
-            [
-                SherpaSpeakerTurn(start: 80, end: 100, speaker: 2),
-                SherpaSpeakerTurn(start: 100, end: 170, speaker: 7),
-            ],
-            commitRange: 80..<170
+    func summaryChunksMayPassTheTargetToKeepTheNextSegmentWhole() {
+        let segments = [
+            TranscriptDraft(startTime: 0, duration: 1, text: "123456789"),
+            TranscriptDraft(startTime: 1, duration: 1, text: "AB"),
+            TranscriptDraft(startTime: 2, duration: 1, text: "Tail"),
+        ]
+
+        let chunks = SummaryInputChunker.chunks(
+            from: segments,
+            targetCharacterCount: 10
         )
 
-        #expect(Set(mapper.finish().map(\.speaker)) == [0, 1])
+        #expect(chunks == ["123456789\nAB", "Tail"])
     }
 
     @Test
-    func speakerEmbeddingReconnectsSpeakerAfterLongSilence() {
-        let mapper = SpeakerWindowMapper()
-        mapper.consume(
-            [
-                SherpaSpeakerTurn(start: 0, end: 40, speaker: 3),
-                SherpaSpeakerTurn(start: 40, end: 90, speaker: 8),
-            ],
-            commitRange: 0..<80,
-            embeddings: [
-                3: [1, 0],
-                8: [0, 1],
-            ]
-        )
-        mapper.consume(
-            [SherpaSpeakerTurn(start: 200, end: 250, speaker: 5)],
-            commitRange: 200..<250,
-            embeddings: [
-                5: [0.99, 0.01],
-            ]
+    func summaryChunksDoNotSplitAnOversizedTranscriptSegment() {
+        let oversizedText = String(repeating: "x", count: 20)
+        let segments = [
+            TranscriptDraft(startTime: 0, duration: 1, text: oversizedText),
+            TranscriptDraft(startTime: 1, duration: 1, text: "Tail"),
+        ]
+
+        let chunks = SummaryInputChunker.chunks(
+            from: segments,
+            targetCharacterCount: 10
         )
 
-        #expect(mapper.finish().last?.speaker == 0)
+        #expect(chunks == [oversizedText, "Tail"])
+    }
+
+    @Test
+    func structuredSummaryOutputParsesTitleAndReadableBody() throws {
+        let output = try #require(SummaryOutputParser.parse(
+            """
+            <think>Internal reasoning</think>
+            ```xml
+            <title>项目方向与后续安排</title>
+            <summary>
+            团队确认了新的项目方向。
+
+            - 下周完成第一版方案
+            - 测试完成后复盘
+            </summary>
+            ```
+            """
+        ))
+
+        #expect(output.title == "项目方向与后续安排")
+        #expect(output.summary == """
+            团队确认了新的项目方向。
+
+            - 下周完成第一版方案
+            - 测试完成后复盘
+            """)
+    }
+
+    @Test
+    func structuredSummaryOutputRequiresBothFields() {
+        #expect(SummaryOutputParser.parse(
+            "<summary>只有正文，没有标题。</summary>"
+        ) == nil)
     }
 
     @Test
@@ -234,6 +290,46 @@ struct StayWordTests {
             fetched.transcriptionCheckpointProfileVersion
                 == TranscriptionService.profileVersion
         )
+    }
+
+    @Test
+    func transcriptPlaybackSyncUsesSpokenSegmentBounds() {
+        let first = TranscriptSegment(
+            startTime: 1,
+            duration: 2,
+            text: "First"
+        )
+        let second = TranscriptSegment(
+            startTime: 4,
+            duration: 2,
+            text: "Second"
+        )
+        let segments = [second, first]
+
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 0.9) == nil)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 1) == first.id)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 2.9) == first.id)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 3) == nil)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 4) == second.id)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 6) == nil)
+    }
+
+    @Test
+    func transcriptPlaybackSyncSupportsLegacyUntimedSegments() {
+        let first = TranscriptSegment(
+            startTime: 0,
+            text: "First",
+            sortOrder: 0
+        )
+        let second = TranscriptSegment(
+            startTime: 5,
+            text: "Second",
+            sortOrder: 1
+        )
+        let segments = [second, first]
+
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 4.9) == first.id)
+        #expect(TranscriptPlaybackSync.activeSegmentID(in: segments, at: 5) == second.id)
     }
 
     @Test
@@ -284,5 +380,37 @@ struct StayWordTests {
         #expect(prepared.metadata.channelCount == 1)
         #expect(prepared.metadata.frameCount > 0)
         #expect(abs(prepared.metadata.duration - 0.5) < 0.03)
+    }
+}
+
+private actor LifecycleSummaryService: SummaryService {
+    private var attempts = 0
+    private var cancellations = 0
+
+    func summarize(segments: [TranscriptDraft]) async throws -> SummaryDraft {
+        attempts += 1
+
+        if attempts == 1 {
+            do {
+                try await Task.sleep(for: .seconds(30))
+            } catch is CancellationError {
+                cancellations += 1
+                throw CancellationError()
+            }
+        }
+
+        return SummaryDraft(
+            subject: "",
+            text: "Resumed summary",
+            kind: .extractive
+        )
+    }
+
+    func attemptCount() -> Int {
+        attempts
+    }
+
+    func cancellationCount() -> Int {
+        cancellations
     }
 }

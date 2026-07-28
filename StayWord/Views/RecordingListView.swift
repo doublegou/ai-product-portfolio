@@ -1,5 +1,6 @@
 import SwiftData
 import SwiftUI
+import UIKit
 import UniformTypeIdentifiers
 
 struct RecordingListView: View {
@@ -15,7 +16,6 @@ struct RecordingListView: View {
 
     @State private var searchText = ""
     @State private var searchIsPresented = false
-    @State private var searchIsInstalled = false
     @State private var selectedIDs = Set<UUID>()
     @State private var editMode: EditMode = .inactive
     @State private var showsImporter = false
@@ -179,30 +179,12 @@ struct RecordingListView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.large)
-        .modifier(
-            RecordingSearchModifier(
+        .background {
+            RecordingSearchController(
                 text: $searchText,
                 isPresented: $searchIsPresented,
-                isInstalled: searchIsInstalled
+                prompt: "Title or transcript"
             )
-        )
-        .onChange(of: searchIsPresented) { wasPresented, isPresented in
-            if wasPresented, !isPresented {
-                searchText = ""
-                searchIsInstalled = false
-            }
-        }
-        .task(id: searchIsInstalled) {
-            guard searchIsInstalled, !searchIsPresented else { return }
-
-            // Let the navigation bar finish installing the search drawer before
-            // asking it to become first responder. Presenting it in the same
-            // update can make iOS place it in the bottom toolbar on first use.
-            await Task.yield()
-            try? await Task.sleep(nanoseconds: 120_000_000)
-
-            guard !Task.isCancelled, searchIsInstalled else { return }
-            searchIsPresented = true
         }
         .environment(\.editMode, $editMode)
         .toolbar {
@@ -410,12 +392,7 @@ struct RecordingListView: View {
     }
 
     private func presentSearch() {
-        guard !searchIsInstalled else {
-            searchIsPresented = true
-            return
-        }
-
-        searchIsInstalled = true
+        searchIsPresented = true
     }
 }
 
@@ -680,21 +657,153 @@ struct RecentlyDeletedView: View {
     }
 }
 
-private struct RecordingSearchModifier: ViewModifier {
+private struct RecordingSearchController: UIViewControllerRepresentable {
     @Binding var text: String
     @Binding var isPresented: Bool
-    let isInstalled: Bool
+    let prompt: String
 
-    func body(content: Content) -> some View {
-        if isInstalled {
-            content.searchable(
-                text: $text,
-                isPresented: $isPresented,
-                placement: .navigationBarDrawer(displayMode: .automatic),
-                prompt: "Title or transcript"
-            )
-        } else {
-            content
+    func makeUIViewController(context: Context) -> Controller {
+        Controller()
+    }
+
+    func updateUIViewController(_ controller: Controller, context: Context) {
+        controller.update(
+            text: $text,
+            isPresented: $isPresented,
+            prompt: prompt
+        )
+    }
+
+    static func dismantleUIViewController(_ controller: Controller, coordinator: ()) {
+        controller.tearDown()
+    }
+
+    @MainActor
+    final class Controller: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+        private let searchController = UISearchController(searchResultsController: nil)
+        private var text: Binding<String>?
+        private var isPresented: Binding<Bool>?
+        private weak var installedNavigationItem: UINavigationItem?
+        private var previousSearchController: UISearchController?
+        private var previousHidesSearchBarWhenScrolling = true
+        private var previousSearchBarPlacement: UINavigationItem.SearchBarPlacement = .automatic
+        private var previousAllowsToolbarIntegration = true
+        private var presentationTask: Task<Void, Never>?
+
+        override func loadView() {
+            let view = UIView(frame: .zero)
+            view.backgroundColor = .clear
+            view.isUserInteractionEnabled = false
+            self.view = view
+        }
+
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            synchronizePresentation()
+        }
+
+        func update(
+            text: Binding<String>,
+            isPresented: Binding<Bool>,
+            prompt: String
+        ) {
+            self.text = text
+            self.isPresented = isPresented
+
+            searchController.searchResultsUpdater = self
+            searchController.delegate = self
+            searchController.obscuresBackgroundDuringPresentation = false
+            searchController.searchBar.placeholder = prompt
+            if searchController.searchBar.text != text.wrappedValue {
+                searchController.searchBar.text = text.wrappedValue
+            }
+
+            synchronizePresentation()
+        }
+
+        func updateSearchResults(for searchController: UISearchController) {
+            let updatedText = searchController.searchBar.text ?? ""
+            if text?.wrappedValue != updatedText {
+                text?.wrappedValue = updatedText
+            }
+        }
+
+        func didDismissSearchController(_ searchController: UISearchController) {
+            text?.wrappedValue = ""
+            isPresented?.wrappedValue = false
+            detach()
+        }
+
+        func tearDown() {
+            if searchController.isActive {
+                searchController.isActive = false
+            }
+            detach()
+        }
+
+        func detach() {
+            presentationTask?.cancel()
+            presentationTask = nil
+            guard let navigationItem = installedNavigationItem else { return }
+            if navigationItem.searchController === searchController {
+                navigationItem.searchController = previousSearchController
+                navigationItem.hidesSearchBarWhenScrolling = previousHidesSearchBarWhenScrolling
+                navigationItem.preferredSearchBarPlacement = previousSearchBarPlacement
+                if #available(iOS 26.0, *) {
+                    navigationItem.searchBarPlacementAllowsToolbarIntegration =
+                        previousAllowsToolbarIntegration
+                }
+            }
+            installedNavigationItem = nil
+            previousSearchController = nil
+        }
+
+        private func synchronizePresentation() {
+            guard isViewLoaded, view.window != nil else { return }
+
+            guard isPresented?.wrappedValue == true else {
+                if searchController.isActive {
+                    searchController.isActive = false
+                } else {
+                    detach()
+                }
+                return
+            }
+
+            guard let navigationController,
+                  let navigationItem = navigationController.topViewController?.navigationItem
+            else { return }
+
+            if installedNavigationItem !== navigationItem {
+                detach()
+                previousSearchController = navigationItem.searchController
+                previousHidesSearchBarWhenScrolling = navigationItem.hidesSearchBarWhenScrolling
+                previousSearchBarPlacement = navigationItem.preferredSearchBarPlacement
+                if #available(iOS 26.0, *) {
+                    previousAllowsToolbarIntegration =
+                        navigationItem.searchBarPlacementAllowsToolbarIntegration
+                    navigationItem.searchBarPlacementAllowsToolbarIntegration = false
+                }
+                navigationItem.preferredSearchBarPlacement = .stacked
+                navigationItem.searchController = searchController
+                navigationItem.hidesSearchBarWhenScrolling = false
+                installedNavigationItem = navigationItem
+                navigationController.topViewController?.definesPresentationContext = true
+            }
+
+            guard !searchController.isActive, presentationTask == nil else { return }
+            presentationTask = Task { @MainActor [weak self] in
+                await Task.yield()
+                guard let self else { return }
+
+                self.presentationTask = nil
+                guard !Task.isCancelled,
+                      self.isPresented?.wrappedValue == true
+                else { return }
+
+                self.searchController.isActive = true
+                self.searchController.searchBar.becomeFirstResponder()
+            }
         }
     }
 }

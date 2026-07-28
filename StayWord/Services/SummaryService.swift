@@ -4,69 +4,115 @@ import MLXLMCommon
 import OSLog
 import Tokenizers
 
-#if canImport(FoundationModels)
-import FoundationModels
-#endif
-
 struct SummaryDraft: Sendable {
     let subject: String
     let text: String
     let kind: SummaryKind
 }
 
-enum SummaryContentPolicy {
-    static func isDistinctSummary(_ summary: String, from transcript: String) -> Bool {
-        let normalizedSummary = summary.normalizedForContentComparison
-        return !normalizedSummary.isEmpty
-            && normalizedSummary != transcript.normalizedForContentComparison
+protocol SummaryService: Sendable {
+    func summarize(segments: [TranscriptDraft]) async throws -> SummaryDraft
+}
+
+enum SummaryInputChunker {
+    static func chunks(
+        from segments: [TranscriptDraft],
+        targetCharacterCount: Int
+    ) -> [String] {
+        precondition(targetCharacterCount > 0)
+
+        var chunks: [String] = []
+        var currentSegments: [String] = []
+        var currentCharacterCount = 0
+
+        for segment in segments {
+            let text = segment.text.trimmingCharacters(
+                in: .whitespacesAndNewlines
+            )
+            guard !text.isEmpty else { continue }
+
+            let separatorCount = currentSegments.isEmpty ? 0 : 1
+            currentSegments.append(text)
+            currentCharacterCount += separatorCount + text.count
+
+            if currentCharacterCount >= targetCharacterCount {
+                chunks.append(currentSegments.joined(separator: "\n"))
+                currentSegments.removeAll(keepingCapacity: true)
+                currentCharacterCount = 0
+            }
+        }
+
+        if !currentSegments.isEmpty {
+            chunks.append(currentSegments.joined(separator: "\n"))
+        }
+        return chunks
     }
 }
 
-protocol SummaryService: Sendable {
-    func summarize(transcript: String) async throws -> SummaryDraft
+struct StructuredSummaryOutput: Sendable, Equatable {
+    let title: String
+    let summary: String
+}
+
+enum SummaryOutputParser {
+    static func parse(_ output: String) -> StructuredSummaryOutput? {
+        let cleaned = output.cleanedLocalModelResponse
+        guard
+            let title = content(of: "title", in: cleaned),
+            let summary = content(of: "summary", in: cleaned),
+            !title.isEmpty,
+            !summary.isEmpty
+        else {
+            return nil
+        }
+        return StructuredSummaryOutput(title: title, summary: summary)
+    }
+
+    private static func content(of tag: String, in text: String) -> String? {
+        let openingTag = "<\(tag)>"
+        let closingTag = "</\(tag)>"
+        guard
+            let openingRange = text.range(
+                of: openingTag,
+                options: .caseInsensitive
+            ),
+            let closingRange = text.range(
+                of: closingTag,
+                options: .caseInsensitive,
+                range: openingRange.upperBound..<text.endIndex
+            )
+        else {
+            return nil
+        }
+        return String(text[openingRange.upperBound..<closingRange.lowerBound])
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
 actor OnDeviceSummaryService: SummaryService {
     private enum LocalModel {
         static let directoryName = "Qwen3.5-0.8B-MLX-4bit"
         static let relativeDirectory = "Models/Summary/\(directoryName)"
-        static let maximumChunkCharacters = 3_600
+        static let targetChunkCharacters = 5_000
     }
 
     private let localModelDirectoryOverride: URL?
-    private let usesSystemLanguageModel: Bool
     private var localModelContainer: ModelContainer?
     private var localModelLoadTask: Task<ModelContainer, Error>?
 
-    init(
-        localModelDirectory: URL? = nil,
-        usesSystemLanguageModel: Bool = true
-    ) {
+    init(localModelDirectory: URL? = nil) {
         self.localModelDirectoryOverride = localModelDirectory
-        self.usesSystemLanguageModel = usesSystemLanguageModel
     }
 
-    func summarize(transcript: String) async throws -> SummaryDraft {
-        let cleaned = transcript.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !cleaned.isEmpty else {
+    func summarize(segments: [TranscriptDraft]) async throws -> SummaryDraft {
+        try Task.checkCancellation()
+        let chunks = SummaryInputChunker.chunks(
+            from: segments,
+            targetCharacterCount: LocalModel.targetChunkCharacters
+        )
+        guard !chunks.isEmpty else {
             throw StayWordError.emptyTranscript
         }
-
-        #if canImport(FoundationModels)
-        if usesSystemLanguageModel, #available(iOS 26.0, *) {
-            do {
-                if let generated = try await generateFoundationSummary(transcript: cleaned) {
-                    return generated
-                }
-            } catch is CancellationError {
-                throw CancellationError()
-            } catch {
-                Self.logger.notice(
-                    "Foundation Models summary unavailable; falling back to bundled Qwen: \(error.localizedDescription, privacy: .public)"
-                )
-            }
-        }
-        #endif
 
         #if targetEnvironment(simulator)
         Self.logger.notice(
@@ -75,7 +121,7 @@ actor OnDeviceSummaryService: SummaryService {
         throw LocalSummaryError.simulatorUnsupported
         #else
         do {
-            return try await generateLocalSummary(transcript: cleaned)
+            return try await generateLocalSummary(chunks: chunks)
         } catch is CancellationError {
             throw CancellationError()
         } catch {
@@ -87,133 +133,71 @@ actor OnDeviceSummaryService: SummaryService {
         #endif
     }
 
-    #if canImport(FoundationModels)
-    @available(iOS 26.0, *)
-    private func generateFoundationSummary(transcript: String) async throws -> SummaryDraft? {
-        let model = SystemLanguageModel.default
-        guard case .available = model.availability else {
-            return nil
+    private func generateLocalSummary(chunks: [String]) async throws -> SummaryDraft {
+        if chunks.count == 1 {
+            let finalSummary = try await generateFinalSummary(
+                prompt: Self.singleDocumentPrompt(for: chunks[0])
+            )
+            #if DEBUG
+            Self.logSummaryMetrics(
+                path: "single",
+                inputCharacters: chunks.map(\.count),
+                partialCharacters: [],
+                finalSummary: finalSummary
+            )
+            #endif
+            return finalSummary
         }
 
-        let chunks = transcript.chunked(maxCharacters: 6_000)
-        var intermediate: [String] = []
-
-        for chunk in chunks {
-            let session = LanguageModelSession(
-                model: model,
-                instructions: """
-                You summarize private voice-note transcripts. Preserve facts, names, decisions,
-                and action items. Do not invent details. Respond in the transcript's language.
-                """
-            )
-            let response = try await session.respond(
-                to: "Summarize this transcript concisely:\n\n\(chunk)",
-                generating: GeneratedAudioSummary.self
-            )
-            intermediate.append("\(response.content.subject)\n\(response.content.summary)")
-        }
-
-        let final: GeneratedAudioSummary
-        if intermediate.count == 1 {
-            let session = LanguageModelSession(
-                instructions: "Return a concise subject and factual summary in the source language."
-            )
-            final = try await session.respond(
-                to: intermediate[0],
-                generating: GeneratedAudioSummary.self
-            ).content
-        } else {
-            let session = LanguageModelSession(
-                instructions: """
-                Combine partial summaries into one factual voice-note summary. Remove repetition
-                and preserve decisions and action items. Respond in the source language.
-                """
-            )
-            final = try await session.respond(
-                to: intermediate.joined(separator: "\n\n"),
-                generating: GeneratedAudioSummary.self
-            ).content
-        }
-
-        let subject = final.subject.trimmingCharacters(in: .whitespacesAndNewlines)
-        let summary = final.summary.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        guard SummaryContentPolicy.isDistinctSummary(
-            summary,
-            from: transcript
-        ) else {
-            return nil
-        }
-
-        return SummaryDraft(subject: subject, text: summary, kind: .foundationModel)
-    }
-    #endif
-
-    private func generateLocalSummary(transcript: String) async throws -> SummaryDraft {
-        let chunks = transcript.chunked(
-            maxCharacters: LocalModel.maximumChunkCharacters
-        )
         var partialSummaries: [String] = []
 
         for chunk in chunks {
-            let summary = try await generateLocalText(
-                prompt: """
-                请总结下面这段录音转写。
-                - 使用与转写原文相同的语言。
-                - 保留事实、人物、决定和待办事项。
-                - 不要编造原文没有的信息。
-                - 不要解释任务，不要输出“摘要：”等前缀，只输出摘要正文。
-                - 用一到三个简洁段落完成。
-
-                转写内容：
-                \(chunk)
-                """,
-                maximumOutputTokens: 240
+            try Task.checkCancellation()
+            let response = try await generateLocalResponse(
+                prompt: Self.partialDocumentPrompt(for: chunk)
             )
+            let summary = response.cleanedPartialSummary
+            guard !summary.isEmpty else {
+                throw LocalSummaryError.invalidOutput
+            }
+            try Task.checkCancellation()
             partialSummaries.append(summary)
         }
 
-        let summary: String
-        if partialSummaries.count == 1 {
-            summary = partialSummaries[0]
-        } else {
-            summary = try await generateLocalText(
-                prompt: """
-                下面是同一段录音的分段摘要。请合并为一份连贯、简洁、无重复的最终摘要。
-                使用原摘要的语言，保留事实、人物、决定和待办事项。
-                不要解释任务，不要输出“摘要：”等前缀，只输出摘要正文。
+        let finalSummary = try await generateFinalSummary(
+            prompt: Self.integratedDocumentPrompt(for: partialSummaries)
+        )
+        #if DEBUG
+        Self.logSummaryMetrics(
+            path: "multi",
+            inputCharacters: chunks.map(\.count),
+            partialCharacters: partialSummaries.map(\.count),
+            finalSummary: finalSummary
+        )
+        #endif
+        return finalSummary
+    }
 
-                \(partialSummaries.joined(separator: "\n\n"))
-                """,
-                maximumOutputTokens: 320
-            )
-        }
-
-        guard SummaryContentPolicy.isDistinctSummary(summary, from: transcript) else {
+    private func generateFinalSummary(prompt: String) async throws -> SummaryDraft {
+        let response = try await generateLocalResponse(prompt: prompt)
+        guard let output = SummaryOutputParser.parse(response) else {
             throw LocalSummaryError.invalidOutput
         }
-
         return SummaryDraft(
-            subject: "",
-            text: summary,
+            subject: output.title,
+            text: output.summary,
             kind: .localLanguageModel
         )
     }
 
-    private func generateLocalText(
-        prompt: String,
-        maximumOutputTokens: Int
-    ) async throws -> String {
+    private func generateLocalResponse(prompt: String) async throws -> String {
+        try Task.checkCancellation()
         let container = try await localModel()
+        try Task.checkCancellation()
         let session = ChatSession(
             container,
-            instructions: """
-            You are an offline voice-note summarizer. Be concise and factual.
-            Never add information that is not present in the transcript.
-            Always answer in the same language as the supplied transcript.
-            """,
+            instructions: Self.systemInstructions,
             generateParameters: GenerateParameters(
-                maxTokens: maximumOutputTokens,
                 temperature: 0.2,
                 topP: 0.9,
                 repetitionPenalty: 1.05,
@@ -222,19 +206,124 @@ actor OnDeviceSummaryService: SummaryService {
             )
         )
         let response = try await session.respond(to: prompt)
-        let cleaned = response.cleanedLocalModelSummary
+        try Task.checkCancellation()
+        let cleaned = response.cleanedLocalModelResponse
         guard !cleaned.isEmpty else {
             throw LocalSummaryError.invalidOutput
         }
         return cleaned
     }
 
+    private static let systemInstructions = """
+        你是一名智能内容总结与编辑专家。准确理解输入内容，并根据具体任务完成总结或整合。
+
+        只依据输入内容，不补充、猜测或编造信息。
+        直接陈述内容，不使用“本文”“本文档”“文章”“原文”“上述内容”“这些材料”等元话语。
+        使用与输入内容相同的主要语言。
+        根据内容选择自然的段落和组织方式，不套用固定场景或模板。
+        """
+
+    private static func partialDocumentPrompt(for text: String) -> String {
+        """
+        请总结下面这部分内容。你的输出将作为最终整合时理解这一部分的唯一依据，也是长文本流程中唯一的信息压缩阶段。
+
+        完整保留其中有意义的主题、观点、事实、人物、数字、例子、因果关系、结论、决定和待处理事项。可以合并重复表达，但不要用宽泛结论替代具体信息，也不要因为这是中间材料而过度简化。
+
+        直接陈述内容，不使用“本文”“本段”“原文”等元话语。不要把不确定的信息改写为确定事实。
+        使用与输入内容相同的主要语言。
+        只输出这一部分的摘要正文，不生成标题，不解释任务。
+
+        <text>
+        \(text)
+        </text>
+        """
+    }
+
+    private static func singleDocumentPrompt(for text: String) -> String {
+        """
+        请对下面的完整内容进行总结，并生成一个准确、自然的标题。
+
+        总结应完整覆盖其中有意义的主题、观点、事实、人物、数字、例子、因果关系、结论、决定和待处理事项。合并真正重复的表达，但不要把多个具体信息压缩成空泛概述。
+
+        直接呈现总结内容，不要描述你正在总结一份文本。内容简单时可以使用自然段；内容较复杂时，应通过合适的分段或分点呈现完整的信息层次。
+
+        标题应准确表达核心主题，像自然的笔记标题，不使用“摘要”“总结”“内容记录”等空泛表述，也不要写成冗长的文章副标题。
+
+        只依据输入内容，使用与输入内容相同的主要语言。
+
+        请严格按照下面的结构输出，不要添加其他说明：
+
+        <title>标题</title>
+        <summary>
+        总结正文
+        </summary>
+
+        <text>
+        \(text)
+        </text>
+        """
+    }
+
+    private static func integratedDocumentPrompt(
+        for partialSummaries: [String]
+    ) -> String {
+        let parts = partialSummaries.enumerated().map { index, summary in
+            """
+            <part index="\(index + 1)">
+            \(summary)
+            </part>
+            """
+        }.joined(separator: "\n\n")
+
+        return """
+        下面是同一内容按照原始顺序生成的分段摘要。请将它们编辑整合成一份连贯、自然、可以独立阅读的最终内容，并生成标题。
+
+        这是编辑整合任务，不是新一轮摘要。保留各部分中所有不重复且有意义的信息，最终正文的信息量应与去重后的分段内容相当。
+
+        只删除真正重复的内容。如果同一主题在多个部分延续，应把相关内容组织到一起，梳理观点、事实、原因、结果、变化和行动之间的关系。不要把多个具体信息重新概括成一句空泛结论。
+
+        改善段落顺序、衔接和表达，使结果看起来像一次完成的智能摘要，而不是多段内容的机械拼接。根据内容复杂度自然分段或分点。
+
+        直接呈现内容，不提及“本文”“本文档”“分段摘要”“材料”或整合过程。
+
+        标题应准确、自然地表达核心主题，不使用空泛表述，也不要写成冗长的文章副标题。
+
+        只依据提供的内容，不补充、猜测或编造信息。使用与输入内容相同的主要语言。
+
+        请严格按照下面的结构输出，不要添加其他说明：
+
+        <title>标题</title>
+        <summary>
+        最终总结正文
+        </summary>
+
+        <parts>
+        \(parts)
+        </parts>
+        """
+    }
+
+    #if DEBUG
+    private static func logSummaryMetrics(
+        path: String,
+        inputCharacters: [Int],
+        partialCharacters: [Int],
+        finalSummary: SummaryDraft
+    ) {
+        let inputs = inputCharacters.map(String.init).joined(separator: ",")
+        let partials = partialCharacters.map(String.init).joined(separator: ",")
+        logger.debug(
+            "Summary metrics path=\(path, privacy: .public) inputCharacters=[\(inputs, privacy: .public)] partialCharacters=[\(partials, privacy: .public)] finalTitleCharacters=\(finalSummary.subject.count, privacy: .public) finalBodyCharacters=\(finalSummary.text.count, privacy: .public)"
+        )
+    }
+    #endif
+
     private func localModel() async throws -> ModelContainer {
         if let localModelContainer {
             return localModelContainer
         }
         if let localModelLoadTask {
-            return try await localModelLoadTask.value
+            return try await waitForLocalModel(localModelLoadTask)
         }
 
         let directory = try localModelDirectory()
@@ -247,13 +336,25 @@ actor OnDeviceSummaryService: SummaryService {
         localModelLoadTask = task
 
         do {
-            let container = try await task.value
+            let container = try await waitForLocalModel(task)
             localModelContainer = container
             localModelLoadTask = nil
             return container
         } catch {
             localModelLoadTask = nil
             throw error
+        }
+    }
+
+    private func waitForLocalModel(
+        _ task: Task<ModelContainer, Error>
+    ) async throws -> ModelContainer {
+        try await withTaskCancellationHandler {
+            let container = try await task.value
+            try Task.checkCancellation()
+            return container
+        } onCancel: {
+            task.cancel()
         }
     }
 
@@ -357,25 +458,8 @@ private struct SwiftTransformersTokenizer: MLXLMCommon.Tokenizer, @unchecked Sen
     }
 }
 
-#if canImport(FoundationModels)
-@available(iOS 26.0, *)
-@Generable
-private struct GeneratedAudioSummary {
-    var subject: String
-    var summary: String
-}
-#endif
-
 private extension String {
-    var normalizedForContentComparison: String {
-        folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
-            .unicodeScalars
-            .filter { !CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters).contains($0) }
-            .map(String.init)
-            .joined()
-    }
-
-    var cleanedLocalModelSummary: String {
+    var cleanedLocalModelResponse: String {
         var result = replacingOccurrences(
             of: #"(?s)<think>.*?</think>"#,
             with: "",
@@ -384,9 +468,15 @@ private extension String {
         result = result
             .replacingOccurrences(of: "```text", with: "")
             .replacingOccurrences(of: "```markdown", with: "")
+            .replacingOccurrences(of: "```xml", with: "")
             .replacingOccurrences(of: "```", with: "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
+        return result
+    }
+
+    var cleanedPartialSummary: String {
+        var result = cleanedLocalModelResponse
         let prefixes = [
             "摘要：", "摘要:", "总结：", "总结:",
             "Summary:", "Summary：",
@@ -396,17 +486,5 @@ private extension String {
             break
         }
         return result.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
-
-    func chunked(maxCharacters: Int) -> [String] {
-        guard count > maxCharacters else { return [self] }
-        var chunks: [String] = []
-        var start = startIndex
-        while start < endIndex {
-            let end = index(start, offsetBy: maxCharacters, limitedBy: endIndex) ?? endIndex
-            chunks.append(String(self[start..<end]))
-            start = end
-        }
-        return chunks
     }
 }

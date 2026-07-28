@@ -39,11 +39,12 @@ final class StayWordUITests: XCTestCase {
     }
 
     @MainActor
-    func testCancellingSearchRemovesTheSearchField() {
+    func testSearchOpensAtTopAndCanBeReopenedAfterClosing() {
         let app = XCUIApplication()
         app.launch()
 
         app.staticTexts["All Recordings"].tap()
+        XCTAssertFalse(app.searchFields["Title or transcript"].exists)
         app.buttons["Search"].tap()
 
         let searchField = app.searchFields["Title or transcript"]
@@ -52,6 +53,10 @@ final class StayWordUITests: XCTestCase {
 
         app.buttons["Close"].tap()
         XCTAssertTrue(searchField.waitForNonExistence(timeout: 3))
+
+        app.buttons["Search"].tap()
+        XCTAssertTrue(searchField.waitForExistence(timeout: 3))
+        XCTAssertLessThan(searchField.frame.midY, app.windows.firstMatch.frame.midY)
     }
 
 }
