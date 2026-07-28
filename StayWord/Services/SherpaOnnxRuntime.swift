@@ -11,6 +11,12 @@ struct SherpaSpeakerTurn: Sendable, Equatable {
     let speaker: Int
 }
 
+struct SherpaStreamingTranscript: Sendable, Equatable {
+    let startSample: Int64
+    let endSample: Int64
+    let text: String
+}
+
 enum SherpaOnnxRuntimeError: LocalizedError, Sendable {
     case missingModel(String)
     case unsupportedSampleRate(expected: Int32, actual: Int32)
@@ -40,12 +46,11 @@ enum SherpaOnnxRuntimeError: LocalizedError, Sendable {
 /// Minimal, synchronous facade around the sherpa-onnx v1.13.2 C API.
 ///
 /// The caller is expected to serialize calls (the concrete `TranscriptionService`
-/// actor does this). Each operation owns its native model for only the duration
-/// of that operation so VAD, diarization, and ASR weights do not remain resident
-/// at the same time.
+/// actor does this). Streaming VAD and ASR share one bounded session; that
+/// session is released before the windowed diarization model is loaded.
 struct SherpaOnnxRuntime: Sendable {
     /// Increment when clustering parameters or diarization models change.
-    static let diarizationProfileVersion = 1
+    static let diarizationProfileVersion = 2
 
     private enum Constants {
         static let requiredSampleRate: Int32 = 16_000
@@ -70,7 +75,7 @@ struct SherpaOnnxRuntime: Sendable {
         static let decodingMethod = "greedy_search"
     }
 
-    private struct ModelPaths: Sendable {
+    fileprivate struct ModelPaths: Sendable {
         let sileroVAD: String
         let pyannote: String
         let speakerEmbedding: String
@@ -135,6 +140,496 @@ struct SherpaOnnxRuntime: Sendable {
 
     init(bundle: Bundle = .main) throws {
         models = try ModelPaths(bundle: bundle)
+    }
+
+    func makeStreamingRecognizer(
+        sampleRate: Int32,
+        baseSampleOffset: Int64 = 0
+    ) throws -> StreamingRecognizer {
+        try validate(sampleRate: sampleRate)
+        return try StreamingRecognizer(
+            models: models,
+            sampleRate: sampleRate,
+            baseSampleOffset: baseSampleOffset
+        )
+    }
+
+    func makeDiarizationSession(sampleRate: Int32) throws -> DiarizationSession {
+        try validate(sampleRate: sampleRate)
+        return try DiarizationSession(models: models, sampleRate: sampleRate)
+    }
+
+    final class StreamingRecognizer {
+        private let detector: OpaquePointer
+        private let recognizer: OpaquePointer
+        private let sampleRate: Int32
+        private let baseSampleOffset: Int64
+        private var pendingSamples: [Float] = []
+        private var isFinished = false
+
+        fileprivate init(
+            models: ModelPaths,
+            sampleRate: Int32,
+            baseSampleOffset: Int64
+        ) throws {
+            self.sampleRate = sampleRate
+            self.baseSampleOffset = max(0, baseSampleOffset)
+
+            detector = try Self.makeDetector(
+                modelPath: models.sileroVAD,
+                sampleRate: sampleRate
+            )
+            do {
+                recognizer = try Self.makeRecognizer(models: models)
+            } catch {
+                SherpaOnnxDestroyVoiceActivityDetector(detector)
+                throw error
+            }
+        }
+
+        deinit {
+            SherpaOnnxDestroyOfflineRecognizer(recognizer)
+            SherpaOnnxDestroyVoiceActivityDetector(detector)
+        }
+
+        func accept(_ samples: [Float]) throws -> [SherpaStreamingTranscript] {
+            guard !isFinished, !samples.isEmpty else { return [] }
+            pendingSamples.append(contentsOf: samples)
+
+            let consumableCount =
+                pendingSamples.count / Constants.vadWindowSize * Constants.vadWindowSize
+            guard consumableCount > 0 else { return [] }
+
+            var results: [SherpaStreamingTranscript] = []
+            try pendingSamples.withUnsafeBufferPointer { buffer in
+                guard let baseAddress = buffer.baseAddress else { return }
+                var offset = 0
+                while offset < consumableCount {
+                    SherpaOnnxVoiceActivityDetectorAcceptWaveform(
+                        detector,
+                        baseAddress.advanced(by: offset),
+                        Int32(Constants.vadWindowSize)
+                    )
+                    offset += Constants.vadWindowSize
+                    results.append(contentsOf: try drainCompletedSegments())
+                }
+            }
+
+            pendingSamples = Array(pendingSamples.dropFirst(consumableCount))
+            return results
+        }
+
+        func finish() throws -> [SherpaStreamingTranscript] {
+            guard !isFinished else { return [] }
+            isFinished = true
+
+            var results: [SherpaStreamingTranscript] = []
+            if !pendingSamples.isEmpty {
+                var finalWindow = pendingSamples
+                finalWindow.append(
+                    contentsOf: repeatElement(
+                        0,
+                        count: Constants.vadWindowSize - finalWindow.count
+                    )
+                )
+                finalWindow.withUnsafeBufferPointer { buffer in
+                    SherpaOnnxVoiceActivityDetectorAcceptWaveform(
+                        detector,
+                        buffer.baseAddress,
+                        Int32(Constants.vadWindowSize)
+                    )
+                }
+                pendingSamples.removeAll(keepingCapacity: false)
+                results.append(contentsOf: try drainCompletedSegments())
+            }
+
+            SherpaOnnxVoiceActivityDetectorFlush(detector)
+            results.append(contentsOf: try drainCompletedSegments())
+            return results
+        }
+
+        private func drainCompletedSegments() throws -> [SherpaStreamingTranscript] {
+            var results: [SherpaStreamingTranscript] = []
+            while SherpaOnnxVoiceActivityDetectorEmpty(detector) == 0 {
+                guard let segment = SherpaOnnxVoiceActivityDetectorFront(detector) else {
+                    throw SherpaOnnxRuntimeError.processingFailed("speech detection")
+                }
+                defer {
+                    SherpaOnnxDestroySpeechSegment(segment)
+                    SherpaOnnxVoiceActivityDetectorPop(detector)
+                }
+
+                let start = max(0, Int64(segment.pointee.start))
+                let count = max(0, Int(segment.pointee.n))
+                let text: String
+                if count > 0, let samples = segment.pointee.samples {
+                    text = try recognize(samples: samples, count: count)
+                } else {
+                    text = ""
+                }
+
+                let absoluteStart = baseSampleOffset + start
+                results.append(
+                    SherpaStreamingTranscript(
+                        startSample: absoluteStart,
+                        endSample: absoluteStart + Int64(count),
+                        text: text
+                    )
+                )
+            }
+            return results
+        }
+
+        private func recognize(
+            samples: UnsafePointer<Float>,
+            count: Int
+        ) throws -> String {
+            guard let count = Int32(exactly: count) else {
+                throw SherpaOnnxRuntimeError.tooManySamples
+            }
+            guard let stream = SherpaOnnxCreateOfflineStream(recognizer) else {
+                throw SherpaOnnxRuntimeError.initializationFailed(
+                    "speech recognition stream"
+                )
+            }
+            defer {
+                SherpaOnnxDestroyOfflineStream(stream)
+            }
+
+            SherpaOnnxAcceptWaveformOffline(stream, sampleRate, samples, count)
+            SherpaOnnxDecodeOfflineStream(recognizer, stream)
+            guard let result = SherpaOnnxGetOfflineStreamResult(stream) else {
+                throw SherpaOnnxRuntimeError.processingFailed("speech recognition")
+            }
+            defer {
+                SherpaOnnxDestroyOfflineRecognizerResult(result)
+            }
+            guard let rawText = result.pointee.text else { return "" }
+            return SherpaOnnxRuntime.cleanedSenseVoiceText(String(cString: rawText))
+        }
+
+        private static func makeDetector(
+            modelPath: String,
+            sampleRate: Int32
+        ) throws -> OpaquePointer {
+            try modelPath.withCString { modelPath in
+                try Constants.provider.withCString { provider in
+                    var config = SherpaOnnxVadModelConfig()
+                    config.silero_vad.model = modelPath
+                    config.silero_vad.threshold = Constants.vadThreshold
+                    config.silero_vad.min_silence_duration =
+                        Constants.vadMinimumSilenceDuration
+                    config.silero_vad.min_speech_duration =
+                        Constants.vadMinimumSpeechDuration
+                    config.silero_vad.window_size = Int32(Constants.vadWindowSize)
+                    config.silero_vad.max_speech_duration =
+                        Constants.vadMaximumSpeechDuration
+                    config.sample_rate = sampleRate
+                    config.num_threads = Constants.inferenceThreads
+                    config.provider = provider
+                    config.debug = 0
+
+                    guard let detector = SherpaOnnxCreateVoiceActivityDetector(
+                        &config,
+                        Constants.vadBufferSizeInSeconds
+                    ) else {
+                        throw SherpaOnnxRuntimeError.initializationFailed(
+                            "speech detection"
+                        )
+                    }
+                    return detector
+                }
+            }
+        }
+
+        private static func makeRecognizer(models: ModelPaths) throws -> OpaquePointer {
+            try models.senseVoice.withCString { modelPath in
+                try models.senseVoiceTokens.withCString { tokensPath in
+                    try Constants.senseVoiceLanguage.withCString { language in
+                        try Constants.provider.withCString { provider in
+                            try Constants.decodingMethod.withCString { decodingMethod in
+                                var config = SherpaOnnxOfflineRecognizerConfig()
+                                config.feat_config.sample_rate =
+                                    Constants.requiredSampleRate
+                                config.feat_config.feature_dim = 80
+                                config.model_config.tokens = tokensPath
+                                config.model_config.num_threads =
+                                    Constants.inferenceThreads
+                                config.model_config.debug = 0
+                                config.model_config.provider = provider
+                                config.model_config.sense_voice.model = modelPath
+                                config.model_config.sense_voice.language = language
+                                config.model_config.sense_voice.use_itn = 1
+                                config.decoding_method = decodingMethod
+                                config.max_active_paths = 4
+
+                                guard let recognizer =
+                                    SherpaOnnxCreateOfflineRecognizer(&config)
+                                else {
+                                    throw SherpaOnnxRuntimeError.initializationFailed(
+                                        "speech recognition"
+                                    )
+                                }
+                                return recognizer
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    final class DiarizationSession {
+        private let diarizer: OpaquePointer
+        private let embeddingExtractor: OpaquePointer
+        private let embeddingDimension: Int
+        private let sampleRate: Int32
+
+        fileprivate init(models: ModelPaths, sampleRate: Int32) throws {
+            self.sampleRate = sampleRate
+            diarizer = try models.pyannote.withCString { pyannotePath in
+                try models.speakerEmbedding.withCString { embeddingPath in
+                    try Constants.provider.withCString { provider in
+                        var config = SherpaOnnxOfflineSpeakerDiarizationConfig()
+                        config.segmentation.pyannote.model = pyannotePath
+                        config.segmentation.num_threads =
+                            Constants.inferenceThreads
+                        config.segmentation.debug = 0
+                        config.segmentation.provider = provider
+                        config.embedding.model = embeddingPath
+                        config.embedding.num_threads = Constants.inferenceThreads
+                        config.embedding.debug = 0
+                        config.embedding.provider = provider
+                        config.clustering.num_clusters = -1
+                        config.clustering.threshold =
+                            Constants.automaticSpeakerClusteringThreshold
+                        config.min_duration_on =
+                            Constants.diarizationMinimumOnDuration
+                        config.min_duration_off =
+                            Constants.diarizationMinimumOffDuration
+
+                        guard let diarizer =
+                            SherpaOnnxCreateOfflineSpeakerDiarization(&config)
+                        else {
+                            throw SherpaOnnxRuntimeError.initializationFailed(
+                                "speaker diarization"
+                            )
+                        }
+                        return diarizer
+                    }
+                }
+            }
+
+            let expectedSampleRate =
+                SherpaOnnxOfflineSpeakerDiarizationGetSampleRate(diarizer)
+            guard expectedSampleRate == sampleRate else {
+                SherpaOnnxDestroyOfflineSpeakerDiarization(diarizer)
+                throw SherpaOnnxRuntimeError.unsupportedSampleRate(
+                    expected: expectedSampleRate,
+                    actual: sampleRate
+                )
+            }
+
+            do {
+                embeddingExtractor = try models.speakerEmbedding.withCString {
+                    modelPath in
+                    try Constants.provider.withCString { provider in
+                        var config = SherpaOnnxSpeakerEmbeddingExtractorConfig()
+                        config.model = modelPath
+                        config.num_threads = Constants.inferenceThreads
+                        config.debug = 0
+                        config.provider = provider
+                        guard let extractor =
+                            SherpaOnnxCreateSpeakerEmbeddingExtractor(&config)
+                        else {
+                            throw SherpaOnnxRuntimeError.initializationFailed(
+                                "speaker embedding"
+                            )
+                        }
+                        return extractor
+                    }
+                }
+            } catch {
+                SherpaOnnxDestroyOfflineSpeakerDiarization(diarizer)
+                throw error
+            }
+            embeddingDimension = Int(
+                SherpaOnnxSpeakerEmbeddingExtractorDim(embeddingExtractor)
+            )
+            guard embeddingDimension > 0 else {
+                SherpaOnnxDestroySpeakerEmbeddingExtractor(embeddingExtractor)
+                SherpaOnnxDestroyOfflineSpeakerDiarization(diarizer)
+                throw SherpaOnnxRuntimeError.initializationFailed(
+                    "speaker embedding"
+                )
+            }
+        }
+
+        deinit {
+            SherpaOnnxDestroySpeakerEmbeddingExtractor(embeddingExtractor)
+            SherpaOnnxDestroyOfflineSpeakerDiarization(diarizer)
+        }
+
+        func process(_ samples: [Float]) throws -> [SherpaSpeakerTurn] {
+            guard !samples.isEmpty else { return [] }
+            guard let sampleCount = Int32(exactly: samples.count) else {
+                throw SherpaOnnxRuntimeError.tooManySamples
+            }
+
+            return try samples.withUnsafeBufferPointer { buffer in
+                guard
+                    let baseAddress = buffer.baseAddress,
+                    let result = SherpaOnnxOfflineSpeakerDiarizationProcess(
+                        diarizer,
+                        baseAddress,
+                        sampleCount
+                    )
+                else {
+                    throw SherpaOnnxRuntimeError.processingFailed(
+                        "speaker diarization"
+                    )
+                }
+                defer {
+                    SherpaOnnxOfflineSpeakerDiarizationDestroyResult(result)
+                }
+
+                let segmentCount = Int(
+                    SherpaOnnxOfflineSpeakerDiarizationResultGetNumSegments(
+                        result
+                    )
+                )
+                guard segmentCount > 0 else { return [] }
+                guard let segments =
+                    SherpaOnnxOfflineSpeakerDiarizationResultSortByStartTime(
+                        result
+                    )
+                else {
+                    throw SherpaOnnxRuntimeError.processingFailed(
+                        "speaker diarization"
+                    )
+                }
+                defer {
+                    SherpaOnnxOfflineSpeakerDiarizationDestroySegment(segments)
+                }
+
+                var turns: [SherpaSpeakerTurn] = []
+                turns.reserveCapacity(segmentCount)
+                for index in 0..<segmentCount {
+                    let segment = segments[index]
+                    let start = TimeInterval(segment.start)
+                    let end = TimeInterval(segment.end)
+                    guard
+                        start.isFinite,
+                        end.isFinite,
+                        start >= 0,
+                        end > start,
+                        segment.speaker >= 0
+                    else {
+                        continue
+                    }
+                    turns.append(
+                        SherpaSpeakerTurn(
+                            start: start,
+                            end: end,
+                            speaker: Int(segment.speaker)
+                        )
+                    )
+                }
+                return turns
+            }
+        }
+
+        func embeddings(
+            for turns: [SherpaSpeakerTurn],
+            in samples: [Float],
+            maximumSecondsPerSpeaker: TimeInterval = 12
+        ) -> [Int: [Float]] {
+            let maximumSamples = max(
+                1,
+                Int(maximumSecondsPerSpeaker * TimeInterval(sampleRate))
+            )
+            var results: [Int: [Float]] = [:]
+
+            for speaker in Set(turns.map(\.speaker)).sorted() {
+                var voice: [Float] = []
+                voice.reserveCapacity(maximumSamples)
+                for turn in turns where turn.speaker == speaker {
+                    let lower = max(
+                        0,
+                        min(
+                            samples.count,
+                            Int((turn.start * TimeInterval(sampleRate)).rounded(.down))
+                        )
+                    )
+                    let upper = max(
+                        lower,
+                        min(
+                            samples.count,
+                            Int((turn.end * TimeInterval(sampleRate)).rounded(.up))
+                        )
+                    )
+                    let available = min(
+                        upper - lower,
+                        maximumSamples - voice.count
+                    )
+                    guard available > 0 else { continue }
+                    voice.append(contentsOf: samples[lower..<(lower + available)])
+                    if voice.count >= maximumSamples { break }
+                }
+
+                guard let embedding = embedding(for: voice) else { continue }
+                results[speaker] = embedding
+            }
+            return results
+        }
+
+        private func embedding(for samples: [Float]) -> [Float]? {
+            guard
+                !samples.isEmpty,
+                let count = Int32(exactly: samples.count),
+                let stream =
+                    SherpaOnnxSpeakerEmbeddingExtractorCreateStream(
+                        embeddingExtractor
+                    )
+            else {
+                return nil
+            }
+            defer {
+                SherpaOnnxDestroyOnlineStream(stream)
+            }
+
+            samples.withUnsafeBufferPointer { buffer in
+                SherpaOnnxOnlineStreamAcceptWaveform(
+                    stream,
+                    sampleRate,
+                    buffer.baseAddress,
+                    count
+                )
+            }
+            SherpaOnnxOnlineStreamInputFinished(stream)
+            guard
+                SherpaOnnxSpeakerEmbeddingExtractorIsReady(
+                    embeddingExtractor,
+                    stream
+                ) == 1,
+                let vector =
+                    SherpaOnnxSpeakerEmbeddingExtractorComputeEmbedding(
+                        embeddingExtractor,
+                        stream
+                    )
+            else {
+                return nil
+            }
+            defer {
+                SherpaOnnxSpeakerEmbeddingExtractorDestroyEmbedding(vector)
+            }
+            return Array(
+                UnsafeBufferPointer(
+                    start: vector,
+                    count: embeddingDimension
+                )
+            )
+        }
     }
 
     func detectSpeech(
@@ -260,120 +755,7 @@ struct SherpaOnnxRuntime: Sendable {
         samples: [Float],
         sampleRate: Int32
     ) throws -> [SherpaSpeakerTurn] {
-        try validate(sampleRate: sampleRate)
-        guard !samples.isEmpty else {
-            return []
-        }
-        guard let sampleCount = Int32(exactly: samples.count) else {
-            throw SherpaOnnxRuntimeError.tooManySamples
-        }
-
-        return try models.pyannote.withCString { pyannotePath in
-            try models.speakerEmbedding.withCString { embeddingPath in
-                try Constants.provider.withCString { provider in
-                    var config = SherpaOnnxOfflineSpeakerDiarizationConfig()
-                    config.segmentation.pyannote.model = pyannotePath
-                    config.segmentation.num_threads = Constants.inferenceThreads
-                    config.segmentation.debug = 0
-                    config.segmentation.provider = provider
-                    config.embedding.model = embeddingPath
-                    config.embedding.num_threads = Constants.inferenceThreads
-                    config.embedding.debug = 0
-                    config.embedding.provider = provider
-                    config.clustering.num_clusters = -1
-                    config.clustering.threshold =
-                        Constants.automaticSpeakerClusteringThreshold
-                    config.min_duration_on =
-                        Constants.diarizationMinimumOnDuration
-                    config.min_duration_off =
-                        Constants.diarizationMinimumOffDuration
-
-                    guard let diarizer = SherpaOnnxCreateOfflineSpeakerDiarization(
-                        &config
-                    ) else {
-                        throw SherpaOnnxRuntimeError.initializationFailed(
-                            "speaker diarization"
-                        )
-                    }
-                    defer {
-                        SherpaOnnxDestroyOfflineSpeakerDiarization(diarizer)
-                    }
-
-                    let expectedSampleRate =
-                        SherpaOnnxOfflineSpeakerDiarizationGetSampleRate(diarizer)
-                    guard expectedSampleRate == sampleRate else {
-                        throw SherpaOnnxRuntimeError.unsupportedSampleRate(
-                            expected: expectedSampleRate,
-                            actual: sampleRate
-                        )
-                    }
-
-                    return try samples.withUnsafeBufferPointer { buffer in
-                        guard
-                            let baseAddress = buffer.baseAddress,
-                            let result = SherpaOnnxOfflineSpeakerDiarizationProcess(
-                                diarizer,
-                                baseAddress,
-                                sampleCount
-                            )
-                        else {
-                            throw SherpaOnnxRuntimeError.processingFailed(
-                                "speaker diarization"
-                            )
-                        }
-                        defer {
-                            SherpaOnnxOfflineSpeakerDiarizationDestroyResult(result)
-                        }
-
-                        let segmentCount = Int(
-                            SherpaOnnxOfflineSpeakerDiarizationResultGetNumSegments(
-                                result
-                            )
-                        )
-                        guard segmentCount > 0 else {
-                            return []
-                        }
-                        guard let segments =
-                            SherpaOnnxOfflineSpeakerDiarizationResultSortByStartTime(
-                                result
-                            )
-                        else {
-                            throw SherpaOnnxRuntimeError.processingFailed(
-                                "speaker diarization"
-                            )
-                        }
-                        defer {
-                            SherpaOnnxOfflineSpeakerDiarizationDestroySegment(segments)
-                        }
-
-                        var turns: [SherpaSpeakerTurn] = []
-                        turns.reserveCapacity(segmentCount)
-                        for index in 0..<segmentCount {
-                            let segment = segments[index]
-                            let start = TimeInterval(segment.start)
-                            let end = TimeInterval(segment.end)
-                            guard
-                                start.isFinite,
-                                end.isFinite,
-                                start >= 0,
-                                end > start,
-                                segment.speaker >= 0
-                            else {
-                                continue
-                            }
-                            turns.append(
-                                SherpaSpeakerTurn(
-                                    start: start,
-                                    end: end,
-                                    speaker: Int(segment.speaker)
-                                )
-                            )
-                        }
-                        return turns
-                    }
-                }
-            }
-        }
+        try makeDiarizationSession(sampleRate: sampleRate).process(samples)
     }
 
     func transcribe(

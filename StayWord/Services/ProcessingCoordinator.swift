@@ -49,7 +49,9 @@ final class ProcessingCoordinator {
 
             let existingTranscript = recording.transcriptText
                 .trimmingCharacters(in: .whitespacesAndNewlines)
-            if !existingTranscript.isEmpty, recording.summaryText.isEmpty {
+            if !existingTranscript.isEmpty,
+               recording.summaryText.isEmpty,
+               recording.transcriptionCheckpointSample == 0 {
                 try await generateSummary(
                     for: recording,
                     transcript: existingTranscript,
@@ -66,16 +68,115 @@ final class ProcessingCoordinator {
                 throw StayWordError.recordingNotFound
             }
 
+            let source = try transcriptionSourceIdentity(for: audioURL)
+            let canResume =
+                recording.transcriptionCheckpointProfileVersion
+                    == TranscriptionService.profileVersion
+                && recording.transcriptionCheckpointSourceSize == source.size
+                && recording.transcriptionCheckpointSourceModifiedAt
+                    == source.modifiedAt
+                && (
+                    recording.transcriptionCheckpointSample == 0
+                        || !recording.transcriptSegments.isEmpty
+                )
+
+            if !canResume {
+                for segment in recording.transcriptSegments {
+                    context.delete(segment)
+                }
+                recording.transcriptSegments.removeAll()
+                recording.transcriptionCheckpointSample = 0
+                recording.transcriptionCheckpointSourceSize = source.size
+                recording.transcriptionCheckpointSourceModifiedAt =
+                    source.modifiedAt
+                recording.transcriptionCheckpointProfileVersion =
+                    TranscriptionService.profileVersion
+                try context.save()
+            }
+
+            let existingDrafts = recording.transcriptSegments
+                .sorted { $0.startTime < $1.startTime }
+                .map {
+                    TranscriptDraft(
+                        startTime: $0.startTime,
+                        duration: $0.duration,
+                        text: $0.text,
+                        speakerIndex: $0.speakerIndex
+                    )
+                }
             let drafts = try await transcriptionService.transcribe(
-                url: audioURL
+                url: audioURL,
+                resumeSampleOffset: recording.transcriptionCheckpointSample,
+                existingDrafts: existingDrafts
             ) { stage in
                 recording.processingState = stage.processingState
                 try? context.save()
+            } onEmission: { emission in
+                if let draft = emission.draft {
+                    let segment = TranscriptSegment(
+                        startTime: draft.startTime,
+                        duration: draft.duration,
+                        text: draft.text,
+                        sortOrder: recording.transcriptSegments.count,
+                        speakerIndex: nil,
+                        recording: recording
+                    )
+                    context.insert(segment)
+                    recording.transcriptSegments.append(segment)
+                }
+                recording.transcriptionCheckpointSample =
+                    emission.committedSampleOffset
+                try context.save()
             }
 
-            recording.transcriptSegments.removeAll()
-            for (index, draft) in drafts.enumerated() {
-                let segment = TranscriptSegment(
+            reconcileTranscript(
+                drafts,
+                for: recording,
+                in: context
+            )
+            recording.transcriptionCheckpointSample = 0
+            recording.transcriptionCheckpointSourceSize = 0
+            recording.transcriptionCheckpointSourceModifiedAt = nil
+            recording.transcriptionCheckpointProfileVersion = 0
+            try context.save()
+
+            try await generateSummary(
+                for: recording,
+                transcript: drafts.map(\.text).joined(separator: "\n"),
+                in: context
+            )
+        } catch {
+            recording.processingState = .failed
+            recording.failureMessage = error.localizedDescription
+            try? context.save()
+        }
+    }
+
+    private func transcriptionSourceIdentity(
+        for url: URL
+    ) throws -> (size: Int64, modifiedAt: Date?) {
+        let attributes = try FileManager.default.attributesOfItem(
+            atPath: url.path
+        )
+        let size = (attributes[.size] as? NSNumber)?.int64Value ?? 0
+        let modifiedAt = attributes[.modificationDate] as? Date
+        return (size, modifiedAt)
+    }
+
+    private func reconcileTranscript(
+        _ drafts: [TranscriptDraft],
+        for recording: AudioRecording,
+        in context: ModelContext
+    ) {
+        let persisted = recording.transcriptSegments
+            .sorted { $0.startTime < $1.startTime }
+
+        for (index, draft) in drafts.enumerated() {
+            let segment: TranscriptSegment
+            if index < persisted.count {
+                segment = persisted[index]
+            } else {
+                segment = TranscriptSegment(
                     startTime: draft.startTime,
                     duration: draft.duration,
                     text: draft.text,
@@ -87,15 +188,18 @@ final class ProcessingCoordinator {
                 recording.transcriptSegments.append(segment)
             }
 
-            try await generateSummary(
-                for: recording,
-                transcript: drafts.map(\.text).joined(separator: "\n"),
-                in: context
-            )
-        } catch {
-            recording.processingState = .failed
-            recording.failureMessage = error.localizedDescription
-            try? context.save()
+            segment.startTime = draft.startTime
+            segment.duration = draft.duration
+            segment.text = draft.text
+            segment.sortOrder = index
+            segment.speakerIndex = draft.speakerIndex
+        }
+
+        if persisted.count > drafts.count {
+            for segment in persisted.dropFirst(drafts.count) {
+                recording.transcriptSegments.removeAll { $0.id == segment.id }
+                context.delete(segment)
+            }
         }
     }
 

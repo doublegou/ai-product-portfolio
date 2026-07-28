@@ -8,6 +8,11 @@ struct TranscriptDraft: Sendable, Equatable {
     let speakerIndex: Int?
 }
 
+struct TranscriptEmission: Sendable, Equatable {
+    let draft: TranscriptDraft?
+    let committedSampleOffset: Int64
+}
+
 enum TranscriptionStage: Sendable {
     case preparing
     case detectingSpeech
@@ -33,11 +38,17 @@ enum TranscriptionStage: Sendable {
 
 /// The app's single production transcription engine.
 ///
-/// Audio is normalized once, speech and speaker turns are detected locally,
-/// and SenseVoice transcribes speaker-aligned utterances. No audio leaves the
-/// device and there is no second engine-selection path.
+/// Audio is normalized once and read in bounded chunks. Completed VAD
+/// utterances are transcribed immediately, then overlapping diarization windows
+/// assign speaker labels without retaining the complete recording in memory.
+/// No audio leaves the device and there is no second engine-selection path.
 actor TranscriptionService {
+    static let profileVersion = 2
+
     private static let sampleRate: Int32 = 16_000
+    private static let readBatchFrames: AVAudioFrameCount = 80_000
+    private static let diarizationWindowFrames: AVAudioFramePosition = 1_440_000
+    private static let diarizationOverlapFrames: AVAudioFramePosition = 160_000
 
     private let pcmPreparer: AudioPCMPreparer
     private let injectedRuntime: SherpaOnnxRuntime?
@@ -51,12 +62,21 @@ actor TranscriptionService {
     }
 
     func transcribe(url: URL) async throws -> [TranscriptDraft] {
-        try await transcribe(url: url) { _ in }
+        try await transcribe(
+            url: url,
+            resumeSampleOffset: 0,
+            existingDrafts: [],
+            onStage: { _ in },
+            onEmission: { _ in }
+        )
     }
 
     func transcribe(
         url: URL,
-        onStage: @escaping @MainActor @Sendable (TranscriptionStage) -> Void
+        resumeSampleOffset: Int64 = 0,
+        existingDrafts: [TranscriptDraft] = [],
+        onStage: @escaping @MainActor @Sendable (TranscriptionStage) -> Void,
+        onEmission: @escaping @MainActor @Sendable (TranscriptEmission) throws -> Void
     ) async throws -> [TranscriptDraft] {
         try Task.checkCancellation()
         await onStage(.preparing)
@@ -68,122 +88,480 @@ actor TranscriptionService {
             }
         }
 
-        let samples = try loadSamples(from: prepared)
         let runtime = try injectedRuntime ?? SherpaOnnxRuntime()
-        try Task.checkCancellation()
-
-        await onStage(.detectingSpeech)
-        let speech = try runtime.detectSpeech(
-            samples: samples,
-            sampleRate: Self.sampleRate
+        let boundedResumeOffset = min(
+            max(0, resumeSampleOffset),
+            prepared.metadata.frameCount
         )
-        guard !speech.isEmpty else {
-            throw StayWordError.emptyTranscript
-        }
+        var drafts = existingDrafts.sorted { $0.startTime < $1.startTime }
 
-        try Task.checkCancellation()
-        await onStage(.identifyingSpeakers)
-        let speakerTurns = try runtime.diarize(
-            samples: samples,
-            sampleRate: Self.sampleRate
-        )
-
-        try Task.checkCancellation()
-        await onStage(.aligning)
-        let units = TranscriptionSegmentPlanner.makeUnits(
-            speech: speech,
-            speakerTurns: speakerTurns,
-            audioDuration: prepared.metadata.duration
-        )
-        guard !units.isEmpty else {
-            throw StayWordError.emptyTranscript
-        }
-
-        let sampleRanges = units.compactMap {
-            $0.sampleRange(
-                sampleRate: Int(Self.sampleRate),
-                sampleCount: samples.count
+        if boundedResumeOffset < prepared.metadata.frameCount {
+            try Task.checkCancellation()
+            await onStage(.detectingSpeech)
+            let session = try runtime.makeStreamingRecognizer(
+                sampleRate: Self.sampleRate,
+                baseSampleOffset: boundedResumeOffset
             )
-        }
-        guard sampleRanges.count == units.count else {
-            throw StayWordError.invalidAudioFile
-        }
-
-        try Task.checkCancellation()
-        await onStage(.transcribing)
-        let texts = try runtime.transcribe(
-            ranges: sampleRanges,
-            in: samples,
-            sampleRate: Self.sampleRate
-        )
-        guard texts.count == units.count else {
-            throw StayWordError.emptyTranscript
-        }
-
-        let drafts = zip(units, texts).compactMap { unit, rawText -> TranscriptDraft? in
-            let text = rawText.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !text.isEmpty else { return nil }
-
-            return TranscriptDraft(
-                startTime: unit.start,
-                duration: unit.end - unit.start,
-                text: text,
-                speakerIndex: unit.speaker
+            let reader = try PreparedPCMReader(
+                prepared: prepared,
+                startFrame: boundedResumeOffset,
+                frameCapacity: Self.readBatchFrames
             )
+
+            await onStage(.transcribing)
+            while let samples = try reader.readNext() {
+                try Task.checkCancellation()
+                let results = try session.accept(samples)
+                for result in results {
+                    let emission = Self.emission(from: result)
+                    if let draft = emission.draft {
+                        drafts.append(draft)
+                    }
+                    try await onEmission(emission)
+                }
+                await Task.yield()
+            }
+
+            for result in try session.finish() {
+                let emission = Self.emission(from: result)
+                if let draft = emission.draft {
+                    drafts.append(draft)
+                }
+                try await onEmission(emission)
+            }
         }
 
         guard !drafts.isEmpty else {
             throw StayWordError.emptyTranscript
         }
-        return drafts
+
+        try Task.checkCancellation()
+        await onStage(.identifyingSpeakers)
+        let speakerTurns = try await windowedDiarization(
+            prepared: prepared,
+            runtime: runtime
+        )
+
+        try Task.checkCancellation()
+        await onStage(.aligning)
+        return Self.assignSpeakers(to: drafts, from: speakerTurns)
     }
 
-    private func loadSamples(from prepared: PreparedPCMFile) throws -> [Float] {
-        let file = try AVAudioFile(forReading: prepared.url)
-        let format = file.processingFormat
+    private static func emission(
+        from result: SherpaStreamingTranscript
+    ) -> TranscriptEmission {
+        let text = result.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let draft = text.isEmpty
+            ? nil
+            : TranscriptDraft(
+                startTime: TimeInterval(result.startSample)
+                    / TimeInterval(Self.sampleRate),
+                duration: TimeInterval(result.endSample - result.startSample)
+                    / TimeInterval(Self.sampleRate),
+                text: text,
+                speakerIndex: nil
+            )
+        return TranscriptEmission(
+            draft: draft,
+            committedSampleOffset: result.endSample
+        )
+    }
 
+    private func windowedDiarization(
+        prepared: PreparedPCMFile,
+        runtime: SherpaOnnxRuntime
+    ) async throws -> [SherpaSpeakerTurn] {
+        let reader = try PreparedPCMWindowReader(prepared: prepared)
+        let mapper = SpeakerWindowMapper()
+        let session = try runtime.makeDiarizationSession(
+            sampleRate: Self.sampleRate
+        )
+        let step = Self.diarizationWindowFrames - Self.diarizationOverlapFrames
+        var windowStart: AVAudioFramePosition = 0
+
+        while windowStart < reader.frameCount {
+            try Task.checkCancellation()
+            let samples = try reader.read(
+                from: windowStart,
+                count: Self.diarizationWindowFrames
+            )
+            guard !samples.isEmpty else { break }
+
+            let offset = TimeInterval(windowStart) / TimeInterval(Self.sampleRate)
+            let relativeTurns = try session.process(samples)
+            let embeddings = session.embeddings(
+                for: relativeTurns,
+                in: samples
+            )
+            let localTurns = relativeTurns.map {
+                SherpaSpeakerTurn(
+                    start: $0.start + offset,
+                    end: $0.end + offset,
+                    speaker: $0.speaker
+                )
+            }
+            let isFinalWindow =
+                windowStart + AVAudioFramePosition(samples.count) >= reader.frameCount
+            let commitEnd = isFinalWindow
+                ? TimeInterval(reader.frameCount) / TimeInterval(Self.sampleRate)
+                : TimeInterval(windowStart + step) / TimeInterval(Self.sampleRate)
+            mapper.consume(
+                localTurns,
+                commitRange: offset..<commitEnd,
+                embeddings: embeddings
+            )
+
+            if isFinalWindow { break }
+            windowStart += step
+            await Task.yield()
+        }
+
+        return mapper.finish()
+    }
+
+    static func assignSpeakers(
+        to drafts: [TranscriptDraft],
+        from turns: [SherpaSpeakerTurn]
+    ) -> [TranscriptDraft] {
+        drafts.map { draft in
+            let start = draft.startTime
+            let end = start + draft.duration
+            let speaker = turns
+                .map { turn in
+                    (
+                        speaker: turn.speaker,
+                        overlap: max(0, min(end, turn.end) - max(start, turn.start))
+                    )
+                }
+                .filter { $0.overlap > 0 }
+                .reduce(into: [Int: TimeInterval]()) {
+                    $0[$1.speaker, default: 0] += $1.overlap
+                }
+                .max {
+                    if $0.value == $1.value {
+                        return $0.key > $1.key
+                    }
+                    return $0.value < $1.value
+                }?
+                .key
+
+            return TranscriptDraft(
+                startTime: draft.startTime,
+                duration: draft.duration,
+                text: draft.text,
+                speakerIndex: speaker
+            )
+        }
+    }
+}
+
+private final class PreparedPCMReader {
+    private let file: AVAudioFile
+    private let buffer: AVAudioPCMBuffer
+
+    init(
+        prepared: PreparedPCMFile,
+        startFrame: Int64,
+        frameCapacity: AVAudioFrameCount
+    ) throws {
+        file = try AVAudioFile(forReading: prepared.url)
+        let format = file.processingFormat
         guard
-            format.sampleRate == Double(Self.sampleRate),
-            format.channelCount == 1,
+            format.sampleRate == AudioPCMPreparer.outputSampleRate,
+            format.channelCount == AudioPCMPreparer.outputChannelCount,
             format.commonFormat == .pcmFormatFloat32,
-            prepared.metadata.frameCount <= Int64(Int.max)
+            startFrame >= 0,
+            startFrame <= file.length,
+            let buffer = AVAudioPCMBuffer(
+                pcmFormat: format,
+                frameCapacity: frameCapacity
+            )
+        else {
+            throw StayWordError.invalidAudioFile
+        }
+        self.buffer = buffer
+        file.framePosition = startFrame
+    }
+
+    func readNext() throws -> [Float]? {
+        guard file.framePosition < file.length else { return nil }
+        buffer.frameLength = 0
+        let remaining = file.length - file.framePosition
+        let count = min(buffer.frameCapacity, AVAudioFrameCount(remaining))
+        try file.read(into: buffer, frameCount: count)
+        guard
+            buffer.frameLength > 0,
+            let channel = buffer.floatChannelData?[0]
+        else {
+            return nil
+        }
+        return Array(
+            UnsafeBufferPointer(
+                start: channel,
+                count: Int(buffer.frameLength)
+            )
+        )
+    }
+}
+
+private final class PreparedPCMWindowReader {
+    private let file: AVAudioFile
+    private let format: AVAudioFormat
+    let frameCount: AVAudioFramePosition
+
+    init(prepared: PreparedPCMFile) throws {
+        file = try AVAudioFile(forReading: prepared.url)
+        format = file.processingFormat
+        frameCount = file.length
+        guard
+            format.sampleRate == AudioPCMPreparer.outputSampleRate,
+            format.channelCount == AudioPCMPreparer.outputChannelCount,
+            format.commonFormat == .pcmFormatFloat32
+        else {
+            throw StayWordError.invalidAudioFile
+        }
+    }
+
+    func read(
+        from startFrame: AVAudioFramePosition,
+        count requestedCount: AVAudioFramePosition
+    ) throws -> [Float] {
+        guard startFrame >= 0, startFrame < frameCount else { return [] }
+        let count = min(requestedCount, frameCount - startFrame)
+        guard
+            let capacity = AVAudioFrameCount(exactly: count),
+            let buffer = AVAudioPCMBuffer(
+                pcmFormat: format,
+                frameCapacity: capacity
+            )
         else {
             throw StayWordError.invalidAudioFile
         }
 
-        var samples: [Float] = []
-        samples.reserveCapacity(Int(prepared.metadata.frameCount))
-
-        guard let buffer = AVAudioPCMBuffer(
-            pcmFormat: format,
-            frameCapacity: 16_384
-        ) else {
-            throw StayWordError.invalidAudioFile
+        file.framePosition = startFrame
+        try file.read(into: buffer, frameCount: capacity)
+        guard
+            buffer.frameLength > 0,
+            let channel = buffer.floatChannelData?[0]
+        else {
+            return []
         }
-
-        while file.framePosition < file.length {
-            try Task.checkCancellation()
-            buffer.frameLength = 0
-            let remainingFrames = file.length - file.framePosition
-            let frameCount = min(
-                buffer.frameCapacity,
-                AVAudioFrameCount(remainingFrames)
-            )
-            try file.read(into: buffer, frameCount: frameCount)
-            guard buffer.frameLength > 0 else { break }
-            guard let channel = buffer.floatChannelData?[0] else {
-                throw StayWordError.invalidAudioFile
-            }
-            samples.append(contentsOf: UnsafeBufferPointer(
+        return Array(
+            UnsafeBufferPointer(
                 start: channel,
                 count: Int(buffer.frameLength)
-            ))
+            )
+        )
+    }
+}
+
+final class SpeakerWindowMapper {
+    private struct SpeakerProfile {
+        var centroid: [Float]
+        var observationCount: Int
+    }
+
+    private static let embeddingSimilarityThreshold: Float = 0.55
+
+    private var committed: [SherpaSpeakerTurn] = []
+    private var previousWindow: [SherpaSpeakerTurn] = []
+    private var profiles: [Int: SpeakerProfile] = [:]
+    private var nextSpeaker = 0
+
+    func consume(
+        _ localTurns: [SherpaSpeakerTurn],
+        commitRange: Range<TimeInterval>,
+        embeddings: [Int: [Float]] = [:]
+    ) {
+        let mapping = speakerMapping(
+            for: localTurns,
+            embeddings: embeddings
+        )
+        let mapped = localTurns.map {
+            SherpaSpeakerTurn(
+                start: $0.start,
+                end: $0.end,
+                speaker: mapping[$0.speaker] ?? allocateSpeaker()
+            )
         }
 
-        guard !samples.isEmpty else {
-            throw StayWordError.emptyTranscript
+        for turn in mapped {
+            let start = max(turn.start, commitRange.lowerBound)
+            let end = min(turn.end, commitRange.upperBound)
+            guard end > start else { continue }
+            appendCommitted(
+                SherpaSpeakerTurn(
+                    start: start,
+                    end: end,
+                    speaker: turn.speaker
+                )
+            )
         }
-        return samples
+        updateProfiles(mapping: mapping, embeddings: embeddings)
+        if !mapped.isEmpty {
+            previousWindow = mapped
+        }
+    }
+
+    func finish() -> [SherpaSpeakerTurn] {
+        committed
+    }
+
+    private func speakerMapping(
+        for localTurns: [SherpaSpeakerTurn],
+        embeddings: [Int: [Float]]
+    ) -> [Int: Int] {
+        var mapping: [Int: Int] = [:]
+        var usedGlobalSpeakers = Set<Int>()
+        let localSpeakers = Set(localTurns.map(\.speaker)).sorted()
+
+        for localSpeaker in localSpeakers {
+            let candidates = previousWindow.reduce(into: [Int: TimeInterval]()) {
+                totals,
+                previous in
+                let overlap = localTurns
+                    .lazy
+                    .filter { $0.speaker == localSpeaker }
+                    .reduce(0.0) {
+                        $0 + max(
+                            0,
+                            min($1.end, previous.end) - max($1.start, previous.start)
+                        )
+                    }
+                totals[previous.speaker, default: 0] += overlap
+            }
+            if let match = candidates
+                .filter({ $0.value > 0 && !usedGlobalSpeakers.contains($0.key) })
+                .max(by: { $0.value < $1.value })?
+                .key {
+                mapping[localSpeaker] = match
+                usedGlobalSpeakers.insert(match)
+            }
+        }
+
+        for localSpeaker in localSpeakers where mapping[localSpeaker] == nil {
+            guard let embedding = embeddings[localSpeaker] else { continue }
+            let match = profiles
+                .filter { !usedGlobalSpeakers.contains($0.key) }
+                .compactMap { globalSpeaker, profile -> (Int, Float)? in
+                    guard
+                        let similarity = Self.cosineSimilarity(
+                            embedding,
+                            profile.centroid
+                        ),
+                        similarity >= Self.embeddingSimilarityThreshold
+                    else {
+                        return nil
+                    }
+                    return (globalSpeaker, similarity)
+                }
+                .max { $0.1 < $1.1 }?
+                .0
+            if let match {
+                mapping[localSpeaker] = match
+                usedGlobalSpeakers.insert(match)
+            }
+        }
+
+        if localSpeakers.count == 1,
+           mapping.isEmpty,
+           Set(previousWindow.map(\.speaker)).count == 1,
+           let previousSpeaker = previousWindow.first?.speaker {
+            mapping[localSpeakers[0]] = previousSpeaker
+            usedGlobalSpeakers.insert(previousSpeaker)
+        }
+
+        let unmatchedLocalSpeakers = localSpeakers.filter {
+            mapping[$0] == nil
+        }
+        let unmatchedPreviousSpeakers = Set(previousWindow.map(\.speaker))
+            .subtracting(usedGlobalSpeakers)
+        if unmatchedLocalSpeakers.count == 1,
+           unmatchedPreviousSpeakers.count == 1,
+           let localSpeaker = unmatchedLocalSpeakers.first,
+           let previousSpeaker = unmatchedPreviousSpeakers.first {
+            mapping[localSpeaker] = previousSpeaker
+            usedGlobalSpeakers.insert(previousSpeaker)
+        }
+
+        for localSpeaker in localSpeakers where mapping[localSpeaker] == nil {
+            let speaker = allocateSpeaker()
+            mapping[localSpeaker] = speaker
+            usedGlobalSpeakers.insert(speaker)
+        }
+        return mapping
+    }
+
+    private func updateProfiles(
+        mapping: [Int: Int],
+        embeddings: [Int: [Float]]
+    ) {
+        for (localSpeaker, embedding) in embeddings {
+            guard
+                let globalSpeaker = mapping[localSpeaker],
+                let normalized = Self.normalized(embedding)
+            else {
+                continue
+            }
+
+            if let existing = profiles[globalSpeaker],
+               existing.centroid.count == normalized.count {
+                let count = Float(existing.observationCount)
+                let combined = zip(existing.centroid, normalized).map {
+                    ($0.0 * count + $0.1) / (count + 1)
+                }
+                profiles[globalSpeaker] = SpeakerProfile(
+                    centroid: Self.normalized(combined) ?? normalized,
+                    observationCount: existing.observationCount + 1
+                )
+            } else {
+                profiles[globalSpeaker] = SpeakerProfile(
+                    centroid: normalized,
+                    observationCount: 1
+                )
+            }
+        }
+    }
+
+    private static func cosineSimilarity(
+        _ lhs: [Float],
+        _ rhs: [Float]
+    ) -> Float? {
+        guard
+            lhs.count == rhs.count,
+            let normalizedLHS = normalized(lhs),
+            let normalizedRHS = normalized(rhs)
+        else {
+            return nil
+        }
+        return zip(normalizedLHS, normalizedRHS).reduce(0) {
+            $0 + $1.0 * $1.1
+        }
+    }
+
+    private static func normalized(_ vector: [Float]) -> [Float]? {
+        let magnitude = sqrt(vector.reduce(0) { $0 + $1 * $1 })
+        guard magnitude.isFinite, magnitude > 0 else { return nil }
+        return vector.map { $0 / magnitude }
+    }
+
+    private func allocateSpeaker() -> Int {
+        defer { nextSpeaker += 1 }
+        return nextSpeaker
+    }
+
+    private func appendCommitted(_ turn: SherpaSpeakerTurn) {
+        if let last = committed.last,
+           last.speaker == turn.speaker,
+           turn.start - last.end <= 0.02 {
+            committed[committed.count - 1] = SherpaSpeakerTurn(
+                start: last.start,
+                end: max(last.end, turn.end),
+                speaker: last.speaker
+            )
+        } else {
+            committed.append(turn)
+        }
     }
 }
 

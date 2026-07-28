@@ -95,6 +95,10 @@ final class AudioRecording {
     var summaryFailureMessage: String?
     var waveformData: Data?
     var deletedAt: Date?
+    var transcriptionCheckpointSample: Int64 = 0
+    var transcriptionCheckpointSourceSize: Int64 = 0
+    var transcriptionCheckpointSourceModifiedAt: Date?
+    var transcriptionCheckpointProfileVersion: Int = 0
 
     var folder: RecordingFolder?
 
@@ -146,7 +150,11 @@ final class AudioRecording {
         summaryFailureMessage: String? = nil,
         waveform: [Double] = [],
         folder: RecordingFolder? = nil,
-        deletedAt: Date? = nil
+        deletedAt: Date? = nil,
+        transcriptionCheckpointSample: Int64 = 0,
+        transcriptionCheckpointSourceSize: Int64 = 0,
+        transcriptionCheckpointSourceModifiedAt: Date? = nil,
+        transcriptionCheckpointProfileVersion: Int = 0
     ) {
         self.id = id
         self.title = title
@@ -162,6 +170,12 @@ final class AudioRecording {
         self.summaryFailureMessage = summaryFailureMessage
         self.folder = folder
         self.deletedAt = deletedAt
+        self.transcriptionCheckpointSample = transcriptionCheckpointSample
+        self.transcriptionCheckpointSourceSize = transcriptionCheckpointSourceSize
+        self.transcriptionCheckpointSourceModifiedAt =
+            transcriptionCheckpointSourceModifiedAt
+        self.transcriptionCheckpointProfileVersion =
+            transcriptionCheckpointProfileVersion
         self.waveformData = try? JSONEncoder().encode(waveform)
     }
 }

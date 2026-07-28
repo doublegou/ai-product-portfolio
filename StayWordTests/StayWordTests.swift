@@ -106,6 +106,137 @@ struct StayWordTests {
     }
 
     @Test
+    func provisionalTranscriptsReceiveDominantSpeakerAfterDiarization() {
+        let drafts = [
+            TranscriptDraft(
+                startTime: 10,
+                duration: 4,
+                text: "Hello",
+                speakerIndex: nil
+            ),
+            TranscriptDraft(
+                startTime: 14,
+                duration: 3,
+                text: "World",
+                speakerIndex: nil
+            ),
+        ]
+
+        let assigned = TranscriptionService.assignSpeakers(
+            to: drafts,
+            from: [
+                SherpaSpeakerTurn(start: 10, end: 11, speaker: 0),
+                SherpaSpeakerTurn(start: 11, end: 14, speaker: 1),
+                SherpaSpeakerTurn(start: 14, end: 17, speaker: 0),
+            ]
+        )
+
+        #expect(assigned.map(\.speakerIndex) == [1, 0])
+        #expect(assigned.map(\.text) == ["Hello", "World"])
+    }
+
+    @Test
+    func speakerWindowOverlapKeepsSingleSpeakerStable() {
+        let mapper = SpeakerWindowMapper()
+        mapper.consume(
+            [SherpaSpeakerTurn(start: 0, end: 90, speaker: 4)],
+            commitRange: 0..<80
+        )
+        mapper.consume(
+            [SherpaSpeakerTurn(start: 80, end: 170, speaker: 9)],
+            commitRange: 80..<170
+        )
+
+        #expect(mapper.finish() == [
+            SherpaSpeakerTurn(start: 0, end: 170, speaker: 0),
+        ])
+    }
+
+    @Test
+    func speakerWindowOverlapMapsRemainingKnownSpeaker() {
+        let mapper = SpeakerWindowMapper()
+        mapper.consume(
+            [
+                SherpaSpeakerTurn(start: 0, end: 45, speaker: 3),
+                SherpaSpeakerTurn(start: 45, end: 90, speaker: 8),
+            ],
+            commitRange: 0..<80
+        )
+        mapper.consume(
+            [
+                SherpaSpeakerTurn(start: 80, end: 100, speaker: 2),
+                SherpaSpeakerTurn(start: 100, end: 170, speaker: 7),
+            ],
+            commitRange: 80..<170
+        )
+
+        #expect(Set(mapper.finish().map(\.speaker)) == [0, 1])
+    }
+
+    @Test
+    func speakerEmbeddingReconnectsSpeakerAfterLongSilence() {
+        let mapper = SpeakerWindowMapper()
+        mapper.consume(
+            [
+                SherpaSpeakerTurn(start: 0, end: 40, speaker: 3),
+                SherpaSpeakerTurn(start: 40, end: 90, speaker: 8),
+            ],
+            commitRange: 0..<80,
+            embeddings: [
+                3: [1, 0],
+                8: [0, 1],
+            ]
+        )
+        mapper.consume(
+            [SherpaSpeakerTurn(start: 200, end: 250, speaker: 5)],
+            commitRange: 200..<250,
+            embeddings: [
+                5: [0.99, 0.01],
+            ]
+        )
+
+        #expect(mapper.finish().last?.speaker == 0)
+    }
+
+    @Test
+    @MainActor
+    func transcriptionCheckpointPersistsWithRecording() throws {
+        let schema = Schema([
+            RecordingFolder.self,
+            AudioRecording.self,
+            TranscriptSegment.self,
+            RecordingMarker.self,
+        ])
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: schema, configurations: configuration)
+        let context = container.mainContext
+        let modifiedAt = Date(timeIntervalSince1970: 1_700_000_000)
+
+        let recording = AudioRecording(
+            title: "Checkpoint",
+            duration: 300,
+            audioRelativePath: "Recordings/checkpoint.m4a",
+            transcriptionCheckpointSample: 96_000,
+            transcriptionCheckpointSourceSize: 42,
+            transcriptionCheckpointSourceModifiedAt: modifiedAt,
+            transcriptionCheckpointProfileVersion: TranscriptionService.profileVersion
+        )
+        context.insert(recording)
+        try context.save()
+
+        let fetched = try #require(
+            context.fetch(FetchDescriptor<AudioRecording>()).first
+        )
+        #expect(fetched.transcriptionCheckpointSample == 96_000)
+        #expect(fetched.transcriptionCheckpointSourceSize == 42)
+        #expect(fetched.transcriptionCheckpointSourceModifiedAt == modifiedAt)
+        #expect(
+            fetched.transcriptionCheckpointProfileVersion
+                == TranscriptionService.profileVersion
+        )
+    }
+
+    @Test
     func aacPreparationStopsCleanlyAtEndOfFile() async throws {
         let sourceURL = FileManager.default.temporaryDirectory
             .appendingPathComponent(UUID().uuidString)
