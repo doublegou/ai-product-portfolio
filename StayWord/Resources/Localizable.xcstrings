@@ -1,0 +1,820 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "-%@" : {
+
+    },
+    "%lld folders and %lld recordings will be deleted." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将删除 %1$lld 个文件夹和其中的 %2$lld 条录音。"
+          }
+        }
+      }
+    },
+    "%lld folders will be deleted and %lld recordings will move to Recently Deleted." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld folders will be deleted and %2$lld recordings will move to Recently Deleted."
+          }
+        }
+      }
+    },
+    "%lld recordings in this folder will be deleted." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此文件夹中的 %lld 条录音将被删除。"
+          }
+        }
+      }
+    },
+    "%lld recordings in this folder will move to Recently Deleted." : {
+
+    },
+    "A summary will appear after transcription finishes." : {
+
+    },
+    "A transcript will appear after processing finishes." : {
+
+    },
+    "Add Marker" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加标记"
+          }
+        }
+      }
+    },
+    "Aligning Transcript" : {
+
+    },
+    "All Recordings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有录音"
+          }
+        }
+      }
+    },
+    "Audio and generated content stay on this device." : {
+
+    },
+    "Audio recording is currently unavailable." : {
+
+    },
+    "Back 15 Seconds" : {
+
+    },
+    "Basic Summary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "基础摘要"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
+    },
+    "Cancel Recording" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消录音"
+          }
+        }
+      }
+    },
+    "Close" : {
+
+    },
+    "Completed" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已完成"
+          }
+        }
+      }
+    },
+    "Copy" : {
+
+    },
+    "Copy Summary" : {
+
+    },
+    "Copy Transcript" : {
+
+    },
+    "Couldn't Complete the Action" : {
+
+    },
+    "Couldn't Save the Recording" : {
+
+    },
+    "Delete" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除"
+          }
+        }
+      }
+    },
+    "Delete All" : {
+
+    },
+    "Delete All Recordings Permanently?" : {
+
+    },
+    "Delete Folder & Recordings?" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除文件夹和录音？"
+          }
+        }
+      }
+    },
+    "Delete Folders & Recordings?" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除文件夹和录音？"
+          }
+        }
+      }
+    },
+    "Delete Recording Permanently?" : {
+
+    },
+    "Delete Selected Recordings Permanently?" : {
+
+    },
+    "Delete selected recordings?" : {
+
+    },
+    "Deleted recordings will appear here." : {
+
+    },
+    "Detecting Speech" : {
+
+    },
+    "Discard Changes" : {
+
+    },
+    "Discard changes?" : {
+
+    },
+    "Done" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
+        }
+      }
+    },
+    "Edit Recording" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑录音"
+          }
+        }
+      }
+    },
+    "Enter a name for this folder." : {
+
+    },
+    "Enter a new name for this recording." : {
+
+    },
+    "Favorite" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "收藏"
+          }
+        }
+      }
+    },
+    "Favorites" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "个人收藏"
+          }
+        }
+      }
+    },
+    "Finish Recording" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成录音"
+          }
+        }
+      }
+    },
+    "Folder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文件夹"
+          }
+        }
+      }
+    },
+    "Forward 15 Seconds" : {
+
+    },
+    "Generating Summary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在生成摘要"
+          }
+        }
+      }
+    },
+    "Identifying Speakers" : {
+
+    },
+    "Import Audio" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导入音频"
+          }
+        }
+      }
+    },
+    "Importing Audio" : {
+
+    },
+    "Keep Editing" : {
+
+    },
+    "Marker" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记"
+          }
+        }
+      }
+    },
+    "Markers" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标记"
+          }
+        }
+      }
+    },
+    "Microphone access is required to record audio." : {
+
+    },
+    "More" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多"
+          }
+        }
+      }
+    },
+    "Move" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移动"
+          }
+        }
+      }
+    },
+    "My Folders" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的文件夹"
+          }
+        }
+      }
+    },
+    "Name" : {
+
+    },
+    "New Folder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新建文件夹"
+          }
+        }
+      }
+    },
+    "New Recording" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新录音"
+          }
+        }
+      }
+    },
+    "No Folder" : {
+
+    },
+    "No Recently Deleted Recordings" : {
+
+    },
+    "No Recordings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无录音"
+          }
+        }
+      }
+    },
+    "No Results" : {
+
+    },
+    "No speech was detected in this recording." : {
+
+    },
+    "No Summary" : {
+
+    },
+    "No Transcript" : {
+
+    },
+    "OK" : {
+
+    },
+    "On-Device Intelligent Summary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端侧智能摘要"
+          }
+        }
+      }
+    },
+    "On-Device Summary" : {
+
+    },
+    "On-device summary requires a physical iPhone." : {
+
+    },
+    "On-device transcription is not available for the current language." : {
+
+    },
+    "Open Recent Recording" : {
+
+    },
+    "Open Settings" : {
+
+    },
+    "Opens StayWord and starts a new voice recording." : {
+
+    },
+    "Opens the most recent recording in StayWord." : {
+
+    },
+    "Pause" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂停"
+          }
+        }
+      }
+    },
+    "Paused" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已暂停"
+          }
+        }
+      }
+    },
+    "Play" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放"
+          }
+        }
+      }
+    },
+    "Playback position" : {
+
+    },
+    "Preparing" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在准备"
+          }
+        }
+      }
+    },
+    "Processing Failed" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "处理失败"
+          }
+        }
+      }
+    },
+    "Ready" : {
+
+    },
+    "Recent Recording" : {
+
+    },
+    "Recently Deleted" : {
+
+    },
+    "Record" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录音"
+          }
+        }
+      }
+    },
+    "Record or import audio to get started." : {
+
+    },
+    "Recording" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在录音"
+          }
+        }
+      }
+    },
+    "Recording couldn't continue after the interruption. The audio recorded so far will be saved." : {
+
+    },
+    "Recording couldn't resume. The audio recorded so far will be saved." : {
+
+    },
+    "Recording ended and the audio recorded so far will be saved." : {
+
+    },
+    "Recording Not Found" : {
+
+    },
+    "Recording paused by a system interruption." : {
+
+    },
+    "Recording stopped unexpectedly. The audio recorded so far will be saved." : {
+
+    },
+    "Recording time" : {
+
+    },
+    "Recording Title" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录音标题"
+          }
+        }
+      }
+    },
+    "Recover" : {
+
+    },
+    "Recover All" : {
+
+    },
+    "Recover or Delete Recording?" : {
+
+    },
+    "Rename" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重命名"
+          }
+        }
+      }
+    },
+    "Rename Folder" : {
+
+    },
+    "Rename Recording" : {
+
+    },
+    "Resume" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重试"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
+    "Search" : {
+
+    },
+    "Seeks audio to this transcript segment" : {
+
+    },
+    "Select" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择"
+          }
+        }
+      }
+    },
+    "Select a Folder" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择文件夹"
+          }
+        }
+      }
+    },
+    "Shows actions for this folder" : {
+
+    },
+    "Speaker %lld · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Speaker %1$lld · %2$@"
+          }
+        }
+      }
+    },
+    "Start Recording" : {
+
+    },
+    "Starts a new audio recording" : {
+
+    },
+    "Stop Recording" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止录音"
+          }
+        }
+      }
+    },
+    "Stops and saves this recording" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停止并保存此录音"
+          }
+        }
+      }
+    },
+    "Subject" : {
+
+    },
+    "Summary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摘要"
+          }
+        }
+      }
+    },
+    "Summary text" : {
+
+    },
+    "The audio file could not be copied into StayWord." : {
+
+    },
+    "The audio input route changed." : {
+
+    },
+    "The bundled on-device summary model is missing." : {
+
+    },
+    "The on-device model did not produce a usable summary." : {
+
+    },
+    "The on-device summary could not be generated. Try again." : {
+
+    },
+    "The recording file could not be found." : {
+
+    },
+    "The recording wasn't saved. Your audio is still available on this screen." : {
+
+    },
+    "The selected file is not a supported audio file." : {
+
+    },
+    "The selected recordings will move to Recently Deleted." : {
+
+    },
+    "This action cannot be undone." : {
+
+    },
+    "This recording may have been deleted." : {
+
+    },
+    "This recording will move to Recently Deleted." : {
+
+    },
+    "Title" : {
+
+    },
+    "Title or transcript" : {
+
+    },
+    "Transcribing" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在转写"
+          }
+        }
+      }
+    },
+    "Transcript" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转写"
+          }
+        }
+      }
+    },
+    "Transcript available" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已有转写文本"
+          }
+        }
+      }
+    },
+    "Try a different title or transcript search." : {
+
+    },
+    "Try processing the recording again." : {
+
+    },
+    "Unable to Import Audio" : {
+
+    },
+    "Unable to Play" : {
+
+    },
+    "Unable to Record" : {
+
+    },
+    "Unfavorite" : {
+
+    },
+    "Upload" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上传"
+          }
+        }
+      }
+    },
+    "Voice Recording" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语音记录"
+          }
+        }
+      }
+    },
+    "Voice Recordings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语音记录"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
