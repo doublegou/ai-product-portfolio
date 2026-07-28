@@ -6,8 +6,6 @@ struct RootView: View {
     @Environment(AppServices.self) private var services
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
-    @Query(sort: \AudioRecording.createdAt, order: .reverse)
-    private var recordings: [AudioRecording]
 
     var body: some View {
         @Bindable var router = router
@@ -33,14 +31,13 @@ struct RootView: View {
             .presentationDragIndicator(.visible)
         }
         .onOpenURL { url in
-            router.handle(url, recentRecordingID: activeRecordings.first?.id)
+            router.handle(
+                url,
+                recentRecordingID: fetchMostRecentActiveRecordingID()
+            )
         }
         .task {
             consumePendingIntent()
-            services.processor.restoreInterruptedJobs(
-                from: activeRecordings,
-                in: modelContext
-            )
         }
         .onChange(of: scenePhase) { _, phase in
             guard phase == .active else { return }
@@ -97,14 +94,19 @@ struct RootView: View {
             router.startRecording()
         } else if defaults.bool(forKey: AppIntentKeys.openRecent) {
             defaults.removeObject(forKey: AppIntentKeys.openRecent)
-            if let id = activeRecordings.first?.id {
+            if let id = fetchMostRecentActiveRecordingID() {
                 router.open(id)
             }
         }
     }
 
-    private var activeRecordings: [AudioRecording] {
-        recordings.filter { $0.deletedAt == nil }
+    private func fetchMostRecentActiveRecordingID() -> UUID? {
+        var descriptor = FetchDescriptor<AudioRecording>(
+            predicate: #Predicate { $0.deletedAt == nil },
+            sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+        )
+        descriptor.fetchLimit = 1
+        return try? modelContext.fetch(descriptor).first?.id
     }
 
 }

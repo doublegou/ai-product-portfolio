@@ -151,6 +151,20 @@ struct LibraryView: View {
                 }
             }
         }
+        .task {
+            // Present the library before resuming work that may initialize
+            // transcription or summary models.
+            await Task.yield()
+            try? await Task.sleep(for: .milliseconds(250))
+            guard !Task.isCancelled else { return }
+
+            services.processor.restoreInterruptedJobs(
+                from: activeRecordings.filter {
+                    $0.processingState.isProcessing
+                },
+                in: modelContext
+            )
+        }
         .alert("New Folder", isPresented: $showsNewFolderAlert) {
             TextField("Name", text: $newFolderName)
             Button("Cancel", role: .cancel) {}
