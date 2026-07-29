@@ -390,6 +390,13 @@ struct StayWordTests {
     }
 
     @Test
+    func bestEffortSummaryRejectsMismatchedTitleOnlyOutput() {
+        #expect(SummaryOutputParser.parseBestEffort(
+            "<title>资源整合与战略验证</summary>"
+        ) == nil)
+    }
+
+    @Test
     func partialSummaryOutputParsesTaggedBody() {
         #expect(PartialSummaryOutputParser.parse(
             """
@@ -422,6 +429,14 @@ struct StayWordTests {
     func summaryResponseWaitsForACompleteClosingTag() {
         #expect(SummaryResponseStopper.completedPrefix(
             in: "<title>标题</title><summary>正文</sum",
+            closingTag: "</summary>"
+        ) == nil)
+    }
+
+    @Test
+    func summaryResponseIgnoresClosingTagWithoutMatchingOpeningTag() {
+        #expect(SummaryResponseStopper.completedPrefix(
+            in: "<title>资源整合与战略验证</summary>",
             closingTag: "</summary>"
         ) == nil)
     }
