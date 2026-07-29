@@ -694,6 +694,16 @@
         }
       }
     },
+    "Summary generation failed during %@: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Summary generation failed during %1$@: %2$@"
+          }
+        }
+      }
+    },
     "Summary text" : {
 
     },
@@ -710,6 +720,9 @@
 
     },
     "The on-device summary could not be generated. Try again." : {
+
+    },
+    "The on-device summary took too long to generate." : {
 
     },
     "The recording file could not be found." : {

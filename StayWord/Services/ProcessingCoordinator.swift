@@ -11,8 +11,10 @@ final class ProcessingCoordinator {
     private let fileStore: AudioFileStore
     private let transcriptionService: TranscriptionService
     private let summaryService: any SummaryService
-    private var jobs: [UUID: Task<Void, Never>] = [:]
     private var pendingJobs: [UUID: PendingJob] = [:]
+    private var pendingJobIDs: [UUID] = []
+    private var activeJobID: UUID?
+    private var activeTask: Task<Void, Never>?
     private var isApplicationActive = true
     private var didRestoreInterruptedJobs = false
 
@@ -28,11 +30,14 @@ final class ProcessingCoordinator {
 
     func enqueue(_ recording: AudioRecording, in context: ModelContext) {
         let recordingID = recording.id
+        if pendingJobs[recordingID] == nil {
+            pendingJobIDs.append(recordingID)
+        }
         pendingJobs[recordingID] = PendingJob(
             recording: recording,
             context: context
         )
-        startJobIfPossible(recordingID)
+        startNextJobIfPossible()
     }
 
     func setApplicationActive(_ isActive: Bool) {
@@ -40,37 +45,42 @@ final class ProcessingCoordinator {
         isApplicationActive = isActive
 
         if isActive {
-            for recordingID in pendingJobs.keys {
-                startJobIfPossible(recordingID)
-            }
+            startNextJobIfPossible()
         } else {
-            for job in jobs.values {
-                job.cancel()
-            }
+            activeTask?.cancel()
         }
     }
 
-    private func startJobIfPossible(_ recordingID: UUID) {
+    private func startNextJobIfPossible() {
         guard isApplicationActive,
-              jobs[recordingID] == nil,
+              activeTask == nil,
+              activeJobID == nil,
+              let recordingID = pendingJobIDs.first,
               let pendingJob = pendingJobs[recordingID]
         else {
             return
         }
 
-        jobs[recordingID] = Task(priority: .utility) { [weak self] in
+        activeJobID = recordingID
+        activeTask = Task(priority: .utility) { [weak self] in
             guard let self else { return }
             await self.process(
                 pendingJob.recording,
                 in: pendingJob.context
             )
-            self.jobs[recordingID] = nil
+            self.activeTask = nil
+            self.activeJobID = nil
 
-            if pendingJob.recording.processingState.isOverallProcessing {
-                self.startJobIfPossible(recordingID)
-            } else {
+            if !pendingJob.recording.processingState.isOverallProcessing {
                 self.pendingJobs[recordingID] = nil
+                if self.pendingJobIDs.first == recordingID {
+                    self.pendingJobIDs.removeFirst()
+                } else {
+                    self.pendingJobIDs.removeAll { $0 == recordingID }
+                }
             }
+
+            self.startNextJobIfPossible()
         }
     }
 

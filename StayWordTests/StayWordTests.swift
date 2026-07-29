@@ -126,6 +126,84 @@ struct StayWordTests {
 
     @Test
     @MainActor
+    func recordingsProcessOneAtATimeInFIFOOrder() async throws {
+        let schema = Schema([
+            RecordingFolder.self,
+            AudioRecording.self,
+            TranscriptSegment.self,
+            RecordingMarker.self,
+        ])
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: schema, configurations: configuration)
+        let context = container.mainContext
+        let summaryService = QueueProbeSummaryService()
+        let coordinator = ProcessingCoordinator(
+            fileStore: AudioFileStore(),
+            summaryService: summaryService
+        )
+        let recordings = ["First", "Second", "Third"].map { label in
+            let recording = AudioRecording(
+                title: label,
+                duration: 10,
+                audioRelativePath: "Recordings/\(label).m4a"
+            )
+            let segment = TranscriptSegment(
+                startTime: 0,
+                duration: 2,
+                text: label,
+                recording: recording
+            )
+            context.insert(recording)
+            context.insert(segment)
+            recording.transcriptSegments.append(segment)
+            return recording
+        }
+        try context.save()
+
+        for recording in recordings {
+            coordinator.enqueue(recording, in: context)
+        }
+
+        for _ in 0..<100 {
+            if await summaryService.startedLabels().count == 1 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await summaryService.startedLabels() == ["First"])
+        #expect(await summaryService.maximumConcurrentCount() == 1)
+        #expect(recordings[0].processingState == .summarizing)
+        #expect(recordings[1].processingState == .ready)
+        #expect(recordings[2].processingState == .ready)
+
+        await summaryService.releaseNext()
+        for _ in 0..<100 {
+            if await summaryService.startedLabels().count == 2 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await summaryService.startedLabels() == ["First", "Second"])
+        #expect(await summaryService.maximumConcurrentCount() == 1)
+        #expect(recordings[0].processingState == .completed)
+        #expect(recordings[1].processingState == .summarizing)
+        #expect(recordings[2].processingState == .ready)
+
+        await summaryService.releaseNext()
+        for _ in 0..<100 {
+            if await summaryService.startedLabels().count == 3 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(await summaryService.startedLabels() == ["First", "Second", "Third"])
+        #expect(await summaryService.maximumConcurrentCount() == 1)
+
+        await summaryService.releaseNext()
+        for _ in 0..<100 {
+            if recordings.allSatisfy({ $0.processingState == .completed }) { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        #expect(recordings.allSatisfy { $0.processingState == .completed })
+        #expect(recordings.map(\.summaryText) == ["First", "Second", "Third"])
+    }
+
+    @Test
+    @MainActor
     func swiftDataFolderRelationship() throws {
         let schema = Schema([
             RecordingFolder.self,
@@ -248,9 +326,103 @@ struct StayWordTests {
     }
 
     @Test
+    func structuredSummaryOutputRemovesParagraphMarkup() throws {
+        let output = try #require(SummaryOutputParser.parse(
+            """
+            <title><p>强化学习云方案分歧</p></title>
+            <summary><p>第一段核心内容。</p><p>第二段核心内容。</p></summary>
+            """
+        ))
+
+        #expect(output.title == "强化学习云方案分歧")
+        #expect(output.summary == "第一段核心内容。\n\n第二段核心内容。")
+    }
+
+    @Test
+    func summaryMarkupCleanerConvertsHTMLListsToPlainText() {
+        #expect(SummaryMarkupCleaner.clean(
+            "<ul><li><strong>事项一</strong></li><li>事项二<br>补充</li></ul>"
+        ) == "- 事项一\n- 事项二\n补充")
+    }
+
+    @Test
     func structuredSummaryOutputRequiresBothFields() {
         #expect(SummaryOutputParser.parse(
             "<summary>只有正文，没有标题。</summary>"
+        ) == nil)
+    }
+
+    @Test
+    func bestEffortSummaryAcceptsAnUnclosedSummaryTag() throws {
+        let output = try #require(SummaryOutputParser.parseBestEffort(
+            """
+            <title>项目进展</title>
+            <summary>
+            第一阶段已经完成，下一步进入验证。
+            """
+        ))
+
+        #expect(output.title == "项目进展")
+        #expect(output.summary == "第一阶段已经完成，下一步进入验证。")
+    }
+
+    @Test
+    func bestEffortSummaryAcceptsLabeledPlainText() throws {
+        let output = try #require(SummaryOutputParser.parseBestEffort(
+            """
+            标题：产品讨论
+            摘要：团队确认先验证核心流程，再扩展次要功能。
+            """
+        ))
+
+        #expect(output.title == "产品讨论")
+        #expect(output.summary == "团队确认先验证核心流程，再扩展次要功能。")
+    }
+
+    @Test
+    func bestEffortSummaryPreservesUntaggedBody() throws {
+        let output = try #require(SummaryOutputParser.parseBestEffort(
+            "团队决定先完成原型验证。验证通过后再进入正式开发。"
+        ))
+
+        #expect(output.title == "团队决定先完成原型验证")
+        #expect(output.summary == "团队决定先完成原型验证。验证通过后再进入正式开发。")
+    }
+
+    @Test
+    func partialSummaryOutputParsesTaggedBody() {
+        #expect(PartialSummaryOutputParser.parse(
+            """
+            <think>不应保留的思考过程</think>
+            <partial_summary>
+            保留下来的分段摘要。
+            </partial_summary>
+            """
+        ) == "保留下来的分段摘要。")
+    }
+
+    @Test
+    func partialSummaryOutputKeepsUsableBodyWhenClosingTagIsMissing() {
+        #expect(PartialSummaryOutputParser.parse(
+            "<partial_summary>达到安全上限前已经生成的有效摘要。"
+        ) == "达到安全上限前已经生成的有效摘要。")
+    }
+
+    @Test
+    func summaryResponseStopsAtClosingSummaryTag() throws {
+        let completed = try #require(SummaryResponseStopper.completedPrefix(
+            in: "<title>标题</title><summary>正文</summary>不应保留",
+            closingTag: "</summary>"
+        ))
+
+        #expect(completed == "<title>标题</title><summary>正文</summary>")
+    }
+
+    @Test
+    func summaryResponseWaitsForACompleteClosingTag() {
+        #expect(SummaryResponseStopper.completedPrefix(
+            in: "<title>标题</title><summary>正文</sum",
+            closingTag: "</summary>"
         ) == nil)
     }
 
@@ -412,5 +584,43 @@ private actor LifecycleSummaryService: SummaryService {
 
     func cancellationCount() -> Int {
         cancellations
+    }
+}
+
+private actor QueueProbeSummaryService: SummaryService {
+    private var labels: [String] = []
+    private var activeCount = 0
+    private var maximumActiveCount = 0
+    private var waiters: [CheckedContinuation<Void, Never>] = []
+
+    func summarize(segments: [TranscriptDraft]) async throws -> SummaryDraft {
+        let label = segments.first?.text ?? ""
+        labels.append(label)
+        activeCount += 1
+        maximumActiveCount = max(maximumActiveCount, activeCount)
+
+        await withCheckedContinuation { continuation in
+            waiters.append(continuation)
+        }
+
+        activeCount -= 1
+        return SummaryDraft(
+            subject: label,
+            text: label,
+            kind: .extractive
+        )
+    }
+
+    func startedLabels() -> [String] {
+        labels
+    }
+
+    func maximumConcurrentCount() -> Int {
+        maximumActiveCount
+    }
+
+    func releaseNext() {
+        guard !waiters.isEmpty else { return }
+        waiters.removeFirst().resume()
     }
 }

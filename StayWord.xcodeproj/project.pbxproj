@@ -48,6 +48,7 @@
 		B00800000000000000000001 /* MLXLLM in Frameworks */ = {isa = PBXBuildFile; productRef = K00800000000000000000001 /* MLXLLM */; };
 		B00800000000000000000002 /* MLXLMCommon in Frameworks */ = {isa = PBXBuildFile; productRef = K00800000000000000000002 /* MLXLMCommon */; };
 		B00800000000000000000003 /* Tokenizers in Frameworks */ = {isa = PBXBuildFile; productRef = K00800000000000000000003 /* Tokenizers */; };
+		B00800000000000000000004 /* MLX in Frameworks */ = {isa = PBXBuildFile; productRef = K00800000000000000000004 /* MLX */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,7 +136,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		P00100000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (B00700000000000000000001, B00700000000000000000002, B00800000000000000000001, B00800000000000000000002, B00800000000000000000003, ); runOnlyForDeploymentPostprocessing = 0; };
+		P00100000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (B00700000000000000000001, B00700000000000000000002, B00800000000000000000001, B00800000000000000000002, B00800000000000000000003, B00800000000000000000004, ); runOnlyForDeploymentPostprocessing = 0; };
 		P00200000000000000000003 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		P00300000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		P00400000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
@@ -232,6 +233,7 @@
 				K00800000000000000000001 /* MLXLLM */,
 				K00800000000000000000002 /* MLXLMCommon */,
 				K00800000000000000000003 /* Tokenizers */,
+				K00800000000000000000004 /* MLX */,
 			);
 			productName = StayWord;
 			productReference = F00400000000000000000001 /* StayWord.app */;
@@ -474,6 +476,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = R00800000000000000000002 /* XCRemoteSwiftPackageReference "swift-transformers" */;
 			productName = Tokenizers;
+		};
+		K00800000000000000000004 /* MLX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = R00800000000000000000003 /* XCRemoteSwiftPackageReference "mlx-swift" */;
+			productName = MLX;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

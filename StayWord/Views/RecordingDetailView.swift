@@ -395,7 +395,10 @@ struct RecordingDetailView: View {
 
     @ViewBuilder
     private func summarySection(_ recording: AudioRecording) -> some View {
-        if recording.summaryText.isEmpty {
+        let summarySubject = SummaryMarkupCleaner.clean(recording.summarySubject)
+        let summaryText = SummaryMarkupCleaner.clean(recording.summaryText)
+
+        if summaryText.isEmpty {
             Section {
                 ContentUnavailableView {
                     Label {
@@ -414,14 +417,14 @@ struct RecordingDetailView: View {
         } else {
             Section {
                 HStack {
-                    if !recording.summarySubject.isEmpty {
-                        Text(recording.summarySubject)
+                    if !summarySubject.isEmpty {
+                        Text(summarySubject)
                             .font(.headline)
                     }
                     Spacer()
                     summaryCopyButton(recording)
                 }
-                Text(recording.summaryText)
+                Text(summaryText)
                     .textSelection(.enabled)
             }
         }
@@ -601,8 +604,8 @@ struct RecordingDetailView: View {
 
     private func summaryCopyText(for recording: AudioRecording) -> String {
         [
-            recording.summarySubject,
-            recording.summaryText,
+            SummaryMarkupCleaner.clean(recording.summarySubject),
+            SummaryMarkupCleaner.clean(recording.summaryText),
         ]
         .filter { !$0.isEmpty }
         .joined(separator: "\n\n")

@@ -16,14 +16,18 @@ struct RecordingEditView: View {
     init(recording: AudioRecording) {
         self.recording = recording
         _title = State(initialValue: recording.title)
-        _subject = State(initialValue: recording.summarySubject)
-        _summary = State(initialValue: recording.summaryText)
+        _subject = State(
+            initialValue: SummaryMarkupCleaner.clean(recording.summarySubject)
+        )
+        _summary = State(
+            initialValue: SummaryMarkupCleaner.clean(recording.summaryText)
+        )
     }
 
     private var hasChanges: Bool {
         title != recording.title
-            || subject != recording.summarySubject
-            || summary != recording.summaryText
+            || subject != SummaryMarkupCleaner.clean(recording.summarySubject)
+            || summary != SummaryMarkupCleaner.clean(recording.summaryText)
     }
 
     var body: some View {
@@ -83,8 +87,8 @@ struct RecordingEditView: View {
 
     private func save() {
         recording.title = title.trimmingCharacters(in: .whitespacesAndNewlines)
-        recording.summarySubject = subject.trimmingCharacters(in: .whitespacesAndNewlines)
-        recording.summaryText = summary.trimmingCharacters(in: .whitespacesAndNewlines)
+        recording.summarySubject = SummaryMarkupCleaner.clean(subject)
+        recording.summaryText = SummaryMarkupCleaner.clean(summary)
 
         if services.save(modelContext) {
             dismiss()
