@@ -15,8 +15,8 @@ generated content to a server.
    `StayWordRecordingActivity` extension.
 4. Run on an iOS 18+ device or simulator.
 
-The app bundle identifier is `com.rivendell.stayword`. The Live Activity
-extension uses `com.rivendell.stayword.RecordingActivity`.
+The app bundle identifier is `com.zhongmeng.stayword`. The Live Activity
+extension uses `com.zhongmeng.stayword.RecordingActivity`.
 
 ## Native system integration
 

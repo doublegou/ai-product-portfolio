@@ -382,7 +382,7 @@ actor OnDeviceSummaryService: SummaryService {
     }
 
     private static let logger = Logger(
-        subsystem: "com.rivendell.stayword",
+        subsystem: "com.zhongmeng.stayword",
         category: "Summary"
     )
 }

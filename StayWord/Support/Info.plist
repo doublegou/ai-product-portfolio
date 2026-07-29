@@ -22,7 +22,7 @@
     <array>
         <dict>
             <key>CFBundleURLName</key>
-            <string>com.rivendell.stayword.navigation</string>
+            <string>com.zhongmeng.stayword.navigation</string>
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>stayword</string>
