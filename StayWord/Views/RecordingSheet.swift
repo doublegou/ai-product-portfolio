@@ -134,7 +134,14 @@ struct RecordingSheet: View {
                 .controlSize(.extraLarge)
         } else {
             finishButtonControl
-                .buttonStyle(.bordered)
+                .buttonStyle(
+                    LegacyFrostedButtonStyle(
+                        shape: .circle,
+                        horizontalPadding: 12,
+                        verticalPadding: 12,
+                        minimumDimension: 48
+                    )
+                )
                 .buttonBorderShape(.circle)
                 .controlSize(.extraLarge)
         }
@@ -185,11 +192,24 @@ struct RecordingSheet: View {
         } else {
             HStack(spacing: 16) {
                 pauseButton
-                    .buttonStyle(.bordered)
+                    .buttonStyle(
+                        LegacyFrostedButtonStyle(
+                            shape: .capsule,
+                            horizontalPadding: 16,
+                            verticalPadding: 10
+                        )
+                    )
                     .controlSize(.large)
 
                 finishButtonControl
-                    .buttonStyle(.bordered)
+                    .buttonStyle(
+                        LegacyFrostedButtonStyle(
+                            shape: .circle,
+                            horizontalPadding: 12,
+                            verticalPadding: 12,
+                            minimumDimension: 48
+                        )
+                    )
                     .buttonBorderShape(.circle)
                     .controlSize(.extraLarge)
             }
