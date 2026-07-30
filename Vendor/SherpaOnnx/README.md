@@ -1,22 +1,21 @@
 # Sherpa ONNX Runtime binaries
 
-`onnxruntime.xcframework` is a version-selecting symlink used by the Xcode
-project.
+The Xcode project uses these version-selecting symlinks:
 
-- Active ONNX Runtime: `1.27.0`
-- Rollback ONNX Runtime: `1.17.1`
-- sherpa-onnx: `1.13.2`
-- Execution provider selected by the app: CPU
+- `sherpa-onnx.xcframework` → sherpa-onnx `1.13.4`
+- `onnxruntime.xcframework` → ONNX Runtime `1.27.1`
 
-ONNX Runtime 1.27.0 is repackaged from the official `onnxruntime-c` CocoaPods
-artifact:
+No older runtime fallback is retained. The app uses the CPU execution provider.
 
-https://download.onnxruntime.ai/pod-archive-onnxruntime-c-1.27.0.zip
+The static libraries are repackaged without modifying their binary contents
+from these official release artifacts:
 
-Only the static libraries required by this iOS project are retained:
+- https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.4/sherpa-onnx-v1.13.4-ios-no-tts.xcframework.zip
+- https://github.com/csukuangfj/onnxruntime-libs/releases/download/v1.27.1/onnxruntime-ios-static-xcframework-1.27.1.zip
+
+Only the architectures required by this iOS project are retained:
 
 - iOS device: arm64
 - iOS Simulator: arm64 and x86_64
 
-The unused native macOS slice and duplicated public headers are omitted. The
-runtime binaries themselves are unchanged.
+Duplicated public headers and unused platform slices are omitted.
