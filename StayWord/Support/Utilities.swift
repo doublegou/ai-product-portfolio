@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import UIKit
 
 enum StayWordError: LocalizedError {
     case microphoneDenied
@@ -48,6 +49,259 @@ extension View {
         }
     }
 
+    @ViewBuilder
+    func adaptiveToolbarCircleButtonStyle() -> some View {
+        if #available(iOS 26.0, *) {
+            self
+        } else {
+            buttonStyle(
+                LegacyFrostedButtonStyle(
+                    shape: .circle,
+                    horizontalPadding: 12,
+                    verticalPadding: 12
+                )
+            )
+        }
+    }
+
+    @ViewBuilder
+    func legacyFrostedToolbarCapsuleLabel() -> some View {
+        if #available(iOS 26.0, *) {
+            self
+        } else {
+            self
+                .padding(.horizontal, 14)
+                .frame(minHeight: 44)
+                .background {
+                    LegacyFrostedButtonBackground(
+                        shape: .capsule,
+                        isProminent: false,
+                        isPressed: false
+                    )
+                }
+                .contentShape(Capsule())
+        }
+    }
+
+    @ViewBuilder
+    func legacyNavigationBackButtonHidden() -> some View {
+        if #available(iOS 26.0, *) {
+            self
+        } else {
+            navigationBarBackButtonHidden(true)
+                .background(LegacyNavigationPopGestureRestorer())
+        }
+    }
+
+}
+
+struct AdaptiveToolbarButtonIcon: View {
+    let title: LocalizedStringKey
+    let systemImage: String
+
+    init(_ title: LocalizedStringKey, systemImage: String) {
+        self.title = title
+        self.systemImage = systemImage
+    }
+
+    @ViewBuilder
+    var body: some View {
+        if #available(iOS 26.0, *) {
+            Label(title, systemImage: systemImage)
+                .labelStyle(.iconOnly)
+        } else {
+            Image(systemName: systemImage)
+                .font(.headline.weight(.semibold))
+                .frame(width: 20, height: 20)
+                .accessibilityLabel(title)
+        }
+    }
+}
+
+struct AdaptiveToolbarMenuIcon: View {
+    let title: LocalizedStringKey
+    let systemImage: String
+
+    init(_ title: LocalizedStringKey, systemImage: String) {
+        self.title = title
+        self.systemImage = systemImage
+    }
+
+    @ViewBuilder
+    var body: some View {
+        if #available(iOS 26.0, *) {
+            Label(title, systemImage: systemImage)
+                .labelStyle(.iconOnly)
+        } else {
+            Image(systemName: systemImage)
+                .font(.headline.weight(.semibold))
+                .frame(width: 44, height: 44)
+                .background(.regularMaterial, in: Circle())
+                .overlay {
+                    Circle()
+                        .strokeBorder(
+                            Color.primary.opacity(0.12),
+                            lineWidth: 0.5
+                        )
+                }
+                .contentShape(Circle())
+                .accessibilityLabel(title)
+        }
+    }
+}
+
+struct AdaptiveMenuAction: Identifiable {
+    let id = UUID()
+    let title: LocalizedStringKey
+    let systemImage: String
+    var role: ButtonRole?
+    var isEnabled: Bool
+    var accessibilityIdentifier: String?
+    let action: () -> Void
+
+    init(
+        _ title: LocalizedStringKey,
+        systemImage: String,
+        role: ButtonRole? = nil,
+        isEnabled: Bool = true,
+        accessibilityIdentifier: String? = nil,
+        action: @escaping () -> Void
+    ) {
+        self.title = title
+        self.systemImage = systemImage
+        self.role = role
+        self.isEnabled = isEnabled
+        self.accessibilityIdentifier = accessibilityIdentifier
+        self.action = action
+    }
+}
+
+struct AdaptiveOverflowMenu<LabelContent: View>: View {
+    let actions: [AdaptiveMenuAction]
+    private let label: () -> LabelContent
+
+    @State private var isPresented = false
+
+    init(
+        actions: [AdaptiveMenuAction],
+        @ViewBuilder label: @escaping () -> LabelContent
+    ) {
+        self.actions = actions
+        self.label = label
+    }
+
+    @ViewBuilder
+    var body: some View {
+        if #available(iOS 26.0, *) {
+            Menu {
+                ForEach(actions) { action in
+                    nativeButton(for: action)
+                }
+            } label: {
+                label()
+            }
+        } else {
+            Button {
+                isPresented = true
+            } label: {
+                label()
+            }
+            .buttonStyle(.plain)
+            .popover(isPresented: $isPresented, arrowEdge: .top) {
+                LegacyOverflowMenu(actions: actions) { action in
+                    isPresented = false
+                    Task { @MainActor in
+                        await Task.yield()
+                        action.action()
+                    }
+                }
+                .presentationCompactAdaptation(.popover)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func nativeButton(for action: AdaptiveMenuAction) -> some View {
+        Button(role: action.role, action: action.action) {
+            Label(action.title, systemImage: action.systemImage)
+        }
+        .disabled(!action.isEnabled)
+        .optionalAccessibilityIdentifier(action.accessibilityIdentifier)
+    }
+}
+
+private struct LegacyOverflowMenu: View {
+    let actions: [AdaptiveMenuAction]
+    let perform: (AdaptiveMenuAction) -> Void
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ForEach(Array(actions.enumerated()), id: \.element.id) { index, action in
+                if index > 0 {
+                    Divider()
+                        .padding(.leading, 42)
+                }
+
+                Button(role: action.role) {
+                    perform(action)
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: action.systemImage)
+                            .font(.body.weight(.medium))
+                            .frame(width: 20, alignment: .center)
+
+                        Text(action.title)
+                            .font(.body)
+
+                        Spacer(minLength: 4)
+                    }
+                    .frame(minWidth: 156, minHeight: 44, alignment: .leading)
+                    .padding(.horizontal, 10)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(
+                    action.role == .destructive ? Color.red : Color.primary
+                )
+                .disabled(!action.isEnabled)
+                .opacity(action.isEnabled ? 1 : 0.4)
+                .optionalAccessibilityIdentifier(action.accessibilityIdentifier)
+            }
+        }
+        .padding(6)
+        .fixedSize(horizontal: true, vertical: false)
+    }
+}
+
+struct LegacyNavigationBackButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "chevron.left")
+                .font(.headline.weight(.semibold))
+                .frame(width: 20, height: 20)
+        }
+        .buttonStyle(
+            LegacyFrostedButtonStyle(
+                shape: .circle,
+                horizontalPadding: 12,
+                verticalPadding: 12
+            )
+        )
+        .accessibilityLabel("Back")
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func optionalAccessibilityIdentifier(_ identifier: String?) -> some View {
+        if let identifier {
+            accessibilityIdentifier(identifier)
+        } else {
+            self
+        }
+    }
 }
 
 struct LegacyFrostedButtonStyle: ButtonStyle {
@@ -126,6 +380,35 @@ private struct LegacyFrostedButtonBackground: View {
     }
 }
 
+private struct LegacyNavigationPopGestureRestorer: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> Controller {
+        Controller()
+    }
+
+    func updateUIViewController(_ controller: Controller, context: Context) {
+        controller.restoreGestureSoon()
+    }
+
+    final class Controller: UIViewController {
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+            restoreGestureSoon()
+        }
+
+        fileprivate func restoreGestureSoon() {
+            DispatchQueue.main.async { [weak self] in
+                guard let navigationController = self?.navigationController,
+                      navigationController.viewControllers.count > 1,
+                      let gesture = navigationController.interactivePopGestureRecognizer
+                else { return }
+
+                gesture.delegate = nil
+                gesture.isEnabled = true
+            }
+        }
+    }
+}
+
 struct NativeRecordButton: View {
     let action: () -> Void
     @State private var feedbackTrigger = false
@@ -150,6 +433,7 @@ struct NativeRecordButton: View {
         .sensoryFeedback(.impact(weight: .medium), trigger: feedbackTrigger)
         .accessibilityLabel("Record")
         .accessibilityHint("Starts a new audio recording")
+        .accessibilityIdentifier("record-button")
     }
 
     @ViewBuilder

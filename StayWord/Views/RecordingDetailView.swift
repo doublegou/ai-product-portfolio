@@ -30,7 +30,9 @@ struct RecordingDetailView: View {
         _recordings = Query(
             filter: #Predicate<AudioRecording> { $0.id == recordingID }
         )
-        Self.applyDetailTabBarTypography()
+        if #available(iOS 26.0, *) {
+            Self.applyDetailTabBarTypography()
+        }
     }
 
     private var recording: AudioRecording? {
@@ -51,44 +53,32 @@ struct RecordingDetailView: View {
         }
         .navigationTitle(recording?.title ?? String(localized: "Recording"))
         .navigationBarTitleDisplayMode(.inline)
+        .legacyNavigationBackButtonHidden()
         .toolbar {
             if let recording {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button {
-                            UIPasteboard.general.string = currentCopyText(for: recording)
-                        } label: {
-                            Label("Copy", systemImage: "doc.on.doc")
-                        }
-                        .disabled(currentCopyText(for: recording).isEmpty)
-
-                        Button {
-                            recording.isFavorite.toggle()
-                            services.save(modelContext)
-                        } label: {
-                            Label(
-                                recording.isFavorite ? "Unfavorite" : "Favorite",
-                                systemImage: recording.isFavorite ? "heart.slash" : "heart"
-                            )
-                        }
-
-                        Button {
-                            showsMoveSheet = true
-                        } label: {
-                            Label("Move", systemImage: "folder")
-                        }
-
-                        Button(role: .destructive) {
-                            confirmsDelete = true
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    } label: {
-                        Label("More", systemImage: "ellipsis")
+                if #available(iOS 26.0, *) {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        detailActionsMenu(recording)
                     }
-                    .labelStyle(.iconOnly)
-                }
+                } else {
+                    ToolbarItem(placement: .topBarLeading) {
+                        LegacyNavigationBackButton {
+                            dismiss()
+                        }
+                        .accessibilityIdentifier("detail-back")
+                    }
 
+                    ToolbarItem(placement: .principal) {
+                        Text(recording.title)
+                            .font(.headline)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                    }
+
+                    ToolbarItem(placement: .topBarTrailing) {
+                        detailActionsMenu(recording)
+                    }
+                }
             }
         }
         .sheet(isPresented: $showsEditor) {
@@ -109,6 +99,7 @@ struct RecordingDetailView: View {
             Button("Delete", role: .destructive) {
                 deleteRecording()
             }
+            .accessibilityIdentifier("detail-confirm-delete")
         } message: {
             Text("This recording will move to Recently Deleted.")
         }
@@ -125,7 +116,9 @@ struct RecordingDetailView: View {
         }
         .onDisappear {
             services.player.stop()
-            Self.restoreDefaultTabBarTypography()
+            if #available(iOS 26.0, *) {
+                Self.restoreDefaultTabBarTypography()
+            }
         }
     }
 
@@ -135,8 +128,16 @@ struct RecordingDetailView: View {
             detailTabView(recording)
                 .tabBarMinimizeBehavior(.never)
         } else {
-            detailTabView(recording)
+            legacyDetailView(recording)
         }
+    }
+
+    private func legacyDetailView(_ recording: AudioRecording) -> some View {
+        detailForm(recording, content: lastContentTab)
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                legacyDetailBar
+                    .offset(y: 10)
+            }
     }
 
     private func detailTabView(_ recording: AudioRecording) -> some View {
@@ -171,6 +172,120 @@ struct RecordingDetailView: View {
                 }
             }
         }
+    }
+
+    private var legacyDetailBar: some View {
+        HStack(spacing: 16) {
+            HStack(spacing: 0) {
+                legacyTabButton("Summary", tab: .summary)
+                legacyTabButton("Transcript", tab: .transcript)
+            }
+            .padding(4)
+            .frame(maxWidth: 252)
+            .background(.regularMaterial, in: Capsule())
+            .overlay {
+                Capsule()
+                    .strokeBorder(Color.primary.opacity(0.12), lineWidth: 0.5)
+            }
+
+            Spacer(minLength: 0)
+
+            Button {
+                showsEditor = true
+            } label: {
+                Image(systemName: "square.and.pencil")
+                    .font(.title2.weight(.medium))
+                    .frame(width: 60, height: 60)
+            }
+            .buttonStyle(
+                LegacyFrostedButtonStyle(
+                    shape: .circle,
+                    horizontalPadding: 0,
+                    verticalPadding: 0,
+                    minimumDimension: 64
+                )
+            )
+            .accessibilityLabel("Edit")
+            .accessibilityIdentifier("detail-edit")
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
+    }
+
+    private func legacyTabButton(
+        _ title: LocalizedStringKey,
+        tab: DetailTab
+    ) -> some View {
+        let isSelected = lastContentTab == tab
+
+        return Button {
+            let animation: Animation? = reduceMotion
+                ? nil
+                : .snappy(duration: 0.2)
+            withAnimation(animation) {
+                selectedTab = tab
+                lastContentTab = tab
+            }
+        } label: {
+            Text(title)
+                .font(.headline)
+                .frame(maxWidth: .infinity, minHeight: 52)
+                .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
+        .foregroundStyle(isSelected ? Color.accentColor : Color.primary)
+        .background {
+            if isSelected {
+                Capsule()
+                    .fill(Color.primary.opacity(0.12))
+                    .transition(.opacity)
+            }
+        }
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityIdentifier(
+            tab == .summary ? "detail-summary-tab" : "detail-transcript-tab"
+        )
+    }
+
+    private func detailActionsMenu(_ recording: AudioRecording) -> some View {
+        AdaptiveOverflowMenu(actions: [
+            AdaptiveMenuAction(
+                "Copy",
+                systemImage: "doc.on.doc",
+                isEnabled: !currentCopyText(for: recording).isEmpty
+            ) {
+                UIPasteboard.general.string = currentCopyText(for: recording)
+            },
+            AdaptiveMenuAction(
+                recording.isFavorite ? "Unfavorite" : "Favorite",
+                systemImage: recording.isFavorite ? "heart.slash" : "heart"
+            ) {
+                recording.isFavorite.toggle()
+                services.save(modelContext)
+            },
+            AdaptiveMenuAction(
+                "Move",
+                systemImage: "folder",
+                accessibilityIdentifier: "detail-move"
+            ) {
+                showsMoveSheet = true
+            },
+            AdaptiveMenuAction(
+                "Delete",
+                systemImage: "trash",
+                role: .destructive,
+                accessibilityIdentifier: "detail-delete"
+            ) {
+                confirmsDelete = true
+            }
+        ]) {
+            AdaptiveToolbarMenuIcon(
+                "More",
+                systemImage: "ellipsis"
+            )
+        }
+        .accessibilityIdentifier("detail-more")
     }
 
     @ViewBuilder
@@ -273,6 +388,7 @@ struct RecordingDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .accessibilityIdentifier("detail-processing-status")
                 }
             }
 
@@ -289,6 +405,7 @@ struct RecordingDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .accessibilityIdentifier("detail-transcription-status")
                 }
             }
 
@@ -496,6 +613,7 @@ struct RecordingDetailView: View {
                     }
                     .buttonStyle(.plain)
                     .id(segment.id)
+                    .accessibilityIdentifier("transcript-segment-\(segment.id.uuidString)")
                     .listRowInsets(
                         EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
                     )
@@ -589,6 +707,7 @@ struct RecordingDetailView: View {
         .controlSize(.large)
         .nativeProminentButtonStyle()
         .scaleEffect(0.94)
+        .accessibilityIdentifier("detail-retry")
     }
 
     private func currentCopyText(for recording: AudioRecording) -> String {

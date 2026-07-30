@@ -23,16 +23,19 @@ struct LibraryView: View {
                     Label("All Recordings", systemImage: "waveform")
                         .badge(activeRecordings.count)
                 }
+                .accessibilityIdentifier("library-all-recordings")
 
                 NavigationLink(value: AppRoute.recordings(.favorites)) {
                     Label("Favorites", systemImage: "heart")
                         .badge(activeRecordings.lazy.filter(\.isFavorite).count)
                 }
+                .accessibilityIdentifier("library-favorites")
 
                 NavigationLink(value: AppRoute.recentlyDeleted) {
                     Label("Recently Deleted", systemImage: "trash")
                         .badge(recentlyDeletedRecordings.count)
                 }
+                .accessibilityIdentifier("library-recently-deleted")
             }
 
             Section("My Folders") {
@@ -51,6 +54,7 @@ struct LibraryView: View {
                                 Label(folder.name, systemImage: "folder")
                                     .badge(folder.recordings.lazy.filter { $0.deletedAt == nil }.count)
                             }
+                            .accessibilityIdentifier("library-folder-\(folder.id.uuidString)")
                         }
                     }
                     .swipeActions(edge: .trailing) {
@@ -97,9 +101,13 @@ struct LibraryView: View {
                         newFolderName = ""
                         showsNewFolderAlert = true
                     } label: {
-                        Label("New Folder", systemImage: "folder.badge.plus")
+                        AdaptiveToolbarButtonIcon(
+                            "New Folder",
+                            systemImage: "folder.badge.plus"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("library-new-folder")
                 }
 
                 if #available(iOS 26.0, *) {
@@ -112,9 +120,13 @@ struct LibraryView: View {
                             editMode = .inactive
                         }
                     } label: {
-                        Label("Done", systemImage: "checkmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Done",
+                            systemImage: "checkmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("library-done")
                 }
             } else {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -122,9 +134,13 @@ struct LibraryView: View {
                         newFolderName = ""
                         showsNewFolderAlert = true
                     } label: {
-                        Label("New Folder", systemImage: "folder.badge.plus")
+                        AdaptiveToolbarButtonIcon(
+                            "New Folder",
+                            systemImage: "folder.badge.plus"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("library-new-folder")
                 }
 
                 if #available(iOS 26.0, *) {
@@ -132,11 +148,15 @@ struct LibraryView: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Edit") {
+                    Button {
                         withAnimation {
                             editMode = .active
                         }
+                    } label: {
+                        Text("Edit")
+                            .legacyFrostedToolbarCapsuleLabel()
                     }
+                    .accessibilityIdentifier("library-edit")
                 }
             }
 
@@ -210,23 +230,22 @@ struct LibraryView: View {
     }
 
     private func folderActionsMenu(for folder: RecordingFolder) -> some View {
-        Menu {
-            Button {
+        AdaptiveOverflowMenu(actions: [
+            AdaptiveMenuAction("Rename", systemImage: "pencil") {
                 folderToRename = folder
                 renamedFolderName = folder.name
-            } label: {
-                Label("Rename", systemImage: "pencil")
-            }
-
-            Button(role: .destructive) {
+            },
+            AdaptiveMenuAction(
+                "Delete",
+                systemImage: "trash",
+                role: .destructive
+            ) {
                 foldersToDelete = [folder]
-            } label: {
-                Label("Delete", systemImage: "trash")
             }
-        } label: {
+        ]) {
             Label("More", systemImage: "ellipsis.circle")
+                .labelStyle(.iconOnly)
         }
-        .labelStyle(.iconOnly)
         .accessibilityHint("Shows actions for this folder")
     }
 

@@ -11,6 +11,7 @@ final class ProcessingCoordinator {
     private let fileStore: AudioFileStore
     private let transcriptionService: TranscriptionService
     private let summaryService: any SummaryService
+    private let summaryGenerationEnabled: Bool
     private var pendingJobs: [UUID: PendingJob] = [:]
     private var pendingJobIDs: [UUID] = []
     private var activeJobID: UUID?
@@ -21,11 +22,13 @@ final class ProcessingCoordinator {
     init(
         fileStore: AudioFileStore,
         transcriptionService: TranscriptionService = TranscriptionService(),
-        summaryService: any SummaryService = OnDeviceSummaryService()
+        summaryService: any SummaryService = OnDeviceSummaryService(),
+        summaryGenerationEnabled: Bool = true
     ) {
         self.fileStore = fileStore
         self.transcriptionService = transcriptionService
         self.summaryService = summaryService
+        self.summaryGenerationEnabled = summaryGenerationEnabled
     }
 
     func enqueue(_ recording: AudioRecording, in context: ModelContext) {
@@ -116,11 +119,15 @@ final class ProcessingCoordinator {
             }),
                recording.summaryText.isEmpty,
                recording.transcriptionCheckpointSample == 0 {
-                try await generateSummary(
-                    for: recording,
-                    segments: existingSegments,
-                    in: context
-                )
+                if summaryGenerationEnabled {
+                    try await generateSummary(
+                        for: recording,
+                        segments: existingSegments,
+                        in: context
+                    )
+                } else {
+                    try finishWithoutSummary(recording, in: context)
+                }
                 return
             }
 
@@ -205,11 +212,15 @@ final class ProcessingCoordinator {
             try context.save()
 
             try Task.checkCancellation()
-            try await generateSummary(
-                for: recording,
-                segments: drafts,
-                in: context
-            )
+            if summaryGenerationEnabled {
+                try await generateSummary(
+                    for: recording,
+                    segments: drafts,
+                    in: context
+                )
+            } else {
+                try finishWithoutSummary(recording, in: context)
+            }
         } catch is CancellationError {
             // Keep the current processing state and any checkpointed work.
             // The pending job restarts when the app becomes active again.
@@ -309,6 +320,15 @@ final class ProcessingCoordinator {
         recording.processingState = .completed
         recording.failureMessage = nil
         recording.summaryFailureMessage = nil
+        try context.save()
+    }
+
+    private func finishWithoutSummary(
+        _ recording: AudioRecording,
+        in context: ModelContext
+    ) throws {
+        recording.processingState = .completed
+        recording.failureMessage = nil
         try context.save()
     }
 }

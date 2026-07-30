@@ -2,7 +2,8 @@
 
 - Model: `mlx-community/Qwen3.5-0.8B-MLX-4bit`
 - Source revision: `5d894f8cc4ef3e6c88537bf3746ed262f549da6a`
-- Runtime: MLX Swift LM `3.31.3`
+- Runtime: MLX Swift LM `ee026ba` (`3.31.4` + Qwen3.5 compiled decode and GDN decode FMA)
+- MLX Swift: `0.31.6`
 - Quantization: affine 4-bit, group size 64
 - License: Apache-2.0, inherited from `Qwen/Qwen3.5-0.8B`
 - `model.safetensors` SHA-256:
