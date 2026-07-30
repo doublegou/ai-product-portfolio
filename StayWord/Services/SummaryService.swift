@@ -444,10 +444,10 @@ actor OnDeviceSummaryService: SummaryService {
                 return 1
             }
 
-            // Qwen3.5 prefill can page-fault in the general GatedDelta conv1d
-            // kernel on A14-era and older GPUs. Single-token chunks use the
-            // fixed FMA path from mlx-swift-lm PR #468 instead.
-            return device.supportsFamily(.apple8) ? 256 : 1
+            // Large Qwen3.5 prefill chunks can page-fault in the GatedDelta
+            // conv1d kernel on A14-era and older GPUs. Four-token micro-batches
+            // are validated on iPhone 12 and keep each dispatch bounded.
+            return device.supportsFamily(.apple8) ? 256 : 4
             #endif
         }()
     }
