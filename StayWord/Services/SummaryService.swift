@@ -2,6 +2,7 @@ import Foundation
 import MLX
 import MLXLLM
 import MLXLMCommon
+import Metal
 import OSLog
 import Tokenizers
 
@@ -435,6 +436,20 @@ actor OnDeviceSummaryService: SummaryService {
         static let partialMaximumOutputTokens = 5_000
         static let partialClosingTag = "</partial_summary>"
         static let finalGenerationTimeout: Duration = .seconds(8 * 60)
+        static let prefillStepSize: Int = {
+            #if targetEnvironment(simulator)
+            256
+            #else
+            guard let device = MTLCreateSystemDefaultDevice() else {
+                return 1
+            }
+
+            // Qwen3.5 prefill can page-fault in the general GatedDelta conv1d
+            // kernel on A14-era and older GPUs. Single-token chunks use the
+            // fixed FMA path from mlx-swift-lm PR #468 instead.
+            return device.supportsFamily(.apple8) ? 256 : 1
+            #endif
+        }()
     }
 
     private let localModelDirectoryOverride: URL?
@@ -567,7 +582,7 @@ actor OnDeviceSummaryService: SummaryService {
                 topP: 0.9,
                 repetitionPenalty: 1.05,
                 repetitionContextSize: 64,
-                prefillStepSize: 256
+                prefillStepSize: LocalModel.prefillStepSize
             ),
             additionalContext: ["enable_thinking": false]
         )
