@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_mic"
+        android:shortcutId="start_recording"
+        android:shortcutLongLabel="@string/shortcut_start_recording_long"
+        android:shortcutShortLabel="@string/shortcut_start_recording">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="stayword://recording" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_history"
+        android:shortcutId="recent_recording"
+        android:shortcutLongLabel="@string/shortcut_recent_long"
+        android:shortcutShortLabel="@string/shortcut_recent">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="stayword://recent" />
+    </shortcut>
+</shortcuts>

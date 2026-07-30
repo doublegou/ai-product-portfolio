@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "vad/silero_vad.onnx",
+      "bytes": 643854,
+      "sha256": "9e2449e1087496d8d4caba907f23e0bd3f78d91fa552479bb9c23ac09cbb1fd6",
+      "source": "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx",
+      "license": "MIT"
+    },
+    {
+      "path": "pyannote/model.int8.onnx",
+      "bytes": 1540506,
+      "sha256": "d582f4b4c6b48205de7e0643c57df0df5615a3c176189be3fc461e9d18827b5d",
+      "source": "https://huggingface.co/pyannote/segmentation-3.0",
+      "license": "MIT"
+    },
+    {
+      "path": "speaker/3dspeaker.onnx",
+      "bytes": 39593761,
+      "sha256": "1a331345f04805badbb495c775a6ddffcdd1a732567d5ec8b3d5749e3c7a5e4b",
+      "source": "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-recongition-models/3dspeaker_speech_eres2net_base_sv_zh-cn_3dspeaker_16k.onnx",
+      "license": "Apache-2.0"
+    },
+    {
+      "path": "sensevoice/model.int8.onnx",
+      "bytes": 239233841,
+      "sha256": "c71f0ce00bec95b07744e116345e33d8cbbe08cef896382cf907bf4b51a2cd51",
+      "source": "https://github.com/FunAudioLLM/SenseVoice",
+      "license": "FunASR Model License"
+    },
+    {
+      "path": "sensevoice/tokens.txt",
+      "bytes": 315894,
+      "sha256": "f449eb28dc567533d7fa59be34e2abca8784f771850c78a47fb731a31429a1dc",
+      "source": "https://github.com/FunAudioLLM/SenseVoice",
+      "license": "FunASR Model License"
+    },
+    {
+      "path": "summary/qwen3_0.6b_nothink_q4_block32_ekv1280.litertlm",
+      "bytes": 347251840,
+      "sha256": "2df6821ec12702dafd33915e7a1a1adc7c4b053f3672fd9555dfaf3a114c4139",
+      "source": "https://huggingface.co/litert-community/Qwen3-0.6B-int4",
+      "license": "Apache-2.0"
+    }
+  ]
+}

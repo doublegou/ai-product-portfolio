@@ -1,0 +1,4 @@
+-keep class com.k2fsa.sherpa.onnx.** { *; }
+-keep class com.google.ai.edge.litertlm.** { *; }
+-keep class com.google.mlkit.genai.** { *; }
+-keepattributes *Annotation*
