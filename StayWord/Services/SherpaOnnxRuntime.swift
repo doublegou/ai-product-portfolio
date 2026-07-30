@@ -29,7 +29,7 @@ enum SherpaOnnxRuntimeError: LocalizedError, Sendable {
     }
 }
 
-/// Minimal, synchronous facade around the sherpa-onnx v1.13.2 C API.
+/// Minimal, synchronous facade around the sherpa-onnx v1.13.4 C API.
 ///
 /// The caller serializes access through `TranscriptionService`. One bounded
 /// streaming session performs both voice activity detection and recognition.
