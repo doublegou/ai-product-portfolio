@@ -8,6 +8,7 @@ struct RecordingListView: View {
 
     @Environment(AppRouter.self) private var router
     @Environment(AppServices.self) private var services
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \AudioRecording.createdAt, order: .reverse)
     private var recordings: [AudioRecording]
@@ -76,6 +77,7 @@ struct RecordingListView: View {
                             RecordingRow(recording: recording)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("recording-row-\(recording.id.uuidString)")
                     }
                 }
                 .tag(recording.id)
@@ -179,6 +181,7 @@ struct RecordingListView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.large)
+        .legacyNavigationBackButtonHidden()
         .background {
             RecordingSearchController(
                 text: $searchText,
@@ -188,24 +191,41 @@ struct RecordingListView: View {
         }
         .environment(\.editMode, $editMode)
         .toolbar {
+            if #unavailable(iOS 26.0) {
+                ToolbarItem(placement: .topBarLeading) {
+                    LegacyNavigationBackButton {
+                        dismiss()
+                    }
+                    .accessibilityIdentifier("recording-list-back")
+                }
+            }
+
             if editMode == .active {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         editMode = .inactive
                         selectedIDs.removeAll()
                     } label: {
-                        Label("Done", systemImage: "checkmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Done",
+                            systemImage: "checkmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("recording-list-done")
                 }
             } else {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         presentSearch()
                     } label: {
-                        Label("Search", systemImage: "magnifyingglass")
+                        AdaptiveToolbarButtonIcon(
+                            "Search",
+                            systemImage: "magnifyingglass"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("recording-list-search")
                 }
 
                 if #available(iOS 26.0, *) {
@@ -213,24 +233,30 @@ struct RecordingListView: View {
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button {
+                    AdaptiveOverflowMenu(actions: [
+                        AdaptiveMenuAction(
+                            "Select",
+                            systemImage: "checkmark.circle",
+                            accessibilityIdentifier: "recording-list-select-action"
+                        ) {
                             withAnimation {
                                 editMode = .active
                             }
-                        } label: {
-                            Label("Select", systemImage: "checkmark.circle")
-                        }
-
-                        Button {
+                        },
+                        AdaptiveMenuAction(
+                            "Import",
+                            systemImage: "square.and.arrow.up",
+                            accessibilityIdentifier: "recording-list-import-action"
+                        ) {
                             showsImporter = true
-                        } label: {
-                            Label("Import", systemImage: "square.and.arrow.up")
                         }
-                    } label: {
-                        Label("More", systemImage: "ellipsis")
+                    ]) {
+                        AdaptiveToolbarMenuIcon(
+                            "More",
+                            systemImage: "ellipsis"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .accessibilityIdentifier("recording-list-more")
                 }
             }
 
@@ -240,6 +266,7 @@ struct RecordingListView: View {
                         showsMoveSheet = true
                     } label: {
                         Label("Move", systemImage: "folder")
+                            .legacyFrostedToolbarCapsuleLabel()
                     }
                     .disabled(selectedIDs.isEmpty)
 
@@ -249,6 +276,7 @@ struct RecordingListView: View {
                         confirmsDelete = true
                     } label: {
                         Label("Delete", systemImage: "trash")
+                            .legacyFrostedToolbarCapsuleLabel()
                     }
                     .disabled(selectedIDs.isEmpty)
                 }
@@ -398,6 +426,7 @@ struct RecordingListView: View {
 
 struct RecentlyDeletedView: View {
     @Environment(AppServices.self) private var services
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query private var recordings: [AudioRecording]
 
@@ -429,6 +458,7 @@ struct RecentlyDeletedView: View {
                             RecordingRow(recording: recording)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityIdentifier("deleted-recording-row-\(recording.id.uuidString)")
                     }
                 }
                     .tag(recording.id)
@@ -476,7 +506,17 @@ struct RecentlyDeletedView: View {
         }
         .navigationTitle("Recently Deleted")
         .navigationBarTitleDisplayMode(.large)
+        .legacyNavigationBackButtonHidden()
         .toolbar {
+            if #unavailable(iOS 26.0) {
+                ToolbarItem(placement: .topBarLeading) {
+                    LegacyNavigationBackButton {
+                        dismiss()
+                    }
+                    .accessibilityIdentifier("recently-deleted-back")
+                }
+            }
+
             if editMode == .active {
                 ToolbarItem(placement: .topBarTrailing) {
                     selectionActionsMenu
@@ -490,18 +530,26 @@ struct RecentlyDeletedView: View {
                     Button {
                         leaveSelectionMode()
                     } label: {
-                        Label("Close", systemImage: "xmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Close",
+                            systemImage: "xmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("recently-deleted-close")
                 }
             } else {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Select") {
+                    Button {
                         withAnimation {
                             editMode = .active
                         }
+                    } label: {
+                        Text("Select")
+                            .legacyFrostedToolbarCapsuleLabel()
                     }
                     .disabled(deletedRecordings.isEmpty)
+                    .accessibilityIdentifier("recently-deleted-select")
                 }
             }
         }
@@ -516,6 +564,7 @@ struct RecentlyDeletedView: View {
             Button("Delete", role: .destructive) {
                 permanentlyDeleteRecordings(with: permanentDeleteIDs)
             }
+            .accessibilityIdentifier("recently-deleted-confirm-permanent-delete")
         } message: {
             Text("This action cannot be undone.")
         }
@@ -539,6 +588,7 @@ struct RecentlyDeletedView: View {
                     requestPermanentDeletion(of: [recording.id])
                 }
             }
+            .accessibilityIdentifier("recently-deleted-item-delete")
         } message: { recording in
             Text(recording.title)
         }
@@ -549,39 +599,52 @@ struct RecentlyDeletedView: View {
     }
 
     private var selectionActionsMenu: some View {
-        Menu {
-            if selectedIDs.isEmpty {
-                Button(role: .destructive) {
+        AdaptiveOverflowMenu(actions: selectionMenuActions) {
+            AdaptiveToolbarMenuIcon(
+                "More",
+                systemImage: "ellipsis"
+            )
+        }
+        .accessibilityIdentifier("recently-deleted-more")
+    }
+
+    private var selectionMenuActions: [AdaptiveMenuAction] {
+        if selectedIDs.isEmpty {
+            [
+                AdaptiveMenuAction(
+                    "Delete All",
+                    systemImage: "trash",
+                    role: .destructive
+                ) {
                     requestPermanentDeletion(
                         of: Set(deletedRecordings.map(\.id)),
                         isAll: true
                     )
-                } label: {
-                    Label("Delete All", systemImage: "trash")
-                }
-
-                Button {
+                },
+                AdaptiveMenuAction(
+                    "Recover All",
+                    systemImage: "arrow.up.bin"
+                ) {
                     recover(Set(deletedRecordings.map(\.id)))
-                } label: {
-                    Label("Recover All", systemImage: "arrow.up.bin")
                 }
-            } else {
-                Button(role: .destructive) {
+            ]
+        } else {
+            [
+                AdaptiveMenuAction(
+                    "Delete",
+                    systemImage: "trash",
+                    role: .destructive
+                ) {
                     requestPermanentDeletion(of: selectedIDs)
-                } label: {
-                    Label("Delete", systemImage: "trash")
-                }
-
-                Button {
+                },
+                AdaptiveMenuAction(
+                    "Recover",
+                    systemImage: "arrow.up.bin"
+                ) {
                     recover(selectedIDs)
-                } label: {
-                    Label("Recover", systemImage: "arrow.up.bin")
                 }
-            }
-        } label: {
-            Label("More", systemImage: "ellipsis")
+            ]
         }
-        .labelStyle(.iconOnly)
     }
 
     private var permanentDeleteAlertTitle: String {
@@ -714,6 +777,9 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
             searchController.delegate = self
             searchController.obscuresBackgroundDuringPresentation = false
             searchController.searchBar.placeholder = prompt
+            if #unavailable(iOS 26.0) {
+                configureLegacyCloseButton()
+            }
             if searchController.searchBar.text != text.wrappedValue {
                 searchController.searchBar.text = text.wrappedValue
             }
@@ -732,6 +798,14 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
             text?.wrappedValue = ""
             isPresented?.wrappedValue = false
             detach()
+        }
+
+        @objc private func closeSearch() {
+            searchController.searchBar.text = ""
+            text?.wrappedValue = ""
+            isPresented?.wrappedValue = false
+            searchController.searchBar.resignFirstResponder()
+            searchController.isActive = false
         }
 
         func tearDown() {
@@ -805,5 +879,34 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
                 self.searchController.searchBar.becomeFirstResponder()
             }
         }
+
+        private func configureLegacyCloseButton() {
+            searchController.automaticallyShowsCancelButton = false
+            searchController.searchBar.searchTextField.rightView =
+                legacySearchCloseButton
+            searchController.searchBar.searchTextField.rightViewMode = .always
+        }
+
+        private lazy var legacySearchCloseButton: UIButton = {
+            var configuration = UIButton.Configuration.plain()
+            configuration.image = UIImage(systemName: "xmark.circle.fill")
+            configuration.baseForegroundColor = .secondaryLabel
+            configuration.contentInsets = NSDirectionalEdgeInsets(
+                top: 6,
+                leading: 8,
+                bottom: 6,
+                trailing: 8
+            )
+
+            let button = UIButton(configuration: configuration)
+            button.addTarget(
+                self,
+                action: #selector(closeSearch),
+                for: .touchUpInside
+            )
+            button.accessibilityLabel = String(localized: "Close")
+            button.accessibilityIdentifier = "recording-list-search-close"
+            return button
+        }()
     }
 }

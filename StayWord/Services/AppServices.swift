@@ -18,7 +18,16 @@ final class AppServices {
         self.recorder = AudioRecorderController(fileStore: fileStore)
         self.player = AudioPlayerController(fileStore: fileStore)
         self.importer = AudioImportService(fileStore: fileStore)
-        self.processor = ProcessingCoordinator(fileStore: fileStore)
+        #if DEBUG
+        let summaryGenerationEnabled =
+            ProcessInfo.processInfo.environment["STAYWORD_UI_TEST_DISABLE_SUMMARY"] != "1"
+        #else
+        let summaryGenerationEnabled = true
+        #endif
+        self.processor = ProcessingCoordinator(
+            fileStore: fileStore,
+            summaryGenerationEnabled: summaryGenerationEnabled
+        )
         self.recordingTitleProvider = RecordingTitleProvider()
     }
 

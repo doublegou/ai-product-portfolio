@@ -35,9 +35,13 @@ struct MoveRecordingsView: View {
                     Button {
                         dismiss()
                     } label: {
-                        Label("Close", systemImage: "xmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Close",
+                            systemImage: "xmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("move-recordings-close")
                 }
             }
         }

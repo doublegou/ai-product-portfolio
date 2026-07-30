@@ -56,18 +56,26 @@ struct RecordingEditView: View {
                             dismiss()
                         }
                     } label: {
-                        Label("Cancel", systemImage: "xmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Cancel",
+                            systemImage: "xmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("recording-editor-cancel")
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         save()
                     } label: {
-                        Label("Save", systemImage: "checkmark")
+                        AdaptiveToolbarButtonIcon(
+                            "Save",
+                            systemImage: "checkmark"
+                        )
                     }
-                    .labelStyle(.iconOnly)
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("recording-editor-save")
                     .disabled(title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }

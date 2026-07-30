@@ -31,6 +31,7 @@ struct RecordingSheet: View {
                     .submitLabel(.done)
                     .multilineTextAlignment(isExpanded ? .center : .leading)
                     .focused($titleIsFocused)
+                    .accessibilityIdentifier("recorder-title")
                     .frame(
                         maxWidth: .infinity,
                         alignment: isExpanded ? .center : .leading
@@ -164,6 +165,7 @@ struct RecordingSheet: View {
         }
         .disabled((!recorder.isRecording && pendingResult == nil) || isFinishing)
         .accessibilityHint("Stops and saves this recording")
+        .accessibilityIdentifier("recorder-stop")
     }
 
     private func recordingTimer(expanded: Bool) -> some View {
@@ -236,6 +238,7 @@ struct RecordingSheet: View {
             }
         }
         .sensoryFeedback(.selection, trigger: recorder.isPaused)
+        .accessibilityIdentifier("recorder-pause-resume")
     }
 
     private func finishRecording() {
