@@ -754,8 +754,7 @@ actor OnDeviceSummaryService: SummaryService {
         只输出以下结构，不要添加其他说明：
 
         标题：标题
-        摘要：
-        最终总结正文
+        摘要：最终总结正文
         """
     }
 
@@ -796,8 +795,7 @@ actor OnDeviceSummaryService: SummaryService {
         只输出以下结构，不要添加其他说明：
 
         标题：标题
-        摘要：
-        最终总结正文
+        摘要：最终总结正文
         """
     }
 
