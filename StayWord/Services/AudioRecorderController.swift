@@ -7,7 +7,7 @@ protocol AudioRecordingService: AnyObject {
     var elapsed: TimeInterval { get }
     var isRecording: Bool { get }
     var isPaused: Bool { get }
-    func start() async throws
+    func start(title: String) async throws
     func pause()
     func resume()
     func addMarker()
@@ -50,7 +50,7 @@ final class AudioRecorderController: NSObject, AudioRecordingService, @preconcur
         }
     }
 
-    func start() async throws {
+    func start(title: String) async throws {
         let permitted = await AVAudioApplication.requestRecordPermission()
         guard permitted else {
             throw StayWordError.microphoneDenied
@@ -88,7 +88,7 @@ final class AudioRecorderController: NSObject, AudioRecordingService, @preconcur
         markerDrafts.removeAll()
         interruptionMessage = nil
         startMetering()
-        await liveActivity.start(recordingID: UUID(), title: String(localized: "New Recording"))
+        await liveActivity.start(recordingID: UUID(), title: title)
     }
 
     func pause() {

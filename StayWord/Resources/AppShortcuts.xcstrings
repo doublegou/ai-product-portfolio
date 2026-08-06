@@ -1,0 +1,56 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Open my recent recording in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Open my recent recording in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "在 ${applicationName} 中打开我最近的录音"
+          }
+        }
+      }
+    },
+    "Record with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用 ${applicationName} 录音"
+          }
+        }
+      }
+    },
+    "Start a recording in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Start a recording in ${applicationName}",
+              "Record with ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "在 ${applicationName} 中开始录音"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

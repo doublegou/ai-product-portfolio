@@ -10,7 +10,7 @@ struct RecordingSheet: View {
     @State private var isFinishing = false
     @State private var errorMessage: String?
     @State private var saveErrorMessage: String?
-    @State private var recordingTitle = String(localized: "New Recording")
+    @State private var recordingTitle = RecordingTitleProvider().suggestedTitle()
     @State private var pendingResult: RecordedAudio?
     @FocusState private var titleIsFocused: Bool
 
@@ -81,11 +81,7 @@ struct RecordingSheet: View {
             guard startsAutomatically, !recorder.isRecording else { return }
             startsAutomatically = false
             do {
-                try await recorder.start()
-                let suggestedTitle = await services.recordingTitleProvider.suggestedTitle()
-                if recordingTitle == String(localized: "New Recording") {
-                    recordingTitle = suggestedTitle
-                }
+                try await recorder.start(title: recordingTitle)
             } catch {
                 errorMessage = error.localizedDescription
             }
@@ -271,7 +267,9 @@ struct RecordingSheet: View {
 
     private func normalizeTitle() {
         let trimmed = recordingTitle.trimmingCharacters(in: .whitespacesAndNewlines)
-        recordingTitle = trimmed.isEmpty ? String(localized: "New Recording") : trimmed
+        recordingTitle = trimmed.isEmpty
+            ? services.recordingTitleProvider.suggestedTitle()
+            : trimmed
         titleIsFocused = false
     }
 

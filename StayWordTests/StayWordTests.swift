@@ -6,6 +6,38 @@ import Testing
 
 struct StayWordTests {
     @Test
+    func recordingTitleUsesLocalizedSystemDateAndTime() throws {
+        let utc = try #require(TimeZone(secondsFromGMT: 0))
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = utc
+        let date = try #require(calendar.date(from: DateComponents(
+            year: 2026,
+            month: 8,
+            day: 6,
+            hour: 11,
+            minute: 5
+        )))
+        let provider = RecordingTitleProvider()
+
+        let chinese = provider.suggestedTitle(
+            for: date,
+            locale: Locale(identifier: "zh_Hans_CN"),
+            timeZone: utc
+        )
+        let english = provider.suggestedTitle(
+            for: date,
+            locale: Locale(identifier: "en_US"),
+            timeZone: utc
+        )
+        let normalizedEnglish = english.replacingOccurrences(of: "\u{202F}", with: " ")
+
+        #expect(chinese.contains("2026年8月6日"))
+        #expect(chinese.contains("11:05"))
+        #expect(english.contains("Aug 6, 2026"))
+        #expect(normalizedEnglish.contains("11:05 AM"))
+    }
+
+    @Test
     func timestampFormatting() {
         #expect(TimeInterval(65).audioTimestamp == "01:05")
         #expect(TimeInterval(3_661).audioTimestamp == "1:01:01")

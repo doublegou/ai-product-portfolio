@@ -19,7 +19,11 @@ struct RecordingLiveActivityWidget: Widget {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-                Text(context.state.isPaused ? "Paused" : "Recording")
+                Text(
+                    context.state.isPaused
+                        ? String(localized: "Paused")
+                        : String(localized: "Recording")
+                )
                     .font(.caption)
                     .foregroundStyle(context.state.isPaused ? Color.secondary : Color.red)
             }
@@ -37,7 +41,11 @@ struct RecordingLiveActivityWidget: Widget {
                         .monospacedDigit()
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text(context.state.isPaused ? "Recording Paused" : context.attributes.title)
+                    Text(
+                        context.state.isPaused
+                            ? String(localized: "Recording Paused")
+                            : context.attributes.title
+                    )
                         .lineLimit(1)
                 }
             } compactLeading: {

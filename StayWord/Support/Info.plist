@@ -33,8 +33,6 @@
     <string>$(CURRENT_PROJECT_VERSION)</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>StayWord uses the microphone only when you create a recording.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>StayWord uses your location to name recordings by place.</string>
     <key>NSSupportsLiveActivities</key>
     <true/>
     <key>UIBackgroundModes</key>

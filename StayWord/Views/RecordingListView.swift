@@ -186,7 +186,7 @@ struct RecordingListView: View {
             RecordingSearchController(
                 text: $searchText,
                 isPresented: $searchIsPresented,
-                prompt: "Title or transcript"
+                prompt: String(localized: "Title or transcript")
             )
         }
         .environment(\.editMode, $editMode)
@@ -742,7 +742,11 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
     }
 
     @MainActor
-    final class Controller: UIViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+    final class Controller: UIViewController,
+        UISearchResultsUpdating,
+        UISearchControllerDelegate,
+        UISearchBarDelegate
+    {
         private let searchController = UISearchController(searchResultsController: nil)
         private var text: Binding<String>?
         private var isPresented: Binding<Bool>?
@@ -775,10 +779,11 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
 
             searchController.searchResultsUpdater = self
             searchController.delegate = self
+            searchController.searchBar.delegate = self
             searchController.obscuresBackgroundDuringPresentation = false
             searchController.searchBar.placeholder = prompt
             if #unavailable(iOS 26.0) {
-                configureLegacyCloseButton()
+                configureLegacySearchBar()
             }
             if searchController.searchBar.text != text.wrappedValue {
                 searchController.searchBar.text = text.wrappedValue
@@ -798,6 +803,10 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
             text?.wrappedValue = ""
             isPresented?.wrappedValue = false
             detach()
+        }
+
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            closeSearch()
         }
 
         @objc private func closeSearch() {
@@ -876,37 +885,21 @@ private struct RecordingSearchController: UIViewControllerRepresentable {
                 else { return }
 
                 self.searchController.isActive = true
+                if #unavailable(iOS 26.0) {
+                    self.searchController.searchBar.setShowsCancelButton(
+                        true,
+                        animated: false
+                    )
+                }
                 self.searchController.searchBar.becomeFirstResponder()
             }
         }
 
-        private func configureLegacyCloseButton() {
-            searchController.automaticallyShowsCancelButton = false
-            searchController.searchBar.searchTextField.rightView =
-                legacySearchCloseButton
-            searchController.searchBar.searchTextField.rightViewMode = .always
+        private func configureLegacySearchBar() {
+            searchController.automaticallyShowsCancelButton = true
+            if searchController.isActive {
+                searchController.searchBar.setShowsCancelButton(true, animated: false)
+            }
         }
-
-        private lazy var legacySearchCloseButton: UIButton = {
-            var configuration = UIButton.Configuration.plain()
-            configuration.image = UIImage(systemName: "xmark.circle.fill")
-            configuration.baseForegroundColor = .secondaryLabel
-            configuration.contentInsets = NSDirectionalEdgeInsets(
-                top: 6,
-                leading: 8,
-                bottom: 6,
-                trailing: 8
-            )
-
-            let button = UIButton(configuration: configuration)
-            button.addTarget(
-                self,
-                action: #selector(closeSearch),
-                for: .touchUpInside
-            )
-            button.accessibilityLabel = String(localized: "Close")
-            button.accessibilityIdentifier = "recording-list-search-close"
-            return button
-        }()
     }
 }

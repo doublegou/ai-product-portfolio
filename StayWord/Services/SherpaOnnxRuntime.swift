@@ -16,15 +16,15 @@ enum SherpaOnnxRuntimeError: LocalizedError, Sendable {
     var errorDescription: String? {
         switch self {
         case let .missingModel(relativePath):
-            "The bundled transcription model is missing: \(relativePath)"
+            String(localized: "The bundled transcription model is missing: \(relativePath)")
         case let .unsupportedSampleRate(expected, actual):
-            "The transcription models require \(expected) Hz audio, but received \(actual) Hz."
+            String(localized: "The transcription models require \(expected) Hz audio, but received \(actual) Hz.")
         case .tooManySamples:
-            "The audio segment is too large for the on-device transcription runtime."
+            String(localized: "The audio segment is too large for the on-device transcription runtime.")
         case let .initializationFailed(component):
-            "The on-device \(component) model could not be initialized."
+            String(localized: "The on-device \(component) model could not be initialized.")
         case let .processingFailed(component):
-            "The on-device \(component) model could not process this audio."
+            String(localized: "The on-device \(component) model could not process this audio.")
         }
     }
 }
@@ -208,7 +208,9 @@ struct SherpaOnnxRuntime: Sendable {
             var results: [SherpaStreamingTranscript] = []
             while SherpaOnnxVoiceActivityDetectorEmpty(detector) == 0 {
                 guard let segment = SherpaOnnxVoiceActivityDetectorFront(detector) else {
-                    throw SherpaOnnxRuntimeError.processingFailed("speech detection")
+                    throw SherpaOnnxRuntimeError.processingFailed(
+                        String(localized: "speech detection")
+                    )
                 }
                 defer {
                     SherpaOnnxDestroySpeechSegment(segment)
@@ -245,7 +247,7 @@ struct SherpaOnnxRuntime: Sendable {
             }
             guard let stream = SherpaOnnxCreateOfflineStream(recognizer) else {
                 throw SherpaOnnxRuntimeError.initializationFailed(
-                    "speech recognition stream"
+                    String(localized: "speech recognition stream")
                 )
             }
             defer {
@@ -255,7 +257,9 @@ struct SherpaOnnxRuntime: Sendable {
             SherpaOnnxAcceptWaveformOffline(stream, sampleRate, samples, count)
             SherpaOnnxDecodeOfflineStream(recognizer, stream)
             guard let result = SherpaOnnxGetOfflineStreamResult(stream) else {
-                throw SherpaOnnxRuntimeError.processingFailed("speech recognition")
+                throw SherpaOnnxRuntimeError.processingFailed(
+                    String(localized: "speech recognition")
+                )
             }
             defer {
                 SherpaOnnxDestroyOfflineRecognizerResult(result)
@@ -290,7 +294,7 @@ struct SherpaOnnxRuntime: Sendable {
                         Constants.vadBufferSizeInSeconds
                     ) else {
                         throw SherpaOnnxRuntimeError.initializationFailed(
-                            "speech detection"
+                            String(localized: "speech detection")
                         )
                     }
                     return detector
@@ -323,7 +327,7 @@ struct SherpaOnnxRuntime: Sendable {
                                     SherpaOnnxCreateOfflineRecognizer(&config)
                                 else {
                                     throw SherpaOnnxRuntimeError.initializationFailed(
-                                        "speech recognition"
+                                        String(localized: "speech recognition")
                                     )
                                 }
                                 return recognizer

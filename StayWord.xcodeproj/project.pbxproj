@@ -36,11 +36,14 @@
 		B0010000000000000000001D /* SherpaOnnxRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001D /* SherpaOnnxRuntime.swift */; };
 		B0010000000000000000001F /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001F /* Models */; };
 		B00100000000000000000020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000020 /* Assets.xcassets */; };
+		B00100000000000000000021 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000021 /* InfoPlist.xcstrings */; };
+		B00100000000000000000022 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000022 /* AppShortcuts.xcstrings */; };
 		B00200000000000000000001 /* RecordingActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000001 /* RecordingActivityBundle.swift */; };
 		B00200000000000000000002 /* RecordingLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000002 /* RecordingLiveActivityWidget.swift */; };
 		B00200000000000000000003 /* RecordingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000005 /* RecordingActivityAttributes.swift */; };
 		B00200000000000000000004 /* TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000006 /* TimeFormatting.swift */; };
 		B00200000000000000000005 /* StayWordRecordingActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F00400000000000000000002 /* StayWordRecordingActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B00200000000000000000006 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000004 /* Localizable.xcstrings */; };
 		B00300000000000000000001 /* StayWordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00300000000000000000001 /* StayWordTests.swift */; };
 		B00300000000000000000002 /* StayWordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00300000000000000000002 /* StayWordUITests.swift */; };
 		B00700000000000000000001 /* sherpa-onnx.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00700000000000000000001 /* sherpa-onnx.xcframework */; };
@@ -122,9 +125,12 @@
 		F0010000000000000000001E /* StayWord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StayWord-Bridging-Header.h"; sourceTree = "<group>"; };
 		F0010000000000000000001F /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		F00100000000000000000020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F00100000000000000000021 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		F00100000000000000000022 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
 		F00200000000000000000001 /* RecordingActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingActivityBundle.swift; sourceTree = "<group>"; };
 		F00200000000000000000002 /* RecordingLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingLiveActivityWidget.swift; sourceTree = "<group>"; };
 		F00200000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F00200000000000000000004 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F00300000000000000000001 /* StayWordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayWordTests.swift; sourceTree = "<group>"; };
 		F00300000000000000000002 /* StayWordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StayWordUITests.swift; sourceTree = "<group>"; };
 		F00400000000000000000001 /* StayWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,9 +213,9 @@
 		};
 		G00100000000000000000006 /* System */ = {isa = PBXGroup; children = (F00100000000000000000018, ); path = System; sourceTree = "<group>"; };
 		G00100000000000000000007 /* Support */ = {isa = PBXGroup; children = (F00100000000000000000004, F0010000000000000000001A, F0010000000000000000001B, F0010000000000000000001E, ); path = Support; sourceTree = "<group>"; };
-		G00100000000000000000008 /* Resources */ = {isa = PBXGroup; children = (F00100000000000000000019, F0010000000000000000001F, F00100000000000000000020, ); path = Resources; sourceTree = "<group>"; };
+		G00100000000000000000008 /* Resources */ = {isa = PBXGroup; children = (F00100000000000000000019, F00100000000000000000021, F00100000000000000000022, F0010000000000000000001F, F00100000000000000000020, ); path = Resources; sourceTree = "<group>"; };
 		G00200000000000000000001 /* Shared */ = {isa = PBXGroup; children = (F00100000000000000000005, F00100000000000000000006, ); path = Shared; sourceTree = "<group>"; };
-		G00300000000000000000001 /* StayWordRecordingActivity */ = {isa = PBXGroup; children = (F00200000000000000000001, F00200000000000000000002, F00200000000000000000003, ); path = StayWordRecordingActivity; sourceTree = "<group>"; };
+		G00300000000000000000001 /* StayWordRecordingActivity */ = {isa = PBXGroup; children = (F00200000000000000000001, F00200000000000000000002, F00200000000000000000003, F00200000000000000000004, ); path = StayWordRecordingActivity; sourceTree = "<group>"; };
 		G00400000000000000000001 /* StayWordTests */ = {isa = PBXGroup; children = (F00300000000000000000001, ); path = StayWordTests; sourceTree = "<group>"; };
 		G00500000000000000000001 /* StayWordUITests */ = {isa = PBXGroup; children = (F00300000000000000000002, ); path = StayWordUITests; sourceTree = "<group>"; };
 		G00600000000000000000001 /* Products */ = {isa = PBXGroup; children = (F00400000000000000000001, F00400000000000000000002, F00400000000000000000003, F00400000000000000000004, ); name = Products; sourceTree = "<group>"; };
@@ -324,8 +330,8 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		P00100000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00100000000000000000019, B0010000000000000000001F, B00100000000000000000020, ); runOnlyForDeploymentPostprocessing = 0; };
-		P00200000000000000000004 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		P00100000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00100000000000000000019, B00100000000000000000021, B00100000000000000000022, B0010000000000000000001F, B00100000000000000000020, ); runOnlyForDeploymentPostprocessing = 0; };
+		P00200000000000000000004 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00200000000000000000006, ); runOnlyForDeploymentPostprocessing = 0; };
 		P00300000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		P00400000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */

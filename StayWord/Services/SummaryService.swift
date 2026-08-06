@@ -926,11 +926,21 @@ private enum LocalSummaryError: LocalizedError {
             String(localized: "The on-device summary took too long to generate.")
         case let .stageFailed(stage, reason):
             String(
-                localized: "Summary generation failed during \(stage): \(reason)"
+                localized: "Summary generation failed during \(Self.localizedStage(stage)): \(reason)"
             )
         case .simulatorUnsupported:
             String(localized: "On-device summary is unavailable in the iOS Simulator. Use a physical iPhone.")
         }
+    }
+
+    private static func localizedStage(_ stage: String) -> String {
+        if stage == "final" {
+            return String(localized: "final summary")
+        }
+        if stage.hasPrefix("partial-") {
+            return String(localized: "partial summary")
+        }
+        return stage
     }
 }
 

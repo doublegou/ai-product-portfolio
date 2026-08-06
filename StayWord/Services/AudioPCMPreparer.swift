@@ -44,21 +44,21 @@ enum AudioPCMPreparerError: LocalizedError, Sendable {
     var errorDescription: String? {
         switch self {
         case .destinationMustBeCAF:
-            "The destination must be a file URL with a .caf extension."
+            String(localized: "The destination must be a file URL with a .caf extension.")
         case let .destinationAlreadyExists(url):
-            "The PCM destination already exists: \(url.lastPathComponent)"
+            String(localized: "The PCM destination already exists: \(url.lastPathComponent)")
         case .invalidSourceFormat:
-            "The source audio format is not valid for PCM conversion."
+            String(localized: "The source audio format is not valid for PCM conversion.")
         case .cannotCreateTargetFormat:
-            "The 16 kHz mono Float32 target format could not be created."
+            String(localized: "The 16 kHz mono Float32 target format could not be created.")
         case .cannotCreateConverter:
-            "The source audio format cannot be converted to 16 kHz mono PCM."
+            String(localized: "The source audio format cannot be converted to 16 kHz mono PCM.")
         case .cannotAllocateBuffer:
-            "An audio conversion buffer could not be allocated."
+            String(localized: "An audio conversion buffer could not be allocated.")
         case .conversionFailed:
-            "The audio converter stopped without completing the output stream."
+            String(localized: "The audio converter stopped without completing the output stream.")
         case .sourceContainsNoAudio:
-            "The source file contains no readable audio frames."
+            String(localized: "The source file contains no readable audio frames.")
         }
     }
 }
