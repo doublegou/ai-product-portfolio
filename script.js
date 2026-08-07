@@ -71,7 +71,7 @@ const pageTranslations = {
       products: [
         ["自然探索", "万种鸟类百科、叫声、观鸟点与迁徙轨迹，构成一套随身自然观察系统。"],
         ["宇宙探索", "实时追踪卫星与空间轨迹，把宇宙运行转化为可感知的探索界面。"],
-        ["自我探索", "面向个体探索的 AI 互动空间，在持续对话中生成洞察、陪伴与内在秩序。"],
+        ["离线 AI 整理", "在 iPhone 上实现最高 60 倍速端侧转写与智能摘要，核心内容不上传，一次买断。"],
         ["数字游戏", "用数字、逻辑与观察构建轻量谜题，让推理成为可持续游玩的互动体验。"],
         ["智能工具", "以手势启动自动化动作，把日常操作压缩成更自然的瞬间响应。"],
       ],
@@ -120,7 +120,7 @@ const pageTranslations = {
       products: [
         ["Nature", "Bird encyclopedia, calls, hotspots, and migration clues in one field observation system."],
         ["Space", "Real-time satellite and orbital tracking that turns space movement into an observable interface."],
-        ["Self Discovery", "An AI interaction space that creates insight, companionship, and inner order through ongoing dialogue."],
+        ["Offline AI Notes", "Up to 60× on-device transcription and AI summary on iPhone. Core data stays local. One-time purchase."],
         ["Number Game", "Lightweight puzzles built from numbers, logic, and observation for repeatable play."],
         ["Smart Tool", "Gesture-triggered automation that compresses everyday operations into natural responses."],
       ],
@@ -206,40 +206,36 @@ const productTranslations = {
       download: "Download ISS Tracker.",
     },
   },
-  soulnio: {
+  stayword: {
     zh: {
-      title: "SoulNio | 产品详情 | 北京种梦智能科技有限公司",
-      description: "SoulNio 是面向自我探索的互动空间，提供灵谕塔罗、时间罗盘与关系星网等体验。",
-      heading: "在持续对话里，看见自己。",
-      lead: "SoulNio 是一座面向内在探索的互动空间。它将灵谕塔罗、时间罗盘与关系星网放在同一套温柔体验中，帮助用户整理问题、观察节律，理解关系里的靠近与拉扯。",
-      overview: "让问题被温柔地看见。",
-      overviewText: "SoulNio 不替用户做决定，而是通过象征、时间与关系结构，帮助用户把模糊感受变成可描述的问题。它适合在抉择、关系、人生成长和日常情绪整理中使用。",
+      title: "StayWord | 产品详情 | 北京种梦智能科技有限公司",
+      description: "StayWord 是专为长录音打造的本地 AI 整理工具，支持 60 倍速端侧转写与智能摘要。",
+      heading: "录完即整理，核心不上传。",
+      lead: "StayWord 专为长录音打造，在 iPhone 上实现最高 60 倍速端侧转写与智能摘要。音频与文字完全保留在本地，无持续订阅，一次买断。",
+      overview: "离线 AI，随身录音笔。",
+      overviewText: "StayWord 不依赖云端，而是将语音转录与大语言模型摘要能力完全运行在 iPhone 端侧。录音结束即可整理成文字、提取重点，核心数据始终留在设备上。",
       features: [
-        ["灵谕塔罗", "围绕提问、选阵、洗牌、切牌、抽牌和解读构建完整流程，陪伴用户整理当下问题。"],
-        ["时间罗盘", "基于生辰与周期观察时间节律，将抽象的当下状态转化为更容易理解的行动建议。"],
-        ["关系星网", "把用户和身边的人放入同一张关系网络，生成更清晰的关系观察与互动提醒。"],
-        ["今日选择", "以轻量入口开启每日探索，让内在观察不必沉重，也能成为稳定的日常练习。"],
+        ["60× 极速转写", "高端设备约 1 分钟完成 1 小时音频的端侧语音转文字。"],
+        ["端侧 AI 摘要", "内置大语言模型自动生成标题、摘要与关键要点。"],
+        ["核心不上传", "本地推理与 SwiftData 保存，断网可用，隐私优先。"],
+        ["买断无限制", "一次购买永久使用，无订阅费、无额度限制。"],
       ],
-      download: "访问 SoulNio。",
-      open: "打开网站",
-      accessLabel: "访问入口",
+      download: "下载 StayWord。",
     },
     en: {
-      title: "SoulNio | Product Details | DualariesAI",
-      description: "SoulNio is an interactive space for self exploration, with oracle tarot, time compass, and relationship star map experiences.",
-      heading: "See yourself through ongoing dialogue.",
-      lead: "SoulNio is an interactive space for inner exploration. It brings oracle tarot, time compass, and relationship star map into one gentle experience for questions, rhythms, and relationships.",
-      overview: "Let questions be seen gently.",
-      overviewText: "SoulNio does not make decisions for users. Through symbols, time, and relationship structure, it helps turn vague feelings into describable questions.",
+      title: "StayWord | Product Details | DualariesAI",
+      description: "StayWord is a local AI note-taking tool for long recordings with up to 60× on-device transcription and smart summaries.",
+      heading: "Transcribe on finish. Core data stays local.",
+      lead: "StayWord is built for long recordings. It delivers up to 60× on-device transcription and AI summaries on iPhone. Audio and text stay entirely local, with no subscription.",
+      overview: "Offline AI, your pocket recorder.",
+      overviewText: "StayWord runs speech-to-text and LLM summarization fully on-device. Once recording ends, it produces text and highlights instantly while keeping all core data on the device.",
       features: [
-        ["Oracle Tarot", "A complete flow for asking, choosing spreads, shuffling, cutting, drawing, and interpreting cards while clarifying the present question."],
-        ["Time Compass", "Observes personal rhythms through birth data and cycles, turning abstract current states into easier action suggestions."],
-        ["Relationship Star Map", "Places users and people around them in one relationship network for clearer observations and interaction reminders."],
-        ["Daily Choice", "A light daily entry for inner observation, making reflection stable without making it heavy."],
+        ["60× fast transcription", "On high-end devices, transcribe one hour of audio in about one minute, all on-device."],
+        ["On-device AI summary", "A built-in large language model automatically generates titles, summaries, and key points."],
+        ["Core data stays local", "Local inference and SwiftData storage. Works offline. Privacy first."],
+        ["One-time purchase", "Buy once and use forever. No subscription fees, no usage limits."],
       ],
-      download: "Visit SoulNio.",
-      open: "Open website",
-      accessLabel: "Visit link",
+      download: "Download StayWord.",
     },
   },
   mathpuzzle: {
@@ -317,7 +313,7 @@ function getPageKey() {
 
   if (pathname.includes("/products/birdtracker/")) return "birdtracker";
   if (pathname.includes("/products/isstracker/")) return "isstracker";
-  if (pathname.includes("/products/soulnio/")) return "soulnio";
+  if (pathname.includes("/products/stayword/")) return "stayword";
   if (pathname.includes("/products/mathpuzzle/")) return "mathpuzzle";
   if (pathname.includes("/products/flickwand/")) return "flickwand";
 
