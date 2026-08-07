@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -z "${CONDA_PREFIX:-}" ]]; then
+  echo "CONDA_PREFIX is not set." >&2
+  exit 1
+fi
+
+REAL_GDAL_CONFIG="${CONDA_PREFIX}/bin/gdal-config"
+if [[ ! -x "${REAL_GDAL_CONFIG}" ]]; then
+  echo "Missing Conda gdal-config: ${REAL_GDAL_CONFIG}" >&2
+  exit 1
+fi
+
+case "${1:-}" in
+  --libs)
+    printf '%s -Wl,-rpath,%s/lib\n' "$("${REAL_GDAL_CONFIG}" "$@")" "${CONDA_PREFIX}"
+    ;;
+  *)
+    exec "${REAL_GDAL_CONFIG}" "$@"
+    ;;
+esac
+
