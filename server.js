@@ -17,25 +17,32 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let safeUrl = req.url.split('?')[0];
-  let filePath = path.join(root, safeUrl === '/' ? 'index.html' : safeUrl);
-  
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
-  }
+  try {
+    let rawUrl = req.url.split('?')[0];
+    let safeUrl = decodeURIComponent(rawUrl);
+    let target = safeUrl === '/' ? 'index.html' : safeUrl.replace(/^\//, '');
+    let filePath = path.join(root, target);
 
-  const ext = path.extname(filePath).toLowerCase();
-  const contentType = mimeTypes[ext] || 'application/octet-stream';
-
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('404 Not Found');
-    } else {
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
     }
-  });
+
+    const ext = path.extname(filePath).toLowerCase();
+    const contentType = mimeTypes[ext] || 'application/octet-stream';
+
+    fs.readFile(filePath, (err, content) => {
+      if (err) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('404 Not Found: ' + req.url);
+      } else {
+        res.writeHead(200, { 'Content-Type': contentType });
+        res.end(content);
+      }
+    });
+  } catch (e) {
+    res.writeHead(500);
+    res.end('Server Error');
+  }
 });
 
 server.listen(PORT, HOST, () => {

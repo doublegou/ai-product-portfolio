@@ -1476,3 +1476,46 @@ h1 {
   flex-wrap: wrap;
 }
 
+.apple-quote {
+  margin: 24px 0;
+  padding: 16px 20px;
+  background: rgba(0, 113, 227, 0.05);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  color: #333336;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: 28px 0;
+}
+
+.apple-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.apple-table th {
+  background: rgba(29, 29, 31, 0.04);
+  color: var(--ink);
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--line);
+}
+
+.apple-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--soft-line);
+  color: #424245;
+}
+
+.apple-table tr:hover td {
+  background: rgba(29, 29, 31, 0.02);
+}
+
+
