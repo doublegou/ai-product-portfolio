@@ -1,0 +1,17 @@
+version: 1
+
+datasets:
+  observation:
+    state: raw
+    path: data/raw/observation.csv
+    format: csv
+    encoding: utf-8
+    rows: 6283
+    columns: 21
+    sha256: 0e1238906659fa938abfe475b8a5cf132abf596fc501d5062099de44b12e8030
+    source:
+      file: world_river_water_sr_solute.xlsx
+      sheet: Solute_river_stream
+      range: A1:U6284
+      sha256: c52e6601f8475096fd7c568e6698ceb09b8e0bdb1dd369bf1681f58f4b658f3f
+    notes: Strict dissolved river/stream observation snapshot exported without transformation.

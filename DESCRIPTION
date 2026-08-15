@@ -1,0 +1,12 @@
+Package: riverSr
+Type: Project
+Title: River Strontium Isotope Model Reconstruction
+Version: 0.0.0.9000
+Authors@R: person("RiverSR", "Project", role = c("aut", "cre"), email = "noreply@example.com")
+Description: Project-level data pipelines, model training, correction,
+    regional expert modelling, and global prediction for river-water
+    strontium isotope ratios.
+License: Proprietary
+Encoding: UTF-8
+Depends:
+    R (>= 4.3.0)

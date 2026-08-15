@@ -1,0 +1,14 @@
+project:
+  id: data_pipeline_supplement_observations
+  status: scaffolded
+
+input:
+  primary: data/raw/observation.csv
+
+output:
+  primary: data/processed/supplement_observations/observations.csv
+  artifacts_dir: data_pipeline/supplement_observations/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

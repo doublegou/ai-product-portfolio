@@ -1,0 +1,14 @@
+project:
+  id: training_base_v0
+  status: scaffolded
+
+input:
+  primary: data/processed/base_observations/observations.csv
+
+output:
+  primary: training/base/v0/results
+  artifacts_dir: training/base/v0/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

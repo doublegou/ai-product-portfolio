@@ -1,0 +1,14 @@
+project:
+  id: training_high_sr_correction_feasibility
+  status: scaffolded
+
+input:
+  primary: training/base/v1/artifacts
+
+output:
+  primary: training/global_correction/high_sr_correction_feasibility/results
+  artifacts_dir: training/global_correction/high_sr_correction_feasibility/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

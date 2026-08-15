@@ -1,0 +1,14 @@
+project:
+  id: prediction_global
+  status: scaffolded
+
+input:
+  primary: data/processed/global_covariates
+
+output:
+  primary: prediction/global_prediction/results
+  artifacts_dir: prediction/global_prediction/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

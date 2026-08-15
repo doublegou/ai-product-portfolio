@@ -1,0 +1,14 @@
+project:
+  id: data_pipeline_global_covariates
+  status: scaffolded
+
+input:
+  primary: data/raw
+
+output:
+  primary: data/processed/global_covariates
+  artifacts_dir: data_pipeline/global_covariates/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

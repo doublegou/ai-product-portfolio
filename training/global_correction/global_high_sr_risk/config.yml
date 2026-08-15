@@ -1,0 +1,14 @@
+project:
+  id: training_global_high_sr_risk
+  status: scaffolded
+
+input:
+  primary: data/processed/base_observations/observations.csv
+
+output:
+  primary: training/global_correction/global_high_sr_risk/results
+  artifacts_dir: training/global_correction/global_high_sr_risk/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816

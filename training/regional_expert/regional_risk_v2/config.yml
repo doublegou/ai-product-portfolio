@@ -1,0 +1,14 @@
+project:
+  id: training_regional_risk_v2
+  status: scaffolded
+
+input:
+  primary: data/processed/base_observations/observations.csv
+
+output:
+  primary: training/regional_expert/regional_risk_v2/results
+  artifacts_dir: training/regional_expert/regional_risk_v2/artifacts
+
+runtime:
+  profile: local
+  seed: 20260816
