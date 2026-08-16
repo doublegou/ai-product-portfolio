@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "mode": "full",
+  "task_id": 14,
+  "scheme": "spatial_1500",
+  "outer_fold": 4,
+  "n_outer_train": 3588,
+  "n_outer_test": 897,
+  "inner_trees": 500,
+  "outer_trees": 1500,
+  "seed": 534999,
+  "completed_at": "2026-08-17T07:41:55+0800"
+}

@@ -1,6 +1,6 @@
 {
   "status": "frozen",
-  "source_run": "v0_full_20260816_r2",
-  "released_at": "2026-08-16T15:02:55+0800",
-  "model_md5": "9d3d30d66e0ea7255c2174ff2fd5b690"
+  "source_run": "v0_full_20260817_corrected_r1",
+  "released_at": "2026-08-17T07:46:07+0800",
+  "model_md5": "df2a251b3e80114ddc44873f8618a8c6"
 }
