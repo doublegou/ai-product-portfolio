@@ -1,6 +1,6 @@
 # Base Model V2
 
-Base V2 is a method-level forward reconstruction of the historical Purged-Branch Base model. It keeps the frozen Full50 ordinary Random Forest and changes the primary generalization target from an unseen terminal system to an unseen hydrological branch with downstream-connected training rows purged.
+Base V2 is a method-level forward reconstruction of the historical Purged-Branch Base model. It keeps the frozen Full50 ordinary Random Forest and changes the primary generalization target from an unseen hydrological terminal component to an unseen station-supported tributary frontier with downstream-connected training rows purged.
 
 ## Frozen boundary
 
@@ -17,17 +17,19 @@ The historical branch implementation and the meanings of `3/10/40`, `4/20/80`, a
 
 ## Forward branch definition
 
-HydroRIVERS `HYRIV_ID -> NEXT_DOWN` is the connectivity source of truth. `ORD_CLAS = 1` reaches form the connected-basin backbone. A station outside that backbone is traced downstream to its first backbone reach. Nearby tributary outlets are grouped by connected basin plus a prefix of the entry reach's HydroBASINS L12 Pfafstetter code.
+HydroRIVERS `HYRIV_ID -> NEXT_DOWN` is the connectivity source of truth. For every retained reach, the algorithm counts how many of the current 4,485 station paths pass through it. Reaches at or above a scale-specific station-support threshold form a validation trunk. Every connected upstream frontier immediately before that trunk is an independent candidate branch, identified by its outlet reach. Stations already on the trunk are training support. Candidate frontiers below the minimum station support remain training support and are never merged across independent outlets.
+
+HydroBASINS L6/L12 are retained only for structural auditing. They do not define branch membership, do not use Sr, and are not added to Full50.
 
 Three topology-only scales are frozen:
 
-| Scale | Entry Pfaf prefix | Minimum station support |
+| Scale | Station-trunk support | Minimum branch support |
 |---|---:|---:|
-| Small | 7 digits | 2 |
-| Primary | 6 digits | 3 |
-| Large | 5 digits | 4 |
+| Small | 10 | 4 |
+| Primary | 20 | 5 |
+| Large | 40 | 9 |
 
-The automatic Primary rule minimizes the summed relative distance to the preserved structural anchors of approximately 219 branches and 2,568 assessment-eligible rows. It never reads the response or model predictions. These anchors define scale, not exact historical membership.
+The automatic Primary rule minimizes the summed relative distance to the preserved structural anchors of approximately 219 branches and 2,568 assessment-eligible rows. It never reads the response or model predictions. The frozen result is 221 Primary branches and 2,577 eligible rows, with a hard maximum of 19 stations in any branch. These anchors define scale, not exact historical membership.
 
 ## Local preparation
 

@@ -301,9 +301,15 @@ stage_build_folds <- function(context, validated = NULL, force = FALSE) {
   v2_write_csv(stress_manifest, stress_manifest_path)
 
   primary_diag <- diagnostics[diagnostics$level == "primary_outer", , drop = FALSE]
+  sanity <- context$config$topology$sanity
+  v2_assert(
+    min(primary_diag$n_purged) >= as.integer(sanity$minimum_primary_outer_purge) &&
+      max(primary_diag$n_purged) <= as.integer(sanity$maximum_primary_outer_purge),
+    "Primary downstream-purge counts are outside the frozen topology-only sanity range."
+  )
   manifest <- list(
     status = "FOLDS_FROZEN_BEFORE_RESPONSE_EVALUATION",
-    method = "Full50 ordinary RF with response-blind forward-reconstructed Purged-Branch CV",
+    method = "Full50 ordinary RF with response-blind station-frontier Purged-Branch CV",
     input = validated$signature,
     config = validated$config_signature,
     implementation = v2_implementation_signature(context),

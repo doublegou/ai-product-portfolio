@@ -51,7 +51,10 @@ if (identical(stage, "prepare")) {
   v2_begin_run(context, cli$run_id, commandArgs(trailingOnly = TRUE))
   stage_summarize_run(context, cli$run_id)
   stage_fit_final_model(context, cli$run_id)
-  v2_finish_run(context, cli$run_id, "complete")
+  v2_finish_run(context, cli$run_id, "complete", list(
+    finalize_arguments = commandArgs(trailingOnly = TRUE),
+    finalize_runtime = v2_runtime_info()
+  ))
 } else if (identical(stage, "release")) {
   v2_assert(!is.null(cli$run_id), "Release requires --run-id.")
   stage_release_run(context, cli$run_id, force = cli$force)

@@ -3,7 +3,8 @@
 ## Preconditions already completed locally
 
 - HydroBASINS L12 acquired and verified.
-- Response-blind topology reconstruction completed for exactly 4,485 Full50 stations.
+- Response-blind HydroRIVERS station-frontier topology reconstruction completed for exactly 4,485 Full50 stations.
+- Frozen Primary geometry is 221 branches / 2,577 eligible rows; every branch contains at most 19 stations.
 - Primary selected automatically from topology-only Small/Primary/Large diagnostics.
 - `training/base/v2/folds/fold_manifest.json` status is `FOLDS_FROZEN_BEFORE_RESPONSE_EVALUATION`.
 - Local engineering check passes.
@@ -19,6 +20,8 @@
 6. Monitor the five-stage dependency chain and do not manually bypass a failed check or task.
 7. Archive the completed folds, validation and run directory; verify SHA-256 before local extraction.
 8. Do not run `--stage release` until the returned scientific report and integrity checks have been reviewed.
+
+Use a new run ID. The earlier `base_v2_full_20260817_r1` run belongs to the superseded Pfaf-prefix branch geometry and is not an input to this workflow.
 
 ## Expected formal workload
 

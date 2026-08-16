@@ -1,6 +1,6 @@
 project:
   id: training_base_v2
-  status: topology_forward_reconstruction
+  status: station_frontier_topology_frozen
   model_name: M_FULL_MECHANISTIC_V2
 
 input:
@@ -21,29 +21,36 @@ columns:
   current_hybas_id: r47__current_hybas_id
 
 topology:
-  # A branch is a local tributary complex outside the HydroRIVERS classical-order-1
-  # backbone. Reach connectivity is authoritative; HydroBASINS Pfaf prefixes only
-  # control the spatial scale at which nearby tributary outlets are grouped.
+  # Reach connectivity is authoritative. For each scale, station counts are
+  # accumulated downstream. Reaches at or above station_trunk_support form a
+  # validation trunk; each connected upstream frontier is one independent branch.
+  # Tiny frontiers remain training support and are never merged across outlets.
+  # L6/L12 are audit context only and never define membership or enter Full50.
   backbone_max_classical_order: 1
   scales:
     small:
-      entry_pfaf_prefix_digits: 7
-      minimum_station_support: 2
-    primary:
-      entry_pfaf_prefix_digits: 6
-      minimum_station_support: 3
-    large:
-      entry_pfaf_prefix_digits: 5
+      station_trunk_support: 10
       minimum_station_support: 4
+    primary:
+      station_trunk_support: 20
+      minimum_station_support: 5
+    large:
+      station_trunk_support: 40
+      minimum_station_support: 9
   primary_selection:
     rule: minimum_relative_anchor_distance
     historical_branch_anchor: 219
     historical_eligible_row_anchor: 2568
   sanity:
-    minimum_primary_branches: 100
-    maximum_primary_branches: 500
-    minimum_primary_eligible_rows: 1500
-    maximum_primary_eligible_rows: 3500
+    minimum_primary_branches: 180
+    maximum_primary_branches: 280
+    minimum_primary_eligible_rows: 2300
+    maximum_primary_eligible_rows: 2900
+    maximum_primary_branch_size: 19
+    maximum_primary_l12_per_branch: 20
+    maximum_primary_l6_per_branch: 20
+    minimum_primary_outer_purge: 100
+    maximum_primary_outer_purge: 300
 
 interim:
   site_topology: data/interim/sr_full50_v1_base_v2_site_topology.rds

@@ -6,8 +6,17 @@ stage_check_v2 <- function(context) {
   inner <- data.table::fread(paths[["primary_inner"]], integer64 = "character", data.table = FALSE)
   deployment <- data.table::fread(paths[["deployment"]], integer64 = "character", data.table = FALSE)
   diagnostics <- data.table::fread(paths[["diagnostics"]], data.table = FALSE)
+  catalog <- data.table::fread(paths[["branch_catalog"]], integer64 = "character", data.table = FALSE)
   repeats <- as.integer(context$config$validation$repeats)
   eligible <- as.integer(manifest$topology$n_primary_eligible_rows)
+  primary_scale <- as.character(manifest$topology$selected_scale)
+  primary_catalog <- catalog[catalog$scale == primary_scale & catalog$assessment_eligible, , drop = FALSE]
+  branch_sizes <- table(primary_catalog$branch_id)
+  primary_definition <- context$config$topology$scales[[primary_scale]]
+  v2_assert(min(branch_sizes) >= as.integer(primary_definition$minimum_station_support), "A frozen Primary branch is below minimum support.")
+  v2_assert(max(branch_sizes) < as.integer(primary_definition$station_trunk_support), "A frozen Primary branch reaches or exceeds the station-trunk support threshold.")
+  outlets_per_branch <- stats::aggregate(branch_outlet_reach_id ~ branch_id, primary_catalog, function(x) length(unique(x)))
+  v2_assert(all(outlets_per_branch$branch_outlet_reach_id == 1L), "A frozen Primary branch has multiple outlet reaches.")
   for (repeat_id in seq_len(repeats)) {
     current <- outer[outer$repeat_id == repeat_id & outer$role == "assessment", , drop = FALSE]
     v2_assert(nrow(current) == eligible, paste("Repeat", repeat_id, "does not assess every eligible row exactly once."))
@@ -38,6 +47,9 @@ stage_check_v2 <- function(context) {
     v2_assert(any(current$role == "assessment") && any(current$role == "analysis"), "A deployment fold lacks assessment or analysis rows.")
   }
   primary_diag <- diagnostics[diagnostics$level == "primary_outer", , drop = FALSE]
+  sanity <- context$config$topology$sanity
+  v2_assert(min(primary_diag$n_purged) >= as.integer(sanity$minimum_primary_outer_purge), "A Primary Outer fold purges too few downstream rows.")
+  v2_assert(max(primary_diag$n_purged) <= as.integer(sanity$maximum_primary_outer_purge), "A Primary Outer fold purges too many downstream rows.")
   v2_log(
     "Base V2 engineering check passed: ", manifest$topology$n_primary_branches, " Primary branches, ",
     eligible, " eligible rows; assessment range ", min(primary_diag$n_assessment), "-", max(primary_diag$n_assessment),

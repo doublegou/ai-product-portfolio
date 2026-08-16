@@ -190,51 +190,122 @@ v2_build_downstream_pairs <- function(site_topology, graph) {
   result
 }
 
-v2_build_branch_candidates <- function(context, site_topology, downstream_pairs) {
+v2_accumulate_station_support <- function(station_graph_index, graph) {
+  support <- integer(nrow(graph))
+  for (start in station_graph_index) {
+    current <- start
+    steps <- 0L
+    repeat {
+      support[[current]] <- support[[current]] + 1L
+      downstream <- graph$next_index[[current]]
+      if (is.na(downstream)) break
+      current <- downstream
+      steps <- steps + 1L
+      v2_assert(steps <= 100000L, "Station-support accumulation exceeded 100,000 reaches; possible cycle.")
+    }
+  }
+  support
+}
+
+v2_trace_station_frontier_outlets <- function(station_graph_index, graph, station_support, trunk_support) {
+  trunk_support <- as.integer(trunk_support)
+  v2_assert(trunk_support >= 2L, "station_trunk_support must be at least two.")
+  vapply(station_graph_index, function(start) {
+    if (station_support[[start]] >= trunk_support) return(NA_integer_)
+    current <- start
+    steps <- 0L
+    repeat {
+      downstream <- graph$next_index[[current]]
+      if (is.na(downstream) || station_support[[downstream]] >= trunk_support) return(current)
+      current <- downstream
+      steps <- steps + 1L
+      v2_assert(steps <= 100000L, "Station-frontier traversal exceeded 100,000 reaches; possible cycle.")
+    }
+  }, integer(1L))
+}
+
+v2_branch_structure_diagnostics <- function(site_topology, branch_id, eligible) {
+  members <- split(which(eligible), branch_id[eligible])
+  unique_max <- function(values) {
+    if (!length(members)) return(NA_integer_)
+    max(vapply(members, function(index) length(unique(values[index])), integer(1L)))
+  }
+  span <- if (length(members)) vapply(members, function(index) {
+    values <- site_topology$distance_downstream_km[index]
+    max(values) - min(values)
+  }, numeric(1L)) else numeric()
+  list(
+    branch_reach_max = unique_max(site_topology$reach_id),
+    branch_l12_max = unique_max(site_topology$l12_id),
+    branch_l6_max = unique_max(site_topology$l6_id),
+    branch_station_span_km_p95 = if (length(span)) unname(stats::quantile(span, 0.95)) else NA_real_,
+    branch_station_span_km_max = if (length(span)) max(span) else NA_real_
+  )
+}
+
+v2_build_branch_candidates <- function(context, site_topology, graph, downstream_pairs) {
   scales <- context$config$topology$scales
+  station_graph_index <- match(as.numeric(site_topology$reach_id), graph$reach_id)
+  v2_assert(!anyNA(station_graph_index), "Station-to-reduced-graph mapping changed before branch construction.")
+  station_support <- v2_accumulate_station_support(station_graph_index, graph)
   catalogs <- list()
   diagnostics <- list()
   for (scale in names(scales)) {
     definition <- scales[[scale]]
-    digits <- as.integer(definition$entry_pfaf_prefix_digits)
+    trunk_support <- as.integer(definition$station_trunk_support)
     minimum <- as.integer(definition$minimum_station_support)
+    v2_assert(minimum >= 2L && minimum < trunk_support, paste("Invalid branch support thresholds for", scale))
+    outlet_index <- v2_trace_station_frontier_outlets(
+      station_graph_index, graph, station_support, trunk_support
+    )
+    outlet_id <- v2_id_string(graph$reach_id[outlet_index])
     candidate <- ifelse(
-      site_topology$is_backbone | is.na(site_topology$entry_l12_pfaf_id),
-      NA_character_,
-      paste(site_topology$connected_basin_id, substr(site_topology$entry_l12_pfaf_id, 1L, digits), sep = "__")
+      is.na(outlet_id), NA_character_,
+      paste(site_topology$connected_basin_id, outlet_id, sep = "__")
     )
     counts <- table(candidate, useNA = "no")
     support <- rep(0L, length(candidate))
     support[!is.na(candidate)] <- as.integer(counts[candidate[!is.na(candidate)]])
     eligible <- !is.na(candidate) & support >= minimum
     branch_id <- ifelse(eligible, paste(toupper(substr(scale, 1L, 1L)), candidate, sep = "__"), NA_character_)
+    structure <- v2_branch_structure_diagnostics(site_topology, branch_id, eligible)
     catalog <- data.frame(
       row_id = site_topology$row_id,
       site_id = site_topology$site_id,
       scale = scale,
       candidate_id = candidate,
       branch_id = branch_id,
+      branch_outlet_reach_id = outlet_id,
+      station_upstream_support = station_support[station_graph_index],
+      station_trunk_support = trunk_support,
       candidate_station_count = support,
       assessment_eligible = eligible,
       support_reason = ifelse(
-        site_topology$is_backbone, "backbone_support",
-        ifelse(is.na(candidate), "unresolved_topology", ifelse(eligible, "eligible", "insufficient_station_support"))
+        is.na(candidate), "station_trunk_support",
+        ifelse(eligible, "eligible", "insufficient_station_support")
       ),
       stringsAsFactors = FALSE
     )
     sizes <- as.integer(table(branch_id, useNA = "no"))
     diagnostics[[scale]] <- data.frame(
       scale = scale,
-      entry_pfaf_prefix_digits = digits,
+      station_trunk_support = trunk_support,
       minimum_station_support = minimum,
       n_candidate_groups = length(counts),
       n_branches = length(sizes),
       n_eligible_rows = sum(eligible),
+      n_station_trunk_rows = sum(is.na(candidate)),
+      n_insufficient_support_rows = sum(!is.na(candidate) & !eligible),
       branch_size_min = if (length(sizes)) min(sizes) else NA_integer_,
       branch_size_median = if (length(sizes)) stats::median(sizes) else NA_real_,
       branch_size_mean = if (length(sizes)) mean(sizes) else NA_real_,
       branch_size_p95 = if (length(sizes)) unname(stats::quantile(sizes, 0.95)) else NA_real_,
       branch_size_max = if (length(sizes)) max(sizes) else NA_integer_,
+      branch_reach_max = structure$branch_reach_max,
+      branch_l12_max = structure$branch_l12_max,
+      branch_l6_max = structure$branch_l6_max,
+      branch_station_span_km_p95 = structure$branch_station_span_km_p95,
+      branch_station_span_km_max = structure$branch_station_span_km_max,
       stringsAsFactors = FALSE
     )
     catalogs[[scale]] <- catalog
@@ -258,6 +329,9 @@ v2_build_branch_candidates <- function(context, site_topology, downstream_pairs)
   primary <- ordered[ordered$scale == "primary", , drop = FALSE]
   v2_assert(primary$n_branches >= as.integer(sanity$minimum_primary_branches) && primary$n_branches <= as.integer(sanity$maximum_primary_branches), "Primary branch count is outside the frozen structural sanity range.")
   v2_assert(primary$n_eligible_rows >= as.integer(sanity$minimum_primary_eligible_rows) && primary$n_eligible_rows <= as.integer(sanity$maximum_primary_eligible_rows), "Primary eligible-row count is outside the frozen structural sanity range.")
+  v2_assert(primary$branch_size_max <= as.integer(sanity$maximum_primary_branch_size), "Primary contains a composite branch larger than the station-frontier limit.")
+  v2_assert(primary$branch_l12_max <= as.integer(sanity$maximum_primary_l12_per_branch), "Primary contains a branch spanning too many L12 units.")
+  v2_assert(primary$branch_l6_max <= as.integer(sanity$maximum_primary_l6_per_branch), "Primary contains a branch spanning too many L6 units.")
 
   catalog_all <- do.call(rbind, catalogs)
   relation_records <- list()
@@ -315,7 +389,7 @@ stage_prepare_topology <- function(context, validated = NULL, force = FALSE) {
   l12 <- v2_load_hydrobasins_attributes(v2_path(context, context$config$input$hydrobasins_l12_root), 12L)
   site_topology <- v2_build_site_topology(context, dat, hydrology, graph, l6, l12)
   downstream_pairs <- v2_build_downstream_pairs(site_topology, graph)
-  branches <- v2_build_branch_candidates(context, site_topology, downstream_pairs)
+  branches <- v2_build_branch_candidates(context, site_topology, graph, downstream_pairs)
   v2_save_rds(site_topology, paths$site_topology)
   v2_save_rds(graph, paths$reach_graph)
   v2_save_rds(downstream_pairs, paths$downstream_pairs)
