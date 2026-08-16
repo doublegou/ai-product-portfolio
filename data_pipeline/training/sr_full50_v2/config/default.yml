@@ -1,0 +1,50 @@
+project:
+  id: training_sr_full50_v2
+  status: active
+
+input:
+  observation_base: data/raw/observation/observation_v1.csv
+  observation_supplement: data/processed/observation/sr_supplement_v1.csv
+  baseline_full50: data/processed/training/sr_full50_v1.csv
+  recovered_v2_snapshot: data/raw/model_inputs/full50_v2_5600_snapshot.csv
+  feature_inventory: data/raw/features/download_inventory.csv
+
+output:
+  candidate_sites: data/interim/sr_full50_v2_sites.rds
+  basin_assignment: data/interim/sr_full50_v2_hydrobasins_l6.rds
+  basin_scope: data/interim/sr_full50_v2_basin_scope.rds
+  hydrology: data/interim/sr_full50_v2_hydrology.rds
+  geology: data/interim/sr_full50_v2_geology.rds
+  climate_terrain: data/interim/sr_full50_v2_climate_terrain.rds
+  soil: data/interim/sr_full50_v2_soil.rds
+  geologic_age: data/interim/sr_full50_v2_geologic_age.rds
+  full50: data/interim/sr_full50_v2.rds
+  processed: data/processed/training/sr_full50_v2.csv
+  manifest: data/processed/training/sr_full50_v2_manifest.json
+
+rules:
+  coordinate_digits: 5
+  nearest_basin_limit_km: 25
+  snap_limit_m: 5000
+
+contract:
+  base_training_rows: 4485
+  supplement_observation_rows: 1950
+  supplement_training_rows: 1940
+  candidate_sites: 5649
+  full50_rows: 5600
+  supplement_full50_rows: 1115
+  full50_predictors: 50
+  sr_bands:
+    lt_0.72: 4756
+    0.72_to_0.75: 708
+    0.75_to_0.80: 107
+    ge_0.80: 29
+  supplement_sr_bands:
+    lt_0.72: 942
+    0.72_to_0.75: 146
+    0.75_to_0.80: 18
+    ge_0.80: 9
+
+runtime:
+  profile: local

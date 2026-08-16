@@ -7,7 +7,7 @@ All Process14 definitions are frozen in `config/process14_formula_dictionary.yml
 The pipeline consumes the frozen V1 regional table, V1 response-blind branch map, Full50 manifest, Process14 field manifest, and formula dictionary. It writes:
 
 - `data/processed/training/himalaya_risk_v2.csv`
-- `data/interim/himalaya_risk_v2_build_manifest.json`
+- `data/processed/training/himalaya_risk_v2_manifest.json`
 
 Run from the repository root:
 

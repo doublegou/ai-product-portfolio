@@ -24,6 +24,8 @@ dat <- regional_v2_add_process14(validated, context)
 regional_v2_validate_output(dat, validated, context)
 output <- regional_v2_path(context, context$config$output$table)
 regional_v2_write_csv(dat, output)
+published <- regional_v2_read_csv(output)
+regional_v2_validate_published_output(published, validated, context)
 manifest <- regional_v2_write_manifest(output, validated, context)
 regional_v2_log(
   "Published ", nrow(dat), " x ", ncol(dat), " to ", output,

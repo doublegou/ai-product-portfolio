@@ -25,4 +25,11 @@ dat <- regional_data_add_fields(dat, context)
 regional_data_validate_output(dat, context)
 output <- regional_data_path(context, context$config$output$table)
 regional_data_write_csv(dat, output)
-regional_data_log("Published ", nrow(dat), " rows to ", output, "; positives=", sum(dat$high_sr_label), ".")
+published <- regional_data_read_csv(output)
+regional_data_validate_published_output(published, dat, context)
+manifest <- regional_data_write_manifest(output, dat, validated, context)
+regional_data_log(
+  "Published ", nrow(dat), " rows to ", output,
+  "; positives=", sum(dat$high_sr_label),
+  "; manifest=", manifest, "."
+)

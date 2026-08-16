@@ -74,6 +74,28 @@ river_sr_write_csv <- function(object, path) {
   river_sr_assert(file.rename(temporary_path, path), paste("Could not write:", path))
 }
 
+river_sr_write_json <- function(object, path) {
+  dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
+  temporary_path <- tempfile(pattern = "river_sr_", tmpdir = dirname(path))
+  on.exit(unlink(temporary_path), add = TRUE)
+  jsonlite::write_json(object, temporary_path, auto_unbox = TRUE, pretty = TRUE, na = "null")
+  if (file.exists(path)) unlink(path)
+  river_sr_assert(file.rename(temporary_path, path), paste("Could not write:", path))
+}
+
+river_sr_sha256 <- function(path) {
+  digest::digest(file = path, algo = "sha256", serialize = FALSE)
+}
+
+river_sr_file_record <- function(path, repo_root) {
+  absolute <- normalizePath(path, mustWork = TRUE)
+  list(
+    path = gsub("\\\\", "/", substring(absolute, nchar(normalizePath(repo_root, mustWork = TRUE)) + 2L)),
+    bytes = unname(file.info(absolute)$size),
+    sha256 = river_sr_sha256(absolute)
+  )
+}
+
 river_sr_region_codes <- function() {
   c("af", "ar", "as", "au", "eu", "gr", "na", "sa", "si")
 }

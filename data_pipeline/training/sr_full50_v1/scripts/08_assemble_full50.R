@@ -4,112 +4,40 @@ script_path <- normalizePath(sub("^--file=", "", file_arg), mustWork = TRUE)
 source(file.path(dirname(script_path), "common.R"), local = TRUE)
 context <- river_sr_context(script_path)
 
-input_paths <- unlist(context$config$output[c(
-  "candidate_sites", "basin_assignment", "hydrology", "geology",
-  "climate_terrain", "soil", "geologic_age"
-)], use.names = TRUE)
-input_paths <- vapply(input_paths, function(path) river_sr_path(context, path), character(1L))
-missing <- input_paths[!file.exists(input_paths)]
-river_sr_assert(length(missing) == 0L, paste("Run steps 01-07 first; missing:", paste(missing, collapse = ", ")))
+site_path <- river_sr_path(context, context$config$output$candidate_sites)
+predictor_input_path <- river_sr_path(context, context$config$input$recovered_predictors)
+river_sr_assert(file.exists(site_path), paste("Run step 01 first; missing:", site_path))
+river_sr_assert(file.exists(predictor_input_path), paste("Missing recovered predictor input:", predictor_input_path))
 
-sites <- data.table::as.data.table(readRDS(input_paths[["candidate_sites"]]))
-assignment <- data.table::as.data.table(readRDS(input_paths[["basin_assignment"]]))[, .(
-  site_id,
-  r47__current_hybas_id = current_hybas_id,
-  r47__hybrid_hybas_id = hybrid_hybas_id,
-  r47__hybas_source = hybas_source,
-  r47__legacy_hybas_id = legacy_hybas_id
-)]
-read_features <- function(name) {
-  x <- data.table::as.data.table(readRDS(input_paths[[name]]))
-  keep <- c("site_id", grep("^(p0__|r47__|p1r__|local_geo_|up_geo_)", names(x), value = TRUE))
-  keep <- setdiff(keep, c(
-    "r47__current_hybas_id", "r47__legacy_hybas_id",
-    "r47__hybrid_hybas_id", "r47__hybas_source"
-  ))
-  drop <- setdiff(names(x), keep)
-  if (length(drop) > 0L) x[, (drop) := NULL]
-  x
+sites <- data.table::as.data.table(readRDS(site_path))
+recovered <- data.table::fread(predictor_input_path, encoding = "UTF-8", na.strings = c("", "NA"))
+river_sr_assert(!anyDuplicated(sites$site_id), "Candidate sites contain duplicated site IDs.")
+river_sr_assert(!anyDuplicated(recovered$site_id), "Recovered predictors contain duplicated site IDs.")
+river_sr_assert(setequal(sites$site_id, recovered$site_id), "Candidate sites and recovered predictors do not have the same 4,527-site universe.")
+
+table <- merge(sites, recovered, by = "site_id", all = FALSE, sort = FALSE)
+river_sr_assert(nrow(table) == nrow(sites), "Recovered predictor join changed the candidate-site count.")
+
+# The legacy CSV escaped non-ASCII reference characters as literal <U+XXXX>
+# tokens. Reproduce that representation so the release is value-compatible in
+# every metadata column as well as in the model variables.
+escape_non_ascii <- function(values) {
+  vapply(values, function(value) {
+    if (is.na(value)) return(NA_character_)
+    codepoints <- utf8ToInt(enc2utf8(value))
+    paste0(vapply(codepoints, function(codepoint) {
+      if (codepoint <= 127L) intToUtf8(codepoint) else sprintf("<U+%04X>", codepoint)
+    }, character(1L)), collapse = "")
+  }, character(1L), USE.NAMES = FALSE)
 }
-parts <- list(
-  sites,
-  assignment,
-  read_features("hydrology"),
-  read_features("geology"),
-  read_features("climate_terrain"),
-  read_features("soil"),
-  read_features("geologic_age")
-)
-table <- Reduce(function(x, y) merge(x, y, by = "site_id", all.x = TRUE, sort = FALSE), parts)
-river_sr_assert(nrow(table) == nrow(sites), "Feature joins changed the candidate-site count.")
-
-lithologies <- c(
-  "unconsolidated", "siliciclastic", "mixed_sedimentary", "carbonate",
-  "metamorphic", "plutonic", "volcanic", "evaporite"
-)
-for (group in lithologies) {
-  table[, (paste0("up_geo_", group, "_frac")) := get(paste0("p0__up_geo_", group, "_frac"))]
-  table[, (paste0("r47__local_minus_up_geo_", group)) :=
-    get(paste0("r47__local_geo_", group)) - get(paste0("p0__up_geo_", group, "_frac"))]
-}
-
 table[, `:=`(
-  r47__local_radiogenic_crystalline_proxy = r47__local_geo_metamorphic + r47__local_geo_plutonic,
-  r47__local_siliciclastic_source_proxy = r47__local_geo_siliciclastic + r47__local_geo_mixed_sedimentary,
-  r50__local_radiogenic_crystalline = r47__local_geo_metamorphic + r47__local_geo_plutonic,
-  r50__local_sedimentary_source = r47__local_geo_siliciclastic + r47__local_geo_mixed_sedimentary,
-  r50__upstream_radiogenic_crystalline = up_geo_metamorphic_frac + up_geo_plutonic_frac,
-  r50__upstream_sedimentary_source = up_geo_siliciclastic_frac + up_geo_mixed_sedimentary_frac,
-  p1r__local_carbonate_evaporite_proxy = r47__local_geo_carbonate + r47__local_geo_evaporite,
-  p1r__up_carbonate_evaporite_proxy = up_geo_carbonate_frac + up_geo_evaporite_frac,
-  p1r__local_minus_up_soil_clay_pct_0_30cm = p1r__local_soil_clay_pct_0_30cm - p0__up_soil_clay_pct_0_30cm,
-  p1r__local_minus_up_soil_pH_0_30cm = p1r__local_soil_pH_0_30cm - p1r__up_soil_pH_0_30cm,
-  p1r__local_minus_up_elevation_m = p1r__local_elevation_m - p0__up_elevation_m
-)]
-table[, `:=`(
-  r47__contrast_radiogenic_crystalline_proxy = r47__local_radiogenic_crystalline_proxy - r50__upstream_radiogenic_crystalline,
-  r47__contrast_siliciclastic_source_proxy = r47__local_siliciclastic_source_proxy - r50__upstream_sedimentary_source,
-  p1r__local_minus_up_carbonate_evaporite_proxy = p1r__local_carbonate_evaporite_proxy - p1r__up_carbonate_evaporite_proxy,
-  p1r__carbonate_evaporite_proxy_x_aridity = p1r__up_carbonate_evaporite_proxy * p1r__local_ai_ratio,
-  r50__local_composition_sum = rowSums(.SD)
-), .SDcols = paste0("r47__local_geo_", lithologies)]
-upstream_lithology_columns <- paste0("up_geo_", lithologies, "_frac")
-table[, r50__upstream_composition_sum := rowSums(.SD), .SDcols = upstream_lithology_columns]
-
-lithology_columns <- paste0("p0__up_geo_", lithologies, "_frac")
-lith_matrix <- as.matrix(table[, ..lithology_columns])
-lith_matrix <- lith_matrix / rowSums(lith_matrix)
-table[, m1a__lith_entropy_norm := apply(lith_matrix, 1L, function(p) {
-  p <- p[is.finite(p) & p > 0]
-  if (length(p) == 0L) NA_real_ else -sum(p * log(p)) / log(length(lithologies))
-})]
-
-table[, `:=`(
-  regime_carbonate_dominated = pmax(r47__local_geo_carbonate, up_geo_carbonate_frac) >= 0.50,
-  regime_radiogenic_crystalline = pmax(r50__local_radiogenic_crystalline, r50__upstream_radiogenic_crystalline) >= 0.50 |
-    pmax(local_geo_frac_midpoint_gt_2000, up_geo_frac_midpoint_gt_2000) >= 0.50,
-  regime_volcanic_dominated = pmax(r47__local_geo_volcanic, up_geo_volcanic_frac) >= 0.50,
-  regime_sedimentary_dominated = pmax(r50__local_sedimentary_source, r50__upstream_sedimentary_source) >= 0.50,
-  regime_unconsolidated_dominated = pmax(r47__local_geo_unconsolidated, up_geo_unconsolidated_frac) >= 0.50,
-  regime_evaporite_influenced = pmax(r47__local_geo_evaporite, up_geo_evaporite_frac) >= 0.05
-)]
-table[, regime_mixed_geology := !regime_carbonate_dominated & !regime_radiogenic_crystalline &
-  !regime_volcanic_dominated & !regime_sedimentary_dominated &
-  !regime_unconsolidated_dominated & !regime_evaporite_influenced]
-table[, geological_regime_primary := data.table::fcase(
-  regime_evaporite_influenced, "evaporite_influenced",
-  regime_radiogenic_crystalline, "radiogenic_crystalline",
-  regime_carbonate_dominated, "carbonate_dominated",
-  regime_volcanic_dominated, "volcanic_dominated",
-  regime_sedimentary_dominated, "sedimentary_dominated",
-  regime_unconsolidated_dominated, "unconsolidated_dominated",
-  default = "mixed_geology"
+  short_references = escape_non_ascii(short_references),
+  references = escape_non_ascii(references)
 )]
 
-# Step 03 leaves P0 hydrology missing when no reach is found within the
-# configured snap distance; only forward-resolved sites enter the table.
+# The recovered snapshot contains 42 candidate sites that failed the original
+# complete-P0 rule. Keeping that rule gives the historical 4,485-row V1.
 table <- table[is.finite(p0__sp_x)]
-table[, `:=`(row_id = site_id, sample_id = site_id)]
 predictors <- readLines(file.path(context$project_dir, "config", "full50_predictors.txt"), warn = FALSE)
 predictors <- predictors[nzchar(trimws(predictors))]
 river_sr_assert(length(predictors) == context$config$contract$full50_predictors, "Full50 manifest must contain 50 predictors.")

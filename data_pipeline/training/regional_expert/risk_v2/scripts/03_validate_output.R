@@ -35,6 +35,27 @@ regional_v2_validate_output <- function(dat, validated, context) {
   invisible(dat)
 }
 
+regional_v2_validate_published_output <- function(published, validated, context) {
+  cfg <- context$config
+  regional_v2_assert(
+    identical(names(published), c(names(validated$v1), validated$process14)),
+    "Published Regional V2 column order changed during CSV roundtrip."
+  )
+  regional_v2_assert(
+    identical(published[, names(validated$v1), drop = FALSE], validated$v1),
+    "Published Regional V2 no longer preserves all 133 Regional V1 fields exactly."
+  )
+  regional_v2_assert(
+    all(vapply(published[, validated$process14, drop = FALSE], function(x) all(is.finite(as.numeric(x))), logical(1L))),
+    "Published Regional V2 contains a non-finite Process14 value."
+  )
+  regional_v2_assert(
+    nrow(published) == as.integer(cfg$domain$expected_rows) && ncol(published) == as.integer(cfg$domain$expected_output_columns),
+    "Published Regional V2 dimensions changed during CSV roundtrip."
+  )
+  invisible(published)
+}
+
 regional_v2_write_manifest <- function(output_path, validated, context) {
   cfg <- context$config
   formula_status <- vapply(validated$dictionary$features, function(x) as.character(x$status), character(1L))
@@ -43,13 +64,13 @@ regional_v2_write_manifest <- function(output_path, validated, context) {
     created_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
     project = cfg$project,
     inputs = list(
-      v1_table = regional_v2_signature(validated$paths$v1_table),
-      v1_branch_map = regional_v2_signature(validated$paths$v1_branch_map),
-      full50_predictors = regional_v2_signature(validated$paths$full50_predictors),
-      process14_predictors = regional_v2_signature(validated$paths$process14_predictors),
-      process14_formula_dictionary = regional_v2_signature(validated$paths$process14_formula_dictionary)
+      v1_table = regional_v2_signature(validated$paths$v1_table, context$repo_root),
+      v1_branch_map = regional_v2_signature(validated$paths$v1_branch_map, context$repo_root),
+      full50_predictors = regional_v2_signature(validated$paths$full50_predictors, context$repo_root),
+      process14_predictors = regional_v2_signature(validated$paths$process14_predictors, context$repo_root),
+      process14_formula_dictionary = regional_v2_signature(validated$paths$process14_formula_dictionary, context$repo_root)
     ),
-    output = regional_v2_signature(output_path),
+    output = regional_v2_signature(output_path, context$repo_root),
     contract = list(
       rows = as.integer(cfg$domain$expected_rows),
       columns = as.integer(cfg$domain$expected_output_columns),

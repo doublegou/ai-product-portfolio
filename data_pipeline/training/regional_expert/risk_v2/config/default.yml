@@ -10,7 +10,7 @@ input:
   process14_predictors: data_pipeline/training/regional_expert/risk_v2/config/process14_predictors.txt
   process14_formula_dictionary: data_pipeline/training/regional_expert/risk_v2/config/process14_formula_dictionary.yml
   expected_md5:
-    v1_table: 6fc05f714eb2f6fdc402ef0717d5369a
+    v1_table: 6fe0d27c33b47956f21d0e8d6e832ec5
     v1_branch_map: 19fb84f84b7770bcb918afc010a0ffa9
     full50_predictors: ac1b24b9acefe6d6ad9932b028b367d2
 
@@ -43,4 +43,4 @@ formula_contract:
 
 output:
   table: data/processed/training/himalaya_risk_v2.csv
-  manifest: data/interim/himalaya_risk_v2_build_manifest.json
+  manifest: data/processed/training/himalaya_risk_v2_manifest.json

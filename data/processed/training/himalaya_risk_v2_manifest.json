@@ -1,0 +1,83 @@
+{
+  "status": "PROCESS14_FROZEN_BEFORE_MODELING",
+  "created_at": "2026-08-17T07:34:24+0800",
+  "project": {
+    "id": "himalaya_risk_v2_data",
+    "status": "frozen_pre_model_process14_contract",
+    "purpose": "regional_risk_v2_full50_plus_process14_training_table"
+  },
+  "inputs": {
+    "v1_table": {
+      "path": "data/processed/training/himalaya_risk_v1.csv",
+      "bytes": 524208,
+      "modified_at": "2026-08-17T07:34:24+0800",
+      "md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
+      "sha256": "22ef4fd6c08bb27c646fdd2320ee59b1a1641e111bd093d9fe823e029f18ffda",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "v1_branch_map": {
+      "path": "training/regional_expert/regional_risk_v1/folds/branch_map.csv",
+      "bytes": 38588,
+      "modified_at": "2026-08-17T05:47:36+0800",
+      "md5": "19fb84f84b7770bcb918afc010a0ffa9",
+      "sha256": "be5af02f45b1e5e1ac4badd4720cf6cabbc6b99840e1e4f8f020f56d55b8fc5a",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "full50_predictors": {
+      "path": "data_pipeline/training/sr_full50_v1/config/full50_predictors.txt",
+      "bytes": 1107,
+      "modified_at": "2026-08-16T04:12:11+0800",
+      "md5": "ac1b24b9acefe6d6ad9932b028b367d2",
+      "sha256": "bcb2e9f24b8ed24f9f5463fa5dfcdf22451a582233064a7a54aca85968bd2a1e",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "process14_predictors": {
+      "path": "data_pipeline/training/regional_expert/risk_v2/config/process14_predictors.txt",
+      "bytes": 322,
+      "modified_at": "2026-08-17T05:48:16+0800",
+      "md5": "239b2bfe7945fb1c878aeb267666aa15",
+      "sha256": "4ad6f665d9d16089475938ed75bff366089e73e161c54de9e4733be383b1d797",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "process14_formula_dictionary": {
+      "path": "data_pipeline/training/regional_expert/risk_v2/config/process14_formula_dictionary.yml",
+      "bytes": 7307,
+      "modified_at": "2026-08-17T06:13:10+0800",
+      "md5": "17632c0d2acb977285fb4f94830f6096",
+      "sha256": "d20bb8337c85e0b6041792d847f17a9fc92224d1df787805cdca740941b617c5",
+      "hash_method": "normalized_lf_text_md5"
+    }
+  },
+  "output": {
+    "path": "data/processed/training/himalaya_risk_v2.csv",
+    "bytes": 572493,
+    "modified_at": "2026-08-17T07:34:24+0800",
+    "md5": "889ab17f9cb72efd63580807f845d700",
+    "sha256": "65635ecbec156d0631115e9e9cec498022887106c5a75e902f356d53f00bdfe3",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "contract": {
+    "rows": 372,
+    "columns": 147,
+    "full50_predictors": ["p0__sp_x", "p0__sp_y", "p0__sp_z", "p0__log_DIS_AV_CMS", "p0__log_UPLAND_SKM", "p0__log_CATCH_SKM", "p0__log_LENGTH_KM", "p0__log_DIST_DN_KM", "p0__log_DIST_UP_KM", "p0__ORD_STRA", "p0__ORD_CLAS", "p0__ORD_FLOW", "p0__up_geo_unconsolidated_frac", "p0__up_geo_siliciclastic_frac", "p0__up_geo_mixed_sedimentary_frac", "p0__up_geo_carbonate_frac", "p0__up_geo_metamorphic_frac", "p0__up_geo_plutonic_frac", "p0__up_geo_volcanic_frac", "p0__up_geo_evaporite_frac", "p0__up_bio1_C", "p0__up_bio4_C_sd", "p0__up_bio12_mm", "p0__up_bio15_cv", "p0__up_ai_ratio", "p0__up_et0_mm", "p0__up_elevation_m", "p0__up_soil_clay_pct_0_30cm", "r47__local_geo_carbonate", "r47__local_geo_evaporite", "r47__local_geo_metamorphic", "r47__local_geo_plutonic", "r47__local_geo_siliciclastic", "r47__local_geo_unconsolidated", "r47__local_geo_volcanic", "local_geo_age_max_oldest_ma", "local_geo_age_mean_ma", "local_geo_age_sd_ma", "local_geo_frac_midpoint_gt_1000", "local_geo_frac_midpoint_gt_2000", "up_geo_age_max_oldest_ma", "up_geo_age_mean_ma", "up_geo_age_sd_ma", "up_geo_frac_midpoint_gt_1000", "up_geo_frac_midpoint_gt_2000", "m1a__lith_entropy_norm", "p1r__local_soil_clay_pct_0_30cm", "p1r__local_soil_pH_0_30cm", "p1r__up_soil_pH_0_30cm", "p1r__local_elevation_m"],
+    "process14_predictors": ["metamorphic_contrast", "age_mean_contrast_ma", "log_specific_discharge_proxy", "age_max_contrast_ma", "old2000_contrast", "old1000_contrast", "upstream_radiogenic_lithology_frac", "age_sd_contrast_ma", "log_upstream_to_local_area_proxy", "plutonic_contrast", "carbonate_contrast", "relative_downstream_position", "old_crust_tail_proxy", "old_crust_source_proxy"],
+    "formula_status": {
+      "metamorphic_contrast": "frozen_before_modeling",
+      "age_mean_contrast_ma": "frozen_before_modeling",
+      "log_specific_discharge_proxy": "frozen_before_modeling",
+      "age_max_contrast_ma": "frozen_before_modeling",
+      "old2000_contrast": "frozen_before_modeling",
+      "old1000_contrast": "frozen_before_modeling",
+      "upstream_radiogenic_lithology_frac": "frozen_before_modeling",
+      "age_sd_contrast_ma": "frozen_before_modeling",
+      "log_upstream_to_local_area_proxy": "frozen_before_modeling",
+      "plutonic_contrast": "frozen_before_modeling",
+      "carbonate_contrast": "frozen_before_modeling",
+      "relative_downstream_position": "frozen_before_modeling",
+      "old_crust_tail_proxy": "frozen_before_modeling",
+      "old_crust_source_proxy": "frozen_before_modeling"
+    },
+    "formal_model_training_performed": false,
+    "immutable_after_formal_v2_fit": true
+  }
+}

@@ -65,8 +65,14 @@ measurement_summary <- unique_measurements[, .(
 ), by = site_id]
 
 site_summary <- observations[, {
-  refs <- sort(unique(trimws(short_references[!is.na(short_references)])))
+  refs <- unique(trimws(short_references[!is.na(short_references)]))
   refs <- refs[nzchar(refs)]
+  # The recovered release was built under a locale that collated accented
+  # names by their Latin transliteration (for example Montgomery before
+  # Müldner). Make that ordering explicit instead of inheriting the host locale.
+  transliterated <- iconv(refs, from = "UTF-8", to = "ASCII//TRANSLIT")
+  transliterated[is.na(transliterated)] <- refs[is.na(transliterated)]
+  refs <- refs[order(transliterated, refs)]
   ref_ids <- sort(unique(river_sr_reference_id(refs)))
   ref_ids <- ref_ids[nzchar(ref_ids)]
 

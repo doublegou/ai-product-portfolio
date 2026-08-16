@@ -29,3 +29,4 @@ projection:
 
 output:
   table: data/processed/training/himalaya_risk_v1.csv
+  manifest: data/processed/training/himalaya_risk_v1_manifest.json

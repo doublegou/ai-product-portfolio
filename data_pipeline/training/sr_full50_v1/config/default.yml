@@ -4,6 +4,7 @@ project:
 
 input:
   observation: data/raw/observation/observation_v1.csv
+  recovered_predictors: data/raw/model_inputs/full50_v1_predictors.csv
 
 output:
   candidate_sites: data/interim/sr_full50_v1_sites.rds
@@ -16,6 +17,7 @@ output:
   geologic_age: data/interim/sr_full50_v1_geologic_age.rds
   full50: data/interim/sr_full50_v1.rds
   processed: data/processed/training/sr_full50_v1.csv
+  manifest: data/processed/training/sr_full50_v1_manifest.json
 
 rules:
   coordinate_digits: 5
