@@ -1,5 +1,7 @@
 # Global High-Sr Risk V1
 
+**Completed: feasibility not supported; branch stopped.** See [`RESULTS.md`](RESULTS.md) for the frozen scientific conclusion and provenance.
+
 This project asks one narrow question: after removing absolute spatial coordinates, do the frozen Base V1 predictors contain a transferable signal for identifying high-Sr hydrological systems?
 
 It is a signal-feasibility experiment, not a deployable classifier. A failed experiment produces OOF evidence and a stop decision. A passed experiment opens a separate V1.1 calibration/deployment stage; this directory never fits a full-data production model and has no `release/`.
