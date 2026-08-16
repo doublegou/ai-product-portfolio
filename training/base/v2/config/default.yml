@@ -6,6 +6,7 @@ project:
 input:
   table: data/processed/training/sr_full50_v1.csv
   predictors: data_pipeline/training/sr_full50_v1/config/full50_predictors.txt
+  benchmark_recipe: training/base/v1/release/selected_params.yml
   hydrology_interim: data/interim/sr_full50_v1_hydrology.rds
   hydrorivers_dbf: data/raw/features/hydrography/hydrorivers_v10/HydroRIVERS_v10_shp/HydroRIVERS_v10.dbf
   hydrobasins_l6_root: data/raw/features/hydrography/hydrobasins_l6
@@ -73,6 +74,43 @@ validation:
   spatial_outer_seed_base: 74000
   reference_outer_seed: 74101
   terminal_outer_seed: 74201
+
+benchmark:
+  role: branch_geometry_methodology_only
+  folds: 5
+  arms: [purged_branch, naive_branch, matched_terminal]
+  branch_seed_base: 75000
+  terminal_seed_base: 76000
+  model_seed_base: 790000
+  trees: 2000
+  designs:
+    small_s03:
+      scale_family: small
+      minimum_station_support: 3
+    small_s04:
+      scale_family: small
+      minimum_station_support: 4
+    small_s05:
+      scale_family: small
+      minimum_station_support: 5
+    primary_s04:
+      scale_family: primary
+      minimum_station_support: 4
+    primary_s05:
+      scale_family: primary
+      minimum_station_support: 5
+    primary_s06:
+      scale_family: primary
+      minimum_station_support: 6
+    large_s08:
+      scale_family: large
+      minimum_station_support: 8
+    large_s09:
+      scale_family: large
+      minimum_station_support: 9
+    large_s10:
+      scale_family: large
+      minimum_station_support: 10
 
 search:
   mtry_fractions: [sqrt, 0.25, 0.50, 0.75]

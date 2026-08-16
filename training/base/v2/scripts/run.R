@@ -20,14 +20,14 @@ for (file in c("io.R", "validation.R", "topology.R", "folds.R", "imputation.R", 
 for (file in c(
   "01_validate_input.R", "02_prepare_topology.R", "03_check_folds.R",
   "04_run_primary.R", "05_deployment_tuning.R", "06_run_stress.R",
-  "07_fit_final_model.R", "08_summarize_run.R"
+  "07_fit_final_model.R", "08_summarize_run.R", "09_run_branch_benchmark.R"
 )) source(file.path(scripts_dir, file), local = FALSE)
 
 context <- v2_context(repo_root, project_dir)
 cli <- v2_parse_cli(commandArgs(trailingOnly = TRUE))
 stage <- cli$stage
 v2_assert(!is.null(stage) || !is.null(cli$task_type), paste(
-  "No stage supplied. Use --stage prepare/check/primary/deployment/stress/finalize/release.",
+  "No stage supplied. Use --stage prepare/check/benchmark/primary/deployment/stress/finalize/release.",
   "There is deliberately no implicit full-training mode."
 ))
 
@@ -35,6 +35,14 @@ if (identical(stage, "prepare")) {
   stage_prepare_v2(context, force = cli$force)
 } else if (identical(stage, "check")) {
   stage_check_v2(context)
+} else if (identical(stage, "benchmark") || identical(cli$task_type, "benchmark")) {
+  if (is.null(cli$task_id)) {
+    v2_assert(!is.null(cli$design_id) && !is.null(cli$outer_fold), "Benchmark requires --task-id or both --design-id and --outer-fold.")
+  }
+  stage_run_benchmark_task(
+    context, design_id = cli$design_id, outer_fold = cli$outer_fold,
+    task_id = cli$task_id, force = cli$force
+  )
 } else if (identical(stage, "primary") || identical(cli$task_type, "primary")) {
   v2_assert(!is.null(cli$repeat_id) && !is.null(cli$outer_fold), "Primary requires --repeat-id and --outer-fold.")
   stage_run_primary_task(context, cli$repeat_id, cli$outer_fold, force = cli$force)

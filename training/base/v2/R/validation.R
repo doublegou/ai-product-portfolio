@@ -53,6 +53,8 @@ v2_fold_paths <- function(context) {
     primary_outer = "primary_outer_assignments.csv",
     primary_inner = "primary_inner_assignments.csv",
     deployment = "deployment_assignments.csv",
+    benchmark_designs = "benchmark_designs.csv",
+    benchmark = "benchmark_assignments.csv",
     stress = "stress_assignments.csv",
     diagnostics = "fold_diagnostics.csv"
   )
@@ -70,6 +72,11 @@ v2_assert_folds_current <- function(context) {
   v2_assert(identical(as.character(manifest$config$md5), as.character(current_config$md5)), "V2 config changed after folds were frozen. Rebuild folds explicitly before training.")
   v2_assert(identical(as.character(manifest$implementation$sha256), as.character(current_implementation$sha256)), "Base V2 implementation changed after folds were frozen. Rebuild and recheck folds before training.")
   v2_assert(identical(as.character(manifest$predictors), v2_read_predictors(context)), "Full50 predictor definition changed after V2 folds were frozen.")
+  current_benchmark_recipe <- v2_file_signature(v2_path(context, context$config$input$benchmark_recipe), context$repo_root)
+  v2_assert(
+    identical(as.character(manifest$benchmark$recipe_file$sha256), as.character(current_benchmark_recipe$sha256)),
+    "The frozen Base V1 benchmark recipe changed after V2 folds were prepared."
+  )
   for (name in setdiff(names(paths), "manifest")) {
     expected_hash <- as.character(manifest$fold_files[[name]]$sha256)
     current_hash <- v2_file_signature(paths[[name]], context$repo_root)$sha256
@@ -88,5 +95,11 @@ v2_assert_folds_current <- function(context) {
   outer_k <- as.integer(context$config$validation$outer_folds)
   v2_assert(nrow(outer) == as.integer(context$config$validation$expected_rows) * repeats * outer_k, "Primary Outer role table has the wrong row count.")
   v2_assert(all(outer$role %in% c("analysis", "assessment", "purged_downstream", "support_excluded")), "Primary Outer role table contains an invalid role.")
+  benchmark_designs <- data.table::fread(paths[["benchmark_designs"]], data.table = FALSE)
+  benchmark <- data.table::fread(paths[["benchmark"]], integer64 = "character", data.table = FALSE)
+  expected_designs <- length(context$config$benchmark$designs)
+  benchmark_folds <- as.integer(context$config$benchmark$folds)
+  v2_assert(nrow(benchmark_designs) == expected_designs, "Frozen benchmark design table has the wrong number of designs.")
+  v2_assert(nrow(benchmark) == expected_designs * benchmark_folds * as.integer(context$config$validation$expected_rows), "Frozen benchmark role table has the wrong row count.")
   invisible(manifest)
 }

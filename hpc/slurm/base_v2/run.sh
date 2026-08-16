@@ -16,6 +16,8 @@ Usage:
   bash hpc/slurm/base_v2/run.sh archive <run_id>
 
 Optional environment variables for submit:
+  V2_BENCHMARK_CPUS   CPUs per methodology benchmark task (default: 16)
+  V2_BENCHMARK_PARALLEL Maximum simultaneous benchmark tasks (default: 45)
   V2_PRIMARY_CPUS     CPUs per Primary task (default: 32)
   V2_PRIMARY_PARALLEL Maximum simultaneous Primary tasks (default: 15)
   V2_STRESS_CPUS      CPUs per stress task (default: 16)
@@ -51,6 +53,8 @@ case "$command_name" in
   submit)
     if [[ -z "$run_id" ]]; then run_id="$(date +%Y%m%d_%H%M%S)_full"; fi
     require_run_id
+    benchmark_cpus="${V2_BENCHMARK_CPUS:-16}"
+    benchmark_parallel="${V2_BENCHMARK_PARALLEL:-45}"
     primary_cpus="${V2_PRIMARY_CPUS:-32}"
     primary_parallel="${V2_PRIMARY_PARALLEL:-15}"
     stress_cpus="${V2_STRESS_CPUS:-16}"
@@ -66,8 +70,15 @@ case "$command_name" in
       --output="$slurm_log_dir/check-%j.out" \
       --error="$slurm_log_dir/check-%j.err" \
       "$script_dir/job_check.sbatch")"
-    primary_job="$(sbatch --parsable \
+    benchmark_job="$(sbatch --parsable \
       --dependency="afterok:$check_job" \
+      --array="0-44%$benchmark_parallel" \
+      --cpus-per-task="$benchmark_cpus" \
+      --output="$slurm_log_dir/benchmark-%A_%a.out" \
+      --error="$slurm_log_dir/benchmark-%A_%a.err" \
+      "$script_dir/job_benchmark.sbatch")"
+    primary_job="$(sbatch --parsable \
+      --dependency="afterok:$benchmark_job" \
       --array="0-14%$primary_parallel" \
       --cpus-per-task="$primary_cpus" \
       --output="$slurm_log_dir/primary-%A_%a.out" \
@@ -93,12 +104,12 @@ case "$command_name" in
       --error="$slurm_log_dir/finalize-%j.err" \
       "$script_dir/job_finalize.sbatch")"
 
-    printf 'stage\tjob_id\ncheck\t%s\nprimary_array\t%s\ndeployment\t%s\nstress_array\t%s\nfinalize\t%s\n' \
-      "$check_job" "$primary_job" "$deployment_job" "$stress_job" "$finalize_job" \
+    printf 'stage\tjob_id\ncheck\t%s\nbenchmark_array\t%s\nprimary_array\t%s\ndeployment\t%s\nstress_array\t%s\nfinalize\t%s\n' \
+      "$check_job" "$benchmark_job" "$primary_job" "$deployment_job" "$stress_job" "$finalize_job" \
       > "$run_dir/slurm_jobs.tsv"
     printf 'Submitted Base V2 run %s\n' "$run_id"
-    printf 'check=%s primary=%s deployment=%s stress=%s finalize=%s\n' \
-      "$check_job" "$primary_job" "$deployment_job" "$stress_job" "$finalize_job"
+    printf 'check=%s benchmark=%s primary=%s deployment=%s stress=%s finalize=%s\n' \
+      "$check_job" "$benchmark_job" "$primary_job" "$deployment_job" "$stress_job" "$finalize_job"
     ;;
 
   status)

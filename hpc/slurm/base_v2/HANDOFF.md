@@ -17,7 +17,7 @@
 3. Do not upload raw GIS or `data/interim/`; formal training needs only the Full50 table, V2 code/config and frozen folds.
 4. Bootstrap the locked R environment if required.
 5. Submit one named full run through `hpc/slurm/base_v2/run.sh`.
-6. Monitor the five-stage dependency chain and do not manually bypass a failed check or task.
+6. Monitor the six-stage dependency chain and do not manually bypass a failed check or task.
 7. Archive the completed folds, validation and run directory; verify SHA-256 before local extraction.
 8. Do not run `--stage release` until the returned scientific report and integrity checks have been reviewed.
 
@@ -25,9 +25,13 @@ Use a new run ID. The earlier `base_v2_full_20260817_r1` run belongs to the supe
 
 ## Expected formal workload
 
+- Methodology benchmark: 45 tasks covering 9 frozen branch designs x 5 folds. Each task fits the frozen Base V1 recipe once for Purged Branch, naive unpurged branch and matched terminal arms (135 fits total, 2,000 trees each, no tuning).
 - Primary: 15 tasks, each 48 x 500-tree coarse, best 16 x 1,000-tree refinement, then a 2,000-tree Outer fit.
 - Deployment: 48 recipes x 5 Purged-Branch folds x 2,000 trees.
 - Stress: 25 fixed-recipe tasks covering terminal, spatial 500/1,000/1,500 km and reference grouped designs.
 - Finalize: aggregate all OOF evidence and fit one Full50 4,000-tree final model on 4,485 rows.
+
+The benchmark is a branch-geometry methodology audit only. It must complete before final reporting, but it never contributes candidates or scores to deployment parameter selection.
+The complete formal chain contains 5,216 RF fits; 135 belong to this benchmark and the original 5,081-fit V2 training path is unchanged.
 
 No smoke training is part of this workflow.

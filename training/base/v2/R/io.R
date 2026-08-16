@@ -238,15 +238,24 @@ v2_primary_task_dir <- function(context, repeat_id, outer_fold) {
   )
 }
 
+v2_benchmark_task_dir <- function(context, design_id, outer_fold) {
+  v2_output_path(
+    context, "validation_dir", "benchmark", as.character(design_id),
+    sprintf("fold_%02d", as.integer(outer_fold))
+  )
+}
+
 v2_stress_task_dir <- function(context, scheme, outer_fold) {
   v2_output_path(context, "validation_dir", "stress", scheme, sprintf("fold_%02d", as.integer(outer_fold)))
 }
 
-v2_task_complete <- function(path, kind = c("primary", "stress")) {
+v2_task_complete <- function(path, kind = c("primary", "benchmark", "stress")) {
   kind <- match.arg(kind)
-  required <- if (kind == "primary") {
+  required <- if (identical(kind, "primary")) {
     c("selected_params.yml", "outer_predictions.csv", "outer_metrics.csv", "task_info.json",
       "coarse_summary.csv", "refinement_summary.csv")
+  } else if (identical(kind, "benchmark")) {
+    c("outer_predictions.csv", "outer_metrics.csv", "task_info.json")
   } else {
     c("outer_predictions.csv", "outer_metrics.csv", "task_info.json")
   }
@@ -255,7 +264,8 @@ v2_task_complete <- function(path, kind = c("primary", "stress")) {
 
 v2_parse_cli <- function(args) {
   result <- list(
-    mode = "full", stage = NULL, task_type = NULL, repeat_id = NULL, scheme = NULL,
+    mode = "full", stage = NULL, task_type = NULL, task_id = NULL, repeat_id = NULL,
+    design_id = NULL, scheme = NULL,
     outer_fold = NULL, run_id = NULL, release = NULL, force = FALSE
   )
   i <- 1L
@@ -281,7 +291,7 @@ v2_parse_cli <- function(args) {
     result[[key]] <- value
     i <- i + 1L
   }
-  for (key in c("repeat_id", "outer_fold")) {
+  for (key in c("task_id", "repeat_id", "outer_fold")) {
     if (!is.null(result[[key]])) result[[key]] <- suppressWarnings(as.integer(result[[key]]))
   }
   result
