@@ -10,6 +10,7 @@ run_id="${2:-}"
 usage() {
   cat <<'EOF'
 Usage:
+  bash hpc/slurm/base_v0/run.sh bootstrap
   bash hpc/slurm/base_v0/run.sh submit [run_id]
   bash hpc/slurm/base_v0/run.sh status [run_id]
   bash hpc/slurm/base_v0/run.sh archive <run_id>
@@ -33,6 +34,17 @@ require_run_id() {
 }
 
 case "$command_name" in
+  bootstrap)
+    bootstrap_log_dir="$repo_root/hpc/transfer"
+    mkdir -p "$bootstrap_log_dir"
+    export RIVER_SR_ROOT="$repo_root"
+    bootstrap_job="$(sbatch --parsable \
+      --output="$bootstrap_log_dir/bootstrap-%j.out" \
+      --error="$bootstrap_log_dir/bootstrap-%j.err" \
+      "$script_dir/job_bootstrap.sbatch")"
+    printf 'Submitted Base V0 environment bootstrap: %s\n' "$bootstrap_job"
+    ;;
+
   submit)
     if [[ -z "$run_id" ]]; then
       run_id="$(date +%Y%m%d_%H%M%S)_full"

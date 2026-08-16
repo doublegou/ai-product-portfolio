@@ -15,4 +15,10 @@ RiverSR 只有这一套项目环境，所有环境相关文件都收在 `env/`�
 Rscript env/bootstrap.R
 ```
 
+Base V0 训练节点只需要先恢复建模所需的最小包集合，但仍写入同一套项目库：
+
+```bash
+Rscript env/bootstrap.R --v0-only
+```
+
 项目脚本会自动调用 `env/activate.R`。不需要根目录 `.Rprofile`，也不依赖 RStudio 工程文件。

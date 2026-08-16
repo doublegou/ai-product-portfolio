@@ -12,6 +12,9 @@ set -euo pipefail
 : "${RIVER_SR_ROOT:?RIVER_SR_ROOT is required}"
 : "${RIVER_SR_RUN_ID:?RIVER_SR_RUN_ID is required}"
 
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
+source /etc/profile
 module purge
 module load R-4.4.3
 cd "$RIVER_SR_ROOT"
