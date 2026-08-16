@@ -1,0 +1,119 @@
+project:
+  id: regional_expert_risk_v1_1
+  status: ready_for_engineering_check
+  purpose: nested_probability_calibration_and_operational_gate_validation
+  upstream: regional_expert_risk_v1
+  forbidden_dependency: regional_expert_risk_v2
+
+input:
+  table: data/processed/training/himalaya_risk_v1.csv
+  v1_branch_map: training/regional_expert/regional_risk_v1/folds/branch_map.csv
+  v1_fold_manifest: training/regional_expert/regional_risk_v1/folds/fold_manifest.json
+  v1_config: training/regional_expert/regional_risk_v1/config/default.yml
+  environment_predictors: training/regional_expert/regional_risk_v1/config/environment_predictors.txt
+  expected_md5:
+    table: 6fc05f714eb2f6fdc402ef0717d5369a
+    v1_branch_map: 19fb84f84b7770bcb918afc010a0ffa9
+    v1_fold_manifest: 4c700d640fae72bf657552572d4bc1d2
+    v1_config: 1adef9744fb7d1b75b7d4f5dd2d7f81e
+    environment_predictors: c80a6509844c61ff9c3683f493e0286e
+
+columns:
+  row_id: row_id
+  site_id: site_id
+  response: sr87_sr86
+  label: high_sr_label
+  regional_x: regional_x_km
+  regional_y: regional_y_km
+
+domain:
+  expected_rows: 372
+  background_upper: 0.72
+  positive_lower: 0.75
+  extreme_lower: 0.80
+  expected_background_rows: 100
+  expected_gray_rows: 192
+  expected_positive_rows: 80
+  expected_extreme_rows: 11
+  expected_branches: 17
+  expected_positive_branches: 14
+  expected_extreme_branches: 4
+
+validation:
+  design: strict_nested_leave_one_regional_branch_out
+  outer_folds: 17
+  inner_folds_per_outer: 16
+  models: 2
+  expected_tasks: 34
+  gam_fits_per_task: 17
+  expected_gam_fits: 578
+  expected_calibrators: 34
+  expected_thresholds: 68
+  expected_outer_oof_rows: 744
+  fit_weight: inverse_sqrt_branch_size_normalized_within_analysis
+  evaluation_weight: inverse_sqrt_frozen_branch_size_normalized_over_full_domain
+
+gam:
+  family: binomial
+  method: REML
+  select: true
+  spatial_basis: tp
+  spatial_k: 15
+  environment_basis: ts
+  environment_k: 4
+  smooth_predictors:
+    - p0__log_UPLAND_SKM
+    - p0__log_CATCH_SKM
+    - p0__log_DIS_AV_CMS
+    - p0__log_DIST_UP_KM
+    - p0__log_DIST_DN_KM
+    - local_geo_age_mean_ma
+    - up_geo_age_mean_ma
+  linear_predictors:
+    - p0__ORD_STRA
+    - p0__up_geo_metamorphic_frac
+    - p0__up_geo_plutonic_frac
+    - p0__up_geo_carbonate_frac
+    - r47__local_geo_metamorphic
+    - r47__local_geo_plutonic
+    - r47__local_geo_carbonate
+
+calibration:
+  method: platt_logistic_recalibration
+  predictor: logit_raw_probability
+  probability_clip: 1.0e-6
+  weighting: branch_sqrt_weight
+  require_positive_slope: true
+
+threshold:
+  weighting: branch_sqrt_weight
+  trigger_rule: calibrated_probability_greater_than_or_equal_to_threshold
+  candidate_rule: unique_calibrated_probabilities_plus_no_trigger_sentinel
+  candidate_rule_status: forward_reconstruction_assumption_historical_source_unavailable
+  tie_break:
+    - recall_desc
+    - precision_desc
+    - threshold_desc
+  operating_points:
+    primary:
+      max_background_fpr: 0.10
+      role: gate_evidence
+    strict:
+      max_background_fpr: 0.05
+      role: diagnostic_only
+
+evidence_targets:
+  primary:
+    max_background_fpr: 0.10
+    min_recall: 0.50
+    min_precision: 0.30
+    min_positive_branch_coverage: 0.50
+    min_extreme_branch_coverage: 0.75
+
+model:
+  probability_clip: 1.0e-15
+
+output:
+  folds_dir: training/regional_expert/regional_risk_v1_1/folds
+  validation_dir: training/regional_expert/regional_risk_v1_1/validation
+  runs_dir: training/regional_expert/regional_risk_v1_1/runs

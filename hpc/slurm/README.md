@@ -8,3 +8,5 @@
 - `base_v0/run.sh archive <run_id>`：生成可下载的完整回传包。
 - `global_high_sr_risk/run.sh submit [run_id]`：提交无训练 check、15 个 Elastic-net 任务、15 个 Probability RF 任务、完整 OOF 聚合和 feasibility 判定依赖链。
 - `high_sr_correction_feasibility/run.sh submit [run_id]`：提交无训练 check、15 个 strict-nested Base 任务、15 个 Elastic Net 与 15 个 residual-RF 任务、完整 repeated OOF 聚合和 STOP/ELIGIBLE 判定依赖链。
+- `regional_risk_v1/run.sh submit [run_id]`：提交17-branch LOBO下的51个GAM任务、34个Elastic Net任务及V1信号可行性汇总。
+- `regional_risk_v1_1/run.sh submit [run_id]`：提交无正式训练check、34个Outer×GAM Nested LOBO任务及calibration/Gate聚合；不读取Regional Risk V2。
