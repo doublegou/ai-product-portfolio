@@ -1,0 +1,7 @@
+task_id,row_id,site_id,regional_branch_id,outer_fold,heldout_branch,observed_sr,high_sr_label,branch_sqrt_weight,model_type,feature_set,model_id,p_high
+85,06e43b930c60616b,06e43b930c60616b,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.716,0,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633
+85,31abde849a33bc78,31abde849a33bc78,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.726,0,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633
+85,72cd69211abfd5e7,72cd69211abfd5e7,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.7162,0,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633
+85,b088323b3d3fe30d,b088323b3d3fe30d,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.721,0,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633
+85,c4d61c38157c9f58,c4d61c38157c9f58,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.7257,0,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633
+85,e816f6b177b5acaa,e816f6b177b5acaa,himalaya_branch_017_4120025450,17,himalaya_branch_017_4120025450,0.76905,1,1.95523520214904,elastic_net,combined,elastic_combined,0.212377734488633

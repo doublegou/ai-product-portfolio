@@ -1,0 +1,17 @@
+feature,training_median,n_missing_outer_train
+regional_x_km,-358.231724038511,0
+regional_y_km,135.661569349032,0
+p0__log_UPLAND_SKM,6.3113717668545,0
+p0__log_CATCH_SKM,2.50634193050807,0
+p0__log_DIS_AV_CMS,2.62002012359517,0
+p0__log_DIST_UP_KM,3.92395157629342,0
+p0__log_DIST_DN_KM,7.72749105664166,0
+p0__ORD_STRA,3,0
+local_geo_age_mean_ma,512.699307025046,0
+up_geo_age_mean_ma,512.699307025046,0
+p0__up_geo_metamorphic_frac,0.452340310479051,0
+p0__up_geo_plutonic_frac,0,0
+p0__up_geo_carbonate_frac,0.00748012639423822,0
+r47__local_geo_metamorphic,0.452340310479051,0
+r47__local_geo_plutonic,0,0
+r47__local_geo_carbonate,0,0
