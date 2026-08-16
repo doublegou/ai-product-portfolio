@@ -23,4 +23,4 @@ task_index="${SLURM_ARRAY_TASK_ID:?SLURM_ARRAY_TASK_ID is required}"
 scheme_index=$((task_index / 5))
 outer_fold=$((task_index % 5 + 1))
 scheme="${schemes[$scheme_index]}"
-Rscript training/base/v1/scripts/run.R --task-type stress --run-id "$RIVER_SR_RUN_ID" --scheme "$scheme" --outer-fold "$outer_fold"
+Rscript training/base/v1/scripts/run.R --task-type stress --run-id "$RIVER_SR_RUN_ID" --scheme "$scheme" --outer-fold "$outer_fold" --force

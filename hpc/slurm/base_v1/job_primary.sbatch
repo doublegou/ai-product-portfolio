@@ -20,4 +20,4 @@ cd "$RIVER_SR_ROOT"
 task_index="${SLURM_ARRAY_TASK_ID:?SLURM_ARRAY_TASK_ID is required}"
 repeat_id=$((task_index / 5 + 1))
 outer_fold=$((task_index % 5 + 1))
-Rscript training/base/v1/scripts/run.R --task-type primary --repeat-id "$repeat_id" --outer-fold "$outer_fold"
+Rscript training/base/v1/scripts/run.R --task-type primary --repeat-id "$repeat_id" --outer-fold "$outer_fold" --force

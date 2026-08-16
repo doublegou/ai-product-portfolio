@@ -18,7 +18,7 @@ Usage:
 Optional environment variables for submit:
   V1_PRIMARY_CPUS     CPUs per Primary task (default: 32)
   V1_PRIMARY_PARALLEL Maximum simultaneous Primary tasks (default: 15)
-  V1_STRESS_CPUS      CPUs per stress task (default: 16)
+  V1_STRESS_CPUS      CPUs per stress task (default: 32)
   V1_STRESS_PARALLEL  Maximum simultaneous stress tasks (default: 20)
   V1_CONTROL_CPUS     CPUs for deployment/final model (default: 32)
 EOF
@@ -53,7 +53,7 @@ case "$command_name" in
     require_run_id
     primary_cpus="${V1_PRIMARY_CPUS:-32}"
     primary_parallel="${V1_PRIMARY_PARALLEL:-15}"
-    stress_cpus="${V1_STRESS_CPUS:-16}"
+    stress_cpus="${V1_STRESS_CPUS:-32}"
     stress_parallel="${V1_STRESS_PARALLEL:-20}"
     control_cpus="${V1_CONTROL_CPUS:-32}"
     run_dir="$repo_root/training/base/v1/runs/$run_id"
