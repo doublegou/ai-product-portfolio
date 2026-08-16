@@ -1,5 +1,7 @@
 # Regional Risk V2
 
+Final status: `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE`. See `RESULTS.md` for the frozen scientific interpretation and provenance.
+
 This project tests whether stronger nonlinear learners and 14 prespecified process features can produce a transferable regional high-Sr Gate.
 
 The experiment is a frozen 2 x 2 comparison: probability RF versus shallow boosting, each with Full50 versus Full50 + Process14. Evaluation uses 17 strict outer Leave-One-Branch-Out folds. Every outer threshold is selected only from exhaustive inner Leave-One-Branch-Out predictions under a weighted 10% background-FPR constraint.
@@ -13,4 +15,4 @@ Rscript training/regional_expert/regional_risk_v2/scripts/run.R --stage prepare 
 Rscript training/regional_expert/regional_risk_v2/scripts/run.R --stage check
 ```
 
-Formal cluster work runs task IDs 1..68, then `aggregate` and `summarize`.
+Formal cluster work completed as run `regional_risk_v2_20260817_r1`: 68/68 tasks, 1,156 fits, 68 thresholds and 1,488 strict Outer OOF predictions. No full-data model or release was created.

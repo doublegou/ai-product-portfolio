@@ -42,6 +42,11 @@ training/global_correction/high_sr_correction_feasibility/runs/*
 training/regional_expert/regional_risk_v1/runs/*
 !training/regional_expert/regional_risk_v1/runs/README.md
 
+# Regional Risk V2 task-level validation is retained in the checked HPC archive
+training/regional_expert/regional_risk_v2/validation/*/fold_*/
+training/regional_expert/regional_risk_v2/runs/*
+!training/regional_expert/regional_risk_v2/runs/README.md
+
 # Approved model bundles are transferred as release artifacts; metadata stays in Git
 training/base/v0/release/model_bundle.rds
 training/base/v1/release/model_bundle.rds
