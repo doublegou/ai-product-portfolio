@@ -1,6 +1,6 @@
 {
   "status": "FROZEN_RESPONSE_BLIND_BRANCH_MAP",
-  "created_at": "2026-08-17T04:48:04+0800",
+  "created_at": "2026-08-17T04:59:13+0800",
   "input": {
     "path": "D:/river_sr/data/processed/training/himalaya_risk_v1.csv",
     "bytes": 523143,
@@ -37,7 +37,7 @@
     "hash_method": "binary_md5"
   },
   "implementation": {
-    "sha256": "d533436bf5f9614ba58145240b4a57409fb69c0f21bf8e9aab320b1171f81bef",
+    "sha256": "e5a684d167ebddd47f9d8641501b73eee6d6f255adafe5d346f8c7ba356d3bde",
     "files": [
       {
         "path": "R/branches.R",
@@ -69,9 +69,9 @@
       },
       {
         "path": "R/gam.R",
-        "bytes": 3053,
-        "modified_at": "2026-08-17T04:34:38+0800",
-        "md5": "ff4f28b493b06c7a3dbaa00908c79979",
+        "bytes": 4154,
+        "modified_at": "2026-08-17T04:58:52+0800",
+        "md5": "7999ef4dc48713d9deb616568c6ffb33",
         "hash_method": "normalized_lf_text_md5"
       },
       {
@@ -125,9 +125,9 @@
       },
       {
         "path": "scripts/04_check_folds.R",
-        "bytes": 2256,
-        "modified_at": "2026-08-17T04:41:46+0800",
-        "md5": "c7ff67ce1f79145bc5eebac3aebd5213",
+        "bytes": 2341,
+        "modified_at": "2026-08-17T04:58:52+0800",
+        "md5": "e3969b3c9caace9589856798fdd628bb",
         "hash_method": "normalized_lf_text_md5"
       },
       {

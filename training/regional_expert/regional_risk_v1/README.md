@@ -21,4 +21,4 @@ Rscript training/regional_expert/regional_risk_v1/scripts/run.R --stage prepare
 Rscript training/regional_expert/regional_risk_v1/scripts/run.R --stage check
 ```
 
-`prepare`只构建folds与task manifest，不训练模型。正式训练由HPC工作流接管。
+`prepare`只构建folds与task manifest，不训练模型。`check`会通过生产函数拟合一个仅存于内存的确定性合成GAM，用于验证`mgcv::gam()`的公式、数据列权重与预测接口；不会写入正式task结果。正式训练由HPC工作流接管。

@@ -14,4 +14,4 @@ bash hpc/slurm/regional_risk_v1/run.sh status regional_risk_v1_YYYYMMDD_r1
 bash hpc/slurm/regional_risk_v1/run.sh archive regional_risk_v1_YYYYMMDD_r1
 ```
 
-集群禁止运行`--stage prepare`。提交前必须已有版本管理中的`himalaya_risk_v1.csv`和完整`folds/`。本项目不产生Gate、校准器、最终模型或release。
+集群禁止运行`--stage prepare`。提交前必须已有版本管理中的`himalaya_risk_v1.csv`和完整`folds/`。`check`会执行一次不落盘的合成GAM接口契约拟合，但不运行任何正式task。本项目不产生Gate、校准器、最终模型或release。

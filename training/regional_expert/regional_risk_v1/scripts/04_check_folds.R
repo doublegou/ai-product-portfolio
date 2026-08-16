@@ -20,12 +20,13 @@ stage_rrisk_check_folds <- function(context) {
   rrisk_assert(inherits(rrisk_gam_formula("spatial_only", context), "formula"), "Spatial GAM formula is invalid.")
   rrisk_assert(inherits(rrisk_gam_formula("environment", context), "formula"), "Environment GAM formula is invalid.")
   rrisk_assert(inherits(rrisk_gam_formula("combined", context), "formula"), "Combined GAM formula is invalid.")
+  rrisk_check_gam_interface(context)
   rrisk_assert(all(frozen$tasks$task_id[1:51] %in% 1:51) && all(frozen$tasks$model_type[1:51] == "gam"), "GAM Slurm task range changed.")
   rrisk_assert(all(frozen$tasks$task_id[52:85] %in% 52:85) && all(frozen$tasks$model_type[52:85] == "elastic_net"), "Elastic Slurm task range changed.")
   rrisk_log(
     "Engineering check passed: ", nrow(frozen$validated$data), " rows, ",
     length(unique(frozen$branches$regional_branch_id)), " exhaustive branches, ", nrow(frozen$tasks),
-    " tasks, 17 grouped Inner designs; no model fitted."
+    " tasks, 17 grouped Inner designs, and one synthetic GAM interface contract; no formal task fitted."
   )
   invisible(frozen)
 }

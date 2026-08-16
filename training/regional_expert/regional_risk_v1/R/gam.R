@@ -36,7 +36,7 @@ rrisk_run_gam <- function(outer_train, outer_test, task, context) {
   fitted <- withCallingHandlers(
     mgcv::gam(
       formula = rrisk_gam_formula(task$feature_set[[1L]], context), data = outer_train,
-      weights = outer_train$.weight, family = stats::binomial(), method = as.character(context$config$gam$method),
+      weights = .weight, family = stats::binomial(), method = as.character(context$config$gam$method),
       select = isTRUE(context$config$gam$select), na.action = stats::na.fail
     ),
     warning = function(w) { warnings <<- c(warnings, conditionMessage(w)); invokeRestart("muffleWarning") }
@@ -53,4 +53,24 @@ rrisk_run_gam <- function(outer_train, outer_test, task, context) {
     stringsAsFactors = FALSE
   )
   list(probability = probability, diagnostics = diagnostics, medians = medians, inner_assignments = NULL, selected = NULL)
+}
+
+rrisk_check_gam_interface <- function(context) {
+  grid <- expand.grid(x_index = seq_len(8L), y_index = seq_len(6L))
+  synthetic <- data.frame(
+    .label = as.integer((grid$x_index + 2L * grid$y_index) %% 5L < 2L),
+    .weight = 0.75 + ((seq_len(nrow(grid)) - 1L) %% 7L) / 10,
+    stringsAsFactors = FALSE
+  )
+  synthetic[[context$config$columns$regional_x]] <- (grid$x_index - mean(grid$x_index)) * 40
+  synthetic[[context$config$columns$regional_y]] <- (grid$y_index - mean(grid$y_index)) * 40
+  task <- data.frame(
+    feature_set = "spatial_only", model_id = "gam_spatial_contract", outer_fold = 0L,
+    stringsAsFactors = FALSE
+  )
+  result <- rrisk_run_gam(synthetic[1:40, , drop = FALSE], synthetic[41:48, , drop = FALSE], task, context)
+  rrisk_assert(length(result$probability) == 8L, "GAM interface contract returned an unexpected prediction count.")
+  rrisk_assert(all(result$probability >= 0 & result$probability <= 1), "GAM interface contract returned invalid probabilities.")
+  rrisk_assert(nrow(result$diagnostics) == 1L, "GAM interface contract did not return diagnostics.")
+  invisible(TRUE)
 }
