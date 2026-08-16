@@ -1,5 +1,7 @@
 # High-Sr Correction Feasibility V1
 
+**Completed: stable residual signal detected, but no correction was safe relative to Raw Base; branch stopped.** See [`RESULTS.md`](RESULTS.md) for the frozen scientific conclusion and provenance.
+
 This is the forward reconstruction of the High-Sr second-layer feasibility experiment. It asks whether the frozen Base V1 prediction plus current Env47/Full50 covariates contain stable residual information on the intentionally privileged Oracle population `observed Sr >= 0.72`.
 
 It is not a deployable gate or correction model. Observed Sr defines the Oracle training/evaluation population and is never a predictor. A successful experiment only makes a future, independent deployable study eligible; this project has no release model.
