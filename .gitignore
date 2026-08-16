@@ -3,27 +3,24 @@
 .RData
 .Ruserdata
 .Rproj.user/
-renv/library/
-renv/staging/
-renv/bootstrap-library/
-environment/profiles/local.override.yml
+env/library/
+env/profiles/local.override.yml
 
 # Codex temporary working files
 .codex_tmp/
 
-# Rebuildable data outputs
-data/interim/*/*
-!data/interim/*/README.md
-data/processed/*/*
-!data/processed/*/README.md
+# Rebuildable data intermediates
+data/interim/*
+!data/interim/README.md
 
-# Runtime artifacts
-**/artifacts/*
-!**/artifacts/README.md
-**/logs/
-**/results/tmp/
+# Downloaded raw feature sources
+data/raw/features/**
+!data/raw/features/README.md
 
-# Released model binaries are local/HPC artifacts; registry metadata is tracked.
-training/releases/**/*.rds
-training/releases/**/*.qs
-training/releases/**/*.bin
+# Base V0 run archive is retained locally/HPC and synchronized outside Git
+training/base/v0/runs/*
+!training/base/v0/runs/README.md
+
+# HPC return bundles are transport files, not project sources
+hpc/transfer/*
+!hpc/transfer/README.md

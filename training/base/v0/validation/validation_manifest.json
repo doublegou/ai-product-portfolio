@@ -1,0 +1,8 @@
+{
+  "status": "prepared",
+  "expected_tasks": 20,
+  "schemes": ["spatial_500", "spatial_1000", "spatial_1500", "reference"],
+  "inner_trees": 500,
+  "outer_trees": 1500,
+  "fold_input_md5": "c5149c2740e4df517899a71524a03c94"
+}

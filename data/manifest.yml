@@ -2,8 +2,9 @@ version: 1
 
 datasets:
   observation:
+    version: v1
     state: raw
-    path: data/raw/observation.csv
+    path: data/raw/observation/observation_v1.csv
     format: csv
     encoding: utf-8
     rows: 6283
@@ -15,3 +16,32 @@ datasets:
       range: A1:U6284
       sha256: c52e6601f8475096fd7c568e6698ceb09b8e0bdb1dd369bf1681f58f4b658f3f
     notes: Strict dissolved river/stream observation snapshot exported without transformation.
+  base_predictors:
+    version: v1
+    state: reference_frozen_snapshot
+    path: reference/historical_data/snapshots/base_predictors_v1.csv
+    format: csv
+    encoding: utf-8
+    rows: 4527
+    columns: 99
+    p0_predictors: 28
+    p0_complete_rows: 4485
+    sha256: 109d1ac32b31682986c2ad52f3766194ea63df3e7f551d57065bf749c62657ce
+    source:
+      file: reference/historical_data/snapshots/observed_4485_with_predictors.csv
+      sha256: 28ee2c0a0397114446d5d2230140acda08a1c2a0141ddcc478dea199722b732c
+    notes: Frozen spatial-predictor extraction supplied with the legacy 4485 table. The 42 candidate sites absent from that table are retained with missing predictors so the legacy complete-P0 rule remains explicit.
+  sr_full50:
+    version: v1
+    state: processed_provisional
+    path: data/processed/training/sr_full50_v1.csv
+    format: csv
+    encoding: utf-8
+    rows: 4485
+    columns: 121
+    sha256: 2d676ba3c1707998b17c07bdae146fe4b27445d64679b0cb947c1e01bbb911b6
+    built_by: reference_alignment_pending_data_pipeline_rebuild
+    inputs:
+      - observation:v1
+      - base_predictors:v1
+    notes: Provisional legacy-aligned training table. It keeps the final name and location, but must be regenerated from data/raw/features before it is treated as the new Full50 build.

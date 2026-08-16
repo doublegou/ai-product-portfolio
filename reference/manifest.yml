@@ -16,7 +16,7 @@ files:
 
   - path: reference/historical_data/source/world_river_water_sr_solute.xlsx
     original_name: world_river_water_sr_solute.xlsx
-    role: Original workbook used to verify data/raw/observation.csv
+    role: Original workbook used to verify data/raw/observation/observation_v1.csv
     bytes: 536224
     sha256: c52e6601f8475096fd7c568e6698ceb09b8e0bdb1dd369bf1681f58f4b658f3f
 
@@ -25,6 +25,12 @@ files:
     role: Historical 4485-site modelling snapshot
     bytes: 5764063
     sha256: 28ee2c0a0397114446d5d2230140acda08a1c2a0141ddcc478dea199722b732c
+
+  - path: reference/historical_data/snapshots/base_predictors_v1.csv
+    original_name: derived from river_sr_observed_4485_with_current_52_predictors.csv
+    role: Historical 4527-site predictor alignment snapshot; comparison only, never a new-pipeline input
+    bytes: 4804944
+    sha256: 109d1ac32b31682986c2ad52f3766194ea63df3e7f551d57065bf749c62657ce
 
   - path: reference/historical_data/snapshots/base_model_v2_5374_intermediate.csv
     original_name: base_model_v2_data.csv

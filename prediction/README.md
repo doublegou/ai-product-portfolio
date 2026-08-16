@@ -1,10 +1,5 @@
 # Prediction
 
-全球预测入口位于 `global_prediction/run.R`。
+本层最终负责使用冻结模型和全球预测变量生成全球 Sr 预测。
 
-Prediction 只消费：
-
-- `data/processed/global_covariates`
-- `training/releases/registry.yml` 中登记的稳定模型
-
-Prediction 不调用训练项目临时 artifacts，也不读取历史 reference。
+当前阶段暂不建立具体预测项目；待训练链路完成后再设计全球预测的数据边界和独立入口。
