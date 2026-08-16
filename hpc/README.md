@@ -30,4 +30,4 @@ SSH 主要承担登录、同步和提交任务。训练本身由 Slurm 在计算
 - 项目空间、scratch 空间、配额和最长运行时间。
 - 数据同步政策，以及计算节点能否访问项目数据目录。
 
-统计配置仍由各项目管理；`hpc/` 只负责环境初始化、资源申请、提交、监控和结果回收。Base V0 的入口是 `hpc/slurm/base_v0/run.sh`，Base V1 的入口是 `hpc/slurm/base_v1/run.sh`。Global High-Sr Risk V1 的入口是 `hpc/slurm/global_high_sr_risk/run.sh`。High-Sr Correction Feasibility 的入口是 `hpc/slurm/high_sr_correction_feasibility/run.sh`；它编排 15 个 strict-nested Base tasks、15 个 Elastic Net tasks、15 个 residual-RF tasks、repeated OOF 聚合和双层 feasibility 判定，不拟合或发布最终模型。
+统计配置仍由各项目管理；`hpc/` 只负责环境初始化、资源申请、提交、监控和结果回收。Base V0 的入口是 `hpc/slurm/base_v0/run.sh`，Base V1 的入口是 `hpc/slurm/base_v1/run.sh`，Base V2 的入口是 `hpc/slurm/base_v2/run.sh`。Global High-Sr Risk V1 的入口是 `hpc/slurm/global_high_sr_risk/run.sh`。High-Sr Correction Feasibility 的入口是 `hpc/slurm/high_sr_correction_feasibility/run.sh`；它编排 15 个 strict-nested Base tasks、15 个 Elastic Net tasks、15 个 residual-RF tasks、repeated OOF 聚合和双层 feasibility 判定，不拟合或发布最终模型。

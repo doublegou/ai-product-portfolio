@@ -17,9 +17,9 @@ RiverSR 用于重建河流水体锶同位素模型的训练、修正、区域专
 ## 当前阶段
 
 - Full50 数据管线、Base V0 和 Base V1 已完成并冻结。
-- Global High-Sr Risk V1 已具备独立的 feasibility 训练流程。
-- High-Sr Correction Feasibility 已冻结 strict nested Oracle 方案与 45-task HPC 流程，等待超算正式运行。
-- 后续 Base 版本、区域专家与全球预测按复现顺序继续推进。
+- Global High-Sr Risk V1 与 High-Sr Correction Feasibility 已完成，结论均为停止继续开发对应 high-Sr 二层模型。
+- Base V2 已完成 response-blind branch topology、Purged-Branch folds 和 Full50 RF/HPC 工程准备，正式训练尚未启动。
+- 后续区域专家与全球预测按复现顺序继续推进。
 
 ## 复现顺序
 

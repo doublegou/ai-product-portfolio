@@ -1,0 +1,278 @@
+{
+  "status": "FOLDS_FROZEN_BEFORE_RESPONSE_EVALUATION",
+  "method": "Full50 ordinary RF with response-blind forward-reconstructed Purged-Branch CV",
+  "input": {
+    "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
+    "bytes": 5640517,
+    "modified_at": "2026-08-16T07:29:56+0800",
+    "md5": "92100a834e0836527e6921d974f222ca",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "config": {
+    "path": "D:/river_sr/training/base/v2/config/default.yml",
+    "bytes": 2996,
+    "modified_at": "2026-08-17T00:25:47+0800",
+    "md5": "5b37cba6d3bc86a35b943ab6a92bd8c2",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "implementation": {
+    "sha256": "5e7b1bf4291d62bb46ab03e2e605232c01ed4f3fac14e3c365d212d788931d41",
+    "files": [
+      {
+        "path": "R/folds.R",
+        "bytes": 18831,
+        "modified_at": "2026-08-17T00:47:26+0800",
+        "md5": "b09efc14fdf321fc7e504544671a4255",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/imputation.R",
+        "bytes": 1016,
+        "modified_at": "2026-08-17T00:24:42+0800",
+        "md5": "0311d1ffa507914064bffc0b7a68f8e2",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/io.R",
+        "bytes": 10479,
+        "modified_at": "2026-08-17T00:47:26+0800",
+        "md5": "65f2a10365fefbfa32e017cdce369122",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/metrics.R",
+        "bytes": 4010,
+        "modified_at": "2026-08-17T00:33:00+0800",
+        "md5": "af84b6b47c7a481809cefd04f0e882a7",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/rf.R",
+        "bytes": 7723,
+        "modified_at": "2026-08-17T00:33:09+0800",
+        "md5": "602a4a49d0f621c7dceab661a7747337",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/topology.R",
+        "bytes": 18329,
+        "modified_at": "2026-08-17T00:41:24+0800",
+        "md5": "bec56de42216c841a11c954260882987",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/validation.R",
+        "bytes": 6118,
+        "modified_at": "2026-08-17T00:47:26+0800",
+        "md5": "52ac46371312cb15f5badedbf2ea6d39",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/01_validate_input.R",
+        "bytes": 296,
+        "modified_at": "2026-08-17T00:33:56+0800",
+        "md5": "7049b3098d0ee232dd6353f01864599e",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/02_prepare_topology.R",
+        "bytes": 263,
+        "modified_at": "2026-08-17T00:33:56+0800",
+        "md5": "e26405122aaf5945cc0905ec6e023b70",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/03_check_folds.R",
+        "bytes": 3080,
+        "modified_at": "2026-08-17T00:33:56+0800",
+        "md5": "2d919bbe5e0acf0c2ec8c8fa7e438d26",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/04_run_primary.R",
+        "bytes": 9997,
+        "modified_at": "2026-08-17T00:36:10+0800",
+        "md5": "1951b7c99d039a84b0b07a22caa4e081",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/05_deployment_tuning.R",
+        "bytes": 5385,
+        "modified_at": "2026-08-17T00:36:32+0800",
+        "md5": "7b79a053e691d6fb3fd8462306d35425",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/06_run_stress.R",
+        "bytes": 6125,
+        "modified_at": "2026-08-17T00:36:43+0800",
+        "md5": "75cbe0b2c566bb9cf7c13f97bd1bff53",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/07_fit_final_model.R",
+        "bytes": 3082,
+        "modified_at": "2026-08-17T00:36:55+0800",
+        "md5": "bd521db9d307623c854e5ffe0b6f96ff",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/08_summarize_run.R",
+        "bytes": 12063,
+        "modified_at": "2026-08-17T00:40:33+0800",
+        "md5": "935f89a71fec76f685be49642d963526",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/run.R",
+        "bytes": 3062,
+        "modified_at": "2026-08-17T00:41:57+0800",
+        "md5": "05bafd12cd97b71c6d666309d8b13554",
+        "hash_method": "normalized_lf_text_md5"
+      }
+    ]
+  },
+  "predictors": ["p0__sp_x", "p0__sp_y", "p0__sp_z", "p0__log_DIS_AV_CMS", "p0__log_UPLAND_SKM", "p0__log_CATCH_SKM", "p0__log_LENGTH_KM", "p0__log_DIST_DN_KM", "p0__log_DIST_UP_KM", "p0__ORD_STRA", "p0__ORD_CLAS", "p0__ORD_FLOW", "p0__up_geo_unconsolidated_frac", "p0__up_geo_siliciclastic_frac", "p0__up_geo_mixed_sedimentary_frac", "p0__up_geo_carbonate_frac", "p0__up_geo_metamorphic_frac", "p0__up_geo_plutonic_frac", "p0__up_geo_volcanic_frac", "p0__up_geo_evaporite_frac", "p0__up_bio1_C", "p0__up_bio4_C_sd", "p0__up_bio12_mm", "p0__up_bio15_cv", "p0__up_ai_ratio", "p0__up_et0_mm", "p0__up_elevation_m", "p0__up_soil_clay_pct_0_30cm", "r47__local_geo_carbonate", "r47__local_geo_evaporite", "r47__local_geo_metamorphic", "r47__local_geo_plutonic", "r47__local_geo_siliciclastic", "r47__local_geo_unconsolidated", "r47__local_geo_volcanic", "local_geo_age_max_oldest_ma", "local_geo_age_mean_ma", "local_geo_age_sd_ma", "local_geo_frac_midpoint_gt_1000", "local_geo_frac_midpoint_gt_2000", "up_geo_age_max_oldest_ma", "up_geo_age_mean_ma", "up_geo_age_sd_ma", "up_geo_frac_midpoint_gt_1000", "up_geo_frac_midpoint_gt_2000", "m1a__lith_entropy_norm", "p1r__local_soil_clay_pct_0_30cm", "p1r__local_soil_pH_0_30cm", "p1r__up_soil_pH_0_30cm", "p1r__local_elevation_m"],
+  "topology": {
+    "selected_scale": "primary",
+    "n_primary_branches": 243,
+    "n_primary_eligible_rows": 2646,
+    "selection_rule": "minimum_relative_anchor_distance",
+    "response_used": false,
+    "prepare_manifest_sha256": "2fe19f1aed5b92fd291a4d930c5bfd2da2614dcc592dda22df055f1b6d2af173",
+    "scale_diagnostics": [
+      {
+        "scale": "primary",
+        "entry_pfaf_prefix_digits": 6,
+        "minimum_station_support": 3,
+        "n_candidate_groups": 683,
+        "n_branches": 243,
+        "n_eligible_rows": 2646,
+        "branch_size_min": 3,
+        "branch_size_median": 6,
+        "branch_size_mean": 10.8889,
+        "branch_size_p95": 30.9,
+        "branch_size_max": 322,
+        "relative_branch_distance": 0.1096,
+        "relative_row_distance": 0.0304,
+        "anchor_distance": 0.14,
+        "selected_primary": true,
+        "_row": "primary"
+      },
+      {
+        "scale": "large",
+        "entry_pfaf_prefix_digits": 5,
+        "minimum_station_support": 4,
+        "n_candidate_groups": 541,
+        "n_branches": 174,
+        "n_eligible_rows": 2649,
+        "branch_size_min": 4,
+        "branch_size_median": 8,
+        "branch_size_mean": 15.2241,
+        "branch_size_p95": 41,
+        "branch_size_max": 322,
+        "relative_branch_distance": 0.2055,
+        "relative_row_distance": 0.0315,
+        "anchor_distance": 0.237,
+        "selected_primary": false,
+        "_row": "large"
+      },
+      {
+        "scale": "small",
+        "entry_pfaf_prefix_digits": 7,
+        "minimum_station_support": 2,
+        "n_candidate_groups": 851,
+        "n_branches": 390,
+        "n_eligible_rows": 2749,
+        "branch_size_min": 2,
+        "branch_size_median": 3,
+        "branch_size_mean": 7.0487,
+        "branch_size_p95": 23.55,
+        "branch_size_max": 322,
+        "relative_branch_distance": 0.7808,
+        "relative_row_distance": 0.0705,
+        "anchor_distance": 0.8513,
+        "selected_primary": false,
+        "_row": "small"
+      }
+    ]
+  },
+  "primary": {
+    "repeats": 3,
+    "outer_folds": 5,
+    "inner_folds": 5,
+    "expected_tasks": 15,
+    "assessment_range": [528, 530],
+    "downstream_purge_range": [134, 227]
+  },
+  "deployment": {
+    "folds": 5,
+    "candidates": 48,
+    "role": "parameter selection only; not an unbiased benchmark"
+  },
+  "stress": {
+    "schemes": ["terminal", "spatial_500", "spatial_1000", "spatial_1500", "reference"],
+    "outer_folds": 5,
+    "expected_tasks": 25,
+    "retuning": false
+  },
+  "fold_files": {
+    "branch_catalog": {
+      "path": "training/base/v2/folds/branch_scale_membership.csv",
+      "bytes": 1947524,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "aecd270843a55b69eb39a9b9f850c605",
+      "sha256": "636a25da761cab7a5a1cc775c3c010bfbae6aa4e242e608f16bc6695bbd4122c",
+      "hash_method": "normalized_lf_text"
+    },
+    "branch_relations": {
+      "path": "training/base/v2/folds/branch_relations.csv",
+      "bytes": 61,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "31a47f5b59683d751bf22a95cf9cbdc9",
+      "sha256": "c4695eeb0580604e78127cdd0318fb42e4f3d004d809709a1626fc8db7415a3e",
+      "hash_method": "normalized_lf_text"
+    },
+    "primary_outer": {
+      "path": "training/base/v2/folds/primary_outer_assignments.csv",
+      "bytes": 2947796,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "2a0550d43291c82032edaccd894e51bd",
+      "sha256": "e35d4ec06929f7b3f5e4e7f95e4f2bf2ead868f8d4d93b11b6ef66076dee53a6",
+      "hash_method": "normalized_lf_text"
+    },
+    "primary_inner": {
+      "path": "training/base/v2/folds/primary_inner_assignments.csv",
+      "bytes": 12753246,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "660540333d4d431e7db1bcb6dab68fa0",
+      "sha256": "73d24abab22ce6d72bdfb9a6a8040921b1f1fceb16e6a2ca1ed9b13678770165",
+      "hash_method": "normalized_lf_text"
+    },
+    "deployment": {
+      "path": "training/base/v2/folds/deployment_assignments.csv",
+      "bytes": 937740,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "afb9126aa782b4355b9a8b36e21bc6ed",
+      "sha256": "c33d04fa6818e4e438f9455eee264494a92c8249d6512f73ef272ebaf29c71d4",
+      "hash_method": "normalized_lf_text"
+    },
+    "stress": {
+      "path": "training/base/v2/folds/stress_assignments.csv",
+      "bytes": 1099127,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "50a9fb2c34ae183e4a8768b7eca3900e",
+      "sha256": "8c72ac091312829a9dc25e302d036e978a44e64fc0e5ffb3e50ab5688674c123",
+      "hash_method": "normalized_lf_text"
+    },
+    "diagnostics": {
+      "path": "training/base/v2/folds/fold_diagnostics.csv",
+      "bytes": 5790,
+      "modified_at": "2026-08-17T00:48:27+0800",
+      "md5": "f33a9513870d266b1bd2fbda621165e8",
+      "sha256": "28dbfe6a5b9a973d40f398642eb102ce920cd1f724f7d767bd868f9358749a68",
+      "hash_method": "normalized_lf_text"
+    }
+  },
+  "prepared_at": "2026-08-17T00:48:28+0800"
+}

@@ -8,6 +8,8 @@
 
 当前管线按用途与数据集版本分层：`training/sr_full50_v1/` 负责构建 Base V0 使用的 Full50 训练数据。
 
+Base V2 不新增训练表。HydroBASINS L12 由 `raw_features/` 登记获取；仅针对 4,485 个 Full50 站点生成的 reach/L12/branch 拓扑属于可重建 `data/interim/` 与 `training/base/v2/folds/`，不写入 `data/processed/`。
+
 计划中的后续项目为：
 
 - `supplement_observations`

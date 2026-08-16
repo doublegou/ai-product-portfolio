@@ -54,6 +54,54 @@ sources:
     path: hydrography/hydrobasins_l6/hybas_si_lev06_v1c.zip
     extract_to: hydrography/hydrobasins_l6/si
 
+  # HydroBASINS level 12 supports the Base V2 branch-fold reconstruction.
+  # It is validation topology only and is never added to the Full50 predictors.
+  - id: hydrobasins_l12_af
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_af_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_af_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/af
+  - id: hydrobasins_l12_ar
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_ar_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_ar_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/ar
+  - id: hydrobasins_l12_as
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_as_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_as_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/as
+  - id: hydrobasins_l12_au
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_au_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_au_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/au
+  - id: hydrobasins_l12_eu
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_eu_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_eu_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/eu
+  - id: hydrobasins_l12_gr
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_gr_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_gr_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/gr
+  - id: hydrobasins_l12_na
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_na_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_na_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/na
+  - id: hydrobasins_l12_sa
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_sa_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_sa_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/sa
+  - id: hydrobasins_l12_si
+    group: hydrography
+    url: https://data.hydrosheds.org/file/hydrobasins/standard/hybas_si_lev12_v1c.zip
+    path: hydrography/hydrobasins_l12/hybas_si_lev12_v1c.zip
+    extract_to: hydrography/hydrobasins_l12/si
+
   - id: glim_v1_0p5deg
     group: geology
     url: https://epic.awi.de/31092/1/hartmann-moosdorf_2012.zip
