@@ -27,7 +27,8 @@ if (!is.null(cli$stage) && identical(cli$stage, "check")) {
   frozen <- corr_assert_frozen_current(context)
   corr_assert(nrow(frozen$base_tasks) == 15L && nrow(frozen$correction_tasks) == 30L, "Engineering check expected 45 formal tasks.")
   corr_assert(nrow(frozen$base_fit_plan) == 240L, "Engineering check expected 240 canonical Base fits.")
-  corr_log("Engineering check passed: 4,485 rows, 355 groups, 671 Oracle rows, 15 Base tasks, 30 correction tasks, 240 canonical Base fits.")
+  corr_check_elastic_design_contract(context)
+  corr_log("Engineering check passed: 4,485 rows, 355 groups, 671 Oracle rows, 15 Base tasks, 30 correction tasks, 240 canonical Base fits, Elastic single-predictor design contract.")
   quit(save = "no", status = 0L)
 }
 

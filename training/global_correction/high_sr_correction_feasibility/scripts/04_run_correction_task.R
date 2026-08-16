@@ -64,6 +64,9 @@ stage_corr_run_correction_task <- function(context, correction_task_id, force = 
     selected$model <- model; selected$feature_set <- feature_set
     if (model == "elastic_net") {
       selected$outer_lambda_max <- fitted$lambda_max; selected$outer_lambda <- fitted$lambda
+      selected$outer_glmnet_padding_added <- fitted$glmnet_padding_added
+      selected$outer_glmnet_design_columns <- fitted$glmnet_design_columns
+      selected$outer_glmnet_excluded_columns <- fitted$glmnet_excluded_columns
     } else {
       selected$outer_seed <- fitted$seed
     }

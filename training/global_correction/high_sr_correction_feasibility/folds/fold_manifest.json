@@ -1,19 +1,19 @@
 {
   "status": "frozen",
-  "prepared_at": "2026-08-16T19:38:53+0800",
+  "prepared_at": "2026-08-16T22:30:05+0800",
   "design": "three repeated grouped five-fold Outer evaluations with strict nested correction selection",
   "base_tasks": 15,
   "correction_tasks": 30,
   "unique_base_fits_per_outer": 16,
   "config": {
     "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/config/default.yml",
-    "bytes": 3212,
-    "md5": "3fcca7e82faa0a9f8335e5c02876eab5",
+    "bytes": 3348,
+    "md5": "3bb1df5dc08742193c03d3789527b2b2",
     "hash_method": "normalized_lf_text_md5"
   },
   "implementation": {
     "file_count": 15,
-    "md5": "a53fdf0b0d5417b458278d40158c1478",
+    "md5": "25c7a205728e7bfa258c5b10fbb46ede",
     "hash_method": "ordered_relative_path_and_normalized_lf_content_md5"
   },
   "inputs": {

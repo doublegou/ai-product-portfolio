@@ -69,6 +69,9 @@ elastic_net:
   intercept: true
   standardize_in_glmnet: false
   zero_sd_tolerance: 1.0e-12
+  minimum_glmnet_columns: 2
+  single_predictor_policy: append_zero_dummy_and_explicitly_exclude
+  zero_dummy_column: .glmnet_zero_dummy
 
 residual_rf:
   mtry_rule: round_sqrt_quarter_half_clamp_unique

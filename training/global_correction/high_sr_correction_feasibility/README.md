@@ -27,6 +27,8 @@ final_prediction = base_prediction + correction
 
 There is no upper clipping: `87Sr/86Sr` is not a probability and the frozen observations extend above 1.
 
+`glmnet` requires a design matrix with at least two columns. The scientific BasePred-only Elastic Net remains a one-predictor model: after training-only preprocessing, the implementation appends an identically zero `.glmnet_zero_dummy` column and passes that column through `exclude`, forcing its coefficient out of both the pilot and explicit lambda fits. The dummy is absent from predictor manifests, preprocessing summaries and active-coefficient counts. `check` verifies this matrix/exclusion contract without fitting a model.
+
 The historical residual-signal criterion is preserved: candidate group-macro MAE must improve by at least 5% over the same-family BasePred-only model in at least two of three repeats, with positive mean improvement. A separate pre-frozen promotion guard requires the same candidate to be no worse than raw Base group-macro MAE in at least two repeats and to have positive mean raw-Base improvement. Station and tail metrics are diagnostic only.
 
 ## Engineering-only preparation
