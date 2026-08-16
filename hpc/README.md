@@ -30,4 +30,4 @@ SSH 主要承担登录、同步和提交任务。训练本身由 Slurm 在计算
 - 项目空间、scratch 空间、配额和最长运行时间。
 - 数据同步政策，以及计算节点能否访问项目数据目录。
 
-统计配置仍由各项目管理；`hpc/` 只负责环境初始化、资源申请、提交、监控和结果回收。Base V0 的入口是 `hpc/slurm/base_v0/run.sh`。
+统计配置仍由各项目管理；`hpc/` 只负责环境初始化、资源申请、提交、监控和结果回收。Base V0 的入口是 `hpc/slurm/base_v0/run.sh`，Base V1 的入口是 `hpc/slurm/base_v1/run.sh`。V1 跳过本地/集群 smoke RF；提交链只做无训练的工程 check，然后直接运行 15 个 Primary 任务、deployment tuning、20 个固定配方 stress 任务和 final。

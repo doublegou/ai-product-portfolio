@@ -22,6 +22,14 @@ data/raw/features/**
 training/base/v0/runs/*
 !training/base/v0/runs/README.md
 
+# Base V1 run archive is retained locally/HPC and synchronized outside Git
+training/base/v1/runs/*
+!training/base/v1/runs/README.md
+
+# Approved model bundles are transferred as release artifacts; metadata stays in Git
+training/base/v0/release/model_bundle.rds
+training/base/v1/release/model_bundle.rds
+
 # HPC return bundles are transport files, not project sources
 hpc/transfer/*
 !hpc/transfer/README.md

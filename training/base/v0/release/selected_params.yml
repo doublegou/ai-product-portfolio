@@ -1,0 +1,9 @@
+mtry: 7
+min_node_size: 5
+sample_fraction: 1.0
+n_tasks_supporting: 7
+mean_selected_inner_rmse: 0.0151368
+source_tasks: 15
+excluded_scheme: reference
+selection_order: n_tasks desc, mean_selected_inner_rmse asc, mtry asc, min_node_size
+  desc, sample_fraction asc
