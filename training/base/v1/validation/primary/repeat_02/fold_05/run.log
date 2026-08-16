@@ -1,0 +1,3 @@
+[2026-08-16 16:24:35] Primary task  10 : repeat  2  fold  5  coarse 48-candidate search.
+[2026-08-16 16:26:59] Primary task  10 : refinement of the best  16  coarse recipes.
+[2026-08-16 16:28:13] Primary task  10  complete: RMSE= 0.008613145 .

@@ -1,0 +1,15 @@
+mtry: 12
+min_node_size: 5
+sample_fraction: 1.0
+replace: no
+recipe_md5: 7bf3d9aefe6fa218071ddd3c426eb02a
+deployment_candidate_id: 1
+deployment_pooled_rmse: 0.0180488
+deployment_pooled_mae: 0.0060732
+deployment_pooled_r2: 0.0593737
+deployment_pooled_bias: -0.0014041
+source_outer_winners: 15
+unique_deployment_candidates: 6
+selection_role: full-data recipe selection only; not an unbiased performance estimate
+selection_order: pooled_rmse_asc_mae_asc_abs_bias_asc_r2_desc
+fold_input_md5: 92100a834e0836527e6921d974f222ca

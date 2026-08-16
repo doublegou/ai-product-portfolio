@@ -137,7 +137,7 @@ v1_log <- function(...) {
   path <- getOption("river_sr.v1.log_file", NULL)
   if (!is.null(path)) {
     dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE)
-    cat(line, "\n", file = path, append = TRUE)
+    cat(line, "\n", sep = "", file = path, append = TRUE)
   }
   invisible(line)
 }

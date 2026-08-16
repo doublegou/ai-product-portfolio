@@ -1,0 +1,17 @@
+candidate_id,grid_id,mtry,min_node_size,sample_fraction,replace
+1,17,12,5,1,FALSE
+2,5,7,5,1,FALSE
+3,3,7,5,0.7,FALSE
+4,6,7,5,1,TRUE
+5,29,25,5,1,FALSE
+6,27,25,5,0.7,FALSE
+7,9,7,15,0.7,FALSE
+8,11,7,15,1,FALSE
+9,42,38,5,1,TRUE
+10,15,12,5,0.7,FALSE
+11,18,12,5,1,TRUE
+12,23,12,15,1,FALSE
+13,4,7,5,0.7,TRUE
+14,30,25,5,1,TRUE
+15,12,7,15,1,TRUE
+16,16,12,5,0.7,TRUE
