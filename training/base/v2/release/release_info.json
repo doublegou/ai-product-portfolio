@@ -1,0 +1,95 @@
+{
+  "status": "frozen",
+  "source_run": "base_v2_full_20260817_r2",
+  "released_at": "2026-08-17T03:45:20+0800",
+  "artifacts": [
+    {
+      "path": "training/base/v2/release/benchmark_pairwise_comparison.csv",
+      "bytes": 6747,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "3bd41d2a5950f77a3f775bca17582cf0",
+      "sha256": "d20a19532838a266aa5ca32dec47001af418a6207aef75eb8c2432b9a45b1197",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/config_used.yml",
+      "bytes": 3932,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "e2530e875f86f0d10afe1db028f34d01",
+      "sha256": "1fa362c454067e2797b3b4e9bc1d26692aca53bb4452e8df86d8afa25d5af92c",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/fold_manifest.json",
+      "bytes": 17018,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "22d36587f7f03899dccc24b87f9bf6bc",
+      "sha256": "1d62e9df4ffe5be374a281bb49b1ba0a1b53d694bde0a37920a01116b3de1158",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/full50_predictors.txt",
+      "bytes": 1107,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "ac1b24b9acefe6d6ad9932b028b367d2",
+      "sha256": "b419c0ebac5ee3f58036936f75441b62fc1a4e2ce48e21a8142d1ae49854dbed",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/model_bundle.rds",
+      "bytes": 121614793,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "30380f365119bf5881c8825b21f8fafc",
+      "sha256": "e42f1a595d54700dd70d0eac2bf506e8c23f7cf66859fcf21ae02275e6a72219",
+      "hash_method": "raw_bytes"
+    },
+    {
+      "path": "training/base/v2/release/primary_metrics.csv",
+      "bytes": 1358,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "a741a16dea67361463abcaf700164b58",
+      "sha256": "ced9c57a1144ec834f52220d5bc4e77d4dfdfeb2ca781ced2959e9e604b549a3",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/scientific_conclusion.md",
+      "bytes": 1735,
+      "modified_at": "2026-08-17T03:45:14+0800",
+      "md5": "48a561811cba0ade26a5d8b2a608608e",
+      "sha256": "71d572092f6475e970c42ba02568b2f1ebca5607a06f98beeabff6ca74e3dcbd",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/selected_params.yml",
+      "bytes": 582,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "39e51d1215b626337a63dc66b44a6828",
+      "sha256": "1254fccfc97e999987d2a536544ecc49507e0ffcaaa5d1f5123977e5f373ebae",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/training_medians.csv",
+      "bytes": 1766,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "877f7e310f415b94290553db72d7f002",
+      "sha256": "7cf8d05edc7483f587e50298a46e2ba3047ab6706028d1b218071e06d2c4f80f",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/training_rows.csv",
+      "bytes": 156991,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "a4dc0254330f0c7613bdea06469c6244",
+      "sha256": "5aa15f0a57edd6d208527bda43d2714b72aae1aca375b9192cd1ccae8b71b95d",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v2/release/validation_summary.csv",
+      "bytes": 1668,
+      "modified_at": "2026-08-17T03:45:20+0800",
+      "md5": "08c6f879da5dc11e976d480417c47cf3",
+      "sha256": "3177328266e190b6712b3f3174d82a1e7a99e3a41026f812005ab4aabeb3c313",
+      "hash_method": "normalized_lf_text"
+    }
+  ]
+}
