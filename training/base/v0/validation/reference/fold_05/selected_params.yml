@@ -1,0 +1,11 @@
+task_id: 20
+scheme: reference
+outer_fold: 5
+mtry: 7
+min_node_size: 15
+sample_fraction: 0.7
+mean_rmse: 0.0153644
+mean_mae: 0.0056706
+mean_r2: 0.0907187
+selection_order: mean_rmse asc, mean_mae asc, mean_r2 desc, mtry asc, min_node_size
+  asc, sample_fraction asc

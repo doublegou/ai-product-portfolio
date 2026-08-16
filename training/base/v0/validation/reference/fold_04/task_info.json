@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "mode": "full",
+  "task_id": 19,
+  "scheme": "reference",
+  "outer_fold": 4,
+  "n_outer_train": 3588,
+  "n_outer_test": 897,
+  "inner_trees": 500,
+  "outer_trees": 1500,
+  "seed": 559999,
+  "completed_at": "2026-08-16T08:59:12+0800"
+}

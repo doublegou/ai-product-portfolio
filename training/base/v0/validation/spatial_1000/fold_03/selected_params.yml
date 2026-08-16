@@ -1,0 +1,11 @@
+task_id: 8
+scheme: spatial_1000
+outer_fold: 3
+mtry: 7
+min_node_size: 5
+sample_fraction: 1.0
+mean_rmse: 0.0175413
+mean_mae: 0.007142
+mean_r2: 0.0875074
+selection_order: mean_rmse asc, mean_mae asc, mean_r2 desc, mtry asc, min_node_size
+  asc, sample_fraction asc
