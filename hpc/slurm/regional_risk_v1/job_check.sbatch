@@ -16,4 +16,4 @@ unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 module purge; module load R-4.4.3
 unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 cd "$RIVER_SR_ROOT"
-Rscript training/regional_expert/risk_v1/scripts/run.R --stage check
+Rscript training/regional_expert/regional_risk_v1/scripts/run.R --stage check

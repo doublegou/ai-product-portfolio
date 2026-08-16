@@ -17,4 +17,4 @@ module purge; module load R-4.4.3
 unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 cd "$RIVER_SR_ROOT"
 task_id=$(( ${SLURM_ARRAY_TASK_ID:?SLURM_ARRAY_TASK_ID is required} + 1 ))
-Rscript training/regional_expert/risk_v1/scripts/run.R --task-id "$task_id"
+Rscript training/regional_expert/regional_risk_v1/scripts/run.R --task-id "$task_id"

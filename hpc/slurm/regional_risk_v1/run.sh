@@ -47,7 +47,7 @@ case "$command_name" in
     gam_cpus="${REGIONAL_GAM_CPUS:-2}"; gam_parallel="${REGIONAL_GAM_PARALLEL:-51}"
     elastic_cpus="${REGIONAL_ELASTIC_CPUS:-2}"; elastic_parallel="${REGIONAL_ELASTIC_PARALLEL:-34}"
     control_cpus="${REGIONAL_CONTROL_CPUS:-4}"
-    run_dir="$repo_root/training/regional_expert/risk_v1/runs/$run_id"
+    run_dir="$repo_root/training/regional_expert/regional_risk_v1/runs/$run_id"
     slurm_log_dir="$run_dir/logs/slurm"; mkdir -p "$slurm_log_dir"
     export RIVER_SR_ROOT="$repo_root" RIVER_SR_RUN_ID="$run_id"
     check_job="$(sbatch --parsable --cpus-per-task="$control_cpus" --output="$slurm_log_dir/check-%j.out" --error="$slurm_log_dir/check-%j.err" "$script_dir/job_check.sbatch")"
@@ -60,7 +60,7 @@ case "$command_name" in
   status)
     if [[ -n "$run_id" ]]; then
       require_run_id
-      jobs_file="$repo_root/training/regional_expert/risk_v1/runs/$run_id/slurm_jobs.tsv"
+      jobs_file="$repo_root/training/regional_expert/regional_risk_v1/runs/$run_id/slurm_jobs.tsv"
       if [[ ! -f "$jobs_file" ]]; then echo "Missing Slurm job manifest: $jobs_file" >&2; exit 1; fi
       job_ids="$(awk 'NR > 1 {print $2}' "$jobs_file" | paste -sd, -)"
       squeue --jobs="$job_ids" --format='%.18i %.28j %.9T %.10M %.6D %R' || true
@@ -69,11 +69,11 @@ case "$command_name" in
     ;;
   archive)
     require_run_id
-    run_path="training/regional_expert/risk_v1/runs/$run_id"
+    run_path="training/regional_expert/regional_risk_v1/runs/$run_id"
     if [[ ! -d "$repo_root/$run_path" ]]; then echo "Missing run directory: $repo_root/$run_path" >&2; exit 1; fi
     mkdir -p "$repo_root/hpc/transfer"; archive_path="$repo_root/hpc/transfer/regional_risk_v1_${run_id}.tar.gz"
     cd "$repo_root"
-    tar -czf "$archive_path" data/processed/training/himalaya_risk_v1.csv training/regional_expert/risk_v1/folds training/regional_expert/risk_v1/validation "$run_path"
+    tar -czf "$archive_path" data/processed/training/himalaya_risk_v1.csv training/regional_expert/regional_risk_v1/folds training/regional_expert/regional_risk_v1/validation "$run_path"
     sha256sum "$archive_path" > "$archive_path.sha256"
     printf 'Archive: %s\nChecksum: %s.sha256\n' "$archive_path" "$archive_path"
     ;;

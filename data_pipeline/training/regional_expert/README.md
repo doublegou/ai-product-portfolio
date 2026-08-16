@@ -10,4 +10,4 @@
 Rscript data_pipeline/training/regional_expert/risk_v1/scripts/run.R
 ```
 
-该管线只生成区域训练表。Regional branch reconstruction、LOBO assignments 与模型任务属于 `training/regional_expert/risk_v1/`。
+该管线只生成区域训练表。Regional branch reconstruction、LOBO assignments 与模型任务属于 `training/regional_expert/regional_risk_v1/`。

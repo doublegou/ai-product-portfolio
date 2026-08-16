@@ -9,7 +9,7 @@ input:
   hydrobasins_l12_root: data/raw/features/hydrography/hydrobasins_l12
   hydrobasins_l12_dbf: data/raw/features/hydrography/hydrobasins_l12/as/hybas_as_lev12_v1c.dbf
   base_v2_prepare_manifest: data/interim/sr_full50_v1_base_v2_prepare_manifest.json
-  environment_predictors: training/regional_expert/risk_v1/config/environment_predictors.txt
+  environment_predictors: training/regional_expert/regional_risk_v1/config/environment_predictors.txt
 
 columns:
   row_id: row_id
@@ -95,6 +95,6 @@ model:
   probability_clip: 1.0e-15
 
 output:
-  folds_dir: training/regional_expert/risk_v1/folds
-  validation_dir: training/regional_expert/risk_v1/validation
-  runs_dir: training/regional_expert/risk_v1/runs
+  folds_dir: training/regional_expert/regional_risk_v1/folds
+  validation_dir: training/regional_expert/regional_risk_v1/validation
+  runs_dir: training/regional_expert/regional_risk_v1/runs

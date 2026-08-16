@@ -1,5 +1,5 @@
 file_arg <- grep("^--file=", commandArgs(), value = TRUE)
-if (length(file_arg) != 1L) stop("Run with Rscript training/regional_expert/risk_v1/scripts/run.R", call. = FALSE)
+if (length(file_arg) != 1L) stop("Run with Rscript training/regional_expert/regional_risk_v1/scripts/run.R", call. = FALSE)
 
 script_path <- normalizePath(sub("^--file=", "", file_arg), mustWork = TRUE)
 project_dir <- normalizePath(file.path(dirname(script_path), ".."), mustWork = TRUE)

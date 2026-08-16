@@ -3,8 +3,8 @@
 ## Required committed assets
 
 - `data/processed/training/himalaya_risk_v1.csv`；
-- `training/regional_expert/risk_v1/config/`；
-- 已冻结的`training/regional_expert/risk_v1/folds/`；
+- `training/regional_expert/regional_risk_v1/config/`；
+- 已冻结的`training/regional_expert/regional_risk_v1/folds/`；
 - Regional Risk V1的`R/`、`scripts/`与本Slurm目录；
 - `env/renv.lock`和可用的`R-4.4.3`module。
 

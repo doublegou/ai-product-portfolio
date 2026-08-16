@@ -17,8 +17,8 @@ V1不选择Gate阈值、不校准概率、不进行hard routing、不拟合full-
 
 ```bash
 Rscript data_pipeline/training/regional_expert/risk_v1/scripts/run.R
-Rscript training/regional_expert/risk_v1/scripts/run.R --stage prepare
-Rscript training/regional_expert/risk_v1/scripts/run.R --stage check
+Rscript training/regional_expert/regional_risk_v1/scripts/run.R --stage prepare
+Rscript training/regional_expert/regional_risk_v1/scripts/run.R --stage check
 ```
 
 `prepare`只构建folds与task manifest，不训练模型。正式训练由HPC工作流接管。
