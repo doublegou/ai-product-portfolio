@@ -20,6 +20,7 @@ set -u
 unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 module purge
 module load R-4.4.3
+unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 cd "$RIVER_SR_ROOT"
 
 Rscript training/base/v0/scripts/run.R \

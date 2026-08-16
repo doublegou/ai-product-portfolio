@@ -83,13 +83,9 @@ case "$command_name" in
       --error="$slurm_log_dir/finalize-%j.err" \
       "$script_dir/job_finalize.sbatch")"
 
-    cat > "$run_dir/slurm_jobs.tsv" <<EOF
-stage\tjob_id
-prepare\t$prepare_job
-smoke\t$smoke_job
-validation_array\t$validation_job
-finalize\t$finalize_job
-EOF
+    printf 'stage\tjob_id\nprepare\t%s\nsmoke\t%s\nvalidation_array\t%s\nfinalize\t%s\n' \
+      "$prepare_job" "$smoke_job" "$validation_job" "$finalize_job" \
+      > "$run_dir/slurm_jobs.tsv"
     printf 'Submitted Base V0 run %s\n' "$run_id"
     printf 'prepare=%s smoke=%s validation=%s finalize=%s\n' \
       "$prepare_job" "$smoke_job" "$validation_job" "$finalize_job"

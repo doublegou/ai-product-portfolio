@@ -59,18 +59,25 @@ v0_data_signature <- function(context) {
   path <- v0_path(context, context$config$input$table)
   v0_assert(file.exists(path), paste("Training table is not ready:", path))
   info <- file.info(path)
+  normalized_text <- paste(readLines(path, warn = FALSE, encoding = "UTF-8"), collapse = "\n")
   list(
     path = gsub("\\\\", "/", normalizePath(path, mustWork = TRUE)),
     bytes = unname(info$size),
     modified_at = format(info$mtime, "%Y-%m-%dT%H:%M:%S%z"),
-    md5 = unname(tools::md5sum(path))
+    md5 = digest::digest(normalized_text, algo = "md5", serialize = FALSE),
+    hash_method = "normalized_lf_text_md5"
   )
 }
 
 v0_read_training_data <- function(context) {
   path <- v0_path(context, context$config$input$table)
   v0_assert(file.exists(path), paste("Training table is not ready:", path))
-  as.data.frame(data.table::fread(path, na.strings = c("", "NA", "NaN"), data.table = FALSE))
+  as.data.frame(data.table::fread(
+    path,
+    na.strings = c("", "NA", "NaN"),
+    integer64 = "character",
+    data.table = FALSE
+  ))
 }
 
 v0_atomic_target <- function(path) {
