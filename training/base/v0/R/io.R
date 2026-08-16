@@ -12,7 +12,7 @@ v0_require_packages <- function(packages) {
 }
 
 v0_context <- function(repo_root, project_dir) {
-  v0_require_packages(c("yaml", "jsonlite", "digest", "data.table", "ranger"))
+  v0_require_packages(c("yaml", "jsonlite", "digest", "data.table", "ranger", "dplyr", "tidyr"))
   config_path <- file.path(project_dir, "config", "default.yml")
   v0_assert(file.exists(config_path), paste("Missing V0 config:", config_path))
   list(
@@ -20,6 +20,19 @@ v0_context <- function(repo_root, project_dir) {
     project_dir = normalizePath(project_dir, winslash = "/", mustWork = TRUE),
     config_path = normalizePath(config_path, winslash = "/", mustWork = TRUE),
     config = yaml::read_yaml(config_path)
+  )
+}
+
+v0_runtime_info <- function() {
+  packages <- c("yaml", "jsonlite", "digest", "data.table", "ranger", "dplyr", "tidyr")
+  list(
+    r_version = R.version.string,
+    platform = R.version$platform,
+    packages = stats::setNames(
+      as.list(vapply(packages, function(package) as.character(utils::packageVersion(package)), character(1L))),
+      packages
+    ),
+    slurm_job_id = Sys.getenv("SLURM_JOB_ID", unset = "")
   )
 }
 
@@ -133,7 +146,8 @@ v0_begin_run <- function(context, run_id, mode, arguments) {
     mode = mode,
     status = "running",
     started_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z"),
-    arguments = arguments
+    arguments = arguments,
+    runtime = v0_runtime_info()
   )
   v0_write_json(info, file.path(run_dir, "run_info.json"))
   info

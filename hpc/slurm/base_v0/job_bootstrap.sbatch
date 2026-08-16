@@ -16,9 +16,10 @@ unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 set +u
 source /etc/profile
 set -u
+unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 module purge
 module load R-4.4.3
 cd "$RIVER_SR_ROOT"
 
 Rscript env/bootstrap.R --v0-only
-Rscript -e 'source("env/activate.R"); river_sr_activate(getwd()); packages <- c("yaml", "jsonlite", "digest", "data.table", "ranger"); stopifnot(all(vapply(packages, requireNamespace, logical(1), quietly = TRUE))); print(sessionInfo())'
+Rscript -e 'source("env/activate.R"); river_sr_activate(getwd()); packages <- c("yaml", "jsonlite", "digest", "data.table", "ranger", "dplyr", "tidyr"); stopifnot(all(vapply(packages, requireNamespace, logical(1), quietly = TRUE))); print(sessionInfo())'

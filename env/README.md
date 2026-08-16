@@ -21,4 +21,6 @@ Base V0 训练节点只需要先恢复建模所需的最小包集合，但仍写
 Rscript env/bootstrap.R --v0-only
 ```
 
+超算计算节点不联网时，将 `env/v0_offline_packages.txt` 列出的源码包放入不提交 Git 的 `env/offline/src/`，再执行上述命令。包版本与 `env/renv.lock` 对齐。
+
 项目脚本会自动调用 `env/activate.R`。不需要根目录 `.Rprofile`，也不依赖 RStudio 工程文件。

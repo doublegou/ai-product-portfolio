@@ -17,6 +17,7 @@ unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 set +u
 source /etc/profile
 set -u
+unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 module purge
 module load R-4.4.3
 cd "$RIVER_SR_ROOT"

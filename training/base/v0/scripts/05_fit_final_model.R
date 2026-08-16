@@ -48,6 +48,7 @@ stage_fit_final_model <- function(context, run_id, selected_params = NULL) {
       final_parameter_consensus = "500/1000/1500 km, 15 spatial outer tasks",
       reference_role = "stress validation only"
     ),
+    runtime = v0_runtime_info(),
     training_fit_sanity = sanity,
     created_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%S%z")
   )

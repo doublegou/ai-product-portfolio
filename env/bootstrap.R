@@ -26,6 +26,33 @@ project_library <- river_sr_library_path(repo_root)
 dir.create(project_library, recursive = TRUE, showWarnings = FALSE)
 .libPaths(c(project_library, .libPaths()))
 
+if (v0_only) {
+  manifest_path <- file.path(repo_root, "env", "v0_offline_packages.txt")
+  archives <- trimws(readLines(manifest_path, warn = FALSE, encoding = "UTF-8"))
+  archives <- archives[nzchar(archives) & !startsWith(archives, "#")]
+  archives <- file.path(repo_root, "env", "offline", "src", archives)
+  missing_archives <- archives[!file.exists(archives)]
+  if (length(missing_archives)) {
+    stop(
+      "Missing V0 offline package archives: ",
+      paste(basename(missing_archives), collapse = ", "),
+      call. = FALSE
+    )
+  }
+  Sys.setenv(MAKEFLAGS = paste0("-j", getOption("Ncpus", 1L)))
+  for (archive in archives) {
+    message("Installing offline package: ", basename(archive))
+    install.packages(archive, lib = project_library, repos = NULL, type = "source")
+  }
+  required <- c("yaml", "jsonlite", "digest", "data.table", "ranger", "dplyr", "tidyr")
+  missing <- required[!vapply(required, requireNamespace, logical(1L), quietly = TRUE)]
+  if (length(missing)) {
+    stop("V0 environment is incomplete: ", paste(missing, collapse = ", "), call. = FALSE)
+  }
+  message("RiverSR V0 environment is ready: ", project_library)
+  quit(save = "no", status = 0L)
+}
+
 if (!requireNamespace("renv", quietly = TRUE)) {
   install.packages("renv", lib = project_library)
 }
@@ -37,12 +64,6 @@ restore_args <- list(
   lockfile = file.path(repo_root, "env", "renv.lock"),
   prompt = FALSE
 )
-if (v0_only) {
-  restore_args$packages <- c("yaml", "jsonlite", "digest", "data.table", "ranger")
-}
 do.call(renv::restore, restore_args)
 
-message(
-  if (v0_only) "RiverSR V0 environment is ready: " else "RiverSR environment is ready: ",
-  project_library
-)
+message("RiverSR environment is ready: ", project_library)

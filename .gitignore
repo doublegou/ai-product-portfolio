@@ -4,6 +4,7 @@
 .Ruserdata
 .Rproj.user/
 env/library/
+env/offline/
 env/profiles/local.override.yml
 
 # Codex temporary working files
