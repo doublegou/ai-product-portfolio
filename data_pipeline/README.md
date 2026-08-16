@@ -6,7 +6,7 @@
 
 数据管线只从 `data/raw/` 读取共享原始数据，将可重建中间态写入共享的 `data/interim/`，将正式成果写入 `data/processed/` 下对应的项目目录。管线目录本身不保存数据副本。
 
-当前管线按用途与数据集版本分层：`training/sr_full50_v1/` 负责构建 Base V0 使用的 Full50 训练数据。
+当前管线按用途与数据集版本分层：`training/sr_full50_v1/` 负责构建 Base V0 使用的 Full50 训练数据；`training/regional_expert/risk_v1/` 从 Full50 与已冻结的 Base V2 response-blind topology 派生喜马拉雅 Regional Risk V1 训练数据。
 
 Base V2 不新增训练表。HydroBASINS L12 由 `raw_features/` 登记获取；仅针对 4,485 个 Full50 站点生成的 reach/L12/branch 拓扑属于可重建 `data/interim/` 与 `training/base/v2/folds/`，不写入 `data/processed/`。
 

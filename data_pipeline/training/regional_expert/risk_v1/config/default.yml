@@ -1,0 +1,31 @@
+project:
+  id: himalaya_risk_v1_data
+  status: frozen_forward_reconstruction
+
+input:
+  full50_table: data/processed/training/sr_full50_v1.csv
+  base_v2_site_topology: data/interim/sr_full50_v1_base_v2_site_topology.rds
+  base_v2_prepare_manifest: data/interim/sr_full50_v1_base_v2_prepare_manifest.json
+
+columns:
+  row_id: row_id
+  site_id: site_id
+  longitude: longitude
+  latitude: latitude
+  response: sr87_sr86
+
+domain:
+  terminal_component_id: "4060025450"
+  expected_rows: 372
+  positive_lower: 0.75
+  expected_positive_rows: 80
+  expected_negative_rows: 292
+
+projection:
+  method: fixed_lambert_azimuthal_equal_area
+  proj4: "+proj=laea +lat_0=28 +lon_0=85 +datum=WGS84 +units=m +no_defs"
+  x_column: regional_x_km
+  y_column: regional_y_km
+
+output:
+  table: data/processed/training/himalaya_risk_v1.csv

@@ -1,0 +1,100 @@
+project:
+  id: regional_expert_risk_v1
+  status: ready_for_training
+  purpose: himalaya_high_sr_transfer_signal_feasibility
+
+input:
+  table: data/processed/training/himalaya_risk_v1.csv
+  data_pipeline_config: data_pipeline/training/regional_expert/risk_v1/config/default.yml
+  hydrobasins_l12_root: data/raw/features/hydrography/hydrobasins_l12
+  hydrobasins_l12_dbf: data/raw/features/hydrography/hydrobasins_l12/as/hybas_as_lev12_v1c.dbf
+  base_v2_prepare_manifest: data/interim/sr_full50_v1_base_v2_prepare_manifest.json
+  environment_predictors: training/regional_expert/risk_v1/config/environment_predictors.txt
+
+columns:
+  row_id: row_id
+  site_id: site_id
+  longitude: longitude
+  latitude: latitude
+  response: sr87_sr86
+  label: high_sr_label
+  l12_id: l12_id
+  terminal_component_id: terminal_component_id
+  regional_x: regional_x_km
+  regional_y: regional_y_km
+
+domain:
+  terminal_component_id: "4060025450"
+  l12_main_basin_id: "4120025450"
+  expected_rows: 372
+  positive_lower: 0.75
+  expected_positive_rows: 80
+  expected_negative_rows: 292
+
+branches:
+  version: branch_map_v1
+  minimum_unassigned_station_support: 20
+  expected_branches: 17
+  expected_mixed_branches: 14
+  expected_all_negative_branches: 3
+  expected_all_positive_branches: 0
+  expected_size_sorted: [6, 20, 20, 20, 21, 21, 21, 22, 22, 23, 23, 23, 24, 25, 27, 27, 27]
+  canonical_order: cut_outlet_numeric_ascending_then_residual_root
+  response_used: false
+
+validation:
+  design: leave_one_regional_branch_out
+  expected_outer_folds: 17
+  expected_model_arms: 5
+  expected_training_tasks: 85
+  expected_oof_rows: 1860
+  branch_weight: inverse_sqrt_branch_size_normalized_within_outer_analysis
+
+gam:
+  family: binomial
+  method: REML
+  select: true
+  spatial_basis: tp
+  spatial_k: 15
+  environment_basis: ts
+  environment_k: 4
+  smooth_predictors:
+    - p0__log_UPLAND_SKM
+    - p0__log_CATCH_SKM
+    - p0__log_DIS_AV_CMS
+    - p0__log_DIST_UP_KM
+    - p0__log_DIST_DN_KM
+    - local_geo_age_mean_ma
+    - up_geo_age_mean_ma
+  linear_predictors:
+    - p0__ORD_STRA
+    - p0__up_geo_metamorphic_frac
+    - p0__up_geo_plutonic_frac
+    - p0__up_geo_carbonate_frac
+    - r47__local_geo_metamorphic
+    - r47__local_geo_plutonic
+    - r47__local_geo_carbonate
+
+elastic_net:
+  alpha: 0.5
+  alpha_status: forward_reconstruction_frozen_assumption_historical_value_not_preserved
+  preferred_inner_folds: 5
+  fallback_inner_folds: 3
+  grouped_by: regional_branch_id
+  type_measure: deviance
+  lambda_selection: lambda.1se
+  standardize: true
+  inner_seed_base: 861000
+
+uncertainty:
+  branch_bootstrap_replicates: 2000
+  branch_bootstrap_seed: 862001
+  confidence_level: 0.95
+
+model:
+  probability_clip: 1.0e-15
+
+output:
+  folds_dir: training/regional_expert/risk_v1/folds
+  validation_dir: training/regional_expert/risk_v1/validation
+  runs_dir: training/regional_expert/risk_v1/runs
