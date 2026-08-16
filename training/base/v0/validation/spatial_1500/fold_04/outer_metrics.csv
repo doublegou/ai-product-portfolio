@@ -1,2 +1,0 @@
-task_id,scheme,outer_fold,mtry,min_node_size,sample_fraction,outer_trees,seed,n,rmse,mae,r2,bias
-14,spatial_1500,4,7,15,1,1500,534999,897,0.00523772174056781,0.00317250314255711,0.0194071566826094,0.00147864515564489

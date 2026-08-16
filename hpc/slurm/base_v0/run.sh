@@ -16,7 +16,7 @@ Usage:
   bash hpc/slurm/base_v0/run.sh archive <run_id>
 
 Optional environment variables for submit:
-  V0_CPUS_PER_TASK   CPUs per validation/final task (default: 16)
+  V0_CPUS_PER_TASK   CPUs per validation/final task (default: 32)
   V0_MAX_PARALLEL    Maximum simultaneous validation tasks (default: 20)
 EOF
 }
@@ -50,7 +50,7 @@ case "$command_name" in
       run_id="$(date +%Y%m%d_%H%M%S)_full"
     fi
     require_run_id
-    cpus_per_task="${V0_CPUS_PER_TASK:-16}"
+    cpus_per_task="${V0_CPUS_PER_TASK:-32}"
     max_parallel="${V0_MAX_PARALLEL:-20}"
     run_dir="$repo_root/training/base/v0/runs/$run_id"
     slurm_log_dir="$run_dir/logs/slurm"
@@ -63,14 +63,8 @@ case "$command_name" in
       --output="$slurm_log_dir/prepare-%j.out" \
       --error="$slurm_log_dir/prepare-%j.err" \
       "$script_dir/job_prepare.sbatch")"
-    smoke_job="$(sbatch --parsable \
-      --dependency="afterok:$prepare_job" \
-      --cpus-per-task="$cpus_per_task" \
-      --output="$slurm_log_dir/smoke-%j.out" \
-      --error="$slurm_log_dir/smoke-%j.err" \
-      "$script_dir/job_smoke.sbatch")"
     validation_job="$(sbatch --parsable \
-      --dependency="afterok:$smoke_job" \
+      --dependency="afterok:$prepare_job" \
       --array="0-19%$max_parallel" \
       --cpus-per-task="$cpus_per_task" \
       --output="$slurm_log_dir/validation-%A_%a.out" \
@@ -83,12 +77,12 @@ case "$command_name" in
       --error="$slurm_log_dir/finalize-%j.err" \
       "$script_dir/job_finalize.sbatch")"
 
-    printf 'stage\tjob_id\nprepare\t%s\nsmoke\t%s\nvalidation_array\t%s\nfinalize\t%s\n' \
-      "$prepare_job" "$smoke_job" "$validation_job" "$finalize_job" \
+    printf 'stage\tjob_id\nprepare\t%s\nvalidation_array\t%s\nfinalize\t%s\n' \
+      "$prepare_job" "$validation_job" "$finalize_job" \
       > "$run_dir/slurm_jobs.tsv"
     printf 'Submitted Base V0 run %s\n' "$run_id"
-    printf 'prepare=%s smoke=%s validation=%s finalize=%s\n' \
-      "$prepare_job" "$smoke_job" "$validation_job" "$finalize_job"
+    printf 'prepare=%s validation=%s finalize=%s\n' \
+      "$prepare_job" "$validation_job" "$finalize_job"
     ;;
 
   status)

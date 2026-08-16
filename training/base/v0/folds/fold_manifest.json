@@ -1,11 +1,11 @@
 {
   "status": "frozen",
-  "created_at": "2026-08-16T08:58:16+0800",
+  "created_at": "2026-08-17T07:37:23+0800",
   "input": {
     "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
-    "bytes": 5640517,
-    "modified_at": "2026-08-16T07:29:56+0800",
-    "md5": "92100a834e0836527e6921d974f222ca",
+    "bytes": 5668983,
+    "modified_at": "2026-08-17T06:55:21+0800",
+    "md5": "dc80c73dfc64a3180efb4c5bb9fe5902",
     "hash_method": "normalized_lf_text_md5"
   },
   "n_rows": 4485,

@@ -32,4 +32,5 @@ scheme="${schemes[$scheme_index]}"
 Rscript training/base/v0/scripts/run.R \
   --mode full \
   --scheme "$scheme" \
-  --outer-fold "$outer_fold"
+  --outer-fold "$outer_fold" \
+  --force
