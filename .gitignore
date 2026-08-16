@@ -30,6 +30,10 @@ training/base/v1/runs/*
 training/global_correction/global_high_sr_risk/runs/*
 !training/global_correction/global_high_sr_risk/runs/README.md
 
+# High-Sr correction feasibility run reports are transferred as run artifacts
+training/global_correction/high_sr_correction_feasibility/runs/*
+!training/global_correction/high_sr_correction_feasibility/runs/README.md
+
 # Approved model bundles are transferred as release artifacts; metadata stays in Git
 training/base/v0/release/model_bundle.rds
 training/base/v1/release/model_bundle.rds

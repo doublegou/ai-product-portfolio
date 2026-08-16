@@ -1,0 +1,101 @@
+{
+  "status": "frozen",
+  "prepared_at": "2026-08-16T19:38:53+0800",
+  "design": "three repeated grouped five-fold Outer evaluations with strict nested correction selection",
+  "base_tasks": 15,
+  "correction_tasks": 30,
+  "unique_base_fits_per_outer": 16,
+  "config": {
+    "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/config/default.yml",
+    "bytes": 3212,
+    "md5": "3fcca7e82faa0a9f8335e5c02876eab5",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "implementation": {
+    "file_count": 15,
+    "md5": "a53fdf0b0d5417b458278d40158c1478",
+    "hash_method": "ordered_relative_path_and_normalized_lf_content_md5"
+  },
+  "inputs": {
+    "table": {
+      "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
+      "bytes": 5640517,
+      "md5": "92100a834e0836527e6921d974f222ca",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "upstream_full50_predictors": {
+      "path": "D:/river_sr/data_pipeline/training/sr_full50_v1/config/full50_predictors.txt",
+      "bytes": 1107,
+      "md5": "ac1b24b9acefe6d6ad9932b028b367d2",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "full50_predictors": {
+      "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/config/full50_predictors.txt",
+      "bytes": 1107,
+      "md5": "ac1b24b9acefe6d6ad9932b028b367d2",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "env47_predictors": {
+      "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/config/env47_predictors.txt",
+      "bytes": 1080,
+      "md5": "4f02a6506c2284f103a5b3097f838b3c",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_fold_manifest": {
+      "path": "D:/river_sr/training/base/v1/folds/fold_manifest.json",
+      "bytes": 2810,
+      "md5": "96570e97e5819055ca8ac43e70adc67d",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_outer_assignments": {
+      "path": "D:/river_sr/training/base/v1/folds/primary_outer_assignments.csv",
+      "bytes": 605526,
+      "md5": "4f9519c2c07b10d3882fb61505cf67f1",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_inner_assignments": {
+      "path": "D:/river_sr/training/base/v1/folds/primary_inner_assignments.csv",
+      "bytes": 2529602,
+      "md5": "d9cd3106292369008e1b189c85b02bd9",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_hydrological_groups": {
+      "path": "D:/river_sr/training/base/v1/folds/hydrological_groups.csv",
+      "bytes": 334123,
+      "md5": "f2b02cee790846fc26ef7dd04bcf713c",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_release_info": {
+      "path": "D:/river_sr/training/base/v1/release/release_info.json",
+      "bytes": 166,
+      "md5": "d358b440c507db3950f9121602d446ee",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_v1_selected_params": {
+      "path": "D:/river_sr/training/base/v1/release/selected_params.yml",
+      "bytes": 519,
+      "md5": "6b0073e6ab862a16b3fb69265c0b0747",
+      "hash_method": "normalized_lf_text_md5"
+    }
+  },
+  "task_manifests": {
+    "base": {
+      "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/folds/base_task_manifest.csv",
+      "bytes": 212,
+      "md5": "0de6fb469774cbc51b7d672211828dde",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "correction": {
+      "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/folds/correction_task_manifest.csv",
+      "bytes": 1396,
+      "md5": "011ba3a4aee196f40e247f41b57df210",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "base_fit_plan": {
+      "path": "D:/river_sr/training/global_correction/high_sr_correction_feasibility/folds/base_fit_plan.csv",
+      "bytes": 10655,
+      "md5": "8c8157d33ab6d9ce24eb6923ddc81d9d",
+      "hash_method": "normalized_lf_text_md5"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 RiverSR 用于重建河流水体锶同位素模型的训练、修正、区域专家模型与全球预测流程。
 
-项目按历史工作顺序逐项复现。当前只实现正在处理的数据管线和 Base Model V0；后续训练项目先保留空目录，轮到时再加入内容。
+项目按历史工作顺序逐项顺向复现。正式运行只依赖当前冻结的上游资产；历史材料仅用于运行完成后的外部对照。
 
 ## 顶层结构
 
@@ -16,13 +16,10 @@ RiverSR 用于重建河流水体锶同位素模型的训练、修正、区域专
 
 ## 当前阶段
 
-当前只落地：
-
-- `data_pipeline/raw_features`：一次性准备共享原始特征，不进入日常 Full50 运行链路。
-- `data_pipeline/training/sr_full50_v1`：Base V0 使用的 Full50 训练数据管线。
-- `training/base/v0`：第一个模型复现项目。
-
-`sr_full50_v1` 已完成从 raw 特征源到 Full50 表的项目级编排，正式训练数据仍在处理。Base V0 的 Full50 nested-CV、RF 调参、final consensus、全量拟合和 release 冻结代码已经落地，待正式数据完成后准备 folds 并启动训练。V1、V2、V3、全球修正和区域专家项目目前只有空目录。
+- Full50 数据管线、Base V0 和 Base V1 已完成并冻结。
+- Global High-Sr Risk V1 已具备独立的 feasibility 训练流程。
+- High-Sr Correction Feasibility 已冻结 strict nested Oracle 方案与 45-task HPC 流程，等待超算正式运行。
+- 后续 Base 版本、区域专家与全球预测按复现顺序继续推进。
 
 ## 复现顺序
 
