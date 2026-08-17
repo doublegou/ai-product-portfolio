@@ -1,0 +1,13 @@
+task_id: 12
+repeat_id: 3
+outer_fold: 2
+source_grid_id: 3
+mtry: 7
+min_node_size: 5
+sample_fraction: 0.7
+replace: no
+inner_pooled_rmse: 0.010252
+inner_pooled_mae: 0.0041089
+inner_pooled_r2: 0.1628065
+inner_pooled_bias: 0.0006467
+selection_order: pooled_rmse_asc_mae_asc_abs_bias_asc_r2_desc
