@@ -12,9 +12,9 @@ input:
   v1_config: training/regional_expert/regional_risk_v1/config/default.yml
   environment_predictors: training/regional_expert/regional_risk_v1/config/environment_predictors.txt
   expected_md5:
-    table: 6fc05f714eb2f6fdc402ef0717d5369a
+    table: 6fe0d27c33b47956f21d0e8d6e832ec5
     v1_branch_map: 19fb84f84b7770bcb918afc010a0ffa9
-    v1_fold_manifest: 4c700d640fae72bf657552572d4bc1d2
+    v1_fold_manifest: ecb0a305e86513dcaaf7b0cc1673ba1b
     v1_config: 1adef9744fb7d1b75b7d4f5dd2d7f81e
     environment_predictors: c80a6509844c61ff9c3683f493e0286e
 

@@ -1,26 +1,26 @@
 {
   "status": "FROZEN_REGIONAL_RISK_V1_1_METHOD",
-  "prepared_at": "2026-08-17T05:42:29+0800",
+  "prepared_at": "2026-08-17T09:11:44+0800",
   "upstream": {
     "table": {
       "path": "D:/river_sr/data/processed/training/himalaya_risk_v1.csv",
-      "bytes": 522770,
-      "modified_at": "2026-08-17T04:59:31+0800",
-      "md5": "6fc05f714eb2f6fdc402ef0717d5369a",
+      "bytes": 523835,
+      "modified_at": "2026-08-17T09:01:31+0800",
+      "md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
       "hash_method": "normalized_lf_text_md5"
     },
     "v1_branch_map": {
       "path": "D:/river_sr/training/regional_expert/regional_risk_v1/folds/branch_map.csv",
       "bytes": 38588,
-      "modified_at": "2026-08-17T04:59:31+0800",
+      "modified_at": "2026-08-17T09:01:31+0800",
       "md5": "19fb84f84b7770bcb918afc010a0ffa9",
       "hash_method": "normalized_lf_text_md5"
     },
     "v1_fold_manifest": {
       "path": "D:/river_sr/training/regional_expert/regional_risk_v1/folds/fold_manifest.json",
       "bytes": 6379,
-      "modified_at": "2026-08-17T04:59:31+0800",
-      "md5": "4c700d640fae72bf657552572d4bc1d2",
+      "modified_at": "2026-08-17T09:01:31+0800",
+      "md5": "ecb0a305e86513dcaaf7b0cc1673ba1b",
       "hash_method": "normalized_lf_text_md5"
     },
     "v1_config": {
@@ -41,8 +41,8 @@
   "config": {
     "path": "D:/river_sr/training/regional_expert/regional_risk_v1_1/config/default.yml",
     "bytes": 3474,
-    "modified_at": "2026-08-17T05:30:29+0800",
-    "md5": "b96717118518d1de125499231aa80ebb",
+    "modified_at": "2026-08-17T09:11:37+0800",
+    "md5": "e34a9d869a819bd26e49dcb7c42803a8",
     "hash_method": "normalized_lf_text_md5"
   },
   "implementation": {
