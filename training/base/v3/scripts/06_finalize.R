@@ -69,8 +69,8 @@ for (model in c("rf", "xgb")) {
     project = "base_v3", run_id = run_id, model_family = model,
     model = fitted$fit, predictors = v3_predictors(context), medians = fitted$medians,
     response = context$config$columns$response, recipe = recipe,
-    training_sha256 = v3_sha256(v3_path(context, context$config$input$training_csv)),
-    config_sha256 = v3_sha256(context$config_path),
+    training_sha256 = v3_sha256_text(v3_path(context, context$config$input$training_csv)),
+    config_sha256 = v3_sha256_text(context$config_path),
     created_utc = format(Sys.time(), tz = "UTC", usetz = TRUE)
   )
   v3_atomic_rds(bundle, file.path(models_dir, paste0(model, "_final_bundle.rds")))

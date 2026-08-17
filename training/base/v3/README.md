@@ -37,6 +37,8 @@ never silently reused across run IDs.
 
 - Input is `data/processed/training/sr_full50_v2.csv` with 5,600 rows and the
   frozen 50-predictor manifest.
+- Cross-platform text-input hashes normalize CRLF/CR line endings to LF before
+  SHA-256 calculation; binary and prepared artifacts remain byte-hashed.
 - Hydrological isolation uses HydroBASINS level-6 `MAIN_BAS`, mapped and frozen
   before fitting. A system never crosses an Inner or Outer split.
 - All data-derived preprocessing is fitted inside the current analysis split.

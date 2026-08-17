@@ -32,5 +32,8 @@
 12. **Algorithm decision.** Pooled strict Outer-OOF RMSE is primary; MAE and
     absolute bias are deterministic tie-breakers. Both algorithms receive
     fixed-recipe stress tests.
+13. **Hash contract.** Text inputs use LF-normalized SHA-256 so Windows and Linux
+    checkouts have the same identity. Prepared and binary artifacts use raw-byte
+    SHA-256. The R environment requires `bit64` for 64-bit basin identifiers.
 
 Changing any decision requires a new run ID and a new config/source hash.

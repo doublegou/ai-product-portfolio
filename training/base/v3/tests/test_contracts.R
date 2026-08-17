@@ -6,6 +6,7 @@ data <- v3_read_training(context)
 predictors <- v3_predictors(context)
 rf <- v3_rf_pool(context)
 xgb <- v3_xgb_pool(context)
+training_path <- v3_path(context, context$config$input$training_csv)
 stopifnot(
   nrow(data) == 5600L,
   length(predictors) == 50L,
@@ -14,8 +15,16 @@ stopifnot(
   nrow(v3_maximin(rf, 48L, 1L)) == 48L,
   nrow(v3_maximin(xgb, 48L, 1L)) == 48L,
   length(unique(v3_maximin(rf, 48L, 1L)$structure_id)) == 48L,
-  length(unique(v3_maximin(xgb, 48L, 1L)$structure_id)) == 48L
+  length(unique(v3_maximin(xgb, 48L, 1L)$structure_id)) == 48L,
+  v3_sha256_text(training_path) == context$config$contract$training_sha256_lf
 )
+
+lf_file <- tempfile(fileext = ".txt")
+crlf_file <- tempfile(fileext = ".txt")
+writeBin(charToRaw("alpha\nbeta\n"), lf_file)
+writeBin(charToRaw("alpha\r\nbeta\r\n"), crlf_file)
+stopifnot(v3_sha256_text(lf_file) == v3_sha256_text(crlf_file))
+unlink(c(lf_file, crlf_file))
 
 synthetic <- data.table::data.table(
   candidate_id = c("a", "b", "c"), structure_id = c("a", "b", "c"),

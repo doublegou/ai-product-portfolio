@@ -14,4 +14,4 @@ module purge
 module load R-4.4.3
 cd "$RIVER_SR_ROOT"
 Rscript env/bootstrap.R
-Rscript -e 'source("env/activate.R"); river_sr_activate(getwd()); p <- c("yaml","jsonlite","digest","data.table","foreign","sf","ranger","xgboost"); stopifnot(all(vapply(p, requireNamespace, logical(1), quietly=TRUE))); print(sessionInfo())'
+Rscript -e 'source("env/activate.R"); river_sr_activate(getwd()); p <- c("yaml","jsonlite","digest","data.table","bit64","foreign","sf","ranger","xgboost"); stopifnot(all(vapply(p, requireNamespace, logical(1), quietly=TRUE))); print(sessionInfo())'

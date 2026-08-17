@@ -22,6 +22,8 @@ v3_context <- function(root = v3_find_root()) {
   v3_activate(root)
   config_path <- file.path(root, "training", "base", "v3", "config", "base_v3.yml")
   config <- yaml::read_yaml(config_path)
+  v3_assert(requireNamespace("bit64", quietly = TRUE),
+            "Base V3 requires package 'bit64'. Restore the frozen R environment before running.")
   list(
     root = root,
     config = config,
@@ -40,12 +42,27 @@ v3_threads <- function(context) {
 
 v3_sha256 <- function(path) digest::digest(file = path, algo = "sha256", serialize = FALSE)
 
+v3_sha256_text <- function(path) {
+  size <- file.info(path)$size
+  v3_assert(is.finite(size), paste("Cannot stat text input:", path))
+  bytes <- readBin(path, what = "raw", n = size)
+  if (length(bytes)) {
+    values <- as.integer(bytes)
+    next_is_lf <- c(values[-1L] == 10L, FALSE)
+    crlf_cr <- values == 13L & next_is_lf
+    lone_cr <- values == 13L & !crlf_cr
+    values[lone_cr] <- 10L
+    bytes <- as.raw(values[!crlf_cr])
+  }
+  digest::digest(bytes, algo = "sha256", serialize = FALSE)
+}
+
 v3_source_sha256 <- function(context) {
   files <- sort(c(
     list.files(file.path(context$base, "R"), pattern = "[.]R$", full.names = TRUE, recursive = TRUE),
     list.files(file.path(context$base, "scripts"), pattern = "[.]R$", full.names = TRUE, recursive = TRUE)
   ))
-  hashes <- vapply(files, v3_sha256, character(1))
+  hashes <- vapply(files, v3_sha256_text, character(1))
   digest::digest(paste(basename(files), hashes, sep = "=", collapse = "\n"), algo = "sha256", serialize = FALSE)
 }
 
@@ -548,10 +565,10 @@ v3_write_run_manifest <- function(context, run_id, extra = list()) {
     project = "base_v3",
     run_id = run_id,
     created_utc = format(Sys.time(), tz = "UTC", usetz = TRUE),
-    config_sha256 = v3_sha256(context$config_path),
+    config_sha256 = v3_sha256_text(context$config_path),
     source_sha256 = v3_source_sha256(context),
-    training_sha256 = v3_sha256(v3_path(context, context$config$input$training_csv)),
-    predictors_sha256 = v3_sha256(v3_path(context, context$config$input$predictors)),
+    training_sha256 = v3_sha256_text(v3_path(context, context$config$input$training_csv)),
+    predictors_sha256 = v3_sha256_text(v3_path(context, context$config$input$predictors)),
     r_version = R.version.string
   ), extra)
   v3_atomic_json(manifest, file.path(run_dir, "run_manifest.json"))
@@ -564,9 +581,9 @@ v3_verify_fold_manifest <- function(context) {
   manifest <- jsonlite::read_json(path, simplifyVector = FALSE)
   v3_assert(identical(manifest$status, "validated"), "Fold manifest is not validated.")
   expected <- manifest$input
-  v3_assert(identical(expected$training_sha256, v3_sha256(v3_path(context, context$config$input$training_csv))),
+  v3_assert(identical(expected$training_sha256, v3_sha256_text(v3_path(context, context$config$input$training_csv))),
             "Training data hash differs from the frozen fold manifest.")
-  v3_assert(identical(expected$config_sha256, v3_sha256(context$config_path)),
+  v3_assert(identical(expected$config_sha256, v3_sha256_text(context$config_path)),
             "Base V3 config hash differs from the frozen fold manifest.")
   v3_assert(identical(expected$source_sha256, v3_source_sha256(context)),
             "Base V3 source hash differs from the frozen fold manifest; rerun prepare.")

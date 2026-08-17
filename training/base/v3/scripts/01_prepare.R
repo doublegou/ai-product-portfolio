@@ -161,10 +161,10 @@ manifest <- list(
   created_utc = format(Sys.time(), tz = "UTC", usetz = TRUE),
   input = list(
     training_csv = context$config$input$training_csv,
-    training_sha256 = v3_sha256(v3_path(context, context$config$input$training_csv)),
-    config_sha256 = v3_sha256(context$config_path),
+    training_sha256 = v3_sha256_text(v3_path(context, context$config$input$training_csv)),
+    config_sha256 = v3_sha256_text(context$config_path),
     source_sha256 = v3_source_sha256(context),
-    predictor_manifest_sha256 = v3_sha256(v3_path(context, context$config$input$predictors))
+    predictor_manifest_sha256 = v3_sha256_text(v3_path(context, context$config$input$predictors))
   ),
   counts = list(
     rows = nrow(index), predictors = length(predictors), hydrological_systems = data.table::uniqueN(index$hydro_system_id),

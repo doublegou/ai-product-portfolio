@@ -19,6 +19,7 @@ columns:
 contract:
   rows: 5600
   predictors: 50
+  training_sha256_lf: 568c47d59861c2d0fef2465a4c07a968334d8e9791d6316e4bc87195b719ca02
   hydrological_systems: 364
   high_075_systems: 13
   high_080_systems: 5
