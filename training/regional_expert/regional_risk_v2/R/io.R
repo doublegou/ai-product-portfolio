@@ -1,9 +1,10 @@
 rrisk2_assert <- function(condition, message) if (!isTRUE(condition)) stop(message, call. = FALSE)
 
-# Load xgboost before ranger. On the Slurm image, loading ranger first can pin an
-# older libstdc++ in the process and prevent xgboost.so from resolving the newer
-# GLIBCXX symbols it requires. This ordering changes no statistical method.
-rrisk2_packages <- function() c("yaml", "jsonlite", "digest", "data.table", "xgboost", "ranger", "PRROC", "pROC")
+# Load xgboost before every other compiled package. On the Slurm image, loading
+# data.table or ranger first can pin an older libstdc++ in the process and stop
+# xgboost.so from resolving the newer GLIBCXX symbols it requires. This ordering
+# changes no statistical method.
+rrisk2_packages <- function() c("xgboost", "yaml", "jsonlite", "digest", "data.table", "ranger", "PRROC", "pROC")
 
 rrisk2_require_packages <- function(packages = rrisk2_packages()) {
   missing <- packages[!vapply(packages, requireNamespace, logical(1L), quietly = TRUE)]

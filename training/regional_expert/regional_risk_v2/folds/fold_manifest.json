@@ -1,6 +1,6 @@
 {
   "status": "FROZEN_REGIONAL_RISK_V2_METHOD",
-  "prepared_at": "2026-08-17T09:25:55+0800",
+  "prepared_at": "2026-08-17T09:30:30+0800",
   "inputs": {
     "table": {
       "path": "D:/river_sr/data/processed/training/himalaya_risk_v2.csv",
@@ -46,7 +46,7 @@
     "hash_method": "normalized_lf_text_md5"
   },
   "implementation": {
-    "sha256": "c866481a7e7037392d207d7986fc833f36416decfef60a2b10f9c62a486c1acf",
+    "sha256": "ab00a4b0c5c0b02341a752073ed0e9f416844822ec552b18431c6b0ffb7a97a3",
     "files": [
       {
         "path": "R/decision.R",
@@ -57,9 +57,9 @@
       },
       {
         "path": "R/io.R",
-        "bytes": 8468,
-        "modified_at": "2026-08-17T09:25:47+0800",
-        "md5": "d6fc61b3983c2001f278d3ec1c6a415f",
+        "bytes": 8503,
+        "modified_at": "2026-08-17T09:30:15+0800",
+        "md5": "964320e29b85a9ab569ef8080df45903",
         "hash_method": "normalized_lf_text_md5"
       },
       {
