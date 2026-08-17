@@ -4,7 +4,7 @@
 
 ## 1. 事件与执行边界
 
-最初构建的 Full50 V1 训练表存在预测变量错误。修正后的 canonical Full50 表 normalized-LF MD5 为 `dc80c73dfc64a3180efb4c5bb9fe5902`；旧错误版本为 `92100a834e0836527e6921d974f222ca`，审计发现 50 个预测变量中有 40 个受到影响。依赖该表生成的 Himalayan Regional Risk V1/V2 训练表也已重建。
+最初构建的 Full50 V1 训练表存在预测变量错误。修正后的 canonical Full50 表 normalized-LF MD5 为 `dc80c73dfc64a3180efb4c5bb9fe5902`；旧错误版本为 `92100a834e0836527e6921d974f222ca`。审计确认错误影响了多个 Full50 预测变量及其下游训练表；依赖该表生成的 Himalayan Regional Risk V1/V2 训练表也已重建。
 
 本轮没有建立额外的“重训练活动目录”。每个模型继续使用自己的训练工程、`runs/<run_id>`、`validation/`、`RESULTS.md` 和 `release/`。全部正式模型均从修正输入重新执行；没有复用上一轮 validation 结果。
 
