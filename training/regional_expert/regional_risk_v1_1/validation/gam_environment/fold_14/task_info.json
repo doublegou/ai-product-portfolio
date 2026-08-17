@@ -1,0 +1,38 @@
+{
+  "status": "complete",
+  "task_id": 14,
+  "model_id": "gam_environment",
+  "feature_set": "environment",
+  "outer_fold": 14,
+  "heldout_branch": "himalaya_branch_014_4121434310",
+  "n_outer_train": 349,
+  "n_outer_test": 23,
+  "inner_folds": 16,
+  "gam_fits": 17,
+  "calibrators": 1,
+  "thresholds": 2,
+  "outer_branch_in_inner_oof": false,
+  "calibration_slope": 0.47901073623321505,
+  "primary_selection_mode": "constrained_max_recall",
+  "strict_selection_mode": "no_trigger",
+  "threshold_candidate_rule_status": "forward_reconstruction_assumption_historical_source_unavailable",
+  "data_md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
+  "config_md5": "e34a9d869a819bd26e49dcb7c42803a8",
+  "fold_manifest_md5": "6d93ac7589be18105cde77a8e70a17ab",
+  "completed_at": "2026-08-17T09:13:31+0800",
+  "runtime": {
+    "r_version": "R version 4.4.3 (2025-02-28)",
+    "platform": "x86_64-pc-linux-gnu",
+    "packages": {
+      "yaml": "2.3.12",
+      "jsonlite": "2.0.0",
+      "digest": "0.6.39",
+      "data.table": "1.18.4",
+      "mgcv": "1.9.1",
+      "PRROC": "1.4",
+      "pROC": "1.19.0.1"
+    },
+    "slurm_job_id": "66789",
+    "slurm_array_task_id": "13"
+  }
+}
