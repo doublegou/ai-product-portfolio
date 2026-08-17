@@ -4,7 +4,7 @@
 
 **ACCEPTED — release replaced from corrected-data run.**
 
-Base V2 was rerun end to end from the corrected canonical Full50 table. The complete methodology benchmark, repeated nested Primary CV, deployment selection, five stress schemes, and full-data final RF all completed successfully. The branch-geometry conclusion, final RF recipe, and overall performance scale remain stable, so the previous r2 release has been replaced by `base_v2_full_20260817_corrected_r1`.
+Base V2 was rerun end to end from the corrected canonical Full50 table. The complete methodology benchmark, repeated nested Primary CV, deployment selection, five stress schemes, and full-data final RF all completed successfully. The branch-geometry conclusion, final RF recipe, and overall performance scale remain stable, so the previous r2 release has been replaced by `base_v2_full_20260817_corrected_r1_final`.
 
 Base V2 remains an ordinary unweighted Full50 RF for new-branch generalization. It is not a high-Sr correction model, and the corrected run continues to show severe extreme-Sr compression.
 
@@ -70,14 +70,14 @@ Stress behavior is effectively unchanged. Primary metrics apply only to the 2,57
 - Recipe: `mtry=7`, `min.node.size=5`, `sample.fraction=1.0`, `replace=FALSE`.
 - Recipe fingerprint: `efc54e8a75add55765290ade759d113a`, unchanged from r2.
 - Final fit: 4,485 rows, 50 predictors, 4,000 trees.
-- Release source: `base_v2_full_20260817_corrected_r1`.
+- Release source: `base_v2_full_20260817_corrected_r1_final`.
 - Release model SHA-256: `2a9efcf21e80a375fa56e4380400fa26397e3ff0672bf837e81c84d2aee80c62`.
 
 ## Provenance
 
 - Training source commit: `b5b6001fd8f961ebbb77bbe599f172b5cf899161`.
 - Slurm chain: `66598–66603`.
-- Archive: `base_v2_base_v2_full_20260817_corrected_r1.tar.gz`.
+- Archive: `base_v2_base_v2_full_20260817_corrected_r1_final.tar.gz`.
 - Archive size: `138,258,652` bytes.
 - Archive SHA-256: `64ab1494f24b9a4fd3cd4145a94609944b1986639c94c98c34bb5696962954e1`.
 

@@ -1,7 +1,7 @@
 {
   "status": "complete",
   "aggregated_at": "2026-08-17T08:13:24+0800",
-  "run_id": "risk_v1_full_20260817_corrected_r1",
+  "run_id": "risk_v1_full_20260817_corrected_r1_final",
   "task_count": 30,
   "models": 2,
   "repeats_per_model": 3,

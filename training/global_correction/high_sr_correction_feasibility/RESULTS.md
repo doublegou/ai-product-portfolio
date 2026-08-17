@@ -4,6 +4,8 @@
 
 **STOP — stable residual signal exists, but no candidate safely improves on Raw Base.**
 
+Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+
 The complete strict-nested experiment was rerun from corrected canonical predictors and the corrected Base V1 release recipe. All four Env47/Full50 candidates again passed the residual-signal gate relative to their same-family BasePred-only correction, but none passed the separately frozen Raw-Base safety gate. The automated status remains `SIGNAL_ONLY_BUT_NOT_USEFUL`.
 
 This is a completed negative promotion result, not a failed computation. Base V1 remains unchanged. No full-data correction model, model bundle, or release was created.
@@ -66,7 +68,7 @@ This result authorizes preserving and citing the corrected-data OOF evidence and
 
 ## Provenance and completeness
 
-- Run ID: `high_sr_corr_20260817_corrected_r1`
+- Run ID: `high_sr_corr_20260817_corrected_r1_final`
 - Source Git commit: `c8c22ba9f27903e6d97fb31226912f8d2dc68ec1`
 - Slurm chain: `66550–66555`, all `COMPLETED / 0:0`
 - Base tasks: `15/15`, comprising 240 canonical strict-nested Base fits
@@ -78,7 +80,7 @@ This result authorizes preserving and citing the corrected-data OOF evidence and
 - Base V1 replaced: `false`
 - Release created: `false`
 - Log audit: no warnings or fatal errors
-- Archive: `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1.tar.gz`
+- Archive: `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1_final.tar.gz`
 - Archive size: `33,920,089` bytes
 - SHA-256: `8a4517aecdb8aef115e2824d2b5a872f138b15f61917b2dd33ed7c7a0d14da90`
 - Frozen config MD5: `3bb1df5dc08742193c03d3789527b2b2`

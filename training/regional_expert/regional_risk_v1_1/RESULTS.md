@@ -4,7 +4,9 @@
 
 `RANKING_SIGNAL_NOT_OPERATIONAL_GATE`
 
-修正训练数据后的正式重跑已完成。Run ID 为 `regional_risk_v1_1_20260817_corrected_r1`，34/34 tasks、578 GAM fits、34 Platt calibrators、68 thresholds 和 744 条 Outer OOF predictions 均完整；全部 GAM 和 calibrator 收敛。
+重训接纳：**通过——修正数据结果与上一轮及历史指标处于同一量级，复现相同科学结论，并取代此前执行证据。**
+
+修正训练数据后的正式重跑已完成。Run ID 为 `regional_risk_v1_1_20260817_corrected_r1_final`，34/34 tasks、578 GAM fits、34 Platt calibrators、68 thresholds 和 744 条 Outer OOF predictions 均完整；全部 GAM 和 calibrator 收敛。
 
 ## Primary Gate
 
@@ -38,10 +40,10 @@ Slurm stdout/stderr 中没有 fatal error 或 warning 行。34 个 Platt calibra
 ## Provenance
 
 - Source commit: `e741c81ada30abec52a688eff0ea99f2fc1a20b1`
-- Run ID: `regional_risk_v1_1_20260817_corrected_r1`
+- Run ID: `regional_risk_v1_1_20260817_corrected_r1_final`
 - Data MD5: `6fe0d27c33b47956f21d0e8d6e832ec5`
 - Config MD5: `e34a9d869a819bd26e49dcb7c42803a8`
 - Fold manifest MD5: `6d93ac7589be18105cde77a8e70a17ab`
-- Archive: `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1.tar.gz`
+- Archive: `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1_final.tar.gz`
 - Archive size: `1,259,700` bytes
 - Archive SHA-256: `4fe11873eef5cf6ab314517a46a1563326d12eb2b37b0d6c9e3f47567ed7f2a8`

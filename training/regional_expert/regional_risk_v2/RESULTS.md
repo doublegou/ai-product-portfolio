@@ -4,6 +4,8 @@
 
 `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE`
 
+Retraining acceptance: **ACCEPTED — the corrected-data result preserves the previous and recovered historical Gate conclusion and supersedes the prior execution evidence.**
+
 The frozen forward experiment completed successfully. All four prespecified candidates failed the complete Regional Risk V2 Gate under strict Nested Leave-One-Branch-Out validation. The experiment therefore stops without fitting a full-data model or creating a release.
 
 ## Gate result
@@ -67,7 +69,7 @@ The secondary Process14 direction is not identical to the recovered narrative. T
 ## Provenance and completeness
 
 - Source Git commit: `36ad60251c939a02786ad7ae7ce8d13d5dc74fde`
-- Run ID: `regional_risk_v2_20260817_corrected_r3`
+- Run ID: `regional_risk_v2_20260817_corrected_r3_final`
 - Slurm jobs: check `66847`; 68-task array `66848`; aggregate `66849`
 - Completion: 68/68 tasks, 1,156/1,156 model fits, 68/68 thresholds
 - Formal Outer OOF: 1,488 rows; 372 unique stations for each of four candidates
@@ -78,7 +80,7 @@ The secondary Process14 direction is not identical to the recovered narrative. T
 - Fold manifest MD5: `2b0b48381014cf9d441e0060acde7cb4`
 - Full-data model fitted: `false`
 - Release created: `false`
-- Archive: `regional_risk_v2_regional_risk_v2_20260817_corrected_r3.tar.gz`
+- Archive: `regional_risk_v2_regional_risk_v2_20260817_corrected_r3_final.tar.gz`
 - Archive size: `2,083,266` bytes
 - Archive SHA-256: `8d867c458fc9550cde988cd47bfe0e868ac7f61231ac757a7f2b21050b9bd0b1`
 

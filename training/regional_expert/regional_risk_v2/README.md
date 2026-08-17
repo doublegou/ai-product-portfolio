@@ -15,4 +15,4 @@ Rscript training/regional_expert/regional_risk_v2/scripts/run.R --stage prepare 
 Rscript training/regional_expert/regional_risk_v2/scripts/run.R --stage check
 ```
 
-Corrected-data cluster work completed as run `regional_risk_v2_20260817_corrected_r3`: 68/68 tasks, 1,156 fits, 68 thresholds and 1,488 strict Outer OOF predictions. No full-data model or release was created.
+Corrected-data cluster work completed as run `regional_risk_v2_20260817_corrected_r3_final`: 68/68 tasks, 1,156 fits, 68 thresholds and 1,488 strict Outer OOF predictions. No full-data model or release was created.

@@ -12,18 +12,20 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 
 ## 2. 最终决策总表
 
-| 项目 | 修正数据 run | 最终判定 | 最终模型 | Release 动作 |
-|---|---|---|---|---|
-| Base V0 | `v0_full_20260817_corrected_r1` | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
-| Base V1 | `v1_full_20260817_corrected_r1` | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
-| Global High-Sr Risk V1 | `risk_v1_full_20260817_corrected_r1` | `transferable_signal_insufficient_stop` | 未拟合 | 不创建 |
-| High-Sr Correction Feasibility V1 | `high_sr_corr_20260817_corrected_r1` | `SIGNAL_ONLY_BUT_NOT_USEFUL` | 未拟合 | 不创建 |
-| Base V2 | `base_v2_full_20260817_corrected_r1` | `ACCEPTED` | 已拟合 | 已替换 |
-| Regional Risk V1 | `regional_risk_v1_20260817_corrected_r1` | `SIGNAL_FEASIBILITY_ONLY` | 未拟合 | 不创建 |
-| Regional Risk V1.1 | `regional_risk_v1_1_20260817_corrected_r1` | `RANKING_SIGNAL_NOT_OPERATIONAL_GATE` | 未拟合 | 不创建 |
-| Regional Risk V2 | `regional_risk_v2_20260817_corrected_r3` | `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE` | 未拟合 | 不创建 |
+这里将两个判定层明确分开：`重训接纳` 判断修正数据结果是否与上一轮/历史处于同一量级并复现相同科学结论；`科学/部署结论` 判断该实验本身是否授权最终模型或 Release。
 
-结论：八个受影响项目全部得到完整、可审计的修正数据结果。三个 ordinary Base RF 通过并更新 release；五个风险/校正可行性项目完成计算但没有通过其部署或 promotion Gate，因此按预先冻结的停止规则不生成 release。
+| 项目 | 最终采用 run | 重训接纳 | 科学/部署结论 | 最终模型 | Release 动作 |
+|---|---|---|---|---|---|
+| Base V0 | `v0_full_20260817_corrected_r1_final` | 通过 | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
+| Base V1 | `v1_full_20260817_corrected_r1_final` | 通过 | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
+| Global High-Sr Risk V1 | `risk_v1_full_20260817_corrected_r1_final` | 通过 | `transferable_signal_insufficient_stop` | 按方案不拟合 | 不创建 |
+| High-Sr Correction Feasibility V1 | `high_sr_corr_20260817_corrected_r1_final` | 通过 | `SIGNAL_ONLY_BUT_NOT_USEFUL` | 按方案不拟合 | 不创建 |
+| Base V2 | `base_v2_full_20260817_corrected_r1_final` | 通过 | `ACCEPTED` | 已拟合 | 已替换 |
+| Regional Risk V1 | `regional_risk_v1_20260817_corrected_r1_final` | 通过 | `SIGNAL_FEASIBILITY_ONLY` | 按方案不拟合 | 不创建 |
+| Regional Risk V1.1 | `regional_risk_v1_1_20260817_corrected_r1_final` | 通过 | `RANKING_SIGNAL_NOT_OPERATIONAL_GATE` | 按方案不拟合 | 不创建 |
+| Regional Risk V2 | `regional_risk_v2_20260817_corrected_r3_final` | 通过 | `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE` | 按方案不拟合 | 不创建 |
+
+结论：八个受影响项目的修正数据重训均通过接纳审查，并由 `_final` Run 取代上一轮结果证据。三个 ordinary Base RF 更新 Release；另外五个项目复现了原有负科学结论，因此更新结果与结论文件，但按照预先冻结的停止规则不生成 Release。
 
 ## 3. 通过并更新的 Base 模型
 
@@ -33,7 +35,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 - 相对上一轮：RMSE `+0.10%`，MAE `+0.60%`；各 validation scheme 的 RMSE 变化均小于 `0.56%`。
 - 最终 recipe 未改变：`mtry=7`、`min.node.size=5`、`sample.fraction=1`、`replace=FALSE`、3,000 trees。
 - 没有独立保存下来的第三套历史数值，因此历史一致性只在冻结方法与上一正式 run 层面判断，没有虚构历史对照。
-- Release source run：`v0_full_20260817_corrected_r1`；模型 MD5 `df2a251b3e80114ddc44873f8618a8c6`，已现场复算一致。
+- Release source run：`v0_full_20260817_corrected_r1_final`；模型 MD5 `df2a251b3e80114ddc44873f8618a8c6`，已现场复算一致。
 - 详细结果：[Base V0 RESULTS](training/base/v0/RESULTS.md)
 
 ### Base V1
@@ -42,7 +44,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 - 相对上一轮：RMSE 改善 `0.40%`，MAE 改善 `1.18%`；各 stress RMSE 变化均小于 `0.42%`。
 - 最终 recipe 未改变：`mtry=12`、`min.node.size=5`、`sample.fraction=1`、`replace=FALSE`、4,000 trees。
 - 历史边界保持：background-Sr RMSE 约 `0.00434`，`Sr>=0.80` RMSE 仍约 `0.227`；普通 Full50 RF 的极端尾部压缩没有被解决。
-- Release source run：`v1_full_20260817_corrected_r1`；模型 MD5 `68ac07ee978cebbfdfa206e93001bfe0`，已现场复算一致。
+- Release source run：`v1_full_20260817_corrected_r1_final`；模型 MD5 `68ac07ee978cebbfdfa206e93001bfe0`，已现场复算一致。
 - 详细结果：[Base V1 RESULTS](training/base/v1/RESULTS.md)
 
 ### Base V2
@@ -53,11 +55,13 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 - 方法结论保持：Purged Branch 对 Matched Terminal 的四项冻结指标均为 `9/9` 优胜；Purged 对 Naive Branch 仍不是稳定全面优胜。
 - 尾部问题保持且明确：`Sr>=0.80` RMSE `0.175981`，Bias `-0.152258`，同阈值 recall 从历史 `2/10` 变为 `1/10`。这不阻止 ordinary Base RF 发布，但严禁把 V2 描述为解决 High-Sr。
 - 最终 recipe fingerprint 未改变：`mtry=7`、`min.node.size=5`、`sample.fraction=1`、`replace=FALSE`、4,000 trees。
-- Release source run：`base_v2_full_20260817_corrected_r1`；模型 SHA-256 `2a9efcf21e80a375fa56e4380400fa26397e3ff0672bf837e81c84d2aee80c62`。
+- Release source run：`base_v2_full_20260817_corrected_r1_final`；模型 SHA-256 `2a9efcf21e80a375fa56e4380400fa26397e3ff0672bf837e81c84d2aee80c62`。
 - Release 目录的 11 个 artifact 已逐项复算 bytes、MD5 和 SHA-256，全部通过。
 - 详细结果：[Base V2 RESULTS](training/base/v2/RESULTS.md)
 
-## 4. 完成但未通过 Gate 的项目
+## 4. 重训通过并更新负科学结论的项目
+
+以下五个项目的“未通过 Gate”是被成功复现并正式接纳的科学结果，不代表重训失败。
 
 ### Global High-Sr Risk V1
 
@@ -110,24 +114,26 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 
 | Release | Source run | Recipe | 模型校验 |
 |---|---|---|---|
-| `training/base/v0/release` | `v0_full_20260817_corrected_r1` | RF 7/5/1.0, 3,000 trees | MD5 `df2a251b3e80114ddc44873f8618a8c6` |
-| `training/base/v1/release` | `v1_full_20260817_corrected_r1` | RF 12/5/1.0, 4,000 trees | MD5 `68ac07ee978cebbfdfa206e93001bfe0` |
-| `training/base/v2/release` | `base_v2_full_20260817_corrected_r1` | RF 7/5/1.0, 4,000 trees | SHA-256 `2a9efcf21e80a375fa56e4380400fa26397e3ff0672bf837e81c84d2aee80c62` |
+| `training/base/v0/release` | `v0_full_20260817_corrected_r1_final` | RF 7/5/1.0, 3,000 trees | MD5 `df2a251b3e80114ddc44873f8618a8c6` |
+| `training/base/v1/release` | `v1_full_20260817_corrected_r1_final` | RF 12/5/1.0, 4,000 trees | MD5 `68ac07ee978cebbfdfa206e93001bfe0` |
+| `training/base/v2/release` | `base_v2_full_20260817_corrected_r1_final` | RF 7/5/1.0, 4,000 trees | SHA-256 `2a9efcf21e80a375fa56e4380400fa26397e3ff0672bf837e81c84d2aee80c62` |
 
 Global High-Sr Risk、High-Sr Correction、Regional Risk V1、V1.1、V2 均因冻结 Gate 未通过而没有 release。这是科学停止结论，不是训练失败。
 
 ## 6. 结果归档
 
+归档文件名已与最终采用 Run 的 `_final` 标识对齐；归档内部保留原始 Slurm 执行 ID，八个最终 Run 的 `run_info.json` 通过 `source_execution_run_id` 明确记录这一映射，因此没有改写真实调度 provenance。
+
 | 项目 | Archive | Bytes | SHA-256 |
 |---|---|---:|---|
-| Base V0 | `base_v0_v0_full_20260817_corrected_r1.tar.gz` | 92,817,522 | `fa93948c13caabbe0931a051222004b56942d0338011eac446332579baf15012` |
-| Base V1 | `base_v1_v1_full_20260817_corrected_r1.tar.gz` | 131,912,149 | `46bbbb76ab744b744b106d19799663216e918479192ad50d159e4bf1e8a4bd65` |
-| Global High-Sr Risk | `global_high_sr_risk_risk_v1_full_20260817_corrected_r1.tar.gz` | 5,377,115 | `7dba5a17e102210b44b246e2f607edec42f55f1a897e150e84c6ae290a116702` |
-| High-Sr Correction | `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1.tar.gz` | 33,920,089 | `8a4517aecdb8aef115e2824d2b5a872f138b15f61917b2dd33ed7c7a0d14da90` |
-| Base V2 | `base_v2_base_v2_full_20260817_corrected_r1.tar.gz` | 138,258,652 | `64ab1494f24b9a4fd3cd4145a94609944b1986639c94c98c34bb5696962954e1` |
-| Regional Risk V1 | `regional_risk_v1_regional_risk_v1_20260817_corrected_r1.tar.gz` | 860,147 | `71791352887bb26b8dcc0015b2d3af1c6083997b98ccd471824b8bcbdda7bd0d` |
-| Regional Risk V1.1 | `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1.tar.gz` | 1,259,700 | `4fe11873eef5cf6ab314517a46a1563326d12eb2b37b0d6c9e3f47567ed7f2a8` |
-| Regional Risk V2 | `regional_risk_v2_regional_risk_v2_20260817_corrected_r3.tar.gz` | 2,083,266 | `8d867c458fc9550cde988cd47bfe0e868ac7f61231ac757a7f2b21050b9bd0b1` |
+| Base V0 | `base_v0_v0_full_20260817_corrected_r1_final.tar.gz` | 92,817,522 | `fa93948c13caabbe0931a051222004b56942d0338011eac446332579baf15012` |
+| Base V1 | `base_v1_v1_full_20260817_corrected_r1_final.tar.gz` | 131,912,149 | `46bbbb76ab744b744b106d19799663216e918479192ad50d159e4bf1e8a4bd65` |
+| Global High-Sr Risk | `global_high_sr_risk_risk_v1_full_20260817_corrected_r1_final.tar.gz` | 5,377,115 | `7dba5a17e102210b44b246e2f607edec42f55f1a897e150e84c6ae290a116702` |
+| High-Sr Correction | `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1_final.tar.gz` | 33,920,089 | `8a4517aecdb8aef115e2824d2b5a872f138b15f61917b2dd33ed7c7a0d14da90` |
+| Base V2 | `base_v2_base_v2_full_20260817_corrected_r1_final.tar.gz` | 138,258,652 | `64ab1494f24b9a4fd3cd4145a94609944b1986639c94c98c34bb5696962954e1` |
+| Regional Risk V1 | `regional_risk_v1_regional_risk_v1_20260817_corrected_r1_final.tar.gz` | 860,147 | `71791352887bb26b8dcc0015b2d3af1c6083997b98ccd471824b8bcbdda7bd0d` |
+| Regional Risk V1.1 | `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1_final.tar.gz` | 1,259,700 | `4fe11873eef5cf6ab314517a46a1563326d12eb2b37b0d6c9e3f47567ed7f2a8` |
+| Regional Risk V2 | `regional_risk_v2_regional_risk_v2_20260817_corrected_r3_final.tar.gz` | 2,083,266 | `8d867c458fc9550cde988cd47bfe0e868ac7f61231ac757a7f2b21050b9bd0b1` |
 
 ## 7. Git 结果提交
 

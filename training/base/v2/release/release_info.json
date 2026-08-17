@@ -1,6 +1,9 @@
 {
   "status": "frozen",
-  "source_run": "base_v2_full_20260817_corrected_r1",
+  "source_run": "base_v2_full_20260817_corrected_r1_final",
+  "source_execution_run_id": "base_v2_full_20260817_corrected_r1",
+  "adoption_status": "accepted_final",
+  "adopted_at": "2026-08-17T14:05:13+0800",
   "released_at": "2026-08-17T08:58:02+0800",
   "artifacts": [
     {
@@ -53,10 +56,10 @@
     },
     {
       "path": "training/base/v2/release/scientific_conclusion.md",
-      "bytes": 1815,
-      "modified_at": "2026-08-17T08:58:02+0800",
-      "md5": "ede33fcdc2200dd34f1cce2e69c11bb2",
-      "sha256": "52a3fdbd1168f4b57292aa9088cefc49cbaab4d55f34614d27b914fc87891b72",
+      "bytes": 1827,
+      "modified_at": "2026-08-17T14:05:13+0800",
+      "md5": "e3ddece750e01367120e300d6cd6c4d0",
+      "sha256": "1aef81ffd02214ed4c98a933a12fd1fb5a29fb5827ee332ffe6ae7d50b02fd43",
       "hash_method": "normalized_lf_text"
     },
     {

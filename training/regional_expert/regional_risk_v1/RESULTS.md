@@ -4,6 +4,8 @@
 
 **SIGNAL FEASIBILITY ONLY — a moderate nonlinear Himalaya risk signal transfers across held-out regional branches, but no deployable Regional Expert is authorized.**
 
+Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+
 The forward reconstruction completed successfully under the frozen 17-branch LOBO protocol. GAM recovered useful ranking structure, while both Elastic Net arms collapsed to intercept-only models in every Outer fold. The experiment therefore establishes regional signal feasibility and stops at the pre-specified V1 boundary.
 
 No Gate threshold was selected, probabilities were not calibrated, no hard-routing rule was evaluated, no full-data expert was fitted, and no release was created.
@@ -73,7 +75,7 @@ It does **not** authorize choosing a threshold on these OOF results, calling the
 
 ## Provenance and completeness
 
-- Run ID: `regional_risk_v1_20260817_corrected_r1`
+- Run ID: `regional_risk_v1_20260817_corrected_r1_final`
 - Source Git commit: `63581e2a4a5ce9f28130892d738caf021456a2a8`
 - Formal tasks: GAM `51/51`; Elastic Net `34/34`; total `85/85`
 - Validation: 17 exhaustive response-blind regional branches; strict LOBO
@@ -86,7 +88,7 @@ It does **not** authorize choosing a threshold on these OOF results, calling the
 - Data MD5: `6fe0d27c33b47956f21d0e8d6e832ec5`
 - Config MD5: `1adef9744fb7d1b75b7d4f5dd2d7f81e`
 - Fold manifest MD5: `ecb0a305e86513dcaaf7b0cc1673ba1b`
-- Archive: `regional_risk_v1_regional_risk_v1_20260817_corrected_r1.tar.gz`
+- Archive: `regional_risk_v1_regional_risk_v1_20260817_corrected_r1_final.tar.gz`
 - Archive size: `860,147` bytes
 - Archive SHA-256: `71791352887bb26b8dcc0015b2d3af1c6083997b98ccd471824b8bcbdda7bd0d`
 

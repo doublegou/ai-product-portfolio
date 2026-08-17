@@ -4,6 +4,8 @@
 
 **STOP — transferable signal insufficient.**
 
+Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+
 The complete frozen experiment was rerun after correcting the canonical `sr_full50_v1.csv` predictors. Both candidate models again passed `0/3` repeat-level feasibility gates. The corrected 47 non-spatial predictors therefore still do not support a reliable, hydrologically transferable High-Sr classifier under this protocol.
 
 This is a completed negative feasibility result, not a failed computation. No full-data classifier, deployment threshold, probability calibration, model bundle, or release was created.
@@ -48,7 +50,7 @@ This result authorizes preserving and citing the corrected-data OOF evidence. It
 
 ## Provenance and completeness
 
-- Run ID: `risk_v1_full_20260817_corrected_r1`
+- Run ID: `risk_v1_full_20260817_corrected_r1_final`
 - Source Git commit: `a4f5bb7ca931d48e5e212355c38f7d22186f125a`
 - Slurm chain: `66517–66521`, all `COMPLETED / 0:0`
 - Training tasks: `30/30` complete
@@ -56,7 +58,7 @@ This result authorizes preserving and citing the corrected-data OOF evidence. It
 - Automated decision: `transferable_signal_insufficient_stop`
 - Final model fitted: `false`
 - Release created: `false`
-- Archive: `global_high_sr_risk_risk_v1_full_20260817_corrected_r1.tar.gz`
+- Archive: `global_high_sr_risk_risk_v1_full_20260817_corrected_r1_final.tar.gz`
 - Archive size: `5,377,115` bytes
 - SHA-256: `7dba5a17e102210b44b246e2f607edec42f55f1a897e150e84c6ae290a116702`
 
