@@ -1,2 +1,2 @@
 model_id,outer_fold,alpha,alpha_status,lambda_min,lambda_1se,selected,inner_folds,inner_seed,inner_assignment_attempts,nonzero_predictors
-elastic_environment,1,0.5,forward_reconstruction_frozen_assumption_historical_value_not_preserved,0.00645872876503403,0.221564706570879,lambda.1se,5,913399,1,0
+elastic_environment,1,0.5,forward_reconstruction_frozen_assumption_historical_value_not_preserved,0.00399859826388101,0.218414521994694,lambda.1se,5,913399,1,0

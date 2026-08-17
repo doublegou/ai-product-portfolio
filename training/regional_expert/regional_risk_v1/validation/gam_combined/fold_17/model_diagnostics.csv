@@ -1,2 +1,2 @@
 model_type,feature_set,model_id,outer_fold,converged,n_coefficients,effective_df,deviance_explained,aic,warning_count,warnings,intercept_only,selected_lambda,selected_alpha,inner_folds
-gam,combined,gam_combined,17,TRUE,43,15.9320603142798,0.307863112307215,301.183991016325,31,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,17,TRUE,43,15.9422010091987,0.307624645137171,301.287460151703,31,non-integer #successes in a binomial glm!,FALSE,,,

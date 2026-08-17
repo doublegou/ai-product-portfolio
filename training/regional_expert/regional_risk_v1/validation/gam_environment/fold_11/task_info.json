@@ -11,10 +11,10 @@
   "n_train_branches": 16,
   "branch_leakage": 0,
   "weight_mean_outer_train": 0.99999999999999989,
-  "data_md5": "6fc05f714eb2f6fdc402ef0717d5369a",
+  "data_md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
   "config_md5": "1adef9744fb7d1b75b7d4f5dd2d7f81e",
-  "fold_manifest_md5": "4c700d640fae72bf657552572d4bc1d2",
-  "completed_at": "2026-08-17T05:02:57+0800",
+  "fold_manifest_md5": "ecb0a305e86513dcaaf7b0cc1673ba1b",
+  "completed_at": "2026-08-17T09:03:10+0800",
   "runtime": {
     "r_version": "R version 4.4.3 (2025-02-28)",
     "platform": "x86_64-pc-linux-gnu",
@@ -29,7 +29,7 @@
       "PRROC": "1.4",
       "pROC": "1.19.0.1"
     },
-    "slurm_job_id": "66242",
+    "slurm_job_id": "66717",
     "slurm_array_task_id": "27"
   }
 }

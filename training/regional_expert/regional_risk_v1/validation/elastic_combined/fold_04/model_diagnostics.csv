@@ -1,2 +1,2 @@
 model_type,feature_set,model_id,outer_fold,converged,n_coefficients,effective_df,deviance_explained,aic,warning_count,warnings,intercept_only,selected_lambda,selected_alpha,inner_folds
-elastic_net,combined,elastic_combined,4,TRUE,0,,,,0,"",TRUE,0.220463436563286,0.5,5
+elastic_net,combined,elastic_combined,4,TRUE,0,,,,0,"",TRUE,0.220463436563288,0.5,5

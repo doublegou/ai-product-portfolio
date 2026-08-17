@@ -16,71 +16,71 @@ gam,spatial_only,gam_spatial_only,14,TRUE,15,9.213052132946,0.191932402047818,28
 gam,spatial_only,gam_spatial_only,15,TRUE,15,11.3636033875195,0.317386485155972,267.676991966254,14,non-integer #successes in a binomial glm!,FALSE,,,
 gam,spatial_only,gam_spatial_only,16,TRUE,15,9.3810704065653,0.21638976305844,319.590723449819,45,non-integer #successes in a binomial glm!,FALSE,,,
 gam,spatial_only,gam_spatial_only,17,TRUE,15,9.65144966275254,0.223349757683821,318.88770783436,10,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,1,TRUE,29,8.00033114460564,0.250553199055091,297.53394188295,23,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,2,TRUE,29,8.33150010398222,0.246641389917003,289.30863182965,21,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,3,TRUE,29,8.22656451186003,0.229701200342058,276.065989700839,23,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,4,TRUE,29,8.64237870671625,0.271418780379659,285.465610911257,17,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,5,TRUE,29,8.49569171137396,0.211936183932605,317.585678005931,16,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,6,TRUE,29,8.29795286701287,0.22272439098908,314.497341132576,34,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,7,TRUE,29,8.44806987967482,0.232960905278274,308.916116499661,14,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,8,TRUE,29,8.00028674784233,0.254088274139595,291.152589623482,13,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,9,TRUE,29,8.78251969279688,0.23605500462104,295.070953540639,21,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,10,TRUE,29,8.32473554826451,0.240541366261905,303.433622152184,16,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,11,TRUE,29,8.96071608739031,0.219362033022103,317.346412071675,13,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,12,TRUE,29,8.89787050644165,0.255056090158126,302.3260508531,27,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,13,TRUE,29,8.5292380585832,0.255201526728976,297.368809545869,20,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,14,TRUE,29,8.73477457347844,0.185534001542018,287.977702936511,17,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,15,TRUE,29,8.96850375973338,0.278650876788205,275.878471579073,19,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,16,TRUE,29,8.00270530372744,0.240311942618373,304.114312425588,13,non-integer #successes in a binomial glm!,FALSE,,,
-gam,environment,gam_environment,17,TRUE,29,8.94514227962308,0.231324383812397,312.79949949779,19,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,1,TRUE,43,15.4617829784888,0.345079102395247,281.271530703161,41,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,2,TRUE,43,15.9771272965196,0.334420172907348,277.214808361882,49,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,3,TRUE,43,15.5195471533689,0.31974819605588,263.176493260261,39,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,4,TRUE,43,15.3718323009,0.357548977870454,271.154592360866,38,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,5,TRUE,43,15.6931071604827,0.29544193515478,304.207859320493,39,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,6,TRUE,43,15.6089045975741,0.302928699278132,302.663905344591,37,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,7,TRUE,43,15.8479234606936,0.314872591940206,296.766713191975,38,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,8,TRUE,43,14.9439701485442,0.322470978656251,283.8372155328,38,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,9,TRUE,43,16.9051404208228,0.344507072608336,276.048481730929,49,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,10,TRUE,43,16.3335784422839,0.343390453939629,284.77819467304,82,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,11,TRUE,43,16.0447289132454,0.299519834415825,304.676865315452,28,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,12,TRUE,43,14.9333810712013,0.332382183267615,287.145901886863,31,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,13,TRUE,43,15.9179936547929,0.340719138725845,283.666506302867,37,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,14,TRUE,43,16.1256733748578,0.271976730838705,278.189823333319,53,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,15,TRUE,43,16.2559211377471,0.367819535246903,262.211661877534,36,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,16,TRUE,43,15.0504045499221,0.305290969787324,298.054628404812,38,non-integer #successes in a binomial glm!,FALSE,,,
-gam,combined,gam_combined,17,TRUE,43,15.9320603142798,0.307863112307215,301.183991016325,31,non-integer #successes in a binomial glm!,FALSE,,,
-elastic_net,environment,elastic_environment,1,TRUE,0,,,,0,,TRUE,0.221564706570879,0.5,5
-elastic_net,environment,elastic_environment,2,TRUE,0,,,,0,,TRUE,0.245957632057503,0.5,5
-elastic_net,environment,elastic_environment,3,TRUE,0,,,,0,,TRUE,0.239788491211492,0.5,5
-elastic_net,environment,elastic_environment,4,TRUE,0,,,,0,,TRUE,0.220463436563286,0.5,5
-elastic_net,environment,elastic_environment,5,TRUE,0,,,,0,,TRUE,0.204867280605012,0.5,5
-elastic_net,environment,elastic_environment,6,TRUE,0,,,,0,,TRUE,0.205713459137366,0.5,5
-elastic_net,environment,elastic_environment,7,TRUE,0,,,,0,,TRUE,0.208352564187564,0.5,5
-elastic_net,environment,elastic_environment,8,TRUE,0,,,,0,,TRUE,0.218613950765096,0.5,5
-elastic_net,environment,elastic_environment,9,TRUE,0,,,,0,,TRUE,0.228328755315375,0.5,5
-elastic_net,environment,elastic_environment,10,TRUE,0,,,,0,,TRUE,0.21087918272768,0.5,5
-elastic_net,environment,elastic_environment,11,TRUE,0,,,,0,,TRUE,0.229432173475145,0.5,5
-elastic_net,environment,elastic_environment,12,TRUE,0,,,,0,,TRUE,0.209408246176627,0.5,5
-elastic_net,environment,elastic_environment,13,TRUE,0,,,,0,,TRUE,0.213883349548864,0.5,5
-elastic_net,environment,elastic_environment,14,TRUE,0,,,,0,,TRUE,0.195714544467984,0.5,5
-elastic_net,environment,elastic_environment,15,TRUE,0,,,,0,,TRUE,0.226111455736823,0.5,5
-elastic_net,environment,elastic_environment,16,TRUE,0,,,,0,,TRUE,0.245110410949205,0.5,5
-elastic_net,environment,elastic_environment,17,TRUE,0,,,,0,,TRUE,0.212801727150678,0.5,5
-elastic_net,combined,elastic_combined,1,TRUE,0,,,,0,,TRUE,0.221564706570879,0.5,5
-elastic_net,combined,elastic_combined,2,TRUE,0,,,,0,,TRUE,0.245957632057503,0.5,5
-elastic_net,combined,elastic_combined,3,TRUE,0,,,,0,,TRUE,0.239788491211492,0.5,5
-elastic_net,combined,elastic_combined,4,TRUE,0,,,,0,,TRUE,0.220463436563286,0.5,5
-elastic_net,combined,elastic_combined,5,TRUE,0,,,,0,,TRUE,0.204867280605012,0.5,5
-elastic_net,combined,elastic_combined,6,TRUE,0,,,,0,,TRUE,0.205713459137366,0.5,5
-elastic_net,combined,elastic_combined,7,TRUE,0,,,,0,,TRUE,0.208352564187564,0.5,5
-elastic_net,combined,elastic_combined,8,TRUE,0,,,,0,,TRUE,0.218613950765096,0.5,5
-elastic_net,combined,elastic_combined,9,TRUE,0,,,,0,,TRUE,0.228328755315375,0.5,5
-elastic_net,combined,elastic_combined,10,TRUE,0,,,,0,,TRUE,0.21087918272768,0.5,5
-elastic_net,combined,elastic_combined,11,TRUE,0,,,,0,,TRUE,0.229432173475145,0.5,5
-elastic_net,combined,elastic_combined,12,TRUE,0,,,,0,,TRUE,0.209408246176627,0.5,5
-elastic_net,combined,elastic_combined,13,TRUE,0,,,,0,,TRUE,0.213883349548864,0.5,5
-elastic_net,combined,elastic_combined,14,TRUE,0,,,,0,,TRUE,0.195714544467984,0.5,5
-elastic_net,combined,elastic_combined,15,TRUE,0,,,,0,,TRUE,0.226111455736823,0.5,5
-elastic_net,combined,elastic_combined,16,TRUE,0,,,,0,,TRUE,0.245110410949205,0.5,5
-elastic_net,combined,elastic_combined,17,TRUE,0,,,,0,,TRUE,0.212801727150678,0.5,5
+gam,environment,gam_environment,1,TRUE,29,8.0002976323354,0.249652198596654,297.873634684829,23,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,2,TRUE,29,8.3407795389885,0.246063530752584,289.54864214237,20,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,3,TRUE,29,8.22828214603252,0.229314942280199,276.201121132462,28,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,4,TRUE,29,8.64249231033996,0.271420461474291,285.465456061248,17,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,5,TRUE,29,8.50180398641157,0.21139748088762,317.807149646695,18,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,6,TRUE,29,8.30434855148201,0.222173256594918,314.724691659544,33,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,7,TRUE,29,8.44803799697345,0.232378177590474,309.137607042983,14,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,8,TRUE,29,8.00028447861043,0.253391247840673,291.408859585026,13,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,9,TRUE,29,8.79115421233233,0.235484005771349,295.296656705564,20,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,10,TRUE,29,8.32539928161489,0.239867352744213,303.688412805973,17,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,11,TRUE,29,8.96664126653302,0.218841939174183,317.552677778159,13,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,12,TRUE,29,8.90461497601811,0.254624598677598,302.50648626341,26,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,13,TRUE,29,8.53086238121749,0.254612324068203,297.588349269573,19,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,14,TRUE,29,8.74418724842412,0.185051680142772,288.156826755465,21,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,15,TRUE,29,8.97448914238709,0.278242944001713,276.042764180259,15,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,16,TRUE,29,8.0015700383298,0.240077002701533,304.200218226106,13,non-integer #successes in a binomial glm!,FALSE,,,
+gam,environment,gam_environment,17,TRUE,29,8.95298362540962,0.230744523870032,313.040997035364,18,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,1,TRUE,43,15.4780984970505,0.345285742590459,281.205860096812,41,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,2,TRUE,43,15.9962320765288,0.334255618532029,277.306398803712,44,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,3,TRUE,43,15.5130812630673,0.319427191860861,263.276951679525,44,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,4,TRUE,43,15.3717670151766,0.357548534672423,271.154517046606,38,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,5,TRUE,43,15.6950907032027,0.29526427244566,304.266490500235,38,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,6,TRUE,43,15.6140579249439,0.302730442587117,302.739939240489,36,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,7,TRUE,43,15.8525743155279,0.314658213118892,296.845685298297,37,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,8,TRUE,43,14.9548992163173,0.32227193384999,283.920718314555,61,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,9,TRUE,43,16.8893118887591,0.344263629903682,276.078224458758,61,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,10,TRUE,43,16.3451419312062,0.343651351266197,284.673382923853,61,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,11,TRUE,43,16.0538559831439,0.299387075209291,304.73797104818,28,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,12,TRUE,43,14.936619755454,0.332327138616936,287.157558526796,31,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,13,TRUE,43,15.9416557725133,0.340622754005471,283.739589632877,37,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,14,TRUE,43,16.1139515021078,0.271730273670628,278.232444930854,44,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,15,TRUE,43,16.2544869682158,0.367560626357428,262.290514236113,37,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,16,TRUE,43,15.0448224997101,0.305270764540669,298.00680242061,42,non-integer #successes in a binomial glm!,FALSE,,,
+gam,combined,gam_combined,17,TRUE,43,15.9422010091987,0.307624645137171,301.287460151703,31,non-integer #successes in a binomial glm!,FALSE,,,
+elastic_net,environment,elastic_environment,1,TRUE,0,,,,0,,TRUE,0.218414521994694,0.5,5
+elastic_net,environment,elastic_environment,2,TRUE,0,,,,0,,TRUE,0.245873541475178,0.5,5
+elastic_net,environment,elastic_environment,3,TRUE,0,,,,0,,TRUE,0.239734104679491,0.5,5
+elastic_net,environment,elastic_environment,4,TRUE,0,,,,0,,TRUE,0.220463436563288,0.5,5
+elastic_net,environment,elastic_environment,5,TRUE,0,,,,0,,TRUE,0.204792700913673,0.5,5
+elastic_net,environment,elastic_environment,6,TRUE,0,,,,0,,TRUE,0.205640175452362,0.5,5
+elastic_net,environment,elastic_environment,7,TRUE,0,,,,0,,TRUE,0.208280536122127,0.5,5
+elastic_net,environment,elastic_environment,8,TRUE,0,,,,0,,TRUE,0.218547060620348,0.5,5
+elastic_net,environment,elastic_environment,9,TRUE,0,,,,0,,TRUE,0.228267332560975,0.5,5
+elastic_net,environment,elastic_environment,10,TRUE,0,,,,0,,TRUE,0.210808354868286,0.5,5
+elastic_net,environment,elastic_environment,11,TRUE,0,,,,0,,TRUE,0.227384503643976,0.5,5
+elastic_net,environment,elastic_environment,12,TRUE,0,,,,0,,TRUE,0.209336310837151,0.5,5
+elastic_net,environment,elastic_environment,13,TRUE,0,,,,0,,TRUE,0.213814223141394,0.5,5
+elastic_net,environment,elastic_environment,14,TRUE,0,,,,0,,TRUE,0.193434622118856,0.5,5
+elastic_net,environment,elastic_environment,15,TRUE,0,,,,0,,TRUE,0.226049006700733,0.5,5
+elastic_net,environment,elastic_environment,16,TRUE,0,,,,0,,TRUE,0.24503576737442,0.5,5
+elastic_net,environment,elastic_environment,17,TRUE,0,,,,0,,TRUE,0.212734446138664,0.5,5
+elastic_net,combined,elastic_combined,1,TRUE,0,,,,0,,TRUE,0.218414521994694,0.5,5
+elastic_net,combined,elastic_combined,2,TRUE,0,,,,0,,TRUE,0.245873541475178,0.5,5
+elastic_net,combined,elastic_combined,3,TRUE,0,,,,0,,TRUE,0.239734104679491,0.5,5
+elastic_net,combined,elastic_combined,4,TRUE,0,,,,0,,TRUE,0.220463436563288,0.5,5
+elastic_net,combined,elastic_combined,5,TRUE,0,,,,0,,TRUE,0.204792700913673,0.5,5
+elastic_net,combined,elastic_combined,6,TRUE,0,,,,0,,TRUE,0.205640175452362,0.5,5
+elastic_net,combined,elastic_combined,7,TRUE,0,,,,0,,TRUE,0.208280536122127,0.5,5
+elastic_net,combined,elastic_combined,8,TRUE,0,,,,0,,TRUE,0.218547060620348,0.5,5
+elastic_net,combined,elastic_combined,9,TRUE,0,,,,0,,TRUE,0.228267332560975,0.5,5
+elastic_net,combined,elastic_combined,10,TRUE,0,,,,0,,TRUE,0.210808354868286,0.5,5
+elastic_net,combined,elastic_combined,11,TRUE,0,,,,0,,TRUE,0.227384503643976,0.5,5
+elastic_net,combined,elastic_combined,12,TRUE,0,,,,0,,TRUE,0.209336310837151,0.5,5
+elastic_net,combined,elastic_combined,13,TRUE,0,,,,0,,TRUE,0.213814223141394,0.5,5
+elastic_net,combined,elastic_combined,14,TRUE,0,,,,0,,TRUE,0.193434622118856,0.5,5
+elastic_net,combined,elastic_combined,15,TRUE,0,,,,0,,TRUE,0.226049006700733,0.5,5
+elastic_net,combined,elastic_combined,16,TRUE,0,,,,0,,TRUE,0.24503576737442,0.5,5
+elastic_net,combined,elastic_combined,17,TRUE,0,,,,0,,TRUE,0.212734446138664,0.5,5

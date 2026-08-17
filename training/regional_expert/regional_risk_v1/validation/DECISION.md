@@ -1,6 +1,6 @@
 # Regional Risk V1 decision
 
-Run ID: `regional_risk_v1_20260817_r2`
+Run ID: `regional_risk_v1_20260817_corrected_r1`
 
 ## Status
 
@@ -14,8 +14,8 @@ Run ID: `regional_risk_v1_20260817_r2`
 |---|---:|---:|---:|---:|
 | elastic_combined | 0.125565 | 0.151541 | 0.175542 | 0.541568 |
 | elastic_environment | 0.125565 | 0.151541 | 0.175542 | 0.541568 |
-| gam_combined | 0.337107 | 0.712714 | 0.173978 | 0.530183 |
-| gam_environment | 0.310999 | 0.705801 | 0.165474 | 0.493358 |
+| gam_combined | 0.337956 | 0.711558 | 0.173871 | 0.530226 |
+| gam_environment | 0.310356 | 0.704559 | 0.165685 | 0.494175 |
 | gam_spatial_only | 0.276435 | 0.676584 | 0.173455 | 0.501907 |
 
 ## Frozen candidate roles

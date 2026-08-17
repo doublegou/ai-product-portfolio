@@ -5,11 +5,11 @@ p0__log_DIS_AV_CMS,2.62002012359517,0
 p0__log_DIST_UP_KM,3.94739014926544,0
 p0__log_DIST_DN_KM,7.73731095932163,0
 p0__ORD_STRA,3,0
-local_geo_age_mean_ma,512.699307025046,0
-up_geo_age_mean_ma,512.699307025046,0
-p0__up_geo_metamorphic_frac,0.394679818541183,0
+local_geo_age_mean_ma,512.699305519161,0
+up_geo_age_mean_ma,512.699305519161,0
+p0__up_geo_metamorphic_frac,0.39467981854119,0
 p0__up_geo_plutonic_frac,0,0
-p0__up_geo_carbonate_frac,0.00748012639423822,0
-r47__local_geo_metamorphic,0.452340310479051,0
+p0__up_geo_carbonate_frac,0.00748012639423884,0
+r47__local_geo_metamorphic,0.452340310479053,0
 r47__local_geo_plutonic,0,0
 r47__local_geo_carbonate,0,0
