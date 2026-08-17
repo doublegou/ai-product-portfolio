@@ -10,7 +10,7 @@ input:
   process14_predictors: training/regional_expert/regional_risk_v2/config/process14_predictors.txt
   process14_formula_dictionary: data_pipeline/training/regional_expert/risk_v2/config/process14_formula_dictionary.yml
   expected_md5:
-    table: 174ee6a20b8b29149259730b6e17e738
+    table: 889ab17f9cb72efd63580807f845d700
     v1_branch_map: 19fb84f84b7770bcb918afc010a0ffa9
     full50_predictors: ac1b24b9acefe6d6ad9932b028b367d2
     process14_predictors: 239b2bfe7945fb1c878aeb267666aa15
