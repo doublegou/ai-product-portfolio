@@ -352,6 +352,34 @@ v3_rank_candidates <- function(summary, context) {
   result
 }
 
+v3_summarise_deployment_evidence <- function(structure_evidence) {
+  required <- c("structure_id", "selection_rank")
+  missing <- setdiff(required, names(structure_evidence))
+  v3_assert(!length(missing), paste("Deployment evidence lacks:", paste(missing, collapse = ", ")))
+  ranks <- as.double(structure_evidence$selection_rank)
+  v3_assert(length(ranks) > 0L && all(is.finite(ranks)) && all(ranks >= 1),
+            "Deployment evidence contains invalid selection ranks.")
+
+  ranking <- structure_evidence[, {
+    group_ranks <- as.double(selection_rank)
+    .(
+      tasks_evaluated = as.integer(.N),
+      winner_count = as.integer(sum(group_ranks == 1)),
+      median_rank = as.double(stats::median(group_ranks)),
+      mean_rank_fraction = as.double(mean(group_ranks / max(group_ranks)))
+    )
+  }, by = structure_id]
+
+  v3_assert(
+    identical(typeof(ranking$tasks_evaluated), "integer") &&
+      identical(typeof(ranking$winner_count), "integer") &&
+      identical(typeof(ranking$median_rank), "double") &&
+      identical(typeof(ranking$mean_rank_fraction), "double"),
+    "Deployment ranking columns have unstable storage types."
+  )
+  ranking
+}
+
 v3_model_seed <- function(model, task, stage, candidate, fold = 0L) {
   model_offset <- if (model == "rf") 100000L else 200000L
   stage_offset <- switch(stage, coarse = 10000L, refinement = 20000L, outer = 30000L,

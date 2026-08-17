@@ -18,24 +18,19 @@ data <- data.table::as.data.table(release$data)
 index <- data.table::as.data.table(release$index)
 pool <- data.table::fread(file.path(fold_dir, paste0(model, "_pool.csv")))
 evidence <- list()
-for (task in seq_len(15L)) {
-  coordinates <- v3_task_coordinates(task)
+for (task_id in seq_len(15L)) {
+  coordinates <- v3_task_coordinates(task_id)
   path <- file.path(run_dir, "validation_tasks", "primary",
                     sprintf("repeat_%02d", coordinates$repeat_id), sprintf("fold_%02d", coordinates$outer_fold),
                     model, "refinement_summary.csv")
   v3_assert(file.exists(path), paste("Missing refinement evidence:", path))
   table <- data.table::fread(path)
-  table[, task := task]
-  evidence[[task]] <- table
+  table[, task := task_id]
+  evidence[[task_id]] <- table
 }
 evidence <- data.table::rbindlist(evidence, fill = TRUE)
 structure_evidence <- evidence[order(selection_rank), .SD[1L], by = .(task, structure_id)]
-ranking <- structure_evidence[, .(
-  tasks_evaluated = .N,
-  winner_count = sum(selection_rank == 1L),
-  median_rank = stats::median(selection_rank),
-  mean_rank_fraction = mean(selection_rank / max(selection_rank))
-), by = structure_id]
+ranking <- v3_summarise_deployment_evidence(structure_evidence)
 data.table::setorderv(ranking, c("winner_count", "tasks_evaluated", "mean_rank_fraction", "median_rank", "structure_id"),
                      c(-1L, -1L, 1L, 1L, 1L))
 shortlist_ids <- head(ranking$structure_id, 16L)

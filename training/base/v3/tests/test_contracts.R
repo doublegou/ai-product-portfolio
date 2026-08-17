@@ -36,6 +36,23 @@ synthetic <- data.table::data.table(
 ranked <- v3_rank_candidates(synthetic, context)
 stopifnot(ranked[selection_rank == 1L, candidate_id] == "b", !ranked[candidate_id == "c", rmse_eligible])
 
+deployment_evidence <- data.table::data.table(
+  task = seq_len(7L),
+  structure_id = c(rep("odd_group", 3L), rep("even_group", 4L)),
+  selection_rank = as.integer(c(1L, 2L, 3L, 1L, 2L, 3L, 4L))
+)
+for (fixture in list(deployment_evidence, deployment_evidence[.N:1L])) {
+  deployment_ranking <- v3_summarise_deployment_evidence(fixture)
+  stopifnot(
+    identical(typeof(deployment_ranking$tasks_evaluated), "integer"),
+    identical(typeof(deployment_ranking$winner_count), "integer"),
+    identical(typeof(deployment_ranking$median_rank), "double"),
+    identical(typeof(deployment_ranking$mean_rank_fraction), "double"),
+    deployment_ranking[structure_id == "odd_group", median_rank] == 2,
+    deployment_ranking[structure_id == "even_group", median_rank] == 2.5
+  )
+}
+
 fold_manifest <- file.path(context$base, "folds", "manifest.json")
 if (file.exists(fold_manifest)) {
   v3_verify_fold_manifest(context)

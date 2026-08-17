@@ -1,12 +1,12 @@
 {
   "project": "base_v3_prepare",
   "status": "validated",
-  "created_utc": "2026-08-17 06:36:32 UTC",
+  "created_utc": "2026-08-17 07:18:38 UTC",
   "input": {
     "training_csv": "data/processed/training/sr_full50_v2.csv",
     "training_sha256": "568c47d59861c2d0fef2465a4c07a968334d8e9791d6316e4bc87195b719ca02",
     "config_sha256": "4168a7990fb77ae85398da55b8a8972d4a8e9b16139b5bac85ada364ef7fcd5f",
-    "source_sha256": "206ef8c45c590cb701106f3b3e26f542275a178315cbd5448628922b610d9668",
+    "source_sha256": "19239e401c321d85c4eaedf2e3413fffa61da14e1dadf3790a3d138c0e6c1558",
     "predictor_manifest_sha256": "bcb2e9f24b8ed24f9f5463fa5dfcdf22451a582233064a7a54aca85968bd2a1e"
   },
   "counts": {
