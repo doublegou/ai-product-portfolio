@@ -10,10 +10,6 @@ env/profiles/local.override.yml
 # Codex temporary working files
 .codex_tmp/
 
-# Rebuildable data intermediates
-data/interim/*
-!data/interim/README.md
-
 # Downloaded raw feature sources
 data/raw/features/**
 !data/raw/features/README.md
@@ -46,10 +42,17 @@ training/global_correction/high_sr_correction_feasibility/runs/*
 training/regional_expert/regional_risk_v1/runs/*
 !training/regional_expert/regional_risk_v1/runs/README.md
 
+# Regional Risk V1.1 run reports are transferred as run artifacts
+training/regional_expert/regional_risk_v1_1/runs/*
+!training/regional_expert/regional_risk_v1_1/runs/README.md
+
 # Regional Risk V2 task-level validation is retained in the checked HPC archive
 training/regional_expert/regional_risk_v2/validation/*/fold_*/
 training/regional_expert/regional_risk_v2/runs/*
 !training/regional_expert/regional_risk_v2/runs/README.md
+
+# Per-task execution logs are local diagnostics, not formal validation results
+training/**/validation/**/run.log
 
 # Approved model bundles are transferred as release artifacts; metadata stays in Git
 training/base/v0/release/model_bundle.rds
