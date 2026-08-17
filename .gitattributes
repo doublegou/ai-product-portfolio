@@ -9,3 +9,8 @@
 *.docx binary
 *.xlsx binary
 *.gz binary
+
+# Base V3 prepared artifacts are hash-locked and must retain exact bytes.
+training/base/v3/folds/*.csv binary
+training/base/v3/folds/*.json binary
+training/base/v3/folds/*.rds binary

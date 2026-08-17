@@ -30,6 +30,10 @@ training/base/v1/runs/*
 training/base/v2/runs/*
 !training/base/v2/runs/README.md
 
+# Base V3 run archive is retained locally/HPC and synchronized outside Git
+training/base/v3/runs/*
+!training/base/v3/runs/README.md
+
 # Global High-Sr Risk run reports are transferred as run artifacts
 training/global_correction/global_high_sr_risk/runs/*
 !training/global_correction/global_high_sr_risk/runs/README.md
@@ -51,6 +55,7 @@ training/regional_expert/regional_risk_v2/runs/*
 training/base/v0/release/model_bundle.rds
 training/base/v1/release/model_bundle.rds
 training/base/v2/release/model_bundle.rds
+training/base/v3/release/*.rds
 
 # HPC return bundles are transport files, not project sources
 hpc/transfer/*
