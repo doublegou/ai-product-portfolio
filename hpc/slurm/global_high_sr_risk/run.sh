@@ -19,8 +19,8 @@ Usage:
 Optional environment variables for submit:
   RISK_ELASTIC_CPUS      CPUs per Elastic-net task (default: 4)
   RISK_ELASTIC_PARALLEL  Maximum simultaneous Elastic-net tasks (default: 15)
-  RISK_RF_CPUS           CPUs per probability-RF task (default: 16)
-  RISK_RF_PARALLEL       Maximum simultaneous probability-RF tasks (default: 10)
+  RISK_RF_CPUS           CPUs per probability-RF task (default: 32)
+  RISK_RF_PARALLEL       Maximum simultaneous probability-RF tasks (default: 15)
   RISK_CONTROL_CPUS      CPUs for check/aggregate/decision jobs (default: 4)
 EOF
 }
@@ -57,8 +57,8 @@ case "$command_name" in
     require_run_id
     elastic_cpus="${RISK_ELASTIC_CPUS:-4}"
     elastic_parallel="${RISK_ELASTIC_PARALLEL:-15}"
-    rf_cpus="${RISK_RF_CPUS:-16}"
-    rf_parallel="${RISK_RF_PARALLEL:-10}"
+    rf_cpus="${RISK_RF_CPUS:-32}"
+    rf_parallel="${RISK_RF_PARALLEL:-15}"
     control_cpus="${RISK_CONTROL_CPUS:-4}"
     run_dir="$repo_root/training/global_correction/global_high_sr_risk/runs/$run_id"
     slurm_log_dir="$run_dir/logs/slurm"
