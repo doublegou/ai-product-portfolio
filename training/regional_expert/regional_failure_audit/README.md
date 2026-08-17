@@ -1,4 +1,4 @@
-# Regional Risk V2 Failure Audit
+# Regional Failure Audit
 
 This is a standalone read-only diagnostic project under `training/regional_expert/`. It begins only after the four Regional Risk V2 candidates and their Outer OOF predictions have been frozen.
 
@@ -12,10 +12,10 @@ It performs exactly three analyses:
 
 No learner, threshold, Gate, feature or response definition is fitted or modified. The failure set is defined from the closest frozen V2 candidate, `probability_rf__full50`: a positive branch is completely missed when none of its `Sr >= 0.75` stations is triggered in strict Outer OOF.
 
-The present forward run contains 8 completely missed branches and 28 high-Sr sites. The recovered historical audit described 8 branches and 24 sites; those historical values are retained only as context and are not imposed on the new audit.
+The corrected forward V2 run (`regional_risk_v2_20260817_corrected_r3_final`) contains 8 completely missed branches and 28 high-Sr sites. These counts are derived directly from the frozen strict Outer OOF predictions.
 
 ```text
-Rscript training/regional_expert/regional_risk_v2_failure_audit/scripts/run.R --stage validate
-Rscript training/regional_expert/regional_risk_v2_failure_audit/scripts/run.R --stage audit
-Rscript training/regional_expert/regional_risk_v2_failure_audit/scripts/run.R --stage summarize
+Rscript training/regional_expert/regional_failure_audit/scripts/run.R --stage validate
+Rscript training/regional_expert/regional_failure_audit/scripts/run.R --stage audit
+Rscript training/regional_expert/regional_failure_audit/scripts/run.R --stage summarize
 ```

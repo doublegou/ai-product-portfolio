@@ -1,5 +1,5 @@
 file_arg <- grep("^--file=", commandArgs(), value = TRUE)
-if (length(file_arg) != 1L) stop("Run with Rscript training/regional_expert/regional_risk_v2_failure_audit/scripts/run.R", call. = FALSE)
+if (length(file_arg) != 1L) stop("Run with Rscript training/regional_expert/regional_failure_audit/scripts/run.R", call. = FALSE)
 script_path <- normalizePath(sub("^--file=", "", file_arg), mustWork = TRUE); project_dir <- normalizePath(file.path(dirname(script_path), ".."), mustWork = TRUE); repo_root <- normalizePath(file.path(project_dir, "..", "..", ".."), mustWork = TRUE)
 source(file.path(repo_root, "env", "activate.R"), local = TRUE); river_sr_activate(repo_root)
 for (file in c("io.R", "validation.R", "overlap.R", "nearest_neighbor.R", "reporting.R")) source(file.path(project_dir, "R", file), local = globalenv())

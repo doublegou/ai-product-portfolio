@@ -10,7 +10,7 @@ fa_nn_audit <- function(validated, predictors, feature_set, context) {
   dat <- validated$data; scaled <- fa_robust_scale(dat, predictors); query_index <- which(dat$.failure_role == "missed_high_sr")
   max_k <- max(as.integer(unlist(context$config$nearest_neighbor_audit$sensitivity_k))); edges <- vector("list", length(query_index))
   for (i in seq_along(query_index)) {
-    query <- query_index[i]; candidates <- which(dat$.regional_branch_id != dat$.regional_branch_id[query]); distance <- sqrt(rowMeans((scaled$x[candidates, , drop = FALSE] - matrix(scaled$x[query, ], nrow = length(candidates), ncol = ncol(scaled$x), byrow = TRUE))^2))
+    query <- query_index[i]; candidates <- which(dat$.regional_branch_id != dat$.regional_branch_id[query]); distance <- sqrt(rowSums((scaled$x[candidates, , drop = FALSE] - matrix(scaled$x[query, ], nrow = length(candidates), ncol = ncol(scaled$x), byrow = TRUE))^2))
     chosen <- candidates[order(distance, dat[[context$config$columns$row_id]][candidates])[seq_len(min(max_k, length(candidates)))]]
     edges[[i]] <- data.frame(feature_set = feature_set, query_row_id = dat[[context$config$columns$row_id]][query], query_branch = dat$.regional_branch_id[query], query_observed_sr = dat$.observed[query],
       neighbor_rank = seq_along(chosen), neighbor_row_id = dat[[context$config$columns$row_id]][chosen], neighbor_branch = dat$.regional_branch_id[chosen], neighbor_observed_sr = dat$.observed[chosen],

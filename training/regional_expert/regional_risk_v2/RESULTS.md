@@ -58,7 +58,7 @@ Increasing nonlinear capacity from the earlier GAM setting to fixed Probability 
 
 The remaining explanation is more consistent with insufficient regional input information, mechanism heterogeneity among high-Sr branches, or both. New work would require genuinely new source/process evidence or an explicitly heterogeneous mechanism design, not further tuning of the current RF, boosting, Full50 or Process14 combinations.
 
-The V2 stop rule is now active: preserve this experiment and do not tune its learners, thresholds or features against the observed Outer results. Any failure audit is a separate read-only downstream analysis.
+The V2 stop rule is now active: preserve this experiment and do not tune its learners, thresholds or features against the observed Outer results. The separate read-only [`regional_failure_audit`](../regional_failure_audit/results/FAILURE_AUDIT.md) closes the evidence chain: the shared failure of GAM, RF and XGBoost is primarily an information problem rather than an algorithm-selection problem, and the present 64-dimensional predictor space does not adequately encode the mechanisms responsible for a subset of high-Sr systems.
 
 ## Forward-reproduction scope
 

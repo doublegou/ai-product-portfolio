@@ -1,10 +1,16 @@
 fa_validate_inputs <- function(context) {
   keys <- c("table", "branch_map", "full50_predictors", "process14_predictors", "outer_oof", "gate_metrics", "oof_manifest")
   signatures <- stats::setNames(lapply(keys, function(key) fa_signature(fa_path(context, context$config$input[[key]]))), keys)
+  for (key in keys) signatures[[key]]$path <- context$config$input[[key]]
   expected <- unlist(context$config$input$expected_md5, use.names = TRUE)
   for (key in keys) fa_assert(identical(as.character(signatures[[key]]$md5), as.character(expected[[key]])), paste("Frozen input signature changed:", key))
 
   dat <- fa_read_csv(fa_path(context, context$config$input$table)); branches <- fa_read_csv(fa_path(context, context$config$input$branch_map)); oof <- fa_read_csv(fa_path(context, context$config$input$outer_oof))
+  gate <- fa_read_csv(fa_path(context, context$config$input$gate_metrics)); oof_manifest <- jsonlite::read_json(fa_path(context, context$config$input$oof_manifest), simplifyVector = TRUE)
+  fa_assert(identical(as.character(oof_manifest$run_id), as.character(context$config$input$expected_run_id)), "Outer OOF run ID is not the corrected frozen V2 run.")
+  fa_assert(identical(as.character(oof_manifest$status), "complete") && identical(as.integer(oof_manifest$outer_oof_rows), 1488L), "Outer OOF manifest is incomplete.")
+  fa_assert(!isTRUE(oof_manifest$full_data_model_fitted) && !isTRUE(oof_manifest$release_created), "Failure Audit requires a non-released V2 Gate experiment.")
+  fa_assert(nrow(gate) == 4L && all(!as.logical(gate$gate_pass)), "Failure Audit requires four candidates with no complete Regional Gate pass.")
   full50 <- fa_read_lines(fa_path(context, context$config$input$full50_predictors)); process14 <- fa_read_lines(fa_path(context, context$config$input$process14_predictors)); full64 <- c(full50, process14)
   columns <- context$config$columns; required <- unique(c(unlist(columns, use.names = FALSE), full64))
   fa_assert(nrow(dat) == 372L && !length(setdiff(required, names(dat))), "Frozen V2 table shape or columns changed.")

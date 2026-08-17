@@ -1,10 +1,11 @@
 project:
-  id: regional_risk_v2_failure_audit
-  status: ready_for_read_only_audit
+  id: regional_failure_audit
+  status: complete
   purpose: diagnose_structural_information_gap_after_frozen_v2_gate_failure
   model_training_performed: false
 
 input:
+  expected_run_id: regional_risk_v2_20260817_corrected_r3_final
   table: data/processed/training/himalaya_risk_v2.csv
   branch_map: training/regional_expert/regional_risk_v2/folds/branch_map.csv
   full50_predictors: training/regional_expert/regional_risk_v2/config/full50_predictors.txt
@@ -13,7 +14,7 @@ input:
   gate_metrics: training/regional_expert/regional_risk_v2/validation/gate_metrics.csv
   oof_manifest: training/regional_expert/regional_risk_v2/validation/oof_manifest.json
   expected_md5:
-    table: 174ee6a20b8b29149259730b6e17e738
+    table: 889ab17f9cb72efd63580807f845d700
     branch_map: 19fb84f84b7770bcb918afc010a0ffa9
     full50_predictors: ac1b24b9acefe6d6ad9932b028b367d2
     process14_predictors: 239b2bfe7945fb1c878aeb267666aa15
@@ -55,13 +56,5 @@ nearest_neighbor_audit:
   sensitivity_k: [1, 3, 5, 10, 20]
   weighting_views: [station_equal, branch_sqrt_edge_weighted]
 
-recovered_reference_values:
-  role: historical_context_only_not_acceptance_targets
-  missed_branches: 8
-  missed_high_sr_sites: 24
-  median_background_interval_fraction: 1.00
-  cross_branch_high_sr_neighbor_fraction: 0.147
-  global_high_sr_station_fraction: 0.215
-
 output:
-  results_dir: training/regional_expert/regional_risk_v2_failure_audit/results
+  results_dir: training/regional_expert/regional_failure_audit/results

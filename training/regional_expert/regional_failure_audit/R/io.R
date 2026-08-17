@@ -29,7 +29,7 @@ fa_signature <- function(path) {
   list(path = gsub("\\\\", "/", normalizePath(path, mustWork = TRUE)), md5 = digest::digest(normalized, algo = "md5", serialize = FALSE), hash_method = "normalized_lf_text_md5")
 }
 
-fa_atomic_target <- function(path) { dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE); tempfile("risk_v2_failure_audit_", tmpdir = dirname(path)) }
+fa_atomic_target <- function(path) { dir.create(dirname(path), recursive = TRUE, showWarnings = FALSE); tempfile("regional_failure_audit_", tmpdir = dirname(path)) }
 
 fa_write_csv <- function(x, path) { tmp <- fa_atomic_target(path); on.exit(unlink(tmp), add = TRUE); data.table::fwrite(x, tmp, na = ""); if (file.exists(path)) unlink(path); fa_assert(file.rename(tmp, path), paste("Could not write", path)); invisible(path) }
 
@@ -37,6 +37,9 @@ fa_write_json <- function(x, path) { tmp <- fa_atomic_target(path); on.exit(unli
 
 fa_write_text <- function(x, path) { tmp <- fa_atomic_target(path); on.exit(unlink(tmp), add = TRUE); writeLines(x, tmp, useBytes = TRUE); if (file.exists(path)) unlink(path); fa_assert(file.rename(tmp, path), paste("Could not write", path)); invisible(path) }
 
-fa_results_path <- function(context, ...) fa_path(context, file.path(context$config$output$results_dir, ...))
+fa_results_path <- function(context, ...) {
+  relative <- file.path(context$config$output$results_dir, ...)
+  vapply(relative, function(path) fa_path(context, path), character(1L), USE.NAMES = FALSE)
+}
 
 fa_log <- function(...) message("[", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "] ", paste(..., collapse = ""))
