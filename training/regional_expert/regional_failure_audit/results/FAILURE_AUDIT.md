@@ -32,7 +32,7 @@ Process14 is therefore a representative failure case: its process proxies are pr
 
 The shared failure of GAM, RF, and XGBoost is primarily an information problem rather than an algorithm-selection problem. The current 64-dimensional predictor space does not adequately encode the mechanisms responsible for a subset of high-Sr systems.
 
-This result closes Regional Risk V2. It does not justify another RF/XGBoost tuning cycle on the same 64 predictors. The next architecture must introduce genuinely new regional, branch, geological, watershed, hydrogeochemical, spatial-context or process-specific information, with the exact new inputs determined by a separate data audit.
+This result closes Regional Risk V2 and the current Regional Expert line of work. It does not justify another RF/XGBoost tuning cycle on the same 64 predictors. Any future restart must introduce genuinely new regional, branch, geological, watershed, hydrogeochemical, spatial-context or process-specific information, with the exact new inputs determined by a separate data audit.
 
 Process14 has two distinct roles: here it is a failure diagnosis; in a future expert project it may serve as a prototype only if additional region/process-specific information is introduced. Re-fitting the same 64 variables within a region would not resolve the demonstrated representation gap.
 

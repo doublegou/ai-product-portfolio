@@ -28,7 +28,7 @@ fa_failure_markdown <- function(context, audit) {
            fa_percent(process_nn$high_sr_neighbor_fraction_branch_sqrt), " (branch-sqrt edge-weighted)."),
     "Process14 is therefore a representative failure case: its process proxies are present, but the missed high-Sr systems remain embedded in background-like predictor neighborhoods.", "",
     "## Conclusion", "", conclusion, "",
-    "This result closes Regional Risk V2. It does not justify another RF/XGBoost tuning cycle on the same 64 predictors. The next architecture must introduce genuinely new regional, branch, geological, watershed, hydrogeochemical, spatial-context or process-specific information, with the exact new inputs determined by a separate data audit.", "",
+    "This result closes Regional Risk V2 and the current Regional Expert line of work. It does not justify another RF/XGBoost tuning cycle on the same 64 predictors. Any future restart must introduce genuinely new regional, branch, geological, watershed, hydrogeochemical, spatial-context or process-specific information, with the exact new inputs determined by a separate data audit.", "",
     "Process14 has two distinct roles: here it is a failure diagnosis; in a future expert project it may serve as a prototype only if additional region/process-specific information is introduced. Re-fitting the same 64 variables within a region would not resolve the demonstrated representation gap.", "",
     "## Provenance", "",
     paste0("- Source V2 data MD5: `", audit$validated$signatures$table$md5, "`"),
