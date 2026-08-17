@@ -18,4 +18,4 @@ module purge
 module load R-4.4.3
 unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 cd "$RIVER_SR_ROOT"
-Rscript training/global_correction/high_sr_correction_feasibility/scripts/run.R --stage aggregate --run-id "$RIVER_SR_RUN_ID"
+Rscript training/global_correction/high_sr_correction_feasibility/scripts/run.R --stage aggregate --run-id "$RIVER_SR_RUN_ID" --force

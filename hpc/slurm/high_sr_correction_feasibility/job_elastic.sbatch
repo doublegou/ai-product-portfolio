@@ -18,4 +18,4 @@ module load R-4.4.3
 unset R_HOME R_LIBS R_LIBS_USER R_LIBS_SITE
 cd "$RIVER_SR_ROOT"
 task_id=$(( ${SLURM_ARRAY_TASK_ID:?SLURM_ARRAY_TASK_ID is required} + 1 ))
-Rscript training/global_correction/high_sr_correction_feasibility/scripts/run.R --correction-task-id "$task_id"
+Rscript training/global_correction/high_sr_correction_feasibility/scripts/run.R --correction-task-id "$task_id" --force

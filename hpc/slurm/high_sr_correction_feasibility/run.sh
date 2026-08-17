@@ -17,12 +17,12 @@ Usage:
   bash hpc/slurm/high_sr_correction_feasibility/run.sh archive <run_id>
 
 Optional environment variables for submit:
-  CORR_BASE_CPUS       CPUs per strict-nested Base task (default: 16)
-  CORR_BASE_PARALLEL   Maximum simultaneous Base tasks (default: 10)
+  CORR_BASE_CPUS       CPUs per strict-nested Base task (default: 32)
+  CORR_BASE_PARALLEL   Maximum simultaneous Base tasks (default: 15)
   CORR_ELASTIC_CPUS    CPUs per Elastic-net task (default: 4)
   CORR_ELASTIC_PARALLEL Maximum simultaneous Elastic-net tasks (default: 15)
-  CORR_RF_CPUS         CPUs per residual-RF task (default: 16)
-  CORR_RF_PARALLEL     Maximum simultaneous residual-RF tasks (default: 5)
+  CORR_RF_CPUS         CPUs per residual-RF task (default: 32)
+  CORR_RF_PARALLEL     Maximum simultaneous residual-RF tasks (default: 15)
   CORR_CONTROL_CPUS    CPUs for check/aggregate/decision (default: 4)
 EOF
 }
@@ -46,9 +46,9 @@ case "$command_name" in
   submit)
     if [[ -z "$run_id" ]]; then run_id="$(date +%Y%m%d_%H%M%S)_high_sr_correction"; fi
     require_run_id
-    base_cpus="${CORR_BASE_CPUS:-16}"; base_parallel="${CORR_BASE_PARALLEL:-10}"
+    base_cpus="${CORR_BASE_CPUS:-32}"; base_parallel="${CORR_BASE_PARALLEL:-15}"
     elastic_cpus="${CORR_ELASTIC_CPUS:-4}"; elastic_parallel="${CORR_ELASTIC_PARALLEL:-15}"
-    rf_cpus="${CORR_RF_CPUS:-16}"; rf_parallel="${CORR_RF_PARALLEL:-5}"
+    rf_cpus="${CORR_RF_CPUS:-32}"; rf_parallel="${CORR_RF_PARALLEL:-15}"
     control_cpus="${CORR_CONTROL_CPUS:-4}"
     run_dir="$repo_root/training/global_correction/high_sr_correction_feasibility/runs/$run_id"
     slurm_log_dir="$run_dir/logs/slurm"
