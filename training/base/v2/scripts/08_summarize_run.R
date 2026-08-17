@@ -328,6 +328,7 @@ stage_release_run <- function(context, run_id, force = FALSE) {
     summary = file.path(source_dir, "reports", "validation_summary.csv"),
     primary = file.path(source_dir, "reports", "primary_metrics.csv"),
     benchmark = file.path(source_dir, "reports", "benchmark_pairwise_comparison.csv"),
+    conclusion = file.path(source_dir, "reports", "scientific_conclusion.md"),
     config = file.path(source_dir, "config_used.yml"),
     folds = v2_fold_paths(context)[["manifest"]],
     predictors = v2_path(context, context$config$input$predictors)
@@ -336,7 +337,7 @@ stage_release_run <- function(context, run_id, force = FALSE) {
   release_dir <- v2_output_path(context, "release_dir")
   targets <- file.path(release_dir, c(
     "model_bundle.rds", "selected_params.yml", "training_medians.csv", "validation_summary.csv", "primary_metrics.csv",
-    "benchmark_pairwise_comparison.csv",
+    "benchmark_pairwise_comparison.csv", "scientific_conclusion.md",
     "config_used.yml", "fold_manifest.json", "full50_predictors.txt", "training_rows.csv", "release_info.json", "README.md"
   ))
   existing <- targets[file.exists(targets)]
@@ -344,7 +345,7 @@ stage_release_run <- function(context, run_id, force = FALSE) {
   dir.create(release_dir, recursive = TRUE, showWarnings = FALSE)
   destinations <- file.path(release_dir, c(
     "model_bundle.rds", "selected_params.yml", "training_medians.csv", "validation_summary.csv", "primary_metrics.csv",
-    "benchmark_pairwise_comparison.csv",
+    "benchmark_pairwise_comparison.csv", "scientific_conclusion.md",
     "config_used.yml", "fold_manifest.json", "full50_predictors.txt"
   ))
   copied <- file.copy(unname(required), destinations, overwrite = force)

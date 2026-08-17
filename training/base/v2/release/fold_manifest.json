@@ -3,9 +3,9 @@
   "method": "Full50 ordinary RF with response-blind station-frontier Purged-Branch CV",
   "input": {
     "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
-    "bytes": 5640517,
-    "modified_at": "2026-08-16T07:29:56+0800",
-    "md5": "92100a834e0836527e6921d974f222ca",
+    "bytes": 5668983,
+    "modified_at": "2026-08-17T06:55:21+0800",
+    "md5": "dc80c73dfc64a3180efb4c5bb9fe5902",
     "hash_method": "normalized_lf_text_md5"
   },
   "config": {
@@ -146,7 +146,7 @@
     "n_primary_eligible_rows": 2577,
     "selection_rule": "minimum_relative_anchor_distance",
     "response_used": false,
-    "prepare_manifest_sha256": "5d3bf9f39a57fc03b8abc67f47e6962153f543bbb1e279ed8fcef158aa3d5592",
+    "prepare_manifest_sha256": "dfcc982ec5046f19abe4df9f7f94fdaee2c606f6b41c77e99d5c424a26f8bcb2",
     "scale_diagnostics": [
       {
         "scale": "primary",
@@ -246,9 +246,9 @@
     "recipe_file": {
       "path": "training/base/v1/release/selected_params.yml",
       "bytes": 519,
-      "modified_at": "2026-08-16T17:20:14+0800",
-      "md5": "6b0073e6ab862a16b3fb69265c0b0747",
-      "sha256": "e811d7ad610cd5702abb61d7e84d82eb2443116928ccffff3d3b79bd75d57015",
+      "modified_at": "2026-08-17T08:04:39+0800",
+      "md5": "258b11978f4888e9c5ab1f551fc93ddc",
+      "sha256": "61f6adfa1464bbf937ed472008a70533bf8a39a039c06b55e6521280300baf89",
       "hash_method": "normalized_lf_text"
     },
     "design_summary": [
@@ -404,7 +404,7 @@
     "branch_catalog": {
       "path": "training/base/v2/folds/branch_scale_membership.csv",
       "bytes": 2243682,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "2029b2547760ecbc5f17df1b3e3451a0",
       "sha256": "2047ccc140e06550c7dc644d22e815cc4b974b32d44e2c48f4181fafa6e87807",
       "hash_method": "normalized_lf_text"
@@ -412,7 +412,7 @@
     "branch_relations": {
       "path": "training/base/v2/folds/branch_relations.csv",
       "bytes": 61,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "31a47f5b59683d751bf22a95cf9cbdc9",
       "sha256": "c4695eeb0580604e78127cdd0318fb42e4f3d004d809709a1626fc8db7415a3e",
       "hash_method": "normalized_lf_text"
@@ -420,7 +420,7 @@
     "primary_outer": {
       "path": "training/base/v2/folds/primary_outer_assignments.csv",
       "bytes": 3000509,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "ce4237f6de6d597749941d3e19eb721f",
       "sha256": "70e3fc381bdcee9ba5953c77a49b395157f9d13d8da980d31b6f0b5ee56dece7",
       "hash_method": "normalized_lf_text"
@@ -428,7 +428,7 @@
     "primary_inner": {
       "path": "training/base/v2/folds/primary_inner_assignments.csv",
       "bytes": 13098236,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "37d204ae84ea3eee26dcfb81361aad98",
       "sha256": "b7df4ff588a0fbf15bf5f050c07e7f620133d236a8add612aefb7c989f17d56f",
       "hash_method": "normalized_lf_text"
@@ -436,7 +436,7 @@
     "deployment": {
       "path": "training/base/v2/folds/deployment_assignments.csv",
       "bytes": 955665,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "29ffa4ce612b3a9fc0abf8ced1167b75",
       "sha256": "b9d36b8e522808bbf47d0304236fd6f6c06a3c66fbdd60b8c32dbbd829466ff7",
       "hash_method": "normalized_lf_text"
@@ -444,7 +444,7 @@
     "benchmark_designs": {
       "path": "training/base/v2/folds/benchmark_designs.csv",
       "bytes": 715,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "c337b3839386b8b18dec201ce0dbaee8",
       "sha256": "9cfbdf1fe5fc5e3dc994c4739db672cd16717c420b3aecf644c49e72ed75622f",
       "hash_method": "normalized_lf_text"
@@ -452,7 +452,7 @@
     "benchmark": {
       "path": "training/base/v2/folds/benchmark_assignments.csv",
       "bytes": 21689423,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "98c83a99fa68189c5987da357f6a59ff",
       "sha256": "c46f55aba1f9742daa380f0534586adf0f82a3b30af75022b1912215d05b303c",
       "hash_method": "normalized_lf_text"
@@ -460,7 +460,7 @@
     "stress": {
       "path": "training/base/v2/folds/stress_assignments.csv",
       "bytes": 1099127,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "50a9fb2c34ae183e4a8768b7eca3900e",
       "sha256": "8c72ac091312829a9dc25e302d036e978a44e64fc0e5ffb3e50ab5688674c123",
       "hash_method": "normalized_lf_text"
@@ -468,11 +468,11 @@
     "diagnostics": {
       "path": "training/base/v2/folds/fold_diagnostics.csv",
       "bytes": 14222,
-      "modified_at": "2026-08-17T03:15:52+0800",
+      "modified_at": "2026-08-17T08:30:14+0800",
       "md5": "bae94a2304ce4aa67c7e1e3213f8f814",
       "sha256": "3cf3fde337476a0059ab252e06cf634df7129c5ef07412e2b7cb2a8ce9d419bc",
       "hash_method": "normalized_lf_text"
     }
   },
-  "prepared_at": "2026-08-17T03:15:53+0800"
+  "prepared_at": "2026-08-17T08:30:15+0800"
 }
