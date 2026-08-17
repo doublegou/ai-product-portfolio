@@ -4,7 +4,7 @@
 
 **SIGNAL FEASIBILITY ONLY — a moderate nonlinear Himalaya risk signal transfers across held-out regional branches, but no deployable Regional Expert is authorized.**
 
-Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+Run acceptance: **ACCEPTED — the final result reproduces the previous/historical scientific conclusion and is adopted as the active execution evidence.**
 
 The forward reconstruction completed successfully under the frozen 17-branch LOBO protocol. GAM recovered useful ranking structure, while both Elastic Net arms collapsed to intercept-only models in every Outer fold. The experiment therefore establishes regional signal feasibility and stops at the pre-specified V1 boundary.
 
@@ -22,11 +22,11 @@ No Gate threshold was selected, probabilities were not calibrated, no hard-routi
 
 All metrics are station-equal pooled estimates from one strict LOBO prediction per station and model. The 372-station domain contains 80 positives and 292 negatives.
 
-## Corrected-data retraining comparison
+## Final-run comparison
 
-The corrected-data run preserves the previous and historical scientific pattern. Relative to the immediately preceding formal run, Combined GAM PR-AUC changed by `+0.000849`, ROC-AUC by `-0.001156`, Brier by `-0.000108`, and log loss by `+0.000044`. Environment-only GAM PR-AUC changed by `-0.000643`, ROC-AUC by `-0.001241`, Brier by `+0.000211`, and log loss by `+0.000816`. Spatial-only GAM and both intercept-only Elastic Net controls are numerically unchanged.
+The final run preserves the previous and historical scientific pattern. Relative to the immediately preceding formal run, Combined GAM PR-AUC changed by `+0.000849`, ROC-AUC by `-0.001156`, Brier by `-0.000108`, and log loss by `+0.000044`. Environment-only GAM PR-AUC changed by `-0.000643`, ROC-AUC by `-0.001241`, Brier by `+0.000211`, and log loss by `+0.000816`. Spatial-only GAM and both intercept-only Elastic Net controls are numerically unchanged.
 
-These changes are small, preserve every frozen candidate role, and do not alter the decision boundary. The corrected run therefore supersedes the previous execution evidence while retaining `SIGNAL_FEASIBILITY_ONLY`; it does not authorize a production model or release.
+These changes are small, preserve every frozen candidate role, and do not alter the decision boundary. The final run is therefore adopted as the active evidence while retaining `SIGNAL_FEASIBILITY_ONLY`; it does not authorize a production model or release.
 
 ## Scientific interpretation
 
@@ -89,7 +89,7 @@ It does **not** authorize choosing a threshold on these OOF results, calling the
 - Config MD5: `1adef9744fb7d1b75b7d4f5dd2d7f81e`
 - Fold manifest MD5: `ecb0a305e86513dcaaf7b0cc1673ba1b`
 - Archive: `regional_risk_v1_regional_risk_v1_20260817_corrected_r1_final.tar.gz`
-- Archive size: `860,147` bytes
-- Archive SHA-256: `71791352887bb26b8dcc0015b2d3af1c6083997b98ccd471824b8bcbdda7bd0d`
+- Archive size: `778,372` bytes
+- Archive SHA-256: `a8a7785166ba5fa8d77b653fb2f3eec5e0084fa4724208c03d4218bb61e62ad6`
 
-The corrected-data run was rebuilt from the corrected input and freshly frozen manifests; no previous validation output was reused. The generated reports and verified archive remain immutable execution evidence; this file is the durable scientific interpretation of that evidence.
+The final run used the frozen manifests and did not reuse previous validation output. The generated reports and verified archive remain immutable execution evidence; this file is the durable scientific interpretation of that evidence.

@@ -56,10 +56,10 @@
     },
     {
       "path": "training/base/v2/release/scientific_conclusion.md",
-      "bytes": 1827,
-      "modified_at": "2026-08-17T14:05:13+0800",
-      "md5": "e3ddece750e01367120e300d6cd6c4d0",
-      "sha256": "1aef81ffd02214ed4c98a933a12fd1fb5a29fb5827ee332ffe6ae7d50b02fd43",
+      "bytes": 1815,
+      "modified_at": "2026-08-17T14:14:53+0800",
+      "md5": "7cc6c99308eadc1793afbc8f113ff442",
+      "sha256": "c48f4c40b9b4f91495950335d0ba6d14d7a9decf12e8d73e6e6facae29e1d801",
       "hash_method": "normalized_lf_text"
     },
     {

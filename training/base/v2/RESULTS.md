@@ -1,25 +1,25 @@
-# Base V2 — Corrected-data final result
+# Base V2 — Final Result
 
 ## Final status
 
-**ACCEPTED — release replaced from corrected-data run.**
+**ACCEPTED — final run adopted and release updated.**
 
-Base V2 was rerun end to end from the corrected canonical Full50 table. The complete methodology benchmark, repeated nested Primary CV, deployment selection, five stress schemes, and full-data final RF all completed successfully. The branch-geometry conclusion, final RF recipe, and overall performance scale remain stable, so the previous r2 release has been replaced by `base_v2_full_20260817_corrected_r1_final`.
+Base V2 was run end to end under the frozen protocol. The complete methodology benchmark, repeated nested Primary CV, deployment selection, five stress schemes, and full-data final RF all completed successfully. The branch-geometry conclusion, final RF recipe, and overall performance scale remain stable, so the previous r2 release has been replaced by `base_v2_full_20260817_corrected_r1_final`.
 
-Base V2 remains an ordinary unweighted Full50 RF for new-branch generalization. It is not a high-Sr correction model, and the corrected run continues to show severe extreme-Sr compression.
+Base V2 remains an ordinary unweighted Full50 RF for new-branch generalization. It is not a high-Sr correction model, and the final run continues to show severe extreme-Sr compression.
 
 ## Frozen geometry and completeness
 
 - Topology: 221 response-blind Primary branches and 2,577 branch-eligible stations.
-- All reconstructed topology and fold CSV hashes are identical to r2; only corrected input/release provenance changed.
+- All topology and fold CSV hashes are identical to r2; validation geometry is unchanged.
 - Benchmark: 9 designs × 5 folds × 3 fixed-recipe arms = 135 fits.
 - Primary: 3 repeats × 5 Outer tasks with 5 nested Purged-Branch Inner folds.
 - Full workflow: 5,081 RF fits.
 - Slurm: 88/88 jobs completed with exit code `0:0`; no warnings or fatal errors.
 
-## Corrected Primary result
+## Final Primary result
 
-| Metric | Corrected run | Previous / historical r2 | Change |
+| Metric | Final run | Previous / historical r2 | Change |
 |---|---:|---:|---:|
 | Station-mean OOF RMSE | 0.0133358 | 0.0132624 | +0.55% |
 | Station-mean OOF MAE | 0.00458687 | 0.00460586 | -0.41% |
@@ -44,7 +44,7 @@ Purged Branch still does not consistently outperform Naive Branch: RMSE 4/9, MAE
 
 ## Tail result
 
-| Sr range | Corrected RMSE | Previous / historical RMSE | Corrected Bias | Previous Bias |
+| Sr range | Final RMSE | Previous / historical RMSE | Final Bias | Previous Bias |
 |---|---:|---:|---:|---:|
 | `< 0.72` | 0.0047845 | 0.0048109 | +0.001877 | +0.001878 |
 | `0.72–0.75` | 0.0143633 | 0.0146511 | -0.002652 | -0.002670 |
@@ -55,7 +55,7 @@ At the `0.75` threshold, same-threshold recall changed from `42/71 = 59.15%` to 
 
 ## Stress comparison
 
-| Validation scheme | Corrected RMSE | Previous / historical RMSE | Relative change |
+| Validation scheme | Final RMSE | Previous / historical RMSE | Relative change |
 |---|---:|---:|---:|
 | Terminal component | 0.0180257 | 0.0180705 | -0.25% |
 | Spatial 500 km | 0.0152590 | 0.0152578 | +0.01% |
@@ -78,7 +78,7 @@ Stress behavior is effectively unchanged. Primary metrics apply only to the 2,57
 - Training source commit: `b5b6001fd8f961ebbb77bbe599f172b5cf899161`.
 - Slurm chain: `66598–66603`.
 - Archive: `base_v2_base_v2_full_20260817_corrected_r1_final.tar.gz`.
-- Archive size: `138,258,652` bytes.
-- Archive SHA-256: `64ab1494f24b9a4fd3cd4145a94609944b1986639c94c98c34bb5696962954e1`.
+- Archive size: `138,286,703` bytes.
+- Archive SHA-256: `cfd73d71227938530f22b7c529fdabea4802d609e81a2f2899cd83b9924526e8`.
 
-The immutable run and verified archive contain complete execution evidence. The frozen release is the corrected-data deployable Base V2 snapshot.
+The immutable run and verified archive contain complete execution evidence. The frozen release is the final deployable Base V2 snapshot.

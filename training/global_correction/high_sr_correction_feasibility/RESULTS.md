@@ -1,16 +1,16 @@
-# High-Sr Correction Feasibility V1 — Corrected-data final result
+# High-Sr Correction Feasibility V1 — Final Result
 
 ## Final status
 
 **STOP — stable residual signal exists, but no candidate safely improves on Raw Base.**
 
-Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+Run acceptance: **ACCEPTED — the final result reproduces the previous/historical scientific conclusion and is adopted as the active execution evidence.**
 
-The complete strict-nested experiment was rerun from corrected canonical predictors and the corrected Base V1 release recipe. All four Env47/Full50 candidates again passed the residual-signal gate relative to their same-family BasePred-only correction, but none passed the separately frozen Raw-Base safety gate. The automated status remains `SIGNAL_ONLY_BUT_NOT_USEFUL`.
+The complete strict-nested experiment was run with the final Base V1 release recipe. All four Env47/Full50 candidates passed the residual-signal gate relative to their same-family BasePred-only correction, but none passed the separately frozen Raw-Base safety gate. The automated status remains `SIGNAL_ONLY_BUT_NOT_USEFUL`.
 
 This is a completed negative promotion result, not a failed computation. Base V1 remains unchanged. No full-data correction model, model bundle, or release was created.
 
-## Corrected-data result
+## Final result
 
 | Model | Features | Signal improvement | Signal repeats | Mean improvement vs Raw Base | Safety repeats | Promotion |
 |---|---|---:|---:|---:|---:|---|
@@ -21,20 +21,20 @@ This is a completed negative promotion result, not a failed computation. Base V1
 
 The residual-signal gate required at least 5% hydrological-group macro MAE improvement over the same-family BasePred-only correction in at least two of three repeats, with positive mean improvement. The promotion safety gate required the same candidate to be no worse than untouched Raw Base in at least two repeats and to have strictly positive mean Raw-Base improvement. Promotion required both gates for the same candidate.
 
-Residual RF with Full50 remains the closest candidate. Its corrected-data Raw-Base improvements are `-0.62%`, `+4.09%`, and `-6.33%`. One favorable repeat and a negative mean do not meet the frozen safety requirement.
+Residual RF with Full50 remains the closest candidate. Its final-run Raw-Base improvements are `-0.62%`, `+4.09%`, and `-6.33%`. One favorable repeat and a negative mean do not meet the frozen safety requirement.
 
-## Corrected versus previous and historical formal result
+## Final versus previous and historical result
 
 The previous completed run (`high_sr_corr_20260816_r2`) is also the result recorded in `模型优化记录final.docx`; it is therefore both the immediately previous and the authoritative historical formal comparison.
 
-| Candidate | Corrected signal | Previous / historical signal | Corrected Raw-Base | Previous / historical Raw-Base | Corrected safety | Previous safety |
+| Candidate | Final signal | Previous / historical signal | Final Raw-Base | Previous / historical Raw-Base | Final safety | Previous safety |
 |---|---:|---:|---:|---:|---:|---:|
 | Env47 Elastic Net | +23.77% | +21.17% | -4.13% | -4.15% | 0/3 | 0/3 |
 | Full50 Elastic Net | +22.19% | +18.94% | -6.30% | -7.11% | 0/3 | 0/3 |
 | Env47 Residual RF | +20.50% | +23.83% | -2.68% | -2.64% | 1/3 | 0/3 |
 | Full50 Residual RF | +21.76% | +24.57% | -0.95% | -1.64% | 1/3 | 1/3 |
 
-The corrected predictors change the magnitude and repeat pattern of individual improvements, but not the scientific endpoint. Every candidate still has negative mean hydrological-group macro improvement relative to Raw Base. The best mean result remains below zero and has only one non-worse repeat, far from the joint promotion gate.
+Individual improvements differ slightly from the previous run, but the scientific endpoint is unchanged. Every candidate still has negative mean hydrological-group macro improvement relative to Raw Base. The best mean result remains below zero and has only one non-worse repeat, far from the joint promotion gate.
 
 ## Scientific interpretation
 
@@ -64,7 +64,7 @@ Overall station MAE improves by approximately 18.9%–21.6% across the four cand
 
 ## Decision boundary
 
-This result authorizes preserving and citing the corrected-data OOF evidence and retaining Base V1 unchanged. It does **not** authorize relaxing the group-macro safety gate, selecting by station MAE, further tuning on the same Outer OOF evidence, fitting a full-data correction model, or publishing a correction release. Reopening correction requires a materially new hypothesis, new predictors, more extreme-Sr hydrological systems, or a newly pre-specified correction mechanism.
+This result authorizes preserving and citing the final OOF evidence and retaining Base V1 unchanged. It does **not** authorize relaxing the group-macro safety gate, selecting by station MAE, further tuning on the same Outer OOF evidence, fitting a full-data correction model, or publishing a correction release. Reopening correction requires a materially new hypothesis, new predictors, more extreme-Sr hydrological systems, or a newly pre-specified correction mechanism.
 
 ## Provenance and completeness
 
@@ -81,10 +81,10 @@ This result authorizes preserving and citing the corrected-data OOF evidence and
 - Release created: `false`
 - Log audit: no warnings or fatal errors
 - Archive: `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1_final.tar.gz`
-- Archive size: `33,920,089` bytes
-- SHA-256: `8a4517aecdb8aef115e2824d2b5a872f138b15f61917b2dd33ed7c7a0d14da90`
+- Archive size: `33,857,232` bytes
+- SHA-256: `50a1a6cd9bd24b62b05e066018433c95bb4f4b7eca92322a85167824e4bb39dc`
 - Frozen config MD5: `3bb1df5dc08742193c03d3789527b2b2`
 - Implementation MD5: `25c7a205728e7bfa258c5b10fbb46ede`
 - Fold manifest MD5: `d02024584a00033d83c629673750ce71`
 
-The immutable run directory and verified archive contain the full evidence. This file is the durable scientific interpretation of the corrected-data experiment.
+The immutable run directory and verified archive contain the full evidence. This file is the durable scientific interpretation of the final experiment.

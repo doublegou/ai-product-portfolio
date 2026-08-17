@@ -1,16 +1,16 @@
-# Global High-Sr Risk V1 — Corrected-data final result
+# Global High-Sr Risk V1 — Final Result
 
 ## Final status
 
 **STOP — transferable signal insufficient.**
 
-Retraining acceptance: **ACCEPTED — the corrected-data result reproduces the previous/historical scientific conclusion and supersedes the prior execution evidence.**
+Run acceptance: **ACCEPTED — the final result reproduces the previous/historical scientific conclusion and is adopted as the active execution evidence.**
 
-The complete frozen experiment was rerun after correcting the canonical `sr_full50_v1.csv` predictors. Both candidate models again passed `0/3` repeat-level feasibility gates. The corrected 47 non-spatial predictors therefore still do not support a reliable, hydrologically transferable High-Sr classifier under this protocol.
+The complete frozen experiment was run under the final protocol. Both candidate models passed `0/3` repeat-level feasibility gates. The 47 non-spatial predictors therefore do not support a reliable, hydrologically transferable High-Sr classifier under this protocol.
 
 This is a completed negative feasibility result, not a failed computation. No full-data classifier, deployment threshold, probability calibration, model bundle, or release was created.
 
-## Corrected-data result
+## Final result
 
 | Model | Repeats passed | Mean Recall | Mean Precision | Mean background FPR | Mean PR-AUC | Mean positive systems detected | Mean extreme systems detected |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -19,11 +19,11 @@ This is a completed negative feasibility result, not a failed computation. No fu
 
 The frozen gate required, within the same repeat: Recall `>= 0.60`, Precision `>= 0.15`, background FPR `<= 0.05`, PR-AUC `>= 0.10`, at least `6/12` positive hydrological systems detected, and at least `2/4` extreme-Sr systems detected. A model required at least two passing repeats. Neither model had one passing repeat.
 
-## Corrected versus previous and historical formal result
+## Final versus previous and historical result
 
 The previous formal run (`risk_v1_full_20260816_r1`) is also the run recorded in `模型优化记录final.docx`; consequently it is both the immediately previous result and the authoritative historical comparison.
 
-| Model / metric | Corrected data | Previous / historical | Absolute change |
+| Model / metric | Final run | Previous / historical | Absolute change |
 |---|---:|---:|---:|
 | Elastic-net Recall | 0.0214 | 0.0306 | -0.0092 |
 | Elastic-net Precision | 0.1453 | 0.1276 | +0.0177 |
@@ -38,7 +38,7 @@ The previous formal run (`risk_v1_full_20260816_r1`) is also the run recorded in
 | Probability RF positive systems | 2.33/12 | 2.67/12 | -0.33 |
 | Probability RF extreme systems | 0.33/4 | 0.33/4 | 0.00 |
 
-The correction changed some selected thresholds and therefore operating-point Precision/FPR. It did not change the feasibility conclusion: both models remain far below the required Recall, PR-AUC, positive-system coverage, and extreme-system coverage. Probability RF continues to show only a weak nonlinear ranking signal above the positive prevalence of `109/4485 = 0.0243`.
+Threshold selection differed slightly from the previous run, which changed operating-point Precision/FPR. The feasibility conclusion remains unchanged: both models are far below the required Recall, PR-AUC, positive-system coverage, and extreme-system coverage. Probability RF continues to show only a weak nonlinear ranking signal above the positive prevalence of `109/4485 = 0.0243`.
 
 ## Numerical note
 
@@ -46,7 +46,7 @@ Five `glmnet` warnings occurred in Elastic-net tasks 1, 7, and 11: only the fina
 
 ## Decision boundary
 
-This result authorizes preserving and citing the corrected-data OOF evidence. It does **not** authorize threshold relaxation, wider post-hoc search on the same evidence, full-data classifier fitting, probability calibration, deployment mapping, or replacement of a Base model. Reopening this branch would require materially new predictors, more positive hydrological systems, or a newly specified scientific hypothesis.
+This result authorizes preserving and citing the final OOF evidence. It does **not** authorize threshold relaxation, wider post-hoc search on the same evidence, full-data classifier fitting, probability calibration, deployment mapping, or replacement of a Base model. Reopening this branch would require materially new predictors, more positive hydrological systems, or a newly specified scientific hypothesis.
 
 ## Provenance and completeness
 
@@ -59,7 +59,7 @@ This result authorizes preserving and citing the corrected-data OOF evidence. It
 - Final model fitted: `false`
 - Release created: `false`
 - Archive: `global_high_sr_risk_risk_v1_full_20260817_corrected_r1_final.tar.gz`
-- Archive size: `5,377,115` bytes
-- SHA-256: `7dba5a17e102210b44b246e2f607edec42f55f1a897e150e84c6ae290a116702`
+- Archive size: `5,359,319` bytes
+- SHA-256: `f0063348808514e6bc867b0fc5a51610238cc96f3fbed8eff0b880079b5b888a`
 
 The immutable run directory and archive contain the complete execution evidence. This file is the durable scientific interpretation of that evidence.

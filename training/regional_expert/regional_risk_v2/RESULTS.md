@@ -4,7 +4,7 @@
 
 `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE`
 
-Retraining acceptance: **ACCEPTED — the corrected-data result preserves the previous and recovered historical Gate conclusion and supersedes the prior execution evidence.**
+Run acceptance: **ACCEPTED — the final result preserves the previous and recovered historical Gate conclusion and is adopted as the active execution evidence.**
 
 The frozen forward experiment completed successfully. All four prespecified candidates failed the complete Regional Risk V2 Gate under strict Nested Leave-One-Branch-Out validation. The experiment therefore stops without fitting a full-data model or creating a release.
 
@@ -16,14 +16,14 @@ Gate qualification used branch-sqrt-weighted metrics. A candidate had to meet al
 |---|---:|---:|---:|---:|---:|---|
 | Probability RF — Full50 | **6.96%** | **45.54%** | **45.78%** | **6/14** | **2/4** | Fail |
 | Probability RF — Full50 + Process14 | 7.11% | 38.12% | 40.77% | 6/14 | 1/4 | Fail |
-| Shallow boosting — Full50 | 7.96% | 34.66% | 34.03% | 5/14 | 2/4 | Fail |
+| Shallow boosting — Full50 | 7.96% | 34.62% | 34.03% | 5/14 | 2/4 | Fail |
 | Shallow boosting — Full50 + Process14 | 10.94% | 34.28% | 32.44% | 4/14 | 2/4 | Fail |
 
 Probability RF with Full50 was closest to the Gate. It met the FPR, Precision and extreme-system criteria, but remained 14.46 percentage points below the Recall target and detected only 6 rather than 9 positive branches. Shallow boosting with Full50 now remains below the FPR cap, whereas shallow boosting with Process14 has an exact weighted Outer FPR of 10.9417% and exceeds it. Neither change resolves the Recall or positive-branch-coverage failure.
 
-## Corrected-data retraining comparison
+## Final-run comparison
 
-The corrected run preserves the previous and recovered historical decision: no candidate meets the complete Regional Risk Gate, Probability RF with Full50 remains closest, and branch coverage remains the central failure. Relative to the immediately preceding run, RF Full50 Recall and branch coverage are unchanged; weighted FPR rises from 6.02% to 6.96% and Precision falls from 48.22% to 45.78%. Shallow boosting Full50 improves FPR from 10.01% to 7.96% while Recall and branch coverage remain essentially unchanged. These shifts do not cross the complete Gate boundary.
+The final run preserves the previous and recovered historical decision: no candidate meets the complete Regional Risk Gate, Probability RF with Full50 remains closest, and branch coverage remains the central failure. Relative to the immediately preceding run, RF Full50 Recall and branch coverage are unchanged; weighted FPR rises from 6.02% to 6.96% and Precision falls from 48.22% to 45.78%. Shallow boosting Full50 improves FPR from 10.01% to 7.96% while Recall and branch coverage remain essentially unchanged. These shifts do not cross the complete Gate boundary.
 
 ## Ranking diagnostics
 
@@ -81,7 +81,7 @@ The secondary Process14 direction is not identical to the recovered narrative. T
 - Full-data model fitted: `false`
 - Release created: `false`
 - Archive: `regional_risk_v2_regional_risk_v2_20260817_corrected_r3_final.tar.gz`
-- Archive size: `2,083,266` bytes
-- Archive SHA-256: `8d867c458fc9550cde988cd47bfe0e868ac7f61231ac757a7f2b21050b9bd0b1`
+- Archive size: `2,073,915` bytes
+- Archive SHA-256: `f3c8ce233c3c440cfd3a22d6b7822dda2ee30f1d156797a078c2888eb0803aa3`
 
-The checked archive retains all task-level predictions, thresholds, diagnostics and scheduler logs. The first two corrected-data submission attempts stopped at the engineering check before any model fit because of a compute-node `libstdc++` load-order conflict; the dependency order was fixed without changing the statistical method, and the formal r3 chain then completed cleanly. The versioned top-level validation files are the compact formal evidence for the final conclusion.
+The checked archive retains all task-level predictions, thresholds, diagnostics and scheduler logs. The first two submission attempts stopped at the engineering check before any model fit because of a compute-node `libstdc++` load-order conflict; the dependency order was fixed without changing the statistical method, and the formal r3 chain then completed cleanly. The versioned top-level validation files are the compact formal evidence for the final conclusion.

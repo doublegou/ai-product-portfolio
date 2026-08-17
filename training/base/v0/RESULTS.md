@@ -1,4 +1,4 @@
-# Base Model V0 — corrected-data result
+# Base Model V0 — Final Result
 
 ## Active result
 
@@ -12,7 +12,7 @@
 - Primary Bias: `-0.0010297257`
 - Final RF: `mtry=7`, `min.node.size=5`, `sample.fraction=1`, `replace=FALSE`, 3,000 trees
 
-The corrected run replaces `v0_full_20260816_r2`, whose model was fitted from the superseded Full50 table. Relative to that run, primary RMSE changes by `+0.10%` and MAE by `+0.60%`; all validation-scheme RMSE changes are below `0.56%`. The selected deployment recipe is unchanged, so the corrected data do not alter the V0 scientific interpretation.
+The final run is adopted in place of `v0_full_20260816_r2`. Relative to that run, primary RMSE changes by `+0.10%` and MAE by `+0.60%`; all validation-scheme RMSE changes are below `0.56%`. The selected deployment recipe is unchanged, so the V0 scientific interpretation remains unchanged.
 
 All 20 validation tasks and the final fit completed successfully. The combined report contains 17,940 OOF predictions, and the Slurm/log integrity audit found no failed task or runtime warning/error.
 

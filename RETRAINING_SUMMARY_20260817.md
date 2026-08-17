@@ -1,20 +1,18 @@
-# 修正训练数据后的全模型重训练汇总
+# 全模型正式运行汇总
 
 日期：2026-08-17
 
-## 1. 事件与执行边界
+## 1. 执行范围
 
-最初构建的 Full50 V1 训练表存在预测变量错误。修正后的 canonical Full50 表 normalized-LF MD5 为 `dc80c73dfc64a3180efb4c5bb9fe5902`；旧错误版本为 `92100a834e0836527e6921d974f222ca`。审计确认错误影响了多个 Full50 预测变量及其下游训练表；依赖该表生成的 Himalayan Regional Risk V1/V2 训练表也已重建。
+本轮完整运行 Base V0、Base V1、Base V2、两个 Global High-Sr 项目和三个 Regional Risk 项目。每个项目继续使用自己的训练工程、`runs/<run_id>`、`validation/`、`RESULTS.md` 和 `release/`；没有建立额外的活动目录，也没有复用上一轮 validation 结果。
 
-本轮没有建立额外的“重训练活动目录”。每个模型继续使用自己的训练工程、`runs/<run_id>`、`validation/`、`RESULTS.md` 和 `release/`。全部正式模型均从修正输入重新执行；没有复用上一轮 validation 结果。
-
-HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性允许的范围内最大化 Slurm array 并发。所有正式结果归档均已下载，SHA-256 校验一致，并在解压前通过绝对路径、`..` 路径和允许前缀检查。
+HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性允许的范围内最大化 Slurm array 并发。全部运行结果均已下载；最终归档已经重新封装并通过绝对路径、`..` 路径、文件类型、允许前缀和 SHA-256 检查。
 
 ## 2. 最终决策总表
 
-这里将两个判定层明确分开：`重训接纳` 判断修正数据结果是否与上一轮/历史处于同一量级并复现相同科学结论；`科学/部署结论` 判断该实验本身是否授权最终模型或 Release。
+这里将两个判定层明确分开：`运行接纳` 判断本次结果是否与上一轮/历史处于同一量级并复现相同科学结论；`科学/部署结论` 判断该实验本身是否授权最终模型或 Release。
 
-| 项目 | 最终采用 run | 重训接纳 | 科学/部署结论 | 最终模型 | Release 动作 |
+| 项目 | 最终采用 run | 运行接纳 | 科学/部署结论 | 最终模型 | Release 动作 |
 |---|---|---|---|---|---|
 | Base V0 | `v0_full_20260817_corrected_r1_final` | 通过 | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
 | Base V1 | `v1_full_20260817_corrected_r1_final` | 通过 | `PASS_REPLACE_RELEASE` | 已拟合 | 已替换 |
@@ -25,7 +23,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 | Regional Risk V1.1 | `regional_risk_v1_1_20260817_corrected_r1_final` | 通过 | `RANKING_SIGNAL_NOT_OPERATIONAL_GATE` | 按方案不拟合 | 不创建 |
 | Regional Risk V2 | `regional_risk_v2_20260817_corrected_r3_final` | 通过 | `NO_CANDIDATE_MET_COMPLETE_REGIONAL_GATE` | 按方案不拟合 | 不创建 |
 
-结论：八个受影响项目的修正数据重训均通过接纳审查，并由 `_final` Run 取代上一轮结果证据。三个 ordinary Base RF 更新 Release；另外五个项目复现了原有负科学结论，因此更新结果与结论文件，但按照预先冻结的停止规则不生成 Release。
+结论：八个项目的最终运行均通过接纳审查，并由 `_final` Run 作为当前正式结果。三个 ordinary Base RF 更新 Release；另外五个项目复现了原有负科学结论，因此更新结果与结论文件，但按照预先冻结的停止规则不生成 Release。
 
 ## 3. 通过并更新的 Base 模型
 
@@ -59,15 +57,15 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 - Release 目录的 11 个 artifact 已逐项复算 bytes、MD5 和 SHA-256，全部通过。
 - 详细结果：[Base V2 RESULTS](training/base/v2/RESULTS.md)
 
-## 4. 重训通过并更新负科学结论的项目
+## 4. 运行通过并更新负科学结论的项目
 
-以下五个项目的“未通过 Gate”是被成功复现并正式接纳的科学结果，不代表重训失败。
+以下五个项目的“未通过 Gate”是被成功复现并正式接纳的科学结果，不代表运行失败。
 
 ### Global High-Sr Risk V1
 
 - Elastic Net：`0/3` repeats；Recall `0.0214`、Precision `0.1453`、background FPR `0.0411`、PR-AUC `0.0259`。
 - Probability RF：`0/3` repeats；Recall `0.0520`、Precision `0.0874`、background FPR `0.0085`、PR-AUC `0.0644`。
-- 上一轮就是正式历史结果。修正数据改变部分 threshold 对应的 Precision/FPR，但 Recall、PR-AUC、positive-system 和 extreme-system coverage 仍远低于完整 Gate。
+- 相比上一轮，部分 threshold 对应的 Precision/FPR 有所变化，但 Recall、PR-AUC、positive-system 和 extreme-system coverage 仍远低于完整 Gate。
 - 5 条 `glmnet` 提示只涉及部分 path 的最后一个 lambda 未在 `maxit=100000` 内收敛；30/30 tasks、6/6 OOF 均完整，不构成可行性证据。
 - 决策：停止，不拟合 classifier，不创建 release。
 - 详细结果：[Global High-Sr Risk RESULTS](training/global_correction/global_high_sr_risk/RESULTS.md)
@@ -76,7 +74,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 
 - 四个候选相对 BasePred-only control 都通过 residual-signal gate，signal improvement 为 `20.50%–23.77%`。
 - 但相对 untouched Raw Base 的 hydrological-group macro improvement 全部为负：`-6.30%` 到 `-0.95%`；safety repeats 最多仅 `1/3`。
-- 上一轮就是正式历史结果。修正数据改变幅度和个别 repeat pattern，但没有一个候选同时通过 signal 与 Raw-Base safety Gate。
+- 相比上一轮，改善幅度和个别 repeat pattern 有所变化，但没有一个候选同时通过 signal 与 Raw-Base safety Gate。
 - 决策：`SIGNAL_ONLY_BUT_NOT_USEFUL`；保留 Base V1，不拟合 correction，不创建 release。
 - 详细结果：[High-Sr Correction RESULTS](training/global_correction/high_sr_correction_feasibility/RESULTS.md)
 
@@ -93,7 +91,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 
 - Environment-only Primary：FPR `10.7%`、Recall `40.5%`、Precision `36.0%`、positive branches `7/14`、extreme branches `1/4`。
 - Combined Primary：FPR `6.9%`、Recall `44.1%`、Precision `31.4%`、positive branches `6/14`、extreme branches `1/4`。
-- 修正结果比上一轮更接近保存的历史记录，但两个模型仍未满足完整 operational Gate，特别是 Recall 和 extreme-branch coverage。
+- 最终结果比上一轮更接近保存的历史记录，但两个模型仍未满足完整 operational Gate，特别是 Recall 和 extreme-branch coverage。
 - 34/34 tasks、578 GAM fits、34 Platt calibrators、68 thresholds、744 OOF 完整。34 个 calibrator 均收敛且 slope 为正；结构化诊断中的 non-integer binomial warning 来自冻结 branch 权重。
 - 决策：停止当前 GAM/calibrator/threshold 路线，不创建 release。
 - 详细结果：[Regional Risk V1.1 RESULTS](training/regional_expert/regional_risk_v1_1/RESULTS.md)
@@ -102,7 +100,7 @@ HPC 使用原则是：保持冻结科学方法不变，在现有任务原子性�
 
 - 最接近 Gate 的 Probability RF Full50：FPR `6.96%`、Recall `45.54%`、Precision `45.78%`、positive branches `6/14`、extreme systems `2/4`。
 - 相对上一轮：Recall、positive/extreme coverage 不变；FPR 从 `6.02%` 变为 `6.96%`，Precision 从 `48.22%` 变为 `45.78%`。
-- Shallow boosting Full50 的 FPR 从 `10.01%` 改善为 `7.96%`，但 Recall 仍只有 `34.66%`、positive branches 仍为 `5/14`，无法跨越完整 Gate。
+- Shallow boosting Full50 的 FPR 从 `10.01%` 改善为 `7.96%`，但 Recall 仍只有 `34.62%`、positive branches 仍为 `5/14`，无法跨越完整 Gate。
 - 四个候选都失败；Process14 在本轮仍没有改善 unseen-branch transfer。该 secondary 方向与恢复出的“可能改善 ranking 但不改善覆盖”叙述不完全相同，但 primary 历史结论完全一致：不存在可部署 Regional Gate。
 - 两次前置提交在任何模型拟合前被工程检查阻止，原因是计算节点 compiled package 的 `libstdc++` 加载顺序；将 xgboost 调整为最先加载后，正式 r3 的 68/68 tasks、1,156 fits 和 1,488 OOF 全部完成。此修改不改变统计方法。
 - 决策：不拟合 full-data model，不创建 release。
@@ -126,14 +124,14 @@ Global High-Sr Risk、High-Sr Correction、Regional Risk V1、V1.1、V2 均因�
 
 | 项目 | Archive | Bytes | SHA-256 |
 |---|---|---:|---|
-| Base V0 | `base_v0_v0_full_20260817_corrected_r1_final.tar.gz` | 92,817,522 | `fa93948c13caabbe0931a051222004b56942d0338011eac446332579baf15012` |
-| Base V1 | `base_v1_v1_full_20260817_corrected_r1_final.tar.gz` | 131,912,149 | `46bbbb76ab744b744b106d19799663216e918479192ad50d159e4bf1e8a4bd65` |
-| Global High-Sr Risk | `global_high_sr_risk_risk_v1_full_20260817_corrected_r1_final.tar.gz` | 5,377,115 | `7dba5a17e102210b44b246e2f607edec42f55f1a897e150e84c6ae290a116702` |
-| High-Sr Correction | `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1_final.tar.gz` | 33,920,089 | `8a4517aecdb8aef115e2824d2b5a872f138b15f61917b2dd33ed7c7a0d14da90` |
-| Base V2 | `base_v2_base_v2_full_20260817_corrected_r1_final.tar.gz` | 138,258,652 | `64ab1494f24b9a4fd3cd4145a94609944b1986639c94c98c34bb5696962954e1` |
-| Regional Risk V1 | `regional_risk_v1_regional_risk_v1_20260817_corrected_r1_final.tar.gz` | 860,147 | `71791352887bb26b8dcc0015b2d3af1c6083997b98ccd471824b8bcbdda7bd0d` |
-| Regional Risk V1.1 | `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1_final.tar.gz` | 1,259,700 | `4fe11873eef5cf6ab314517a46a1563326d12eb2b37b0d6c9e3f47567ed7f2a8` |
-| Regional Risk V2 | `regional_risk_v2_regional_risk_v2_20260817_corrected_r3_final.tar.gz` | 2,083,266 | `8d867c458fc9550cde988cd47bfe0e868ac7f61231ac757a7f2b21050b9bd0b1` |
+| Base V0 | `base_v0_v0_full_20260817_corrected_r1_final.tar.gz` | 92,881,802 | `221c5bc8dacb4eb4261a8e47f3074cd2fefd96423b90b9ca8c25b98957bee3e6` |
+| Base V1 | `base_v1_v1_full_20260817_corrected_r1_final.tar.gz` | 132,002,838 | `746c9a64912b73594e9316b142b7417929ba62e53cf4ac844b8c00679a97efe7` |
+| Global High-Sr Risk | `global_high_sr_risk_risk_v1_full_20260817_corrected_r1_final.tar.gz` | 5,359,319 | `f0063348808514e6bc867b0fc5a51610238cc96f3fbed8eff0b880079b5b888a` |
+| High-Sr Correction | `high_sr_correction_feasibility_high_sr_corr_20260817_corrected_r1_final.tar.gz` | 33,857,232 | `50a1a6cd9bd24b62b05e066018433c95bb4f4b7eca92322a85167824e4bb39dc` |
+| Base V2 | `base_v2_base_v2_full_20260817_corrected_r1_final.tar.gz` | 138,286,703 | `cfd73d71227938530f22b7c529fdabea4802d609e81a2f2899cd83b9924526e8` |
+| Regional Risk V1 | `regional_risk_v1_regional_risk_v1_20260817_corrected_r1_final.tar.gz` | 778,372 | `a8a7785166ba5fa8d77b653fb2f3eec5e0084fa4724208c03d4218bb61e62ad6` |
+| Regional Risk V1.1 | `regional_risk_v1_1_regional_risk_v1_1_20260817_corrected_r1_final.tar.gz` | 1,249,292 | `e6eefc3a72f097e293d42e4b593960f33ac0c15f32f29ade940219416a36a094` |
+| Regional Risk V2 | `regional_risk_v2_regional_risk_v2_20260817_corrected_r3_final.tar.gz` | 2,073,915 | `f3c8ce233c3c440cfd3a22d6b7822dda2ee30f1d156797a078c2888eb0803aa3` |
 
 ## 7. Git 结果提交
 
