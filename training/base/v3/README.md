@@ -3,6 +3,14 @@
 Base V3 is the formal implementation of the 5,600-site Random Forest versus
 XGBoost global continuous-regression experiment.
 
+## Final status
+
+Run `base_v3_full_20260817_r2` is scientifically accepted and frozen. Random
+Forest `rf_110 / W2` is the released global continuous-Sr regression model.
+Strict Primary OOF selected RF over XGBoost, but both models detected 0/29
+`Sr >= 0.80` sites and 0/5 extreme systems. The release is therefore not a
+high-Sr discovery or risk-screening model. See `RESULTS.md` and `release/`.
+
 ## Layout
 
 - `config/`: frozen scientific and runtime configuration.
@@ -10,7 +18,7 @@ XGBoost global continuous-regression experiment.
 - `R/`: reusable implementation functions.
 - `scripts/`: command-line stage entry points.
 - `validation/`: canonical summaries copied from a completed formal run.
-- `release/`: final approved model bundle and metadata.
+- `release/`: final approved RF bundle, compact evidence and metadata.
 - `runs/<run_id>/`: resumable task outputs, logs, reports and model objects.
 
 ## Formal workflow
