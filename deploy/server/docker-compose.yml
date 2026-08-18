@@ -1,0 +1,29 @@
+services:
+  gateway:
+    image: nginx:1.27-alpine
+    container_name: seedxdream-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./gateway/conf.d:/etc/nginx/conf.d:ro
+      - ./gateway/certs:/etc/nginx/certs:ro
+    depends_on:
+      - web-prod
+      - web-preview
+
+  web-prod:
+    image: crpi-had8j9la06ibxzbx.cn-shanghai.personal.cr.aliyuncs.com/seedxdream/official-landingpage:latest
+    container_name: seedxdream-web-prod
+    restart: unless-stopped
+    expose:
+      - "80"
+
+  web-preview:
+    image: crpi-had8j9la06ibxzbx.cn-shanghai.personal.cr.aliyuncs.com/seedxdream/official-landingpage:develop
+    container_name: seedxdream-web-preview
+    restart: unless-stopped
+    expose:
+      - "80"
+
