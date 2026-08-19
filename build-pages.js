@@ -285,4 +285,5 @@ function buildPage(relFile) {
 }
 
 filesToBuild.forEach(buildPage);
+require('./scripts/apply-seo-metadata');
 console.log('All pages built successfully!');
