@@ -311,13 +311,14 @@ Object.entries(productTranslations).forEach(([key, value]) => {
 function getPageKey() {
   const pathname = window.location.pathname.replace(/\/index\.html$/, "/");
 
-  if (pathname.includes("/products/birdtracker/")) return "birdtracker";
-  if (pathname.includes("/products/isstracker/")) return "isstracker";
-  if (pathname.includes("/products/stayword/")) return "stayword";
-  if (pathname.includes("/products/mathpuzzle/")) return "mathpuzzle";
-  if (pathname.includes("/products/flickwand/")) return "flickwand";
+  if (pathname === "/") return "home";
+  if (pathname === "/products/birdtracker/") return "birdtracker";
+  if (pathname === "/products/isstracker/") return "isstracker";
+  if (pathname === "/products/stayword/") return "stayword";
+  if (pathname === "/products/mathpuzzle/") return "mathpuzzle";
+  if (pathname === "/products/flickwand/") return "flickwand";
 
-  return "home";
+  return null;
 }
 
 function getInitialLanguage() {
@@ -473,8 +474,10 @@ function applyLanguage(language) {
   }
 }
 
-createLanguageSwitcher();
-applyLanguage(currentLanguage);
+if (getPageKey()) {
+  createLanguageSwitcher();
+  applyLanguage(currentLanguage);
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 
