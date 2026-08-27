@@ -30,7 +30,8 @@ description: Plan and generate a Xiaohongshu image-card series directly from an 
 - `plan.md` 必须和 `analysis.md` 同级。
 - 只有用户确认 `plan.md` 后，才创建提示词和图片。
 - 提示词写入任务目录下的 `prompts/`，与 `result/` 平级；图片只写入 `result/`。不得覆盖或改写 `result/post.md`。
-- 如果目标文件已存在，先改名为 `原名-backup-YYYYMMDD-HHMMSS.扩展名` 再写新文件。
+- 如果 `plan.md`、提示词或目标图片已存在，直接用新版本替换旧版本，不创建 `backup`、版本化副本或其他历史文件。
+- 重新规划或重新生成后，删除不再属于最终方案的旧提示词和旧图片。任务目录最终只保留当前有效的 `analysis.md`、`plan.md`、规范提示词、最终图片以及可能存在的 `result/post.md`。
 
 ## 第一步：独立读取并规划
 
@@ -107,9 +108,9 @@ description: Plan and generate a Xiaohongshu image-card series directly from an 
 3. 在任务目录下的 `prompts/` 中先写好并核验每张图的完整提示词，命名为 `NN-type-slug.md`。
 4. 使用当前 Codex 的原生 `imagegen` Skill/工具生成位图，默认比例 `3:4`。禁止用 SVG、HTML、Canvas 或代码绘图替代。
 5. 先生成第 1 张封面，再把封面作为第 2 张及之后图片的风格参考，以保持人物、线条和配色一致。
-6. 每张图都以 `plan.md` 的最终页面文字为准。文字错误、乱码或可读性差时，从修订后的提示词重新生成；禁止在成图上用代码覆盖文字。
+6. 每张图都以 `plan.md` 的最终页面文字为准。文字错误、乱码或可读性差时，直接修订原提示词并替换失败图片；不保留失败提示词或失败图片，禁止在成图上用代码覆盖文字。
 7. 只重试失败项一次，不重复生成已成功的图片。
-8. 完成后检查文件数量、命名、比例、文字可读性、内容准确性和系列一致性，并给出所有结果文件的链接。
+8. 完成后检查文件数量、命名、比例、文字可读性、内容准确性和系列一致性；同时确认任务目录中没有 `backup`、旧版本或不再使用的图片，再给出所有最终结果文件的链接。
 
 ## 与正文分支的关系
 

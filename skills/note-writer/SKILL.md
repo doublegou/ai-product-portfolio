@@ -21,7 +21,8 @@ description: Write only the publish-ready Xiaohongshu title and body from an exi
 
 - 用户给出 `analysis.md` 时，以其父目录作为任务目录；给出任务目录时，读取其中的 `analysis.md`。
 - 创建 `result/`（若尚不存在），只写 `result/post.md`。
-- 若 `post.md` 已存在，先改名为 `post-backup-YYYYMMDD-HHMMSS.md`，再写新版本。
+- 若 `post.md` 已存在，直接用新版本替换，不创建 `backup`、版本化副本或其他历史文件。
+- 写作完成后，任务目录只保留当前有效的 `result/post.md`；删除本 Skill 过去产生的旧正文或备份正文。
 - 不创建 `meta.json`、caption 文件、长文原稿、卡片脚本或其他中间文件。
 
 ## 写作流程
