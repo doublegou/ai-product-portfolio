@@ -1,4 +1,4 @@
 interface:
   display_name: "note-writer"
-  short_description: "读取分析文件，独立生成可直接发布的标题与正文"
-  default_prompt: "使用 $note-writer 读取 analysis.md，并生成 result/post.md。"
+  short_description: "从 analysis.md 生成流量导向、有作者感的小红书正文"
+  default_prompt: "使用 $note-writer 读取 analysis.md，生成有鲜明判断、可直接发布的 result/post.md。"
