@@ -26,7 +26,14 @@ import {
 interface ProbabilityMapProps {
   query: SampleQuery;
   gridConfig?: ProbabilityGridConfig;
+  renderRequestId: number;
+  onRenderComplete: (requestId: number) => void;
 }
+
+const CARTO_API_KEY = import.meta.env.VITE_CARTO_API_KEY?.trim();
+const CARTO_TILE_URL =
+  "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" +
+  (CARTO_API_KEY ? `?key=${encodeURIComponent(CARTO_API_KEY)}` : "");
 
 interface RgbaColor {
   r: number;
@@ -383,7 +390,12 @@ function renderProbabilitySurface(
   return canvas.toDataURL("image/png");
 }
 
-export function ProbabilityMap({ query, gridConfig }: ProbabilityMapProps) {
+export function ProbabilityMap({
+  query,
+  gridConfig,
+  renderRequestId,
+  onRenderComplete,
+}: ProbabilityMapProps) {
   const mapEl = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const overlayRef = useRef<ImageOverlay | null>(null);
@@ -413,18 +425,16 @@ export function ProbabilityMap({ query, gridConfig }: ProbabilityMapProps) {
       minZoom: 3,
       maxZoom: 8,
       zoomControl: false,
-      attributionControl: false,
     });
 
     map.createPane("probability-surface").style.zIndex = "440";
 
-    L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-      {
-        subdomains: "abcd",
-        maxZoom: 19,
-      },
-    ).addTo(map);
+    L.tileLayer(CARTO_TILE_URL, {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 19,
+    }).addTo(map);
 
     addChinaBoundary(map);
     L.control.zoom({ position: "bottomright" }).addTo(map);
@@ -457,17 +467,30 @@ export function ProbabilityMap({ query, gridConfig }: ProbabilityMapProps) {
     const bounds = effectiveGridConfig.bounds ?? DEFAULT_GRID_CONFIG.bounds;
     const imageUrl = renderProbabilitySurface(grid.cells, bounds);
 
-    if (!imageUrl) {
-      return;
+    if (imageUrl) {
+      overlayRef.current = L.imageOverlay(
+        imageUrl,
+        probabilityOverlayBounds(bounds),
+        {
+          className: "probability-surface",
+          interactive: false,
+          opacity: 1,
+          pane: "probability-surface",
+        },
+      ).addTo(map);
     }
 
-    overlayRef.current = L.imageOverlay(imageUrl, probabilityOverlayBounds(bounds), {
-      className: "probability-surface",
-      interactive: false,
-      opacity: 1,
-      pane: "probability-surface",
-    }).addTo(map);
-  }, [effectiveGridConfig.bounds, grid.cells]);
+    const completionFrame = window.requestAnimationFrame(() => {
+      onRenderComplete(renderRequestId);
+    });
+
+    return () => window.cancelAnimationFrame(completionFrame);
+  }, [
+    effectiveGridConfig.bounds,
+    grid.cells,
+    onRenderComplete,
+    renderRequestId,
+  ]);
 
   return (
     <section
