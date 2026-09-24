@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频标题与正文"
+  short_description: "根据口播脚本写具体可信的标题和短描述，自动编号保存 post.txt 并衔接三比例封面"
+  default_prompt: "使用 $script-to-post，根据这期脚本生成标题和正文，保存到 post 的下一个编号目录；如果我要求整套发布素材，再继续生成同目录的三种比例封面。"
