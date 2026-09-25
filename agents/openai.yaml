@@ -1,4 +1,4 @@
 interface:
-  display_name: "视频海报封面"
-  short_description: "从脚本与核实热点提炼标题，保留本人特征与炭灰短袖，交付三种比例海报封面"
+  display_name: "script-to-image"
+  short_description: "Create matching poster covers in 3:4, 4:3, and 16:9."
   default_prompt: "使用 $script-to-image，读取本期 post 编号目录中的 post.txt，结合脚本和人像参考制作三张海报，分别命名为 3-4、4-3、16-9 并保存到同一目录。"
