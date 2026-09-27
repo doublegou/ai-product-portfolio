@@ -1,0 +1,22 @@
+name: sr_rf
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - r-base=4.4.*
+  - r-renv
+  - r-pak
+  - compilers
+  - make
+  - cmake
+  - pkg-config
+  - git
+  - gdal
+  - geos
+  - proj
+  - libsqlite
+  - udunits2
+  - libxml2
+  - libcurl
+  - openssl
+  - llvm-openmp

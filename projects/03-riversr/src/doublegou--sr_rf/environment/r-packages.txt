@@ -1,0 +1,42 @@
+# Data ingestion and manipulation
+readxl
+data.table
+dplyr
+tidyr
+stringr
+readr
+tibble
+purrr
+
+# Configuration and utilities
+yaml
+fs
+here
+digest
+glue
+jsonlite
+
+# Plotting and spatial analysis
+ggplot2
+maps
+sf
+terra
+
+# Modeling
+ranger
+Cubist
+xgboost
+grf
+caret
+CAST
+nnls
+FNN
+twosamples
+
+# Parallelism and supporting packages
+future
+future.apply
+Matrix
+zoo
+foreign
+
