@@ -1,0 +1,4 @@
+interface:
+  display_name: "script-to-html-slides"
+  short_description: "Create presentation-ready HTML slides from a video script."
+  default_prompt: "使用 $script-to-html-slides，根据下面的脚本设计 HTML 演示，选择合适的视觉风格并检查效果，仅交付 ppt 目录下的编号 HTML，不保存脚本。"
