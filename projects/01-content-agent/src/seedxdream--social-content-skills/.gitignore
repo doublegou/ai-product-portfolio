@@ -1,0 +1,22 @@
+# yt-analysis runtime environment and downloaded models
+skills/yt-analysis/.venv/
+skills/yt-analysis/models/*.pt
+
+# Python caches
+**/__pycache__/
+*.py[cod]
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Temporary download and media files
+*.part
+*.tmp
+*.webm
+*.m4a
+*.mp3
+*.vtt
+*.srt
+cookies*.txt

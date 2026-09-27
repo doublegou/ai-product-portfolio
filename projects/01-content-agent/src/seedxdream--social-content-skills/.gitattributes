@@ -1,0 +1,13 @@
+* text=auto
+
+# Keep Unix entry points executable across platforms.
+*.sh text eol=lf
+
+# Use native Windows line endings for PowerShell entry points.
+*.ps1 text eol=crlf
+
+# Keep portable source and documentation files stable.
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf

@@ -1,0 +1,4 @@
+interface:
+  display_name: "yt-analysis"
+  short_description: "优先提取字幕，生成完整转译与二创建议的中文分析文件"
+  default_prompt: "使用 $yt-analysis 分析这个 YouTube URL，并生成项目级 analysis.md。"
