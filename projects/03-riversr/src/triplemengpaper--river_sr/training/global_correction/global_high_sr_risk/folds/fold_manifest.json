@@ -1,0 +1,56 @@
+{
+  "status": "frozen",
+  "created_at": "2026-08-17T08:05:48+0800",
+  "input": {
+    "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
+    "bytes": 5668983,
+    "modified_at": "2026-08-17T06:55:21+0800",
+    "md5": "dc80c73dfc64a3180efb4c5bb9fe5902",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "config": {
+    "path": "D:/river_sr/training/global_correction/global_high_sr_risk/config/default.yml",
+    "bytes": 2348,
+    "modified_at": "2026-08-16T18:23:28+0800",
+    "md5": "e491c6727cfc8f6d1c1f2449bdac5498",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "base_v1_fold_manifest": {
+    "path": "D:/river_sr/training/base/v1/folds/fold_manifest.json",
+    "bytes": 2810,
+    "modified_at": "2026-08-17T07:49:52+0800",
+    "md5": "2e20e5ea60f9925be76817339eb3d2e4",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "base_outer_assignments": {
+    "path": "D:/river_sr/training/base/v1/folds/primary_outer_assignments.csv",
+    "bytes": 605526,
+    "modified_at": "2026-08-17T07:49:52+0800",
+    "md5": "4f9519c2c07b10d3882fb61505cf67f1",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "hydrological_groups": {
+    "path": "D:/river_sr/training/base/v1/folds/hydrological_groups.csv",
+    "bytes": 334123,
+    "modified_at": "2026-08-17T07:49:52+0800",
+    "md5": "f2b02cee790846fc26ef7dd04bcf713c",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "n_rows": 4485,
+  "n_predictors": 47,
+  "predictors": ["p0__log_DIS_AV_CMS", "p0__log_UPLAND_SKM", "p0__log_CATCH_SKM", "p0__log_LENGTH_KM", "p0__log_DIST_DN_KM", "p0__log_DIST_UP_KM", "p0__ORD_STRA", "p0__ORD_CLAS", "p0__ORD_FLOW", "p0__up_geo_unconsolidated_frac", "p0__up_geo_siliciclastic_frac", "p0__up_geo_mixed_sedimentary_frac", "p0__up_geo_carbonate_frac", "p0__up_geo_metamorphic_frac", "p0__up_geo_plutonic_frac", "p0__up_geo_volcanic_frac", "p0__up_geo_evaporite_frac", "p0__up_bio1_C", "p0__up_bio4_C_sd", "p0__up_bio12_mm", "p0__up_bio15_cv", "p0__up_ai_ratio", "p0__up_et0_mm", "p0__up_elevation_m", "p0__up_soil_clay_pct_0_30cm", "r47__local_geo_carbonate", "r47__local_geo_evaporite", "r47__local_geo_metamorphic", "r47__local_geo_plutonic", "r47__local_geo_siliciclastic", "r47__local_geo_unconsolidated", "r47__local_geo_volcanic", "local_geo_age_max_oldest_ma", "local_geo_age_mean_ma", "local_geo_age_sd_ma", "local_geo_frac_midpoint_gt_1000", "local_geo_frac_midpoint_gt_2000", "up_geo_age_max_oldest_ma", "up_geo_age_mean_ma", "up_geo_age_sd_ma", "up_geo_frac_midpoint_gt_1000", "up_geo_frac_midpoint_gt_2000", "m1a__lith_entropy_norm", "p1r__local_soil_clay_pct_0_30cm", "p1r__local_soil_pH_0_30cm", "p1r__up_soil_pH_0_30cm", "p1r__local_elevation_m"],
+  "outer": {
+    "source": "Base V1 frozen Primary assignments",
+    "repeats": 3,
+    "folds": 5
+  },
+  "inner": {
+    "folds": 3,
+    "tasks": 15,
+    "expected_assignment_rows": 53820,
+    "assignment": "positive hydrological systems first; balance positive-system count, positive rows, then total rows; fixed seeded ties",
+    "minimum_positive_groups_per_assessment": 2
+  },
+  "models": ["elastic_net", "probability_rf"],
+  "training_tasks": 30
+}

@@ -1,0 +1,426 @@
+{
+  "status": "TOPOLOGY_PREPARED_RESPONSE_BLIND",
+  "method": "method-level forward reconstruction",
+  "response_used": false,
+  "n_full50_rows": 4485,
+  "n_unique_station_reaches": 3963,
+  "n_reduced_reaches": 77471,
+  "n_downstream_station_pairs": 31693,
+  "selected_scale": "primary",
+  "scale_diagnostics": [
+    {
+      "scale": "primary",
+      "station_trunk_support": 20,
+      "minimum_station_support": 5,
+      "n_candidate_groups": 1248,
+      "n_branches": 221,
+      "n_eligible_rows": 2577,
+      "n_station_trunk_rows": 390,
+      "n_insufficient_support_rows": 1518,
+      "branch_size_min": 5,
+      "branch_size_median": 11,
+      "branch_size_mean": 11.6606,
+      "branch_size_p95": 19,
+      "branch_size_max": 19,
+      "branch_reach_max": 19,
+      "branch_l12_max": 19,
+      "branch_l6_max": 16,
+      "branch_station_span_km_p95": 1471.4,
+      "branch_station_span_km_max": 5269.7,
+      "relative_branch_distance": 0.0091,
+      "relative_row_distance": 0.0035,
+      "anchor_distance": 0.0126,
+      "selected_primary": true,
+      "_row": "primary"
+    },
+    {
+      "scale": "large",
+      "station_trunk_support": 40,
+      "minimum_station_support": 9,
+      "n_candidate_groups": 985,
+      "n_branches": 125,
+      "n_eligible_rows": 2707,
+      "n_station_trunk_rows": 208,
+      "n_insufficient_support_rows": 1570,
+      "branch_size_min": 9,
+      "branch_size_median": 20,
+      "branch_size_mean": 21.656,
+      "branch_size_p95": 39,
+      "branch_size_max": 39,
+      "branch_reach_max": 39,
+      "branch_l12_max": 39,
+      "branch_l6_max": 28,
+      "branch_station_span_km_p95": 2467.7,
+      "branch_station_span_km_max": 5269.7,
+      "relative_branch_distance": 0.4292,
+      "relative_row_distance": 0.0541,
+      "anchor_distance": 0.4834,
+      "selected_primary": false,
+      "_row": "large"
+    },
+    {
+      "scale": "small",
+      "station_trunk_support": 10,
+      "minimum_station_support": 4,
+      "n_candidate_groups": 1582,
+      "n_branches": 324,
+      "n_eligible_rows": 2139,
+      "n_station_trunk_rows": 688,
+      "n_insufficient_support_rows": 1658,
+      "branch_size_min": 4,
+      "branch_size_median": 6.5,
+      "branch_size_mean": 6.6019,
+      "branch_size_p95": 9,
+      "branch_size_max": 9,
+      "branch_reach_max": 9,
+      "branch_l12_max": 9,
+      "branch_l6_max": 9,
+      "branch_station_span_km_p95": 1006.565,
+      "branch_station_span_km_max": 5269.7,
+      "relative_branch_distance": 0.4795,
+      "relative_row_distance": 0.1671,
+      "anchor_distance": 0.6465,
+      "selected_primary": false,
+      "_row": "small"
+    }
+  ],
+  "inputs": {
+    "training_table": {
+      "path": "D:/river_sr/data/processed/training/sr_full50_v1.csv",
+      "bytes": 5668983,
+      "modified_at": "2026-08-17T06:55:21+0800",
+      "md5": "dc80c73dfc64a3180efb4c5bb9fe5902",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "config": {
+      "path": "D:/river_sr/training/base/v2/config/default.yml",
+      "bytes": 4298,
+      "modified_at": "2026-08-17T03:05:19+0800",
+      "md5": "b87d61dfc0fdcaa49816f4fe28a4c464",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "hydrology_interim": {
+      "path": "data/interim/sr_full50_v1_hydrology.rds",
+      "bytes": 500650,
+      "modified_at": "2026-08-16T06:31:35+0800",
+      "md5": "ae26b0b9212a0c76817e3a19e39e02a0",
+      "sha256": "8acbff5f0869ea61401d8f8f0bf1262f1d6f4593f16b9d0818d0731bc06a7067",
+      "hash_method": "raw_bytes"
+    },
+    "hydrorivers_dbf": {
+      "path": "data/raw/features/hydrography/hydrorivers_v10/HydroRIVERS_v10_shp/HydroRIVERS_v10.dbf",
+      "bytes": 873222431,
+      "modified_at": "2026-08-16T04:10:13+0800",
+      "md5": "f7564b6a25ba461bef4b3634f8c109e3",
+      "sha256": "c71c46b2b6beedcb3b76ffd99a6e1b43eac5bcd41dddbb011098873eebc86b36",
+      "hash_method": "raw_bytes"
+    },
+    "hydrobasins_l6": [
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/af/hybas_af_lev06_v1c.dbf",
+        "bytes": 439284,
+        "modified_at": "2026-08-16T04:10:24+0800",
+        "md5": "8b2a39c0b1c88c70f3473d7172aa8cf0",
+        "sha256": "0737993ecd8095f2f4ebbefbcb0b03b89082a7c299559d50be9725c0ee0bd3f7",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/ar/hybas_ar_lev06_v1c.dbf",
+        "bytes": 104028,
+        "modified_at": "2026-08-16T04:10:25+0800",
+        "md5": "d30cdb955e97c812b926388bd482f7e0",
+        "sha256": "cf16adffe3e6e58e3390a9e2ad14cd2f11aa365a57b5ab216bf2123e3e707940",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/as/hybas_as_lev06_v1c.dbf",
+        "bytes": 304108,
+        "modified_at": "2026-08-16T04:10:27+0800",
+        "md5": "f1e439d55955b72d5da56a2b9d621800",
+        "sha256": "833f92ede67400b2b41249e4a68e7be6233907687984c8d0fcb591c2f7811152",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/au/hybas_au_lev06_v1c.dbf",
+        "bytes": 174300,
+        "modified_at": "2026-08-16T04:10:28+0800",
+        "md5": "db601b6d276df4f66a049e7c48a5feac",
+        "sha256": "9533474262bfccb6c366f7ec4037495cf033a3c0142db82746b246cc4679d81d",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/eu/hybas_eu_lev06_v1c.dbf",
+        "bytes": 273730,
+        "modified_at": "2026-08-16T04:10:30+0800",
+        "md5": "2a369eb0b753c6903a469727612a4930",
+        "sha256": "ea5d7c4d356e905d5caa00e9758a8ffa88867d71e3276fce1ab6fdab3776c40f",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/gr/hybas_gr_lev06_v1c.dbf",
+        "bytes": 37294,
+        "modified_at": "2026-08-16T04:10:31+0800",
+        "md5": "91459252ac1e3e16972592a6a71b5cae",
+        "sha256": "e6c8e06d91488e80aad613cbadd7717cc9910266da312c42578bcb389dd264a0",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/na/hybas_na_lev06_v1c.dbf",
+        "bytes": 249696,
+        "modified_at": "2026-08-16T04:10:33+0800",
+        "md5": "54434916d623ab968a539c95d8db8e5a",
+        "sha256": "a2a4ea2ca1dc6d473709246465f22308f4a71895322e04181467e103240e454f",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/sa/hybas_sa_lev06_v1c.dbf",
+        "bytes": 237862,
+        "modified_at": "2026-08-16T04:10:35+0800",
+        "md5": "99b8136eb78605a6ea42d5dc275dde19",
+        "sha256": "06ab15979121d8bb7f71a42c797790a12c5e2643eb7288aefc475a86212960e9",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l6/si/hybas_si_lev06_v1c.dbf",
+        "bytes": 184182,
+        "modified_at": "2026-08-16T04:10:36+0800",
+        "md5": "783895fdb361a2753cdec84c910179fd",
+        "sha256": "b240f73d6872d725f653cf87b0385373139e77f969771ee7a0e1b9829cb34eef",
+        "hash_method": "raw_bytes"
+      }
+    ],
+    "hydrobasins_l12": [
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/af/hybas_af_lev12_v1c.dbf",
+        "bytes": 29214006,
+        "modified_at": "2026-08-17T00:08:35+0800",
+        "md5": "d701dea07b6332bb990231fa2d80a726",
+        "sha256": "506b069e7e49171137e3666192028c14e8b3ee7cb6b161cd4766e2f524cadabc",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/ar/hybas_ar_lev12_v1c.dbf",
+        "bytes": 5954464,
+        "modified_at": "2026-08-17T00:08:43+0800",
+        "md5": "70cb178dddbaf0f2672cd8fb11d9cdb1",
+        "sha256": "28dbfe4eeedae991f931c0074b7566e4c93be906f9def81faf33cf2b27e2eed0",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/as/hybas_as_lev12_v1c.dbf",
+        "bytes": 20384966,
+        "modified_at": "2026-08-17T00:08:54+0800",
+        "md5": "1783b6fb0f2ae35252f9f2a73357c148",
+        "sha256": "c42d4ce2ba1a554552d50e3060e45da52f6dfb8a7f7953c810a70dd04e06fa4b",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/au/hybas_au_lev12_v1c.dbf",
+        "bytes": 10659433,
+        "modified_at": "2026-08-17T00:09:02+0800",
+        "md5": "1c5518dfb8e3305dc00c31ad5ad20943",
+        "sha256": "24f00bb8aea34847db6dceb273a07445d19ad79029f54f133f38c35d7907ec8e",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/eu/hybas_eu_lev12_v1c.dbf",
+        "bytes": 17483016,
+        "modified_at": "2026-08-17T00:09:16+0800",
+        "md5": "c24dda834a892f054a005d73a46be5c1",
+        "sha256": "d0c9ebb2bb379a261ff4e0a8e31637788383188e8d66de708721784f603ba485",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/gr/hybas_gr_lev12_v1c.dbf",
+        "bytes": 2158180,
+        "modified_at": "2026-08-17T00:09:19+0800",
+        "md5": "c3a17e22bcc72e1e3b49cc3ec37db84b",
+        "sha256": "9ac023d9221757a22e5328786577fa3e5c2fed544116b01349f9d2d33773dda7",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/na/hybas_na_lev12_v1c.dbf",
+        "bytes": 15526327,
+        "modified_at": "2026-08-17T00:09:30+0800",
+        "md5": "a024233d1116a80fb387ac25cc89bd8f",
+        "sha256": "a1f3fb749f357df7c9f052e96689fee6b6751f518d85833f8cd03e054e85beb0",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/sa/hybas_sa_lev12_v1c.dbf",
+        "bytes": 17292389,
+        "modified_at": "2026-08-17T00:09:40+0800",
+        "md5": "a556053f314f480473c892857b257ef6",
+        "sha256": "06152a18e70d1a94b290b4e8bfd93352704dae67b18cbae4e6f87c742ff61cc7",
+        "hash_method": "raw_bytes"
+      },
+      {
+        "path": "data/raw/features/hydrography/hydrobasins_l12/si/hybas_si_lev12_v1c.dbf",
+        "bytes": 12659810,
+        "modified_at": "2026-08-17T00:09:50+0800",
+        "md5": "657221a4ab6a0dad0118ba87ad57f4dc",
+        "sha256": "226f6e816cf26342a4a7e121df4326bd9929c78ac579cd5e8b3820ad09b58c82",
+        "hash_method": "raw_bytes"
+      }
+    ]
+  },
+  "implementation": {
+    "sha256": "0eeb1bb1eb89e438931ec49443c2ebd3a2c352002e4e094fd4272652fe66835e",
+    "files": [
+      {
+        "path": "R/folds.R",
+        "bytes": 27764,
+        "modified_at": "2026-08-17T03:06:53+0800",
+        "md5": "6a7de470d79d339b50ea056e1357b9e5",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/imputation.R",
+        "bytes": 1016,
+        "modified_at": "2026-08-17T00:24:42+0800",
+        "md5": "0311d1ffa507914064bffc0b7a68f8e2",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/io.R",
+        "bytes": 10876,
+        "modified_at": "2026-08-17T03:05:30+0800",
+        "md5": "e4327aeefb7a1f37858262c19141a566",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/metrics.R",
+        "bytes": 4010,
+        "modified_at": "2026-08-17T00:33:00+0800",
+        "md5": "af84b6b47c7a481809cefd04f0e882a7",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/rf.R",
+        "bytes": 7723,
+        "modified_at": "2026-08-17T00:33:09+0800",
+        "md5": "602a4a49d0f621c7dceab661a7747337",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/topology.R",
+        "bytes": 21992,
+        "modified_at": "2026-08-17T02:32:54+0800",
+        "md5": "bc5f8258150b407ccef18f25c99a5c33",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/validation.R",
+        "bytes": 7166,
+        "modified_at": "2026-08-17T03:05:42+0800",
+        "md5": "4a89ee699de58f166004c6186be734e1",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/01_validate_input.R",
+        "bytes": 296,
+        "modified_at": "2026-08-17T00:33:56+0800",
+        "md5": "7049b3098d0ee232dd6353f01864599e",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/02_prepare_topology.R",
+        "bytes": 263,
+        "modified_at": "2026-08-17T00:33:56+0800",
+        "md5": "e26405122aaf5945cc0905ec6e023b70",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/03_check_folds.R",
+        "bytes": 6901,
+        "modified_at": "2026-08-17T03:07:16+0800",
+        "md5": "e531b842430753d57936b7fe55139447",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/04_run_primary.R",
+        "bytes": 9997,
+        "modified_at": "2026-08-17T00:36:10+0800",
+        "md5": "1951b7c99d039a84b0b07a22caa4e081",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/05_deployment_tuning.R",
+        "bytes": 5385,
+        "modified_at": "2026-08-17T00:36:32+0800",
+        "md5": "7b79a053e691d6fb3fd8462306d35425",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/06_run_stress.R",
+        "bytes": 6125,
+        "modified_at": "2026-08-17T00:36:43+0800",
+        "md5": "75cbe0b2c566bb9cf7c13f97bd1bff53",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/07_fit_final_model.R",
+        "bytes": 3082,
+        "modified_at": "2026-08-17T00:36:55+0800",
+        "md5": "bd521db9d307623c854e5ffe0b6f96ff",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/08_summarize_run.R",
+        "bytes": 20005,
+        "modified_at": "2026-08-17T03:14:45+0800",
+        "md5": "a25da24e3a2caf3f10d3f61570c92013",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/09_run_branch_benchmark.R",
+        "bytes": 9336,
+        "modified_at": "2026-08-17T03:08:16+0800",
+        "md5": "ffd7bd00d3c1488dd06b8f7132b6f6e7",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/run.R",
+        "bytes": 3614,
+        "modified_at": "2026-08-17T03:10:45+0800",
+        "md5": "b6127ee25346c264b650a2992297216a",
+        "hash_method": "normalized_lf_text_md5"
+      }
+    ]
+  },
+  "outputs": {
+    "site_topology": {
+      "path": "data/interim/sr_full50_v1_base_v2_site_topology.rds",
+      "bytes": 331029,
+      "modified_at": "2026-08-17T08:30:05+0800",
+      "md5": "aad633ce00a96058a1a0334225ee390a",
+      "sha256": "66c7ae6ed9031cf00a9faccfaaf364b4acbc8b224b26a45ac2d5f1427f186f40",
+      "hash_method": "raw_bytes"
+    },
+    "reach_graph": {
+      "path": "data/interim/sr_full50_v1_base_v2_reach_graph.rds",
+      "bytes": 1242217,
+      "modified_at": "2026-08-17T08:30:05+0800",
+      "md5": "5929128f668d61313c022ef1c40ee734",
+      "sha256": "1181be17e5f34a1029e2fef3e19407772cbb0bb43026be839a54e543e8e76816",
+      "hash_method": "raw_bytes"
+    },
+    "downstream_pairs": {
+      "path": "data/interim/sr_full50_v1_base_v2_downstream_pairs.rds",
+      "bytes": 120813,
+      "modified_at": "2026-08-17T08:30:05+0800",
+      "md5": "f52287b7cf1e99ac0a36507791524286",
+      "sha256": "ab919d010a2ee089093b5f5d47d1ccb4887674cc93e09f00de05ab19e4a326c2",
+      "hash_method": "raw_bytes"
+    },
+    "branch_candidates": {
+      "path": "data/interim/sr_full50_v1_base_v2_branch_candidates.rds",
+      "bytes": 460442,
+      "modified_at": "2026-08-17T08:30:05+0800",
+      "md5": "d10981cc46bd434970d3d1fd6816a061",
+      "sha256": "fd8ff0af2bf29a3ca36b3595d7729fa67f1b9bcb750c87c6173ab163415bd249",
+      "hash_method": "raw_bytes"
+    }
+  },
+  "prepared_at": "2026-08-17T08:30:11+0800"
+}

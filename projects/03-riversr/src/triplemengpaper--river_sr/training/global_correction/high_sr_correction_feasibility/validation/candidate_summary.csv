@@ -1,0 +1,5 @@
+model,feature_set,signal_repeats_passed,mean_signal_improvement,residual_signal_pass,safety_repeats_passed,mean_raw_base_improvement,raw_base_safety_pass,candidate_promotion_pass
+elastic_net,env47,3,0.23767717677887,TRUE,0,-0.0413015174532455,FALSE,FALSE
+elastic_net,full50,3,0.221917660173196,TRUE,0,-0.0629516624841906,FALSE,FALSE
+residual_rf,env47,3,0.205024453367618,TRUE,1,-0.0268496247575053,FALSE,FALSE
+residual_rf,full50,3,0.217634919231116,TRUE,1,-0.00952870656329276,FALSE,FALSE

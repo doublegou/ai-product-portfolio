@@ -1,0 +1,194 @@
+{
+  "status": "FROZEN_RESPONSE_BLIND_BRANCH_MAP",
+  "created_at": "2026-08-17T09:01:15+0800",
+  "input": {
+    "path": "D:/river_sr/data/processed/training/himalaya_risk_v1.csv",
+    "bytes": 524208,
+    "modified_at": "2026-08-17T07:34:24+0800",
+    "md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "config": {
+    "path": "D:/river_sr/training/regional_expert/regional_risk_v1/config/default.yml",
+    "bytes": 2896,
+    "modified_at": "2026-08-17T04:47:31+0800",
+    "md5": "1adef9744fb7d1b75b7d4f5dd2d7f81e",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "environment_predictors": {
+    "path": "D:/river_sr/training/regional_expert/regional_risk_v1/config/environment_predictors.txt",
+    "bytes": 303,
+    "modified_at": "2026-08-17T04:30:55+0800",
+    "md5": "c80a6509844c61ff9c3683f493e0286e",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "data_pipeline_config": {
+    "path": "D:/river_sr/data_pipeline/training/regional_expert/risk_v1/config/default.yml",
+    "bytes": 878,
+    "modified_at": "2026-08-17T07:11:51+0800",
+    "md5": "85997deafa7950843b58aef302a7d143",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "hydrobasins_l12": {
+    "path": "D:/river_sr/data/raw/features/hydrography/hydrobasins_l12/as/hybas_as_lev12_v1c.dbf",
+    "bytes": 20384966,
+    "modified_at": "2026-08-17T00:08:54+0800",
+    "md5": "1783b6fb0f2ae35252f9f2a73357c148",
+    "hash_method": "binary_md5"
+  },
+  "implementation": {
+    "sha256": "e5a684d167ebddd47f9d8641501b73eee6d6f255adafe5d346f8c7ba356d3bde",
+    "files": [
+      {
+        "path": "R/branches.R",
+        "bytes": 6271,
+        "modified_at": "2026-08-17T04:32:53+0800",
+        "md5": "c4fdd8a1e2ce485f6e45de3d16bd8be0",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/decision.R",
+        "bytes": 2834,
+        "modified_at": "2026-08-17T04:36:37+0800",
+        "md5": "a54b8d7797cb79ff218e3c4dadf6a76d",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/elastic_net.R",
+        "bytes": 3515,
+        "modified_at": "2026-08-17T04:41:46+0800",
+        "md5": "b4527e4735175a38001ab7a7ae89a8cd",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/folds.R",
+        "bytes": 5395,
+        "modified_at": "2026-08-17T04:32:53+0800",
+        "md5": "55b235e2c80816584cd8d896d46a4463",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/gam.R",
+        "bytes": 4154,
+        "modified_at": "2026-08-17T04:58:52+0800",
+        "md5": "7999ef4dc48713d9deb616568c6ffb33",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/io.R",
+        "bytes": 8566,
+        "modified_at": "2026-08-17T04:41:46+0800",
+        "md5": "09966e46ce0c62543c691ec4642a04ac",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/metrics.R",
+        "bytes": 7683,
+        "modified_at": "2026-08-17T04:36:37+0800",
+        "md5": "a59ada08624f8a17f9d101bcce31c4b5",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/preprocessing.R",
+        "bytes": 1142,
+        "modified_at": "2026-08-17T04:32:53+0800",
+        "md5": "2cbc364e678aea9b74aa51e775adf2a4",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/validation.R",
+        "bytes": 5869,
+        "modified_at": "2026-08-17T04:41:46+0800",
+        "md5": "71d79bedd5490588a88803791564e3e5",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/01_validate_input.R",
+        "bytes": 327,
+        "modified_at": "2026-08-17T04:34:38+0800",
+        "md5": "b42485ad4d19155e7c007f3d3c8b46d6",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/02_build_branches.R",
+        "bytes": 3630,
+        "modified_at": "2026-08-17T04:41:46+0800",
+        "md5": "af65421f44149048267d72b33f29b13d",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/03_build_lobo_tasks.R",
+        "bytes": 433,
+        "modified_at": "2026-08-17T04:34:38+0800",
+        "md5": "a3d77e027fb90d6f4ae1ebab7d09f44d",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/04_check_folds.R",
+        "bytes": 2341,
+        "modified_at": "2026-08-17T04:58:52+0800",
+        "md5": "e3969b3c9caace9589856798fdd628bb",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/05_run_task.R",
+        "bytes": 4450,
+        "modified_at": "2026-08-17T04:34:38+0800",
+        "md5": "3387f5c3206fe2320a63dd6003c8175f",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/06_aggregate_oof.R",
+        "bytes": 4397,
+        "modified_at": "2026-08-17T04:36:37+0800",
+        "md5": "76195dacd67ceec2b922f3aff757532f",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/07_summarize_run.R",
+        "bytes": 1321,
+        "modified_at": "2026-08-17T04:36:37+0800",
+        "md5": "ac590c8f1ede793b7f0fd434596fb60f",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/run.R",
+        "bytes": 2485,
+        "modified_at": "2026-08-17T04:47:31+0800",
+        "md5": "545596a8377e94604d7d887eae55ffad",
+        "hash_method": "normalized_lf_text_md5"
+      }
+    ]
+  },
+  "branch_generation": {
+    "version": "branch_map_v1",
+    "response_used": false,
+    "algorithm": "bottom_up_unassigned_station_accumulation_cut_and_reset",
+    "threshold": 20,
+    "cut_branches": 16,
+    "residual_root_branch": 1,
+    "branches": 17,
+    "l12_main_basin_id": "4120025450",
+    "canonical_order": "cut_outlet_numeric_ascending_then_residual_root"
+  },
+  "audit": {
+    "rows": 372,
+    "positive": 80,
+    "negative": 292,
+    "mixed_branches": 14,
+    "all_negative_branches": 3,
+    "all_positive_branches": 0,
+    "sorted_branch_sizes": [6, 20, 20, 20, 21, 21, 21, 22, 22, 23, 23, 23, 24, 25, 27, 27, 27]
+  },
+  "validation": {
+    "design": "strict_LOBO",
+    "outer_folds": 17,
+    "model_arms": 5,
+    "training_tasks": 85,
+    "expected_oof_predictions": 1860
+  },
+  "elastic_alpha": {
+    "value": 0.5,
+    "status": "forward_reconstruction_frozen_assumption_historical_value_not_preserved"
+  }
+}

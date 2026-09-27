@@ -1,0 +1,65 @@
+# R local state
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+env/library/
+env/offline/
+env/profiles/local.override.yml
+
+# Codex temporary working files
+.codex_tmp/
+
+# Downloaded raw feature sources
+data/raw/features/**
+!data/raw/features/README.md
+
+# Base V0 run archive is retained locally/HPC and synchronized outside Git
+training/base/v0/runs/*
+!training/base/v0/runs/README.md
+
+# Base V1 run archive is retained locally/HPC and synchronized outside Git
+training/base/v1/runs/*
+!training/base/v1/runs/README.md
+
+# Base V2 run archive is retained locally/HPC and synchronized outside Git
+training/base/v2/runs/*
+!training/base/v2/runs/README.md
+
+# Base V3 run archive is retained locally/HPC and synchronized outside Git
+training/base/v3/runs/*
+!training/base/v3/runs/README.md
+
+# Global High-Sr Risk run reports are transferred as run artifacts
+training/global_correction/global_high_sr_risk/runs/*
+!training/global_correction/global_high_sr_risk/runs/README.md
+
+# High-Sr correction feasibility run reports are transferred as run artifacts
+training/global_correction/high_sr_correction_feasibility/runs/*
+!training/global_correction/high_sr_correction_feasibility/runs/README.md
+
+# Regional Risk V1 run reports are transferred as run artifacts
+training/regional_expert/regional_risk_v1/runs/*
+!training/regional_expert/regional_risk_v1/runs/README.md
+
+# Regional Risk V1.1 run reports are transferred as run artifacts
+training/regional_expert/regional_risk_v1_1/runs/*
+!training/regional_expert/regional_risk_v1_1/runs/README.md
+
+# Regional Risk V2 task-level validation is retained in the checked HPC archive
+training/regional_expert/regional_risk_v2/validation/*/fold_*/
+training/regional_expert/regional_risk_v2/runs/*
+!training/regional_expert/regional_risk_v2/runs/README.md
+
+# Per-task execution logs are local diagnostics, not formal validation results
+training/**/validation/**/run.log
+
+# Approved model bundles are transferred as release artifacts; metadata stays in Git
+training/base/v0/release/model_bundle.rds
+training/base/v1/release/model_bundle.rds
+training/base/v2/release/model_bundle.rds
+training/base/v3/release/*.rds
+
+# HPC return bundles are transport files, not project sources
+hpc/transfer/*
+!hpc/transfer/README.md

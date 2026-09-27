@@ -1,0 +1,31 @@
+project:
+  id: training_sr_full50_v1
+  status: active
+
+input:
+  observation: data/raw/observation/observation_v1.csv
+  recovered_predictors: data/raw/model_inputs/full50_v1_predictors.csv
+
+output:
+  candidate_sites: data/interim/sr_full50_v1_sites.rds
+  basin_assignment: data/interim/sr_full50_v1_hydrobasins_l6.rds
+  basin_scope: data/interim/sr_full50_v1_basin_scope.rds
+  hydrology: data/interim/sr_full50_v1_hydrology.rds
+  geology: data/interim/sr_full50_v1_geology.rds
+  climate_terrain: data/interim/sr_full50_v1_climate_terrain.rds
+  soil: data/interim/sr_full50_v1_soil.rds
+  geologic_age: data/interim/sr_full50_v1_geologic_age.rds
+  full50: data/interim/sr_full50_v1.rds
+  processed: data/processed/training/sr_full50_v1.csv
+  manifest: data/processed/training/sr_full50_v1_manifest.json
+
+rules:
+  coordinate_digits: 5
+  nearest_basin_limit_km: 25
+  snap_limit_m: 5000
+
+contract:
+  full50_predictors: 50
+
+runtime:
+  profile: local

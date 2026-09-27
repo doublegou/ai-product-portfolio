@@ -1,0 +1,9 @@
+feature_set,regional_branch_id,missed_high_sr_sites,median_background_interval_fraction,min_background_interval_fraction,max_background_interval_fraction
+process14,himalaya_branch_002_4120751530,7,1,1,1
+process14,himalaya_branch_007_4120821770,1,1,1,1
+process14,himalaya_branch_008_4120834830,5,1,1,1
+process14,himalaya_branch_009_4120859630,8,0.857142857142857,0.857142857142857,0.857142857142857
+process14,himalaya_branch_010_4120884240,2,0.928571428571429,0.928571428571429,0.928571428571429
+process14,himalaya_branch_012_4120910920,1,0.5,0.5,0.5
+process14,himalaya_branch_013_4120945110,3,1,0.857142857142857,1
+process14,himalaya_branch_017_4120025450,1,0.714285714285714,0.714285714285714,0.714285714285714

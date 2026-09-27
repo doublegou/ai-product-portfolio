@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "task_id": 10,
+  "scheme": "spatial_1000",
+  "outer_fold": 5,
+  "n_outer_train": 3588,
+  "n_outer_test": 897,
+  "n_train_units": 95,
+  "n_test_units": 25,
+  "unit_leakage": 0,
+  "retuned": false,
+  "recipe_md5": "7bf3d9aefe6fa218071ddd3c426eb02a",
+  "trees": 2000,
+  "seed": 760005,
+  "completed_at": "2026-08-17T07:59:25+0800"
+}
