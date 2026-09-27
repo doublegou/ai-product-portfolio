@@ -1,0 +1,9 @@
+.git
+.github
+deploy/server
+Dockerfile
+build-pages.js
+generate-stayword-qr.js
+server.js
+*.log
+.DS_Store
