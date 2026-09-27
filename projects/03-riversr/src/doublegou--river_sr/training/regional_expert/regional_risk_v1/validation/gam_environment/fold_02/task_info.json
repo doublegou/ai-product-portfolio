@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "task_id": 19,
+  "model_id": "gam_environment",
+  "model_type": "gam",
+  "feature_set": "environment",
+  "outer_fold": 2,
+  "heldout_branch": "himalaya_branch_002_4120751530",
+  "n_outer_train": 345,
+  "n_outer_test": 27,
+  "n_train_branches": 16,
+  "branch_leakage": 0,
+  "weight_mean_outer_train": 1,
+  "data_md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
+  "config_md5": "1adef9744fb7d1b75b7d4f5dd2d7f81e",
+  "fold_manifest_md5": "ecb0a305e86513dcaaf7b0cc1673ba1b",
+  "completed_at": "2026-08-17T09:03:10+0800",
+  "runtime": {
+    "r_version": "R version 4.4.3 (2025-02-28)",
+    "platform": "x86_64-pc-linux-gnu",
+    "packages": {
+      "yaml": "2.3.12",
+      "jsonlite": "2.0.0",
+      "digest": "0.6.39",
+      "data.table": "1.18.4",
+      "foreign": "0.8.88",
+      "mgcv": "1.9.1",
+      "glmnet": "5.0",
+      "PRROC": "1.4",
+      "pROC": "1.19.0.1"
+    },
+    "slurm_job_id": "66708",
+    "slurm_array_task_id": "18"
+  }
+}

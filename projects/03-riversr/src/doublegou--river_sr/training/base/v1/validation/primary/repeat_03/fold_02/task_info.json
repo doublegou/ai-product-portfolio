@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "task_id": 12,
+  "repeat_id": 3,
+  "outer_fold": 2,
+  "n_outer_train": 3588,
+  "n_outer_test": 897,
+  "n_train_groups": 285,
+  "n_test_groups": 70,
+  "group_leakage": 0,
+  "coarse_candidates": 48,
+  "refinement_candidates": 16,
+  "coarse_trees": 500,
+  "refinement_trees": 1000,
+  "outer_trees": 2000,
+  "config_md5": "630da50737ccf08ed0fd20bd6bf5c980",
+  "seed": 13520000,
+  "completed_at": "2026-08-17T07:55:03+0800"
+}

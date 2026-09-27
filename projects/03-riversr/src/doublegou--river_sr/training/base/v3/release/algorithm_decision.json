@@ -1,0 +1,7 @@
+{
+  "status": "primary_complete",
+  "selected_algorithm": "rf",
+  "rule": "minimum pooled strict Outer-OOF RMSE; MAE then absolute bias as deterministic tie-breakers",
+  "pooled_rows_per_model": 16800,
+  "note": "Deployment parameters are selected in a separate grouped tuning pass; this decision does not pick a structure."
+}

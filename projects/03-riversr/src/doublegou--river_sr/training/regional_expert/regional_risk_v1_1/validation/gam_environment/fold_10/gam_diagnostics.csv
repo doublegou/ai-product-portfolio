@@ -1,0 +1,18 @@
+outer_fold,inner_fold,fit_role,feature_set,n_train,n_assessment,n_train_branches,n_assessment_branches,converged,n_coefficients,effective_df,deviance_explained,aic,warning_count,warnings,model_id,heldout_branch
+10,1,inner,environment,326,24,15,1,TRUE,29,8.00018605463417,0.259681945913921,282.119410513099,23,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_001_4120748120
+10,2,inner,environment,323,27,15,1,TRUE,29,8.31236410109804,0.252629716164971,275.209609576823,16,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_002_4120751530
+10,3,inner,environment,323,27,15,1,TRUE,29,8.19148451092512,0.232245849201783,263.612927962505,21,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_003_4120753480
+10,4,inner,environment,328,22,15,1,TRUE,29,8.34263479445236,0.277741423089559,271.095280997017,27,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_004_4120763140
+10,5,inner,environment,323,27,15,1,TRUE,29,8.37914429701371,0.214302628789956,303.290762231688,16,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_005_4120788740
+10,6,inner,environment,330,20,15,1,TRUE,29,8.26592820330987,0.22676904639456,300.175613836665,20,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_006_4120814140
+10,7,inner,environment,329,21,15,1,TRUE,29,8.52293655024534,0.238442584660655,294.65356918293,13,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_007_4120821770
+10,8,inner,environment,327,23,15,1,TRUE,29,8.00142534471796,0.258653402960455,277.711867311182,13,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_008_4120834830
+10,9,inner,environment,330,20,15,1,TRUE,29,8.39477155317719,0.243133651572849,279.73548998125,17,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_009_4120859630
+10,10,inner,environment,329,21,15,1,TRUE,29,8.54546914790017,0.218851130051915,303.594807071506,16,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_011_4120901830
+10,11,inner,environment,330,20,15,1,TRUE,29,8.68090033307422,0.256890826378681,288.964207210952,25,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_012_4120910920
+10,12,inner,environment,329,21,15,1,TRUE,29,8.70827107714247,0.262511528739979,283.324909579437,19,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_013_4120945110
+10,13,inner,environment,327,23,15,1,TRUE,29,8.59826398809489,0.189642260386129,274.492207443773,27,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_014_4121434310
+10,14,inner,environment,325,25,15,1,TRUE,29,8.76657028323107,0.28805554009381,260.625676455242,17,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_015_4121434520
+10,15,inner,environment,327,23,15,1,TRUE,29,8.08136214367126,0.245778047312872,290.086219808979,13,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_016_4121498710
+10,16,inner,environment,344,6,15,1,TRUE,29,8.56501630758555,0.233939448070654,298.172246120717,19,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_017_4120025450
+10,,outer,environment,350,22,16,1,TRUE,29,8.32539928161489,0.239867352744213,303.688412805973,17,non-integer #successes in a binomial glm!,gam_environment,himalaya_branch_010_4120884240

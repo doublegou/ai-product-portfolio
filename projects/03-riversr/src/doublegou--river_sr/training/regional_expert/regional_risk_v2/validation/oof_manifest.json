@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "run_id": "regional_risk_v2_20260817_corrected_r3_final",
+  "aggregated_at": "2026-08-17T09:34:19+0800",
+  "tasks": 68,
+  "candidates": 4,
+  "outer_folds": 17,
+  "inner_folds_per_task": 16,
+  "model_fits": 1156,
+  "thresholds": 68,
+  "outer_oof_rows": 1488,
+  "calibration": "none",
+  "data_md5": "889ab17f9cb72efd63580807f845d700",
+  "config_md5": "5005ba03fecfc2904d9c2b55178f561d",
+  "fold_manifest_md5": "2b0b48381014cf9d441e0060acde7cb4",
+  "branch_sqrt_weighted_gate_metrics": true,
+  "station_equal_ranking_metrics": true,
+  "full_data_model_fitted": false,
+  "release_created": false
+}

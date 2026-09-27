@@ -1,0 +1,33 @@
+# HPC
+
+本地电脑负责代码编辑、配置和任务控制；超算负责需要大量 CPU、内存或运行时间的训练。通常不需要把全部工作搬进超算里手工操作。
+
+## 推荐工作方式
+
+1. 本地完成代码和小样本验证，并在阶段结束时推送 Git。
+2. 通过 SSH 在超算工作目录克隆或更新仓库。
+3. 当前较小的 processed 训练表随 Git 同步；以后只有超出仓库合理体积的数据才通过 `rsync` 或 `scp` 单独同步。
+4. 在超算使用 `env/renv.lock` 恢复相同的 R 依赖。
+5. 通过 Slurm 提交批处理任务，而不是保持 SSH 窗口持续运行。
+6. 本地通过 SSH 查看队列和日志；训练完成后回收 folds、validation、完整 run 目录和 Slurm 日志。
+
+SSH 主要承担登录、同步和提交任务。训练本身由 Slurm 在计算节点后台执行，SSH 断开不会中止已经提交的任务。
+
+本机的 `env/library/` 是 Windows 二进制包，不能复制到 Linux 超算。超算必须根据同一个 `env/renv.lock` 建立自己的 Linux 包库；如果集群允许 Apptainer，也可以在方法稳定后改用容器固化系统依赖。
+
+交叉验证、随机种子重复实验和候选模型竞争适合拆成 Slurm job array：每个任务负责一个 fold、seed 或模型组合，全部完成后再运行聚合任务。单个 Random Forest 训练则根据实现申请一个节点内的多核，避免任务数组与模型内部线程重复占满 CPU。
+
+## 密钥原则
+
+私钥只放在本机用户的 `.ssh` 目录并限制文件权限，不复制进仓库、不提交 Git，也不写入配置文件。仓库内最多记录 SSH 主机别名和非敏感路径约定。
+
+## 接入前需要确认
+
+- 登录地址、用户名和 SSH 端口。
+- 调度器是否为 Slurm，以及允许使用的分区和账号。
+- 登录节点能否访问 GitHub/CRAN。
+- R 的模块名和版本，是否允许用户安装包。
+- 项目空间、scratch 空间、配额和最长运行时间。
+- 数据同步政策，以及计算节点能否访问项目数据目录。
+
+统计配置仍由各项目管理；`hpc/` 只负责环境初始化、资源申请、提交、监控和结果回收。Base V0 的入口是 `hpc/slurm/base_v0/run.sh`，Base V1 的入口是 `hpc/slurm/base_v1/run.sh`，Base V2 的入口是 `hpc/slurm/base_v2/run.sh`。Global High-Sr Risk V1 的入口是 `hpc/slurm/global_high_sr_risk/run.sh`。High-Sr Correction Feasibility 的入口是 `hpc/slurm/high_sr_correction_feasibility/run.sh`；它编排 15 个 strict-nested Base tasks、15 个 Elastic Net tasks、15 个 residual-RF tasks、repeated OOF 聚合和双层 feasibility 判定，不拟合或发布最终模型。

@@ -1,0 +1,2 @@
+model_id,outer_fold,alpha,alpha_status,lambda_min,lambda_1se,selected,inner_folds,inner_seed,inner_assignment_attempts,nonzero_predictors
+elastic_combined,16,0.5,forward_reconstruction_frozen_assumption_historical_value_not_preserved,0.0181099124493602,0.24503576737442,lambda.1se,5,913413,1,0

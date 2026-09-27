@@ -1,0 +1,69 @@
+version: 1
+purpose: Temporary, non-runtime reference material for method reconstruction and final comparison.
+
+files:
+  - path: reference/documents/model_optimization_record.docx
+    original_name: "\u6a21\u578b\u4f18\u5316\u8bb0\u5f55.docx"
+    role: Historical method and result record
+    bytes: 44736
+    sha256: 6d4a48a7d51468df0041951f43bfcfc3f4cd455802239d47d1eb09a0723eb259
+
+  - path: reference/legacy/river_sr_v0_source.tar.gz
+    original_name: river_sr_code_strict_20260807_002723(1).tar.gz
+    role: Read-only legacy source archive; never imported by new code
+    bytes: 332885
+    sha256: 637b7e083c53337d7af0fa80a4ad7ee8e39b1050f7d39a5cf2f6aac276c199cc
+
+  - path: reference/historical_data/source/world_river_water_sr_solute.xlsx
+    original_name: world_river_water_sr_solute.xlsx
+    role: Original workbook used to verify data/raw/observation/observation_v1.csv
+    bytes: 536224
+    sha256: c52e6601f8475096fd7c568e6698ceb09b8e0bdb1dd369bf1681f58f4b658f3f
+
+  - path: reference/historical_data/snapshots/observed_4485_with_predictors.csv
+    original_name: river_sr_observed_4485_with_current_52_predictors.csv
+    role: Historical 4485-site modelling snapshot
+    bytes: 5764063
+    sha256: 28ee2c0a0397114446d5d2230140acda08a1c2a0141ddcc478dea199722b732c
+
+  - path: reference/historical_data/snapshots/base_predictors_v1.csv
+    original_name: derived from river_sr_observed_4485_with_current_52_predictors.csv
+    role: Historical 4527-site predictor alignment snapshot; comparison only, never a new-pipeline input
+    bytes: 4804944
+    sha256: 109d1ac32b31682986c2ad52f3766194ea63df3e7f551d57065bf749c62657ce
+
+  - path: reference/historical_data/snapshots/base_model_v2_5374_intermediate.csv
+    original_name: base_model_v2_data.csv
+    role: Historical intermediate supplemented snapshot
+    bytes: 4366082
+    sha256: e523cc480cf5c8e1fe646aee4e608151c1921ee3ebc99ffa02e0c7c2a96ed733
+
+  - path: reference/historical_data/snapshots/base_model_v2_5600_final.csv
+    original_name: base_model_v2_data(1).csv
+    role: Historical final 5600-site modelling snapshot
+    bytes: 4552415
+    sha256: 386f4f795a38a11e4b238c0e460b1c883a08c42b1ed88bf2ad6823866e4cb6b0
+
+  - path: reference/historical_data/supplement/observations_supplement_v2.csv
+    original_name: observations_supplement_v2.csv
+    role: Historical raw supplemental observation compilation
+    bytes: 797115
+    sha256: 7fe03f673d9dfdda38340b20e247ceb48567fdf6616bf1c7c41787f64fa0aac7
+
+  - path: reference/historical_data/supplement/README_4_sources.md
+    original_name: README.md
+    role: Earlier four-source supplement documentation
+    bytes: 3837
+    sha256: dfb3012165031c2362cc1ca90ea7040f606c8495a9030e37527c35936a39d95c
+
+  - path: reference/historical_data/supplement/README_9_sources.md
+    original_name: README(1).md
+    role: Final nine-source supplement documentation
+    bytes: 10484
+    sha256: a76e77f17cc81f40d2dc98cd83556577699e427cf26f498c7d22d187aa9a3473
+
+duplicates_omitted:
+  - observations_supplement_v2(1).csv
+  - observations_supplement_v2(2).csv
+  - base_model_v2_data(2).csv
+  - README(2).md

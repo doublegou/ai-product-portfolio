@@ -1,0 +1,2 @@
+method,predictor,probability_clip,intercept,slope,converged,positive_slope,n,n_positive,weight_sum,warning_count,warnings,task_id,model_id,outer_fold
+platt_logistic_recalibration,logit_raw_probability,1e-06,-1.00818780472048,0.207998559757087,TRUE,TRUE,349,62,349.379698481115,1,non-integer #successes in a binomial glm!,31,gam_combined,14

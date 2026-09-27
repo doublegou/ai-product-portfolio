@@ -1,0 +1,12 @@
+model: rf
+structure_id: rf_110
+weight_scheme: W2
+mtry: 12
+min_node_size: 1
+replace: false
+sample_fraction: 0.8
+num_trees: 4000
+source_run: base_v3_full_20260817_r2
+primary_selection_rule: minimum pooled strict Outer-OOF RMSE; MAE then absolute bias as deterministic tie-breakers
+deployment_selection_role: full-data recipe selection only; not an unbiased performance estimate
+high_sr_approved: false

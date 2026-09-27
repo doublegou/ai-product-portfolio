@@ -1,0 +1,171 @@
+{
+  "status": "frozen",
+  "source_run": "base_v3_full_20260817_r2",
+  "source_commit": "c4d5744",
+  "adoption_status": "accepted_final",
+  "scientific_decision": "ACCEPT_RF_WITH_HIGH_SR_LIMITATION",
+  "approved_scope": "global_continuous_sr_regression",
+  "high_sr_approved": false,
+  "released_at": "2026-08-17T20:24:06+08:00",
+  "selected_model": {
+    "model": "rf",
+    "structure_id": "rf_110",
+    "weight_scheme": "W2",
+    "bundle_sha256": "3b39a68d4e5cebc7bc0c4282e268db5d33f7b31996ee9189b51a7fff645a8139"
+  },
+  "comparison_model": {
+    "model": "xgb",
+    "structure_id": "xgb_1535",
+    "weight_scheme": "W1",
+    "bundle_location": "immutable_run_archive",
+    "bundle_sha256": "6cb8d19292bc179fa208e13077574fbc997ef244fe912bf686351ce013d084c4"
+  },
+  "archive": {
+    "path": "hpc/transfer/base_v3_base_v3_full_20260817_r2.tar.gz",
+    "bytes": 776214522,
+    "byte_method": "raw_bytes",
+    "sha256": "846bd9f334adbe86cfe500b06add19ee5689904ec3b4985be328902d0294c1ab"
+  },
+  "artifacts": [
+    {
+      "path": "training/base/v3/release/README.md",
+      "bytes": 675,
+      "byte_method": "normalized_lf_text",
+      "sha256": "1677a75e80ff6e1d808debb3486b7de67972fa3347bee4bba680a70a926537cb",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/algorithm_decision.json",
+      "bytes": 327,
+      "byte_method": "normalized_lf_text",
+      "sha256": "7f07790d4801b1afdd99dd77a98496501c2165bead15745bb0678ba70f8680ed",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/config_used.yml",
+      "bytes": 1844,
+      "byte_method": "normalized_lf_text",
+      "sha256": "4168a7990fb77ae85398da55b8a8972d4a8e9b16139b5bac85ada364ef7fcd5f",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/final_manifest.json",
+      "bytes": 1233,
+      "byte_method": "normalized_lf_text",
+      "sha256": "b390d084d23f74295e1cc1af6c7c3485090930af601383e6b7fe4fa2b86a9e02",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/fold_manifest.json",
+      "bytes": 2950,
+      "byte_method": "normalized_lf_text",
+      "sha256": "597afe9bf7292ea8ae6d317bab5b877b9205ee8443321630f971095489123d93",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/full50_predictors.txt",
+      "bytes": 1107,
+      "byte_method": "normalized_lf_text",
+      "sha256": "bcb2e9f24b8ed24f9f5463fa5dfcdf22451a582233064a7a54aca85968bd2a1e",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/integrity_checks.csv",
+      "bytes": 235,
+      "byte_method": "normalized_lf_text",
+      "sha256": "709ecab88c70bb197d3bc6e87882b05cdbcfe6fbe664b761f4bff2802cf894e2",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/model_bundle.rds",
+      "bytes": 126650268,
+      "byte_method": "raw_bytes",
+      "sha256": "3b39a68d4e5cebc7bc0c4282e268db5d33f7b31996ee9189b51a7fff645a8139",
+      "hash_method": "raw_bytes"
+    },
+    {
+      "path": "training/base/v3/release/outer_selected_recipes.csv",
+      "bytes": 768,
+      "byte_method": "normalized_lf_text",
+      "sha256": "cf9f5100616e993d73b1f582894f30d2ac06bd643510fd70164ca7b4062dc9e1",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/primary_pooled_metrics.csv",
+      "bytes": 985,
+      "byte_method": "normalized_lf_text",
+      "sha256": "db2315b74832f974d38ec679e9925e024ac773e13336fa6e12238ae69a803a83",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/primary_repeat_metrics.csv",
+      "bytes": 2107,
+      "byte_method": "normalized_lf_text",
+      "sha256": "66a1bc7946ea643e209805bad7a593647b9aa6b49810af61394eeb7744ad5018",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/primary_site_mean_metrics.csv",
+      "bytes": 930,
+      "byte_method": "normalized_lf_text",
+      "sha256": "ecc343c6ad5adb2d9e9d54507f9d06b49fec1c0ebc1ec0292038a0e01aa04ece",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/rf_recipe.json",
+      "bytes": 493,
+      "byte_method": "normalized_lf_text",
+      "sha256": "9469b7e8de05ae5d80de41856888831c2e7cb25c01612ef82c8594a6f307c6d7",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/scientific_conclusion.md",
+      "bytes": 1683,
+      "byte_method": "normalized_lf_text",
+      "sha256": "facb5ae8375ab7a79b162f6d0791c69e08d215de8c0a2d4ecce915bde83afc9d",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/selected_params.yml",
+      "bytes": 400,
+      "byte_method": "normalized_lf_text",
+      "sha256": "0314fe0917877557e61993282ff4e1d102ee38ab0823dd43ba77c6a8d8033db5",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/stress_scheme_metrics.csv",
+      "bytes": 2746,
+      "byte_method": "normalized_lf_text",
+      "sha256": "e2b4c34fc12fe68fd8693d10eee9be82b74b6410c8b087785b1594e2ce8522b6",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/training_medians.csv",
+      "bytes": 1748,
+      "byte_method": "normalized_lf_text",
+      "sha256": "48bc8a1b8a29ca16344a141a0bb9a6130f025f4a4821622bcfe60dc06786c7a3",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/training_metrics.csv",
+      "bytes": 1078,
+      "byte_method": "normalized_lf_text",
+      "sha256": "683875d9cd04013b5c0e9a4133473a5cd016156abfc6bee8981125db4c91e3d9",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/validation_manifest.json",
+      "bytes": 2140,
+      "byte_method": "normalized_lf_text",
+      "sha256": "21e7124b9ae084fba47247bdd26ed3129b1b3053cbac35435a591d4a027cad44",
+      "hash_method": "normalized_lf_text"
+    },
+    {
+      "path": "training/base/v3/release/xgb_recipe.json",
+      "bytes": 569,
+      "byte_method": "normalized_lf_text",
+      "sha256": "56423ceb3f6d94461c0b6ade874ef868dfb88eab28ffd9eaf80e1aceb2176ab8",
+      "hash_method": "normalized_lf_text"
+    }
+  ]
+}

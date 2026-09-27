@@ -1,0 +1,23 @@
+{
+  "status": "frozen",
+  "model": "xgb",
+  "structure_id": "xgb_1535",
+  "weight_scheme": "W1",
+  "parameters": {
+    "structure_id": "xgb_1535",
+    "max_depth": 8,
+    "eta": 0.05,
+    "min_child_weight": 5,
+    "subsample": 1,
+    "colsample_bytree": 1,
+    "lambda": 1,
+    "alpha": 0.1,
+    "gamma": 0
+  },
+  "best_iteration": 118,
+  "primary_evidence_tasks": 15,
+  "deployment_tuning_folds": 5,
+  "deployment_tuning_is_performance_estimate": false,
+  "stress_may_retune": false,
+  "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks"
+}

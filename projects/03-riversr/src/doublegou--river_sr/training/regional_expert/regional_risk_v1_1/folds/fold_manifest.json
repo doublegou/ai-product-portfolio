@@ -1,0 +1,214 @@
+{
+  "status": "FROZEN_REGIONAL_RISK_V1_1_METHOD",
+  "prepared_at": "2026-08-17T09:11:44+0800",
+  "upstream": {
+    "table": {
+      "path": "D:/river_sr/data/processed/training/himalaya_risk_v1.csv",
+      "bytes": 523835,
+      "modified_at": "2026-08-17T09:01:31+0800",
+      "md5": "6fe0d27c33b47956f21d0e8d6e832ec5",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "v1_branch_map": {
+      "path": "D:/river_sr/training/regional_expert/regional_risk_v1/folds/branch_map.csv",
+      "bytes": 38588,
+      "modified_at": "2026-08-17T09:01:31+0800",
+      "md5": "19fb84f84b7770bcb918afc010a0ffa9",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "v1_fold_manifest": {
+      "path": "D:/river_sr/training/regional_expert/regional_risk_v1/folds/fold_manifest.json",
+      "bytes": 6379,
+      "modified_at": "2026-08-17T09:01:31+0800",
+      "md5": "ecb0a305e86513dcaaf7b0cc1673ba1b",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "v1_config": {
+      "path": "D:/river_sr/training/regional_expert/regional_risk_v1/config/default.yml",
+      "bytes": 2896,
+      "modified_at": "2026-08-17T04:47:31+0800",
+      "md5": "1adef9744fb7d1b75b7d4f5dd2d7f81e",
+      "hash_method": "normalized_lf_text_md5"
+    },
+    "environment_predictors": {
+      "path": "D:/river_sr/training/regional_expert/regional_risk_v1/config/environment_predictors.txt",
+      "bytes": 303,
+      "modified_at": "2026-08-17T04:30:55+0800",
+      "md5": "c80a6509844c61ff9c3683f493e0286e",
+      "hash_method": "normalized_lf_text_md5"
+    }
+  },
+  "config": {
+    "path": "D:/river_sr/training/regional_expert/regional_risk_v1_1/config/default.yml",
+    "bytes": 3474,
+    "modified_at": "2026-08-17T09:11:37+0800",
+    "md5": "e34a9d869a819bd26e49dcb7c42803a8",
+    "hash_method": "normalized_lf_text_md5"
+  },
+  "implementation": {
+    "sha256": "2ff2e38e946b9dbacf7b5e1315b2bde67c9f70903a4243ba8aeabd316a926cc8",
+    "files": [
+      {
+        "path": "R/calibration.R",
+        "bytes": 3552,
+        "modified_at": "2026-08-17T05:40:24+0800",
+        "md5": "1a1854cd9dc8a839d3e7d6f82a8fb760",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/decision.R",
+        "bytes": 2119,
+        "modified_at": "2026-08-17T05:35:42+0800",
+        "md5": "022fd8f67fff8491071a9cd4f0eab9fe",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/gam.R",
+        "bytes": 4432,
+        "modified_at": "2026-08-17T05:32:56+0800",
+        "md5": "dc71eeb2144228c49b103c3b106c412f",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/io.R",
+        "bytes": 8661,
+        "modified_at": "2026-08-17T05:31:27+0800",
+        "md5": "2dc215b7a043e1acc2d48e20a8797e1e",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/metrics.R",
+        "bytes": 5573,
+        "modified_at": "2026-08-17T05:35:42+0800",
+        "md5": "34d27e6a2e0e57566584231f57e01449",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/preprocessing.R",
+        "bytes": 1339,
+        "modified_at": "2026-08-17T05:32:56+0800",
+        "md5": "3182443955a7a5e26e2cdeea5d58a2ba",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/threshold.R",
+        "bytes": 5425,
+        "modified_at": "2026-08-17T05:35:42+0800",
+        "md5": "95a4bb93bc5de9bcf250460b2132b280",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "R/validation.R",
+        "bytes": 9381,
+        "modified_at": "2026-08-17T05:32:56+0800",
+        "md5": "8fa545d6ada406f25da28766dda539a9",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/01_validate_input.R",
+        "bytes": 354,
+        "modified_at": "2026-08-17T05:37:29+0800",
+        "md5": "8d5920c3da2cd6153cf61ffce5506964",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/02_prepare_folds.R",
+        "bytes": 1969,
+        "modified_at": "2026-08-17T05:37:29+0800",
+        "md5": "b0f887ed1f1e6162f56e0d83e463f068",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/03_check.R",
+        "bytes": 3901,
+        "modified_at": "2026-08-17T05:42:22+0800",
+        "md5": "515b5ae45859b871c80b4fc99f2f2086",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/04_run_task.R",
+        "bytes": 8386,
+        "modified_at": "2026-08-17T05:37:29+0800",
+        "md5": "3072ea25dbbb30d30031ef63ce6d10a8",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/05_aggregate.R",
+        "bytes": 6248,
+        "modified_at": "2026-08-17T05:38:17+0800",
+        "md5": "c5d93e6f50dea6a33326b8fe7f689c3b",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/06_summarize.R",
+        "bytes": 1410,
+        "modified_at": "2026-08-17T05:38:17+0800",
+        "md5": "855049a73f1e99aeab918794f5074153",
+        "hash_method": "normalized_lf_text_md5"
+      },
+      {
+        "path": "scripts/run.R",
+        "bytes": 2521,
+        "modified_at": "2026-08-17T05:37:29+0800",
+        "md5": "f27c448076778f98049299151ed1a1a1",
+        "hash_method": "normalized_lf_text_md5"
+      }
+    ]
+  },
+  "audit": {
+    "rows": 372,
+    "branches": 17,
+    "background": 100,
+    "gray": 192,
+    "positive": 80,
+    "extreme": 11,
+    "positive_branches": 14,
+    "extreme_branches": 4
+  },
+  "validation": {
+    "design": "strict_nested_leave_one_regional_branch_out",
+    "outer_folds": 17,
+    "inner_folds_per_outer": 16,
+    "models": 2,
+    "tasks": 34,
+    "expected_gam_fits": 578,
+    "expected_calibrators": 34,
+    "expected_thresholds": 68,
+    "expected_outer_oof_rows": 744
+  },
+  "calibration": {
+    "method": "platt_logistic_recalibration",
+    "predictor": "logit_raw_probability",
+    "probability_clip": 9.9999999999999995e-07,
+    "weighting": "branch_sqrt_weight",
+    "require_positive_slope": true
+  },
+  "threshold": {
+    "weighting": "branch_sqrt_weight",
+    "trigger_rule": "calibrated_probability_greater_than_or_equal_to_threshold",
+    "candidate_rule": "unique_calibrated_probabilities_plus_no_trigger_sentinel",
+    "candidate_rule_status": "forward_reconstruction_assumption_historical_source_unavailable",
+    "tie_break": ["recall_desc", "precision_desc", "threshold_desc"],
+    "operating_points": {
+      "primary": {
+        "max_background_fpr": 0.10000000000000001,
+        "role": "gate_evidence"
+      },
+      "strict": {
+        "max_background_fpr": 0.050000000000000003,
+        "role": "diagnostic_only"
+      }
+    }
+  },
+  "evidence_targets": {
+    "primary": {
+      "max_background_fpr": 0.10000000000000001,
+      "min_recall": 0.5,
+      "min_precision": 0.29999999999999999,
+      "min_positive_branch_coverage": 0.5,
+      "min_extreme_branch_coverage": 0.75
+    }
+  },
+  "v2_dependency": false,
+  "formal_model_fitted": false
+}

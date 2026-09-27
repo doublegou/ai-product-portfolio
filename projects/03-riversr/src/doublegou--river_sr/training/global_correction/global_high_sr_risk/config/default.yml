@@ -1,0 +1,82 @@
+project:
+  id: global_high_sr_risk_v1
+  status: ready_for_training
+  purpose: nonspatial_high_sr_signal_feasibility
+
+input:
+  table: data/processed/training/sr_full50_v1.csv
+  full50_predictors: data_pipeline/training/sr_full50_v1/config/full50_predictors.txt
+  predictors: training/global_correction/global_high_sr_risk/config/nonspatial47_predictors.txt
+  base_v1_fold_manifest: training/base/v1/folds/fold_manifest.json
+  base_v1_outer_assignments: training/base/v1/folds/primary_outer_assignments.csv
+  base_v1_hydrological_groups: training/base/v1/folds/hydrological_groups.csv
+
+columns:
+  row_id: row_id
+  site_id: site_id
+  longitude: longitude
+  latitude: latitude
+  response: sr87_sr86
+  reference: reference_id
+
+target:
+  background_upper: 0.72
+  positive_lower: 0.75
+  extreme_lower: 0.80
+  gray_zone_definition: 0.72 <= Sr < 0.75
+
+validation:
+  expected_rows: 4485
+  expected_predictors: 47
+  expected_hydrological_groups: 355
+  expected_positive_rows: 109
+  expected_positive_groups: 12
+  expected_extreme_rows: 20
+  expected_extreme_groups: 4
+  repeats: 3
+  outer_folds: 5
+  inner_folds: 3
+  inner_seed_base: 72000
+  minimum_positive_groups_per_inner_assessment: 2
+
+elastic_net:
+  alpha: [0.00, 0.25, 0.50, 0.75, 1.00]
+  lambda_ratio_max: 1.0
+  lambda_ratio_min: 0.0001
+  lambda_ratio_count: 50
+  standardize: true
+
+probability_rf:
+  mtry: [7, 12, 24]
+  min_node_size: [5, 15]
+  sample_fraction: [0.70, 1.00]
+  replace: [false, true]
+  splitrule: gini
+  inner_trees: 1000
+  outer_trees: 2000
+
+selection:
+  max_background_fpr: 0.05
+  min_precision: 0.15
+  within_candidate_order: recall_desc_positive_system_coverage_desc_threshold_desc
+  fallback_order: precision_desc_recall_desc_positive_system_coverage_desc_threshold_desc
+  between_candidate_order: inner_gate_feasible_desc_recall_desc_positive_system_coverage_desc_pr_auc_desc_precision_desc_parameters
+
+promotion:
+  min_recall: 0.60
+  min_precision: 0.15
+  max_background_fpr: 0.05
+  min_pr_auc: 0.10
+  min_positive_groups_detected: 6
+  min_extreme_groups_detected: 2
+  repeats_required: 2
+
+model:
+  elastic_seed_base: 730000
+  rf_seed_base: 740000
+  threads: 16
+
+output:
+  folds_dir: training/global_correction/global_high_sr_risk/folds
+  validation_dir: training/global_correction/global_high_sr_risk/validation
+  runs_dir: training/global_correction/global_high_sr_risk/runs
