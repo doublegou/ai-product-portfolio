@@ -1,0 +1,4 @@
+interface:
+  display_name: "script-to-post"
+  short_description: "Write video titles and descriptions into numbered post folders."
+  default_prompt: "使用 $script-to-post，根据这期脚本生成标题和正文，保存到 post 的下一个编号目录；如果我要求整套发布素材，再继续生成同目录的三种比例封面。"
