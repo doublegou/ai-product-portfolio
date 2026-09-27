@@ -1,0 +1,44 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书笔记结构、正文、标签和互动表达",
+  "source": "xhs_current_chrome_deep",
+  "accounts": [],
+  "loose_notes": [],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "page_title": "观鸟日记 记录 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51",
+    "page_text_sample": "首页 点点 ai RED 直播 发布 通知 我 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 更多 关于我们 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 全部 图文 图文 视频 视频 用户 用户 筛选 综合 今天 作文范文 自然笔记 鸟类图鉴 照片 价格 绘画 刷小红书观鸟区，怎么不是一种观鸟呢 自然薯 01-23 298 大家都在搜 观鸟日记内容 野外观鸟日记 观鸟日记特写 今日观鸟记录 在上海，夜鹭只能排第十二名 观鸟数据团 06-09 2066 我的年度观鸟报告来啦！！提前祝新年快乐！ OSC 2025-12-26 149 豆瓣就这样偷偷更新一些可爱的内容 橘子 10小时前 1104 观鸟人都给我去福森！鸟况怎么可以这么好！ 菜小薯 2025-02-28 612 小红书首发——秘鲁中部观鸟记录🇵🇪 Allen Xue 05-14 1619 上海15种常见鸟，你见过几种？ 美数课 04-09 549 平稳度过观鸟新手期：观鸟手记🍊 晴儿sunny_ing 2025-12-23 31 eBird发来年度总结🥰 艾丁蒙特 2025-01-18 34 谁能抵挡得住，正面会飞的萌物😍😍😍 30就拍鸟的ALLEN LAN 2025-12-27 254 数毛进入AppStore排行榜前100啦!!!🥳 Pori在修bug",
+    "collected_at": "2026-07-09T13:34:06.986792+08:00",
+    "requested_limit": 2,
+    "collected_count": 0,
+    "search_card_count": 2,
+    "detail_requested_count": 2,
+    "detail_success_count": 0,
+    "detail_error_count": 2,
+    "detail_errors": [
+      {
+        "index": 1,
+        "note_url": "https://www.xiaohongshu.com/explore/69731328000000000d008c50",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 2,
+        "note_url": "https://www.xiaohongshu.com/explore/69eac7cb0000000020013004",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      }
+    ],
+    "extraction_method": "selector",
+    "extraction_confidence": 0.9,
+    "field_coverage": {
+      "account_name": 2,
+      "body_excerpt": 2,
+      "cover_text": 2,
+      "likes": 0,
+      "note_url": 2,
+      "observed_signals": 2,
+      "title": 2
+    },
+    "extraction_warnings": []
+  }
+}

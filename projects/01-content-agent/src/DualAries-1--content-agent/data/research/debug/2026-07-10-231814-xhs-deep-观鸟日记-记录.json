@@ -1,0 +1,128 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书完整笔记内容与互动表达",
+  "source": "xhs_current_chrome_visible_detail",
+  "accounts": [],
+  "loose_notes": [],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "searched_queries": [
+      {
+        "query": "观鸟日记 记录",
+        "observed_card_count": 0,
+        "qualified_card_count": 0,
+        "detail_requested_count": 0,
+        "detail_success_count": 0,
+        "viewport_advance_count": 1,
+        "completion_reason": "feed_end",
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51"
+      },
+      {
+        "query": "观鸟日记 记录 热门",
+        "observed_card_count": 0,
+        "qualified_card_count": 0,
+        "detail_requested_count": 0,
+        "detail_success_count": 0,
+        "viewport_advance_count": 0,
+        "completion_reason": "feed_stalled",
+        "page_url": "https://mitsloan.mit.edu/faculty/directory/johan-chu"
+      },
+      {
+        "query": "观鸟日记 记录 经验",
+        "observed_card_count": 0,
+        "qualified_card_count": 0,
+        "detail_requested_count": 0,
+        "detail_success_count": 0,
+        "viewport_advance_count": 0,
+        "completion_reason": "feed_end",
+        "page_url": "chrome://new-tab-page/"
+      },
+      {
+        "query": "观鸟日记 记录 记录",
+        "observed_card_count": 0,
+        "qualified_card_count": 0,
+        "detail_requested_count": 0,
+        "detail_success_count": 0,
+        "viewport_advance_count": 1,
+        "completion_reason": "feed_end",
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95+%E8%AE%B0%E5%BD%95&type=51"
+      },
+      {
+        "query": "观鸟日记 记录 避坑",
+        "observed_card_count": 14,
+        "qualified_card_count": 4,
+        "detail_requested_count": 4,
+        "detail_success_count": 0,
+        "viewport_advance_count": 2,
+        "completion_reason": "feed_stalled",
+        "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95+%E9%81%BF%E5%9D%91&type=51"
+      }
+    ],
+    "page_title": "观鸟日记 记录 避坑 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95+%E9%81%BF%E5%9D%91&type=51",
+    "collected_at": "2026-07-10T23:18:14.011153+08:00",
+    "requested_limit": 1,
+    "collected_count": 0,
+    "detail_error_count": 4,
+    "detail_errors": [
+      {
+        "query": "观鸟日记 记录 避坑",
+        "note_url": "https://www.xiaohongshu.com/explore/69af53870000000016008de7",
+        "title": "当今观拍鸟界三大乱象！",
+        "error": "incomplete note detail: shares"
+      },
+      {
+        "query": "观鸟日记 记录 避坑",
+        "note_url": "https://www.xiaohongshu.com/explore/6a1c13050000000038037979",
+        "title": "身尚有马",
+        "error": "incomplete note detail: shares, detail_not_fully_browsed"
+      },
+      {
+        "query": "观鸟日记 记录 避坑",
+        "note_url": "https://www.xiaohongshu.com/explore/6a18db08000000003601fa9b",
+        "title": "观鸟笔记对乌鸫的设定，我觉得有点问题",
+        "error": "detail is not visible yet"
+      },
+      {
+        "query": "观鸟日记 记录 避坑",
+        "note_url": "https://www.xiaohongshu.com/explore/6a1b03870000000036032e11",
+        "title": "观鸟笔记的一些攻略",
+        "error": "detail is not visible yet"
+      }
+    ],
+    "quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "browsing_method": "visible_observe_click_read_return",
+    "field_coverage": {
+      "account_name": 0,
+      "author_url": 0,
+      "body": 0,
+      "comment_items": 0,
+      "comments": 0,
+      "hashtags": 0,
+      "images": 0,
+      "likes": 0,
+      "location": 0,
+      "note_id": 0,
+      "note_url": 0,
+      "publish_time": 0,
+      "saves": 0,
+      "shares": 0,
+      "subtitle": 0,
+      "title": 0,
+      "video": 0
+    },
+    "warnings": [
+      "high_quality_notes_incomplete: 0/1 for query '观鸟日记 记录'",
+      "feed_stalled for query '观鸟日记 记录 热门'",
+      "high_quality_notes_incomplete: 0/1 for query '观鸟日记 记录 热门'",
+      "high_quality_notes_incomplete: 0/1 for query '观鸟日记 记录 经验'",
+      "high_quality_notes_incomplete: 0/1 for query '观鸟日记 记录 记录'",
+      "feed_stalled for query '观鸟日记 记录 避坑'",
+      "high_quality_notes_incomplete: 0/1 for query '观鸟日记 记录 避坑'"
+    ]
+  }
+}

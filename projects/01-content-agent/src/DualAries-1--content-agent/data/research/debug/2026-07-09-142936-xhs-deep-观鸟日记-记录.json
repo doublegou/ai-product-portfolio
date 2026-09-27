@@ -1,0 +1,86 @@
+{
+  "platform": "xiaohongshu",
+  "research_goal": "深入分析与「观鸟日记 记录」相关的小红书笔记结构、正文、标签和互动表达",
+  "source": "xhs_current_chrome_deep",
+  "accounts": [],
+  "loose_notes": [],
+  "collector_meta": {
+    "keyword": "观鸟日记 记录",
+    "page_title": "观鸟日记 记录 - 小红书搜索",
+    "page_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F%E6%97%A5%E8%AE%B0+%E8%AE%B0%E5%BD%95&type=51",
+    "page_text_sample": "首页 点点 ai RED 直播 发布 通知 我 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 更多 关于我们 沪ICP备13030189号 | 营业执照 | 2024沪公网安备31010102002533号 | 增值电信业务经营许可证：沪B2-20150021 | 医疗器械网络交易服务第三方平台备案：(沪)网械平台备字[2019]第00006号 | 互联网药品信息服务资格证书：(沪)-经营性-2023-0144 | 违法不良信息举报电话：4006676810 | 上海市互联网举报中心 | 网上有害信息举报专区 | 自营经营者信息 | 网络文化经营许可证：沪网文(2024)1344-086号 | 个性化推荐算法 网信算备310101216601302230019号 © 2014-2026 行吟信息科技（上海）有限公司 地址：上海市黄浦区马当路388号C座 电话：9501-3888 全部 图文 图文 视频 视频 用户 用户 筛选 综合 今天 作文范文 自然笔记 鸟类图鉴 照片 价格 绘画 大门牙拉拉 2025-03-07 347 观鸟app推荐！观鸟入门必备，识别&记录 奔跑的勺子 2025-09-07 1051 菜鸟观鸟报告 43/50｜福州森林公园 wukongwang 05-07 409 湾区观鸟｜一年半总结 住在山里的长臂猿 2025-12-02 114 观鸟笔记全收集、拍照、成就攻略 麻雀大师 06-26 9 🦅观鸟人私藏！这个印章模板救大命 NgaiDih 2025-07-22 111 大家都在搜 观鸟日记记录方式 观鸟日志记录 观鸟日记打卡记录 观鸟日记现场记录 观鸟人的The Best of 2025 姬風則 01-10 623 当我在观鸟时，我在做什么 随时出发夜师傅 04-23 79 观鸟让我意识到过去的我失去了什么。 nono 03-21 2.7万 作为一个观鸟人，总会有一个自己的Big Year 毕强 2025-12-31 635 鸟友们，上半年你观了几种鸟？ 观鸟数据团 06-27 93 观鸟365天，我成为了视觉",
+    "collected_at": "2026-07-09T14:29:36.881710+08:00",
+    "requested_limit": 1,
+    "collected_count": 0,
+    "search_card_count": 20,
+    "detail_requested_count": 20,
+    "detail_success_count": 0,
+    "detail_error_count": 20,
+    "detail_errors": [
+      {
+        "index": 1,
+        "note_url": "https://www.xiaohongshu.com/explore/66c65d95000000001d0397ab",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 2,
+        "note_url": "https://www.xiaohongshu.com/explore/6954bdff000000001e02799e",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 3,
+        "note_url": "https://www.xiaohongshu.com/explore/68b63e60000000001c010022",
+        "error": "visible note card anchor not found"
+      },
+      {
+        "index": 4,
+        "note_url": "https://www.xiaohongshu.com/explore/69fbec55000000001f007d9b",
+        "error": "visible note card anchor not found"
+      },
+      {
+        "index": 5,
+        "note_url": "https://www.xiaohongshu.com/explore/687f6e470000000010012da6",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 6,
+        "note_url": "https://www.xiaohongshu.com/explore/66adcd55000000000d033693",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 7,
+        "note_url": "https://www.xiaohongshu.com/explore/6a4277a80000000021009dd5",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 8,
+        "note_url": "https://www.xiaohongshu.com/explore/68ccc6470000000012020d58",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      },
+      {
+        "index": 9,
+        "note_url": "https://www.xiaohongshu.com/explore/695f1b6000000000220231f7",
+        "error": "visible note card anchor not found"
+      },
+      {
+        "index": 10,
+        "note_url": "https://www.xiaohongshu.com/explore/694b4ea4000000001e037181",
+        "error": "system click failed: macOS blocked human-like system clicking. Enable Accessibility permission for the app running this command in System Settings > Privacy & Security > Accessibility, then rerun the collector."
+      }
+    ],
+    "extraction_method": "selector",
+    "extraction_confidence": 0.9,
+    "field_coverage": {
+      "account_name": 20,
+      "body_excerpt": 20,
+      "cover_text": 20,
+      "likes": 0,
+      "note_url": 20,
+      "observed_signals": 20,
+      "title": 20
+    },
+    "extraction_warnings": [
+      "candidate_pool_incomplete: 20/20"
+    ]
+  }
+}

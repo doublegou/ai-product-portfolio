@@ -1,0 +1,96 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome_visible_detail",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 5000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "note_detail_required": true
+  },
+  "coverage": {
+    "creator_count": 0,
+    "rejected_creator_count": 6,
+    "note_count": 0,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "inspected_creator_count": 6,
+        "qualified_creator_count": 0,
+        "viewport_advance_count": 0,
+        "completion_reason": "creator_inspection_target_reached",
+        "warnings": [],
+        "collected_at": "2026-07-11T00:10:06.953225+08:00"
+      }
+    ]
+  },
+  "accounts": [],
+  "rejected_creators": [
+    {
+      "account_id": "5ef6bfdc000000000101ccbf",
+      "account_name": "姬風則",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5ef6bfdc000000000101ccbf?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABizgEyUrssmiRw0qg9Z35WSraABnUhM3AAYau4DV6F_g=&xsec_source=pc_search",
+      "follower_count": 1225,
+      "reason": "follower_count_not_above_5000: 1225",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "689072ee000000002802c046",
+      "account_name": "奔跑的勺子",
+      "account_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?xsec_token=ABHAS1INWeh-ioyJtVPd2V--GMY84RLPYP4wYUfe0uerE=&xsec_source=pc_search",
+      "follower_count": 34,
+      "reason": "follower_count_not_above_5000: 34",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "5f228dbf000000000101dabf",
+      "account_name": "产业极简课",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5f228dbf000000000101dabf?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB6Haf9QWj6sI3z_Lwn5L0noGpas7wFd0Paji_y1gwD0U=&xsec_source=pc_search",
+      "follower_count": 2964,
+      "reason": "follower_count_not_above_5000: 2964",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "6534fd39000000000400bb26",
+      "account_name": "woohoo杂学家",
+      "account_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F&type=51",
+      "follower_count": null,
+      "reason": "current page is not an XHS profile",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "6943bbf3000000002a01f783",
+      "account_name": "自然薯",
+      "account_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F&type=51",
+      "follower_count": null,
+      "reason": "current page is not an XHS profile",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "62033d150000000010009ac2",
+      "account_name": "全家饭团",
+      "account_url": "https://www.xiaohongshu.com/search_result?keyword=%E8%A7%82%E9%B8%9F&type=51",
+      "follower_count": null,
+      "reason": "current page is not an XHS profile",
+      "seed_keyword": "观鸟"
+    }
+  ],
+  "collector_meta": {
+    "started_at": "2026-07-11T00:09:09.777221+08:00",
+    "last_saved_at": "2026-07-11T00:10:06.953604+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "browsing_method": "visible_observe_click_read_return",
+    "collection_note": "Creators were inspected one by one through the visible page. Qualified creator notes contain complete detail-page data."
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "platform": "xiaohongshu",
+  "corpus_type": "creator_strategy_research",
+  "research_goal": "浏览并拆解成熟博主及其高互动笔记，用于反推 content-agent 的最终账号人设、写作规则、平台方法和验收标准。",
+  "source": "xhs_current_chrome_visible_detail",
+  "requirements": {
+    "target_creators": 1,
+    "notes_per_creator": 1,
+    "target_notes": 1,
+    "target_creator_min_followers": 5000,
+    "note_quality_threshold": {
+      "min_likes": 500,
+      "min_comments": 100,
+      "min_saves": 500
+    },
+    "note_detail_required": true
+  },
+  "coverage": {
+    "creator_count": 1,
+    "rejected_creator_count": 2,
+    "note_count": 0,
+    "keywords": [
+      "观鸟"
+    ],
+    "searched_keywords": [
+      {
+        "keyword": "观鸟",
+        "inspected_creator_count": 3,
+        "qualified_creator_count": 1,
+        "viewport_advance_count": 1,
+        "completion_reason": "query_watchdog",
+        "warnings": [
+          "creator_query_watchdog_reached for '观鸟'"
+        ],
+        "collected_at": "2026-07-10T23:48:24.932663+08:00"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_id": "6534fd39000000000400bb26",
+      "account_name": "woohoo杂学家",
+      "account_url": "https://www.xiaohongshu.com/user/profile/6534fd39000000000400bb26?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=AB8S0Pq392FRr78Jr1FKRDm5v3h0eVdNjG4d8anDxX8qY=&xsec_source=pc_search",
+      "avatar_url": "https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31cr9lfqi0c005p9kvksh1ep6ep9p2i8?imageView2/2/w/540/format/webp|imageMogr2/strip2/blur/1x56",
+      "red_id": "8437095114",
+      "ip_location": "广东",
+      "bio": "🌟WooHoo～ 我们来啦！ 💡专注分享大湾区的有趣杂学，让知识更贴近生活！ 👀禁商用、搬运、二改、投喂AI",
+      "follower_count": 34000,
+      "following_count": 38,
+      "liked_count": 406000,
+      "positioning_notes": [
+        "🌟WooHoo～ 我们来啦！ 💡专注分享大湾区的有趣杂学，让知识更贴近生活！ 👀禁商用、搬运、二改、投喂AI"
+      ],
+      "notes": [],
+      "seed_keyword": "观鸟",
+      "discovered_from_note": {
+        "note_id": "69b6c24a000000001b0034b7",
+        "title": "小鸟为什么喜欢歪头杀？🦉",
+        "note_url": "https://www.xiaohongshu.com/explore/69b6c24a000000001b0034b7",
+        "likes": 16000,
+        "comments": null,
+        "saves": null
+      },
+      "collection_meta": {
+        "profile_complete": true,
+        "target_creator_min_followers": 5000,
+        "note_target": 1,
+        "note_count": 0,
+        "note_completion_reason": "feed_stalled",
+        "note_errors": [
+          {
+            "note_id": "6a4a5675000000000f01dfe5",
+            "note_url": "https://www.xiaohongshu.com/explore/6a4a5675000000000f01dfe5",
+            "title": "观鸟，从宝宝抓起",
+            "error": "incomplete note detail: gallery_not_fully_browsed"
+          },
+          {
+            "note_id": "6a411c68000000000f01c608",
+            "note_url": "https://www.xiaohongshu.com/explore/6a411c68000000000f01c608",
+            "title": "动物们的交友秘籍",
+            "error": "incomplete note detail: comments, saves"
+          },
+          {
+            "note_id": "6a37d2aa000000001101e3ee",
+            "note_url": "https://www.xiaohongshu.com/explore/6a37d2aa000000001101e3ee",
+            "title": "每个婴儿小小的动作，都是伟大的里程碑~",
+            "error": "opened note mismatch: expected 6a37d2aa000000001101e3ee, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a255f33000000001603ddd7",
+            "note_url": "https://www.xiaohongshu.com/explore/6a255f33000000001603ddd7",
+            "title": "企鹅焦虑时会做什么？",
+            "error": "opened note mismatch: expected 6a255f33000000001603ddd7, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a1c33180000000036002b29",
+            "note_url": "https://www.xiaohongshu.com/explore/6a1c33180000000036002b29",
+            "title": "小鸟为什么爱在电线上排排站？",
+            "error": "opened note mismatch: expected 6a1c33180000000036002b29, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a2ea25c0000000022024840",
+            "note_url": "https://www.xiaohongshu.com/explore/6a2ea25c0000000022024840",
+            "title": "小猫真的会觉得尴尬吗？",
+            "error": "opened note mismatch: expected 6a2ea25c0000000022024840, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a12ef79000000003700e492",
+            "note_url": "https://www.xiaohongshu.com/explore/6a12ef79000000003700e492",
+            "title": "没错！咕咕也可以当侦探啦！！",
+            "error": "opened note mismatch: expected 6a12ef79000000003700e492, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a09bc1800000000350385f9",
+            "note_url": "https://www.xiaohongshu.com/explore/6a09bc1800000000350385f9",
+            "title": "小鸟的恋爱限定皮肤",
+            "error": "opened note mismatch: expected 6a09bc1800000000350385f9, got 6a411c68000000000f01c608"
+          },
+          {
+            "note_id": "6a00782d000000000702582e",
+            "note_url": "https://www.xiaohongshu.com/explore/6a00782d000000000702582e",
+            "title": "小时候的你，原来长这样呀",
+            "error": "opened note mismatch: expected 6a00782d000000000702582e, got 6a411c68000000000f01c608"
+          }
+        ],
+        "viewport_advance_count": 2,
+        "collected_at": "2026-07-10T23:48:05.621475+08:00"
+      }
+    }
+  ],
+  "rejected_creators": [
+    {
+      "account_id": "5ef6bfdc000000000101ccbf",
+      "account_name": "姬風則",
+      "account_url": "https://www.xiaohongshu.com/user/profile/5ef6bfdc000000000101ccbf?channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABizgEyUrssmiRw0qg9Z35Wfj2uSD2WlPVPw957yh3QDo=&xsec_source=pc_search",
+      "follower_count": 1225,
+      "reason": "follower_count_not_above_5000: 1225",
+      "seed_keyword": "观鸟"
+    },
+    {
+      "account_id": "689072ee000000002802c046",
+      "account_name": "奔跑的勺子",
+      "account_url": "https://www.xiaohongshu.com/user/profile/689072ee000000002802c046?xsec_token=ABHAS1INWeh-ioyJtVPd2V--TkjDRhW8yH1UcfROVMzHI=&xsec_source=pc_search",
+      "follower_count": 34,
+      "reason": "follower_count_not_above_5000: 34",
+      "seed_keyword": "观鸟"
+    }
+  ],
+  "collector_meta": {
+    "started_at": "2026-07-10T23:45:02.734665+08:00",
+    "last_saved_at": "2026-07-10T23:48:24.933132+08:00",
+    "completed": true,
+    "chrome_profile": "user_current_logged_in_chrome",
+    "browsing_method": "visible_observe_click_read_return",
+    "collection_note": "Creators were inspected one by one through the visible page. Qualified creator notes contain complete detail-page data."
+  }
+}
