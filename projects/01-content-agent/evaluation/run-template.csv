@@ -1,0 +1,1 @@
+run_id,date,workflow,input_id,version,model,status,elapsed_seconds,human_minutes,edit_rounds,input_tokens,output_tokens,total_cost,currency,quality_pass,failure_category,evidence_path,notes

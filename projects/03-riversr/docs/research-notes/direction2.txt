@@ -1,0 +1,589 @@
+Direction 2 — Final Pipeline
+总科学问题
+
+不再把主要目标定义成：
+
+能不能训练一个尽可能准确的全球 Sr 模型？
+
+而是：
+
+哪些地质、水文、气候、河网和人类活动信息真正具有稳定的 Sr predictive value？这些信息形成的全球预测关系，在什么空间、水系和环境条件下仍然成立？
+
+这与原方向二最初的定位是一致的：识别稳定预测信息，并判断这些信息能否迁移到陌生水系和陌生区域。
+
+Phase 0 — Data & Candidate Universe
+
+首先冻结研究对象：
+
+≈5600 river-water Sr observations
+          +
+Candidate Feature Universe
+
+Candidate Universe 包括：
+
+Spatial
+Geology
+Hydrology
+River Network / Mixing
+Climate / Surface
+Anthropogenic
+...
+
+这一阶段的任务只是：
+
+尽可能完整地建立全球可部署的 candidate predictors。
+
+不是在这里决定谁重要。
+
+原方向二已经定义了六个主要信息模块。
+
+Phase 1 — Global Core Discovery
+
+这是原方向二最核心的前半部分。
+
+我们现在把原来的：
+
+信息模块贡献评估
+
+和
+
+Nested Predictive Feature Discovery
+
+合并成一个大的阶段。
+
+1A. Information-family contribution
+
+先回答：
+
+哪类信息重要？
+
+例如：
+
+Geology
+Hydrology
+Climate / Surface
+Network / Mixing
+Anthropogenic
+Spatial
+
+通过统一模型、统一 CV、增量/消融比较，判断：
+
+geology 提供多少独立信息；
+hydrology 提供多少；
+human variables 在 natural controls 之外还有没有额外信息；
+哪些模块实际上主要只是 spatial proxy。
+
+这正是原方案中 Spatial + Block、Expanded − Block 等信息模块贡献实验的目的。
+
+1B. Nested Predictive Feature Discovery
+
+然后从“哪类信息”继续深入到：
+
+具体哪些变量重要？
+
+Scientific Family
+        ↓
+Correlated Cluster
+        ↓
+Individual Predictor
+        ↓
+Stable Predictor Set
+
+利用 inner/outer CV、cluster permutation、variable permutation、selection frequency、repeat consistency 等机制，去掉：
+
+冗余变量；
+不稳定变量；
+可以被其他变量替代的变量；
+只在偶然 split 中有效的变量。
+
+原方案本身已经设计了这一套严格嵌套筛选。
+
+最终得到：
+
+Global Core
+
+这里 Global Core 不是模型。
+
+它是：
+
+一套从全球 Candidate Universe 中筛选出来的、稳定、精简、具有独立预测价值的核心 predictor 集合。
+
+例如假设最后：
+
+Global Core
+├─ geological_age
+├─ felsic_fraction
+├─ runoff
+├─ water_yield
+├─ aridity
+├─ upstream_area
+├─ irrigation
+└─ ...
+
+到这里，回答了 Direction 2 的第一个大科学问题：
+
+What information makes global river Sr predictable?
+
+Phase 2 — Core Confirmation
+
+Phase 1 得到的是：
+
+“我们发现了一套看起来很稳定的 Core。”
+
+但还需要回答：
+
+这套 Core 真的够不够？
+
+因此冻结：
+
+Global Core
+Expanded Feature Set
+Model recipe
+
+然后使用未参与前面 Core selection 的 confirmation data / lockbox：
+
+Core Model
+     VS
+Expanded Model
+
+做预注册的 non-inferiority test。
+
+如果：
+
+Core ≈ Expanded
+
+并且在预定义 margin 内不劣，
+
+则确认：
+
+Confirmed Global Core
+
+原方向二已经明确设计了这一层：Core 与 Expanded 在 Terminal Confirmation Lockbox 上进行 non-inferiority comparison，通过之后才称为 Confirmed Parsimonious Core。
+
+所以：
+
+Phase 1 = Discover Core
+
+Phase 2 = Confirm Core
+
+这是两个不同任务。
+
+Phase 3 — Domain Generalization
+
+现在才进入第二个大科学问题：
+
+这套 Global Core 所学习到的关系，能够迁移到哪里？
+
+此时冻结的是：
+
+Confirmed Global Core
+        +
+Model Recipe
+
+这里的 Model Recipe 指：
+
+RF algorithm；
+preprocessing；
+hyperparameter search space；
+tuning strategy；
+missing-data rules；
+prediction procedure；
+evaluation metrics。
+
+不是冻结某一个已经 fit 好的 RF。
+
+泛化测试的本质
+
+每种 generalization test 都是在改变：
+
+samples 怎么分 train / test。
+
+例如：
+
+某一个 domain 完整 hold out
+        ↓
+其余 samples
+        ↓
+按照固定 Core + 固定 recipe
+重新训练模型
+        ↓
+预测 held-out domain
+
+所以从计算上讲：
+
+Generalization test 就是具有明确科学含义的不同 fold / holdout 方式。
+
+原方案已经把 generalization 分成 hydrological、spatial、environmental-domain 和 provenance 四类。
+
+现在我们可以把 environmental 部分进一步丰富成：
+
+A. Hydrological structure
+   ├─ Branch
+   ├─ Basin
+   └─ Terminal system
+
+
+B. Spatial
+   ├─ 500 km
+   ├─ 1000 km
+   └─ 1500 km
+
+
+C. Geological environment
+
+
+D. Hydrological environment
+
+
+E. Climate environment
+
+
+F. Anthropogenic environment
+
+
+G. Combined environmental domains
+   └─ especially Geology × Hydrology
+
+
+H. Geographic region
+
+
+I. Provenance
+   ├─ Reference
+   ├─ Paper
+   └─ Sampling campaign
+
+这里就是第二种“分组”：
+
+对 5600 个 observations 进行 domain grouping。
+
+因此我们现在有两个完全不同的 grouping：
+
+Predictor grouping
+→ 为了找重要变量
+→ Phase 1
+
+
+Sample / domain grouping
+→ 为了测试关系能不能迁移
+→ Phase 3
+
+它们在科学逻辑上不是上下级关系。
+
+Phase 3 的 PASS / FAIL 到底意味着什么？
+
+这是我们现在必须正式定义清楚的。
+
+PASS
+
+如果某种 domain generalization 在预注册的 acceptable / non-inferiority margin 内：
+
+Global Core
++
+same model recipe
+        ↓
+unseen domain
+        ↓
+PASS
+
+我们的结论是：
+
+Global Core 所描述的 predictive relationship 对这种 domain shift 足够稳定。
+
+也就是你现在说的：
+
+“够用了。”
+
+因此：
+
+没有必要因为这种分类额外建立 domain-specific model。
+
+注意，我们不需要证明：
+
+专家模型绝对不可能再提高一点点性能。
+
+我们不比较“谁最好”。
+
+我们的科学判断只是：
+
+现有统一 global relationship 已经达到要求，因此没有证据需要增加 context-specific complexity。
+
+这就足够了。
+
+Phase 4 — Failure Diagnosis + Transferability Re-discovery
+
+如果某一种 generalization：
+
+FAIL
+
+也不能立即：
+
+“那就给每个 domain 建专家模型。”
+
+先做 diagnosis。
+
+例如：
+
+Why did it fail?
+
+
+├─ sample size 太少？
+├─ predictor coverage 不够？
+├─ test domain 超出 training support？
+├─ Sr 极端值特别多？
+├─ reference / region confounding？
+├─ 缺失关键 predictor？
+└─ predictor–Sr relationship 真正改变？
+
+然后才进入一个现在非常重要的新阶段：
+
+Transferability Re-discovery
+
+也就是：
+
+先尝试救“一个全球模型”。
+
+假设：
+
+HG-domain generalization FAIL
+
+那么回到：
+
+Candidate Feature Universe
+
+但这一次 feature discovery 明确使用：
+
+HG-domain grouped validation
+
+重新筛：
+
+Family
+  ↓
+Cluster
+  ↓
+Variable
+  ↓
+New Core
+
+例如：
+
+Original Global Core
+X1 X3 X7 X11
+
+
+        ↓ HG fails
+
+
+HG-aware feature discovery
+
+
+        ↓
+
+
+Domain-Robust Core
+X1 X5 X9 X14 X20
+
+然后重新做：
+
+HG generalization
+
+如果这一次：
+
+PASS
+
+那么结论非常重要：
+
+原来的 Core 不是足够 transferable，但仍然存在一套统一的、更加 domain-robust 的全球 predictor set。
+
+这时候得到的仍然是：
+
+Global Model
+
+而不是专家模型。
+
+可以叫：
+
+Transferability-Optimized Global Core
+
+或者：
+
+Domain-Robust Global Core
+
+Phase 5 — True Context-Specific / Expert Modelling
+
+只有出现：
+
+Original Global Core
+        ↓
+domain generalization FAIL
+
+
+        ↓
+
+
+重新从 Candidate Universe
+做 domain-aware discovery
+
+
+        ↓
+
+
+仍然 FAIL
+
+并且 diagnosis 进一步支持：
+
+不同 domain 中 predictor–Sr relationship 本身发生了系统性变化，
+
+这时候才进入：
+
+True Expert Model
+
+例如：
+
+Global relationship
+vs
+HG4-specific relationship
+
+真正的专家模型意味着：
+
+特定 domain 使用自己的 predictor structure 和/或自己的 predictor–response relationship。
+
+它和 Phase 4 完全不同。
+
+Phase 4
+
+还是在问：
+
+能不能找到一套更好的统一全球 Core？
+
+Phase 5
+
+才是在问：
+
+是不是根本不存在一个足够统一的全球 relationship，需要 context-specific relationship？
+
+所以 Expert Model 必须是最后的、条件性的实验。
+
+而不是主 pipeline。
+
+Phase 6 — Final Global Model & Deployment
+
+前面的科学验证全部结束以后，冻结最终版本的：
+
+Final Global Core
+        +
+Final Model Recipe
+
+如果 Phase 3 全通过：
+
+使用原 Confirmed Global Core。
+
+如果某些失败但 Phase 4 成功：
+
+使用更新后的 Domain-Robust Global Core。
+
+然后才使用全部可用数据重新训练：
+
+≈5600 observations
+        +
+Final Core
+        ↓
+Final Global Model
+        ↓
+Global River 87Sr/86Sr Prediction
+        ↓
+Global Isoscape
+        +
+Uncertainty / Boundary Diagnostics
+
+这里的 Final Model 是用于部署和全球预测的。
+
+而它的可信度来自前面的 out-of-domain experiments，不是来自它在全部 5600 上自己的拟合性能。
+
+因此最终整个 Direction 2 可以压缩成这一张图
+                GLOBAL Sr DATA
+             │
+          PASS
+             │
+             ▼
+     CONFIRMED GLOBAL CORE
+             │
+             ▼
+╔════════════════════════════════════╗
+║ PHASE 3 — DOMAIN GENERALIZATION   ║
+╚════════════════════════════════════╝
+
+
+ Fixed Core + Fixed Model Recipe
+
+
+             │
+     ┌───────┼────────┐
+     │       │        │
+ Spatial  Hydro    Environment
+                   │
+              ┌────┼────┐
+           Geology Hydro Human
+                 + HG etc.
+             │
+             ▼
+      Held-out Domain Test
+             │
+      ┌──────┴──────┐
+      │             │
+    PASS           FAIL
+      │             │
+      ▼             ▼
+ Global Core    FAILURE
+ sufficient     DIAGNOSIS
+                    │
+                    ▼
+╔════════════════════════════════════╗
+║ PHASE 4 — TRANSFERABILITY         ║
+║            RE-DISCOVERY           ║
+╚════════════════════════════════════╝
+
+
+ Candidate Universe
+        +
+ failed-domain-aware CV
+        ↓
+ new global feature discovery
+        ↓
+ Domain-Robust Global Core
+        ↓
+ generalization again
+        │
+    ┌───┴────┐
+    │        │
+  PASS      FAIL
+    │        │
+    ▼        ▼
+Global      Evidence for
+Model       context-specificity
+sufficient      │
+                ▼
+╔════════════════════════════════════╗
+║ PHASE 5 — TRUE EXPERT MODELLING   ║
+╚════════════════════════════════════╝
+
+
+Only if justified
+
+
+Domain-specific predictors /
+relationships / models
+                │
+                ▼
+╔════════════════════════════════════╗
+║ PHASE 6 — FINAL GLOBAL DEPLOYMENT ║
+╚════════════════════════════════════╝
+
+
+ Final Core + Final Recipe
+          +
+    all eligible data
+          ↓
+ Final Global Model
+          ↓
+ Global Sr Isoscape
