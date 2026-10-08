@@ -1,0 +1,41 @@
+{
+  "function_privileges": {
+    "anon": false,
+    "authenticated": false,
+    "service_role": false
+  },
+  "job": {
+    "active": true,
+    "name": "pricemapai-collect-transit",
+    "owner": "postgres",
+    "schedule": "* * * * *"
+  },
+  "recent_triggers": [
+    {
+      "start_time": "2026-10-08T21:43:00.019884+00:00",
+      "status": "succeeded"
+    },
+    {
+      "start_time": "2026-10-08T21:42:00.225744+00:00",
+      "status": "succeeded"
+    },
+    {
+      "start_time": "2026-10-08T21:41:00.017458+00:00",
+      "status": "succeeded"
+    },
+    {
+      "start_time": "2026-10-08T21:40:00.032368+00:00",
+      "status": "succeeded"
+    },
+    {
+      "start_time": "2026-10-08T21:39:00.018744+00:00",
+      "status": "succeeded"
+    }
+  ],
+  "source_counts": {
+    "failed": 0,
+    "healthy": 27,
+    "total": 27
+  },
+  "verified_at": "2026-10-08T21:43:14.519635+00:00"
+}

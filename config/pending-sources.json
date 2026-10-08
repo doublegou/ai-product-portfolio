@@ -1,0 +1,2144 @@
+[
+  {
+    "name": "CC卡网",
+    "reference_url": "https://cccrad.uk",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "GPT 自助下单充值系统 tehuio.com",
+    "reference_url": "https://tehuio.com",
+    "reference_collector": "kami",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "王哈哈Ai",
+    "reference_url": "http://shop.whh985.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "来源必须使用公开域名的 HTTPS 地址"
+  },
+  {
+    "name": "鲸鲨源头",
+    "reference_url": "https://chong.nerver.cc",
+    "reference_collector": "genericHtml",
+    "status": "needs_adapter",
+    "reason": "原站 HTTP 200，需核验独立页面结构"
+  },
+  {
+    "name": "JieAiTop",
+    "reference_url": "https://wzyp.cn/shop/N90HTB7K",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "源站 HTTP 520"
+  },
+  {
+    "name": "王哈哈Ai-Plus Pro源头直供【招代理】",
+    "reference_url": "https://wzyp.cn/shop/whh985",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "源站 HTTP 520"
+  },
+  {
+    "name": "彩虹AI",
+    "reference_url": "https://wzyp.cn/shop/ONX6ZOWB",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI搬运工",
+    "reference_url": "https://wzyp.cn/shop/2WMCCNSQ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小恐龙发卡网",
+    "reference_url": "https://morimm.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "小久",
+    "reference_url": "https://wzyp.cn/shop/xiaojiuban",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI源头批发旗舰店",
+    "reference_url": "https://wzyp.cn/shop/SubAIP",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "星连ai旗舰店",
+    "reference_url": "https://wzyp.cn/shop/aiplus666",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小久",
+    "reference_url": "https://98-xj.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "AI 云智聪聪",
+    "reference_url": "https://wzyp.cn/shop/Z6I0VZ0Q",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "CC卡网",
+    "reference_url": "https://wzyp.cn/shop/cccard",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "陆柒科技",
+    "reference_url": "https://wzyp.cn/shop/M18V0XVF",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "沐风源头",
+    "reference_url": "https://shop.mfttai.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "Oiai",
+    "reference_url": "https://wzyp.cn/shop/oiai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "My的Ai小铺",
+    "reference_url": "https://wzyp.cn/shop/ZZ88VR4W",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小铺",
+    "reference_url": "https://wzyp.cn/shop/echo_dream",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "稳中求胜",
+    "reference_url": "https://wzyp.cn/shop/P98T49H8",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI_云顶👑【源头认证】",
+    "reference_url": "https://wzyp.cn/shop/9M16S7R3",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai能量小铺",
+    "reference_url": "https://wzyp.cn/shop/S5UL3UHI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "鹰鹰小铺",
+    "reference_url": "https://wzyp.cn/shop/GUEOI7Z9",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai俱乐部",
+    "reference_url": "https://wzyp.cn/shop/Aying",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G 优惠成品代充",
+    "reference_url": "https://wzyp.cn/shop/JLDAK3FZ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai小铺-源头供货-招代理-分销码：k6u37bm4",
+    "reference_url": "https://wzyp.cn/shop/IY16OXB7",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小家",
+    "reference_url": "https://wzyp.cn/shop/5KF19IU0",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "商家8719",
+    "reference_url": "https://wzyp.cn/shop/SJ1BEJAC",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "亚米整合服务供应商",
+    "reference_url": "https://wzyp.cn/shop/ymymai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "海海星星AI",
+    "reference_url": "https://wzyp.cn/shop/J8CANM9Q",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai稳定供应（Grok/G.pt/Gemini源头直供）招代理对接码grok888",
+    "reference_url": "https://wzyp.cn/shop/ai16888",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai小伙计",
+    "reference_url": "https://wzyp.cn/shop/153180461",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "狗儿",
+    "reference_url": "https://wzyp.cn/shop/2TF3CYFL",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "NiuGe AI 加钟站",
+    "reference_url": "https://wzyp.cn/shop/GU3XQH61",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "迷途小铺",
+    "reference_url": "https://wzyp.cn/shop/gpt88",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Tora-雪诺AI代购娘小铺",
+    "reference_url": "https://wzyp.cn/shop/Tora",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "我有米奇妙妙屋",
+    "reference_url": "https://wzyp.cn/shop/8U6H8VI3",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "橘子Ai源头🍊成品号批发",
+    "reference_url": "https://wzyp.cn/shop/KFLA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "琪琪科技",
+    "reference_url": "https://wzyp.cn/shop/ZPISRC7G",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "卡比拉",
+    "reference_url": "https://wzyp.cn/shop/kabila",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小JIANG的商店",
+    "reference_url": "https://wzyp.cn/shop/XSMWW894",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "SHEN",
+    "reference_url": "https://wzyp.cn/shop/DF6CKF46",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ZZ源头批发",
+    "reference_url": "https://wzyp.cn/shop/XiaoYie",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Tim的AI便利店",
+    "reference_url": "https://wzyp.cn/shop/Tim_AI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "GAI源头",
+    "reference_url": "https://wzyp.cn/shop/aimfshop",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "炒鸡变黑的AI店（对接码chaoji，Plus龟头卷价版）",
+    "reference_url": "https://wzyp.cn/shop/chaoji",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "极客ai Hub",
+    "reference_url": "https://wzyp.cn/shop/93FVU5NK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI万能工具箱",
+    "reference_url": "https://wzyp.cn/shop/grok",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "moyanovo",
+    "reference_url": "https://wzyp.cn/shop/moyanovo",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "冷热lab",
+    "reference_url": "https://wzyp.cn/shop/5OFQXIM1",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "海神-Ai-大玩家（招代理）",
+    "reference_url": "https://wzyp.cn/shop/KFNRCFGC",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "52AI店铺",
+    "reference_url": "https://wzyp.cn/shop/52AI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "HZ-API",
+    "reference_url": "https://wzyp.cn/shop/hzapi",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "602",
+    "reference_url": "https://wzyp.cn/shop/602",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "YUJI",
+    "reference_url": "https://wzyp.cn/shop/YUJI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "iKun AI源头小铺",
+    "reference_url": "https://wzyp.cn/shop/ikun666",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "牟利ai",
+    "reference_url": "https://wzyp.cn/shop/2VWX76A4",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "个性个性AI源头批发",
+    "reference_url": "https://wzyp.cn/shop/WURK0XWX",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "464",
+    "reference_url": "https://wzyp.cn/shop/7HVUEC3Y",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "金幺の小店",
+    "reference_url": "https://wzyp.cn/shop/911",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "卷子ai ( Lucky )",
+    "reference_url": "https://wzyp.cn/shop/X23TO6QE",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "黑白小狗AI旗舰店",
+    "reference_url": "https://wzyp.cn/shop/5R8T9H0Q",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小猫【招代理】",
+    "reference_url": "https://wzyp.cn/shop/aixiaomao",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "青蛙AI·低价源头",
+    "reference_url": "https://wzyp.cn/shop/qingwaAA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小高老板娘的AI",
+    "reference_url": "https://wzyp.cn/shop/O1PF7YKC",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "幻境MirageAI",
+    "reference_url": "https://wzyp.cn/shop/mirage",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "flyai.qzz.io",
+    "reference_url": "https://flyai.qzz.io",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "G小铺",
+    "reference_url": "https://wzyp.cn/shop/gptxp",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "大魔王的店铺",
+    "reference_url": "https://wzyp.cn/shop/EREZLCWN",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "教父",
+    "reference_url": "https://wzyp.cn/shop/yanfu",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "【AI源头直供】AICA",
+    "reference_url": "https://wzyp.cn/shop/aica",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "抢抢的AI小铺",
+    "reference_url": "https://wzyp.cn/shop/GQ6OBICY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "云边小铺（招代理）",
+    "reference_url": "https://wzyp.cn/shop/one",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "OpcAi_Family",
+    "reference_url": "https://wzyp.cn/shop/TVHUVT0A",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "GCard",
+    "reference_url": "https://wzyp.cn/shop/YY4KVE2T",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "哈哈的ai杂货铺",
+    "reference_url": "https://wzyp.cn/shop/22DHYNNV",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "yes_code",
+    "reference_url": "https://wzyp.cn/shop/yes_code",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "aihome",
+    "reference_url": "https://wzyp.cn/shop/gpt_plus",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "FranklyBuilds的AI小店",
+    "reference_url": "https://wzyp.cn/shop/7LFUCYI0",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "OF会员服务商",
+    "reference_url": "https://wzyp.cn/shop/OFAI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ydd",
+    "reference_url": "https://wzyp.cn/shop/TH52WUW7",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小屋",
+    "reference_url": "https://wzyp.cn/shop/rgzn",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "追梦AI",
+    "reference_url": "https://wzyp.cn/shop/FRNX1ZU8",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小熊AI",
+    "reference_url": "https://wzyp.cn/shop/YTR60TGVK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "chiyu",
+    "reference_url": "https://wzyp.cn/shop/OUJ1HPBV",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI-小站",
+    "reference_url": "https://wzyp.cn/shop/8998TM6I",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai小助手",
+    "reference_url": "https://wzyp.cn/shop/1PY3OQ46",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "沈万三的AI聚宝盆",
+    "reference_url": "https://wzyp.cn/shop/shenwansan",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "超级码少",
+    "reference_url": "https://wzyp.cn/shop/cjms",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "猫咔 - Gemini源头批发",
+    "reference_url": "https://catcard.uk",
+    "reference_collector": "publicProductsApi",
+    "status": "failed",
+    "reason": "原站商品 API 返回 Cloudflare 验证页，未绕过访问限制"
+  },
+  {
+    "name": "奥特曼严选",
+    "reference_url": "https://wzyp.cn/shop/PAXOVOVJ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "词生量",
+    "reference_url": "https://wzyp.cn/shop/2POVTUTK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "La ai",
+    "reference_url": "https://wzyp.cn/shop/aisell",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "沐沐的店",
+    "reference_url": "https://wzyp.cn/shop/8Q9RHH0W",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai成品",
+    "reference_url": "https://wzyp.cn/shop/6YEJH8PE",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小猴源头（越南实卡源头）对接码：33",
+    "reference_url": "https://wzyp.cn/shop/xiaohou",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "哈基米站",
+    "reference_url": "https://wzyp.cn/shop/DGF2IE5W",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G plus专卖",
+    "reference_url": "https://wzyp.cn/shop/gptpluspro",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "稳问AI --AI 大玩家（AI真源头，招代理）",
+    "reference_url": "https://wzyp.cn/shop/aishop1",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI低价源头店",
+    "reference_url": "https://wzyp.cn/shop/RRIM3VSF",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Hug AI",
+    "reference_url": "https://wzyp.cn/shop/4UOATQTU",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "797",
+    "reference_url": "https://wzyp.cn/shop/42KWTJGE",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ton",
+    "reference_url": "https://wzyp.cn/shop/ton",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "光之国AI",
+    "reference_url": "https://wzyp.cn/shop/GT7KX1TN",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI华强北",
+    "reference_url": "https://wzyp.cn/shop/1001",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ALL IN AI",
+    "reference_url": "https://wzyp.cn/shop/6H72NFWO",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "aicloudhub",
+    "reference_url": "https://wzyp.cn/shop/aicloudhub",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "张啊三",
+    "reference_url": "https://wzyp.cn/shop/623I7MCW",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI杂货",
+    "reference_url": "https://wzyp.cn/shop/2E2KPQD1",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "猫王AI高品质源头 · 官方自营小铺",
+    "reference_url": "https://wzyp.cn/shop/CZSYP67X",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "蜗的AI(招代理)",
+    "reference_url": "https://wzyp.cn/shop/woniu",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "tototo",
+    "reference_url": "https://wzyp.cn/shop/FZKZDJ3U",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "麦门商店",
+    "reference_url": "https://ouvg.top",
+    "reference_collector": "unicornHtml",
+    "status": "needs_adapter",
+    "reason": "原站 HTTP 200，需核验独立页面结构"
+  },
+  {
+    "name": "咔咔",
+    "reference_url": "https://wzyp.cn/shop/D92VW084",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai小铺",
+    "reference_url": "https://wzyp.cn/shop/WPXSCE1B",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "猫猫豆",
+    "reference_url": "https://wzyp.cn/shop/mmdou",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "郁川 G源头【招代理】对接码：yuchuan666",
+    "reference_url": "https://wzyp.cn/shop/Yu_1an666",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "伊莉雅·曜辰",
+    "reference_url": "https://wzyp.cn/shop/ZM24RG4J",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "土豆",
+    "reference_url": "https://wzyp.cn/shop/tudou",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "蛋的AI🔥",
+    "reference_url": "https://wzyp.cn/shop/M5WLYYQV",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "初草的AI学习商品小铺",
+    "reference_url": "https://wzyp.cn/shop/V2M14U73",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "喵喵AI小铺2061",
+    "reference_url": "https://wzyp.cn/shop/AG7CVCOD",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "精选好货AI",
+    "reference_url": "https://wzyp.cn/shop/jingxuan",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "LynnZee",
+    "reference_url": "https://wzyp.cn/shop/GAXW96YR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小店",
+    "reference_url": "https://wzyp.cn/shop/YA3NLPX6",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "幽羊 AI",
+    "reference_url": "https://wzyp.cn/shop/Z65QS0QG",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI批发",
+    "reference_url": "https://wzyp.cn/shop/ai-plus",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "还没想好",
+    "reference_url": "https://wzyp.cn/shop/KIJSS7TJ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "卡卡丨货源",
+    "reference_url": "https://wzyp.cn/shop/kaka",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "懒羊羊AI",
+    "reference_url": "https://wzyp.cn/shop/lanyy",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "撸秃奥特曼",
+    "reference_url": "https://wzyp.cn/shop/RT2XW6IY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "晴天小店",
+    "reference_url": "https://cool.cheggnow.com",
+    "reference_collector": "kami",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "云智仓AI",
+    "reference_url": "https://wzyp.cn/shop/2XZ9M71J",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "悦AI",
+    "reference_url": "https://wzyp.cn/shop/3BFKDGS3",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "葫芦娃",
+    "reference_url": "https://wzyp.cn/shop/B9KFCWFO",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "奥特曼大表哥",
+    "reference_url": "https://wzyp.cn/shop/I7G8TG30",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小店",
+    "reference_url": "https://wzyp.cn/shop/cwyhlt",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai小店",
+    "reference_url": "https://wzyp.cn/shop/YAPYIJ9E",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Asuka的小店",
+    "reference_url": "https://wzyp.cn/shop/36XN8ELM",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "咕咕嘎嘎",
+    "reference_url": "https://wzyp.cn/shop/oaoi",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小票的ai小铺",
+    "reference_url": "https://wzyp.cn/shop/xiaopiao",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "YCYAPI",
+    "reference_url": "https://wzyp.cn/shop/ycyapi",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "蚂蚁AI",
+    "reference_url": "https://wzyp.cn/shop/antmall",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "元筑AI 分销码 h8wthq46",
+    "reference_url": "https://wzyp.cn/shop/laoyang",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "晓风ai",
+    "reference_url": "https://wzyp.cn/shop/xiaofeng",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Jin AI",
+    "reference_url": "https://wzyp.cn/shop/QGBCRJL0",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "7QAI批发市场",
+    "reference_url": "https://wzyp.cn/shop/1490777",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "陈平安",
+    "reference_url": "https://wzyp.cn/shop/NFCG5CVM",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "太一的店铺",
+    "reference_url": "https://wzyp.cn/shop/IHWX6MX8",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "飞龙 AI 小铺",
+    "reference_url": "https://wzyp.cn/shop/rimon",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "E ai",
+    "reference_url": "https://wzyp.cn/shop/2NAVZ50J",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "狗头AI（招代理）",
+    "reference_url": "https://wzyp.cn/shop/L9O8CDHA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ChatGPlus 陌路专营店 分销码molu",
+    "reference_url": "https://wzyp.cn/shop/TD6GILQR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI练习生",
+    "reference_url": "https://wzyp.cn/shop/5H4X93E5",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI魔法铺",
+    "reference_url": "https://wzyp.cn/shop/magic_paw",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "芙芙的宝箱",
+    "reference_url": "https://wzyp.cn/shop/fufu",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "风起Ai小卖铺",
+    "reference_url": "https://wzyp.cn/shop/FengAi",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai1998",
+    "reference_url": "https://wzyp.cn/shop/ai1998",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "gemini源头直供",
+    "reference_url": "https://wzyp.cn/shop/W50I8DVY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "映核资源站",
+    "reference_url": "https://wzyp.cn/shop/DJFT26BF",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "RoAi",
+    "reference_url": "https://wzyp.cn/shop/JNPC971G",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "旺旺铺子",
+    "reference_url": "https://wzyp.cn/shop/6D0QLK0N",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "灵AI",
+    "reference_url": "https://wzyp.cn/shop/H2QPI3X2",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Royce",
+    "reference_url": "https://wzyp.cn/shop/IK1XF5CA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "stayAI",
+    "reference_url": "https://wzyp.cn/shop/QHN4YVQP",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "jev",
+    "reference_url": "https://wzyp.cn/shop/WR09NYJN",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "【换地址了】ChihayaAI 【https://shop.sakisaki.top/】",
+    "reference_url": "https://wzyp.cn/shop/anon",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "翻车咩萝",
+    "reference_url": "https://wzyp.cn/shop/TSYOVSIV",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Reverse",
+    "reference_url": "https://wzyp.cn/shop/8TD03O0W",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "SMS-AIShop",
+    "reference_url": "https://wzyp.cn/shop/66666SMS",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai小卖部",
+    "reference_url": "https://wzyp.cn/shop/SGJ71TXK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai链动",
+    "reference_url": "https://wzyp.cn/shop/1H2U5JTI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Gemini AI折扣站",
+    "reference_url": "https://wzyp.cn/shop/8888",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "彩虹马的AI店",
+    "reference_url": "https://wzyp.cn/shop/AWXK3UJY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "MMB补给站",
+    "reference_url": "https://wzyp.cn/shop/KLAOH7AK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AIFXO",
+    "reference_url": "https://wzyp.cn/shop/aifxo",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "huihuiaoao",
+    "reference_url": "https://wzyp.cn/shop/N3BQ0GOI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "商家3500",
+    "reference_url": "https://wzyp.cn/shop/JXFBLWPZ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G成品号",
+    "reference_url": "https://wzyp.cn/shop/FDX91PV6",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Auto Subscribe",
+    "reference_url": "https://shop.auto-subscribe.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "怪兽AI",
+    "reference_url": "https://wzyp.cn/shop/NWH6ORAI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "蓝创API",
+    "reference_url": "https://wzyp.cn/shop/X2MZJRAY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Grape AI🍇",
+    "reference_url": "https://wzyp.cn/shop/JYO0X15L",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "KeikoAI小店",
+    "reference_url": "https://wzyp.cn/shop/keiko",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小铺（源头直供，招代理）",
+    "reference_url": "https://wzyp.cn/shop/chatgpt_ai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Doro AI",
+    "reference_url": "https://wzyp.cn/shop/doroai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "海飞丝AI",
+    "reference_url": "https://wzyp.cn/shop/haifs",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai小铺",
+    "reference_url": "https://wzyp.cn/shop/8DUJDZSR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Kstar",
+    "reference_url": "https://wzyp.cn/shop/UJLFBVR9",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "启灵AI",
+    "reference_url": "https://wzyp.cn/shop/H81FWD0T",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "鱼ai",
+    "reference_url": "https://wzyp.cn/shop/S8EK3HL5",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "diyun小铺",
+    "reference_url": "https://wzyp.cn/shop/IUWAYNYR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "kiro源头",
+    "reference_url": "https://wzyp.cn/shop/1XZXKYZB",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "养乐多",
+    "reference_url": "https://wzyp.cn/shop/FC6GCKGG",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "大卖 AI",
+    "reference_url": "https://wzyp.cn/shop/damai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "星光ai",
+    "reference_url": "https://wzyp.cn/shop/8X8DYGEW",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Apex AI",
+    "reference_url": "https://wzyp.cn/shop/ApexAI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "源头卡密",
+    "reference_url": "https://wzyp.cn/shop/F06LXGPS",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "TiboProMax",
+    "reference_url": "https://wzyp.cn/shop/OP96OFEN",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "BrothersAI",
+    "reference_url": "https://wzyp.cn/shop/TJFXRQD5",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai小店1150",
+    "reference_url": "https://wzyp.cn/shop/QLL06630",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "mortyAI小铺",
+    "reference_url": "https://wzyp.cn/shop/C7MLWX4N",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "乌鸦AI",
+    "reference_url": "https://wzyp.cn/shop/B8JKQFDK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "DeepToken",
+    "reference_url": "https://wzyp.cn/shop/DeepToken",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "LMark",
+    "reference_url": "https://wzyp.cn/shop/ELSXOANJ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "乐天图书馆",
+    "reference_url": "https://wzyp.cn/shop/lotte-library",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "PLUS直营店",
+    "reference_url": "https://wzyp.cn/shop/FNAOIGBK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ali.shop",
+    "reference_url": "https://wzyp.cn/shop/9P102ZA3",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "青卿",
+    "reference_url": "https://wzyp.cn/shop/qingqing",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "恶小梦",
+    "reference_url": "https://wzyp.cn/shop/J6F0Z1MF",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "柠檬西瓜",
+    "reference_url": "https://lemon-watermelon.com",
+    "reference_collector": "genericHtml",
+    "status": "needs_adapter",
+    "reason": "原站 HTTP 200，需核验独立页面结构"
+  },
+  {
+    "name": "双子星AI",
+    "reference_url": "https://wzyp.cn/shop/hajimi3303",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "TxyxT小店 - GPT Plus、GPT Pro、Gemini Pro等AI充值服务",
+    "reference_url": "https://shop.txyxt.dpdns.org",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "PopcornAPI",
+    "reference_url": "https://wzyp.cn/shop/A7QPIQGQ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Moert AI（招代理）",
+    "reference_url": "https://wzyp.cn/shop/D8EH8M0Y",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "雨辉小店",
+    "reference_url": "https://wzyp.cn/shop/JDMUNQEK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "祖传手艺人",
+    "reference_url": "https://wzyp.cn/shop/Qudong",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "xinai",
+    "reference_url": "https://wzyp.cn/shop/Z3N2T2TB",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小七AI 实验室",
+    "reference_url": "https://wzyp.cn/shop/JZJOPMQD",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI深研社",
+    "reference_url": "https://wzyp.cn/shop/FAJMDFWV",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI天使",
+    "reference_url": "https://wzyp.cn/shop/X3LOY3DI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "YYYYD",
+    "reference_url": "https://wzyp.cn/shop/LD52LLPD",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI开发商",
+    "reference_url": "https://wzyp.cn/shop/ai.shop",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Auto Subscribe / ultra.makelove.cloud",
+    "reference_url": "https://ultra.makelove.cloud",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "悦动ai",
+    "reference_url": "https://wzyp.cn/shop/DUMGWJ8A",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI铺子",
+    "reference_url": "https://wzyp.cn/shop/claudeai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI大卖家",
+    "reference_url": "https://wzyp.cn/shop/W89ITLDC",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "7878",
+    "reference_url": "https://wzyp.cn/shop/6TKPIT5E",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "北极星",
+    "reference_url": "https://wzyp.cn/shop/beijixing",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "大力小丸子",
+    "reference_url": "https://wzyp.cn/shop/CWMYU83X",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "便宜的codex的小铺",
+    "reference_url": "https://wzyp.cn/shop/E0Y14IRF",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "超梦ai",
+    "reference_url": "https://wzyp.cn/shop/R45NG4A8",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "豪猪",
+    "reference_url": "https://wzyp.cn/shop/GNS3838K",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "教长",
+    "reference_url": "https://wzyp.cn/shop/DFT712GK",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "靠谱 AI",
+    "reference_url": "https://wzyp.cn/shop/1I2Y9GEC",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "李页的小店",
+    "reference_url": "https://wzyp.cn/shop/liye",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "码愿AI",
+    "reference_url": "https://wzyp.cn/shop/6YHGJOPN",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "卖点AI",
+    "reference_url": "https://wzyp.cn/shop/7TCL10MR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "猫猫AI",
+    "reference_url": "https://wzyp.cn/shop/O5JHRJFZ",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "摸鱼工坊",
+    "reference_url": "https://wzyp.cn/shop/zcboy",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "模型契约",
+    "reference_url": "https://wzyp.cn/shop/atm",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "南乔ai",
+    "reference_url": "https://wzyp.cn/shop/X273D51R",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "四米名字",
+    "reference_url": "https://wzyp.cn/shop/P5034CNR",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "桃子的ai大店",
+    "reference_url": "https://wzyp.cn/shop/taozi168",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "无限AI",
+    "reference_url": "https://wzyp.cn/shop/T4JGK0GX",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "祥祥AI",
+    "reference_url": "https://wzyp.cn/shop/8ALLUCG3",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小易AI",
+    "reference_url": "https://wzyp.cn/shop/V3N6D2JM",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "小L专卖",
+    "reference_url": "https://wzyp.cn/shop/M4XS1E3Q",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "优质源头科技",
+    "reference_url": "https://wzyp.cn/shop/N6MIRGLW",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "云枢AI",
+    "reference_url": "https://wzyp.cn/shop/nextpro",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "智域AI服务",
+    "reference_url": "https://wzyp.cn/shop/591J6Q87",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "知客AI",
+    "reference_url": "https://wzyp.cn/shop/ESDBYE2X",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "专注ai",
+    "reference_url": "https://wzyp.cn/shop/29YZ9FO2",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI聚合商铺",
+    "reference_url": "https://wzyp.cn/shop/Y1ZQF0RS",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ai集成商",
+    "reference_url": "https://wzyp.cn/shop/6DV9N2BT",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "专业AI订阅服务",
+    "reference_url": "https://kapay.shop",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "AI小店",
+    "reference_url": "https://wzyp.cn/shop/HV676A0A",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小地摊",
+    "reference_url": "https://wzyp.cn/shop/openAI_codex",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小铺",
+    "reference_url": "https://wzyp.cn/shop/25G53A8F",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI小铺",
+    "reference_url": "https://wzyp.cn/shop/AGQPN4LL",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai源头店铺",
+    "reference_url": "https://wzyp.cn/shop/EIQ423GT",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "AI杂货铺",
+    "reference_url": "https://wzyp.cn/shop/5HJZN0Q1",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "BugTeam源头",
+    "reference_url": "https://wzyp.cn/shop/RINGYCWY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ai主理人",
+    "reference_url": "https://wzyp.cn/shop/TSW7DIEI",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "CodeCtrclc-对接码1101",
+    "reference_url": "https://wzyp.cn/shop/1101",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Cookie AI",
+    "reference_url": "https://wzyp.cn/shop/cookieai",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G-gemini会员稳定低价",
+    "reference_url": "https://wzyp.cn/shop/NUX4KNC4",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G商号",
+    "reference_url": "https://wzyp.cn/shop/FW0Q6UDA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "G小站",
+    "reference_url": "https://wzyp.cn/shop/gptpromax",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Gemini批发",
+    "reference_url": "https://wzyp.cn/shop/AZX4SPJ0",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "Ice Ai X",
+    "reference_url": "https://wzyp.cn/shop/iceaix",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "MortalAi",
+    "reference_url": "https://wzyp.cn/shop/ZYGCPJD7",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "NPC小铺",
+    "reference_url": "https://wzyp.cn/shop/RN3DIJIY",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "X的ai小店",
+    "reference_url": "https://wzyp.cn/shop/KN6NZBLA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "ZhiYu Ai",
+    "reference_url": "https://wzyp.cn/shop/mengyu",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "91网|一手货源",
+    "reference_url": "https://gmail91.shop",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (301)"
+  },
+  {
+    "name": "Acc-OTAOR",
+    "reference_url": "https://xtacc.top",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "萃选ai（可开发票）联系客服下单免手续费",
+    "reference_url": "https://www.16688.com.cn/shop/S428748",
+    "reference_collector": "16688_shop_api",
+    "status": "failed",
+    "reason": "原站无法确认店铺身份"
+  },
+  {
+    "name": "德玛西亚ai",
+    "reference_url": "https://pay.ldxp.cn/shop/Q5AIW19X",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "老饕AI源头",
+    "reference_url": "https://www.16688.com.cn/shop/S990848",
+    "reference_collector": "16688_shop_api",
+    "status": "failed",
+    "reason": "原站无法确认店铺身份"
+  },
+  {
+    "name": "购物 - NoDeexs",
+    "reference_url": "https://nodeexs.com",
+    "reference_collector": "kami",
+    "status": "failed",
+    "reason": "fetch failed"
+  },
+  {
+    "name": "老中医X",
+    "reference_url": "https://wzyp.cn/shop/A3H9BD10",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "青熵",
+    "reference_url": "https://pay.ldxp.cn/shop/P9HPIPWA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "全网低价GPT Team账号",
+    "reference_url": "https://pay.ldxp.cn/shop/ZKVLK6KL",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "轻点小铺 | 对接码：AA8PL",
+    "reference_url": "https://wzyp.cn/shop/468E0S05",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (520)"
+  },
+  {
+    "name": "若真AI",
+    "reference_url": "https://www.16688.com.cn/shop/S782319",
+    "reference_collector": "16688_shop_api",
+    "status": "failed",
+    "reason": "原站无法确认店铺身份"
+  },
+  {
+    "name": "源头GPT/GEMINI（招代理）",
+    "reference_url": "https://pay.ldxp.cn/shop/ai0001.com",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "A1gmail",
+    "reference_url": "https://www.16688.com.cn/shop/S799620",
+    "reference_collector": "16688_shop_api",
+    "status": "failed",
+    "reason": "原站无法确认店铺身份"
+  },
+  {
+    "name": "棱镜店铺",
+    "reference_url": "https://shop.558686.xyz",
+    "reference_collector": "kami",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (502)"
+  },
+  {
+    "name": "Ai小卖部",
+    "reference_url": "https://pay.ldxp.cn/shop/D13I8BK4",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "AI杂货铺",
+    "reference_url": "https://pay.ldxp.cn/shop/009527",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "BMCCA小铺",
+    "reference_url": "https://pay.ldxp.cn/shop/BMCCA",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "beibei",
+    "reference_url": "https://bei-bei.shop",
+    "reference_collector": "beibeiHtml",
+    "status": "failed",
+    "reason": "源站 HTTP 403"
+  },
+  {
+    "name": "freejson",
+    "reference_url": "https://pay.ldxp.cn/shop/3KBNYI29",
+    "reference_collector": null,
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "Auto Subscribe / shop.aitonse.com",
+    "reference_url": "https://shop.aitonse.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (521)"
+  },
+  {
+    "name": "GPT pro20x",
+    "reference_url": "https://sulanjun.cc",
+    "reference_collector": "genericHtml",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (403)"
+  },
+  {
+    "name": "LynnZee 店铺",
+    "reference_url": "http://lynnzee.myweb999.cfd",
+    "reference_collector": "kami",
+    "status": "failed",
+    "reason": "来源必须使用公开域名的 HTTPS 地址"
+  },
+  {
+    "name": "geekaihub.com",
+    "reference_url": "https://geekaihub.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "源站 HTTP 404"
+  },
+  {
+    "name": "shop.olimap.top",
+    "reference_url": "https://shop.olimap.top",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "team",
+    "reference_url": "https://faka.aiceo.dev",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "无法确认 robots.txt (403)"
+  },
+  {
+    "name": "账号小卖铺",
+    "reference_url": "https://11.id2323.top",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "YOYO小卖部",
+    "reference_url": "https://pay.ldxp.cn/shop/RYRCN59O",
+    "reference_collector": "shopApi",
+    "status": "failed",
+    "reason": "旧域名未返回可验证的跳转"
+  },
+  {
+    "name": "xxxyan",
+    "reference_url": "https://xxxyan.cc",
+    "reference_collector": "genericHtml",
+    "status": "failed",
+    "reason": "robots.txt 禁止该路径采集"
+  },
+  {
+    "name": "jzai1688.com",
+    "reference_url": "https://jzai1688.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  },
+  {
+    "name": "n1.ccnmgpt.com",
+    "reference_url": "https://n1.ccnmgpt.com",
+    "reference_collector": "dujiao",
+    "status": "failed",
+    "reason": "The operation was aborted due to timeout"
+  }
+]

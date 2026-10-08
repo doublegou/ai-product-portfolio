@@ -1,0 +1,80 @@
+/* Browser preference owns the theme; there is no persistent manual override. */
+:root { color-scheme: light; }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e9ecf2;
+  --muted: #a1a9b9;
+  --line: #ffffff16;
+  --blue: #93b3ff;
+  --soft: #20232c;
+  --green: #87cbb2;
+  --glass-edge: #ffffff18;
+  --glass-shadow: 0 16px 42px -28px #0009, 0 2px 7px #0002;
+  color: var(--ink);
+  background: #14161c;
+
+  body { background: radial-gradient(ellipse 680px 500px at 85% 240px, #303a6029, transparent 80%), radial-gradient(ellipse 580px 600px at 55% 1100px, #4d34521c, transparent 80%), #14161c; }
+  ::selection { background: #486091; color: #fff; }
+  .site-header { background: #14161cb3; border: 0; box-shadow: none; }
+  .main-nav.is-open { background: #1b1f28f5; border-color: var(--line); }
+  .main-nav a { color: #a6aebd; }
+  .main-nav a.active, .main-nav a:hover { color: var(--ink); }
+  .main-nav a.active::after { background: var(--ink); }
+  .brand, .footer-brand { color: var(--ink); }
+  .entry-copy h1 span, .entry-copy h2 span { color: #a7aebe; }
+  .entry-copy p, .section-index, .directory-heading p, .directory-heading h1 span,
+  .api-carousel-caption, .api-carousel-caption small, .footer-top>div>p,
+  .footer-links, .footer-bottom, .card-specs, .best-offer, .card-meta, .provider-note,
+  .provider-facts dt, .provider-facts dd, .model-tags span, .provider-kind,
+  .api-provider-top small, .provider-rates summary>span, .rate-columns>span,
+  .rates-content p, .rates-content>small, .detail-product>p, .detail-meta>span,
+  .detail-notes p, .quote-filters label, .offer-expanded>p, .offer-expanded>small,
+  .offer-expanded>div, .dialog-inner p, .product-identity p, .offer-spec>span, .filter-button, .result-summary, .pagination,
+  .merchant-cell>div>span, .offer-stock>small, .offer-price>small,
+  .detail-reference>span, .detail-reference>p, .detail-reference strong small { color: #a5adbc; }
+  .api-entry, .catalog-page .platform-tabs, .card-meta, .provider-links,
+  .detail-hero, .detail-notes, .offer-table-head, .footer-bottom, .toolbar-divider { border-color: var(--line); }
+  .button.dark { background: linear-gradient(150deg,#f2f3f8,#d8dce7); color: #20232d; border-color: #ffffff85; box-shadow: inset 0 1px 0 #fff, 0 6px 18px #0003; }
+  .button.dark:hover { background: #fff; }
+  .button.secondary, .skip-link { background: #252a35; color: var(--ink); border-color: #ffffff24; }
+  .glass-surface, .detail-reference, .advanced-filters, .offer-block, .info-dialog,
+  .product-row { background: linear-gradient(125deg,#30364380,#24283360 65%,#31394b50); border-color: #ffffff14; box-shadow: inset 0 1px 1px #ffffff0d, 0 12px 32px -24px #000b; }
+  .subscription-card:hover, .offer-block:hover, .product-row:hover { background: linear-gradient(125deg,#363e4e90,#282e3a80); box-shadow: inset 0 1px 1px #ffffff16, 0 16px 36px -20px #000b; }
+  .card-price strong, .detail-reference>strong, .offer-price>strong,
+  .rate-columns strong, .merchant-cell strong, .product-identity h3, .product-amount>strong { color: #e2e9f8; }
+  .expired .offer-price>strong { color: #9aa3b1; }
+  .stock-chip, .stock-status.ready { color: #8fcab5; }
+  .stock-chip.muted, .stock-status { color: #a6aebc; }
+  .lowest-label, .saved, .subscription-card-top .icon-button.saved { color: #99b8f9; }
+  .catalog-page .category-tabs button.active, .api-model-tabs button.active,
+  .category-tabs>button.active>span, .filter-button.active { background: #8ba8e521; color: #c6d7f9; }
+  .category-tabs>button, .platform-tabs>button, .segmented button, .api-model-tabs button { color: #a4aebe; }
+  .category-tabs>button>span, .quotes-title h2>span, .currency-tag, .currency-label { background: #ffffff0a; color: #b2bdcf; }
+  .platform-tabs>button.active, .segmented button.active { background: #a5b8e018; color: #e0eaff; border-color: #ffffff17; box-shadow: none; }
+  .platform-tabs>button:hover, .icon-button:hover, .pagination button:hover { background: #ffffff0c; }
+  .search-field, .quote-filters select, .advanced-filters select, .advanced-filters input[type="number"] { background: #ffffff06; border-color: #ffffff1c; color: #c3ccdb; box-shadow: inset 0 1px 2px #0001; }
+  input::placeholder { color: #929cad; }
+  select, input { color: var(--ink); }
+  select option { background: #222631; color: var(--ink); }
+  .platform-icon, .provider-mark, .merchant-avatar { background: #ffffff08; border-color: #ffffff14; box-shadow: inset 0 1px 1px #ffffff13; }
+  .platform-tabs .platform-icon { background: none; box-shadow: none; border: 0; }
+  img[src="/logos/openai.svg"], img[src="/logos/grok.svg"], img[src="/logos/cursor.svg"] { filter: invert(1); }
+  .model-tags span, .rates-content>div, .offer-expanded { background: #ffffff05; border-color: var(--line); }
+  .provider-kind { border-color: #ffffff20; }
+  .provider-links a, .provider-rates summary, .merchant-link, .offer-expanded>div>a { color: #b6c9ec; }
+  .merchant-link { background: #ffffff08; border-color: #ffffff1c; }
+  .merchant-link:hover { background: #ffffff12; border-color: #a4bdef60; }
+  .site-footer { background: #ffffff01; border-color: var(--line); }
+  .info-dialog { background: #20242ef5; }
+  .info-dialog::backdrop { background: #05081199; }
+  .carousel-play-button { color: #c6cfdf; background: #ffffff09; border-color: #ffffff20; box-shadow: none; }
+  .carousel-play-button:hover { background: #ffffff16; }
+  .companion-atmosphere { background: radial-gradient(ellipse at 28% 30%,#a76c3630,transparent 40%),radial-gradient(ellipse at 70% 35%,#6071b636,transparent 50%); }
+  .companion-shadow { background: #000b; box-shadow: 0 0 22px 12px #b5c4e80c; }
+  .bubble-surface { background: radial-gradient(circle at var(--light-x) var(--light-y),#ffffff30,#fff0 30%),radial-gradient(circle at 73% 80%,rgba(var(--tint),.17),transparent 51%),radial-gradient(circle at 48% 48%,#fff0 62%,#ffffff07 78%,#ffffff28 98%); box-shadow: inset 1px 2px 3px #ffffff40,inset -2px -3px 6px rgba(var(--tint),.16),0 16px 20px -17px #000b; }
+  .bubble-surface::before { opacity: .55; }
+  .bubble-reflection { opacity: .7; }
+  .bubble-label { color: #a0aabd; }
+  .platform-bubble:is(:hover,:focus-visible) .bubble-surface { box-shadow: inset 1px 2px 4px #ffffff45,inset -2px -3px 8px rgba(var(--tint),.24),0 20px 26px -16px #000b; }
+  .platform-bubble:is(:hover,:focus-visible) .bubble-label { color: #ecf0f8; }
+}

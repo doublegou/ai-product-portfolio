@@ -1,0 +1,352 @@
+[
+  {
+    "id": "chatgpt-codex-service",
+    "name": "Codex / ChatGPT 周边与自助服务",
+    "subtitle": "提链 · 教程 · 扫码 · 自助充值 · 邀请 · 优惠码",
+    "platform": "ChatGPT",
+    "kind": "辅助服务"
+  },
+  {
+    "id": "chatgpt-free-account",
+    "name": "ChatGPT 普号",
+    "subtitle": "普通账号",
+    "platform": "ChatGPT",
+    "kind": "成品账号"
+  },
+  {
+    "id": "chatgpt-plus",
+    "name": "ChatGPT Plus 试用订阅",
+    "subtitle": "日抛 · 成品号 · 网页号 · 已/未接码",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-team-business",
+    "name": "ChatGPT Team / Business",
+    "subtitle": "K12 · 1x/5x Team · 正价席位 · 母号/子号 · 邀请/自动拉",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-go",
+    "name": "ChatGPT Go",
+    "subtitle": "Go",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-codex-credits",
+    "name": "Codex 额度充值",
+    "subtitle": "Codex 点数 / Credits",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-plus-recharge",
+    "name": "ChatGPT Plus 正价代充",
+    "subtitle": "官方充值 · 正价/正规 · 真实付费",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-pro-20x",
+    "name": "ChatGPT Pro 200刀档",
+    "subtitle": "Pro / 200 刀 · 20x",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-pro-5x",
+    "name": "ChatGPT Pro 100刀档",
+    "subtitle": "Pro / 100 刀 · 5x",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "chatgpt-pro-500",
+    "name": "ChatGPT Pro 500刀档",
+    "subtitle": "Pro / 500 刀 · Pro Max / 25x / 50x",
+    "platform": "ChatGPT",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "claude-account",
+    "name": "Claude 普号 / 兑换号",
+    "subtitle": "普通账号",
+    "platform": "Claude",
+    "kind": "成品账号"
+  },
+  {
+    "id": "claude-kyc-verification",
+    "name": "Claude KYC 认证",
+    "subtitle": "KYC / Persona 认证",
+    "platform": "Claude",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "claude-pro-month",
+    "name": "Claude Pro",
+    "subtitle": "Pro",
+    "platform": "Claude",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "claude-max-5x",
+    "name": "Claude Max 5x",
+    "subtitle": "Max / 5x",
+    "platform": "Claude",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "claude-team-premium",
+    "name": "Claude Team Premium",
+    "subtitle": "Team Premium / 6.25x",
+    "platform": "Claude",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "claude-max-20x",
+    "name": "Claude Max 20x",
+    "subtitle": "Max / 20x",
+    "platform": "Claude",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "claude-team-standard",
+    "name": "Claude Team Standard",
+    "subtitle": "Team Standard / 1.25x",
+    "platform": "Claude",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "gemini-pro-recharge",
+    "name": "Gemini Pro 充值/开通",
+    "subtitle": "Pro / 充值开通",
+    "platform": "Gemini",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "gemini-pro-year",
+    "name": "Gemini Pro 成品号",
+    "subtitle": "Pro / 成品号",
+    "platform": "Gemini",
+    "kind": "成品账号"
+  },
+  {
+    "id": "gemini-ultra",
+    "name": "Google AI Ultra 20x / Gemini Ultra",
+    "subtitle": "Ultra 20x / 未注明档位",
+    "platform": "Gemini",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "gemini-ultra-5x",
+    "name": "Google AI Ultra 5x",
+    "subtitle": "Ultra 5x",
+    "platform": "Gemini",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "grok-account",
+    "name": "Grok 普号 / 体验号",
+    "subtitle": "普通账号 / 体验",
+    "platform": "Grok",
+    "kind": "成品账号"
+  },
+  {
+    "id": "super-grok-lite",
+    "name": "SuperGrok Lite",
+    "subtitle": "Lite",
+    "platform": "Grok",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "super-grok",
+    "name": "Super Grok",
+    "subtitle": "Super",
+    "platform": "Grok",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "super-grok-heavy",
+    "name": "SuperGrok Heavy / Grok Heavy",
+    "subtitle": "Heavy",
+    "platform": "Grok",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "outlook-account",
+    "name": "Outlook / Hotmail 邮箱",
+    "subtitle": "Outlook / Hotmail / Microsoft",
+    "platform": "邮箱",
+    "kind": "邮箱/账号"
+  },
+  {
+    "id": "icloud-email",
+    "name": "iCloud 邮箱",
+    "subtitle": "iCloud",
+    "platform": "邮箱",
+    "kind": "邮箱/账号"
+  },
+  {
+    "id": "email-account",
+    "name": "其他邮箱",
+    "subtitle": "其他邮箱",
+    "platform": "邮箱",
+    "kind": "邮箱/账号"
+  },
+  {
+    "id": "gmail-account",
+    "name": "Gmail / Google 邮箱",
+    "subtitle": "Gmail / Google",
+    "platform": "邮箱",
+    "kind": "邮箱/账号"
+  },
+  {
+    "id": "education-email",
+    "name": "教育邮箱",
+    "subtitle": "Edu",
+    "platform": "邮箱",
+    "kind": "邮箱/账号"
+  },
+  {
+    "id": "openai-phone-verification",
+    "name": "OpenAI / ChatGPT 接码",
+    "subtitle": "OpenAI / ChatGPT",
+    "platform": "接码",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "paypal-phone-verification",
+    "name": "PayPal 接码",
+    "subtitle": "PayPal",
+    "platform": "接码",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "google-phone-verification",
+    "name": "Google / Gemini 接码",
+    "subtitle": "Google / Gemini",
+    "platform": "接码",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "phone-verification",
+    "name": "通用接码",
+    "subtitle": "短信 / 手机号验证",
+    "platform": "接码",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "identity-verification",
+    "name": "真人 / KYC 验证",
+    "subtitle": "KYC / 真人验证",
+    "platform": "接码",
+    "kind": "接码/验证"
+  },
+  {
+    "id": "cursor-account",
+    "name": "Cursor 账号",
+    "subtitle": "Cursor",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "kiro-account",
+    "name": "Kiro 普号 / Free",
+    "subtitle": "Free / 普号",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "kiro-pro-account",
+    "name": "Kiro Pro / 额度号",
+    "subtitle": "Pro / 额度",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "windsurf-account",
+    "name": "Windsurf 账号",
+    "subtitle": "Windsurf",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "perplexity-account",
+    "name": "Perplexity 账号",
+    "subtitle": "Perplexity",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "suno-account",
+    "name": "Suno 账号",
+    "subtitle": "Suno",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "dreamina-account",
+    "name": "Dreamina / 即梦",
+    "subtitle": "Basic / Seedance 2.0",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "apple-id-account",
+    "name": "Apple ID / 苹果账号",
+    "subtitle": "Apple ID",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "x-twitter-account",
+    "name": "X / 推特账号",
+    "subtitle": "X / Twitter",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "x-twitter-premium",
+    "name": "X Premium / 推特会员",
+    "subtitle": "Premium / Premium+",
+    "platform": "其他",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "telegram-account",
+    "name": "Telegram 账号",
+    "subtitle": "成品账号 / 地区号",
+    "platform": "其他",
+    "kind": "工具账号"
+  },
+  {
+    "id": "telegram-premium",
+    "name": "Telegram Premium / Pro 会员",
+    "subtitle": "Premium / Stars",
+    "platform": "其他",
+    "kind": "订阅/会员"
+  },
+  {
+    "id": "virtual-card",
+    "name": "虚拟卡",
+    "subtitle": "VISA / MasterCard",
+    "platform": "其他",
+    "kind": "虚拟卡"
+  },
+  {
+    "id": "gift-card",
+    "name": "礼品卡",
+    "subtitle": "Apple / 通用礼品卡",
+    "platform": "其他",
+    "kind": "礼品卡"
+  },
+  {
+    "id": "other-product",
+    "name": "其他商品",
+    "subtitle": "其他",
+    "platform": "其他",
+    "kind": "其他"
+  }
+]

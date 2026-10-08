@@ -1,0 +1,368 @@
+{
+  "verified_at": "2026-10-08T21:15:16.368Z",
+  "live_url": "https://pricemapai-web-production.pricemapai.workers.dev/api-pricing",
+  "admin_url": "https://pricemapai-web-production.pricemapai.workers.dev/admin",
+  "unit_tests": 60,
+  "build": "passed",
+  "database_transaction_tests": "passed",
+  "scheduler_permission_tests": "passed",
+  "sources": 18,
+  "healthy": 17,
+  "public_stations": 18,
+  "public_quotes": 2109,
+  "expiry_minutes": 45,
+  "source_interval_minutes": 15,
+  "front_refresh_minutes": 5,
+  "worker_cache_max_minutes": 5,
+  "statuses": {
+    "/api/health": 200,
+    "/api/offers?limit=1": 200,
+    "/api-pricing": 200,
+    "/admin": 200
+  },
+  "unauthenticated": {
+    "/api/admin/transit/sources": 401,
+    "/api/admin/transit/runs": 401,
+    "/api/admin/transit/preview": 401,
+    "/api/admin/transit/crawl": 401
+  },
+  "invalid_private_source": 400,
+  "function_missing_crawler_token": 401,
+  "frontend_contains_secrets": false,
+  "admin_preview": {
+    "http": 200,
+    "count": 39,
+    "returned_rows": 10,
+    "writes": false
+  },
+  "coverage_pending": 10,
+  "prices_source": "original merchant websites only",
+  "browser_visual_qa": "Passed public desktop and responsive mobile checks; admin entry and invalid login checked. See transit-browser-verification-20261009.json.",
+  "cloudflare_version": "5e403e67-6f53-4f98-97be-98fddb3d4d64",
+  "public_asset": "assets/public-BoOmULiL.js",
+  "scheduler_evidence": "transit-scheduler-verification.json",
+  "runs": [
+    {
+      "source_id": "bb-api-com",
+      "started_at": "2026-10-08T21:10:02.665943+00:00",
+      "status": "failed",
+      "offer_count": 0,
+      "error": "Signal timed out."
+    },
+    {
+      "source_id": "yuanqiaoyun-com",
+      "started_at": "2026-10-08T21:10:01.77045+00:00",
+      "status": "success",
+      "offer_count": 73,
+      "error": null
+    },
+    {
+      "source_id": "wcapis-com",
+      "started_at": "2026-10-08T21:10:01.764863+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "wawazz-xyz",
+      "started_at": "2026-10-08T21:09:01.411131+00:00",
+      "status": "success",
+      "offer_count": 106,
+      "error": null
+    },
+    {
+      "source_id": "topapi-io",
+      "started_at": "2026-10-08T21:09:01.258057+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "umapis-com",
+      "started_at": "2026-10-08T21:09:00.551994+00:00",
+      "status": "success",
+      "offer_count": 22,
+      "error": null
+    },
+    {
+      "source_id": "sub-callai-one",
+      "started_at": "2026-10-08T21:09:00.54963+00:00",
+      "status": "success",
+      "offer_count": 25,
+      "error": null
+    },
+    {
+      "source_id": "linghui-ai-com",
+      "started_at": "2026-10-08T21:08:02.259763+00:00",
+      "status": "success",
+      "offer_count": 58,
+      "error": null
+    },
+    {
+      "source_id": "ncncapi-top",
+      "started_at": "2026-10-08T21:08:01.536394+00:00",
+      "status": "success",
+      "offer_count": 94,
+      "error": null
+    },
+    {
+      "source_id": "codex666ai-com",
+      "started_at": "2026-10-08T21:08:01.347386+00:00",
+      "status": "success",
+      "offer_count": 461,
+      "error": null
+    },
+    {
+      "source_id": "newapi-dragon3api-com",
+      "started_at": "2026-10-08T21:08:00.837727+00:00",
+      "status": "success",
+      "offer_count": 164,
+      "error": null
+    },
+    {
+      "source_id": "khala-online",
+      "started_at": "2026-10-08T21:08:00.826594+00:00",
+      "status": "success",
+      "offer_count": 92,
+      "error": null
+    },
+    {
+      "source_id": "api-1pkapi-com",
+      "started_at": "2026-10-08T21:08:00.624139+00:00",
+      "status": "success",
+      "offer_count": 83,
+      "error": null
+    },
+    {
+      "source_id": "apinode-ltd",
+      "started_at": "2026-10-08T21:08:00.619657+00:00",
+      "status": "success",
+      "offer_count": 39,
+      "error": null
+    },
+    {
+      "source_id": "alltokens-cc",
+      "started_at": "2026-10-08T21:06:10.760702+00:00",
+      "status": "success",
+      "offer_count": 75,
+      "error": null
+    },
+    {
+      "source_id": "aliuapi-top",
+      "started_at": "2026-10-08T21:06:08.672339+00:00",
+      "status": "success",
+      "offer_count": 199,
+      "error": null
+    },
+    {
+      "source_id": "999555999-com",
+      "started_at": "2026-10-08T21:06:00.422197+00:00",
+      "status": "success",
+      "offer_count": 49,
+      "error": null
+    },
+    {
+      "source_id": "790053500-com",
+      "started_at": "2026-10-08T21:06:00.41832+00:00",
+      "status": "success",
+      "offer_count": 180,
+      "error": null
+    },
+    {
+      "source_id": "yuanqiaoyun-com",
+      "started_at": "2026-10-08T20:54:01.09751+00:00",
+      "status": "success",
+      "offer_count": 73,
+      "error": null
+    },
+    {
+      "source_id": "wcapis-com",
+      "started_at": "2026-10-08T20:54:01.094741+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "bb-api-com",
+      "started_at": "2026-10-08T20:53:30.53232+00:00",
+      "status": "success",
+      "offer_count": 237,
+      "error": null
+    },
+    {
+      "source_id": "wawazz-xyz",
+      "started_at": "2026-10-08T20:53:17.176784+00:00",
+      "status": "success",
+      "offer_count": 106,
+      "error": null
+    },
+    {
+      "source_id": "umapis-com",
+      "started_at": "2026-10-08T20:53:16.221944+00:00",
+      "status": "success",
+      "offer_count": 22,
+      "error": null
+    },
+    {
+      "source_id": "topapi-io",
+      "started_at": "2026-10-08T20:53:15.576182+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "sub-callai-one",
+      "started_at": "2026-10-08T20:53:15.550489+00:00",
+      "status": "success",
+      "offer_count": 25,
+      "error": null
+    },
+    {
+      "source_id": "newapi-dragon3api-com",
+      "started_at": "2026-10-08T20:52:28.096793+00:00",
+      "status": "success",
+      "offer_count": 164,
+      "error": null
+    },
+    {
+      "source_id": "ncncapi-top",
+      "started_at": "2026-10-08T20:52:27.939611+00:00",
+      "status": "success",
+      "offer_count": 94,
+      "error": null
+    },
+    {
+      "source_id": "khala-online",
+      "started_at": "2026-10-08T20:52:24.936262+00:00",
+      "status": "success",
+      "offer_count": 92,
+      "error": null
+    },
+    {
+      "source_id": "linghui-ai-com",
+      "started_at": "2026-10-08T20:52:24.923594+00:00",
+      "status": "success",
+      "offer_count": 58,
+      "error": null
+    },
+    {
+      "source_id": "codex666ai-com",
+      "started_at": "2026-10-08T20:52:00.169542+00:00",
+      "status": "success",
+      "offer_count": 461,
+      "error": null
+    }
+  ],
+  "snapshots": [
+    {
+      "source_id": "bb-api-com",
+      "quote_count": 237,
+      "last_seen_at": "2026-10-08T20:53:46.212029+00:00",
+      "expires_at": "2026-10-08T21:38:46.212029+00:00"
+    },
+    {
+      "source_id": "790053500-com",
+      "quote_count": 180,
+      "last_seen_at": "2026-10-08T21:06:08.601099+00:00",
+      "expires_at": "2026-10-08T21:51:08.601099+00:00"
+    },
+    {
+      "source_id": "999555999-com",
+      "quote_count": 49,
+      "last_seen_at": "2026-10-08T21:06:10.699381+00:00",
+      "expires_at": "2026-10-08T21:51:10.699381+00:00"
+    },
+    {
+      "source_id": "aliuapi-top",
+      "quote_count": 199,
+      "last_seen_at": "2026-10-08T21:06:11.157615+00:00",
+      "expires_at": "2026-10-08T21:51:11.157615+00:00"
+    },
+    {
+      "source_id": "alltokens-cc",
+      "quote_count": 75,
+      "last_seen_at": "2026-10-08T21:06:12.326481+00:00",
+      "expires_at": "2026-10-08T21:51:12.326481+00:00"
+    },
+    {
+      "source_id": "api-1pkapi-com",
+      "quote_count": 83,
+      "last_seen_at": "2026-10-08T21:08:01.291847+00:00",
+      "expires_at": "2026-10-08T21:53:01.291847+00:00"
+    },
+    {
+      "source_id": "newapi-dragon3api-com",
+      "quote_count": 164,
+      "last_seen_at": "2026-10-08T21:08:01.487477+00:00",
+      "expires_at": "2026-10-08T21:53:01.487477+00:00"
+    },
+    {
+      "source_id": "codex666ai-com",
+      "quote_count": 461,
+      "last_seen_at": "2026-10-08T21:08:02.171774+00:00",
+      "expires_at": "2026-10-08T21:53:02.171774+00:00"
+    },
+    {
+      "source_id": "ncncapi-top",
+      "quote_count": 94,
+      "last_seen_at": "2026-10-08T21:08:02.533894+00:00",
+      "expires_at": "2026-10-08T21:53:02.533894+00:00"
+    },
+    {
+      "source_id": "apinode-ltd",
+      "quote_count": 39,
+      "last_seen_at": "2026-10-08T21:08:03.619741+00:00",
+      "expires_at": "2026-10-08T21:53:03.619741+00:00"
+    },
+    {
+      "source_id": "khala-online",
+      "quote_count": 92,
+      "last_seen_at": "2026-10-08T21:08:03.729893+00:00",
+      "expires_at": "2026-10-08T21:53:03.729893+00:00"
+    },
+    {
+      "source_id": "linghui-ai-com",
+      "quote_count": 58,
+      "last_seen_at": "2026-10-08T21:08:05.107903+00:00",
+      "expires_at": "2026-10-08T21:53:05.107903+00:00"
+    },
+    {
+      "source_id": "sub-callai-one",
+      "quote_count": 25,
+      "last_seen_at": "2026-10-08T21:09:01.208588+00:00",
+      "expires_at": "2026-10-08T21:54:01.208588+00:00"
+    },
+    {
+      "source_id": "umapis-com",
+      "quote_count": 22,
+      "last_seen_at": "2026-10-08T21:09:01.364085+00:00",
+      "expires_at": "2026-10-08T21:54:01.364085+00:00"
+    },
+    {
+      "source_id": "topapi-io",
+      "quote_count": 76,
+      "last_seen_at": "2026-10-08T21:09:03.44745+00:00",
+      "expires_at": "2026-10-08T21:54:03.44745+00:00"
+    },
+    {
+      "source_id": "wawazz-xyz",
+      "quote_count": 106,
+      "last_seen_at": "2026-10-08T21:09:03.995609+00:00",
+      "expires_at": "2026-10-08T21:54:03.995609+00:00"
+    },
+    {
+      "source_id": "wcapis-com",
+      "quote_count": 76,
+      "last_seen_at": "2026-10-08T21:10:02.607937+00:00",
+      "expires_at": "2026-10-08T21:55:02.607937+00:00"
+    },
+    {
+      "source_id": "yuanqiaoyun-com",
+      "quote_count": 73,
+      "last_seen_at": "2026-10-08T21:10:11.773024+00:00",
+      "expires_at": "2026-10-08T21:55:11.773024+00:00"
+    }
+  ],
+  "superseded_by": "transit-expansion-verification.json",
+  "report_scope": "Historical initial 18-source acceptance; use superseded_by for current coverage and deployment."
+}

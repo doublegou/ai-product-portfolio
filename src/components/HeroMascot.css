@@ -1,0 +1,94 @@
+.companion-scene {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 500px;
+  max-width: 600px;
+  margin: auto;
+  min-width: 0;
+}
+.companion-atmosphere {
+  position: absolute; inset: -8% -7% 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 27% 40%, #edd9c330, transparent 43%),
+    radial-gradient(ellipse at 72% 35%, #c7d4f443, transparent 45%),
+    radial-gradient(ellipse at 55% 68%, #d6d3ee24, transparent 52%);
+  filter: blur(18px);
+}
+.bubble-platforms { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.platform-bubble {
+  --light-x: 28%; --light-y: 18%; --tilt-x: 0deg; --tilt-y: 0deg;
+  position: absolute; left: var(--x); top: var(--y);
+  width: var(--size); height: var(--size);
+  transform: translate(-50%, -50%);
+  border-radius: 50%; outline-offset: 9px; pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+.bubble-float { display: block; width: 100%; height: 100%; position: relative; animation: bubble-drift 7s var(--delay) ease-in-out infinite; }
+.bubble-surface {
+  position: relative; display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%;
+  /* A transparent centre, curved reflections and a fine spectral edge form the bubble. */
+  background:
+    radial-gradient(circle at var(--light-x) var(--light-y), #ffffff80, #fff0 30%),
+    radial-gradient(circle at 73% 80%, rgba(var(--tint), .14), transparent 51%),
+    radial-gradient(circle at 48% 48%, #fff0 62%, #ffffff16 78%, #ffffff75 98%);
+  box-shadow: inset 1px 2px 3px #ffffffdd, inset -2px -3px 6px rgba(var(--tint), .16),
+    0 16px 20px -17px rgba(var(--tint), .5);
+  backdrop-filter: blur(1.5px) saturate(1.12);
+  -webkit-backdrop-filter: blur(1.5px) saturate(1.12);
+  transform: perspective(450px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .45s;
+}
+.bubble-surface::before {
+  content: ""; position: absolute; inset: 0; padding: 1px; border-radius: inherit; pointer-events: none;
+  background: conic-gradient(from -35deg, #fff, #c5d5ed65 14%, #fff9 26%, #e9c7dcaa 42%, #a8ccd09c 59%, #fff 76%, #f2dbc788 88%, #fff);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.bubble-reflection {
+  position: absolute; width: 42%; height: 17%; top: 8%; left: 13%; border-radius: 50%;
+  border-top: 2px solid #ffffffdf; transform: rotate(-33deg); filter: blur(.25px); pointer-events: none;
+}
+.bubble-reflection::after {
+  content: ""; position: absolute; width: 7px; height: 3px; top: 5px; left: -3px; border-radius: 50%; background: #fff9;
+}
+.bubble-surface img { width: 40%; height: 40%; object-fit: contain; opacity: .86; transition: transform .45s, opacity .35s; }
+.bubble-label {
+  position: absolute; top: calc(100% + 11px); left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 450; color: #88909e; letter-spacing: .01em;
+  transition: color .3s, transform .4s; white-space: nowrap;
+}
+.platform-bubble:is(:hover, :focus-visible) { z-index: 4; }
+.platform-bubble:is(:hover, :focus-visible) .bubble-float { animation-play-state: paused; }
+.platform-bubble:is(:hover, :focus-visible) .bubble-surface {
+  transform: perspective(450px) translateY(-5px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) scale(1.04);
+  box-shadow: inset 1px 2px 4px #fff, inset -2px -3px 8px rgba(var(--tint), .23), 0 20px 26px -16px rgba(var(--tint), .42);
+}
+.platform-bubble:is(:hover, :focus-visible) .platform-bubble:is(:hover, :focus-visible) img { opacity: 1; transform: translateY(-2px) scale(1.04); }
+.platform-bubble:is(:hover, :focus-visible) .platform-bubble:is(:hover, :focus-visible) .bubble-label { color: #383d48; transform: translate(-50%, 3px); }
+.platform-bubble:active .bubble-surface { transform: scale(.96); transition-duration: .12s; }
+.companion-anchor { position: absolute; width: 290px; height: 290px; left: 50%; top: 67%; transform: translate(-50%, -50%); z-index: 1; }
+.companion-character { display: block; padding: 0; border: 0; width: 100%; height: 100%; border-radius: 50%; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.companion-render { display: block; width: 100%; height: 100%; }
+.companion-render svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.companion-shadow { position: absolute; left: 26%; width: 48%; height: 12px; bottom: -6px; border-radius: 50%; background: #66617230; filter: blur(11px); pointer-events: none; }
+@keyframes bubble-drift { 0%,100% { transform: translateY(4px) rotate(-2deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+@media(max-width:1100px) {
+  .companion-scene { height: 455px; }
+  .platform-bubble { width: calc(var(--size) * .85); height: calc(var(--size) * .85); }
+  .companion-anchor { width: 260px; height: 260px; }
+}
+@media(max-width:760px) {
+  .companion-scene { height: 390px; max-width: 440px; margin-top: 18px; }
+  .platform-bubble { width: max(48px, calc(var(--size) * .78)); height: max(48px, calc(var(--size) * .78)); }
+  .bubble-label { font-size: 10px; top: calc(100% + 8px); }
+  .companion-anchor { width: 235px; height: 235px; top: 66%; }
+  .companion-atmosphere { inset: 0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .bubble-float { animation: none; }
+  .platform-bubble *, .platform-bubble *::after { transition: none; }
+}
+
+/* Focus is indicated by the label, without adding a ring around the bubble. */
+.platform-bubble:focus-visible { outline: none; }
+.platform-bubble:focus-visible .bubble-label { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }

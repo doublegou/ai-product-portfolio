@@ -1,0 +1,9 @@
+Grok Ball — https://github.com/tycoding/grok-ball
+Copyright (c) 2026 tycoding. MIT license (see LICENSE).
+
+Vendored grok-ball.js and the TypeScript entry in src/vendor/grok-ball.
+Local changes (2026-10-08): optional circular/upright geometry and centred eye
+contours, configurable gaze response/range, reduced idle eye drift during
+tracking, live theme updates, fixed body sizing and deeper surface lighting, neutral-eye proportion calibration and shared gaze
+perspective (intentional expression asymmetry is preserved). PriceMap's React lifecycle integration,
+pointer/focus interactions and transparent platform bubbles are local additions.

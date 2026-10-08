@@ -1,0 +1,113 @@
+{
+  "verified_at": "2026-10-08T20:20:24.509791+00:00",
+  "unit_tests": 52,
+  "typescript": "passed",
+  "production_build": "passed",
+  "database_transaction_tests": "passed, fixtures rolled back",
+  "live_offer_rows": 4482,
+  "live_offer_unique_ids": 4482,
+  "stock_labels": 2942,
+  "stock_quantity_fields": 3237,
+  "unauthorized_edge_function_status": 401,
+  "cron_config": {
+    "provider": "supabase",
+    "job_name": "pricemapai-collect-prices",
+    "schedule": "* * * * *",
+    "cloudflare_schedules": []
+  },
+  "successful_manual_batches": [
+    {
+      "sources": 64,
+      "success": 64,
+      "wall_ms": 58588
+    },
+    {
+      "sources": 64,
+      "success": 64,
+      "wall_ms": 60240
+    }
+  ],
+  "ui_verification": "2026-10-08T20:15Z: Chrome production ChatGPT Plus detail view loaded 70 merchants / 100 quotes. Visually confirmed exact stock (335件), qualitative stock (库存很多、库存一般), inventory explanation, prices and collected timestamps. User tab restored after verification.",
+  "previous_cloudflare_cron_config": {
+    "schedules": [
+      {
+        "cron": "* * * * *",
+        "created_on": "2026-10-08T19:43:48.679686Z",
+        "modified_on": "2026-10-08T19:57:11.596217Z"
+      }
+    ]
+  },
+  "previous_cloudflare_automatic_event": {
+    "time": "2026-10-08T19:55:13.261Z",
+    "outcome": "ok",
+    "cpu_ms": 0,
+    "wall_ms": 7274,
+    "event": "*/5 * * * *",
+    "exceptions": [],
+    "logs": [
+      {
+        "message": [
+          "{\"trigger\":\"cloudflare-cron\",\"cron\":\"*/5 * * * *\",\"scheduled_at\":\"2026-10-08T19:55:13.000Z\",\"results\":[{\"source\":\"AI-TECH-STORE\",\"count\":4,\"status\":\"success\"},{\"source\":\"Ai猫\",\"count\":2,\"status\":\"success\"},{\"source\":\"AI零度\",\"count\":5,\"status\":\"success\"},{\"source\":\"墨小云Token商店\",\"count\":4,\"status\":\"success\"},{\"source\":\"1159165373\",\"count\":2,\"status\":\"success\"},{\"source\":\"小店\",\"count\":5,\"status\":\"success\"}]}"
+        ],
+        "level": "log",
+        "timestamp": 1791489320583
+      }
+    ]
+  },
+  "automatic_scheduler_verification": {
+    "checked_at": "2026-10-08T20:20:24.509791+00:00",
+    "function_responses": [
+      {
+        "created": "2026-10-08T20:19:00.019804+00:00",
+        "error_msg": null,
+        "sources": 64,
+        "status_code": 200,
+        "success": 64,
+        "timed_out": false
+      },
+      {
+        "created": "2026-10-08T20:18:00.143492+00:00",
+        "error_msg": null,
+        "sources": 64,
+        "status_code": 200,
+        "success": 64,
+        "timed_out": false
+      }
+    ],
+    "scheduler_runs": [
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:20:00.030945+00:00",
+        "status": "succeeded"
+      },
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:19:00.012082+00:00",
+        "status": "succeeded"
+      },
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:18:00.116622+00:00",
+        "status": "succeeded"
+      }
+    ],
+    "sources": {
+      "failed": 14,
+      "healthy_last_20_minutes": 344,
+      "healthy_latest_result": 360,
+      "overdue_5_minutes": 16,
+      "registered": 374
+    }
+  },
+  "scheduler_permissions_test": "passed: anon/authenticated/service_role cannot invoke database scheduler; one active collector cron",
+  "followup_typecheck": "passed",
+  "post_backlog_check": {
+    "checked_at": "2026-10-08T20:21:10Z",
+    "healthy_last_20_minutes": 360,
+    "overdue_5_minutes": 0,
+    "latest_success": "2026-10-08T20:21:09.739795Z"
+  }
+}

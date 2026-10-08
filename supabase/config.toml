@@ -1,0 +1,11 @@
+project_id = "pricemapai-web-production"
+
+[db.seed]
+enabled = false
+sql_paths = ["./seed.sql"]
+
+[functions.collect-prices]
+verify_jwt = true
+
+[functions.collect-transit]
+verify_jwt = true
