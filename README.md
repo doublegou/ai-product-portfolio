@@ -6,7 +6,7 @@
 
 管理入口：[生产后台](https://pricemapai-web-production.pricemapai.workers.dev/admin)。填写 `ADMIN_TOKEN` 登录，无独立用户名；进入后可选择卡网订阅或 API 中转站，管理来源、试采集、手动采集和查看日志。令牌只保存在页面内存，刷新后需要重新登录。真实密钥通过 Cloudflare / Supabase 的 Secrets 配置，本地 `.dev.vars` 已排除出 Git。
 
-代码仓库：`seedxdream/pricemapai-web-production`（私有）。测试与构建命令为 `npm test`、`npm run build`；推送代码不会自动部署，部署步骤见下文。
+代码仓库：`seedxdream/pricemapai-web-production`（私有）。测试与构建命令为 `npm test`、`npm run build`；推送代码不会自动部署，部署步骤见下文。 自动测试工作流保存在 `docs/github-actions-quality.yml`，由于本次 GitHub 命令行授权不含 `workflow` 权限，尚未启用 GitHub Actions。以后可通过 GitHub 网页将该模板保存为 `.github/workflows/quality.yml`，或在具备工作流写入权限后提交该路径。
 
 2026-10-09 本次对照 PriceAI 的 699 条商家记录，得到 664 个可识别的去重店铺地址。原有 236 家来源只对应其中 218 个地址；现已核验并新增 138 家原站，总登记来源 374 家，另确认 2 个已有来源的地址别名。306 个参考地址仍受原站故障、采集限制、迁移或接口待适配影响，逐条记录在 [覆盖核验报告](docs/merchant-coverage.md)，没有用参考站报价补齐。登记数与云端当前成功数不同，后台采集日志保留每家实际结果。API 中转站已独立接入，详见 [API 生产接入](docs/transit-production.md)。
 
