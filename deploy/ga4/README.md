@@ -14,6 +14,8 @@ Dashboard: https://analytics.google.com/analytics/web/#/a404383122p558220968/rea
 
 Grant collaborators Viewer access through this property's **Property access management**, not the parent account. This separates PriceMapAI reporting from other websites. The measurement ID is a public tag identifier, not an API credential; no GitHub Secret is required.
 
+On 2026-10-09, `doublegou@gmail.com` was granted Viewer directly on property `558220968`, with email notification enabled. The property's permissions table confirmed the Viewer row after submission.
+
 ## Collection
 
 `src/lib/google-analytics.ts` loads Google's tag only on `pricemapai.com`. Page views are sent explicitly when the pathname changes. URL query strings and fragments are removed from both page locations and referrers; query-only filtering changes do not count as additional page views. Enhanced measurement is disabled in the web stream to prevent automatic history tracking from duplicating these page views. Google signals and advertising personalization signals are disabled in the tag configuration.
@@ -44,4 +46,10 @@ These events measure browsing and outbound clicks, not merchant checkout complet
 - Production Cloudflare deployment: `7ae7b140-8252-4f16-a6c1-ccfc86cf0aa7`
 - Browser DOM confirmed the production JavaScript and tag `gtag/js?id=G-72Y2C0JFSE` were present.
 
-Realtime receipt and collaborator access should be checked in the dashboard before treating either as confirmed.
+Collaborator access was confirmed in the property's permissions table. Realtime still showed no received data during the 2026-10-09 browser check; end-to-end GA4 collection has not yet been confirmed.
+
+## Reference parity
+
+The inspected PriceAI revision `b3092c4487ab96e58dd9d1fb97016ac692ea116e` uses `src/lib/analytics.ts` to send each business event to both `window.gtag` and `window.umami`. PriceMapAI now follows that same shared-event approach for its existing features. See `deploy/umami/analytics-alignment.md` for matching event names, parameters, merchant identifiers, and features that are absent from this site.
+
+PriceAI's `GoogleAnalytics.tsx` initializes `gtag` with `send_page_view: true`; this SPA explicitly sends pathname page views and disables enhanced measurement to avoid duplicate route views and exclude query strings. This is equivalent coverage with a deliberately different page-view implementation, not an exact copy of all PriceAI features or private GA4 report settings.
