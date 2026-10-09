@@ -2,9 +2,9 @@
 
 由最新 `pricemapai_web_design` 前端与自有 `aimarketing` Worker、采集器、管理页和数据库迁移组合而成。技术栈为 React + Vite、Cloudflare Workers Static Assets、Supabase Postgres / Cron / Edge Functions。2026-10-09 已完成建表、原站首轮采集和 Cloudflare 正式部署。
 
-线上地址：<https://pricemapai-web-production.pricemapai.workers.dev>。目前按用户要求使用默认域名，自有域名稍后再绑定。Supabase 项目为 `uoxeyzowhonxcpcijsbr`。
+线上地址：<https://pricemapai.com>。已绑定正式域名并启用 HTTPS；`workers.dev` 默认域名和预览域名均已关闭，仅使用正式域名。Supabase 项目为 `uoxeyzowhonxcpcijsbr`，继续复用合伙人 Doublegou 组织下的数据库、两个采集函数及现有 Cron。Cloudflare 正式站已于 2026-10-09 部署到 `newbee1984@gmail.com` 账号（`c1ce7f8d4d7018d071afb6b70f29b787`）；合伙人的 `pricemapai.workers.dev` 部署仍独立保留。
 
-管理入口：[生产后台](https://pricemapai-web-production.pricemapai.workers.dev/admin)。填写 `ADMIN_TOKEN` 登录，无独立用户名；进入后可选择卡网订阅或 API 中转站，管理来源、试采集、手动采集和查看日志。令牌只保存在页面内存，刷新后需要重新登录。真实密钥通过 Cloudflare / Supabase 的 Secrets 配置，本地 `.dev.vars` 已排除出 Git。
+管理入口：[生产后台](https://pricemapai.com/admin)。填写 `ADMIN_TOKEN` 登录，无独立用户名；进入后可选择卡网订阅或 API 中转站，管理来源、试采集、手动采集和查看日志。令牌只保存在页面内存，刷新后需要重新登录。真实密钥通过 Cloudflare / Supabase 的 Secrets 配置，本地 `.dev.vars` 已排除出 Git。
 
 代码仓库：`seedxdream/pricemapai-web-production`（私有）。测试与构建命令为 `npm test`、`npm run build`；推送代码不会自动部署，部署步骤见下文。 自动测试工作流保存在 `docs/github-actions-quality.yml`，由于本次 GitHub 命令行授权不含 `workflow` 权限，尚未启用 GitHub Actions。以后可通过 GitHub 网页将该模板保存为 `.github/workflows/quality.yml`，或在具备工作流写入权限后提交该路径。
 
@@ -99,7 +99,7 @@ npx wrangler secret bulk .dev.vars
 npm run deploy
 ```
 
-Worker 名称固定为 `pricemapai-web-production`，配置绑定本次登录的 Cloudflare 账号，未沿用旧项目账号。后端密钥和管理令牌已通过 Worker Secrets 配置；本地 `.dev.vars` 不纳入 Git。管理页为 `/admin`，从本地 `.dev.vars` 获取管理令牌，不要把该文件放入网站静态目录。
+Worker 名称固定为 `pricemapai-web-production`，配置绑定本次登录的 Cloudflare 账号，未沿用旧项目账号。后端密钥和管理令牌已通过 Worker Secrets 配置；本地 `.dev.vars` 不纳入 Git。管理页为 `/admin`，从本地 `.dev.vars.admin-token` 获取新正式站管理令牌（该文件仅含管理令牌，已由 `.dev.vars*` 规则排除出 Git），不要把该文件放入网站静态目录。
 
 当前所有启用来源统一目标每 15 分钟采集；Supabase Cron 每分钟检查队列，直接调用同项目的 `collect-prices` Edge Function 执行实际抓取和写库。Cloudflare 负责网站、查询 API 和管理入口，采集 Cron 已停用。每批最多 64 家，4 家并发，同域请求间隔至少 500 毫秒。原先 6／21／209 家、60／360／720 分钟和每批 8 家的配置已经替换；这些是历史导入批次设置，并非产品要求。
 
@@ -144,3 +144,9 @@ npm run deploy:check
 2026-10-09 调度核验发现 Cloudflare 配置保存后仍按旧五分钟触发，因此改用 Supabase 内置 Cron 直接调用采集函数，并清空 Cloudflare 采集定时器。已观察到连续三分钟自动触发，前两轮均返回 HTTP 200、各成功采集 64 家；调度权限检查通过。调度执行与原站结果分别核验，详细结果见 `docs/production-verification-20261009.json`。
 
 本次补收两家明确迁移的原站：大白发卡（19cm.tech → geminipro.vip）和 Desolate（fk.desolate.codes → shop.desolate.run），已在云端采集 5 + 4 条原站报价。剩余 306 个待接通参考地址中，271 个属于链动小铺及旧域名；本地与云端返回存在差异，不能仅凭一次 520 判断为地址错误。详情见 `docs/production-followup-20261009.json`。
+
+## 公开缓存与安全边界
+
+公开订阅报价、统计、价格历史和 API 中转报价使用 Cloudflare Cache API：每个边缘节点缓存 5 分钟，浏览器缓存 60 秒。只有成功的公开 GET 响应进入缓存；分页参数规范化，其他查询参数不创建额外缓存键。缓存命中响应明确恢复 60 秒浏览器缓存，避免区域默认 TTL 延长报价有效期。采集仍每 15 分钟运行，缓存最多增加约 5 分钟显示延迟。带内容哈希的 `/assets/*`（JS、CSS、字体）允许浏览器缓存一年，发布新文件会改变 URL。管理页、管理 API、健康检查和错误响应不缓存。Cache API 减少数据库读取，但命中时仍会执行 Worker，不等同于减少 Worker 调用数。
+
+2026-10-09 已关闭默认 `workers.dev` 域名及预览 URL；Cloudflare 区域启用始终使用 HTTPS、最低 TLS 1.2。静态页面、后台和 API 添加 CSP、防嵌套、内容类型、防止不必要浏览器权限及 HSTS 响应头；数据库内部错误不返回给客户端。前端产物不含三项后端凭据、无 source map；匿名直连七张业务表及报价 RPC 均被拒绝。生产依赖 npm audit 未发现已知漏洞，73 项测试通过。这是本次部署检查的结果，不是对所有漏洞和高流量攻击的保证；目前未增加自定义应用级请求限流。

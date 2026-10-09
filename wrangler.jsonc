@@ -1,6 +1,6 @@
 {
   "name": "pricemapai-web-production",
-  "account_id": "577d30da8b383b03836ca5d57abffb3c",
+  "account_id": "c1ce7f8d4d7018d071afb6b70f29b787",
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-07",
   "compatibility_flags": ["nodejs_compat"],
@@ -19,6 +19,9 @@
   "vars": {
     "CRAWLER_FUNCTION_URL": "https://uoxeyzowhonxcpcijsbr.supabase.co/functions/v1/collect-prices"
   },
-  "workers_dev": true,
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "pricemapai.com", "custom_domain": true }
+  ],
   "preview_urls": false,
 }
