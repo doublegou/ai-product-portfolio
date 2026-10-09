@@ -19,6 +19,7 @@ import { catalogProductById, catalogProductId } from "../lib/catalog";
 import { familyById, familyByVariant } from "../lib/catalogGroups";
 import { merchantLink } from "../lib/merchant-links";
 import type { Offer } from "../data/types";
+import { merchantAnalyticsId, trackAnalyticsEvent, withPriceMapUtm } from "../lib/analytics";
 import {
   classifyProduct,
   durationLabel,
@@ -33,8 +34,11 @@ import { NotFound } from "./NotFound";
 
 function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
   const { referenceTime } = useOffers();
-  const link = merchantLink(offer.purchase_url);
-  const home = merchantLink(offer.sources.base_url);
+  const sourceId = merchantAnalyticsId(offer.sources.base_url);
+  const purchase = merchantLink(offer.purchase_url);
+  const shop = merchantLink(offer.sources.base_url);
+  const link = purchase && withPriceMapUtm(purchase, "card_offer", "pricemapai_card_shop", offer.id);
+  const home = shop && withPriceMapUtm(shop, "merchant_shop", "pricemapai_merchant", sourceId);
   return (
     <div
       className={`offer-block ${!isFresh(offer, referenceTime) ? "expired" : ""}`}
@@ -43,7 +47,7 @@ function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
         <div className="merchant-cell">
           <MerchantLogo url={offer.sources.base_url} name={offer.sources.name} />
           <div>
-            {home ? <a className="merchant-home" href={home} target="_blank" rel="noopener noreferrer" aria-label={`前往 ${offer.sources.name} 店铺首页`}>
+            {home ? <a className="merchant-home" href={home} target="_blank" rel="noopener noreferrer" onClick={() => trackAnalyticsEvent("merchant_shop_click", { source_id: sourceId })} aria-label={`前往 ${offer.sources.name} 店铺首页`}>
               <strong title={offer.sources.name}>{offer.sources.name}</strong>
               <span className="merchant-home-indicator"><ArrowUpRight size={13} /></span>
             </a> : <strong title={offer.sources.name}>{offer.sources.name}</strong>}
@@ -79,6 +83,7 @@ function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`前往 ${offer.sources.name} 原站购买`}
+            onClick={() => trackAnalyticsEvent("purchase_link_click", { source_id: sourceId, available: isAvailable(offer, referenceTime) })}
           >
             原站购买 <ChevronRight size={16} />
           </a>
@@ -105,6 +110,7 @@ export function Detail() {
   const from = get("from");
   const view = useSubscriptionView(params.get("view") ?? new URLSearchParams(from).get("view"));
   const update = (key: string, value: string) => {
+    if (key === "view" && value !== view) trackAnalyticsEvent("view_change", { view: value, platform: product?.platform, surface: "product_detail" });
     const next = new URLSearchParams(window.location.search);
     for (const key of ["currency", "delivery", "duration", "stock"]) next.delete(key);
     value ? next.set(key, value) : next.delete(key);
@@ -124,6 +130,7 @@ export function Detail() {
             Number(isAvailable(a, referenceTime)) || a.price - b.price,
     );
   const clear = () => {
+    trackAnalyticsEvent("advanced_filters_reset");
     const next = new URLSearchParams();
     if (from) next.set("from", from);
     if (selectedVariant) next.set("variant", selectedVariant.id);
@@ -140,7 +147,7 @@ export function Detail() {
               if (from) next.set("from", from);
               next.set("variant", variant.id);
               next.set("view", view);
-              return <Link key={variant.id} className={variant.id === selectedVariant?.id ? "active" : ""} aria-current={variant.id === selectedVariant?.id ? "page" : undefined} to={`/subscriptions/${family.id}?${next}`}><PlatformIcon platform={product.platform} small />{variant.label}</Link>;
+              return <Link key={variant.id} className={variant.id === selectedVariant?.id ? "active" : ""} aria-current={variant.id === selectedVariant?.id ? "page" : undefined} onClick={() => { if (variant.id !== selectedVariant?.id) trackAnalyticsEvent("product_detail_open", { product_id: variant.id, platform: product.platform }); }} to={`/subscriptions/${family.id}?${next}`}><PlatformIcon platform={product.platform} small />{variant.label}</Link>;
             })}
           </nav>}
         </div>

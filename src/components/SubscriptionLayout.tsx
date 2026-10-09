@@ -11,6 +11,7 @@ import { familyById, familyByVariant, groupedCatalogEntries } from "../lib/catal
 import { useOffers } from "../data";
 import { classifyProduct } from "../lib/offers";
 import { useStickyStack } from "../lib/useStickyStack";
+import { trackAnalyticsEvent } from "../lib/analytics";
 
 /** The directory and its quote details share one persistent browsing frame. */
 export function SubscriptionLayout() {
@@ -48,7 +49,7 @@ export function SubscriptionLayout() {
       <h1>卡网订阅</h1>
       <div className="category-heading-summary">
         <div className="category-heading-label">
-          {detail && <Link className="detail-title-back" to={`/subscriptions${directoryParams.size ? `?${directoryParams}` : ""}`} aria-label="返回套餐目录"><ChevronLeft size={30} /></Link>}
+          {detail && <Link className="detail-title-back" to={`/subscriptions${directoryParams.size ? `?${directoryParams}` : ""}`} onClick={() => trackAnalyticsEvent("scope_change", { scope: "products", platform: product?.platform })} aria-label="返回套餐目录"><ChevronLeft size={30} /></Link>}
           <h2>{detail ? family?.name ?? product?.name ?? categoryTitle : categoryTitle}</h2>
         </div>
         <p>{detail ? `${new Set(detailOffers.map(offer => offer.sources.base_url)).size} 家商家 · ${detailOffers.length} 条报价` : `${matching.length} 类商品 · ${offerCount} 条报价`}</p>
@@ -65,6 +66,7 @@ export function SubscriptionLayout() {
         <div className="catalog-tabs" role="group" aria-label="商品分类">
           {catalogTabs.map(tab => <button key={tab.id} className={category === tab.id ? "active" : ""} aria-pressed={category === tab.id}
             onClick={() => {
+              if (category !== tab.id) trackAnalyticsEvent("platform_filter_change", { platform: tab.id || "全部" });
               const next = selectCategory(directoryParams, tab.id).toString();
               navigate(`/subscriptions${next ? `?${next}` : ""}`);
             }}>

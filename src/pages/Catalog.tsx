@@ -13,6 +13,7 @@ import { filterCatalogEntries, otherCatalogTabs, selectedCategory } from "../lib
 
 import { groupedCatalogEntries } from "../lib/catalogGroups";
 import { useSubscriptionView } from "../lib/useSubscriptionView";
+import { trackAnalyticsEvent } from "../lib/analytics";
 
 const PAGE_SIZE = 24;
 export function Catalog() {
@@ -24,6 +25,7 @@ export function Catalog() {
   const detailFrom = new URLSearchParams(params);
   detailFrom.set("view", view);
   const update = (key: string, value: string, replace = false) => {
+    if (key === "view" && value !== view) trackAnalyticsEvent("view_change", { view: value, platform: category || "全部", surface: "subscriptions" });
     const next = new URLSearchParams(window.location.search);
     next.delete("saved");
     next.delete("currency");
@@ -47,7 +49,7 @@ export function Catalog() {
     ? Math.max(1, Math.min(totalPages, rawPage))
     : 1;
   const visible = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  const reset = () => setParams({});
+  const reset = () => { trackAnalyticsEvent("advanced_filters_reset"); setParams({}); };
   return (
     <>
       <div className="catalog-toolbar">
