@@ -16,6 +16,7 @@ import "./theme.css";
 import "./surfaces.css";
 import "./components/ContactFooter.css";
 import { useDarkMode } from "./lib/colorScheme";
+import { trackGooglePageView } from "./lib/google-analytics";
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => { document.documentElement.dataset.theme = dark ? "dark" : "light"; }, [dark]);
   useEffect(() => {
     document.title = `${location.pathname === "/" ? "AI 渠道汇总比价" : location.pathname === "/api-pricing" ? "API" : "卡网订阅比价"} — PriceMap AI`;
+    trackGooglePageView();
   }, [location.pathname]);
   return (
     <Routes>

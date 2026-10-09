@@ -1,3 +1,5 @@
+import { GA_MEASUREMENT_ID } from './google-analytics';
+
 type EventParams = Record<string, string | number | boolean | null | undefined>;
 
 declare global {
@@ -17,6 +19,9 @@ export function trackAnalyticsEvent(name: string, params: EventParams = {}): voi
   try {
     void Promise.resolve(window.umami?.track(name, data)).catch(() => {});
   } catch { /* Tracking failure does not affect the site. */ }
+  try {
+    window.gtag?.('event', name, { ...data, send_to: GA_MEASUREMENT_ID });
+  } catch { /* Each analytics provider fails independently. */ }
 }
 
 /** Stable merchant identity without publishing database IDs or referral query strings. */

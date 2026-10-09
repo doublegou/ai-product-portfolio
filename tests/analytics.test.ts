@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { merchantAnalyticsId, trackAnalyticsEvent, withPriceMapUtm } from '../src/lib/analytics';
 import { merchantLink } from '../src/lib/merchant-links';
+import { GA_MEASUREMENT_ID } from '../src/lib/google-analytics';
 
 test('outbound attribution keeps the agreed affiliate code, product path and options', () => {
   const link = withPriceMapUtm(merchantLink('https://gospv.com/products/pro?sku=2&aff=old#plan')!, 'card_offer', 'pricemapai_card_shop', 'offer-1');
@@ -28,16 +29,20 @@ test('signed links are unchanged; previous PriceAI attribution is replaced', () 
 test('events are production-only and tracker failures never block user actions', async () => {
   const oldWindow = Object.getOwnPropertyDescriptor(globalThis, 'window');
   const calls: unknown[][] = [];
-  const windowMock = { location: { hostname: 'localhost' }, umami: { track: (...args: unknown[]) => { calls.push(args); } } };
+  const googleCalls: unknown[][] = [];
+  const windowMock = { location: { hostname: 'localhost' }, gtag: (...args: unknown[]) => { googleCalls.push(args); }, umami: { track: (...args: unknown[]) => { calls.push(args); } } };
   Object.defineProperty(globalThis, 'window', { configurable: true, value: windowMock });
   try {
     trackAnalyticsEvent('purchase_link_click', { source_id: 'shop.example', available: true });
     assert.equal(calls.length, 0);
+    assert.equal(googleCalls.length, 0);
     windowMock.location.hostname = 'pricemapai.com';
     trackAnalyticsEvent('purchase_link_click', { source_id: 'shop.example', available: true, missing: null, invalid: NaN });
     assert.deepEqual(calls, [['purchase_link_click', { source_id: 'shop.example', available: true }]]);
+    assert.deepEqual(googleCalls, [['event', 'purchase_link_click', { source_id: 'shop.example', available: true, send_to: GA_MEASUREMENT_ID }]]);
     windowMock.umami.track = () => { throw Error('tracker unavailable'); };
     assert.doesNotThrow(() => trackAnalyticsEvent('scope_change', { scope: 'offers' }));
+    assert.equal(googleCalls.length, 2);
     windowMock.umami.track = () => Promise.reject(Error('network failure'));
     trackAnalyticsEvent('scope_change');
     await new Promise(resolve => setTimeout(resolve, 0));
