@@ -168,44 +168,6 @@ test("HTML inventory prefixes read explicit counts and leave unrelated status te
   );
 });
 
-test("public offer pagination returns stable ranges and total, rejects invalid bounds", async () => {
-  const original = globalThis.fetch;
-  let requested = "";
-  globalThis.fetch = async (url) => {
-    requested = String(url);
-    return new Response(JSON.stringify([{ id: "a" }]), {
-      headers: {
-        "Content-Type": "application/json",
-        "Content-Range": "1000-1000/1001",
-      },
-    });
-  };
-  try {
-    const r = await worker.fetch(
-      new Request("https://app.example.com/api/offers?offset=1000&limit=1000"),
-      env,
-    );
-    const result = (await r.json()) as any;
-    assert.equal(result.total, 1001);
-    assert.equal(result.next_offset, null);
-    assert.match(requested, /offset=1000/);
-    assert.match(requested, /order=id/);
-    for (const q of ["offset=-1", "limit=1001", "offset=NaN", "limit=0"]) {
-      assert.equal(
-        (
-          await worker.fetch(
-            new Request("https://app.example.com/api/offers?" + q),
-            env,
-          )
-        ).status,
-        400,
-      );
-    }
-  } finally {
-    globalThis.fetch = original;
-  }
-});
-
 test("preview excludes storefront prices with unconfirmed fees from lowest-price comparison", async () => {
   const original = globalThis.fetch;
   globalThis.fetch = async (url) =>

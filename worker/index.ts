@@ -5,8 +5,7 @@ import { collect } from "./collectors";
 import { classify } from "./classify";
 import { safeUrl } from "./network";
 import { crawl } from "./crawl";
-import { publicTransit, adminTransit } from "./transit-routes";
-import { cachedPublic, publicCacheKey } from "./public-cache";
+import { adminTransit } from "./transit-routes";
 import { secureResponse } from "./security";
 export { crawl } from "./crawl";
 const db = (env: Env) =>
@@ -60,119 +59,16 @@ const handler = {
       return new Response(response.body, { status: response.status, headers });
     }
     if (!url.pathname.startsWith("/api/")) return env.ASSETS.fetch(req);
-    if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY) {
+    // Public data lives in a separate static-assets service. Legacy endpoints
+    // never reach Supabase, including malicious cache-busting query strings.
+    if (url.pathname === "/api/health") return json({ ok: true });
+    if (!url.pathname.startsWith("/api/admin/"))
+      return json({ error: "公开报价已迁移至静态快照", snapshot: "/data/latest.json" }, 410);
+    if (!(await authorized(req, env))) return json({ error: "管理密钥无效" }, 401);
+    if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_ROLE_KEY)
       return json({ error: "数据服务尚未配置", code: "DATA_SERVICE_NOT_CONFIGURED" }, 503);
-    }
     try {
       const client = db(env);
-      if (url.pathname === "/api/transit" && req.method === "GET") return await publicTransit(req, env, ctx);
-      if (url.pathname === "/api/health") {
-        checked(
-          await client
-            .from("sources")
-            .select("id", { count: "exact", head: true }),
-        );
-        return json({ ok: true });
-      }
-      if (url.pathname === "/api/offers" && req.method === "GET") {
-        const offset = Number(url.searchParams.get("offset") ?? 0);
-        const limit = Number(url.searchParams.get("limit") ?? 1000);
-        if (
-          !Number.isSafeInteger(offset) ||
-          offset < 0 ||
-          offset > 1000000 ||
-          !Number.isInteger(limit) ||
-          limit < 1 ||
-          limit > 1000
-        )
-          return json({ error: "分页参数无效" }, 400);
-        return await cachedPublic(publicCacheKey(url, { limit, offset }), ctx, async () => {
-          const { data, count } = checked(
-            await client
-              .from("offers")
-              .select(
-                "id,raw_title,platform,plan,delivery,duration_days,comparison_key,review_required,price,currency,stock_status,purchase_url,last_seen_at,expires_at,sources(name,base_url),price_note:raw_data->>price_note,stock_quantity:raw_data->stock_quantity,stock_text:raw_data->>stock_text",
-                { count: "exact" },
-              )
-              .eq("active", true)
-              .order("id")
-              .range(offset, offset + limit - 1),
-          );
-          return json(
-            {
-              offers: data,
-              total: count,
-              next_offset:
-                offset + (data?.length ?? 0) < (count ?? 0)
-                  ? offset + (data?.length ?? 0)
-                  : null,
-              generated_at: new Date().toISOString(),
-            },
-            200,
-            true,
-          );
-        });
-      }
-      if (url.pathname === "/api/stats" && req.method === "GET") {
-        return await cachedPublic(publicCacheKey(url), ctx, async () => {
-          const source = checked(
-            await client
-              .from("sources")
-              .select("id,last_success_at,last_error,enabled"),
-          );
-          const runs = checked(
-            await client
-              .from("crawl_runs")
-              .select("status,started_at,offer_count")
-              .order("started_at", { ascending: false })
-              .limit(20),
-          );
-          return json(
-            {
-              sources: source.data?.length ?? 0,
-              healthy:
-                source.data?.filter((s) => s.last_success_at && !s.last_error)
-                  .length ?? 0,
-              last_success:
-                source.data
-                  ?.map((s) => s.last_success_at)
-                  .filter(Boolean)
-                  .sort()
-                  .at(-1) ?? null,
-              runs: runs.data,
-            },
-            200,
-            true,
-          );
-        });
-      }
-      const history = url.pathname.match(/^\/api\/history\/([0-9a-f-]{36})$/);
-      if (history && req.method === "GET") {
-        return await cachedPublic(publicCacheKey(url), ctx, async () => {
-          const offer = checked(
-            await client
-              .from("offers")
-              .select("id")
-              .eq("id", history[1])
-              .eq("active", true)
-              .maybeSingle(),
-          );
-          if (!offer.data) return json({ error: "报价不存在" }, 404);
-          const { data } = checked(
-            await client
-              .from("price_history")
-              .select("price,currency,stock_status,observed_at")
-              .eq("offer_id", history[1])
-              .order("observed_at", { ascending: false })
-              .limit(60),
-          );
-          return json({ history: data }, 200, true);
-        });
-      }
-      if (!url.pathname.startsWith("/api/admin/"))
-        return json({ error: "Not found" }, 404);
-      if (!(await authorized(req, env)))
-        return json({ error: "管理密钥无效" }, 401);
       if (url.pathname.startsWith("/api/admin/transit/")) return await adminTransit(req, env, client);
       if (url.pathname === "/api/admin/sources" && req.method === "GET")
         return json({

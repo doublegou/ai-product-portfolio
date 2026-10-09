@@ -1,3 +1,4 @@
+import { readSnapshotPages } from "./snapshot.ts";
 import type { Offer } from "./types";
 
 export function validateOffer(value: unknown): Offer {
@@ -16,22 +17,9 @@ export function validateOffer(value: unknown): Offer {
   return o;
 }
 
-/** Publish a new dataset only after every page has arrived successfully. */
+/** Publish a dataset only after every static page has arrived successfully. */
 export async function loadOffers(fetcher: typeof fetch = fetch, signal?: AbortSignal): Promise<Offer[]> {
-  const rows = new Map<string, Offer>();
-  let offset = 0;
-  for (let page = 0; page < 100; page++) {
-    const response = await fetcher(`/api/offers?limit=1000&offset=${offset}`, { signal, cache: "no-cache" });
-    if (!response.ok) throw new Error(response.status === 503 ? "数据服务尚未连接，请稍后再试" : "报价加载失败，请稍后重试");
-    const data = await response.json() as { offers?: unknown[]; next_offset?: number | null };
-    if (!Array.isArray(data.offers) || !("next_offset" in data)) throw new Error("报价分页格式异常");
-    for (const row of data.offers) {
-      const offer = validateOffer(row);
-      rows.set(offer.id, offer);
-    }
-    if (data.next_offset === null) return [...rows.values()];
-    if (!Number.isSafeInteger(data.next_offset) || data.next_offset! <= offset || !data.offers.length) throw new Error("报价分页格式异常");
-    offset = data.next_offset!;
-  }
-  throw new Error("报价页数超出限制，请稍后重试");
+  const rows = (await readSnapshotPages("offers", fetcher, signal)).map(validateOffer);
+  if (new Set(rows.map(row => row.id)).size !== rows.length) throw Error("报价快照存在重复数据");
+  return rows;
 }

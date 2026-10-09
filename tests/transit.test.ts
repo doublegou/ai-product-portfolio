@@ -40,14 +40,8 @@ test('source configuration rejects private URLs, cross-origin endpoints, bad int
  assert.throws(()=>validateTransitSource({...source,base_url:'https://priceai.cc',config:{...source.config,snapshot_url:'https://priceai.cc/api'}}),/原站/);
 });
 const page=(id:string)=>({source_id:id,data:{...normalizeTransit(snapshot(),{...source,id})},last_seen_at:new Date().toISOString(),expires_at:new Date(Date.now()+2700000).toISOString()});
-test('client loads full pagination, assigns our collection time, and rejects incomplete snapshots',async()=>{
- let n=0;const fetcher=(async()=>Response.json(n++===0?{stations:[page('a'),page('b')],total:3,next_offset:2}:{stations:[page('c')],total:3,next_offset:null})) as typeof fetch;
- const stations=await loadTransit(fetcher);assert.equal(stations.length,3);assert.equal(stations[0].prices[0].lastVerifiedAt,stations[0].lastUpdatedAt);
- await assert.rejects(()=>loadTransit((async()=>Response.json({stations:[page('a')],total:2,next_offset:null})) as typeof fetch),/完整/);
- await assert.rejects(()=>loadTransit((async()=>Response.json({stations:[],total:3,next_offset:0})) as typeof fetch),/分页/);
-});
 test('all API relay admin routes are protected by the existing admin gate',async()=>{
  const env={SUPABASE_URL:'https://example.supabase.co',SUPABASE_SERVICE_ROLE_KEY:'test',ADMIN_TOKEN:'test'} as Env;
  for(const path of ['sources','runs','preview','crawl','sources/example-com']){const response=await worker.fetch(new Request(`https://example.com/api/admin/transit/${path}`,{method:path==='sources'||path==='runs'?'GET':'POST'}),env);assert.equal(response.status,401);}
- const r=await worker.fetch(new Request('https://example.com/api/transit?limit=100'),env);assert.equal(r.status,400);
+ const r=await worker.fetch(new Request('https://example.com/api/transit?limit=100'),env);assert.equal(r.status,410);
 });

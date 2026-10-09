@@ -17,6 +17,7 @@ import { useSubscriptionView } from "../lib/useSubscriptionView";
 import { productById } from "../data/products";
 import { catalogProductById, catalogProductId } from "../lib/catalog";
 import { familyById, familyByVariant } from "../lib/catalogGroups";
+import { merchantLink } from "../lib/merchant-links";
 import type { Offer } from "../data/types";
 import {
   classifyProduct,
@@ -32,8 +33,8 @@ import { NotFound } from "./NotFound";
 
 function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
   const { referenceTime } = useOffers();
-  const link = safeLink(offer.purchase_url);
-  const home = safeLink(offer.sources.base_url);
+  const link = merchantLink(offer.purchase_url);
+  const home = merchantLink(offer.sources.base_url);
   return (
     <div
       className={`offer-block ${!isFresh(offer, referenceTime) ? "expired" : ""}`}

@@ -16,7 +16,9 @@
     "sources:import": "tsx scripts/import-sources.ts",
     "crawler:schedule:configure": "tsx scripts/configure-crawler-schedule.ts",
     "transit:import": "tsx scripts/transit.ts import",
-    "transit:collect": "tsx scripts/transit.ts collect"
+    "transit:collect": "tsx scripts/transit.ts collect",
+    "snapshot:export": "tsx scripts/export-snapshot.ts",
+    "snapshot:deploy": "npm run snapshot:export && wrangler deploy --config wrangler.snapshot.jsonc"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.3.0",

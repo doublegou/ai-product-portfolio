@@ -15,5 +15,5 @@
     "paths": { "@preview-snapshot": ["./src/data/empty-preview.ts"] },
     "types": ["vite/client", "node", "@cloudflare/workers-types"]
   },
-  "include": ["src", "worker", "scripts", "tests", "vite.config.ts"]
+  "include": ["src", "worker", "scripts", "tests", "snapshot", "vite.config.ts"]
 }

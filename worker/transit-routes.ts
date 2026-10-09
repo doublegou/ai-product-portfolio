@@ -1,7 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Env } from './types';
 import { validateTransitSource } from './transit';
-import { cachedPublic, publicCacheKey } from './public-cache';
 const json=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'no-store'}});
 const checked=<T extends {error:any}>(r:T):T=>{if(r.error)throw Error(r.error.message);return r;};
 async function body(req:Request){const text=await req.text();if(text.length>16000)throw Error('请求过大');return JSON.parse(text);}
@@ -10,18 +9,6 @@ async function invoke(env:Env,payload:unknown) {
  const response=await fetch(url,{method:'POST',headers:{Authorization:`Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,'X-Crawler-Token':env.CRAWLER_TOKEN??'','Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(130000)});
  if(!response.ok)throw Error(`采集服务 HTTP ${response.status}`);
  return response.json();
-}
-export async function publicTransit(req:Request,env:Env,ctx?:ExecutionContext) {
- const url=new URL(req.url),offset=Number(url.searchParams.get('offset')??0),limit=Number(url.searchParams.get('limit')??2);
- if(!Number.isSafeInteger(offset)||offset<0||offset>10000||!Number.isInteger(limit)||limit<1||limit>2)return json({error:'分页参数无效'},400);
- // Strip unrelated query parameters from cache keys. Serve only public snapshot fields.
- const key=publicCacheKey(url,{limit,offset});
- return cachedPublic(key,ctx,async()=>{
- const upstream=await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/transit_page`,{method:'POST',headers:{apikey:env.SUPABASE_SERVICE_ROLE_KEY,Authorization:`Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({p_limit:limit,p_offset:offset}),signal:AbortSignal.timeout(20000)});
- if(!upstream.ok){await upstream.body?.cancel();return json({error:'API 报价暂时无法读取，请稍后重试'},502);}
- const response=new Response(upstream.body,{headers:{'Content-Type':'application/json;charset=utf-8','Cache-Control':'public,max-age=60,s-maxage=300','X-Content-Type-Options':'nosniff'}});
- return response;
- });
 }
 // This router is called only after the existing ADMIN_TOKEN authentication gate.
 export async function adminTransit(req:Request,env:Env,client:SupabaseClient) {

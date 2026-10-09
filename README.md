@@ -47,6 +47,8 @@ Worker 地址为 `http://127.0.0.1:8787`，包含网站、`/api/offers`、`/api/
 
 原始 SQL 种子中的 AI智充、西瓜小铺原先未出现在 JSON 清单中，本次已将两者补入，方便通过一份来源配置初始化。
 
+本站商家返利参数统一维护在 `src/lib/merchant-links.ts`。环球小铺（gospv.com）、burstpro-ai.online、西瓜小铺（xigua.ink）的店铺首页与商品购买链接，在公开快照和前端跳转时自动附加本站约定的 `aff` 参数；保留商品路径及其他参数，覆盖已有返利参数。采集来源地址与共享 Supabase 中的原始购买链接不修改，后续采集不会覆盖本站跳转规则。更改规则后应同时部署前端和 `publish-snapshot` 函数，并触发一次静态发布。
+
 API 中转站已核验 28 家候选原站，27 家已配置独立采集器、数据库、管理入口和调度，共 3,185 条报价；剩余 BMCCA 原站未启用公开报价，监测接口要求登录。外层目录已显示站点或公开分组/模型汇总监测。报价与监测全部来自商家原站。官方 API 目录及官方定价链接保留。操作、映射规则与边界见 [API 生产接入](docs/transit-production.md)。
 
 ## 原站采集与写库
@@ -145,8 +147,16 @@ npm run deploy:check
 
 本次补收两家明确迁移的原站：大白发卡（19cm.tech → geminipro.vip）和 Desolate（fk.desolate.codes → shop.desolate.run），已在云端采集 5 + 4 条原站报价。剩余 306 个待接通参考地址中，271 个属于链动小铺及旧域名；本地与云端返回存在差异，不能仅凭一次 520 判断为地址错误。详情见 `docs/production-followup-20261009.json`。
 
-## 公开缓存与安全边界
+## 公开静态快照与安全边界
 
-公开订阅报价、统计、价格历史和 API 中转报价使用 Cloudflare Cache API：每个边缘节点缓存 5 分钟，浏览器缓存 60 秒。只有成功的公开 GET 响应进入缓存；分页参数规范化，其他查询参数不创建额外缓存键。缓存命中响应明确恢复 60 秒浏览器缓存，避免区域默认 TTL 延长报价有效期。采集仍每 15 分钟运行，缓存最多增加约 5 分钟显示延迟。带内容哈希的 `/assets/*`（JS、CSS、字体）允许浏览器缓存一年，发布新文件会改变 URL。管理页、管理 API、健康检查和错误响应不缓存。Cache API 减少数据库读取，但命中时仍会执行 Worker，不等同于减少 Worker 调用数。
+公开页面只读取 `/data/latest.json` 和其指向的压缩 JSON 分页。`pricemapai-public-snapshots` 是独立的 Cloudflare Static Assets 服务，路由为 `pricemapai.com/data/*`，没有数据库绑定或可执行业务代码；访客读取报价不触发后台 Worker、不查询 Supabase。后台、试采集、手动采集继续由 `pricemapai-web-production` 和现有两个采集函数处理。旧 `/api/offers`、`/api/transit`、`/api/stats` 和 `/api/history/*` 返回 410，不保留公开数据库读取入口；`/api/health` 只检查 HTTP 服务存活，不查询数据库。
 
-2026-10-09 已关闭默认 `workers.dev` 域名及预览 URL；Cloudflare 区域启用始终使用 HTTPS、最低 TLS 1.2。静态页面、后台和 API 添加 CSP、防嵌套、内容类型、防止不必要浏览器权限及 HSTS 响应头；数据库内部错误不返回给客户端。前端产物不含三项后端凭据、无 source map；匿名直连七张业务表及报价 RPC 均被拒绝。生产依赖 npm audit 未发现已知漏洞，73 项测试通过。这是本次部署检查的结果，不是对所有漏洞和高流量攻击的保证；目前未增加自定义应用级请求限流。
+Supabase `publish-snapshot` 每 15 分钟使用单个 SQL 语句导出完整公共数据，剔除停用店铺，执行额外字段白名单过滤，再通过 Cloudflare Direct Uploads 发布静态资源。只有所有文件上传成功才切换整份资源目录；保留当前和上一版本，失败继续展示上一次成功发布的数据。前端校验版本、总数、重复 ID，不拼接部分成功数据；旧目录过期时只重新读取一次静态目录，不回退数据库 API。浏览器原生 `DecompressionStream('gzip')` 用于解压分页，要求现代浏览器。快照目录缓存 60 秒，版本文件缓存一年；采集数据可能额外等待最多约 15 分钟进入公开快照。店铺新增、修改、停用在后续采集／下一份快照生效。页面沿用报价采集时间和过期状态。
+
+快照发布需要一个仅包含本账号 `Workers Scripts:Edit` 权限的 Cloudflare API Token。该权限在 Cloudflare 是账号级，不能声称仅有单个脚本的权限；令牌仅存于 Supabase `CLOUDFLARE_SNAPSHOT_API_TOKEN` Secret 和本地 `.dev.vars.snapshot-publisher`（600 权限，Git 忽略），不会放到主站 Worker 或静态文件中。账号、目标脚本和上传路径在发布器中固定。`wrangler.snapshot.jsonc` 管理初始静态服务及路由；日常发布不重新构建前端、不使用付费对象存储。
+
+手动发布已有快照服务：`npm run snapshot:deploy`。首次初始化使用 `npx tsx scripts/export-snapshot.ts --initial` 后运行 `npx wrangler deploy --config wrangler.snapshot.jsonc`。正常主站 `npm run deploy` 不覆盖独立快照服务。SQL 迁移 `202610090009_public_snapshots.sql` 创建服务端导出、发布互斥锁及调度入口；新环境应先设置 Secret、部署 `publish-snapshot`、验证首次发布，再开启迁移末尾注释中的 15 分钟 Cron。定时器使用现有 Vault 采集凭据，发布函数同时要求 JWT 和 `X-Crawler-Token`。
+
+按本次数据体积，未压缩报价约 8.3 MB、压缩分页约 0.63 MB。发布流量是固定后台开销，不随访客数量增长；仍消耗 Supabase 免费额度，不能保证任意数据规模都免费。发布器只上传 Cloudflare 返回的缺失内容哈希，保留文件无需重复上传。Supabase Free 和 Spend Cap 保持原有设置。
+
+2026-10-09 已关闭两个 Worker 的默认 `workers.dev` 域名及预览 URL；Cloudflare 区域启用始终使用 HTTPS、最低 TLS 1.2。静态页面、后台和 API 使用 CSP、防嵌套、内容类型、浏览器权限及 HSTS 响应头；数据库内部错误不返回客户端。公开快照、前端文件不包含后端凭据，数据库导出及发布锁均拒绝匿名调用。这是部署检查的范围，不是对所有漏洞和高流量攻击的保证；当前未开启 Access 或 Issues，也未增加自定义应用级请求限流。

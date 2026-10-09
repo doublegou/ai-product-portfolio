@@ -37,12 +37,37 @@ test("existing platform links still work and old default category means all", ()
 });
 
 
-import { catalogEntries, catalogProducts, catalogProductId } from "../src/lib/catalog";
+import { catalogEntries, catalogProducts, catalogProductId, summarizeCatalogEntry } from "../src/lib/catalog";
 import { demo, capturedAt } from "../src/data/demo";
 import type { Offer } from "../src/data/types";
 
 const classify = (platform: string, title: string, fields: Partial<Offer> = {}) => catalogProductId({
   ...demo.offers[0], platform, plan: "", delivery: "未知", raw_title: title, ...fields,
+});
+
+test("catalog prefers confirmed stock and only falls back to fresh unknown-stock reference prices", () => {
+  const now = Date.parse(capturedAt);
+  const row = (id: string, price: number, stock_status: string, extra: Partial<Offer> = {}): Offer => ({
+    ...demo.offers[0], id, price, stock_status, currency: "CNY",
+    expires_at: new Date(now + 60000).toISOString(), ...extra,
+  });
+  const product = catalogProducts[0];
+  const unknown = row("unknown", 20, "unknown");
+  const confirmed = row("confirmed", 100, "in_stock");
+  const excluded = [row("sold", 1, "out_of_stock"), row("expired", 2, "unknown", {expires_at: capturedAt}), row("usd", 3, "unknown", {currency: "USD"})];
+  const lowest = summarizeCatalogEntry(product, [unknown, confirmed, ...excluded], now);
+  assert.equal(lowest.referencePrice, 100);
+  assert.equal(lowest.priceKind, "lowest");
+  assert.equal(lowest.priceOffer?.id, "confirmed");
+  const reference = summarizeCatalogEntry(product, [unknown, ...excluded], now);
+  assert.equal(reference.referencePrice, 20);
+  assert.equal(reference.priceKind, "reference");
+  assert.equal(reference.priceOffer?.id, "unknown");
+  assert.equal(reference.available, 0);
+  const missing = summarizeCatalogEntry(product, excluded, now);
+  assert.equal(missing.referencePrice, null);
+  assert.equal(missing.priceKind, "none");
+  assert.equal(missing.priceOffer, null);
 });
 
 test("fixed reference taxonomy includes all categories independently of quote availability", () => {

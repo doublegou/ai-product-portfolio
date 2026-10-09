@@ -9,3 +9,6 @@ verify_jwt = true
 
 [functions.collect-transit]
 verify_jwt = true
+
+[functions.publish-snapshot]
+verify_jwt = true

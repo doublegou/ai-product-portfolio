@@ -1,6 +1,6 @@
 import { platforms } from "../data/products";
 import standards from "../data/standard-products.json";
-import { classifyProduct, isAvailable } from "./offers";
+import { classifyProduct, isAvailable, isFresh } from "./offers";
 import type { Offer, ProductSummary, Product } from "../data/types";
 
 export const catalogTabs = [
@@ -48,7 +48,11 @@ export function selectCategory(params: URLSearchParams, category: string): URLSe
 }
 
 export type CatalogProduct = Product & { subtitle: string; kind?: string };
-export type CatalogEntry = CatalogProduct & ProductSummary & { key: string };
+export type CatalogEntry = CatalogProduct & ProductSummary & {
+  key: string;
+  priceKind: "lowest" | "reference" | "none";
+  priceOffer: Offer | null;
+};
 
 // Standard merchandise taxonomy transcribed from https://priceai.cc/channels on 2026-10-08.
 // Empty categories remain visible: catalog structure is independent of available quotes.
@@ -161,10 +165,12 @@ export function summarizeCatalogEntry(product: CatalogProduct, offers: Offer[], 
   offers = offers.filter(offer => offer.currency === "CNY");
   const selectedCurrency = "CNY";
   const available = offers.filter(offer => isAvailable(offer, now));
-  const prices = available.filter(offer => offer.currency === selectedCurrency).map(offer => offer.price);
+  const candidates = available.length ? available : offers.filter(offer => offer.stock_status === "unknown" && isFresh(offer, now));
+  const priceOffer = [...candidates].sort((a, b) => a.price - b.price)[0] ?? null;
   return { ...product, key: product.id, offers, currency: selectedCurrency,
     channels: new Set(offers.map(offer => offer.sources.base_url)).size,
-    available: available.length, referencePrice: prices.length ? Math.min(...prices) : null };
+    available: available.length, referencePrice: priceOffer?.price ?? null, priceOffer,
+    priceKind: available.length ? "lowest" : priceOffer ? "reference" : "none" };
 }
 
 export function catalogEntries(offers: Offer[], now: number): CatalogEntry[] {
