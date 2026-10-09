@@ -36,7 +36,24 @@ The existing Umami business events are also sent to GA4 through `trackAnalyticsE
 
 The providers fail independently and do not block purchases or navigation. Search text, passwords, API keys, and affiliate query strings are not included in business event parameters. The separate admin entry point does not load the public site's GA4 module.
 
-These events measure browsing and outbound clicks, not merchant checkout completion. Event parameters are transmitted; using them as dimensions in standard GA4 reports requires custom definitions in GA4. Ad blockers and networks that cannot reach Google may prevent GA4 collection; Umami remains available independently.
+These events measure browsing and outbound clicks, not merchant checkout completion. Ad blockers and networks that cannot reach Google may prevent GA4 collection; Umami remains available independently.
+
+## Registered custom dimensions
+
+Created through the GA4 browser UI on 2026-10-09 and verified in the property's Custom definitions table. All six use Event scope:
+
+| Display name | Event parameter |
+| --- | --- |
+| 商家标识 | `source_id` |
+| 商品标识 | `product_id` |
+| AI 平台 | `platform` |
+| 商品类型 | `product_type` |
+| 页面模块 | `surface` |
+| 展示方式 | `view` |
+
+These dimensions register existing parameters and do not change frontend collection. Merchant and product identifiers are not human-readable merchant/product names. Parameters are present only on the events that send them; unrelated events may show `(not set)`. Google documents a usual 24–48 hour delay before registered dimensions become available in reports: https://support.google.com/analytics/answer/14239696
+
+For merchant click analysis, use `source_id` with event count filtered to `purchase_link_click`; for product interest, use `product_id` with event count filtered to `product_detail_open` and `platform_product_detail_open`. Registration does not itself create saved exploration reports or confirm that GA4 received events.
 
 ## Validation
 
