@@ -4,7 +4,7 @@ export const securityHeaders = {
   "X-Frame-Options": "DENY",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
-  "Content-Security-Policy": "default-src 'self'; script-src 'self' 'sha256-1swW7V33/C2zqEMP59ilnDRgQNK9cmw72Sy0X2NNbng='; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+  "Content-Security-Policy": "default-src 'self'; script-src 'self' https://stats.pricemapai.com 'sha256-1swW7V33/C2zqEMP59ilnDRgQNK9cmw72Sy0X2NNbng='; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self'; connect-src 'self' https://stats.pricemapai.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
 };
 
 export function secureResponse(response: Response): Response {
