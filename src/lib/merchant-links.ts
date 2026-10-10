@@ -18,3 +18,13 @@ export function merchantLink(value: string): string | undefined {
     return undefined;
   }
 }
+
+/** Source-specific landing pages also apply to previously published snapshots. */
+export function merchantPurchaseLink(value: string, source: string): string | undefined {
+  const home = merchantLink(source);
+  if (home) {
+    const url = new URL(home);
+    if (url.hostname === 'aicz.ink' && !url.port) return 'https://aicz.ink/';
+  }
+  return merchantLink(value);
+}

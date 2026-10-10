@@ -17,7 +17,7 @@ import { useSubscriptionView } from "../lib/useSubscriptionView";
 import { productById } from "../data/products";
 import { catalogProductById, catalogProductId } from "../lib/catalog";
 import { familyById, familyByVariant, selectFamilyVariant } from "../lib/catalogGroups";
-import { merchantLink } from "../lib/merchant-links";
+import { merchantLink, merchantPurchaseLink } from "../lib/merchant-links";
 import type { Offer } from "../data/types";
 import { merchantAnalyticsId, trackAnalyticsEvent, withPriceMapUtm } from "../lib/analytics";
 import {
@@ -35,7 +35,7 @@ import { NotFound } from "./NotFound";
 function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
   const { referenceTime } = useOffers();
   const sourceId = merchantAnalyticsId(offer.sources.base_url);
-  const purchase = merchantLink(offer.purchase_url);
+  const purchase = merchantPurchaseLink(offer.purchase_url, offer.sources.base_url);
   const shop = merchantLink(offer.sources.base_url);
   const link = purchase && withPriceMapUtm(purchase, "card_offer", "pricemapai_card_shop", offer.id);
   const home = shop && withPriceMapUtm(shop, "merchant_shop", "pricemapai_merchant", sourceId);

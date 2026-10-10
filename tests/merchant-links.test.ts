@@ -1,12 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { merchantLink } from '../src/lib/merchant-links';
+import { merchantLink, merchantPurchaseLink } from '../src/lib/merchant-links';
 import { publicOfferRows } from '../snapshot/public-fields';
 
 test('merchant homepage links use the agreed referral codes', () => {
   for (const [host, code] of [['gospv.com','NTJJLYNZ'],['burstpro-ai.online','TSES4VLN'],['xigua.ink','XG53029E3567']]) {
     assert.equal(merchantLink(`https://${host}/`), `https://${host}/?aff=${code}`);
   }
+});
+
+test('AI Zhichong uses its landing page even for older snapshots with external checkout links', () => {
+  const external = 'https://fe.dtyuedan.cn/shop/ADG1JF0R/';
+  assert.equal(merchantPurchaseLink(external, 'https://aicz.ink/'), 'https://aicz.ink/');
+  assert.equal(merchantPurchaseLink(external, 'https://other.example/'), external);
+  assert.equal(merchantPurchaseLink(external, 'https://aicz.ink.evil.example/'), external);
+  assert.equal(merchantPurchaseLink('https://burstpro-ai.online/products/a', 'https://burstpro-ai.online/'), 'https://burstpro-ai.online/products/a?aff=TSES4VLN');
 });
 
 test('product links retain the product and options while overriding old referrals', () => {
