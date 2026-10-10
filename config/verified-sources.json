@@ -2278,7 +2278,7 @@
   {
     "name": "花生店铺",
     "base_url": "https://store.codesky.qzz.io",
-    "config": {},
+    "config": { "purchase_path": "/item/{id}" },
     "interval_minutes": 15,
     "collector": "kami"
   },
