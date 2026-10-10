@@ -5,7 +5,7 @@ import {attachPerformance, rollupMonitoring, channelMonitorV2} from './transit-m
 export interface TransitSource {
   id: string; name: string; base_url: string; collector: 'transit' | 'newapi' | 'zivv' | 'onehop' | 'public_models';
   config: { snapshot_url: string; pricing_url: string; website_url?: string; monitor_url?: string; monitor_kind?: 'performance'|'zivv'|'channel_v2'; availability_unit?: 'fraction'|'percent'; request_timeout_seconds?:number };
-  interval_minutes: number; enabled: boolean; lease_token?: string;
+  interval_minutes: number; enabled: boolean; adaptive_enabled?: boolean; lease_token?: string;
 }
 type Obj = Record<string, any>;
 const obj = (v: unknown): Obj => v && typeof v === 'object' && !Array.isArray(v) ? v : {};
@@ -248,14 +248,15 @@ export function validateTransitSource(raw:unknown): Omit<TransitSource,'id'> {
  const b=obj(raw),base=safeUrl(b.base_url),config=obj(b.config);
  if(!['transit','newapi','zivv','onehop','public_models'].includes(b.collector)||typeof b.name!=='string'||!b.name.trim()||b.name.length>100)throw Error('请填写来源名称与采集器类型');
  const interval=b.interval_minutes??15;
- if(!Number.isInteger(interval)||interval<15||interval>10080)throw Error('采集间隔须为 15–10080 分钟');
+ if(!Number.isInteger(interval)||interval<10||interval>10080)throw Error('采集间隔须为 10–10080 分钟');
  if(b.enabled!==undefined&&typeof b.enabled!=='boolean')throw Error('enabled 必须为布尔值');
+ if(b.adaptive_enabled!==undefined&&typeof b.adaptive_enabled!=='boolean')throw Error('adaptive_enabled 必须为布尔值');
  const endpoint=safeUrl(config.snapshot_url),pricing=safeUrl(config.pricing_url);
  if(endpoint.origin!==base.origin)throw Error('采集接口须与来源地址同域');
  if(/(^|\.)priceai\.cc$/i.test(endpoint.hostname))throw Error('采集来源须为商家原站');
  if(config.monitor_url){const monitor=safeUrl(config.monitor_url);if(/(^|\.)priceai\.cc$/i.test(monitor.hostname))throw Error('监测来源须为商家原站');if(!['performance','zivv','channel_v2'].includes(config.monitor_kind))throw Error('请选择监测接口类型');}
  if(config.availability_unit&&!['fraction','percent'].includes(config.availability_unit))throw Error('可用率单位无效');
  if(config.request_timeout_seconds!==undefined&&(!Number.isInteger(config.request_timeout_seconds)||config.request_timeout_seconds<10||config.request_timeout_seconds>60))throw Error('读取超时须为 10–60 秒');
- return {name:b.name.trim(),base_url:base.href,collector:b.collector,interval_minutes:interval,enabled:b.enabled!==false,
+ return {name:b.name.trim(),base_url:base.href,collector:b.collector,interval_minutes:interval,enabled:b.enabled!==false,adaptive_enabled:b.adaptive_enabled!==false,
  config:{snapshot_url:endpoint.href,pricing_url:pricing.href,...(config.website_url?{website_url:safeUrl(config.website_url).href}:{}),...(config.monitor_url?{monitor_url:safeUrl(config.monitor_url).href,monitor_kind:config.monitor_kind}:{}),...(config.availability_unit?{availability_unit:config.availability_unit}:{}),...(config.request_timeout_seconds?{request_timeout_seconds:config.request_timeout_seconds}:{})}};
 }

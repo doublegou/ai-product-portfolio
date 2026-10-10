@@ -20,6 +20,7 @@
     "CRAWLER_FUNCTION_URL": "https://uoxeyzowhonxcpcijsbr.supabase.co/functions/v1/collect-prices"
   },
   "workers_dev": false,
+  "services": [{ "binding": "SNAPSHOT_SYNC", "service": "pricemapai-snapshot-sync" }],
   "routes": [
     { "pattern": "pricemapai.com", "custom_domain": true }
   ],

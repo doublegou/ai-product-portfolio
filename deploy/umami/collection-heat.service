@@ -1,0 +1,13 @@
+[Unit]
+Description=PriceMapAI aggregated Umami collection interest
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/umami/collection-heat.py
+TimeoutStartSec=90
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true

@@ -41,7 +41,7 @@ Umami 自动提供访客、浏览量、访问会话、访问时长、跳出率�
 
 登录 <https://stats.pricemapai.com>，选择 PriceMapAI，在事件和事件数据中按上述事件名与属性查看商品热度、商家购买点击、库存状态和筛选偏好。漏斗可使用详情打开 → 购买点击；购买点击代表跳转意图，不代表商家成交。
 
-PriceAI 的管理后台还调用 Umami API，读取最近一天的购买点击 `source_id` 来辅助商家采集优先级；它的赞助点击另有第一方 `/api/outbound-events` 数据库记录，并非只靠 Umami。本项目直接在 Umami 后台查看，不向前端或 GitHub Secrets 保存管理员密码，也不增加每位访客访问 Supabase 的请求。
+PriceAI 的管理后台还调用 Umami API，读取最近一天的购买点击 `source_id` 来辅助商家采集优先级；它的赞助点击另有第一方 `/api/outbound-events` 数据库记录，并非只靠 Umami。本站由腾讯云每 15 分钟从本地数据库汇总不同会话的商家兴趣，并经 Cloudflare 转交 Supabase 自动调整商家采集间隔。它不使用 Umami 管理员密码，也不增加每位访客访问 Supabase 的请求；具体策略见 [增量与热度调度](../incremental/README.md)。
 
 ## 验证记录
 

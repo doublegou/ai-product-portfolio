@@ -1,0 +1,15 @@
+{
+  "name": "pricemapai-snapshot-sync",
+  "account_id": "c1ce7f8d4d7018d071afb6b70f29b787",
+  "main": "snapshot/coordinator.ts",
+  "compatibility_date": "2026-10-07",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {"bindings": [{"name": "COORDINATOR", "class_name": "SnapshotCoordinator"}]},
+  "migrations": [{"tag": "v1", "new_sqlite_classes": ["SnapshotCoordinator"]}],
+  "r2_buckets": [{"binding": "WORKING_SNAPSHOTS", "bucket_name": "pricemapai-snapshot-workspace"}],
+  "vars": {"PUBLISH_INTERVAL_SECONDS": "300"},
+  "observability": {"enabled": true},
+  "triggers": {"crons": []}
+}

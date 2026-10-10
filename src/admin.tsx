@@ -26,6 +26,8 @@ type Source = {
   base_url: string;
   collector: string;
   interval_minutes: number;
+  adaptive_enabled?: boolean;
+  collection_tier?: string;
   config: Record<string, unknown>;
   enabled: boolean;
   last_success_at: string | null;
@@ -64,6 +66,7 @@ const initialForm = {
   base_url: "",
   collector: "dujiao",
   interval_minutes: "15",
+  adaptive_enabled: true,
   config: "{}",
 };
 const templates: Record<string, object> = {
@@ -172,6 +175,7 @@ function Admin() {
             base_url: source.base_url,
             collector: source.collector,
             interval_minutes: String(source.interval_minutes),
+            adaptive_enabled: source.adaptive_enabled !== false,
             config: JSON.stringify(source.config, null, 2),
           }
         : emptyForm,
@@ -459,7 +463,7 @@ function Admin() {
                         </td>
                         <td>
                           <b className="admin-collector">{s.collector}</b>
-                          <small>每 {s.interval_minutes} 分钟</small>
+                          <small>每 {s.interval_minutes} 分钟 · {s.adaptive_enabled === false ? '手动间隔' : `自动调度（${s.collection_tier ?? 'normal'}）`}</small>
                         </td>
                         <td>
                           <span
@@ -617,13 +621,17 @@ function Admin() {
                 <input
                   required
                   type="number"
-                  min={15}
+                  min={10}
                   max={10080}
                   value={form.interval_minutes}
                   onChange={(e) =>
                     setForm({ ...form, interval_minutes: e.target.value })
                   }
                 />
+              </label>
+              <label>
+                <span><input type="checkbox" checked={form.adaptive_enabled} onChange={e => setForm({...form, adaptive_enabled: e.target.checked})} /> 根据访问热度与采集状态自动调整间隔</span>
+                <small>关闭后使用上面填写的固定间隔。</small>
               </label>
               <label className="wide">
                 公开 HTTPS 来源地址

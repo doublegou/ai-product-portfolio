@@ -16,6 +16,23 @@ const env = {
   },
 } as unknown as Env;
 
+test("heat forwarding preserves the dedicated credential and cannot route to sync or status", async () => {
+  let calls = 0;
+  const heatEnv = { ...env, SNAPSHOT_SYNC: { fetch: async (req: Request) => {
+    calls++;
+    assert.equal(new URL(req.url).pathname, "/heat");
+    assert.equal(req.headers.get("X-Heat-Token"), "test-heat");
+    assert.equal(await req.text(), '{"sources":[]}');
+    return new Response("Unauthorized", { status: 401 });
+  } } } as unknown as Env;
+  const response = await worker.fetch(new Request("https://app.example.com/api/collection-heat?path=/sync", {
+    method: "POST", headers: { "X-Heat-Token": "test-heat" }, body: '{"sources":[]}'
+  }), heatEnv);
+  assert.equal(response.status, 401);
+  assert.equal((await worker.fetch(new Request("https://app.example.com/api/collection-heat"), heatEnv)).status, 405);
+  assert.equal(calls, 1);
+});
+
 test("admin route serves the separate document with no indexing or caching", async () => {
   for (const path of ["/admin", "/admin/", "/admin.html"]) {
     const r = await worker.fetch(

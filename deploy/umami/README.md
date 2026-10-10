@@ -59,3 +59,9 @@ docker compose exec -T db psql -U umami -d umami -c 'SELECT pg_size_pretty(pg_da
 ```
 
 本部署使用腾讯云本地数据库，不调用价格站点的 Supabase 数据库。
+
+## 商家热度上报
+
+`collection-heat.py` 在服务器本地只读汇总最近 24 小时本站事件，`collection-heat.timer` 每 15 分钟执行。配置 `/opt/umami/collection-heat.json` 由 root 持有、权限 600，包含本站 `https://pricemapai.com/api/collection-heat` 和仅允许提交热度的专用令牌；实际凭据不进入 Git。
+
+检查：`sudo systemctl list-timers collection-heat.timer --no-pager`、`sudo journalctl -u collection-heat.service -n 10 --no-pager`。oneshot 服务成功后为 inactive 是正常状态；查看退出状态和 timer 的下一次执行时间。停止上报：`sudo systemctl disable --now collection-heat.timer`。策略与验收见 [增量发布说明](../incremental/README.md)。

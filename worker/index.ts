@@ -62,6 +62,13 @@ const handler = {
     // Public data lives in a separate static-assets service. Legacy endpoints
     // never reach Supabase, including malicious cache-busting query strings.
     if (url.pathname === "/api/health") return json({ ok: true });
+    if (url.pathname === "/api/collection-heat") {
+      if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
+      if (!env.SNAPSHOT_SYNC) return json({ error: "Heat service unavailable" }, 503);
+      // Only the heat endpoint is exposed here. The receiving service validates
+      // its dedicated token; this route never creates a database client.
+      return env.SNAPSHOT_SYNC.fetch(new Request("https://snapshot.internal/heat", req));
+    }
     if (!url.pathname.startsWith("/api/admin/"))
       return json({ error: "公开报价已迁移至静态快照", snapshot: "/data/latest.json" }, 410);
     if (!(await authorized(req, env))) return json({ error: "管理密钥无效" }, 401);
@@ -107,8 +114,9 @@ const handler = {
         )
           return json({ error: "请填写来源名称与采集器类型" }, 400);
         const interval = Number(b.interval_minutes ?? 15);
-        if (!Number.isInteger(interval) || interval < 15 || interval > 10080)
-          return json({ error: "采集间隔须为 15–10080 分钟" }, 400);
+        if (b.adaptive_enabled !== undefined && typeof b.adaptive_enabled !== 'boolean') return json({error:'无效自动调度设置'},400);
+        if (!Number.isInteger(interval) || interval < 10 || interval > 10080)
+          return json({ error: "采集间隔须为 10–10080 分钟" }, 400);
         if (
           b.config &&
           (typeof b.config !== "object" || Array.isArray(b.config))
@@ -119,6 +127,7 @@ const handler = {
           base_url: u.href,
           collector: b.collector,
           interval_minutes: interval,
+          adaptive_enabled: b.adaptive_enabled !== false,
           config: b.config ?? {},
           enabled: b.enabled !== false,
         };
@@ -198,11 +207,15 @@ const handler = {
         if (b.interval_minutes !== undefined) {
           if (
             !Number.isInteger(b.interval_minutes) ||
-            b.interval_minutes < 15 ||
+            b.interval_minutes < 10 ||
             b.interval_minutes > 10080
           )
-            return json({ error: "采集间隔须为 15–10080 分钟" }, 400);
+            return json({ error: "采集间隔须为 10–10080 分钟" }, 400);
           changes.interval_minutes = b.interval_minutes;
+        }
+        if (b.adaptive_enabled !== undefined) {
+          if (typeof b.adaptive_enabled !== 'boolean') return json({error:'无效自动调度设置'},400);
+          changes.adaptive_enabled = b.adaptive_enabled;
         }
         if (!Object.keys(changes).length)
           return json({ error: "没有可更新的字段" }, 400);

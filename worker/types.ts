@@ -34,5 +34,6 @@ export interface Env {
   ADMIN_TOKEN: string;
   CRAWLER_FUNCTION_URL?: string;
   CRAWLER_TOKEN?: string;
+  SNAPSHOT_SYNC?: Fetcher;
   ASSETS: Fetcher;
 }
