@@ -16,7 +16,8 @@ function language(v: any): string {
   return "";
 }
 export function parseKami(items: any[], source: Source): Candidate[] {
-  return items.map((p) => ({
+  const excluded = new Set((source.config?.excluded_product_ids ?? []).map(String));
+  return items.filter(p => !excluded.has(String(p.id))).map((p) => ({
     external_id: String(p.id),
     raw_title: load(String(p.name ?? ""), null, false)
       .text()

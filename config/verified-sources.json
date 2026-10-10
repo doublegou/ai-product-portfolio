@@ -67,7 +67,7 @@
     "base_url": "https://ai666.id/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {"purchase_path": "/item/{id}"}
+    "config": {"purchase_path": "/item/{id}", "excluded_product_ids": ["527"]}
   },
   {
     "name": "AI 会员代充，即买即用 - Florence AI",
@@ -524,13 +524,6 @@
     "config": {}
   },
   {
-    "name": "无界AI",
-    "base_url": "https://www.16688.com.cn/shop/S277039",
-    "collector": "16688",
-    "interval_minutes": 15,
-    "config": {}
-  },
-  {
     "name": "CIM 对接马CIMCIM",
     "base_url": "https://www.16688.com.cn/shop/S216476",
     "collector": "16688",
@@ -764,13 +757,6 @@
   {
     "name": "domi卡密专供",
     "base_url": "https://www.16688.com.cn/shop/S855961",
-    "collector": "16688",
-    "interval_minutes": 15,
-    "config": {}
-  },
-  {
-    "name": "小店",
-    "base_url": "https://www.16688.com.cn/shop/S935156",
     "collector": "16688",
     "interval_minutes": 15,
     "config": {}
@@ -1990,13 +1976,6 @@
     "collector": "16688"
   },
   {
-    "name": "月饼店铺",
-    "base_url": "https://fk.ybkjs.top",
-    "config": {},
-    "interval_minutes": 15,
-    "collector": "kami"
-  },
-  {
     "name": "诺亚的AI小铺",
     "base_url": "https://www.16688.com.cn/shop/S461375",
     "config": {},
@@ -2146,13 +2125,6 @@
   {
     "name": "像素 AI 工具馆",
     "base_url": "https://www.16688.com.cn/shop/S538681",
-    "config": {},
-    "interval_minutes": 15,
-    "collector": "16688"
-  },
-  {
-    "name": "时雨商城",
-    "base_url": "https://www.16688.com.cn/shop/S840665",
     "config": {},
     "interval_minutes": 15,
     "collector": "16688"
@@ -2639,28 +2611,6 @@
     "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
-  },
-  {
-    "name": "艾琳",
-    "base_url": "https://shop.aictk.shop",
-    "config": {},
-    "interval_minutes": 15,
-    "collector": "dujiao"
-  },
-  {
-    "name": "AI 批发",
-    "base_url": "https://gpt.ybkjs.top",
-    "collector": "html",
-    "config": {
-      "item_selector": "div.flex.flex-1.flex-col:has(h3)",
-      "title_selector": "h3",
-      "price_selector": "span.text-xl",
-      "link_selector": "a[href^=\"/product/\"]",
-      "stock_selector": "span:contains(\"库存\")",
-      "stock_prefix": "库存",
-      "full_snapshot": true
-    },
-    "interval_minutes": 15
   },
   {
     "name": "星宝小店",

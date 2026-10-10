@@ -23,6 +23,12 @@ const source = {
   last_error: null,
   next_crawl_at: "",
 } satisfies Source;
+test("removed Kami products stay excluded without hiding the rest of the shop", () => {
+  const rows = parseKami([{id: 527, name: 'Removed', price: 10}, {id: 528, name: 'Kept', price: 20}],
+    {...source, config: {excluded_product_ids: ['527']}});
+  assert.deepEqual(rows.map(row => row.external_id), ['528']);
+  assert.equal(rows[0].price, 20);
+});
 test("delivery and duration keep unlike subscriptions out of the same comparison", () => {
   const a = classify("ChatGPT Plus 代充 1个月"),
     b = classify("ChatGPT Plus 成品账号 1个月"),
