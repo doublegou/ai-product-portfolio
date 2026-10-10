@@ -488,6 +488,7 @@
 .table-deliveries { line-height: 1.8; overflow-wrap: anywhere; }
 .table-price { color: #29384c; font-size: 23px; font-weight: 500; white-space: nowrap; letter-spacing: -.7px; }
 .subscription-card .card-price strong.price-status, .table-price.price-status { font-size: 18px; letter-spacing: 0; }
+.offer-price strong.price-status { font-size: 18px; letter-spacing: 0; }
 .table-updated { white-space: nowrap; }
 .catalog-table tbody tr:hover td { background-color: #dbe7f32e; }
 :root[data-theme="dark"] .catalog-table th { background: #15171eeb; color: #99a7bc; }

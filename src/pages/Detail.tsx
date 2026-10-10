@@ -64,7 +64,7 @@ function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
           {offer.duration_days !== null && <><span className="offer-spec-dot">·</span><span>{durationLabel(offer.duration_days).split(" / ").pop()}</span></>}
         </div>
         <div className="offer-price">
-          <strong>{money(offer.price, offer.currency)}</strong>
+          <strong className={offer.stock_status === "out_of_stock" ? "price-status" : undefined}>{offer.stock_status === "out_of_stock" ? "暂时缺货" : money(offer.price, offer.currency)}</strong>
           {lowest && (
             <span className="lowest-label">
               <Check size={10} />

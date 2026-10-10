@@ -39,4 +39,17 @@ test('stock display distinguishes unknown, qualitative, exact and expired observ
 test('aggregate parent inventory is never repeated as each SKU quantity',()=>{
  const rows=parseDujiao([{id:1,title:'AI',fulfillment_type:'manual',manual_stock_available:99,stock_status:'in_stock',skus:[{id:1,price_amount:10},{id:2,price_amount:20}]}],source);
  assert.deepEqual(rows.map(x=>x.raw_data?.stock_quantity),[null,null]);
+ assert.deepEqual(rows.map(x=>x.stock_status),['unknown','unknown']);
+});
+test('a sold-out cheap SKU does not inherit availability from other stocked variants',()=>{
+ const rows=parseDujiao([{id:15,title:'GPT UPI提链',slug:'ChatGPT-UPI',fulfillment_type:'auto',auto_stock_available:39,stock_status:'in_stock',is_sold_out:false,skus:[
+  {id:36,price_amount:3,auto_stock_available:0,upstream_stock:0,stock_status:'in_stock'},
+  {id:37,price_amount:12,auto_stock_available:29,upstream_stock:0},
+  {id:38,price_amount:45,auto_stock_available:10,upstream_stock:0},
+ ]}],source);
+ assert.deepEqual(rows.map(x=>x.stock_status),['out_of_stock','in_stock','in_stock']);
+ assert.deepEqual(rows.map(x=>x.raw_data?.stock_quantity),[0,29,10]);
+ assert.equal(Math.min(...rows.filter(x=>x.stock_status==='in_stock').map(x=>x.price)),12);
+ const manual=parseDujiao([{id:1,title:'AI',fulfillment_type:'manual',stock_status:'in_stock',skus:[{id:1,price_amount:2,manual_stock_total:8,manual_stock_sold:8},{id:2,price_amount:3,manual_stock_total:8,manual_stock_sold:3}]}],source);
+ assert.deepEqual(manual.map(x=>x.stock_status),['out_of_stock','in_stock']);
 });

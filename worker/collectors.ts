@@ -37,39 +37,43 @@ export function parseDujiao(items: any[], source: Source): Candidate[] {
   return items.flatMap((p) =>
     (Array.isArray(p.skus) && p.skus.length ? p.skus : [null])
       .filter((s: any) => s?.is_active !== false)
-      .map((s: any) => ({
-        external_id: `${p.id}:${s?.id ?? "default"}`,
-        raw_title: [
-          language(p.title),
-          language(s?.title ?? s?.name) ||
-            Object.values(s?.spec_values ?? {})
-              .map(language)
-              .filter(Boolean)
-              .join(" / "),
-        ]
-          .filter(Boolean)
-          .join(" · "),
-        price: money(s?.price_amount ?? p.price_amount),
-        currency: String(p.currency ?? "CNY").toUpperCase(),
-        ...inventory(
-          (s?.is_sold_out ?? p.is_sold_out)
-            ? "out_of_stock"
-            : (
-                s?.stock_status ??
-                  p.stock_status ??
-                  s?.auto_stock_available ??
-                  s?.manual_stock_available ??
-                  p.auto_stock_available ??
-                  p.manual_stock_available
-              ),
-          // Product totals describe all SKUs, so never attach them to each SKU.
-          s ? (p.fulfillment_type === "manual" ? s.manual_stock_available : s.auto_stock_available)
-            : (p.fulfillment_type === "manual" ? p.manual_stock_available : p.auto_stock_available)),
-        purchase_url: new URL(
-          `/products/${encodeURIComponent(p.slug ?? p.id)}`,
-          source.base_url,
-        ).href,
-      })),
+      .map((s: any) => {
+        // Parent stock is the sum of all variants, never evidence for an individual SKU.
+        let quantity = s ? (p.fulfillment_type === "manual" ? s.manual_stock_available : s.auto_stock_available)
+          : (p.fulfillment_type === "manual" ? p.manual_stock_available : p.auto_stock_available);
+        if (s && p.fulfillment_type === "manual" && quantity == null && s.manual_stock_total != null && s.manual_stock_sold != null)
+          quantity = Math.max(0, Number(s.manual_stock_total) - Number(s.manual_stock_sold));
+        if (s && quantity != null && s.upstream_stock != null && Number(s.upstream_stock) > 0)
+          quantity = Number(quantity) + Number(s.upstream_stock);
+        const status = s
+          ? (s.stock_status === "out_of_stock" ? s.stock_status : quantity ?? s.stock_status)
+          : p.stock_status ?? quantity;
+        return {
+          external_id: `${p.id}:${s?.id ?? "default"}`,
+          raw_title: [
+            language(p.title),
+            language(s?.title ?? s?.name) ||
+              Object.values(s?.spec_values ?? {})
+                .map(language)
+                .filter(Boolean)
+                .join(" / "),
+          ]
+            .filter(Boolean)
+            .join(" · "),
+          price: money(s?.price_amount ?? p.price_amount),
+          currency: String(p.currency ?? "CNY").toUpperCase(),
+          ...inventory(
+            (s?.is_sold_out === true || p.is_sold_out === true)
+              ? "out_of_stock"
+              : status,
+            // Product totals describe all SKUs, so never attach them to each SKU.
+            quantity),
+          purchase_url: new URL(
+            `/products/${encodeURIComponent(p.slug ?? p.id)}`,
+            source.base_url,
+          ).href,
+        };
+      }),
   );
 }
 // Original storefront API returns one list for the entire shop, without pagination.

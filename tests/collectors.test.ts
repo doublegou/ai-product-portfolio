@@ -156,6 +156,7 @@ test("stock status wins over auto inventory for manually delivered SKUs and inac
       {
         id: 1,
         title: "Claude Pro 代充",
+        fulfillment_type: "manual",
         skus: [
           {
             id: 1,
