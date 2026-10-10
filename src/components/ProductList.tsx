@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, SearchX } from "lucide-react";
 import { PlatformIcon } from "./PlatformIcon";
-import type { CatalogEntry } from "../lib/catalog";
+import { catalogPriceStatus, type CatalogEntry } from "../lib/catalog";
 import { catalogDetailHref } from '../lib/catalogGroups';
 import { money } from "../lib/offers";
 import { DataUpdated } from "./DataUpdated";
@@ -35,7 +35,7 @@ export function ProductList({ products, from = "", view = "list" }: { products: 
         <td><Link className="table-product" to={href} onClick={() => trackDetail(product, from)}><PlatformIcon platform={product.platform} /><span><strong>{product.name}</strong><small>{product.subtitle}</small></span></Link></td>
         <td className="table-deliveries">{deliveries}</td>
         <td><span className="table-counts"><span>{product.channels} 家商家</span><span>{product.offers.length} 条报价</span></span></td>
-        <td><strong className="table-price">{product.referencePrice === null ? "—" : money(product.referencePrice, product.currency)}</strong>{product.priceKind === "reference" && <small className="table-source">参考价 · 库存待确认</small>}<small className="table-source">{best?.sources.name ?? ""}</small></td>
+        <td><strong className={`table-price${product.referencePrice === null ? " price-status" : ""}`}>{product.referencePrice === null ? catalogPriceStatus(product, now) : money(product.referencePrice, product.currency)}</strong>{product.priceKind === "reference" && <small className="table-source">参考价 · 库存待确认</small>}<small className="table-source">{best?.sources.name ?? ""}</small></td>
         <td className="table-updated"><DataUpdated at={best?.last_seen_at ?? product.offers.map(o => o.last_seen_at).sort().at(-1)} now={now}/></td>
         <td className="table-action"><Link className="catalog-detail-link" to={href} onClick={() => trackDetail(product, from)} aria-label={`查看 ${product.name} 详情`}>详情<ChevronRight size={15}/></Link></td>
       </tr>)}</tbody>
@@ -44,7 +44,7 @@ export function ProductList({ products, from = "", view = "list" }: { products: 
   return <div className="subscription-grid">{rows.map(({product, best, deliveries, href}) => <Link className="subscription-card glass-surface" key={product.key} to={href} onClick={() => trackDetail(product, from)}>
     <div className="subscription-card-top"><PlatformIcon platform={product.platform} /><span className="card-counts"><span>{product.channels} 家商家</span><span>{product.offers.length} 条报价</span></span></div>
     <div className="card-identity"><h2>{product.name}</h2><p className="card-specs">{product.subtitle}</p></div>
-    <div className="card-price"><div><small>{product.priceKind === "reference" ? "参考价 · 库存待确认" : "最低价"}</small><strong>{product.referencePrice === null ? "—" : money(product.referencePrice, product.currency)}</strong></div><p className="card-source">{best?.sources.name ?? ""}</p></div>
+    <div className="card-price"><div><small>{product.priceKind === "reference" ? "参考价 · 库存待确认" : product.priceKind === "none" ? "报价状态" : "最低价"}</small><strong className={product.referencePrice === null ? "price-status" : undefined}>{product.referencePrice === null ? catalogPriceStatus(product, now) : money(product.referencePrice, product.currency)}</strong></div><p className="card-source">{best?.sources.name ?? ""}</p></div>
     <div className="card-footer-info"><span className="card-deliveries" aria-label={`交付方式：${deliveries}`}>{deliveries}</span><DataUpdated className="card-updated" at={best?.last_seen_at ?? product.offers.map(o => o.last_seen_at).sort().at(-1)} now={now}/></div>
   </Link>)}</div>;
 }

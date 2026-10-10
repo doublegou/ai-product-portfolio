@@ -183,6 +183,14 @@ export function catalogEntries(offers: Offer[], now: number): CatalogEntry[] {
   return catalogProducts.map(product => summarizeCatalogEntry(product, groups.get(product.id) ?? [], now));
 }
 
+export function catalogPriceStatus(product: CatalogEntry, now: number): string {
+  if (!product.offers.length) return "暂无报价";
+  const fresh = product.offers.filter(offer => isFresh(offer, now));
+  if (!fresh.length) return "报价待更新";
+  if (fresh.every(offer => offer.stock_status === "out_of_stock")) return "暂时缺货";
+  return "暂无可用价格";
+}
+
 export function filterCatalogEntries(entries: CatalogEntry[], params: URLSearchParams, now: number): CatalogEntry[] {
   const category = selectedCategory(params);
   const subtype = params.get("subtype");
