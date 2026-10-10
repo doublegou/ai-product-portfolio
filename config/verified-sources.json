@@ -2636,7 +2636,7 @@
   {
     "name": "ShopGPT",
     "base_url": "https://shopgpt.plus",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
