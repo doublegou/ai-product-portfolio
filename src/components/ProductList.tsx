@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, SearchX } from "lucide-react";
 import { PlatformIcon } from "./PlatformIcon";
 import type { CatalogEntry } from "../lib/catalog";
+import { catalogDetailHref } from '../lib/catalogGroups';
 import { money } from "../lib/offers";
 import { DataUpdated } from "./DataUpdated";
 import { trackAnalyticsEvent } from "../lib/analytics";
@@ -24,9 +25,7 @@ export function ProductList({ products, from = "", view = "list" }: { products: 
   const rows = products.map(product => {
     const best = product.priceOffer;
     const deliveries = [...new Set(product.offers.map(offer => offer.delivery).filter(delivery => delivery !== "未知"))].join(" · ") || "—";
-    const query = new URLSearchParams();
-    if (from) query.set("from", from);
-    return { product, best, deliveries, href: `/subscriptions/${product.id}${query.size ? `?${query}` : ""}` };
+    return { product, best, deliveries, href: catalogDetailHref(product, from) };
   });
   if (view === "list") return <div className="catalog-table-wrap subscription-table-wrap">
     <table className="catalog-table subscription-table" aria-label="商品报价列表">

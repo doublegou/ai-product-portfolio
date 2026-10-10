@@ -16,7 +16,7 @@ import { DataUpdated } from "../components/DataUpdated";
 import { useSubscriptionView } from "../lib/useSubscriptionView";
 import { productById } from "../data/products";
 import { catalogProductById, catalogProductId } from "../lib/catalog";
-import { familyById, familyByVariant } from "../lib/catalogGroups";
+import { familyById, familyByVariant, selectFamilyVariant } from "../lib/catalogGroups";
 import { merchantLink } from "../lib/merchant-links";
 import type { Offer } from "../data/types";
 import { merchantAnalyticsId, trackAnalyticsEvent, withPriceMapUtm } from "../lib/analytics";
@@ -103,7 +103,7 @@ export function Detail() {
   const directProduct = catalogProductById.get(productId ?? "");
   const family = familyById.get(productId ?? "") ?? familyByVariant.get(directProduct?.id ?? "");
   const requestedVariant = get("variant", directProduct?.id);
-  const selectedVariant = family?.variants.find(variant => variant.id === requestedVariant) ?? family?.variants[0];
+  const selectedVariant = family ? selectFamilyVariant(family, requestedVariant, allOffers, referenceTime) : undefined;
   const catalogProduct = selectedVariant ? catalogProductById.get(selectedVariant.id) : directProduct;
   const legacyProduct = productById.get(productId ?? "");
   const product = catalogProduct ?? (legacyProduct ? { ...legacyProduct, subtitle: legacyProduct.description } : undefined);

@@ -1,4 +1,4 @@
-import { catalogEntries, catalogProductById, summarizeCatalogEntry, type CatalogEntry, type CatalogProduct } from "./catalog";
+import { catalogEntries, catalogProductById, catalogProductId, summarizeCatalogEntry, type CatalogEntry, type CatalogProduct } from "./catalog";
 import type { Offer } from "../data/types";
 
 export type ProductFamily = CatalogProduct & { variants: { id: string; label: string }[] };
@@ -19,6 +19,22 @@ export const productFamilies: ProductFamily[] = definitions.map(([id, name, vari
 });
 export const familyById = new Map(productFamilies.map(family => [family.id, family]));
 export const familyByVariant = new Map(productFamilies.flatMap(family => family.variants.map(variant => [variant.id, family] as const)));
+
+export function selectFamilyVariant(family: ProductFamily, requested: string | undefined, offers: Offer[], now: number) {
+  const explicit = family.variants.find(variant => variant.id === requested);
+  if (explicit) return explicit;
+  const ids = new Set(family.variants.map(variant => variant.id));
+  const entry = summarizeCatalogEntry(family, offers.filter(offer => ids.has(catalogProductId(offer))), now);
+  const bestVariant = entry.priceOffer ? catalogProductId(entry.priceOffer) : null;
+  return family.variants.find(variant => variant.id === bestVariant) ?? family.variants[0];
+}
+
+export function catalogDetailHref(product: CatalogEntry, from = '') {
+  const query = new URLSearchParams();
+  if (from) query.set('from', from);
+  if (familyById.has(product.id) && product.priceOffer) query.set('variant', catalogProductId(product.priceOffer));
+  return `/subscriptions/${product.id}${query.size ? `?${query}` : ''}`;
+}
 
 // Only the directory is aggregated. Each detail tab retains its own precise taxonomy and quotes.
 export function groupedCatalogEntries(offers: Offer[], now: number): CatalogEntry[] {
