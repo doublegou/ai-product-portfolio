@@ -1,3 +1,4 @@
+import { isCodexCredits } from './codex-credits';
 import { platforms } from "../data/products";
 import standards from "../data/standard-products.json";
 import { classifyProduct, isAvailable, isFresh } from "./offers";
@@ -78,6 +79,7 @@ const aliases: Record<string, string> = {
 for (const [alias, id] of Object.entries(aliases)) catalogProductById.set(alias, catalogProductById.get(id)!);
 
 export function catalogProductId(offer: Offer): string {
+  if (isCodexCredits(offer.raw_title)) return 'chatgpt-codex-credits';
   const title = offer.raw_title.normalize("NFKC").toLowerCase();
   const text = `${offer.plan} ${title}`.toLowerCase();
   const has = (pattern: RegExp) => pattern.test(text);
@@ -94,7 +96,6 @@ export function catalogProductId(offer: Offer): string {
   }
   if (has(/kyc|persona|真人验证/)) return offer.platform === "Claude" ? "claude-kyc-verification" : "identity-verification";
   if (offer.platform === "ChatGPT") {
-    if (has(/codex/) && has(/额度充值|点数|credits|积分/)) return "chatgpt-codex-credits";
     if (has(/team|business|k12/)) return "chatgpt-team-business";
     if (has(/周边|自助|教程|提链|扫码|邀请|优惠码|优惠券|资格/)) return "chatgpt-codex-service";
     if (has(/\bpro\b|pro\d/)) {

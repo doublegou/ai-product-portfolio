@@ -1,11 +1,13 @@
 import type { Classification } from "./types.ts";
+import { isCodexCredits } from '../src/lib/codex-credits.ts';
 export function classify(title: string): Classification {
   const t = title.normalize("NFKC").toLowerCase();
+  const credits = isCodexCredits(title);
   const ancillary =
     /虚拟卡|visa卡|visa虚拟|邀请码|资格|优惠券|兑换券|接码|接马|接碼|接馬|手机号|纯邮箱|空白账号/.test(
       t,
     );
-  const platform = /chat\s*gpt|openai|g[.·\s]*p[.·\s]*t/.test(t)
+  const platform = credits || /chat\s*gpt|openai|g[.·\s]*p[.·\s]*t/.test(t)
     ? "ChatGPT"
     : /claude/.test(t)
       ? "Claude"
@@ -18,7 +20,7 @@ export function classify(title: string): Classification {
             : "其他";
   // The first plan in the title is the product; later mentions can describe upgrades.
   const planMatch = t.match(/\b(ultra|plus|max|team|pro|go)(?=\d|[^a-z]|$)/);
-  const plan = ancillary
+  const plan = credits ? 'Credits' : ancillary
     ? "未知"
     : planMatch
       ? (
@@ -52,8 +54,9 @@ export function classify(title: string): Classification {
       Number(d[1]) * ({ 天: 1, 日: 1, 个月: 30, 月: 30, 年: 365 }[d[2]] ?? 1);
   else if (/年卡|年付|一年/.test(t)) duration_days = 365;
   else if (/月卡|月付|一个月/.test(t)) duration_days = 30;
+  if (credits) duration_days = null;
   const review_required =
-    ancillary ||
+    credits || ancillary ||
     platform === "其他" ||
     plan === "未知" ||
     delivery === "未知" ||
