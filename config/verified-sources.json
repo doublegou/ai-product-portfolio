@@ -60,7 +60,7 @@
     "base_url": "https://douyiner.cn/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "七叔数字社",
