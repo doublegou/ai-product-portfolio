@@ -28,7 +28,7 @@ begin
  end if;
  select s.id,public.merchant_analytics_id(s.base_url) into source_id,merchant from public.sources s where enabled and adaptive_enabled limit 1;
  if source_id is null then raise exception 'No adaptive source fixture'; end if;
- update public.sources set consecutive_failures=0,interval_minutes=60,collection_tier='normal' where id=source_id;
+ update public.sources set availability_state='unknown',consecutive_failures=0,interval_minutes=60,collection_tier='normal' where id=source_id;
  update public.collection_heat_state set generated_at=null,last_applied_at=now(),sources='[]' where id;
  perform public.apply_collection_heat(jsonb_build_object('generated_at',now(),'sources',jsonb_build_array(jsonb_build_object('id',merchant,'clicks',3))));
  if not exists(select 1 from public.sources where id=source_id and interval_minutes=10 and collection_tier='hot') then
@@ -46,7 +46,7 @@ begin
  from public.sources where enabled and adaptive_enabled order by public.merchant_analytics_id(base_url),id) x limit 21;
  if (select count(*) from heat_rank_fixture)<>21 then raise exception 'Ranking test needs 21 sources'; end if;
  select id into source_id from heat_rank_fixture order by id desc limit 1;
- update public.sources set consecutive_failures=0 where id in(select id from heat_rank_fixture);
+ update public.sources set availability_state='unknown',consecutive_failures=0 where id in(select id from heat_rank_fixture);
  select jsonb_agg(jsonb_build_object('id',f.merchant,'clicks',3,'purchase_clicks',case when f.id=source_id then 3 else 0 end,'shop_clicks',0,'pricing_clicks',0,'detail_views',case when f.id=source_id then 0 else 3 end)) into fixture_heat from heat_rank_fixture f;
  update public.collection_heat_state set generated_at=null,last_applied_at=now(),sources='[]' where id;
  perform public.apply_collection_heat(jsonb_build_object('generated_at',now(),'sources',fixture_heat));

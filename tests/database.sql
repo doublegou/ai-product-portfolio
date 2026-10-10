@@ -4,7 +4,7 @@ begin;
 do $$
 declare s sources; run_id uuid; count_before integer; count_after integer; payload jsonb;
 begin
- insert into sources(name,base_url,collector) values('transaction-test','https://transaction-test.example.com/','json') returning * into s;
+ insert into sources(name,base_url,collector,adaptive_enabled) values('transaction-test','https://transaction-test.example.com/','json',false) returning * into s;
  select * into s from claim_sources(1,s.id);
  if s.lease_token is null then raise exception 'claim did not acquire lease'; end if;
  if exists(select 1 from claim_sources(1,s.id)) then raise exception 'double claim allowed'; end if;

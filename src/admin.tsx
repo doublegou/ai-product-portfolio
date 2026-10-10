@@ -30,6 +30,12 @@ type Source = {
   interval_minutes: number;
   adaptive_enabled?: boolean;
   collection_tier?: string;
+  availability_state?: string;
+  out_of_stock_since?: string | null;
+  out_of_stock_confirmations?: number;
+  hot_last_success_at?: string | null;
+  hot_last_error?: string | null;
+  hot_verified_count?: number;
   config: Record<string, unknown>;
   enabled: boolean;
   last_success_at: string | null;
@@ -63,6 +69,11 @@ const date = (v: string | null) =>
         timeZone: "Asia/Shanghai",
       })
     : "尚未采集";
+const collectionTierLabel: Record<string, string> = {
+  normal: '常规', hot: '热门', changing: '高变化', core: '核心低价',
+  warm: '关注 / 新店', lowprice_guard: '低价守护', watch: '变化观察',
+  stable: '稳定', recovering: '失败重试', out_of_stock: '缺货观察',
+};
 const initialForm = {
   name: "",
   base_url: "",
@@ -469,7 +480,8 @@ function Admin() {
                         </td>
                         <td>
                           <b className="admin-collector">{s.collector}</b>
-                          <small>每 {s.interval_minutes} 分钟 · {s.adaptive_enabled === false ? '手动间隔' : `自动调度（${s.collection_tier ?? 'normal'}）`}</small>
+                          <small>每 {s.interval_minutes} 分钟 · {s.adaptive_enabled === false ? '手动间隔' : `自动调度（${collectionTierLabel[s.collection_tier ?? 'normal'] ?? s.collection_tier}）`}</small>
+                          {s.availability_state === 'out_of_stock' && <small>持续缺货自 {date(s.out_of_stock_since ?? null)} · 已确认 {s.out_of_stock_confirmations ?? 0} 次</small>}
                           {(() => {
                             const interest=heat?.sources.find(h=>h.id===(dataset==='transit'?s.id:merchantAnalyticsId(s.base_url)));
                             const stale=!heat?.generated_at||Date.now()-Date.parse(heat.generated_at)>7200000;
@@ -502,6 +514,8 @@ function Admin() {
                           <small className="muted">
                             下次 {s.enabled ? date(s.next_crawl_at) : "暂停"}
                           </small>
+                          {s.hot_last_success_at && <small title="仅更新选中的热点报价，不代表全店采集">热点核验 {date(s.hot_last_success_at)} · {s.hot_verified_count ?? 0} 条</small>}
+                          {s.hot_last_error && <small className="error admin-source-error">热点核验：{s.hot_last_error}</small>}
                         </td>
                         <td>
                           <div className="admin-row-actions">

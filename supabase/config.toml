@@ -12,3 +12,6 @@ verify_jwt = true
 
 [functions.publish-snapshot]
 verify_jwt = true
+
+[functions.verify-hot-offers]
+verify_jwt = true
