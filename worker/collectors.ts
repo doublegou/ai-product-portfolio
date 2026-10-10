@@ -28,7 +28,7 @@ export function parseKami(items: any[], source: Source): Candidate[] {
         ? "out_of_stock"
         : p.stock, p.stock),
     purchase_url: safeUrl(
-      (source.config?.purchase_path ?? "/commodity?id={id}").replace("{id}", encodeURIComponent(p.id)),
+      (source.config?.purchase_path ?? "/item/{id}").replace("{id}", encodeURIComponent(p.id)),
       source.base_url,
     ).href,
   }));

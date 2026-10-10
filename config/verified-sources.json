@@ -11,7 +11,7 @@
     "base_url": "https://dimosky.com/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "炼丹师小铺",
@@ -46,14 +46,14 @@
     "base_url": "https://aisou.pro/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "T佬的gmail批发渠道",
     "base_url": "https://ai666.dnxb.cc/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "Gemini账号批发douyiner.cn",
@@ -67,21 +67,21 @@
     "base_url": "https://ai666.id/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "AI 会员代充，即买即用 - Florence AI",
     "base_url": "https://faka.redeemai.me/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "86GameStore",
     "base_url": "https://faka.redeemgpt.com/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "Goutou小铺",
@@ -95,28 +95,28 @@
     "base_url": "https://hiemail.store/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "NikoCard",
     "base_url": "https://nikoers.com/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "笔墨小铺-  专供GPT Claude Gemini相关羊毛",
     "base_url": "https://shop.bmoplus.com/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "shopcardai.click",
     "base_url": "https://shopcardai.click/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "异次元店铺",
@@ -130,21 +130,21 @@
     "base_url": "https://web3chirou.com/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "Wiki123 卡网",
     "base_url": "https://wiki123.top/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "yh-mo源头批发",
     "base_url": "https://yh-mo.xyz/",
     "collector": "kami",
     "interval_minutes": 15,
-    "config": {}
+    "config": {"purchase_path": "/item/{id}"}
   },
   {
     "name": "ac-card.org",
@@ -1887,7 +1887,7 @@
   {
     "name": "以太 AI服务订阅充值",
     "base_url": "https://google7676.top",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -1957,7 +1957,7 @@
   {
     "name": "小熊AI充值",
     "base_url": "https://aichongz.cc",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -2020,7 +2020,7 @@
   {
     "name": "BBAI 官方充值",
     "base_url": "https://faka.bbanai.site",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -2118,7 +2118,7 @@
   {
     "name": "人机验证",
     "base_url": "https://kbshub.store",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -2132,7 +2132,7 @@
   {
     "name": "10886源头发卡网",
     "base_url": "https://fk.10886.xyz",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -2272,7 +2272,7 @@
   {
     "name": "sol批发谷歌",
     "base_url": "https://gmailsol.com",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },
@@ -2335,7 +2335,7 @@
   {
     "name": "weiloo",
     "base_url": "https://shop.sunnydolls.dpdns.org",
-    "config": {},
+    "config": {"purchase_path": "/item/{id}"},
     "interval_minutes": 15,
     "collector": "kami"
   },

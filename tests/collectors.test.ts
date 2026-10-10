@@ -47,7 +47,9 @@ test("unknown inventory is preserved and hidden products do not count as in stoc
 });
 test("Kami storefronts retain their configured purchase route on every collection", () => {
   const item = { id: 11, name: "Grok 普号", price: 0.08, stock: 2354 };
-  assert.equal(parseKami([item], source)[0].purchase_url, 'https://merchant.example.com/commodity?id=11');
+  assert.equal(parseKami([item], source)[0].purchase_url, 'https://merchant.example.com/item/11');
+  const legacy = { ...source, config: { purchase_path: '/commodity?id={id}' } };
+  assert.equal(parseKami([item], legacy)[0].purchase_url, 'https://merchant.example.com/commodity?id=11');
   const storefront = { ...source, base_url: 'https://store.codesky.qzz.io', config: { purchase_path: '/item/{id}' } };
   assert.equal(parseKami([item], storefront)[0].purchase_url, 'https://store.codesky.qzz.io/item/11');
   assert.equal(parseKami([{ ...item, id: 'a/b' }], storefront)[0].purchase_url, 'https://store.codesky.qzz.io/item/a%2Fb');
