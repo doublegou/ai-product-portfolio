@@ -153,11 +153,11 @@ npm run deploy:check
 
 公开页面只读取 `/data/latest.json` 和其指向的压缩 JSON 分页。`pricemapai-public-snapshots` 是独立的 Cloudflare Static Assets 服务，路由为 `pricemapai.com/data/*`，没有数据库绑定或可执行业务代码；访客读取报价不触发后台 Worker、不查询 Supabase。后台、试采集、手动采集继续由 `pricemapai-web-production` 和现有两个采集函数处理。旧 `/api/offers`、`/api/transit`、`/api/stats` 和 `/api/history/*` 返回 410，不保留公开数据库读取入口；`/api/health` 只检查 HTTP 服务存活，不查询数据库。
 
-Supabase `publish-snapshot` 每分钟在数据库内生成批次增量，由 Cloudflare 同步服务合并到私有 R2 工作快照，最多每 5 分钟执行白名单过滤、gzip 压缩并通过 Direct Uploads 发布完整静态 JSON。详见 [增量快照与热度调度](deploy/incremental/README.md)。只有所有文件上传成功才切换整份资源目录；保留当前和上一版本，失败继续展示上一次成功发布的数据。前端校验版本、总数、重复 ID，不拼接部分成功数据；旧目录过期时只重新读取一次静态目录，不回退数据库 API。浏览器原生 `DecompressionStream('gzip')` 用于解压分页，要求现代浏览器。快照目录缓存 60 秒，版本文件缓存一年；正常情况下，采集数据还需等待批次同步、最多约 5 分钟的发布窗口及清单缓存；失败重试或额度耗尽时可能更久。店铺新增、修改、停用在后续采集／下一份快照生效。页面沿用报价采集时间和过期状态。
+Supabase `publish-snapshot` 每 15 分钟在数据库内生成批次增量，由 Cloudflare 同步服务合并到私有 R2 工作快照，最多每 5 分钟执行白名单过滤、gzip 压缩并通过 Direct Uploads 发布完整静态 JSON。详见 [增量快照与热度调度](deploy/incremental/README.md)。只有所有文件上传成功才切换整份资源目录；保留当前和上一版本，失败继续展示上一次成功发布的数据。前端校验版本、总数、重复 ID，不拼接部分成功数据；旧目录过期时只重新读取一次静态目录，不回退数据库 API。浏览器原生 `DecompressionStream('gzip')` 用于解压分页，要求现代浏览器。快照目录缓存 60 秒，版本文件缓存一年；正常情况下，采集数据还需等待最多约 15 分钟的批次同步、发布处理及清单缓存；失败重试或额度耗尽时可能更久。店铺新增、修改、停用在后续采集／下一份快照生效。页面沿用报价采集时间和过期状态。
 
 快照发布需要一个仅包含本账号 `Workers Scripts:Edit` 权限的 Cloudflare API Token。该权限在 Cloudflare 是账号级，不能声称仅有单个脚本的权限；令牌存于独立 Cloudflare 同步 Worker 的 `CLOUDFLARE_SNAPSHOT_API_TOKEN` Secret，以及保留用于回滚的 Supabase 同名 Secret 和本地 `.dev.vars.snapshot-publisher`（600 权限，Git 忽略），不会放到主站 Worker 或静态文件中。账号、目标脚本和上传路径在发布器中固定。`wrangler.snapshot.jsonc` 管理初始静态服务及路由；日常发布不重新构建前端；私有 R2 工作桶采用 Standard 免费额度，超出账号共享额度仍可能收费。
 
-手动发布已有快照服务：`npm run snapshot:deploy`。首次初始化使用 `npx tsx scripts/export-snapshot.ts --initial` 后运行 `npx wrangler deploy --config wrangler.snapshot.jsonc`。正常主站 `npm run deploy` 不覆盖独立快照服务。SQL 迁移 `202610090010_public_snapshots.sql` 创建服务端导出、发布互斥锁及调度入口；新环境应先设置 Secret、部署 `publish-snapshot`、验证首次发布，再开启迁移末尾注释中的 15 分钟 Cron。定时器使用现有 Vault 采集凭据，发布函数同时要求 JWT 和 `X-Crawler-Token`。当前增量部署配置 `SNAPSHOT_SYNC_URL` 并使用每分钟调度，原 15 分钟全量分支作为回滚途径。
+手动发布已有快照服务：`npm run snapshot:deploy`。首次初始化使用 `npx tsx scripts/export-snapshot.ts --initial` 后运行 `npx wrangler deploy --config wrangler.snapshot.jsonc`。正常主站 `npm run deploy` 不覆盖独立快照服务。SQL 迁移 `202610090010_public_snapshots.sql` 创建服务端导出、发布互斥锁及调度入口；新环境应先设置 Secret、部署 `publish-snapshot`、验证首次发布，再开启迁移末尾注释中的 15 分钟 Cron。定时器使用现有 Vault 采集凭据，发布函数同时要求 JWT 和 `X-Crawler-Token`。当前增量部署配置 `SNAPSHOT_SYNC_URL` 并使用每 15 分钟调度，原 15 分钟全量分支作为回滚途径。
 
 按本次数据体积，未压缩报价约 8.3 MB、压缩分页约 0.63 MB。发布流量是固定后台开销，不随访客数量增长；仍消耗 Supabase 免费额度，不能保证任意数据规模都免费。发布器只上传 Cloudflare 返回的缺失内容哈希，保留文件无需重复上传。Supabase Free 和 Spend Cap 保持原有设置。
 

@@ -13,9 +13,19 @@ begin
  end if;
  a:=public.snapshot_json_diff('{"prices":[{"price":1}],"removed":true}'::jsonb,'{"prices":[{"price":2}],"added":3}'::jsonb);
  if jsonb_array_length(a)<>3 then raise exception 'Nested diff missed changes'; end if;
+ a:=public.snapshot_without_collection_times('{"sourceUpdatedAt":"t1","prices":[{"sourceUpdatedAt":"t2","lastVerifiedAt":"t3","lastCheckedAt":"t4","inputPrice":2}],"expires_at":"t5"}'::jsonb);
+ if a<> '{"prices":[{"lastCheckedAt":"t4","inputPrice":2}],"expires_at":"t5"}'::jsonb then
+  raise exception 'Export normalization removed meaningful prices, monitoring times or expiry';
+ end if;
+ if not exists(select 1 from cron.job where jobname='pricemapai-publish-snapshot' and schedule='*/15 * * * *' and active) then
+  raise exception 'Snapshot export schedule is not fifteen minutes';
+ end if;
+ if not exists(select 1 from pg_proc where oid='public.export_snapshot_batch(boolean)'::regprocedure and 'statement_timeout=30s'=any(proconfig)) then
+  raise exception 'Private export timeout lost';
+ end if;
  -- Avoid rebuilding the real dataset: a pending batch is the retry path.
  select jsonb_build_object('schema',1,'revision',revision+1,'base_revision',revision,'full',false,'generated_at',now(),'changes','[]'::jsonb) into saved from public.snapshot_export_state where id for update;
- update public.snapshot_export_state set pending=saved,budget_day=current_date,sent_bytes=40000000 where id;
+ update public.snapshot_export_state set pending=saved,budget_day=current_date,sent_bytes=60000000 where id;
  a:=public.export_snapshot_batch();
  b:=public.export_snapshot_batch();
  if not (a->>'budget_exhausted')::boolean or a<>b or (select pending from public.snapshot_export_state where id)<>saved then

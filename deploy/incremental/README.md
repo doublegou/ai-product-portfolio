@@ -12,9 +12,9 @@ Supabase 是唯一报价数据库。现有两个每分钟 Cron 领取到期来�
 
 ## 增量与公开发布
 
-1. `export_snapshot_batch` 在数据库内读取公开数据，与私有导出镜像比较。订阅报价正文与按商家共享的采集时间分离；不完整采集中未重新看到的报价保留自己的原时间，不能被商家心跳延长有效期。中转站不输出前端会重新赋值的内部 `lastVerifiedAt` / `lastUpdatedAt`，嵌套报价使用路径补丁。
+1. `export_snapshot_batch` 在数据库内读取公开数据，与私有导出镜像比较。订阅报价正文与按商家共享的采集时间分离；不完整采集中未重新看到的报价保留自己的原时间，不能被商家心跳延长有效期。中转站不输出前端会重新赋值的内部 `lastVerifiedAt` / `lastUpdatedAt` / `sourceUpdatedAt`，嵌套报价使用路径补丁。
 2. 一个事务保存镜像、递增版本和未确认批次。发送失败时重复返回同一批次。新增、变化、停用和删除均进入批次；每天一次完整检查点，或在版本断档时恢复完整检查点。
-3. `publish-snapshot` 每分钟发送批次到独立同步 Worker，不下载 R2 或重新上传整份 JSON。保留旧全量分支作为显式回滚途径。
+3. `publish-snapshot` 每 15 分钟发送批次到独立同步 Worker，不下载 R2 或重新上传整份 JSON。保留旧全量分支作为显式回滚途径。
 4. 外层 Worker 只验证凭据并转发；SQLite Durable Object 串行执行合并、压缩和上传，避免普通免费 Worker 的 10ms CPU 限制。同一实例内的异步任务也按 Promise 队列串行处理。
 5. 私有 R2 桶 `pricemapai-snapshot-workspace` 只保存 `working/latest.json`，不绑定公开域名、不开放 r2.dev。R2 检查点写入成功后才确认批次；DO 仅保存小型发布状态和热度报告，没有 D1，也没有每条报价的 DO 存储写入。
 6. 最多每 5 分钟发布一次完整静态 JSON，没有变化就不重新发布。沿用版本目录、gzip 分页、60 秒清单缓存及当前/上一版保留；所有资源上传成功后才切换静态目录。R2 成功但静态发布失败时不确认，重试安全地继续发布上一检查点。
@@ -23,17 +23,17 @@ Supabase 是唯一报价数据库。现有两个每分钟 Cron 领取到期来�
 
 ## 额度与失效行为
 
-- 三个 Supabase 函数每分钟一次：30 天基础约 129,600 次，未含手动调用和重试；与组织其他项目共享函数额度。
-- SQL 出站预算每日最多 40,000,000 字节，包含完整检查点和重复发送。按 30 天是每段 1.2GB；考虑数据库 → Edge 和 Edge → Cloudflare 两段，保守预留约 2.4GB/月。其他 Supabase 操作仍需单独观察实际用量，这不是总账号流量硬限额。
+- 三个采集/核验函数每分钟一次，加上每 15 分钟一次发布：30 天基础约 132,480 次，未含手动调用和重试；与组织其他项目共享函数额度。
+- SQL 出站预算每日最多 60,000,000 字节，包含完整检查点和重复发送。按 30 天是每段 1.8GB；考虑数据库 → Edge 和 Edge → Cloudflare 两段，保守预留约 3.6GB/月。其他 Supabase 操作仍需单独观察实际用量，这不是总账号流量硬限额。
 - 超预算保留待确认批次、暂停传输，次日继续同一批次，保留上一版公开数据；页面按照采集过期时间显示失效状态，不转而查询数据库。
 - R2 和 DO 使用量主要随更新批次增长。R2 免费额度与账号其他桶共享，超额可能计费；静态资产读取不增加 R2 操作。DO 采用免费可用的 SQLite 后端。
 - 没有新 Cloudflare Cron，不用 Pages 构建钩子，不用 GitHub Actions，不保存 Umami 管理员密码。
 
 ## 配置与验证
 
-数据库迁移 `202610100001` 至 `202610100012`，包含首次热度立即应用、预算暂停后续传、仅导出 RPC 的 30 秒查询上限（默认 API 8 秒不足）；旧公开快照迁移原来与 transit_adapters 重用了 009，已改为 010 并将生产已存在的迁移记录标为已应用，避免重复执行。
+数据库迁移 `202610100001` 至 `202610100017`，包含首次热度立即应用、预算暂停后续传、仅导出 RPC 的 30 秒查询上限（默认 API 8 秒不足）；旧公开快照迁移原来与 transit_adapters 重用了 009，已改为 010 并将生产已存在的迁移记录标为已应用，避免重复执行。
 
-Cloudflare `wrangler.sync.jsonc` 需要三个 Secret：`CRAWLER_TOKEN`、`CLOUDFLARE_SNAPSHOT_API_TOKEN`、`UMAMI_HEAT_TOKEN`。凭据只放平台 Secret 和 Git 忽略的本地文件。发布凭据是账号级 Workers Scripts Edit，不能描述为只有单个 Worker 权限。Supabase 配置 `SNAPSHOT_SYNC_URL` 后走增量分支。正式切换在首次公开发布验证成功后将 `pricemapai-publish-snapshot` 改为每分钟。
+Cloudflare `wrangler.sync.jsonc` 需要三个 Secret：`CRAWLER_TOKEN`、`CLOUDFLARE_SNAPSHOT_API_TOKEN`、`UMAMI_HEAT_TOKEN`。凭据只放平台 Secret 和 Git 忽略的本地文件。发布凭据是账号级 Workers Scripts Edit，不能描述为只有单个 Worker 权限。Supabase 配置 `SNAPSHOT_SYNC_URL` 后走增量分支。正式切换在首次公开发布验证成功后，让 `pricemapai-publish-snapshot` 保持每 15 分钟。
 
 Umami 服务器安装 `deploy/umami/collection-heat.py` 与同目录 service/timer；配置 `/opt/umami/collection-heat.json` 格式为 `{ "endpoint": "https://pricemapai.com/api/collection-heat", "token": "专用令牌" }`，root 所有、权限 600。无配置时只执行只读汇总预览。首次启用需要完成浏览器凭据保存确认。
 
@@ -84,7 +84,7 @@ Umami 服务器安装 `deploy/umami/collection-heat.py` 与同目录 service/tim
 
 通用适配器可能需要获取整个店铺商品列表，因此“商品核验”不保证商家 HTTP 流量减少。仅更新已领取的报价；完整列表中消失的目标报价停用，局部结果中未找到的目标保留原有效期。成功匹配的热点报价有效期十五分钟，不刷新其他报价，也不推进整店 `last_success_at` 或 `next_crawl_at`。后台显示单独的热点成功时间、核验条数及错误。热点过期或排序变化后自动退出候选，无访问请求触发采集。
 
-五分钟是目标间隔，受租约冲突、队列上限和原站失败影响可能延后。静态发布另有五分钟合并窗口及缓存延迟，不能保证网页始终只有五分钟误差。新增任务后，四个分钟 Edge Function 定时调用按 30 天约 172,800 次，不含手动调用和重试；免费额度仍按 Supabase 组织共享。无需新 Cloudflare Cron、D1 或腾讯云凭据，访客继续读取静态 JSON；现有每日 40 MB 导出预算保持有效。
+五分钟是目标间隔，受租约冲突、队列上限和原站失败影响可能延后。增量同步每十五分钟执行，静态发布另有五分钟最小间隔及缓存延迟，不能保证网页始终只有五分钟误差。新增任务后，三个分钟采集/核验任务及十五分钟发布任务按 30 天约 132,480 次，不含手动调用和重试；免费额度仍按 Supabase 组织共享。无需新 Cloudflare Cron、D1 或腾讯云凭据，访客继续读取静态 JSON；现有每日 60 MB 导出预算保持有效。
 
 验收：`npm test`、`npm run build`、`npx supabase db query --linked --file tests/database.sql`、`tests/adaptive-collection.sql`、`tests/hot-verification.sql` 和 `tests/incremental-database.sql`。`npx tsx scripts/verify-hot-snapshot.ts` 读取线上静态页并与已核验报价核对价格、库存和有效期，同时确认后台有独立核验时间。数据库测试使用回滚事务；覆盖首次入库、变化密度、跨币种隔离、低价守护、缺货确认与恢复、手动间隔、共享租约、局部缺失、未选报价有效期、全局上限、失败冷却和私有 RPC 权限。
 
