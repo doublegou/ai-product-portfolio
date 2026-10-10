@@ -1678,6 +1678,7 @@
     "interval_minutes": 15,
     "config": {
       "path": "/",
+      "purchase_path": "/",
       "item_selector": ".goods-card",
       "title_selector": ".goods-title",
       "price_selector": ".goods-price",

@@ -154,6 +154,7 @@ export function parseHtml(html: string, source: Source): Candidate[] {
       const node = $(el);
       const link = node.find(c.link_selector).attr("href") ?? node.attr("href");
       if (!link) throw new Error("商品购买链接缺失");
+      const externalId = node.attr(c.id_attribute ?? "data-id") ?? `${link}#${node.find(c.title_selector).text().trim()}`;
       let stockText = c.stock_selector
         ? node.find(c.stock_selector).text().trim()
         : "";
@@ -168,15 +169,13 @@ export function parseHtml(html: string, source: Source): Candidate[] {
       const inv = inventory(c.stock_selector ? mappedStock ?? stockText : undefined,
         stockText, stockText && !/^\d+$/.test(stockText) ? stockText.slice(0,64) : undefined);
       return {
-        external_id:
-          node.attr(c.id_attribute ?? "data-id") ??
-          `${link}#${node.find(c.title_selector).text().trim()}`,
+        external_id: externalId,
         raw_title: node.find(c.title_selector).text().trim(),
         price: money(node.find(c.price_selector).text().replace(/元/g, "")),
         currency: c.currency ?? "CNY",
         ...inv,
         raw_data: { ...inv.raw_data, ...(c.price_note ? {price_note:c.price_note} : {}) },
-        purchase_url: safeUrl(link, source.base_url).href,
+        purchase_url: safeUrl(c.purchase_path?.replace("{id}", encodeURIComponent(externalId)) ?? link, source.base_url).href,
       };
     });
 }

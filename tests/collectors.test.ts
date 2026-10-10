@@ -89,6 +89,11 @@ test("HTML selectors extract the current price without accidentally reading stri
   );
   assert.equal(rows[0].price, 125);
   assert.equal(rows[0].purchase_url, "https://merchant.example.com/buy/1");
+  const homepage = parseHtml('<a class="product" href="https://checkout.example.com/shop"><h2>Claude Pro</h2><b class="current">125</b></a>', {
+    ...s, config: { ...s.config, purchase_path: '/' },
+  });
+  assert.equal(homepage[0].purchase_url, 'https://merchant.example.com/');
+  assert.equal(homepage[0].external_id, 'https://checkout.example.com/shop#Claude Pro');
 });
 test("invalid and private source addresses or zero prices are rejected", () => {
   for (const url of [
