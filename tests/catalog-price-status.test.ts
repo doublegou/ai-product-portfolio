@@ -14,7 +14,13 @@ test('missing catalog prices distinguish no quotes, sold out, and expired quotes
   assert.equal(catalogPriceStatus(sold, now), '暂时缺货');
   const expired = { ...soldOut, stock_status: 'in_stock', expires_at: new Date(now - 1).toISOString() };
   assert.equal(catalogPriceStatus(summarizeCatalogEntry(product, [expired], now), now), '报价待更新');
-  assert.equal(catalogPriceStatus(summarizeCatalogEntry(product, [expired, soldOut], now), now), '暂时缺货');
+  const historical = summarizeCatalogEntry(product, [expired, soldOut], now);
+  assert.equal(catalogPriceStatus(historical, now), '报价待更新');
+  assert.equal(historical.referencePrice, 2.5);
+  assert.equal(historical.priceKind, 'stale');
+  assert.equal(historical.available, 0);
+  const expiredSold = summarizeCatalogEntry(product, [{...soldOut, expires_at: new Date(now-1).toISOString()}], now);
+  assert.equal(expiredSold.referencePrice, null);
   const unknown = summarizeCatalogEntry(product, [{ ...soldOut, stock_status: 'unknown' }], now);
   assert.equal(unknown.referencePrice, 2.5);
   assert.equal(unknown.priceKind, 'reference');

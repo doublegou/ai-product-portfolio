@@ -65,6 +65,8 @@ function OfferRow({ offer, lowest }: { offer: Offer; lowest: boolean }) {
         </div>
         <div className="offer-price">
           <strong className={offer.stock_status === "out_of_stock" ? "price-status" : undefined}>{offer.stock_status === "out_of_stock" ? "暂时缺货" : money(offer.price, offer.currency)}</strong>
+          {offer.stock_status !== "out_of_stock" && !isFresh(offer, referenceTime) && <span className="offer-price-note">上次报价 · 库存待更新</span>}
+          {offer.stock_status === "unknown" && isFresh(offer, referenceTime) && <span className="offer-price-note">参考价 · 库存待确认</span>}
           {lowest && (
             <span className="lowest-label">
               <Check size={10} />

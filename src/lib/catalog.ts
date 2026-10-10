@@ -51,7 +51,7 @@ export function selectCategory(params: URLSearchParams, category: string): URLSe
 export type CatalogProduct = Product & { subtitle: string; kind?: string };
 export type CatalogEntry = CatalogProduct & ProductSummary & {
   key: string;
-  priceKind: "lowest" | "reference" | "none";
+  priceKind: "lowest" | "reference" | "stale" | "none";
   priceOffer: Offer | null;
 };
 
@@ -166,12 +166,14 @@ export function summarizeCatalogEntry(product: CatalogProduct, offers: Offer[], 
   offers = offers.filter(offer => offer.currency === "CNY");
   const selectedCurrency = "CNY";
   const available = offers.filter(offer => isAvailable(offer, now));
-  const candidates = available.length ? available : offers.filter(offer => offer.stock_status === "unknown" && isFresh(offer, now));
+  const unknown = offers.filter(offer => offer.stock_status === "unknown" && isFresh(offer, now));
+  const historical = offers.filter(offer => ["in_stock", "unknown"].includes(offer.stock_status) && !isFresh(offer, now));
+  const candidates = available.length ? available : unknown.length ? unknown : historical;
   const priceOffer = [...candidates].sort((a, b) => a.price - b.price)[0] ?? null;
   return { ...product, key: product.id, offers, currency: selectedCurrency,
     channels: new Set(offers.map(offer => offer.sources.base_url)).size,
     available: available.length, referencePrice: priceOffer?.price ?? null, priceOffer,
-    priceKind: available.length ? "lowest" : priceOffer ? "reference" : "none" };
+    priceKind: available.length ? "lowest" : unknown.length ? "reference" : priceOffer ? "stale" : "none" };
 }
 
 export function catalogEntries(offers: Offer[], now: number): CatalogEntry[] {
@@ -186,6 +188,7 @@ export function catalogEntries(offers: Offer[], now: number): CatalogEntry[] {
 export function catalogPriceStatus(product: CatalogEntry, now: number): string {
   if (!product.offers.length) return "暂无报价";
   const fresh = product.offers.filter(offer => isFresh(offer, now));
+  if (product.offers.some(offer => !isFresh(offer, now) && offer.stock_status !== "out_of_stock")) return "报价待更新";
   if (!fresh.length) return "报价待更新";
   if (fresh.every(offer => offer.stock_status === "out_of_stock")) return "暂时缺货";
   return "暂无可用价格";

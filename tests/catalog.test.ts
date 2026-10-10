@@ -45,7 +45,7 @@ const classify = (platform: string, title: string, fields: Partial<Offer> = {}) 
   ...demo.offers[0], platform, plan: "", delivery: "未知", raw_title: title, ...fields,
 });
 
-test("catalog prefers confirmed stock and only falls back to fresh unknown-stock reference prices", () => {
+test("catalog prefers fresh prices and labels expired non-sold-out prices as historical", () => {
   const now = Date.parse(capturedAt);
   const row = (id: string, price: number, stock_status: string, extra: Partial<Offer> = {}): Offer => ({
     ...demo.offers[0], id, price, stock_status, currency: "CNY",
@@ -65,9 +65,9 @@ test("catalog prefers confirmed stock and only falls back to fresh unknown-stock
   assert.equal(reference.priceOffer?.id, "unknown");
   assert.equal(reference.available, 0);
   const missing = summarizeCatalogEntry(product, excluded, now);
-  assert.equal(missing.referencePrice, null);
-  assert.equal(missing.priceKind, "none");
-  assert.equal(missing.priceOffer, null);
+  assert.equal(missing.referencePrice, 2);
+  assert.equal(missing.priceKind, "stale");
+  assert.equal(missing.priceOffer?.id, 'expired');
 });
 
 test("fixed reference taxonomy includes all categories independently of quote availability", () => {
