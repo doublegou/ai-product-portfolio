@@ -21,7 +21,11 @@ Deno.serve(async(request:Request)=>{
   if(syncUrl){
    const send=async(batch:unknown)=>fetch(new URL('/sync',syncUrl),{method:'POST',headers:{'Content-Type':'application/json','X-Crawler-Token':token},body:JSON.stringify(batch),signal:AbortSignal.timeout(110000)});
    async function budgetPause(batch:any){
-    await rpc('apply_collection_heat');
+    // Keep analytics scheduling current even while quote-byte exports pause.
+    const status=await fetch(new URL('/status',syncUrl),{method:'POST',headers:{'X-Crawler-Token':token},signal:AbortSignal.timeout(15000)});
+    if(!status.ok)throw Error(`Heat status failed: HTTP ${status.status}`);
+    const state=await status.json();
+    await rpc('apply_collection_heat',{p_heat:state.heat??null});
     await rpc('finish_snapshot_publication',{p_token:lease});
     return Response.json({skipped:'daily export budget exhausted',resume_on:batch.resume_on});
    }

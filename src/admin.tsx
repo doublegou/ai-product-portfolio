@@ -19,6 +19,8 @@ import {
 import "./style.css";
 import "./admin.css";
 import {priceMetric,money,type TransitPrice} from "./lib/apiTransit";
+import {merchantAnalyticsId} from "./lib/analytics";
+import type {HeatSource} from "./lib/collection-heat";
 
 type Source = {
   id: string;
@@ -111,6 +113,7 @@ function Admin() {
   const [ready, setReady] = useState(false);
   const [sources, setSources] = useState<Source[]>([]);
   const [runs, setRuns] = useState<Run[]>([]);
+  const [heat, setHeat] = useState<{generated_at:string|null;sources:HeatSource[]}|null>(null);
   const [tab, setTab] = useState("sources");
   const [q, setQ] = useState("");
   const [status, setStatus] = useState("all");
@@ -125,6 +128,7 @@ function Admin() {
     setReady(false);
     setSources([]);
     setRuns([]);
+    setHeat(null);
     setEditor(null);
     setPreview(null);
     setForm(initialForm);
@@ -146,12 +150,14 @@ function Admin() {
     return data;
   }
   async function refresh(target=dataset) {
-    const [s, r] = await Promise.all([
+    const [s, r, h] = await Promise.all([
       api("/api/admin/sources","GET",undefined,target),
       api("/api/admin/runs","GET",undefined,target),
+      api("/api/admin/collection-heat","GET",undefined,"subscriptions"),
     ]);
     setSources(s.sources);
     setRuns(r.runs);
+    setHeat(h.heat);
     setReady(true);
   }
   async function action(fn: () => Promise<void>) {
@@ -464,6 +470,14 @@ function Admin() {
                         <td>
                           <b className="admin-collector">{s.collector}</b>
                           <small>每 {s.interval_minutes} 分钟 · {s.adaptive_enabled === false ? '手动间隔' : `自动调度（${s.collection_tier ?? 'normal'}）`}</small>
+                          {(() => {
+                            const interest=heat?.sources.find(h=>h.id===(dataset==='transit'?s.id:merchantAnalyticsId(s.base_url)));
+                            const stale=!heat?.generated_at||Date.now()-Date.parse(heat.generated_at)>7200000;
+                            return <small title={`热度汇总于 ${date(heat?.generated_at??null)}；各项按会话去重，同一会话可出现在多项中`}>
+                              {stale?'热度待更新':`24小时关注 ${interest?.clicks??0} · 购买 ${interest?.purchase_clicks??0} · 首页 ${interest?.shop_clicks??0} · API外链 ${interest?.pricing_clicks??0} · 详情 ${interest?.detail_views??0}`}
+                              {!stale&&interest?.clicks&&(!s.last_success_at||Date.now()-Date.parse(s.last_success_at)>s.interval_minutes*120000)?' · 有关注，采集待更新':''}
+                            </small>;
+                          })()}
                         </td>
                         <td>
                           <span

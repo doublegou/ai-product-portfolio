@@ -76,6 +76,8 @@ const handler = {
       return json({ error: "数据服务尚未配置", code: "DATA_SERVICE_NOT_CONFIGURED" }, 503);
     try {
       const client = db(env);
+      if (url.pathname === "/api/admin/collection-heat" && req.method === "GET")
+        return json({ heat: checked(await client.from("collection_heat_state").select("generated_at,last_applied_at,sources").eq("id", true).maybeSingle()).data });
       if (url.pathname.startsWith("/api/admin/transit/")) return await adminTransit(req, env, client);
       if (url.pathname === "/api/admin/sources" && req.method === "GET")
         return json({

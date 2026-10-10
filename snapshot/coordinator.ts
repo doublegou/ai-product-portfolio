@@ -3,9 +3,10 @@ import { DurableObject } from 'cloudflare:workers';
 import { buildSnapshot } from './build.ts';
 import { mergeBatch, publicSnapshot, type Batch, type WorkingSnapshot } from './incremental.ts';
 import { publishAssets, retainCurrentSnapshot } from './publish.ts';
+import { normalizeHeatSource, type HeatSource } from '../src/lib/collection-heat.ts';
 
 type Env = { CRAWLER_TOKEN: string; UMAMI_HEAT_TOKEN: string; CLOUDFLARE_SNAPSHOT_API_TOKEN: string; WORKING_SNAPSHOTS: R2Bucket; COORDINATOR: DurableObjectNamespace; PUBLISH_INTERVAL_SECONDS: string };
-type Heat = { generated_at: string; sources: { id: string; clicks: number }[] };
+type Heat = { generated_at: string; sources: HeatSource[] };
 function authorized(request: Request, env: Env) {
   const isHeat = new URL(request.url).pathname === '/heat';
   const a = new TextEncoder().encode(request.headers.get(isHeat ? 'X-Heat-Token' : 'X-Crawler-Token') ?? ''), b = new TextEncoder().encode((isHeat ? env.UMAMI_HEAT_TOKEN : env.CRAWLER_TOKEN) ?? '');
@@ -37,6 +38,8 @@ export class SnapshotCoordinator extends DurableObject<Env> {
       const heat = await request.json() as Heat;
       if (!Number.isFinite(Date.parse(heat.generated_at)) || Math.abs(Date.now() - Date.parse(heat.generated_at)) > 3600000 ||
           !Array.isArray(heat.sources) || heat.sources.length > 1000 || heat.sources.some(s => typeof s.id !== 'string' || s.id.length > 300 || !Number.isSafeInteger(s.clicks) || s.clicks < 0) || new Set(heat.sources.map(s=>s.id)).size !== heat.sources.length) return Response.json({ error: 'Invalid heat report' }, { status: 400 });
+      try { heat.sources = heat.sources.map(normalizeHeatSource); }
+      catch { return Response.json({ error: 'Invalid heat counters' }, { status: 400 }); }
       await this.ctx.storage.put('heat', heat);
       return Response.json({ received: heat.sources.length });
     }

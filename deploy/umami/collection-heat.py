@@ -9,7 +9,11 @@ import urllib.request
 CONFIG = pathlib.Path('/opt/umami/collection-heat.json')
 SQL = """
 WITH interest AS (
- SELECT d.string_value AS id, count(DISTINCT e.session_id)::integer AS clicks
+ SELECT d.string_value AS id, count(DISTINCT e.session_id)::integer AS clicks,
+ count(DISTINCT e.session_id) FILTER (WHERE e.event_name='purchase_link_click')::integer AS purchase_clicks,
+ count(DISTINCT e.session_id) FILTER (WHERE e.event_name='merchant_shop_click')::integer AS shop_clicks,
+ count(DISTINCT e.session_id) FILTER (WHERE e.event_name='api_provider_click')::integer AS pricing_clicks,
+ count(DISTINCT e.session_id) FILTER (WHERE e.event_name='api_station_detail_open')::integer AS detail_views
  FROM website_event e JOIN event_data d ON d.website_event_id=e.event_id
  WHERE e.website_id='89ee5fce-9013-4146-a0bd-32e85e49cf15'
  AND e.hostname='pricemapai.com' AND e.created_at>now()-interval '24 hours'

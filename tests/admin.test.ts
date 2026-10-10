@@ -54,6 +54,7 @@ test("every management route requires the admin key, including preview", async (
   for (const [path, method] of [
     ["sources", "GET"],
     ["runs", "GET"],
+    ["collection-heat", "GET"],
     ["preview", "POST"],
     ["crawl", "POST"],
   ] as const) {

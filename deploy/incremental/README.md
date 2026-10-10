@@ -31,7 +31,7 @@ Supabase 是唯一报价数据库。现有两个每分钟 Cron 领取到期来�
 
 ## 配置与验证
 
-数据库迁移 `202610100001` 至 `202610100005`，包含首次热度立即应用、预算暂停后续传、仅导出 RPC 的 30 秒查询上限（默认 API 8 秒不足）；旧公开快照迁移原来与 transit_adapters 重用了 009，已改为 010 并将生产已存在的迁移记录标为已应用，避免重复执行。
+数据库迁移 `202610100001` 至 `202610100006`，包含首次热度立即应用、预算暂停后续传、仅导出 RPC 的 30 秒查询上限（默认 API 8 秒不足）；旧公开快照迁移原来与 transit_adapters 重用了 009，已改为 010 并将生产已存在的迁移记录标为已应用，避免重复执行。
 
 Cloudflare `wrangler.sync.jsonc` 需要三个 Secret：`CRAWLER_TOKEN`、`CLOUDFLARE_SNAPSHOT_API_TOKEN`、`UMAMI_HEAT_TOKEN`。凭据只放平台 Secret 和 Git 忽略的本地文件。发布凭据是账号级 Workers Scripts Edit，不能描述为只有单个 Worker 权限。Supabase 配置 `SNAPSHOT_SYNC_URL` 后走增量分支。正式切换在首次公开发布验证成功后将 `pricemapai-publish-snapshot` 改为每分钟。
 
@@ -49,3 +49,11 @@ Umami 服务器安装 `deploy/umami/collection-heat.py` 与同目录 service/tim
 - 无变化增量：118 字节；一次实际变化批次：590,670 字节、43 项变化。这些是不同时间的样本，不能直接推算每月固定流量。
 - 腾讯云服务日志返回 `sent: 2` / `received: 2`；定时器已启用，配置 root:root、600。Supabase 在 01:42 UTC 接收并应用报告，小久进入 warm / 30 分钟；中转站单独按其公开 ID 匹配。
 - 预算是防止出口无限增长的保护，达到预算会造成报价变旧；免费额度是否足够仍取决于实际变更量和组织其他项目用量。
+
+## PriceAI 字段对照与购买意向排序
+
+参考 PriceAI `b3092c` 的 `src/lib/data.ts`：行为监测覆盖商品详情（`product_id/platform`）、平台页详情（相同字段）、购买点击（`source_id/available`）、平台筛选（`platform`）、范围切换（`scope/platform`）。本站已采集这些事件；PriceAI 当前真正用于商家热度的属性白名单仅为 `purchase_link_click:source_id`，并结合采集年龄、健康状态、连续失败展示热门陈旧和失败来源。不能把所有行为字段都说成它已用于自动调度。
+
+本站额外汇总 `purchase_clicks`、`shop_clicks`、`pricing_clicks`（API 原站首页和报价外链）、`detail_views`。各项分别按不同会话去重；同一会话可以出现在多项，总关注 `clicks` 则是四类事件的去重并集，不等于四项之和。热门资格仍为至少 3 个会话；符合资格的来源按购买×3 + API外链×2 + 首页 + 详情排序，再按总关注和 ID 稳定排序。旧报告兼容按总关注排序。首次扩展字段报告立即应用，之后仍每小时调整。
+
+管理员来源列表显示各项计数、报告时间与有关注但采集待更新的提示。`/api/admin/collection-heat` 使用既有管理员认证，统计不进入公开报价 JSON。即使报价出站预算暂停，发布函数仍通过小型状态请求取得热度并更新调度。商品详情和平台字段保留在统计工具里；目前采集单元仍是整家商店，不将一次商品详情打开扩散成对所有售卖它的商家提速。
