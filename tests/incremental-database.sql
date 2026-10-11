@@ -17,8 +17,8 @@ begin
  if a<> '{"prices":[{"lastCheckedAt":"t4","inputPrice":2}],"expires_at":"t5"}'::jsonb then
   raise exception 'Export normalization removed meaningful prices, monitoring times or expiry';
  end if;
- if not exists(select 1 from cron.job where jobname='pricemapai-publish-snapshot' and schedule='*/15 * * * *' and active) then
-  raise exception 'Snapshot export schedule is not fifteen minutes';
+ if not exists(select 1 from cron.job where jobname='pricemapai-publish-snapshot' and schedule='*/30 * * * *' and active) then
+  raise exception 'Snapshot export schedule is not thirty minutes';
  end if;
  if not exists(select 1 from pg_proc where oid='public.export_snapshot_batch(boolean)'::regprocedure and 'statement_timeout=30s'=any(proconfig)) then
   raise exception 'Private export timeout lost';
