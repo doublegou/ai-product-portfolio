@@ -20,6 +20,7 @@ begin
  payload:='[{"external_id":"target","raw_title":"ChatGPT Plus 代充 1个月","platform":"ChatGPT","plan":"Plus","delivery":"代充","duration_days":30,"comparison_key":"hot-test","review_required":false,"price":90,"currency":"CNY","stock_status":"out_of_stock","purchase_url":"https://hot-test.invalid/target"},{"external_id":"untouched","price":1}]';
  perform public.complete_hot_verification((job->>'hot_run_id')::uuid,(job->>'lease_token')::uuid,payload,true);
  if not exists(select 1 from public.offers where id=quote_id and price=90 and stock_status='out_of_stock' and hot_verified_at is not null) then raise exception 'target verification not persisted'; end if;
+ if not exists(select 1 from public.offers where id=quote_id and expires_at=last_seen_at+interval '45 minutes') then raise exception 'Hot stock expires before thirty-minute publication can refresh'; end if;
  if not exists(select 1 from public.offers where id=untouched_id and price=100 and active and last_seen_at=original_seen and hot_verified_at is null) then raise exception 'unselected offer overwritten or freshness extended'; end if;
  if not exists(select 1 from public.sources where id=s.id and last_success_at=now()-interval '1 hour' and next_crawl_at=now()+interval '2 hours' and lease_token is null) then raise exception 'verification changed full crawl schedule/heartbeat'; end if;
  begin

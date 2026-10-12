@@ -19,7 +19,12 @@ Deno.serve(async(request:Request)=>{
   lease=await rpc('claim_snapshot_publication');
   if(!lease)return Response.json({skipped:'publication already running'});
   if(syncUrl){
-   const send=async(batch:unknown)=>fetch(new URL('/sync',syncUrl),{method:'POST',headers:{'Content-Type':'application/json','X-Crawler-Token':token},body:JSON.stringify(batch),signal:AbortSignal.timeout(110000)});
+   let syncBytes=0;
+   const send=async(batch:unknown)=>{
+    const body=JSON.stringify(batch);
+    syncBytes=new TextEncoder().encode(body).byteLength;
+    return fetch(new URL('/sync',syncUrl),{method:'POST',headers:{'Content-Type':'application/json','X-Crawler-Token':token},body,signal:AbortSignal.timeout(110000)});
+   };
    async function budgetPause(batch:any){
     // Keep analytics scheduling current even while quote-byte exports pause.
     const status=await fetch(new URL('/status',syncUrl),{method:'POST',headers:{'X-Crawler-Token':token},signal:AbortSignal.timeout(15000)});
@@ -43,7 +48,8 @@ Deno.serve(async(request:Request)=>{
    await rpc('ack_snapshot_batch',{p_revision:batch.revision});
    await rpc('apply_collection_heat',{p_heat:result.heat??null});
    await rpc('finish_snapshot_publication',{p_token:lease,p_version:result.publication?.revision===batch.revision?result.publication.version:null});
-   return Response.json({revision:batch.revision,publication:result.publication,changes:batch.changes.length});
+   console.log(JSON.stringify({trigger:'publish-incremental-snapshot',revision:batch.revision,schema:batch.schema,full:batch.full,sync_bytes:syncBytes,changes:batch.changes.length}));
+   return Response.json({revision:batch.revision,publication:result.publication,changes:batch.changes.length,sync_bytes:syncBytes});
   }
   const snapshot=await buildSnapshot(await rpc('build_public_snapshot'));
   const previous=await retainCurrentSnapshot();
