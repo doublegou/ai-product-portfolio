@@ -1,6 +1,6 @@
 # 演示与证据
 
-优先打开[交互作品集](index.html)：可播放真实 HTML、切换原稿／文案／封面，查看四个板块的设计与验证。
+从[项目首页](../README.md)阅读四个案例；本目录保存对应的原始输入、修改依据与实际产物。
 
 已选入[第 005 期真实素材](script-workflow/2026-09-26-agentic-video/README.md)、[同一视频的恢复任务](content-workflow/2026-08-27-literature-review/README.md)、[BirdTracker 历史运行](content-agent/2026-07-09-birdtracker/README.md)和[热点实际采集记录](daily-trend-radar/2026-10-16-source-check/README.md)。历史来源链完整程度分别说明，未将部分核验算成业务成功。
 
@@ -21,7 +21,7 @@
 
 ## 项目内阅读入口
 
-[网页作品集](index.html)按问题、四类实际任务、产品取舍、验证与迭代组织。四个板块属于一个项目。GitHub 阅读以[项目首页](../README.md)和[产品案例](../docs/case-study.md)为入口，本地网页补充图片放大与演示播放。
+四个板块属于一个项目。GitHub 阅读以[项目首页](../README.md)和[产品决策](../docs/case-study.md)为入口。已有 index.html 保留为早期补充演示，不作为当前主阅读页。
 
 源码结构、历史恢复过程和详细验收作为底层依据，不要求招聘方先理解目录才能阅读案例。页面不包含讲述计时、模拟问答或面试指导。
 

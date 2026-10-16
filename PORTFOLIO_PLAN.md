@@ -52,7 +52,7 @@ ai-product-portfolio/
     └── 03-riversr/
 ```
 
-三个项目组统一按以下材料结构建设。内容生产项目已归回 src/，四个板块在设计、演示、评测与实现中保持同名，具体结构见[顶层设计](projects/01-content-agent/docs/architecture.md)：
+三个项目组统一按以下材料结构建设。内容生产项目已归回 src/，四个板块在设计、演示、评测与实现中保持同名，具体结构见[运行架构](projects/01-content-agent/docs/architecture.md)：
 
 ```text
 项目组/
@@ -104,11 +104,11 @@ AI 项目还应说明：为什么需要模型，哪些任务普通程序更合�
 
 证明能把真实内容任务拆成模型、工具与人工协作的流程，并沉淀可复用能力。
 
-现有入口：[项目 README](projects/01-content-agent/README.md)、[案例初稿](projects/01-content-agent/docs/case-study.md)、[演示准备](projects/01-content-agent/demo/README.md)、[验证方案](projects/01-content-agent/evaluation/README.md)。
+现有入口：[项目 README](projects/01-content-agent/README.md)、[产品决策](projects/01-content-agent/docs/case-study.md)、[实际产物](projects/01-content-agent/demo/README.md)、[评测记录](projects/01-content-agent/evaluation/README.md)。
 
 六个来源工程按四个板块完善：content-workflow、script-workflow、content-agent、daily-trend-radar。content-workflow 是用户指定的 YouTube 图文工作流名称，内部 yt-analysis、note-writer、note-images 三个 Skill 名称不变；原仓库名仅用于来源追溯。
 
-每个板块的设计、源码、演示和评测分别落在 docs、src、demo、evaluation，并用同一板块名称关联。具体结构、材料归属和实施顺序以[内容生产项目顶层设计](projects/01-content-agent/docs/architecture.md)为准；不将四个板块串成已整合的平台。
+每个板块的设计、源码、演示和评测分别落在 docs、src、demo、evaluation，并用同一板块名称关联。实际执行边界与材料归属见[运行架构](projects/01-content-agent/docs/architecture.md)，后续投入见[产品决策](projects/01-content-agent/docs/case-study.md)；不将四个板块串成已整合的平台。
 
 content-workflow 以 analysis.md 为共同输入，正文与图片独立生成；script-workflow 的演示和文案分别依据原稿，封面继承本期文案，PPT 与 post 独立编号；content-agent 独立进行产品选题、研究、审改与发布处理；daily-trend-radar 尚未接入其他流程，且与 content-agent 的内部热点采集有重叠。四个板块分别以实际任务与可核对产物展示，属于同一个项目，不设主次。
 
@@ -141,7 +141,7 @@ content-workflow 以 analysis.md 为共同输入，正文与图片独立生成�
 
 证明能把模型能力变成完整应用，在端侧性能、质量、设备资源和用户体验之间做取舍。
 
-现有入口：[项目 README](projects/02-stayword/README.md)、[案例初稿](projects/02-stayword/docs/case-study.md)、[演示准备](projects/02-stayword/demo/README.md)、[验证方案](projects/02-stayword/evaluation/README.md)。
+现有入口：[项目 README](projects/02-stayword/README.md)、[产品决策](projects/02-stayword/docs/case-study.md)、[实际产物](projects/02-stayword/demo/README.md)、[评测记录](projects/02-stayword/evaluation/README.md)。
 
 两端工程都保留。先确定一个有真实经历依据的用户场景，选当前最稳定且最能代表核心体验的一端作为主演示；另一端补充跨端实现，不重复整套叙事。
 
@@ -168,7 +168,7 @@ content-workflow 以 analysis.md 为共同输入，正文与图片独立生成�
 
 证明能根据使用条件设计验证，分析失败，并据此决定路线与能力边界。这一组以整理和核对现有证据为主，不默认重跑全部训练或完成所有后续研究。
 
-现有入口：[项目 README](projects/03-riversr/README.md)、[案例初稿](projects/03-riversr/docs/case-study.md)、[决策时间线](projects/03-riversr/docs/decision-timeline.md)、[原始笔记](projects/03-riversr/docs/research-notes/README.md)、[验证方案](projects/03-riversr/evaluation/README.md)。
+现有入口：[项目 README](projects/03-riversr/README.md)、[产品决策](projects/03-riversr/docs/case-study.md)、[决策时间线](projects/03-riversr/docs/decision-timeline.md)、[原始笔记](projects/03-riversr/docs/research-notes/README.md)、[评测记录](projects/03-riversr/evaluation/README.md)。
 
 ### 工作顺序与交付
 

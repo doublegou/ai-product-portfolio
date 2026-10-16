@@ -8,30 +8,35 @@
       "images": [
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1360,
+          "height": 890
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1024,
+          "height": 1536
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1086,
+          "height": 1448
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "loaded": true,
+          "width": 1280,
+          "height": 720
         }
       ],
       "sections": [
-        "01 · content-workflow：从一条视频到能独立阅读的图文",
-        "02 · script-workflow：从口播稿到同一期视频配套素材",
-        "03 · content-agent：从产品资料到可复核的候选稿",
-        "04 · daily-trend-radar：从公开榜单到值得继续研究的选题"
+        "01 · content-workflow：把视频改编成独立可读的图文",
+        "02 · script-workflow：让同一期演示、文案和封面保持一致",
+        "03 · content-agent：用事实复核检验“模型已通过”",
+        "04 · daily-trend-radar：把榜单线索变成有依据的选题"
       ]
     },
     {
@@ -40,30 +45,35 @@
       "images": [
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1360,
+          "height": 890
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1024,
+          "height": 1536
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1086,
+          "height": 1448
         },
         {
           "loaded": true,
-          "width": 1440,
-          "height": 1080
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "loaded": true,
+          "width": 1280,
+          "height": 720
         }
       ],
       "sections": [
-        "01 · content-workflow：从一条视频到能独立阅读的图文",
-        "02 · script-workflow：从口播稿到同一期视频配套素材",
-        "03 · content-agent：从产品资料到可复核的候选稿",
-        "04 · daily-trend-radar：从公开榜单到值得继续研究的选题"
+        "01 · content-workflow：把视频改编成独立可读的图文",
+        "02 · script-workflow：让同一期演示、文案和封面保持一致",
+        "03 · content-agent：用事实复核检验“模型已通过”",
+        "04 · daily-trend-radar：把榜单线索变成有依据的选题"
       ]
     }
   ],

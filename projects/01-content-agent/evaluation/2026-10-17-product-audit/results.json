@@ -1,0 +1,823 @@
+{
+  "evaluated_on": "2026-10-17",
+  "scope": "offline historical audit + newly executed deterministic guard probes; no live model run",
+  "historical": {
+    "log_files": 3,
+    "event_count": 189,
+    "runs": [
+      {
+        "run_id": "20260709-130421-cbf4d8",
+        "command": "daily",
+        "start": "2026-07-09T13:04:21+08:00",
+        "has_end": false,
+        "recorded_status": "unknown_no_run_end",
+        "elapsed_seconds": null,
+        "llm_calls": 1,
+        "llm_success": 1,
+        "llm_seconds": 34.565,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": null,
+        "labels": {
+          "Topic discovery planner": 1
+        }
+      },
+      {
+        "run_id": "20260709-130817-2f8f86",
+        "command": "daily",
+        "start": "2026-07-09T13:08:17+08:00",
+        "has_end": true,
+        "recorded_status": "failed",
+        "elapsed_seconds": 378.816,
+        "llm_calls": 10,
+        "llm_success": 10,
+        "llm_seconds": 283.275,
+        "calls_with_token_usage": 9,
+        "prompt_tokens_known": 100985,
+        "completion_tokens_known": 20626,
+        "total_tokens_known": 121611,
+        "token_coverage_complete": false,
+        "review_rounds": 5,
+        "review_pass_events": 0,
+        "collection_summary": null,
+        "labels": {
+          "Topic discovery planner": 1,
+          "Research analyzer": 1,
+          "Writer": 1,
+          "Editor": 4,
+          "Reviewer": 3
+        }
+      },
+      {
+        "run_id": "20260709-131559-330e67",
+        "command": "daily",
+        "start": "2026-07-09T13:15:59+08:00",
+        "has_end": true,
+        "recorded_status": "failed",
+        "elapsed_seconds": 241.341,
+        "llm_calls": 6,
+        "llm_success": 6,
+        "llm_seconds": 139.538,
+        "calls_with_token_usage": 6,
+        "prompt_tokens_known": 89824,
+        "completion_tokens_known": 12482,
+        "total_tokens_known": 102306,
+        "token_coverage_complete": true,
+        "review_rounds": 2,
+        "review_pass_events": 1,
+        "collection_summary": null,
+        "labels": {
+          "Topic discovery planner": 1,
+          "Research analyzer": 1,
+          "Writer": 1,
+          "Reviewer": 2,
+          "Editor": 1
+        }
+      },
+      {
+        "run_id": "20260710-003307-5ed2d4",
+        "command": "strategy_collect",
+        "start": "2026-07-10T00:33:07+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 33.976,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": null,
+        "labels": {}
+      },
+      {
+        "run_id": "20260710-233831-1e6d28",
+        "command": "strategy_collect",
+        "start": "2026-07-10T23:38:31+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 99.207,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260710-234257-1c3635",
+        "command": "strategy_collect",
+        "start": "2026-07-10T23:42:57+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 3.836,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260710-234401-4a311e",
+        "command": "strategy_collect",
+        "start": "2026-07-10T23:44:01+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 4.952,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260710-234502-63cc54",
+        "command": "strategy_collect",
+        "start": "2026-07-10T23:45:02+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 202.201,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 1,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260711-000835-6b3203",
+        "command": "strategy_collect",
+        "start": "2026-07-11T00:08:35+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 16.235,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260711-000909-cc1e64",
+        "command": "strategy_collect",
+        "start": "2026-07-11T00:09:09+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 57.177,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260711-005055-583bc6",
+        "command": "strategy_collect",
+        "start": "2026-07-11T00:50:55+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 96.187,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 1,
+          "collected_notes": 1,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260711-015742-f4b37b",
+        "command": "strategy_collect",
+        "start": "2026-07-11T01:57:42+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 115.28,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 1,
+          "collected_notes": 1,
+          "target_creators": 1
+        },
+        "labels": {}
+      },
+      {
+        "run_id": "20260711-020723-04c65c",
+        "command": "strategy_collect",
+        "start": "2026-07-11T02:07:23+08:00",
+        "has_end": true,
+        "recorded_status": "success",
+        "elapsed_seconds": 97.149,
+        "llm_calls": 0,
+        "llm_success": 0,
+        "llm_seconds": 0.0,
+        "calls_with_token_usage": 0,
+        "prompt_tokens_known": 0,
+        "completion_tokens_known": 0,
+        "total_tokens_known": 0,
+        "token_coverage_complete": false,
+        "review_rounds": 0,
+        "review_pass_events": 0,
+        "collection_summary": {
+          "collected_creators": 0,
+          "collected_notes": 0,
+          "target_creators": 1
+        },
+        "labels": {}
+      }
+    ],
+    "orphan_runs_without_start": [
+      {
+        "run_id": "20260709-132841-5667a6",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-132958-2193a3",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-133406-dba0d1",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-141133-251257",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-142413-e7d3e4",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-142936-c5f27c",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-143917-83df5d",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-144413-13151d",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-144716-9a57a6",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-234512-8ad80a",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-234710-22936a",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-235154-9ffcbe",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260709-235831-4f267f",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260710-000739-a61b04",
+        "event_count": 1,
+        "events": {
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260710-231511-98417f",
+        "event_count": 10,
+        "events": {
+          "xhs_feed_stalled": 3,
+          "xhs_note_target_clicked": 4,
+          "xhs_note_detail_incomplete": 2,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260710-232835-58e097",
+        "event_count": 3,
+        "events": {
+          "xhs_note_target_clicked": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260710-233010-27efd8",
+        "event_count": 3,
+        "events": {
+          "xhs_note_target_clicked": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260710-235218-45ef5a",
+        "event_count": 1,
+        "events": {
+          "xhs_note_detail_completed": 1
+        }
+      },
+      {
+        "run_id": "20260710-235513-8de123",
+        "event_count": 3,
+        "events": {
+          "xhs_note_detail_incomplete": 3
+        }
+      },
+      {
+        "run_id": "20260711-000241-9e1196",
+        "event_count": 3,
+        "events": {
+          "xhs_note_detail_completed": 3
+        }
+      },
+      {
+        "run_id": "20260711-000716-5b5d04",
+        "event_count": 1,
+        "events": {
+          "xhs_note_detail_completed": 1
+        }
+      },
+      {
+        "run_id": "20260711-004734-617415",
+        "event_count": 3,
+        "events": {
+          "xhs_note_target_clicked": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260711-004923-f5e55b",
+        "event_count": 3,
+        "events": {
+          "xhs_note_target_clicked": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260711-011116-16999e",
+        "event_count": 11,
+        "events": {
+          "xhs_note_target_selected": 6,
+          "xhs_note_detail_incomplete": 5
+        }
+      },
+      {
+        "run_id": "20260711-011736-23420f",
+        "event_count": 3,
+        "events": {
+          "xhs_note_target_selected": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1
+        }
+      },
+      {
+        "run_id": "20260711-020613-0bb991",
+        "event_count": 4,
+        "events": {
+          "xhs_note_target_selected": 1,
+          "xhs_note_detail_completed": 1,
+          "collect_attempt": 1,
+          "xhs_chrome_session_cleaned": 1
+        }
+      }
+    ],
+    "daily_started": 3,
+    "daily_with_end": 2,
+    "strategy_started": 10,
+    "strategy_success_labels": 10,
+    "strategy_with_collection_summary": 9,
+    "strategy_zero_creators_and_notes": 6,
+    "strategy_with_notes": 2
+  },
+  "guard": {
+    "sample_origin": "constructed, deliberately probes known boundary classes; not representative production distribution; expectations not independently adjudicated",
+    "cases": [
+      {
+        "id": "R1",
+        "text": "用热点地图一定能看到鸟。",
+        "should_flag": true,
+        "reason": "地点线索不能保证实际鸟况",
+        "actual_flag": true,
+        "matches_expected": true,
+        "issues": [
+          "Unsupported product marketing claim: 一定能看到"
+        ]
+      },
+      {
+        "id": "R2",
+        "text": "BirdTracker 完全离线。",
+        "should_flag": true,
+        "reason": "现有资料不足以支持完全离线",
+        "actual_flag": true,
+        "matches_expected": true,
+        "issues": [
+          "Unsupported capability or privacy claim: 完全离线"
+        ]
+      },
+      {
+        "id": "R3",
+        "text": "我打开了手机，在河边记录下第一次观鸟。",
+        "should_flag": true,
+        "reason": "没有对应真实亲历记录",
+        "actual_flag": true,
+        "matches_expected": true,
+        "issues": [
+          "Unsupported personal claim: 我打开了手机",
+          "Unsupported personal claim: 我打开了"
+        ]
+      },
+      {
+        "id": "R4",
+        "text": "上传照片就能自动识别所有鸟类。",
+        "should_flag": true,
+        "reason": "资料未支持这一识别能力与范围",
+        "actual_flag": false,
+        "matches_expected": false,
+        "issues": []
+      },
+      {
+        "id": "R5",
+        "text": "每拍下一只鸟，就会出现在荣誉页面。",
+        "should_flag": true,
+        "reason": "相机记录与荣誉页的完整映射无依据",
+        "actual_flag": false,
+        "matches_expected": false,
+        "issues": []
+      },
+      {
+        "id": "R6",
+        "text": "断网也能使用全部功能。",
+        "should_flag": true,
+        "reason": "完全离线的另一种表达，无依据",
+        "actual_flag": false,
+        "matches_expected": false,
+        "issues": []
+      },
+      {
+        "id": "C1",
+        "text": "图鉴提供鸟类的照片、声音与习性资料。",
+        "should_flag": false,
+        "reason": "与产品资料一致",
+        "actual_flag": false,
+        "matches_expected": true,
+        "issues": []
+      },
+      {
+        "id": "C2",
+        "text": "热点提供地点线索，实际鸟况仍需现场观察。",
+        "should_flag": false,
+        "reason": "有边界的场景表达",
+        "actual_flag": false,
+        "matches_expected": true,
+        "issues": []
+      },
+      {
+        "id": "C3",
+        "text": "可以通过相机流程拍照并保存观察记录。",
+        "should_flag": false,
+        "reason": "与产品资料一致",
+        "actual_flag": false,
+        "matches_expected": true,
+        "issues": []
+      },
+      {
+        "id": "C4",
+        "text": "热点地图不保证看到鸟。",
+        "should_flag": false,
+        "reason": "明确否定效果保证",
+        "actual_flag": true,
+        "matches_expected": false,
+        "issues": [
+          "Unsupported product marketing claim: 保证看到"
+        ]
+      },
+      {
+        "id": "C5",
+        "text": "照片记录不等于一定能看到更多鸟。",
+        "should_flag": false,
+        "reason": "明确否定效果保证",
+        "actual_flag": true,
+        "matches_expected": false,
+        "issues": [
+          "Unsupported product marketing claim: 一定能看到"
+        ]
+      },
+      {
+        "id": "C6",
+        "text": "不能据此承诺所有操作都在本机完成。",
+        "should_flag": false,
+        "reason": "否定未经验证的本地运行承诺",
+        "actual_flag": true,
+        "matches_expected": false,
+        "issues": [
+          "Unsupported capability or privacy claim: 所有操作都在本机完成"
+        ]
+      }
+    ],
+    "confusion": {
+      "true_positive": 3,
+      "false_negative": 3,
+      "true_negative": 3,
+      "false_positive": 3
+    },
+    "matched": 6,
+    "total": 12
+  },
+  "artifacts": {
+    "cards": [
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/01.png",
+        "width": 1024,
+        "height": 1536,
+        "target_ratio": "3:4",
+        "ratio_pass": false
+      },
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/02.png",
+        "width": 1024,
+        "height": 1536,
+        "target_ratio": "3:4",
+        "ratio_pass": false
+      },
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/03.png",
+        "width": 1086,
+        "height": 1448,
+        "target_ratio": "3:4",
+        "ratio_pass": true
+      },
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/04.png",
+        "width": 1024,
+        "height": 1536,
+        "target_ratio": "3:4",
+        "ratio_pass": false
+      },
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/05.png",
+        "width": 1024,
+        "height": 1536,
+        "target_ratio": "3:4",
+        "ratio_pass": false
+      },
+      {
+        "file": "demo/content-workflow/2026-08-27-literature-review/generated-originals/06.png",
+        "width": 1086,
+        "height": 1448,
+        "target_ratio": "3:4",
+        "ratio_pass": true
+      }
+    ],
+    "covers": [
+      {
+        "file": "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/3-4.png",
+        "width": 1086,
+        "height": 1448,
+        "target_ratio": "3:4",
+        "ratio_pass": true
+      },
+      {
+        "file": "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/4-3.png",
+        "width": 1448,
+        "height": 1086,
+        "target_ratio": "4:3",
+        "ratio_pass": true
+      },
+      {
+        "file": "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/16-9.png",
+        "width": 2048,
+        "height": 1152,
+        "target_ratio": "16:9",
+        "ratio_pass": true
+      }
+    ],
+    "radar": {
+      "items": 15,
+      "sources": 3,
+      "missing_published_at": 10
+    }
+  },
+  "complete_usage_stage_breakdown": {
+    "run_id": "20260709-131559-330e67",
+    "stages": [
+      {
+        "label": "Topic discovery planner",
+        "calls": 1,
+        "prompt_tokens": 31440,
+        "completion_tokens": 1291,
+        "seconds": 14.743
+      },
+      {
+        "label": "Research analyzer",
+        "calls": 1,
+        "prompt_tokens": 12412,
+        "completion_tokens": 2948,
+        "seconds": 39.53
+      },
+      {
+        "label": "Writer",
+        "calls": 1,
+        "prompt_tokens": 11021,
+        "completion_tokens": 1268,
+        "seconds": 13.41
+      },
+      {
+        "label": "Reviewer",
+        "calls": 2,
+        "prompt_tokens": 23253,
+        "completion_tokens": 5961,
+        "seconds": 57.678
+      },
+      {
+        "label": "Editor",
+        "calls": 1,
+        "prompt_tokens": 11698,
+        "completion_tokens": 1014,
+        "seconds": 14.177
+      }
+    ]
+  },
+  "estimates": {
+    "kind": "sensitivity illustration only; hypothetical unit prices, not an invoice or measured cost",
+    "run_id": "20260709-131559-330e67",
+    "scenarios": [
+      {
+        "assumed_input_yuan_per_million": 1,
+        "assumed_output_yuan_per_million": 4,
+        "estimated_llm_yuan": 0.139752
+      },
+      {
+        "assumed_input_yuan_per_million": 5,
+        "assumed_output_yuan_per_million": 20,
+        "estimated_llm_yuan": 0.69876
+      },
+      {
+        "assumed_input_yuan_per_million": 10,
+        "assumed_output_yuan_per_million": 40,
+        "estimated_llm_yuan": 1.39752
+      }
+    ],
+    "excludes": [
+      "images",
+      "collection operations",
+      "human review",
+      "failed prior runs",
+      "other platform fees"
+    ]
+  },
+  "source_sha256": {
+    "src/content-agent/data/logs/2026-07-09.jsonl": "84fe1c9fd96dfb9dae8efd361eb2e1625772e0d5b87bb0d4ff1321a4300655d3",
+    "src/content-agent/data/logs/2026-07-10.jsonl": "071d0413cef5c29156015dedd79f3f94fa012e763b989ba819d0089e3222310d",
+    "src/content-agent/data/logs/2026-07-11.jsonl": "c5e59c54a8b87f1b2e690ffaa3dccd144269fe8d0aba1871cb3efea641371f66",
+    "evaluation/2026-10-17-product-audit/guard-cases.json": "ac1016251328ba36cbffc55c5553e20af1b7e5498018d70911fedc43acf720a2",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/01.png": "454f12c9fa18afcd52f15ca2a96808c80d0e5a996abef7bb01dcb5e61d893195",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/02.png": "62d744220ef4e8fa4e3c96cb3319f7db97c7183ace7ffa332ce7ec1f4f370c94",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/03.png": "f9034f87a214ac5f7c761f2d0499073e7dcb9736915156a1703457eaca4b9f1b",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/04.png": "aedc843080290e74b6fe32e23b6daeb92055b00ce136931c7d90dd87ed52a3c2",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/05.png": "12034b91b1d7dabcf38cadcc55319fcb185290c8ae27d59574604dd65d7da64e",
+    "demo/content-workflow/2026-08-27-literature-review/generated-originals/06.png": "73f0acbbbf1fcca13b481d6ffd2348d2c4cb9ffbc188849f8fe67d0f5f6b76de",
+    "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/3-4.png": "24208c13046d9fcd9c102dd8de724d46f1d9c27b064a88fc2ed7ffb73a9a0278",
+    "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/4-3.png": "89862b96a1c5984d4b91fc7eb135714e7b321e613f96118c9430a368c33d52c3",
+    "demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005/16-9.png": "dbddeb16e50166d8d2fc47870a533ccf99a51741fc3a913615a13689c2e2307d",
+    "demo/daily-trend-radar/2026-10-16-source-check/report-proxy.json": "40e6cbbcef52e977d8df86c35f215b91a1bc4c20a05d0c947ed336f1293c1b06",
+    "src/content-agent/src/create/review.py": "6fb5ab085ecb891bbdc8f461d76f9cc36f057814c8222fc926693f4db7bb0c5c",
+    "src/content-agent/memory/products/birdtracker.md": "660a58446b6f37e447b4b5077bd9fbc6189bd1bb06b0427c30bc68a3d9b81e83",
+    "evaluation/2026-10-17-product-audit/audit.py": "6d0cdec189cf87facdf7ae24315bc67d785adb967bbd940e444a768a593d6161"
+  }
+}

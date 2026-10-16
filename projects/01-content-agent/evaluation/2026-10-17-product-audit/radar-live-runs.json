@@ -1,0 +1,35 @@
+{
+  "checked_on": "2026-10-17",
+  "scope": "同一环境下连续三次采集；不是跨日稳定性或选题质量实验",
+  "sources": [
+    "github",
+    "hackernews",
+    "v2ex"
+  ],
+  "limit": 5,
+  "network": "existing HTTP proxy; Node environment proxy enabled; system settings unchanged",
+  "email_sent": false,
+  "runs": [
+    {
+      "attempt": 1,
+      "exit_code": 0,
+      "elapsed_seconds": 1.746,
+      "stderr": "Wrote 15 items to [portfolio]/projects/01-content-agent/evaluation/2026-10-17-product-audit/radar-live-1.json\n",
+      "report": "radar-live-1.json"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "elapsed_seconds": 0.96,
+      "stderr": "Wrote 15 items to [portfolio]/projects/01-content-agent/evaluation/2026-10-17-product-audit/radar-live-2.json\n",
+      "report": "radar-live-2.json"
+    },
+    {
+      "attempt": 3,
+      "exit_code": 0,
+      "elapsed_seconds": 0.629,
+      "stderr": "Wrote 15 items to [portfolio]/projects/01-content-agent/evaluation/2026-10-17-product-audit/radar-live-3.json\n",
+      "report": "radar-live-3.json"
+    }
+  ]
+}

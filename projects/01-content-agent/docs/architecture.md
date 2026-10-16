@@ -1,71 +1,49 @@
-# 内容生产项目顶层设计与建设规划
+# 运行架构与材料边界
 
-更新日期：2026-10-16。
+[返回项目首页](../README.md) · [运行步骤](quick-start.md) · [产品决策](case-study.md)
 
-状态：已按本设计完成目录迁移与 content-workflow 命名，四份板块的产品设计首稿、演示指南与验收方法已落地。现已补入四个板块的真实材料、修订和验证；长期业务效果仍待测量；全部入口见[项目 README](../README.md)。
+## 1. 四个独立模块
 
-## 1. 项目定位与组织原则
+![输入、执行、交付与人工控制点](diagrams/architecture.svg)
 
-这是独立完成的内容生产项目组，包含三条工作流和一个独立热点工具。作品集需要呈现从问题、方案到实现、验证和迭代的完整过程。
+content-workflow 由三个 Skill 共享分析并分别生成正文与图片；script-workflow 的演示和文案读取原稿，封面承接当前文案。两者由宿主 Agent 按 Skill 约定执行。
 
-项目级以 README、docs、demo、evaluation、src 组织；四个板块在这些材料中使用相同名称，便于分别完善和交叉查证。源码仓库数量不决定案例数量，不强行合并不同业务逻辑，也不把尚未接入的能力画成已完成的公共服务。
+content-agent 由 Python 组织研究与审改；daily-trend-radar 由 Node 采集，再由 Agent 回查与形成角度。content-agent 内部热点研究与 radar 有重叠，但数据结构和调用范围不同，目前未合并。四个模块之间通过明确材料交接，没有中央调度器。
 
-## 2. 四个板块与边界
+## 2. 内容 Agent 的审改循环
 
-| 统一名称 | 任务与交付 | 实现与依赖 |
-| --- | --- | --- |
-| content-workflow | YouTube 视频 → 中文分析、小红书正文、系列卡片 | yt-analysis 生成 analysis.md；note-writer 与 note-images 独立读取；字幕缺失时经确认后转写 |
-| script-workflow | 本人口播稿 → HTML 演示、发布标题短描述、三比例封面 | 演示与文案分别读取原稿；封面继承文案；PPT 与 post 编号独立 |
-| content-agent | 自有产品资料与账号规则 → 选题研究、写作、审改、草稿与发布处理 | Python 控制流程；另有长期策略研究，人工确认后更新记忆 |
-| daily-trend-radar | 多源榜单 → 带来源状态的报告与选题建议 | Node.js 采集与 Agent 分析；尚未自动接入其他三个板块 |
+以下为仅生成草稿路径的简图。结构校验失败可直接报错；本地事实规则命中时跳过模型审稿，形成改稿反馈。通过需要总分、多个分项和阻断项同时满足，不能只看模型 passed 字段。
 
-content-workflow 是用户指定的新名称，当前范围仍是 YouTube 转图文，不因名称变宽而宣称支持所有内容渠道。三个内部 Skill 名称保持不变。原仓库 seedxdream/social-content-skills 保留在来源追溯记录中，远端地址不改。
-
-content-agent 不是整个项目组的总调度器。其内部热点采集与 daily-trend-radar 有重叠，但来源范围和数据结构不同；复用作为后续具体方案评估，不在本轮目录调整中顺带实现。
-
-## 3. 当前目录
-
-```text
-01-content-agent/
-├── README.md
-├── docs/
-│   ├── architecture.md
-│   ├── case-study.md
-│   ├── evidence-notes.md
-│   ├── content-workflow.md
-│   ├── script-workflow.md
-│   ├── content-agent.md
-│   └── daily-trend-radar.md
-├── demo/
-│   ├── README.md
-│   ├── content-workflow/
-│   ├── script-workflow/
-│   ├── content-agent/
-│   └── daily-trend-radar/
-├── evaluation/
-│   ├── README.md
-│   ├── run-template.csv
-│   ├── content-workflow/
-│   ├── script-workflow/
-│   ├── content-agent/
-│   └── daily-trend-radar/
-└── src/
-    ├── content-workflow/
-    │   └── skills/
-    │       ├── yt-analysis/
-    │       ├── note-writer/
-    │       └── note-images/
-    ├── script-workflow/
-    │   ├── script-to-html-slides/
-    │   ├── script-to-post/
-    │   └── script-to-image/
-    ├── content-agent/
-    └── daily-trend-radar/
+```mermaid
+flowchart TD
+  M[产品与账号资料 / 当前主题] --> W[研究可选 → 生成初稿]
+  W --> V{结构校验}
+  V -->|不通过| F[失败并记录原因]
+  V -->|通过| G{本地事实规则}
+  G -->|未命中| R{模型审稿满足全部门槛}
+  G -->|命中| L{是否已达五轮上限}
+  R -->|未通过| L
+  L -->|是| F
+  L -->|否| E[根据反馈改稿]
+  E --> V
+  R -->|通过| S[保存候选 JSON]
+  S -.取用前的人工步骤.-> H[逐项事实复核 / 采用决定]
 ```
 
-树中源码内部只展示关键节点，原工程的资源、文档、测试和历史数据保留。四份板块设计已包含范围、流程、取舍和实现依据；demo 与 evaluation 各板块已有具体任务指南和验收方法，真实任务目录及本轮结果表现已建立，范围见 evaluation/release-review.md。此前 refactor-check.md 保留为历史记录，本轮检查见[structure-check.md](../evaluation/structure-check.md)，均不算业务效果。
+默认整体门槛为 8.6，其余分项与停止条件以 [runtime.py](../src/content-agent/src/create/runtime.py) 为准；这些阈值是当前规则，尚未通过外部标注验证其合理性。图中的人工复核不属于程序强制发布闸门，需使用 `--no-publish` 限定草稿路径。
 
-## 4. 各层分别完善什么
+## 3. 数据如何流动与保存
+
+| 数据 | 当前载体 | 边界 |
+| --- | --- | --- |
+| 长期上下文 | content-agent 的四份固定账号／平台文件、products 下的 Markdown | 文件式上下文；新增目录不会自动成为记忆，需经确认维护输入 |
+| 本期创作 | analysis.md、plan.md、原稿、post.txt、图片和 HTML | 按任务路径关联；PPT 与 post 编号独立 |
+| 审改与运行 | JSON 草稿、JSONL 日志、来源报告 | 保存模型反馈、运行原因；日志不完整时保留未知字段 |
+| 验收版本 | script-workflow 的 handoff.json 与 SHA-256 | 检测验收后变更，不自动判断语义一致性 |
+
+模型调用与图像生成依赖宿主或外部服务；稳定规则由程序执行。源码、原件、当前修订与未来设计分别记录，以便解释实际已经实现的范围。
+
+## 4. 项目材料归属
 
 | 位置 | 内容 | 与其他材料的关系 |
 | --- | --- | --- |
@@ -82,26 +60,7 @@ content-agent 不是整个项目组的总调度器。其内部热点采集与 da
 
 同一任务通过任务标识、明确路径和版本关联。script-workflow 的 task 标识不改变原有 PPT/post 编号规则。未能取得的费用、耗时和历史事实留空或标注待补。
 
-## 5. 四个板块的完善重点
-
-| 板块 | 产品与设计重点 | 演示重点 | 验证重点 |
-| --- | --- | --- | --- |
-| content-workflow | 视频改编需求、共享分析与独立创作、字幕降级和人工检查 | 一条视频从输入到图文，以及真实降级或修订过程 | 分析覆盖、事实准确、图文一致性、人工修改、耗时与成本 |
-| script-workflow | 口播顺序、三种产物的边界、文案对封面的约束、独立编号 | 同一期脚本与演示、文案、三比例封面 | 播放行为、文字正确、比例与视觉一致性、修改轮次和费用 |
-| content-agent | 产品与账号约束、选题和写作研究、审改循环、策略更新 | 草稿生成与审改，历史失败及其处理 | 产品事实、人工采纳、研究条件、审改上限、失败重试成本 |
-| daily-trend-radar | 来源选择、时间语义、事件归并、部分失败处理 | 来源状态与可追溯报告 | 实时来源可用率、归并准确性、链接与时间正确性、降级行为 |
-
-这些是待完善的工作方向，不是已验证成果。四个板块不强制用同一套指标，也不合成一个总成功率。
-
-## 6. 实施顺序与验收
-
-1. **落实结构和命名（已完成）。** 按下表迁移，更新引用、来源路径和评测名称；保留源提交与已完成的本地修订。验收是文件完整、路径可解析、受影响工具正常。
-2. **补齐产品设计（首稿已完成）。** 四份文档说明场景、问题、目标、范围、方案比较、异常和验收；已结合聊天中的实际需求，依据见 [evidence-notes.md](evidence-notes.md)。历史动机不强求恢复，方案理由按当前产品复盘表达；使用频率和收益等待实际证据。
-3. **用真实任务补证据。** 先核对历史产物与日志，再为选定工作流准备完整任务；保存实际输入输出及失败处理，并按该板块标准测量。四个板块分别采用与实际输入关联的任务，保留各自结论与限制。
-4. **根据结果迭代。** 先明确问题与验收条件，再改代码或 Skill；复测相关场景，将结论回写板块文档。
-5. **形成展示案例。** 在 case-study.md 与项目 README 提炼关键判断、结果、演示和限制。详细材料留在各自位置，总 ROADMAP 跟踪进度。
-
-## 7. 已完成的目录迁移
+## 5. 来源与历史迁移
 
 | 迁移前路径 | 当前路径 |
 | --- | --- |

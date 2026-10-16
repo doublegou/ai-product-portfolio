@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "fetchedAt": "2026-10-16T16:54:25.974Z",
+  "preset": null,
+  "requestedSources": [
+    "github",
+    "hackernews",
+    "v2ex"
+  ],
+  "resolvedSources": [
+    "github",
+    "hackernews",
+    "v2ex"
+  ],
+  "limitPerSource": 5,
+  "sinceHours": null,
+  "sourceStatus": [
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "platform": "github",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "platform": "hackernews",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "platform": "v2ex",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    }
+  ],
+  "rawItemCount": 15,
+  "itemCount": 15,
+  "items": [
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50120010",
+      "title": "America's Wumao: Inside Polymarket's Paid Quote-Retweet Esports Program",
+      "url": "https://www.readergrev.com/p/polymarket-paid-quote-retweet-esports-investigation",
+      "publishedAt": null,
+      "rank": 1,
+      "heat": "37 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50120010",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "America's Wumao: Inside Polymarket's Paid Quote-Retweet Esports Program",
+          "url": "https://www.readergrev.com/p/polymarket-paid-quote-retweet-esports-investigation",
+          "rank": 1,
+          "publishedAt": null,
+          "heat": "37 points"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/anthropics/claude-plugins-official",
+      "title": "anthropics / claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "publishedAt": null,
+      "rank": 1,
+      "heat": "40,161",
+      "summary": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "anthropics / claude-plugins-official",
+          "url": "https://github.com/anthropics/claude-plugins-official",
+          "rank": 1,
+          "publishedAt": null,
+          "heat": "40,161"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249495",
+      "title": "纸飞机也不是那么隐私啊",
+      "url": "https://www.v2ex.com/t/1249495",
+      "publishedAt": "2026-10-16T16:14:21.000Z",
+      "rank": 1,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "纸飞机也不是那么隐私啊",
+          "url": "https://www.v2ex.com/t/1249495",
+          "rank": 1,
+          "publishedAt": "2026-10-16T16:14:21.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50118320",
+      "title": "Apple ML Research: Muse Spark Open with MLX on Mac Studio",
+      "url": "https://machinelearning.apple.com/research/mlx-distributed-inference",
+      "publishedAt": null,
+      "rank": 2,
+      "heat": "106 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50118320",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Apple ML Research: Muse Spark Open with MLX on Mac Studio",
+          "url": "https://machinelearning.apple.com/research/mlx-distributed-inference",
+          "rank": 2,
+          "publishedAt": null,
+          "heat": "106 points"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/K-Dense-AI/scientific-agent-skills",
+      "title": "K-Dense-AI / scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "publishedAt": null,
+      "rank": 2,
+      "heat": "51,263",
+      "summary": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "K-Dense-AI / scientific-agent-skills",
+          "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+          "rank": 2,
+          "publishedAt": null,
+          "heat": "51,263"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249492",
+      "title": "美区 id 使用礼品卡开通 gpt plus 一直付款失败 + Android Visa 开通和封号踩坑实录",
+      "url": "https://www.v2ex.com/t/1249492",
+      "publishedAt": "2026-10-16T15:24:00.000Z",
+      "rank": 2,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "美区 id 使用礼品卡开通 gpt plus 一直付款失败 + Android Visa 开通和封号踩坑实录",
+          "url": "https://www.v2ex.com/t/1249492",
+          "rank": 2,
+          "publishedAt": "2026-10-16T15:24:00.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/affaan-m/ECC",
+      "title": "affaan-m / ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "publishedAt": null,
+      "rank": 3,
+      "heat": "281,131",
+      "summary": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "affaan-m / ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "rank": 3,
+          "publishedAt": null,
+          "heat": "281,131"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50118828",
+      "title": "What on Earth Is Dekton?",
+      "url": "https://www.worksinprogress.news/p/porcelain",
+      "publishedAt": null,
+      "rank": 3,
+      "heat": "61 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50118828",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "What on Earth Is Dekton?",
+          "url": "https://www.worksinprogress.news/p/porcelain",
+          "rank": 3,
+          "publishedAt": null,
+          "heat": "61 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249490",
+      "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
+      "url": "https://www.v2ex.com/t/1249490",
+      "publishedAt": "2026-10-16T15:10:03.000Z",
+      "rank": 3,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "分享一个 Python 音频转文字命令行工具，支持 Whisper 本地转录",
+          "url": "https://www.v2ex.com/t/1249490",
+          "rank": 3,
+          "publishedAt": "2026-10-16T15:10:03.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50118977",
+      "title": "Big Fish: Exploiting a 37-Year-Old Kernel Bug in OpenBSD",
+      "url": "https://calif.io/research/big-fish",
+      "publishedAt": null,
+      "rank": 4,
+      "heat": "75 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50118977",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Big Fish: Exploiting a 37-Year-Old Kernel Bug in OpenBSD",
+          "url": "https://calif.io/research/big-fish",
+          "rank": 4,
+          "publishedAt": null,
+          "heat": "75 points"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/HKUDS/CLI-Anything",
+      "title": "HKUDS / CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "publishedAt": null,
+      "rank": 4,
+      "heat": "53,329",
+      "summary": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "HKUDS / CLI-Anything",
+          "url": "https://github.com/HKUDS/CLI-Anything",
+          "rank": 4,
+          "publishedAt": null,
+          "heat": "53,329"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249488",
+      "title": "宝可梦塔防",
+      "url": "https://www.v2ex.com/t/1249488",
+      "publishedAt": "2026-10-16T15:02:35.000Z",
+      "rank": 4,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "宝可梦塔防",
+          "url": "https://www.v2ex.com/t/1249488",
+          "rank": 4,
+          "publishedAt": "2026-10-16T15:02:35.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50117746",
+      "title": "I Love Software Rendering",
+      "url": "https://www.jamesfmackenzie.com/2026/10/13/i-love-software-rendering/",
+      "publishedAt": null,
+      "rank": 5,
+      "heat": "194 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50117746",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "I Love Software Rendering",
+          "url": "https://www.jamesfmackenzie.com/2026/10/13/i-love-software-rendering/",
+          "rank": 5,
+          "publishedAt": null,
+          "heat": "194 points"
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/mksglu/context-mode",
+      "title": "mksglu / context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "publishedAt": null,
+      "rank": 5,
+      "heat": "30,099",
+      "summary": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "mksglu / context-mode",
+          "url": "https://github.com/mksglu/context-mode",
+          "rank": 5,
+          "publishedAt": null,
+          "heat": "30,099"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249486",
+      "title": "做了个会喷气起飞的 Roadster 网页小游戏，欢迎试玩",
+      "url": "https://www.v2ex.com/t/1249486",
+      "publishedAt": "2026-10-16T14:45:49.000Z",
+      "rank": 5,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T16:54:25.974Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "做了个会喷气起飞的 Roadster 网页小游戏，欢迎试玩",
+          "url": "https://www.v2ex.com/t/1249486",
+          "rank": 5,
+          "publishedAt": "2026-10-16T14:45:49.000Z",
+          "heat": null
+        }
+      ]
+    }
+  ]
+}

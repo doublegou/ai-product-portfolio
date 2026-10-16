@@ -1,7 +1,7 @@
 {
   "checked_on": "2026-10-17",
   "audience": "Recruiter reading the GitHub repository independently after an application",
-  "scope": "GitHub-first reading: four end-to-end cases, evidence diagrams and original artifacts. No new website. Existing HTML name cleanup only.",
+  "scope": "GitHub product case, runtime architecture, actual artifacts, Quick Start and reproducible product audit. Explanatory HTML boards retired from the main reading path.",
   "artifacts": {
     "demo/index.html": {
       "bytes": 33935,
@@ -16,28 +16,28 @@
       "sha256": "04d936d2b17384fa3dcc5c4474bd822caf46e399141f871143292ea622bef5b8"
     },
     "README.md": {
-      "bytes": 14824,
-      "sha256": "4b02103a5af6694189ae6c27bf691040c25c8249c5566d1f56b28108e6012838"
+      "bytes": 12742,
+      "sha256": "16b707274ec8e965e83b500e65de494d9f6b356e0dc79a22f8f964b377bbf64d"
     },
     "docs/case-study.md": {
-      "bytes": 18778,
-      "sha256": "9fb06dda75846f2357324c484ad166375cfa969aae3437165b4af28cd192f31f"
+      "bytes": 11972,
+      "sha256": "a56b1e5e63cc0fc79fe6f2fd2b8978bb29aca1669ce64ccb155f2f9f13ff7bc4"
     },
     "demo/script-workflow/2026-09-25-partial-task/feedback-excerpts.json": {
       "bytes": 2032,
       "sha256": "89bd8373290ffdafa2f99f32b7614a7a618c975832a8f653d278396161f27922"
     },
     "docs/evidence-notes.md": {
-      "bytes": 6518,
-      "sha256": "cae2e17fcf0ee3fc595199e26220c5efeda4f96c4ebaff5e068b2e8bd787e2f1"
+      "bytes": 6919,
+      "sha256": "9d129d91b80939fee261f1db578143292c95c4fde5609c82b1546f83989d0cc2"
     },
     "demo/README.md": {
-      "bytes": 2754,
-      "sha256": "377268cd80425987e9605897f2b06d5558bb869799633126835e1c1334b22912"
+      "bytes": 2665,
+      "sha256": "3845f4d9678bcdbad818647fcd7778c463e5e34fe03dd73bbb3ee6eeb54da8e5"
     },
     "evaluation/README.md": {
-      "bytes": 3608,
-      "sha256": "7e602daa166a0a9321eff036374985b3ec1fe068292f9fb2ecafb7bea2d98a6f"
+      "bytes": 3792,
+      "sha256": "a6847d15c40be56120a708af15679a11757575728300e24f686ade671f318644"
     },
     "demo/content-agent/2026-10-16-draft-review/post.txt": {
       "bytes": 1684,
@@ -68,16 +68,16 @@
       "sha256": "36849a142bfb87d939c58b0209489168c7c5195fe86d144574ac44a3c2fb8855"
     },
     "evaluation/release-review.md": {
-      "bytes": 11944,
-      "sha256": "59275409f5c922996fb1574aad3d85c5fe8ad551e46f236443d3527d4976f6c5"
+      "bytes": 14143,
+      "sha256": "7fea94c33f9a3cd69a966cf35af36f132bcba0d6768e4e600ac0283da2bacde4"
     },
     "docs/content-agent.md": {
       "bytes": 6397,
       "sha256": "8b9323e32bdf15349fa0b047e8600bf47390135cc789406c14fa630350592adf"
     },
     "docs/architecture.md": {
-      "bytes": 8767,
-      "sha256": "55203befb162b7ad5c2216c9beaf71253814533e322aaf8134cc091df6e719ec"
+      "bytes": 5282,
+      "sha256": "9726fb26c01ed95cf96bfba3150659839ee73b85663c6bf06e7985ee78286531"
     },
     "demo/content-workflow/README.md": {
       "bytes": 1128,
@@ -103,34 +103,6 @@
       "bytes": 3347,
       "sha256": "06127dd749acb905b213db2667adf18c8c74ec2fc96f140258f0d3cb682b3ac2"
     },
-    "demo/process-evidence/journeys.json": {
-      "bytes": 18472,
-      "sha256": "a1002791704efea7eb04dd4bc6d2836abca2ab1f3b7e3c3138d7be625f89324d"
-    },
-    "demo/process-evidence/agent.png": {
-      "bytes": 205056,
-      "sha256": "bcc4e0c28e7f05ba160293ac340916c4002c8602d70133803518c5b47da8a08b"
-    },
-    "demo/process-evidence/provenance.json": {
-      "bytes": 2192,
-      "sha256": "e5a9b191edf85c5ad9e4a9bc2ebb55501d354b68d57f1e1e457dc2371206648f"
-    },
-    "demo/process-evidence/radar.png": {
-      "bytes": 201417,
-      "sha256": "90d9ad8ae8eac38fd5bb70332b4a4fd3233182fdf6ade46ff4d13dfc1adc4226"
-    },
-    "demo/process-evidence/content.png": {
-      "bytes": 337169,
-      "sha256": "a20a987d902b80defb7d7731bfcd99e7740f366372e4223153d32ca8ddde4b5d"
-    },
-    "demo/process-evidence/script.png": {
-      "bytes": 438434,
-      "sha256": "8d2fa6f7317ae199445792bb6dce6e61b1ba6ac66305951499d4da3f2f2247c0"
-    },
-    "demo/process-evidence/render-check.json": {
-      "bytes": 590,
-      "sha256": "8cfc44a1725de174fda28c26057e4293e630d1f73e6e3133ecf898d1c13f5c10"
-    },
     "demo/content-workflow/2026-08-27-literature-review/README.md": {
       "bytes": 5003,
       "sha256": "17fbc3e4b4f24d7135c4797353d6fa49740a88ff0f5eb77c9d34b30d241e14ed"
@@ -142,6 +114,54 @@
     "demo/daily-trend-radar/2026-10-16-source-check/README.md": {
       "bytes": 4148,
       "sha256": "b6e06fd3d16105901f9e8105dcebb83e72b25d1fc409a9b4c1bc127c773dcbac"
+    },
+    "docs/quick-start.md": {
+      "bytes": 5957,
+      "sha256": "1d884c7a4d89d447d3240fbbab9e1ef384a83d0dfd7f6f91805ab6be74f38e4f"
+    },
+    "docs/screenshot-plan.md": {
+      "bytes": 3211,
+      "sha256": "542e7ef04172094580c6d2a8e50d9b198848f5c023b6a267f5f00c1c4314472c"
+    },
+    "docs/diagrams/architecture.svg": {
+      "bytes": 7401,
+      "sha256": "9f5d3c66baf011983405d5b273d9bb7b1cf2c663b6fe0505902a8a0aedd41815"
+    },
+    "evaluation/github-reading-check.json": {
+      "bytes": 2020,
+      "sha256": "29ca69c94b8771450c6cc5b22c59f0f7395cd7de5afe324a18def98ab5458552"
+    },
+    "evaluation/2026-10-17-product-audit/radar-live-runs.json": {
+      "bytes": 1098,
+      "sha256": "f2f165410f5e956a0f50444daba5bd922c582dfb55df06832e02f85ab3154f51"
+    },
+    "evaluation/2026-10-17-product-audit/radar-live-1.json": {
+      "bytes": 14394,
+      "sha256": "9bd4c8ec35740f8b12b37dbde058acf5d79400c7d9eced8b913020ce0db38b11"
+    },
+    "evaluation/2026-10-17-product-audit/audit.py": {
+      "bytes": 7431,
+      "sha256": "6d0cdec189cf87facdf7ae24315bc67d785adb967bbd940e444a768a593d6161"
+    },
+    "evaluation/2026-10-17-product-audit/results.json": {
+      "bytes": 24848,
+      "sha256": "f35b4b9fbff0995a63f512d0d914a07ebf8287a165511540299871abc944915f"
+    },
+    "evaluation/2026-10-17-product-audit/README.md": {
+      "bytes": 7716,
+      "sha256": "1334ba57c246e5b5b496adf300b6c4c4d4538198032730045e397d7b525a222f"
+    },
+    "evaluation/2026-10-17-product-audit/guard-cases.json": {
+      "bytes": 1892,
+      "sha256": "ac1016251328ba36cbffc55c5553e20af1b7e5498018d70911fedc43acf720a2"
+    },
+    "evaluation/2026-10-17-product-audit/radar-live-3.json": {
+      "bytes": 14394,
+      "sha256": "6dcd33af6190b95c4063cd8f59e618eb757ed2f4554626c1f35814ef93663af4"
+    },
+    "evaluation/2026-10-17-product-audit/radar-live-2.json": {
+      "bytes": 14394,
+      "sha256": "0cefc6908cf183293e6d9aa1ae8e5ba266825e6537088316c0d90160cdd2ec84"
     }
   },
   "requirements": {
@@ -166,10 +186,14 @@
     "bounded_review_control_regressions_pass": true,
     "personal_name_removed_from_display": true,
     "four_parallel_user_journeys": true,
-    "process_figures_labeled_as_explanations_not_app_screenshots": true,
     "real_feedback_and_before_after_evidence_in_cases": true,
     "references_and_application_documented": true,
-    "future_comparison_design_not_reported_as_results": true
+    "future_comparison_design_not_reported_as_results": true,
+    "quick_start_has_module_specific_inputs_outputs_and_checks": true,
+    "source_screenshots_requested_only_with_evidence_purpose": true,
+    "constructed_test_inputs_labeled": true,
+    "model_usage_separate_from_hypothetical_prices": true,
+    "architecture_not_a_unified_orchestrator": true
   },
   "engineering_checks": {
     "radar": {
@@ -188,10 +212,12 @@
     }
   },
   "product_validation_limits": [
-    "No measured ROI, adoption rate, or complete cost baseline",
+    "No measured adoption, active human time, or full cost comparison",
     "Historical final crop files for content cards unavailable",
-    "No new live model run or actual publishing for content-agent",
-    "Radar live validation is one three-source run"
+    "No new production model run or actual publishing",
+    "Radar repeated sampling is three sequential runs in one proxy environment, not cross-day SLA",
+    "Guard probes are deliberately constructed; no independent adjudication or production accuracy claim",
+    "Semantic guard and collection usability fixes proposed, not implemented"
   ],
   "delivery": {
     "email_sent": false,
@@ -201,13 +227,13 @@
     "repository_target": "doublegou/ai-product-portfolio (private)"
   },
   "documentation_check": {
-    "files": 47,
-    "local_links": 286,
+    "files": 50,
+    "local_links": 298,
     "broken": 0,
-    "scope": "Reader Markdown including HTML image links and heading anchors; not imported source docs"
+    "scope": "Reader Markdown paths, HTML image references and heading anchors; not imported source docs"
   },
   "browser_record": "showcase-check.json",
-  "completion_audit": "GitHub reading pass: four task journeys and aligned evidence diagrams, real changes and artifacts, distinct historical/current/proposed claims. Native Codex conversation screenshots unavailable. User adoption, full cost baseline, card final crops remain outstanding. No new website.",
+  "completion_audit": "GitHub content revised with four real tasks and actual artifacts; decision memo separates tradeoffs, metrics, priorities and planned experiments. Added runnable Quick Start, screenshot plan, historical usage analysis and fresh guard/radar tests. Real Codex screenshots pending user supply. No new website.",
   "github_reading_record": "github-reading-check.json",
   "board_materials": {
     "content-workflow": {
@@ -251,5 +277,7 @@
       "result_rows": 1
     }
   },
-  "engineering_checks_last_run": "2026-10-16; unchanged source, no engineering suite rerun for this content-only pass"
+  "engineering_checks_last_run": "2026-10-16; unchanged source, no engineering suite rerun for this content-only pass",
+  "product_audit": "2026-10-17-product-audit/results.json",
+  "radar_live_runs": "2026-10-17-product-audit/radar-live-runs.json"
 }

@@ -1,0 +1,18 @@
+{
+  "kind": "本轮构造的规则边界样本，不是历史用户输入或模型输出",
+  "scope": "仅测试 find_quality_guard_issues 的词表筛查；期望按现有 BirdTracker 资料定义；未经独立人工标注复核",
+  "cases": [
+    {"id":"R1","text":"用热点地图一定能看到鸟。","should_flag":true,"reason":"地点线索不能保证实际鸟况"},
+    {"id":"R2","text":"BirdTracker 完全离线。","should_flag":true,"reason":"现有资料不足以支持完全离线"},
+    {"id":"R3","text":"我打开了手机，在河边记录下第一次观鸟。","should_flag":true,"reason":"没有对应真实亲历记录"},
+    {"id":"R4","text":"上传照片就能自动识别所有鸟类。","should_flag":true,"reason":"资料未支持这一识别能力与范围"},
+    {"id":"R5","text":"每拍下一只鸟，就会出现在荣誉页面。","should_flag":true,"reason":"相机记录与荣誉页的完整映射无依据"},
+    {"id":"R6","text":"断网也能使用全部功能。","should_flag":true,"reason":"完全离线的另一种表达，无依据"},
+    {"id":"C1","text":"图鉴提供鸟类的照片、声音与习性资料。","should_flag":false,"reason":"与产品资料一致"},
+    {"id":"C2","text":"热点提供地点线索，实际鸟况仍需现场观察。","should_flag":false,"reason":"有边界的场景表达"},
+    {"id":"C3","text":"可以通过相机流程拍照并保存观察记录。","should_flag":false,"reason":"与产品资料一致"},
+    {"id":"C4","text":"热点地图不保证看到鸟。","should_flag":false,"reason":"明确否定效果保证"},
+    {"id":"C5","text":"照片记录不等于一定能看到更多鸟。","should_flag":false,"reason":"明确否定效果保证"},
+    {"id":"C6","text":"不能据此承诺所有操作都在本机完成。","should_flag":false,"reason":"否定未经验证的本地运行承诺"}
+  ]
+}
