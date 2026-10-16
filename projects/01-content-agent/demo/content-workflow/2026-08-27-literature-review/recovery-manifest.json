@@ -1,0 +1,113 @@
+{
+  "recovered_on": "2026-10-16",
+  "session_file": "/Users/doublegou/.codex/sessions/2026/08/27/rollout-2026-08-27T13-58-22-01a041cc-497e-7233-b9fd-33d3e2d7611e.jsonl.zst",
+  "method": "read-only recovery; no historical commands executed",
+  "files": [
+    {
+      "path": "generated-originals/01.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-62a281d3-3ed6-4efa-9a94-5e97ba41e728.png",
+      "session_line": 317,
+      "sha256": "454f12c9fa18afcd52f15ca2a96808c80d0e5a996abef7bb01dcb5e61d893195",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "generated-originals/02.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-6975ba46-7437-4124-989d-883c939f544d.png",
+      "session_line": 345,
+      "sha256": "62d744220ef4e8fa4e3c96cb3319f7db97c7183ace7ffa332ce7ec1f4f370c94",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "generated-originals/03.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-128df7aa-724a-4612-8830-7b0a1d8a6afd.png",
+      "session_line": 351,
+      "sha256": "f9034f87a214ac5f7c761f2d0499073e7dcb9736915156a1703457eaca4b9f1b",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "generated-originals/05.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-a16bcbe1-59d3-433c-8708-3523d6c5f7b0.png",
+      "session_line": 380,
+      "sha256": "12034b91b1d7dabcf38cadcc55319fcb185290c8ae27d59574604dd65d7da64e",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "generated-originals/04.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-20224e40-38be-4a7e-847d-fd9aab0aaa9d.png",
+      "session_line": 383,
+      "sha256": "aedc843080290e74b6fe32e23b6daeb92055b00ce136931c7d90dd87ed52a3c2",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "generated-originals/06.png",
+      "source": "/Users/doublegou/.codex/generated_images/01a041cc-497e-7233-b9fd-33d3e2d7611e/exec-2fa6fc37-03a3-46a0-9bd2-f3773f09b544.png",
+      "session_line": 399,
+      "sha256": "73f0acbbbf1fcca13b481d6ffd2348d2c4cb9ffbc188849f8fe67d0f5f6b76de",
+      "kind": "original image generation; subsequent historical crops not recovered"
+    },
+    {
+      "path": "analysis.md",
+      "session_line": 227,
+      "kind": "recovered exact stdout from historical file read",
+      "sha256": "e6e95209e4fe0d5c210808d060db98c9b45a4166f1e52111231fd27870967e8c"
+    },
+    {
+      "path": "result/post.md",
+      "session_line": 178,
+      "kind": "historical addition followed by exact one-line update",
+      "sha256": "f7d225da4bc08fb8fb20730bed55c0c45b3efe94f24d39c216c4fe5d57d71e21",
+      "session_lines": [
+        178,
+        190
+      ]
+    },
+    {
+      "path": "plan-original-eight.md",
+      "session_line": 178,
+      "kind": "recovered historical file addition",
+      "sha256": "f14ef610dd980f7ae7b79a1fea1621c74aca0fcb668acaf3ff2711580567c0d5"
+    },
+    {
+      "path": "plan.md",
+      "session_line": 245,
+      "kind": "recovered historical file addition",
+      "sha256": "e50d6777273fd3c69136e7692160d67e1b010273ebe03dd9e840a5f0c6a9a918"
+    },
+    {
+      "path": "prompts/04-content-question-and-disagree.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "ef2d5d5c3c55eceb68b8e3786a15371aef61271cb43db1f2b599b66e8e64d387"
+    },
+    {
+      "path": "prompts/01-cover-ai-review.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "ac77a7bc4bce01ed5aa0d9f1ba7e47f1753961eb7ad1b8c8f14e1c7038d54a04"
+    },
+    {
+      "path": "prompts/06-ending-traffic-light.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "db42b391d558dff3d994cb263415e1db5a9562e09fedab38e251a8bd4038297e"
+    },
+    {
+      "path": "prompts/02-content-output-vs-learning.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "4e97e06febb53254a6818d6b06b5bf8fd0179aa8ed93c0778b8fe2ae7ef98dcd"
+    },
+    {
+      "path": "prompts/03-content-map-and-verify.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "7ee60584d82db5197d7ebb6935d53bee56a3b8b3514be15340f17bd42b202b61"
+    },
+    {
+      "path": "prompts/05-content-history-and-reframe.md",
+      "session_line": 308,
+      "kind": "recovered historical file addition",
+      "sha256": "eac0e0797fccfdb0bfdea5fc6fc385243f98da3318aaa794a1bff59749786d8b"
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "fetchedAt": "2026-10-16T12:45:23.028Z",
+  "preset": null,
+  "requestedSources": [
+    "github",
+    "hackernews",
+    "v2ex"
+  ],
+  "resolvedSources": [
+    "github",
+    "hackernews",
+    "v2ex"
+  ],
+  "limitPerSource": 5,
+  "sinceHours": null,
+  "sourceStatus": [
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "platform": "github",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "platform": "hackernews",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "platform": "v2ex",
+      "stability": "stable",
+      "ok": true,
+      "count": 5,
+      "warnings": []
+    }
+  ],
+  "rawItemCount": 15,
+  "itemCount": 15,
+  "items": [
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/anthropics/claude-plugins-official",
+      "title": "anthropics / claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "publishedAt": null,
+      "rank": 1,
+      "heat": "39,859",
+      "summary": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "anthropics / claude-plugins-official",
+          "url": "https://github.com/anthropics/claude-plugins-official",
+          "rank": 1,
+          "publishedAt": null,
+          "heat": "39,859"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50077225",
+      "title": "Yet another way to invoke functions without parentheses",
+      "url": "https://blog.ikaes.de/yet-another-way-to-invoke-functions-without-parentheses/",
+      "publishedAt": null,
+      "rank": 1,
+      "heat": "108 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50077225",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Yet another way to invoke functions without parentheses",
+          "url": "https://blog.ikaes.de/yet-another-way-to-invoke-functions-without-parentheses/",
+          "rank": 1,
+          "publishedAt": null,
+          "heat": "108 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249463",
+      "title": "印象中 aws ses 邮箱服务不是很难申请生产模式吗",
+      "url": "https://www.v2ex.com/t/1249463",
+      "publishedAt": "2026-10-16T12:36:18.000Z",
+      "rank": 1,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "印象中 aws ses 邮箱服务不是很难申请生产模式吗",
+          "url": "https://www.v2ex.com/t/1249463",
+          "rank": 1,
+          "publishedAt": "2026-10-16T12:36:18.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/K-Dense-AI/scientific-agent-skills",
+      "title": "K-Dense-AI / scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "publishedAt": null,
+      "rank": 2,
+      "heat": "51,098",
+      "summary": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "K-Dense-AI / scientific-agent-skills",
+          "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+          "rank": 2,
+          "publishedAt": null,
+          "heat": "51,098"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50065859",
+      "title": "Woman who rescued injured crow keeps getting 'thank-you gifts' from birds [video]",
+      "url": "https://www.youtube.com/watch?v=sjNpfz4UzqU",
+      "publishedAt": null,
+      "rank": 2,
+      "heat": "469 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50065859",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Woman who rescued injured crow keeps getting 'thank-you gifts' from birds [video]",
+          "url": "https://www.youtube.com/watch?v=sjNpfz4UzqU",
+          "rank": 2,
+          "publishedAt": null,
+          "heat": "469 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249459",
+      "title": "求助， mac 无法访问.local 结尾的域名",
+      "url": "https://www.v2ex.com/t/1249459",
+      "publishedAt": "2026-10-16T12:28:20.000Z",
+      "rank": 2,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "求助， mac 无法访问.local 结尾的域名",
+          "url": "https://www.v2ex.com/t/1249459",
+          "rank": 2,
+          "publishedAt": "2026-10-16T12:28:20.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/affaan-m/ECC",
+      "title": "affaan-m / ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "publishedAt": null,
+      "rank": 3,
+      "heat": "280,913",
+      "summary": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "affaan-m / ECC",
+          "url": "https://github.com/affaan-m/ECC",
+          "rank": 3,
+          "publishedAt": null,
+          "heat": "280,913"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50111852",
+      "title": "Meta’s new commercial terms will allow the scraping of news sites: experts",
+      "url": "https://www.niemanlab.org/2026/10/metas-new-commercial-terms-will-allow-the-scraping-of-news-sites-legal-experts-say/",
+      "publishedAt": null,
+      "rank": 3,
+      "heat": "361 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50111852",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Meta’s new commercial terms will allow the scraping of news sites: experts",
+          "url": "https://www.niemanlab.org/2026/10/metas-new-commercial-terms-will-allow-the-scraping-of-news-sites-legal-experts-say/",
+          "rank": 3,
+          "publishedAt": null,
+          "heat": "361 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249457",
+      "title": "opencode 配国产模型，用哪个合适？",
+      "url": "https://www.v2ex.com/t/1249457",
+      "publishedAt": "2026-10-16T12:22:47.000Z",
+      "rank": 3,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "opencode 配国产模型，用哪个合适？",
+          "url": "https://www.v2ex.com/t/1249457",
+          "rank": 3,
+          "publishedAt": "2026-10-16T12:22:47.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/HKUDS/CLI-Anything",
+      "title": "HKUDS / CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "publishedAt": null,
+      "rank": 4,
+      "heat": "53,220",
+      "summary": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "HKUDS / CLI-Anything",
+          "url": "https://github.com/HKUDS/CLI-Anything",
+          "rank": 4,
+          "publishedAt": null,
+          "heat": "53,220"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50107379",
+      "title": "Muse Spark Open",
+      "url": "https://research.meta.ai/blog/muse-spark-open",
+      "publishedAt": null,
+      "rank": 4,
+      "heat": "849 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50107379",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "Muse Spark Open",
+          "url": "https://research.meta.ai/blog/muse-spark-open",
+          "rank": 4,
+          "publishedAt": null,
+          "heat": "849 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249448",
+      "title": "我开发了一个免费决策模型 api ： 包青天",
+      "url": "https://www.v2ex.com/t/1249448",
+      "publishedAt": "2026-10-16T11:14:12.000Z",
+      "rank": 4,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "我开发了一个免费决策模型 api ： 包青天",
+          "url": "https://www.v2ex.com/t/1249448",
+          "rank": 4,
+          "publishedAt": "2026-10-16T11:14:12.000Z",
+          "heat": null
+        }
+      ]
+    },
+    {
+      "source": "github",
+      "sourceName": "GitHub Trending",
+      "id": "/mksglu/context-mode",
+      "title": "mksglu / context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "publishedAt": null,
+      "rank": 5,
+      "heat": "30,013",
+      "summary": "Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "github"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "github",
+          "sourceName": "GitHub Trending",
+          "title": "mksglu / context-mode",
+          "url": "https://github.com/mksglu/context-mode",
+          "rank": 5,
+          "publishedAt": null,
+          "heat": "30,013"
+        }
+      ]
+    },
+    {
+      "source": "hackernews",
+      "sourceName": "Hacker News",
+      "id": "50084790",
+      "title": "The Economic Complexity of the Western Roman Empire",
+      "url": "https://www.michelecoscia.com/?p=2613",
+      "publishedAt": null,
+      "rank": 5,
+      "heat": "58 points",
+      "summary": "Discussion: https://news.ycombinator.com/item?id=50084790",
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "en",
+      "sources": [
+        "hackernews"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "hackernews",
+          "sourceName": "Hacker News",
+          "title": "The Economic Complexity of the Western Roman Empire",
+          "url": "https://www.michelecoscia.com/?p=2613",
+          "rank": 5,
+          "publishedAt": null,
+          "heat": "58 points"
+        }
+      ]
+    },
+    {
+      "source": "v2ex",
+      "sourceName": "V2EX",
+      "id": "https://www.v2ex.com/t/1249446",
+      "title": "用 Codex 几天 Vibe 了个单机游戏下载站，无需登录",
+      "url": "https://www.v2ex.com/t/1249446",
+      "publishedAt": "2026-10-16T10:52:32.000Z",
+      "rank": 5,
+      "heat": null,
+      "summary": null,
+      "fetchedAt": "2026-10-16T12:45:23.028Z",
+      "tags": [],
+      "language": "zh",
+      "sources": [
+        "v2ex"
+      ],
+      "sourceCount": 1,
+      "related": [
+        {
+          "source": "v2ex",
+          "sourceName": "V2EX",
+          "title": "用 Codex 几天 Vibe 了个单机游戏下载站，无需登录",
+          "url": "https://www.v2ex.com/t/1249446",
+          "rank": 5,
+          "publishedAt": "2026-10-16T10:52:32.000Z",
+          "heat": null
+        }
+      ]
+    }
+  ]
+}

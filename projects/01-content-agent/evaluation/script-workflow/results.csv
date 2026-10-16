@@ -1,0 +1,2 @@
+run_id,date,workflow,input_id,version,model,status,elapsed_seconds,human_minutes,edit_rounds,input_tokens,output_tokens,total_cost,currency,quality_pass,failure_category,evidence_path,notes
+script-005-revision,2026-10-16,script-workflow,005-revised-script,handoff.json,,completed,,,1,,,,,,,../../demo/script-workflow/2026-10-16-version-alignment/README.md,portfolio revision; not fresh end-to-end generation; 15 pages and 42 states; AI-assisted content review

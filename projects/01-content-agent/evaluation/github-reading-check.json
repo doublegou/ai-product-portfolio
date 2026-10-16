@@ -1,0 +1,61 @@
+{
+  "checked_on": "2026-10-16",
+  "scope": "Local GFM approximation, not a hosted GitHub rendering; no publication",
+  "checks": [
+    {
+      "viewport": 1280,
+      "documentWidth": 1280,
+      "images": [
+        {
+          "loaded": true,
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "loaded": true,
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "loaded": true,
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "sections": [
+        "content-workflow · 同一视频，两种阅读方式",
+        "script-workflow · 允许部分执行，也要处理版本变化",
+        "content-agent · 模型通过后，仍要回到产品事实",
+        "daily-trend-radar · 给出选题依据，也说明信息缺失"
+      ]
+    },
+    {
+      "viewport": 390,
+      "documentWidth": 390,
+      "images": [
+        {
+          "loaded": true,
+          "width": 1024,
+          "height": 1536
+        },
+        {
+          "loaded": true,
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "loaded": true,
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "sections": [
+        "content-workflow · 同一视频，两种阅读方式",
+        "script-workflow · 允许部分执行，也要处理版本变化",
+        "content-agent · 模型通过后，仍要回到产品事实",
+        "daily-trend-radar · 给出选题依据，也说明信息缺失"
+      ]
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,2 @@
+run_id,date,workflow,input_id,version,model,status,elapsed_seconds,human_minutes,edit_rounds,input_tokens,output_tokens,total_cost,currency,quality_pass,failure_category,evidence_path,notes
+birdtracker-fact-review,2026-10-16,content-agent,20260709-131559-330e67,historical draft plus current editorial revision,,completed,,,2,,,,,,,../../demo/content-agent/2026-10-16-draft-review/README.md,AI-assisted fact review followed by reader-facing copy revision; against repository product memory; not user acceptance or fresh API run

@@ -1,6 +1,0 @@
-profile: local
-workers: 4
-data_root: data
-temporary_root: data/interim
-artifact_policy: project_local
-log_level: info

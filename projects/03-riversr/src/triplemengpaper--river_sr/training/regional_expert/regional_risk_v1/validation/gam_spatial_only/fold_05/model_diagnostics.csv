@@ -1,2 +1,0 @@
-model_type,feature_set,model_id,outer_fold,converged,n_coefficients,effective_df,deviance_explained,aic,warning_count,warnings,intercept_only,selected_lambda,selected_alpha,inner_folds
-gam,spatial_only,gam_spatial_only,5,TRUE,15,10.4546093868865,0.236716449173547,313.25264896072,31,non-integer #successes in a binomial glm!,FALSE,,,

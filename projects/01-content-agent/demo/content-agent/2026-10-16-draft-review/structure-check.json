@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-10-16",
+  "schema_pass": true,
+  "local_guard_issues": [],
+  "text_matches_structured_draft": true,
+  "body_characters": 437,
+  "scope": "Schema, deterministic guard and copy consistency; not model or human acceptance; no API invoked",
+  "files": {
+    "post.txt": {
+      "sha256": "e6cf2f5e7416fa33b21a8840088b137ec86b69bcd8c780d26eab99b794a01d93",
+      "bytes": 1684
+    },
+    "reviewed-draft.json": {
+      "sha256": "03b339eca10152b4751429f064078c8ec836be7e74ae28f7b1eb06a0bda5a7ae",
+      "bytes": 2746
+    }
+  }
+}

@@ -8,14 +8,14 @@
 
 | 内容 | 入口 |
 | --- | --- |
-| 当前建模工程 | [个人仓库副本](src/doublegou--river_sr/README.md)、[组织仓库副本](src/triplemengpaper--river_sr/README.md) |
-| 早期探索工程 | [sr_rf](src/doublegou--sr_rf/) |
-| 地图工程 | [个人版本](src/doublegou--sr_o_map_web_pro/)、[组织版本](src/triplemengpaper--sr_o_map_web_pro/) |
-| 地图探索版本 | [probabilistic-map-explorer](src/doublegou--probabilistic-map-explorer/) |
+| 当前建模工程 | [river_sr](src/river_sr/README.md) |
+| 早期探索工程 | [sr_rf](src/sr_rf/) |
+| 地图工程 | [sr_o_map_web_pro](src/sr_o_map_web_pro/) |
+| 地图探索版本 | [probabilistic-map-explorer](src/probabilistic-map-explorer/) |
 | 原始过程记录 | [模型优化记录final.docx](docs/research-notes/模型优化记录final.docx) |
 | 后续研究方案 | [direction2.txt](docs/research-notes/direction2.txt)、[重复原文件](docs/research-notes/direction2(1).txt) |
 
-导入时两份 river_sr 指向同一提交，两份 sr_o_map_web_pro 也指向同一提交；按先收集原则保留独立目录，不视为四个不同产品。两份 TXT 内容一致。
+两份 river_sr 来源提交与文件一致，两份 sr_o_map_web_pro 亦一致，现各共用一个原名目录。全部来源仍记录在 SOURCES.md 和 sources.json；两份原始 TXT 内容一致。
 
 ## 案例阅读
 
@@ -30,4 +30,4 @@
 
 Direction 2 为后续研究方案，不能当作已完成实验。所见地图版本包含合成同位素场，热力图颜色未使用查询计算分值；当前只能作为交互原型展示，不能作为已打通真实模型的预测服务。
 
-个人科研、产品与工程职责及合作方可公开范围，仍需本人最终确认。
+本项目由李适独立完成。研究数据与其他材料的公开范围仍需单独确定。

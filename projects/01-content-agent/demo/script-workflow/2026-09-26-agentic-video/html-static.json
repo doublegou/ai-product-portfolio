@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "slides": 15,
+  "errors": [],
+  "warnings": [],
+  "scope": "Static resource/structure preflight only. Browser rendering, dynamic network activity, content accuracy and design require separate review."
+}

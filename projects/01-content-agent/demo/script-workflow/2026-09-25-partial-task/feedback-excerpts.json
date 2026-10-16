@@ -1,0 +1,29 @@
+{
+  "thread_id": "01a0cd97-2175-7a80-a371-e83d96c732b2",
+  "thread_title": "ppt creat",
+  "source_sha256": "1ccfba074f5bcac34e4b2ac77af8997d8822c43cba258b5bcf84412951cbd4d4",
+  "excerpts": [
+    {
+      "date": "2026-09-25T12:49:03.014Z",
+      "session_line": 1787,
+      "speaker": "user",
+      "excerpt": "ok   现在来了    这个事004   不需要生成ppt了   因为是实机演示 我已经搞完了   现在你根据我们这个版本的脚本   生成一下标题和描述  用我们的 [$script-to-post](/Users/doublegou/.codex/skills/script-to-post/SKILL.md) \n",
+      "scope": "exact excerpt; preceding script or attachment metadata omitted"
+    },
+    {
+      "date": "2026-09-25T13:14:29.145Z",
+      "session_line": 1915,
+      "speaker": "user",
+      "excerpt": "稍等一下      录音不用重听    这个作为二级就可以了   我刚刚手动修改了一下post里面的文案   然后一级是AI 智能语音笔记   然后免费名额放送    然后点文字回到原话就不需要了    可以突出一些什么60X的转写速度啊   本地转写离线可用中间加一个端侧智能     然后你重新设计吧   要那种更有设计感的 海报式的封面   \n",
+      "scope": "exact excerpt; preceding script or attachment metadata omitted"
+    },
+    {
+      "date": "2026-09-25T13:19:58.693Z",
+      "session_line": 1962,
+      "speaker": "user",
+      "excerpt": "这个就不需要了吧    然后这三个也应该在图片里面啊     这次的设计挺好的   \n\n<image name=[Image #1] path=\"/var/folders/jw/2nf22tm96nvcfh2zclhy5m_w0000gn/T/codex-clipboard-e8c74397-dd2b-47f7-bed3-30ac356a7b18.png\">\n</image>\n<image name=[Image #2] path=\"/var/folders/jw/2nf22tm96nvcfh2zclhy5m_w0000gn/T/codex-clipboard-8e646388-f9b7-4ff9-99eb-79ad96651fae.png\">\n</image>",
+      "scope": "exact excerpt; preceding script or attachment metadata omitted"
+    }
+  ],
+  "limits": "Design approval refers to the displayed revision at that point, not all final ratios or factual claims."
+}

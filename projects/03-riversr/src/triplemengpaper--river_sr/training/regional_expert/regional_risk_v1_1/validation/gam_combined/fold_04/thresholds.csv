@@ -1,3 +1,0 @@
-threshold,n_triggered,recall,precision,background_fpr,gray_zone_trigger_rate,extreme_recall,positive_branches_detected,positive_branch_coverage,extreme_branches_detected,extreme_branch_coverage,is_no_trigger,operating_point,max_background_fpr,selection_mode,task_id,model_id,outer_fold
-0.266732591683462,119,0.59626887767829,0.369750019256218,0.0990785961998112,0.359927465324288,0.524178009008521,8,0.615384615384615,1,0.25,FALSE,primary,0.1,constrained_max_recall,21,gam_combined,4
-0.414273162237748,30,0.204273340737625,0.492903720795521,0.0309791857312207,0.0684587662298449,0,2,0.153846153846154,0,0,FALSE,strict,0.05,constrained_max_recall,21,gam_combined,4

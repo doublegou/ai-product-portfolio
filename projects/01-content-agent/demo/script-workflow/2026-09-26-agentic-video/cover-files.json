@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "directory": "projects/01-content-agent/demo/script-workflow/2026-09-26-agentic-video/artifacts/post/005",
+  "files": [
+    {
+      "name": "3-4.png",
+      "target_ratio": "3:4",
+      "width": 1086,
+      "height": 1448,
+      "format": "PNG",
+      "bytes": 2018484,
+      "exif_orientation": 1
+    },
+    {
+      "name": "4-3.png",
+      "target_ratio": "4:3",
+      "width": 1448,
+      "height": 1086,
+      "format": "PNG",
+      "bytes": 2061977,
+      "exif_orientation": 1
+    },
+    {
+      "name": "16-9.png",
+      "target_ratio": "16:9",
+      "width": 2048,
+      "height": 1152,
+      "format": "PNG",
+      "bytes": 2759433,
+      "exif_orientation": 1
+    }
+  ],
+  "errors": [],
+  "scope": "File checks only; visual and factual review still required."
+}

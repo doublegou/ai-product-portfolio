@@ -1,0 +1,207 @@
+{
+  "checked_on": "2026-10-16",
+  "audience": "Recruiter reading the GitHub repository independently after an application",
+  "scope": "One content-production project; four equal sections; GitHub README, product case, real outputs, implementation and evaluation; local HTML is supplementary",
+  "artifacts": {
+    "demo/index.html": {
+      "bytes": 33940,
+      "sha256": "0518435fa2e7bd50798fd872ae261d0d4a490576c17f97e52d3dabd730ba9803"
+    },
+    "demo/portfolio.css": {
+      "bytes": 16440,
+      "sha256": "ae1ea96e91a0bdf353e4c3f671231cefc09379efcd8b40f66186032a95709c9d"
+    },
+    "demo/portfolio.js": {
+      "bytes": 2245,
+      "sha256": "04d936d2b17384fa3dcc5c4474bd822caf46e399141f871143292ea622bef5b8"
+    },
+    "README.md": {
+      "bytes": 10557,
+      "sha256": "ce8852ca03803cc764004228b06d055b5674443bcbe6de94e008276243891e63"
+    },
+    "docs/case-study.md": {
+      "bytes": 13121,
+      "sha256": "3035c6b99dff6bb2a0533ebde3bbe281a7722132a9bf37f71f540c7a9626e8ad"
+    },
+    "demo/script-workflow/2026-09-25-partial-task/feedback-excerpts.json": {
+      "bytes": 2032,
+      "sha256": "89bd8373290ffdafa2f99f32b7614a7a618c975832a8f653d278396161f27922"
+    },
+    "docs/evidence-notes.md": {
+      "bytes": 5743,
+      "sha256": "6bdb081b117868f0cb79363fcf5f8e84f7155cdf865e053a000f67c31cb723cf"
+    },
+    "demo/README.md": {
+      "bytes": 2754,
+      "sha256": "377268cd80425987e9605897f2b06d5558bb869799633126835e1c1334b22912"
+    },
+    "evaluation/README.md": {
+      "bytes": 3608,
+      "sha256": "7e602daa166a0a9321eff036374985b3ec1fe068292f9fb2ecafb7bea2d98a6f"
+    },
+    "demo/content-agent/2026-10-16-draft-review/post.txt": {
+      "bytes": 1684,
+      "sha256": "e6cf2f5e7416fa33b21a8840088b137ec86b69bcd8c780d26eab99b794a01d93"
+    },
+    "demo/content-agent/2026-10-16-draft-review/reviewed-draft.json": {
+      "bytes": 2746,
+      "sha256": "03b339eca10152b4751429f064078c8ec836be7e74ae28f7b1eb06a0bda5a7ae"
+    },
+    "src/content-agent/src/create/runtime.py": {
+      "bytes": 4765,
+      "sha256": "87435a6dfb23d62736573097d828b1f3af91fececf2c3f40fc8d4b73cc28775e"
+    },
+    "src/content-agent/memory/account/acceptance_standards.md": {
+      "bytes": 3666,
+      "sha256": "49541dc758d4dd3a208825d76635671928f6498c4613cc6eb562935f2fa956ed"
+    },
+    "src/content-agent/tests/test_review_runtime.py": {
+      "bytes": 3960,
+      "sha256": "f1c103fa8daf8cc7b4c66012cd5af06f6c603d2c42fdb935d5d642a176a739f7"
+    },
+    "src/content-agent/README.md": {
+      "bytes": 6305,
+      "sha256": "fe27d97089dd0a075ced6d4826d2df6d2d42d2aa87440394516ad874e48477a3"
+    },
+    "evaluation/content-agent/results.csv": {
+      "bytes": 528,
+      "sha256": "36849a142bfb87d939c58b0209489168c7c5195fe86d144574ac44a3c2fb8855"
+    },
+    "evaluation/release-review.md": {
+      "bytes": 10222,
+      "sha256": "7d6eaabf6234cfb8875ba2e53b85bacca5ca3cb4394c0c9313f4b7eaa3cf8c65"
+    },
+    "docs/content-agent.md": {
+      "bytes": 6397,
+      "sha256": "8b9323e32bdf15349fa0b047e8600bf47390135cc789406c14fa630350592adf"
+    },
+    "docs/architecture.md": {
+      "bytes": 8773,
+      "sha256": "43f18adca7a825530bbc29e39637c9cee0fe45a4854f71b32c4c66465fbbfd78"
+    },
+    "demo/content-workflow/README.md": {
+      "bytes": 1128,
+      "sha256": "01383f2daf852dc97f930111206cd56c0b7293607a00d9ebdd0274b25c0ff0bd"
+    },
+    "demo/script-workflow/README.md": {
+      "bytes": 1123,
+      "sha256": "c01a403830543f08696e4988d558f79c90337232f41799fc6b004835121e5808"
+    },
+    "demo/content-agent/README.md": {
+      "bytes": 2349,
+      "sha256": "79d1d915a185e34f21f9f591474abf9a34cdc7ae01980f2fa73533a20f1e092e"
+    },
+    "demo/daily-trend-radar/README.md": {
+      "bytes": 1022,
+      "sha256": "e3ad42562d37d48f02979367d27a06f8bc2121b8342712947c66532d6625761e"
+    },
+    "demo/script-workflow/2026-09-26-agentic-video/README.md": {
+      "bytes": 3033,
+      "sha256": "7eec74e3477627946f70a53c5cc2fdc05340d1bfd3a43bba4db4d1645d33dfc0"
+    },
+    "demo/script-workflow/2026-10-16-version-alignment/README.md": {
+      "bytes": 2594,
+      "sha256": "adec31db9add53bf909e40032257358e2ef35ab6bccf90acf12a4c1e7bbce45d"
+    }
+  },
+  "requirements": {
+    "single_creator": true,
+    "four_boards_present": true,
+    "problem_decisions_outputs_validation": true,
+    "no_oral_coaching_in_public_page": true,
+    "historical_quotes_attributed": true,
+    "reconstructed_reviews_labeled": true,
+    "unmeasured_roi_not_claimed": true,
+    "original_artifact_fingerprints_match": 22,
+    "markdown_website_anchors_valid": true,
+    "upstream_and_local_changes_distinguished": true,
+    "internal_structure_not_public_reading_path": true,
+    "four_capability_examples_have_specific_inputs_outputs_decisions": true,
+    "product_success_not_inferred_from_unit_tests": true,
+    "github_primary_entry_is_markdown": true,
+    "reader_documents_no_machine_specific_links": true,
+    "candidate_copy_matches_structured_draft_and_page": true,
+    "score_document_matches_runtime": true,
+    "local_revision_feedback_does_not_prescribe_tool_copy": true,
+    "bounded_review_control_regressions_pass": true
+  },
+  "engineering_checks": {
+    "radar": {
+      "command": "node --test",
+      "cwd": "src/daily-trend-radar",
+      "passed": 10
+    },
+    "content_agent": {
+      "command": "python -m unittest discover -s tests -v",
+      "cwd": "src/content-agent",
+      "passed": 15
+    },
+    "handoff": {
+      "command": "python3 -m unittest discover -s src/script-workflow -p test_handoff.py -v",
+      "passed": 4
+    }
+  },
+  "product_validation_limits": [
+    "No measured ROI, adoption rate, or complete cost baseline",
+    "Historical final crop files for content cards unavailable",
+    "No new live model run or actual publishing for content-agent",
+    "Radar live validation is one three-source run"
+  ],
+  "delivery": {
+    "email_sent": false,
+    "public_deployment": false,
+    "original_repositories_modified": false,
+    "repository_push_authorized": true,
+    "repository_target": "doublegou/ai-product-portfolio (private)"
+  },
+  "documentation_check": {
+    "files": 56,
+    "local_links": 280,
+    "broken": 0
+  },
+  "browser_record": "showcase-check.json",
+  "completion_audit": "Recruiter-content pass: problem framing, task scope, concrete decisions, context design, output examples, quality criteria and next investment decisions reviewed. External adoption, economics and growth remain unmeasured. Private repository push authorized; remote verification occurs after commit.",
+  "github_reading_record": "github-reading-check.json",
+  "board_materials": {
+    "content-workflow": {
+      "paths": [
+        "docs/content-workflow.md",
+        "src/content-workflow/README.md",
+        "demo/content-workflow/README.md",
+        "evaluation/content-workflow/README.md",
+        "evaluation/content-workflow/results.csv"
+      ],
+      "result_rows": 1
+    },
+    "script-workflow": {
+      "paths": [
+        "docs/script-workflow.md",
+        "src/script-workflow/README.md",
+        "demo/script-workflow/README.md",
+        "evaluation/script-workflow/README.md",
+        "evaluation/script-workflow/results.csv"
+      ],
+      "result_rows": 1
+    },
+    "content-agent": {
+      "paths": [
+        "docs/content-agent.md",
+        "src/content-agent/README.md",
+        "demo/content-agent/README.md",
+        "evaluation/content-agent/README.md",
+        "evaluation/content-agent/results.csv"
+      ],
+      "result_rows": 1
+    },
+    "daily-trend-radar": {
+      "paths": [
+        "docs/daily-trend-radar.md",
+        "src/daily-trend-radar/README.md",
+        "demo/daily-trend-radar/README.md",
+        "evaluation/daily-trend-radar/README.md",
+        "evaluation/daily-trend-radar/results.csv"
+      ],
+      "result_rows": 1
+    }
+  }
+}

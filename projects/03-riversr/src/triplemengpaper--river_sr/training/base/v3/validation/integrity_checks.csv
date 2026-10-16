@@ -1,8 +1,0 @@
-check,passed
-primary_has_two_models,TRUE
-stress_has_eight_model_schemes,TRUE
-training_has_two_models,TRUE
-primary_predictions_complete,TRUE
-all_primary_metrics_finite,TRUE
-all_stress_metrics_finite,TRUE
-release_not_auto_published,TRUE

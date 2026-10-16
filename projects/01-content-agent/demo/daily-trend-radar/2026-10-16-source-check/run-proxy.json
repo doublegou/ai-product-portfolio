@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-10-16",
+  "command": [
+    "node",
+    "scripts/run.mjs",
+    "--sources",
+    "github,hackernews,v2ex",
+    "--limit",
+    "5",
+    "--format",
+    "json",
+    "--output",
+    "/Users/doublegou/Documents/working/job/ai-product-portfolio/projects/01-content-agent/demo/daily-trend-radar/2026-10-16-source-check/report-proxy.json"
+  ],
+  "network": "existing macOS HTTP proxy passed through environment; no system configuration changed",
+  "elapsed_seconds": 4.391,
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Wrote 15 items to /Users/doublegou/Documents/working/job/ai-product-portfolio/projects/01-content-agent/demo/daily-trend-radar/2026-10-16-source-check/report-proxy.json\n"
+}

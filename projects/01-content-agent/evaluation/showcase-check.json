@@ -1,0 +1,88 @@
+{
+  "checked_on": "2026-10-16",
+  "edition": "recruiter-self-read",
+  "browser": "155.0.8059.84",
+  "sections": [
+    {
+      "id": "overview",
+      "visible": true
+    },
+    {
+      "id": "workflows",
+      "visible": true
+    },
+    {
+      "id": "content",
+      "visible": true
+    },
+    {
+      "id": "script",
+      "visible": true
+    },
+    {
+      "id": "agent",
+      "visible": true
+    },
+    {
+      "id": "radar",
+      "visible": true
+    },
+    {
+      "id": "decisions",
+      "visible": true
+    },
+    {
+      "id": "results",
+      "visible": true
+    }
+  ],
+  "gallery": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "tabs": [
+    {
+      "name": "script",
+      "visible": true
+    },
+    {
+      "name": "post",
+      "visible": true
+    },
+    {
+      "name": "covers",
+      "visible": true
+    },
+    {
+      "name": "slides",
+      "visible": true
+    }
+  ],
+  "keyboardTab": "true",
+  "iframeStep": "1",
+  "viewportChecks": [
+    {
+      "viewport": 390,
+      "document": 390
+    },
+    {
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "viewport": 1440,
+      "document": 1440
+    }
+  ],
+  "brokenLocalLinks": [],
+  "pageErrors": [],
+  "remoteRequests": [],
+  "offline": {
+    "images": 10,
+    "embeddedDeck": true
+  }
+}

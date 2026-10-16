@@ -1,7 +1,0 @@
-profile: hpc
-scheduler: slurm
-workers_from_env: SLURM_CPUS_PER_TASK
-data_root_from_env: RIVER_SR_DATA_ROOT
-temporary_root_from_env: RIVER_SR_SCRATCH_ROOT
-artifact_root_from_env: RIVER_SR_ARTIFACT_ROOT
-log_level: info

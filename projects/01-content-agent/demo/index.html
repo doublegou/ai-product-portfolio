@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内容生产 Agent 与 Skill 工作流 · 李适的 AI 产品作品集</title><meta name="description" content="从个人创作中的真实任务出发，设计可调整、可检查的 AI 内容生产流程。四类任务、实际产物、产品取舍与迭代证据。"><link rel="stylesheet" href="portfolio.css"></head>
+<body><a class="skip" href="#overview">跳到正文</a><header><div class="nav wrap"><a class="brand" href="#top">李适<span>AI 产品作品集</span></a><nav aria-label="页面导航"><a href="#overview">问题与目标</a><a href="#workflows">产品实践</a><a href="#decisions">产品取舍</a><a href="#results">验证与迭代</a></nav></div></header>
+<main id="top"><div class="wrap"><section class="hero"><div><div class="eyebrow">PROJECT 01 / 内容生产 Agent 与 Skill 工作流</div><h1>让 AI 创作，<br>走到<em>可用交付。</em></h1><p class="hero-lead">围绕个人创作中的四类任务，把理解、创作、修改与检查组织成可复用的工作流，让每一次生成有依据，每一处修改能接续。</p><p class="hero-scope">个人使用项目 · 独立完成需求梳理、流程设计、实现与迭代</p><div class="actions"><a class="button" href="#workflows">查看产品实践 <span>↗</span></a></div></div><div class="hero-mosaic" aria-label="四类任务的真实产物预览"><a class="mosaic-card" href="#content"><img src="content-workflow/2026-08-27-literature-review/generated-originals/01.png" alt="视频转图文的生成卡片"><span>视频 → 图文</span></a><a class="mosaic-slide" href="#script"><img src="script-workflow/2026-10-16-version-alignment/screenshots/page-07-step-0.png" alt="口播稿转演示的实际页面"><span>口播稿 → 视频素材</span></a><a class="mosaic-agent" href="#agent"><small>产品草稿 · 实际摘录</small><strong>把散步时看到的鸟，<br>留在自己的观察记录里</strong><p>图鉴帮你认识，地图帮你找线索，记录留下这次观察。</p></a><a class="mosaic-radar" href="#radar"><small>热点报告 · 2026.10.16</small><strong>GitHub <b>5 条</b><br>Hacker News <b>5 条</b><br>V2EX <b>5 条</b></strong><span>来源、时间与缺失状态一起保留 ↗</span></a></div></section>
+<section class="section" id="overview"><div class="section-head"><div class="eyebrow">01 / THE PROBLEM</div><h2>生成一段内容很容易，<br>把它变成可用的作品更难。</h2><p>一份分析不等于可独立阅读的卡片，一篇口播稿不等于适合录制的演示，一次模型审稿通过也不等于内容可以发布。</p></div><div class="problem-grid"><article><span class="number">01</span><h3>需求会在创作中变化</h3><blockquote>“八张改成六张”<br>“只看图片也能看懂”</blockquote><p>真实图文任务要求调整篇幅和解释密度。产品需要保留共同理解，同时允许不同表达独立修改。</p></article><article><span class="number">02</span><h3>交付并不总是一整套</h3><blockquote>已有实机演示，<br>只需要文案和封面。</blockquote><p>真实使用中会跳过演示制作、手动改文案，再重新设计封面。流程必须支持局部执行。</p></article><article><span class="number">03</span><h3>“完成”包含不同状态</h3><blockquote>草稿已经保存，<br>发布准备仍可能失败。</blockquote><p>历史运行暴露了生成、检查和发布之间的差异。一个成功提示不足以解释用户拿到了什么。</p></article></div><div class="goal-band"><strong>产品目标</strong><p>交付内容有依据、产物可以独立使用、修改不丢上下文、失败能保留已完成部分。</p><span>使用范围：本人内容创作；尚未验证多人使用与规模化运营。</span></div></section>
+<section class="section" id="workflows"><div class="section-head"><div class="eyebrow">02 / FOUR PRODUCT EXPERIENCES</div><h2>一个内容生产项目，<br>四类明确的创作任务。</h2><p>按输入和交付组织能力。四个板块各有入口，共用“依据 → 创作 → 检查”的产品原则；目前通过明确材料交接，尚未自动串联。</p></div><div class="task-map"><a href="#content"><b>01</b><h3>content-workflow</h3><p>把值得理解的视频<br>变成可独立阅读的图文</p><span>视频 → 分析、正文、卡片 ↘</span></a><a href="#script"><b>02</b><h3>script-workflow</h3><p>把已经写好的口播稿<br>变成同一期发布素材</p><span>原稿 → 演示、文案、封面 ↘</span></a><a href="#agent"><b>03</b><h3>content-agent</h3><p>把产品资料和表达规则<br>带入写作与审改</p><span>产品事实 → 可审阅草稿 ↘</span></a><a href="#radar"><b>04</b><h3>daily-trend-radar</h3><p>把分散的公开榜单<br>变成有依据的选题输入</p><span>多源榜单 → 报告、选题 ↘</span></a></div></section>
+<section class="case section" id="content"><div class="case-heading"><span class="case-no">01</span><div><div class="eyebrow">CONTENT-WORKFLOW / 视频改编</div><h2>让正文和卡片共享理解，<br>各自适合阅读。</h2></div></div><div class="case-intro"><p>文献综述视频改编任务中，读者未必观看原片，也未必阅读正文。因此卡片需要自己讲清逻辑，不能只是把文章截成六张图片。</p><div><strong>设计选择</strong><p>先生成可回查的分析，再由正文和图片两个分支独立创作。出图前规划每页要说明什么，修改页数时重新分配信息。</p></div></div><div class="flow" aria-label="视频改编流程"><span>视频与字幕</span><b>→</b><span>共享分析</span><b>→</b><span class="accent">正文 / 卡片分别创作</span><b>→</b><span>核对事实与可读性</span></div><div class="gallery" aria-label="六张真实生成卡片"><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/01.png" data-caption="文献综述任务 · 第 1 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/01.png" alt="文献综述图文第 1 张"><span>01 / 06 · 查看原图</span></button><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/02.png" data-caption="文献综述任务 · 第 2 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/02.png" alt="文献综述图文第 2 张"><span>02 / 06 · 查看原图</span></button><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/03.png" data-caption="文献综述任务 · 第 3 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/03.png" alt="文献综述图文第 3 张"><span>03 / 06 · 查看原图</span></button><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/04.png" data-caption="文献综述任务 · 第 4 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/04.png" alt="文献综述图文第 4 张"><span>04 / 06 · 查看原图</span></button><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/05.png" data-caption="文献综述任务 · 第 5 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/05.png" alt="文献综述图文第 5 张"><span>05 / 06 · 查看原图</span></button><button class="card-image" data-image="content-workflow/2026-08-27-literature-review/generated-originals/06.png" data-caption="文献综述任务 · 第 6 张生成原图"><img loading="lazy" src="content-workflow/2026-08-27-literature-review/generated-originals/06.png" alt="文献综述图文第 6 张"><span>06 / 06 · 查看原图</span></button></div><p class="caption">2026-08-27 真实任务生成原图。历史最终裁切文件未恢复，4 张原图比例为 2:3，2 张为 3:4；图中的 62 页、160 条引用属于来源视频案例。</p><div class="change-row"><div><small>真实反馈</small><h3>从八张，调整为六张</h3><p>要求“只看图片也能看懂”，把验收重点从页数转向每页是否讲清观点。</p></div><div><small>对应设计</small><h3>先调整信息，再生成图片</h3><p>保留分析，重做卡片规划；正文不需要被强制拆成与图片一一对应的段落。</p></div><div><small>已观察结果</small><h3>同一输入形成两种表达</h3><p>已对应分析、正文、六张规划与生成原图；五项核心内容有落点，最终发布规格仍有缺口。</p></div></div><details class="artifact-text"><summary>阅读这次任务的配套正文</summary><div class="reading">AI写完文献综述后，研究才刚开始
+
+
+
+AI只用几分钟，就能生成一份62页、带160条参考文献的综述。结构完整、引用齐全，读起来也像那么回事。
+可文献综述真正要交付的，不只是一个Word文件。你得在阅读和写作中，把领域知识装进脑子里，慢慢长出判断力。文件可以让AI代劳，这个过程没法跳过。
+
+拿到AI综述后，先查引用。论文真的存在吗？原文支持这句话吗？它和你的问题有关吗？引用报告能帮你缩小范围，但不能替你做判断。
+再把综述当成地图，而不是答案。沿着它给出的概念和论文继续读，补上缺失的部分，看看哪些前提被默认了，哪些争议被写得太平，所谓的研究空白是不是真的成立。
+还要专门找它的问题。大模型很会把复杂分歧压成一个顺滑结论，也可能在数据之间拼出并不存在的模式。最危险的输出往往不是明显胡说，而是听起来特别合理。你若一路看下来都觉得没毛病，可能只是掌握的细节还不够多。
+领域的历史也不能省。今天为什么会形成这套结论，前人试过哪些路，哪些方向失败过，这些脉络决定了你能不能判断下一步往哪里走。
+把生成稿关掉，再用自己的话重写一遍。能换一个框架把论点讲清楚，能解释自己为何同意或反对，才算真的理解。复述不出来，知识还停在AI的文本里。
+
+可以把AI使用分成三档。绿色任务放心交给它，比如整理线索和搭初步结构；黄色任务必须逐条复核，比如归纳证据和判断研究空白；红色任务留给自己，比如形成观点、处理争议和决定研究方向。初稿可以外包，研究能力别一起外包。
+</div></details><div class="evidence-links"><a href="content-workflow/2026-08-27-literature-review/analysis.md">查看分析材料 ↗</a><a href="content-workflow/2026-08-27-literature-review/plan.md">查看六张规划 ↗</a><a href="content-workflow/2026-08-27-literature-review/README.md">任务依据与检查 ↗</a></div></section>
+<section class="case section" id="script"><div class="case-heading"><span class="case-no">02</span><div><div class="eyebrow">SCRIPT-WORKFLOW / 视频素材</div><h2>同一份口播稿，<br>服务三种使用时刻。</h2></div></div><div class="case-intro"><p>演示帮助观众跟上讲述，标题说明观看价值，封面突出主题。它们需要共享事实与承诺，也需要不同的叙事和视觉设计。</p><div><strong>设计选择</strong><p>三个 Skill 可独立调用：演示与文案直接依据原稿，封面承接本期文案。允许跳过已有素材，保留局部修改空间。</p></div></div><div class="flow"><span>口播稿</span><b>→</b><span class="accent">分步演示 / 发布文案</span><b>→</b><span>依据文案设计三比例封面</span></div><div class="tabs" role="tablist" aria-label="同一期真实产物"><button role="tab" id="tab-slides" aria-controls="panel-slides" aria-selected="true" data-tab="slides">演示播放</button><button role="tab" id="tab-script" aria-controls="panel-script" aria-selected="false" tabindex="-1" data-tab="script">口播原稿</button><button role="tab" id="tab-post" aria-controls="panel-post" aria-selected="false" tabindex="-1" data-tab="post">发布文案</button><button role="tab" id="tab-covers" aria-controls="panel-covers" aria-selected="false" tabindex="-1" data-tab="covers">三比例封面</button></div><div class="work-panel" id="panel-slides" role="tabpanel" aria-labelledby="tab-slides"><div class="deck-stage" id="deck-stage"><img src="script-workflow/2026-10-16-version-alignment/screenshots/page-01-step-2.png" alt="第 005 期演示开场"><button class="play" id="play-deck">播放实际演示 ▶</button></div><p class="caption">第 005 期实际产物的修订版，15 页、42 个分步状态。点击或使用方向键推进；视频识别内容来自当时口播记录，本轮仅修订素材。</p></div><div class="work-panel" id="panel-script" role="tabpanel" aria-labelledby="tab-script" hidden><div class="paper reading">## 第 0 层｜开场
+
+你有没有想过ai到底是怎么理解一段长视频的，
+
+最近 Google 给 Gemini 加了一个挺有意思的新能力。
+
+叫：**Agentic Video Understanding。**
+
+它可以自己决定：
+
+**这段视频里，我到底应该看哪。**
+
+## 第 1 层｜以前 AI 怎么看视频
+
+我们平时说 AI 能理解视频，
+
+但它并不是像人一样，
+
+真的从头到尾连续盯着画面看。
+
+一个很常见的做法其实是**抽帧。**
+
+比如每秒取一张画面。
+
+那一个小时的视频，就是 3600 张。
+
+再把这些画面，加上音频和字幕，
+
+一起交给模型理解。
+
+那这个问题就很明显了，
+
+抽得越密，信息越完整，
+
+但 Token 和成本也越高。
+
+抽得太稀，一些只出现一瞬间的动作，
+
+如果他刚好卡在两帧中间，又被直接漏掉了。
+
+所以这就有一个很尴尬的矛盾：
+
+**看得越多，成本越高。**
+
+**看得越少，又越容易漏。**
+
+但人根本不是这么找视频的，
+
+**而是哪里可能有答案，我们就看哪。**
+
+---
+
+## 第 2 层｜AI 开始自己找答案
+
+Agentic Video 做的，就是开始让 AI 自己做这个判断。
+
+我直接把这段视频丢给 Gemini：然后问他“刘华强砍西瓜，发生在什么时间？”
+
+我没有告诉它该看哪一段。
+
+开启 Agentic Video 之后，
+
+你看这里，
+
+它在回答之前连续发起了两次 **Processing Call**。
+
+这代表它在推理过程中，
+
+**又主动向视频请求了新的信息。**
+
+然后最后给出的答案是：
+
+**01:21 到 01:23，大概 01:22。**
+
+我们回原视频看一下。
+
+【切 01:22 砍西瓜】
+
+正好。
+
+
+
+所以**以前视频是一段塞给模型的 Context。**
+
+**现在视频更像一个 AI 可以自己搜索的数据库。**
+
+这其实很像 Browser Agent，它搜的是网页。
+
+Agentic Video 搜的是**视频的时间轴。**
+
+Google 自己的测试里，
+
+这种方法最多可以减少 88% 的 Token。
+
+因为它不需要把注意力平均花在整段视频上。
+
+**它只去看解决这个问题真正需要的部分。**
+
+---
+
+## 第 3 层｜真正重要的是 Context 开始由 AI 自己找
+
+但我觉得 Agentic Video 真正重要的，
+
+还不是省下这 88% 的 Token。
+
+而是一个更底层的变化：
+
+**AI 开始自己决定，它需要什么 Context。**
+
+以前我们做多模态，
+
+通常是开发者先决定怎么抽帧、抽多少、把哪些东西塞进上下文，
+
+然后我们用户再选好图片、视频、文档，一起丢给模型去理解。
+
+所以过去的方向一直是**Context Window 越做越大。**
+
+因为既然不知道哪些信息有用，那就尽量多塞一点。
+
+但现在这个顺序开始变了。
+
+你只需要告诉它：**我要解决什么问题。**
+
+接下来怎么做，开始由 AI 自己决定。
+
+所以这件事情真正代表的是 AI 获取信息的方式变了，他的注意力开始变得主动了
+
+这其实不只适用于视频。
+
+Browser Agent 在网页里找信息，
+
+Coding Agent 在代码库里找文件，
+
+现在 Video Agent 开始在时间轴里找片段。
+
+当数据越来越多、Context 越来越长，
+
+真正重要的可能就变成了让 AI 学会：
+
+**什么时候该找，去哪找，以及看多细。**
+
+
+
+
+
+
+
+没毛病   这就是这一期的脚本
+
+</div></div><div class="work-panel" id="panel-post" role="tabpanel" aria-labelledby="tab-post" hidden><div class="paper reading post">标题：
+AI看长视频，开始会自己找答案了
+
+正文：
+Gemini 新出的 Agentic Video Understanding，可以根据问题，自己从长视频里寻找需要的信息。
+这期我用“刘华强砍西瓜”做了一次实测，看它能不能直接找到具体时间，也聊聊当 AI 开始自己决定“该看哪里”，视频理解会发生什么变化。
+</div><p class="caption">历史发布文案，原样展示；其中“这期实测”是当时视频内容，不是本轮作品集验证。</p></div><div class="work-panel" id="panel-covers" role="tabpanel" aria-labelledby="tab-covers" hidden><div class="ratio-controls" aria-label="选择封面比例"><button data-ratio="3-4" aria-pressed="true">3:4</button><button data-ratio="4-3" aria-pressed="false">4:3</button><button data-ratio="16-9" aria-pressed="false">16:9</button></div><div class="cover-stage"><button id="cover-zoom" data-image="script-workflow/2026-09-26-agentic-video/artifacts/post/005/3-4.png" data-caption="第 005 期 · 3:4 封面"><img id="cover-image" src="script-workflow/2026-09-26-agentic-video/artifacts/post/005/3-4.png" alt="第 005 期 3:4 封面"></button></div><p class="caption">同一主题的三种独立构图，点击可查看原图。三张均为历史产物，文件规格已核验。</p></div><div class="change-row"><div><small>真实问题</small><h3>稿件更新，演示还停在旧版</h3><p>复核发现第 5–7 页未跟随后续口播稿，揭示了多产物独立修改带来的版本风险。</p></div><div><small>迭代动作</small><h3>修订内容，固定交接版本</h3><p>对齐演示内容，保存原稿、演示、文案和三图的版本指纹，后续文件变化触发复核。</p></div><div><small>产品取舍</small><h3>局部灵活，需要一致性检查</h3><p>文件指纹解决“是否变过”，人工与语义复核解决“是否一致”；两者各自承担明确任务。</p></div></div><div class="feedback-trail"><div><small>另一种真实使用 / 2026.09.25</small><h3>已有实机演示，只做需要的部分。</h3><p>这次任务明确跳过 HTML。本人改过发布文案后，继续调整封面标题层级与设计；工作流接续现有素材。</p></div><ol><li><time>20:49</time><span>“不需要生成ppt了，因为是实机演示我已经搞完了”<small>原话节选，去除多余空格。</small></span></li><li><time>21:14</time><span>“我刚刚手动修改了一下post里面的文案”<small>随后要求重新安排主副标题与海报设计。</small></span></li><li><time>21:19</time><span>“这次的设计挺好的”<small>针对当时某版设计，仍继续修改；不等于全套终验。</small></span></li></ol><a href="script-workflow/2026-09-25-partial-task/README.md">查看任务记录 ↗</a></div><div class="evidence-links"><a href="script-workflow/2026-10-16-version-alignment/ppt/001.html">独立打开演示 ↗</a><a href="script-workflow/2026-10-16-version-alignment/README.md">修订与验证依据 ↗</a></div></section>
+<section class="case section" id="agent"><div class="case-heading"><span class="case-no">03</span><div><div class="eyebrow">CONTENT-AGENT / 产品内容</div><h2>把产品事实带入生成，<br>把质量判断带出模型评分。</h2></div></div><div class="case-intro"><p>自有产品内容既要具体、有吸引力，也不能编造能力和体验。给模型一个产品名远远不够，事实、账号表达和检查标准都要进入流程。</p><div><strong>设计选择</strong><p>产品与账号资料作为稳定输入，结合研究、结构检查和模型审稿；最多五轮审改。本作品集以草稿交付为范围，最终采纳由本人判断。</p></div></div><div class="flow"><span>产品与账号资料</span><b>→</b><span>研究 / 写作</span><b>→</b><span class="accent">检查 / 有限审改</span><b>→</b><span>保存草稿 / 人工采纳</span></div><div class="agent-layout"><div class="draft-preview"><div class="document-label">BIRDTRACKER / 复核后候选稿摘录</div><h3>把散步时看到的鸟，<br>留在自己的观察记录里</h3><p>散步时，你会不会停下来多看一眼路边的鸟？想认识它，也想留下这次观察，可以从查资料、找地点和做记录开始。</p><p>图鉴帮你认识，地图帮你找线索，记录留下这次观察。</p><div class="draft-note">“热点提供地点线索，实际鸟况仍需现场观察。”</div><small>复核依据：项目中的产品资料。尚未记录本人最终采纳。</small></div><div class="review-story"><h3>模型通过之后，还要检查什么？</h3><p class="review-summary">本次逐项核对 9 项主张：5 项由产品资料支持，4 项删除或调整。核对范围仅为这一篇候选稿。</p><div class="review-item"><span>原表达的风险</span><p>把“观鸟热点”写成能找到鸟多的地点。</p><b>改为地点线索，保留现场不确定性。</b></div><div class="review-item"><span>产品能力的边界</span><p>把拍照与荣誉页、全部观察记录作绝对关联。</p><b>删除资料无法支持的功能映射。</b></div><div class="review-item"><span>内容真实性</span><p>标题暗示一次没有对应记录的亲身经历。</p><b>改成使用场景，避免虚构体验。</b></div></div></div><div class="history-strip"><div><small>历史运行 · 2026.07.09</small><strong>8.4 → 8.6</strong><p>两轮模型审稿后通过；分数只代表内部审稿。</p></div><div><small>实际异常</small><strong>草稿已存，发布准备失败</strong><p>已有产物不应被一次下游异常抹掉。</p></div><div><small>本轮工程修复</small><strong>分开记录保存与发布</strong><p>保存成功后立即计数；注入发布失败验证状态。</p></div></div><details class="artifact-text"><summary>阅读事实复核后的完整候选稿</summary><div class="reading">把散步时看到的鸟，留在自己的观察记录里
+
+散步时，你会不会停下来多看一眼路边的鸟？想认识它，也想留下这次观察，可以从查资料、找地点和做记录开始。BirdTracker 把图鉴、热点地图和相机记录放在一起，为刚开始观鸟的人提供一个入口。
+
+BirdTracker 围绕三个相连的动作组织：认识鸟、寻找观察地点、保存一次观察。它更像随身的鸟类图鉴和观察本，适合对自然有好奇心、还没有积累太多观鸟经验的人。
+
+先打开图鉴，按名字查找鸟类，也可以浏览鸟类条目。物种详情里有照片、声音、习性和栖息地等资料，帮助你把眼前的观察与参考信息对应起来。查到一个相似条目，并不等于已经完成可靠鉴定；不确定的地方，仍需要继续核对。
+
+准备出门时，可以看看地图上的观鸟热点。允许位置访问后，可以围绕当前位置寻找附近的观察地点，再结合自己的路线决定去哪里。热点提供地点线索，实际鸟况仍需现场观察。
+
+遇到想记录的瞬间，可以通过相机流程拍照并保存观察记录。最近记录中包含鸟种名称、地点、日期和本地图片，方便之后回看。回看这些记录时，可以把当时的照片与图鉴资料放在一起，继续认识身边的鸟。
+
+图鉴帮你认识，地图帮你找线索，记录留下这次观察。第一次使用时，可以先完成一条自己能够核实的记录，再逐渐积累。不必急着积累很多条，先把一次观察整理清楚。
+
+#观鸟入门 #BirdTracker #户外散步 #自然观察 #记录生活 #第一次观鸟
+</div></details><p class="caption">历史审改来自实际日志；本轮事实复核由 AI 辅助完成，未重新运行生产模型或实际发布。确定性规则只覆盖部分问题，不能替代语义与产品核实。</p><div class="evidence-links"><a href="content-agent/2026-10-16-draft-review/README.md">查看逐项事实复核 ↗</a><a href="content-agent/2026-07-09-birdtracker/README.md">历史运行依据 ↗</a></div></section>
+<section class="case section" id="radar"><div class="case-heading"><span class="case-no">04</span><div><div class="eyebrow">DAILY-TREND-RADAR / 选题研究</div><h2>把热榜变成选题输入，<br>先让来源和未知都可见。</h2></div></div><div class="case-intro"><p>不同平台的热度口径无法直接相加；抓取时间也不是新闻发生时间。选题工具首先要帮助创作者理解依据，再决定什么值得写。</p><div><strong>设计选择</strong><p>程序采集并标准化条目，保留逐源状态；Agent 核对语义、解释受众相关性。事实、创作角度与待验证项分别表达。</p></div></div><div class="flow"><span>选择公开来源</span><b>→</b><span>采集 / 标准化</span><b>→</b><span class="accent">报告与逐源状态</span><b>→</b><span>核对 / 选题判断</span></div><div class="radar-layout"><div class="source-report"><div class="document-label">实际报告摘录 / 2026.10.16 20:45</div><div class="source-row"><strong>GitHub Trending</strong><span>5 条 · 成功</span></div><div class="source-row"><strong>Hacker News</strong><span>5 条 · 成功</span></div><div class="source-row"><strong>V2EX</strong><span>5 条 · 成功</span></div><p>15 条记录中，10 条没有发布时间。保留“当前在榜”含义，不包装成最近 24 小时发生的事件。</p><small>本次进程耗时 4.391 秒；这是采集耗时，不是整份研究简报的制作时间。</small></div><div class="topic-list"><div class="document-label">从报告到建议 / 本次三个候选</div><article><span>优先探索</span><h3>装了 Skill，为什么还需要插件目录？</h3><p>贴近现有创作实践，可解释能力组织与分发的区别；实际安装体验仍需验证。</p><a href="https://github.com/anthropics/claude-plugins-official" target="_blank" rel="noreferrer">原始项目 ↗</a></article><article><h3>科研 Skill 能替代科研判断吗？</h3><p>适合图文：组织研究操作，与形成研究判断之间有哪些边界？</p><a href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank" rel="noreferrer">原始项目 ↗</a></article><article><h3>工具输出太多，如何控制上下文？</h3><p>适合后续实验：先测试信息筛选与回查，再决定是否制作教程。</p><a href="https://github.com/mksglu/context-mode" target="_blank" rel="noreferrer">原始项目 ↗</a></article></div></div><div class="change-row"><div><small>真实失败</small><h3>直接请求两次超时</h3><p>定位到命令行未使用现有系统代理，沿用代理后恢复采集。</p></div><div><small>产品修复</small><h3>全源失败，也留下报告</h3><p>先保存来源诊断，再返回失败状态，让用户知道缺了什么、下一步检查哪里。</p></div><div><small>决策边界</small><h3>热度不是内容价值</h3><p>三个候选均来自 GitHub，不能称作跨平台共振；选题优先级是编辑判断，不是流量预测。</p></div></div><div class="evidence-links"><a href="daily-trend-radar/2026-10-16-source-check/brief.md">完整选题简报 ↗</a><a href="daily-trend-radar/2026-10-16-source-check/report-proxy.json">原始采集报告 ↗</a><a href="daily-trend-radar/2026-10-16-source-check/README.md">运行与异常记录 ↗</a></div></section>
+</div><section class="decisions" id="decisions"><div class="wrap section"><div class="eyebrow">03 / PRODUCT JUDGMENT</div><div class="section-head"><h2>把 AI 的灵活性，<br>放进可控制的产品流程。</h2><p>四种任务带来同一组产品问题：在哪里复用、在哪里分开、哪些判断交给模型、哪些必须留下人的决定。</p></div><div class="execution-choice"><div><span>AI 方案选择</span><h3>开放创作保留灵活性，<br>重复生产约束执行过程。</h3><p>语义改编、选题和视觉设计需要模型；编号、尺寸、时间过滤与状态记录适合确定性程序。调用方式跟随任务的不确定性，而不是让所有步骤都由 Agent 自由决定。</p></div><div><article><b>两个 Skill 工作流</b><p>读者、风格和交付组合经常变化。用独立 Skill 约束输入与输出，由宿主按任务组织；代价是依赖宿主能力，跨产物版本需要显式交接。</p></article><article><b>Python 内容 Agent ＋ Node 采集</b><p>审改轮次、停止条件、逐源状态更固定，交给程序控制。模型负责表达与语义判断；代价是流程变更需要维护代码。</p></article><p class="execution-limit">当前未做模型横向基准或微调实验；项目判断聚焦流程可用性，模型质量与成本仍需独立比较。</p></div></div><div class="decision-row"><span>01</span><h3>共享依据，<br>独立表达</h3><p>一次理解后的分析服务正文和卡片；原稿服务演示与文案。比各自从头生成更便于回查，但增加跨产物一致性的检查责任。</p><b>对应问题：八张改六张、脚本版本漂移</b></div><div class="decision-row"><span>02</span><h3>按任务组合，<br>允许部分执行</h3><p>不强迫每次重跑整套素材。已有实机演示就只做文案与封面；代价是交接必须明确到本期文件，而不是猜编号。</p><b>对应问题：已有素材如何复用</b></div><div class="decision-row"><span>03</span><h3>分层检查，<br>保留人工判断</h3><p>程序处理结构、尺寸与播放状态；模型协助审稿；事实、表达和采纳仍需复核。这样能定位问题，但暂时无法完全自动验收。</p><b>对应问题：模型通过仍有无依据表达</b></div><div class="decision-row"><span>04</span><h3>有限重试，<br>保留部分成果</h3><p>审改设置轮次上限，采集逐源记录，保存与发布分开。执行未能全成功时，仍能解释剩余价值和失败位置。</p><b>对应问题：发布异常、来源超时</b></div><p class="decision-caption">以上为基于现有实现与真实任务的产品复盘；未将备选方案表述为已经完成的对照实验。模型、图像生成及工具执行能力来自宿主或外部服务；项目工作集中于任务设计、能力组织、交接约定、实现和质量控制。</p></div></section>
+<div class="wrap"><section class="section" id="results"><div class="section-head"><div class="eyebrow">04 / VALIDATION & NEXT DECISIONS</div><h2>用具体交付判断进展，<br>让下一步投入有依据。</h2><p>当前证据支持流程可执行、产物可展示，以及具体问题已被定位和改进。效率、成本与传播效果需要独立测量。</p></div><div class="table-scroll"><table><thead><tr><th>产品目标</th><th>当前证据</th><th>仍需验证</th></tr></thead><tbody><tr><td>图文能独立表达</td><td>同一视频的分析、正文和六张原图已对应；核心内容逐项复核。</td><td>最终发布规格与本人采纳。</td></tr><tr><td>素材保持同一期承诺</td><td>演示对齐修订稿；15 页、42 状态及三封面规格已检查。</td><td>不同任务下的修改负担与成本。</td></tr><tr><td>产品内容受事实约束</td><td>保留历史审改，完成逐项事实复核，修复保存状态。</td><td>固定样本的新生成与人工质量评价。</td></tr><tr><td>选题依据可核查</td><td>三源、15 条真实采集，保留失败与恢复记录。</td><td>来源长期可用性与归并质量。</td></tr></tbody></table></div><div class="next-grid"><article><small>优先验证 01 / 可用性</small><h3>用户愿意采用哪些结果？</h3><p>按任务记录采纳、事实修正与视觉返工，先找到最常阻断交付的问题。</p></article><article><small>优先验证 02 / 投入产出</small><h3>自动化省下了哪一步？</h3><p>固定输入与交付标准，对照主动人工时间、模型调用和重试成本，再决定继续自动化哪里。</p></article><article><small>优先验证 03 / 是否整合</small><h3>雷达值得接入生成吗？</h3><p>先验证选题相关性、来源可靠性与交接成本，再决定是否投入跨板块自动衔接。</p></article></div><details class="technical"><summary>实现与验证依据</summary><p>本轮交接检查、内容 Agent 与雷达相关实现共 29 项测试通过。工程测试证明对应行为，不代替内容质量或业务效果。页面可离线阅读，原始记录保留在项目资料中。</p><div class="evidence-links"><a href="../docs/case-study.md">完整文字案例 ↗</a><a href="../evaluation/release-review.md">详细验证范围 ↗</a><a href="../src/content-workflow/README.md">图文实现 ↗</a><a href="../src/script-workflow/README.md">素材实现 ↗</a><a href="../src/content-agent/README.md">内容 Agent 实现 ↗</a><a href="../src/daily-trend-radar/README.md">雷达实现 ↗</a></div></details></section><footer><div><strong>内容生产 Agent 与 Skill 工作流</strong><p>李适 · 独立项目 · 产品案例更新于 2026.10.16</p></div></footer></div></main>
+<dialog id="image-dialog" aria-label="查看真实产物原图"><div class="dialog-top"><span id="image-caption"></span><button id="close-image" aria-label="关闭原图">关闭 ×</button></div><img id="dialog-image" alt=""></dialog><script src="portfolio.js"></script></body></html>

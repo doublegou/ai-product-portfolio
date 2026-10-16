@@ -1,6 +1,0 @@
-role,model_id,detail
-ranking_candidate,gam_combined,Best pooled OOF PR-AUC point estimate among Environment and Combined GAM; ROC-AUC secondary.
-probability_candidate,gam_environment,Lowest pooled OOF Brier among Environment and Combined GAM; log loss secondary; not calibrated.
-spatial_diagnostic_control,gam_spatial_only,Diagnostic only; ineligible for winner selection.
-linear_complexity_baseline_environment,elastic_environment,Intercept-only in 17/17 Outer folds.
-linear_complexity_baseline_combined,elastic_combined,Intercept-only in 17/17 Outer folds.

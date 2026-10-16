@@ -1,0 +1,21 @@
+{
+  "checked_on": "2026-10-16",
+  "command": [
+    "node",
+    "scripts/run.mjs",
+    "--sources",
+    "github,hackernews,v2ex",
+    "--limit",
+    "5",
+    "--format",
+    "json",
+    "--output",
+    "/Users/doublegou/Documents/working/job/ai-product-portfolio/projects/01-content-agent/demo/daily-trend-radar/2026-10-16-source-check/report.json"
+  ],
+  "cwd": "src/daily-trend-radar",
+  "exit_code": 1,
+  "elapsed_seconds": 31.502,
+  "stdout": "",
+  "stderr": "daily-trend-radar: All sources failed: github: The operation was aborted due to timeout; hackernews: The operation was aborted due to timeout; v2ex: The operation was aborted due to timeout\n",
+  "kind": "new live collection; no model generation"
+}

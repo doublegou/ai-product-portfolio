@@ -1,0 +1,41 @@
+{
+  "scope": "existing artifacts; originating task not yet linked",
+  "snapshot_date": "2026-10-16",
+  "files": [
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/01-cover-self-improving-company.png",
+      "snapshot_path": "artifacts/01-cover-self-improving-company.png",
+      "sha256": "3439ab729be6d28b5d88e0a269161638b4000996b3408a9155603dd9bd64da25"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/02-architecture-recursive-loop.png",
+      "snapshot_path": "artifacts/02-architecture-recursive-loop.png",
+      "sha256": "11e3fd11bc487291ca89799d07cd03b3e98bedd33c3e5d2e36a541bb692f7b36"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/03-case-overnight-self-healing.png",
+      "snapshot_path": "artifacts/03-case-overnight-self-healing.png",
+      "sha256": "7074d71cadef06d2245e4bf157057a9c74a8ff1d32a189a5ad29406b3fba0bbf"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/04-organization-burn-tokens.png",
+      "snapshot_path": "artifacts/04-organization-burn-tokens.png",
+      "sha256": "7877cb3707c318ef2958d9c1c84705cfc424711aad59b259b87e49d5c4077b60"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/05-playbook-three-pillars.png",
+      "snapshot_path": "artifacts/05-playbook-three-pillars.png",
+      "sha256": "5bb4fa1935a704cb594bb54e06334f3141cec4ac97d3aa4306846d095f956484"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/06-future-human-at-the-edge.png",
+      "snapshot_path": "artifacts/06-future-human-at-the-edge.png",
+      "sha256": "9a3b59b99f8d28248414c7e8d547bf45876d52a9ff0f4106f7eed6703f548b02"
+    },
+    {
+      "source_path": "/Users/doublegou/Documents/workspace/post/result/post.md",
+      "snapshot_path": "artifacts/post.md",
+      "sha256": "b2eba4031cd6893c4c271851723b63e6b4ff8acdf287411b3f14d5a7eef6ceea"
+    }
+  ]
+}

@@ -1,2 +1,0 @@
-task_id,repeat_id,outer_fold,mtry,min_node_size,sample_fraction,replace,outer_trees,seed,n,rmse,mae,r2,bias,calibration_intercept,calibration_slope,observed_min,observed_max,predicted_min,predicted_max
-3,1,3,12,5,1,FALSE,2000,4520000,897,0.00685739667949825,0.00425362844967861,-0.151543054759119,0.0026329737898027,0.347914633709336,0.509430520633031,0.70335,0.775325,0.705958911749175,0.739661202390549

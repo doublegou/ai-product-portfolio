@@ -1,0 +1,2 @@
+run_id,date,workflow,input_id,version,model,status,elapsed_seconds,human_minutes,edit_rounds,input_tokens,output_tokens,total_cost,currency,quality_pass,failure_category,evidence_path,notes
+radar-20261016-proxy,2026-10-16,daily-trend-radar,"github,hackernews,v2ex",imported source before local failure-report patch; see sources.json,,completed,4.391,,,,,,,,,../../demo/daily-trend-radar/2026-10-16-source-check/run-proxy.json,"3/3 sources, 15 items; process runtime; user quality acceptance unmeasured"

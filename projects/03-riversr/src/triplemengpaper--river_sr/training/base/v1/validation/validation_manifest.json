@@ -1,8 +1,0 @@
-{
-  "status": "prepared",
-  "input_md5": "dc80c73dfc64a3180efb4c5bb9fe5902",
-  "config_md5": "630da50737ccf08ed0fd20bd6bf5c980",
-  "primary_tasks": 15,
-  "stress_tasks": 20,
-  "stress_retuning": false
-}

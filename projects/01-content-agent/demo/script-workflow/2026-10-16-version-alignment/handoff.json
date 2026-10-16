@@ -1,0 +1,31 @@
+{
+  "task": "005-portfolio-revision-2026-10-16",
+  "input_version": "historical revised user script",
+  "review_scope": "semantic alignment with recorded user script; not a new Gemini experiment",
+  "files": [
+    {
+      "path": "ppt/001.html",
+      "sha256": "82bc328821103ad1fdded22946d5c1699fca28b54006cbe7503f8b297ee86d68"
+    },
+    {
+      "path": "../2026-09-26-agentic-video/input-script-revised.md",
+      "sha256": "5a3073e830d716eba910061f07cb57895f8a6e23a6197b04160768e4b4db0e21"
+    },
+    {
+      "path": "../2026-09-26-agentic-video/artifacts/post/005/post.txt",
+      "sha256": "57d6c7abc042cfdcce2a308602c6c2eae1f7246fed5c4d90caf81ed198ee8959"
+    },
+    {
+      "path": "../2026-09-26-agentic-video/artifacts/post/005/3-4.png",
+      "sha256": "24208c13046d9fcd9c102dd8de724d46f1d9c27b064a88fc2ed7ffb73a9a0278"
+    },
+    {
+      "path": "../2026-09-26-agentic-video/artifacts/post/005/4-3.png",
+      "sha256": "89862b96a1c5984d4b91fc7eb135714e7b321e613f96118c9430a368c33d52c3"
+    },
+    {
+      "path": "../2026-09-26-agentic-video/artifacts/post/005/16-9.png",
+      "sha256": "dbddeb16e50166d8d2fc47870a533ccf99a51741fc3a913615a13689c2e2307d"
+    }
+  ]
+}

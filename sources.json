@@ -5,150 +5,272 @@
       "branch": "main",
       "commit": "3f1522abb67daf29a0757396f9fd83ee9f1b1a67",
       "tree": "61532c45e01cf152c0e76c3b06c865b71115937b",
-      "path": "projects/01-content-agent/src/seedxdream--social-content-skills",
+      "path": "projects/01-content-agent/src/content-workflow",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 68
+      "tracked_files": 68,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "3f1522abb67daf29a0757396f9fd83ee9f1b1a67",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": [
+        "skills/note-writer/README.md",
+        "skills/note-writer/SKILL.md",
+        "README.md"
+      ]
     },
     {
       "repo": "DualAries-1/content-agent",
       "branch": "main",
       "commit": "acd957c8a25ca847e4d934aedb72d943fe17705d",
       "tree": "637ef31d3cec3f5363998cb66e81ae22030be861",
-      "path": "projects/01-content-agent/src/DualAries-1--content-agent",
+      "path": "projects/01-content-agent/src/content-agent",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 86
+      "tracked_files": 86,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "acd957c8a25ca847e4d934aedb72d943fe17705d",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": [
+        "docs/content_strategy_loop.md",
+        "README.md",
+        ".gitignore",
+        "run_daily.py",
+        "tests/test_daily_persistence.py",
+        "src/create/runtime.py",
+        "memory/account/acceptance_standards.md",
+        "tests/test_review_runtime.py"
+      ]
     },
     {
       "repo": "doublegou/script-to-html-slides",
       "branch": "main",
       "commit": "760772ecb1ff1bd370840ba279b4aab08e89d014",
       "tree": "a5ebf6b227d3fa25addbaf13e1ee08f5dbfd3b65",
-      "path": "projects/01-content-agent/src/doublegou--script-to-html-slides",
+      "path": "projects/01-content-agent/src/script-workflow/script-to-html-slides",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 24
+      "tracked_files": 24,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "760772ecb1ff1bd370840ba279b4aab08e89d014",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/script-to-post",
       "branch": "main",
       "commit": "85bc30a0fc67dce4cb242d13ae6106ee6013619c",
       "tree": "7715769b2a9d1eeb5601fa4026d23d229ad0cbe9",
-      "path": "projects/01-content-agent/src/doublegou--script-to-post",
+      "path": "projects/01-content-agent/src/script-workflow/script-to-post",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 10
+      "tracked_files": 10,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "85bc30a0fc67dce4cb242d13ae6106ee6013619c",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/script-to-image",
       "branch": "main",
       "commit": "bff70e6a5bb2b27a61f89e7aae12a2cf0af8a006",
       "tree": "7ec6038e3352b8d691d1f2e7b4524baf1dec171c",
-      "path": "projects/01-content-agent/src/doublegou--script-to-image",
+      "path": "projects/01-content-agent/src/script-workflow/script-to-image",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 11
+      "tracked_files": 11,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "bff70e6a5bb2b27a61f89e7aae12a2cf0af8a006",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "DualAries-1/daily-trend-radar",
       "branch": "main",
       "commit": "eb08b6d5dc3088291434886b2a4e09fc325dcc99",
       "tree": "7bb8a18f2d92a11993899a8927c9e31c33c8fa6d",
-      "path": "projects/01-content-agent/src/DualAries-1--daily-trend-radar",
+      "path": "projects/01-content-agent/src/daily-trend-radar",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 39
+      "tracked_files": 39,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "eb08b6d5dc3088291434886b2a4e09fc325dcc99",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": [
+        "scripts/run.mjs",
+        "test/cli-failure.test.mjs",
+        "README.md"
+      ]
     },
     {
       "repo": "DualAries-1/stayword-front-ios",
       "branch": "main",
       "commit": "70e0c0f57074f75985b73f316031f8a10483614b",
       "tree": "929144a7bb828e7ead6caa3c7062d1067d8267f6",
-      "path": "projects/02-stayword/src/DualAries-1--stayword-front-ios",
+      "path": "projects/02-stayword/src/stayword-front-ios",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 88
+      "tracked_files": 88,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "70e0c0f57074f75985b73f316031f8a10483614b",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "DualAries-1/stayword-front-android",
       "branch": "main",
       "commit": "fc0c98ba1503922475a15a58368b954f2c180c9a",
       "tree": "42a0aa3a67292d98d40c793455cbdac57563d325",
-      "path": "projects/02-stayword/src/DualAries-1--stayword-front-android",
+      "path": "projects/02-stayword/src/stayword-front-android",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 74
+      "tracked_files": 74,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "fc0c98ba1503922475a15a58368b954f2c180c9a",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "DualAries-1/official-landingpage",
       "branch": "main",
       "commit": "b0ea849a6058b14b38485860c3fd7e0cae64a401",
       "tree": "b74d088f0cc8926210f28497e56b39722fd574f8",
-      "path": "projects/02-stayword/src/DualAries-1--official-landingpage",
+      "path": "projects/02-stayword/src/official-landingpage",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 70
+      "tracked_files": 70,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "b0ea849a6058b14b38485860c3fd7e0cae64a401",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/river_sr",
       "branch": "main",
       "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
       "tree": "21bc62e148f97ce0db98d0599736695f7287e74d",
-      "path": "projects/03-riversr/src/doublegou--river_sr",
+      "path": "projects/03-riversr/src/river_sr",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 1881
+      "tracked_files": 1881,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "triplemengpaper/river_sr",
       "branch": "main",
       "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
       "tree": "21bc62e148f97ce0db98d0599736695f7287e74d",
-      "path": "projects/03-riversr/src/triplemengpaper--river_sr",
+      "path": "projects/03-riversr/src/river_sr",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 1881
+      "tracked_files": 1881,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/sr_rf",
       "branch": "main",
       "commit": "24715b526acc901ab5c380cbd7d00bef9e9d6d29",
       "tree": "c09a412edd4923cabcd539671845a6fd5b885e64",
-      "path": "projects/03-riversr/src/doublegou--sr_rf",
+      "path": "projects/03-riversr/src/sr_rf",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 279
+      "tracked_files": 279,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "24715b526acc901ab5c380cbd7d00bef9e9d6d29",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/sr_o_map_web_pro",
       "branch": "main",
       "commit": "300ccb1b5b860ddc08f2a1c4ed9850f911f28aa7",
       "tree": "6ee8a55cea1f0618cbcc547b31f3e6954494c436",
-      "path": "projects/03-riversr/src/doublegou--sr_o_map_web_pro",
+      "path": "projects/03-riversr/src/sr_o_map_web_pro",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 19
+      "tracked_files": 19,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "300ccb1b5b860ddc08f2a1c4ed9850f911f28aa7",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "triplemengpaper/sr_o_map_web_pro",
       "branch": "main",
       "commit": "300ccb1b5b860ddc08f2a1c4ed9850f911f28aa7",
       "tree": "6ee8a55cea1f0618cbcc547b31f3e6954494c436",
-      "path": "projects/03-riversr/src/triplemengpaper--sr_o_map_web_pro",
+      "path": "projects/03-riversr/src/sr_o_map_web_pro",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 19
+      "tracked_files": 19,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "300ccb1b5b860ddc08f2a1c4ed9850f911f28aa7",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     },
     {
       "repo": "doublegou/probabilistic-map-explorer",
       "branch": "main",
       "commit": "85788f9c9d28ab3564201f48234976cc0b91a676",
       "tree": "c96d40e95475ba33e18b81bf1edee51c72d82936",
-      "path": "projects/03-riversr/src/doublegou--probabilistic-map-explorer",
+      "path": "projects/03-riversr/src/probabilistic-map-explorer",
       "tree_verified": true,
       "imported_at": "2026-09-28",
-      "tracked_files": 69
+      "tracked_files": 69,
+      "upstream_check": {
+        "checked_on": "2026-10-16",
+        "default_branch": "main",
+        "commit": "85788f9c9d28ab3564201f48234976cc0b91a676",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     }
   ],
   "research_notes": [
