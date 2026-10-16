@@ -31,7 +31,7 @@
 输入为视频 URL、目标读者／表达要求与任务目录。交付范围可以是分析、正文、卡片或整套图文，开始时明确。
 
 ```text
-视频 URL → 获取人工字幕；不可用则尝试自动字幕
+视频 URL → 按语言选字幕轨道（候选语言内人工优先）
                        └─ 无字幕 → 告知条件并确认 → Whisper 转写
 内容 → analysis.md
           ├─ note-writer → result/post.md
@@ -56,6 +56,8 @@
 ## 5. 异常与质量边界
 
 字幕获取失败时保留错误与已尝试方式；未获准转写时停在该环节。自动字幕可能漏词，分析需保留不确定项。中文正文检查事实、受众和表达；图片检查文字、顺序、规格与独立阅读。单个分支失败时记录部分交付，不把另一分支的成功当成整套成功。
+
+技术细节见[字幕与 Whisper 降级](architecture.md#4-字幕获取与-whisper-降级)及[出图后端与修订控制](architecture.md#5-出图后端参考图与修订控制)，包含准确触发条件、实际模型配置、重试范围和未接入的接口实现。
 
 代码入口：[工程说明](../src/content-workflow/README.md)、[字幕工具](../src/content-workflow/skills/yt-analysis/scripts/youtube_transcript.py)、[正文 Skill](../src/content-workflow/skills/note-writer/SKILL.md)、[图片 Skill](../src/content-workflow/skills/note-images/SKILL.md)。内部三个 Skill 名称保持不变。
 

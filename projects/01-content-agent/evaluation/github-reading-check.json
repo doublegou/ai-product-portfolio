@@ -8,8 +8,8 @@
       "images": [
         {
           "loaded": true,
-          "width": 1360,
-          "height": 890
+          "width": 1440,
+          "height": 1240
         },
         {
           "loaded": true,
@@ -30,11 +30,26 @@
           "loaded": true,
           "width": 1280,
           "height": 720
+        },
+        {
+          "loaded": true,
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "loaded": true,
+          "width": 1448,
+          "height": 1086
+        },
+        {
+          "loaded": true,
+          "width": 2048,
+          "height": 1152
         }
       ],
       "sections": [
         "01 · content-workflow：把视频改编成独立可读的图文",
-        "02 · script-workflow：让同一期演示、文案和封面保持一致",
+        "02 · script-workflow：同一期口播稿的完整素材交付",
         "03 · content-agent：用事实复核检验“模型已通过”",
         "04 · daily-trend-radar：把榜单线索变成有依据的选题"
       ]
@@ -45,8 +60,8 @@
       "images": [
         {
           "loaded": true,
-          "width": 1360,
-          "height": 890
+          "width": 1440,
+          "height": 1240
         },
         {
           "loaded": true,
@@ -67,11 +82,26 @@
           "loaded": true,
           "width": 1280,
           "height": 720
+        },
+        {
+          "loaded": true,
+          "width": 1086,
+          "height": 1448
+        },
+        {
+          "loaded": true,
+          "width": 1448,
+          "height": 1086
+        },
+        {
+          "loaded": true,
+          "width": 2048,
+          "height": 1152
         }
       ],
       "sections": [
         "01 · content-workflow：把视频改编成独立可读的图文",
-        "02 · script-workflow：让同一期演示、文案和封面保持一致",
+        "02 · script-workflow：同一期口播稿的完整素材交付",
         "03 · content-agent：用事实复核检验“模型已通过”",
         "04 · daily-trend-radar：把榜单线索变成有依据的选题"
       ]

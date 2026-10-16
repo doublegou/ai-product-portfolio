@@ -31,6 +31,16 @@ python3 projects/01-content-agent/src/script-workflow/check_handoff.py \
 
 查看分析后，再指定这份 `analysis.md`，按 `note-writer` 和 `note-images` 生成正文与图片规划；说明读者、张数和风格。规划确认后生成图片。字幕工具的首次环境配置见[源码说明](../src/content-workflow/README.md#配置-yt-analysis-环境)；字幕缺失时，按 Skill 的转写确认流程处理。
 
+**无字幕时的处理。** 工具返回 `whisper_confirmation_required`（退出码 3）时，先查看标题、时长及音频大小估计；许可下载和本地转写后，才增加 `--allow-whisper`。从仓库根目录的调用形式为：
+
+```bash
+projects/01-content-agent/src/content-workflow/skills/yt-analysis/.venv/bin/python \
+  projects/01-content-agent/src/content-workflow/skills/yt-analysis/scripts/youtube_transcript.py \
+  'YOUTUBE_URL' --output-dir 'TEMP_DIRECTORY' --allow-whisper
+```
+
+将两个占位符换为实际视频链接与临时目录。未许可时不加该参数；已有字幕仍使用字幕。下载／解析失败和指定语言缺失不是自动转写触发条件。首次安装需准备 Whisper base 模型，转写使用 CPU；[技术说明](architecture.md#4-字幕获取与-whisper-降级)列出资源清理与结果字段。
+
 **验收出口：** 打开 `analysis.md`、`plan.md`、`result/post.md` 和成图，核查来源、图片独立阅读、数量和实际尺寸。可对照[文献综述案例](../demo/content-workflow/2026-08-27-literature-review/README.md)。
 
 ## 3. script-workflow：只生成本期需要的素材

@@ -1,7 +1,7 @@
 {
   "checked_on": "2026-10-17",
   "audience": "Recruiter reading the GitHub repository independently after an application",
-  "scope": "GitHub product case, runtime architecture, actual artifacts, Quick Start and reproducible product audit. Explanatory HTML boards retired from the main reading path.",
+  "scope": "GitHub case portfolio with complete script-workflow deliverables visible on the main page, actual artifacts, runtime flow diagram, verified technical design, Quick Start and reproducible product audit.",
   "artifacts": {
     "demo/index.html": {
       "bytes": 33935,
@@ -16,8 +16,8 @@
       "sha256": "04d936d2b17384fa3dcc5c4474bd822caf46e399141f871143292ea622bef5b8"
     },
     "README.md": {
-      "bytes": 12742,
-      "sha256": "16b707274ec8e965e83b500e65de494d9f6b356e0dc79a22f8f964b377bbf64d"
+      "bytes": 18507,
+      "sha256": "4ec33f1c65959fa512a491730de9d2c19847bad420f72b6b4b424aa044e661e3"
     },
     "docs/case-study.md": {
       "bytes": 11972,
@@ -68,16 +68,16 @@
       "sha256": "36849a142bfb87d939c58b0209489168c7c5195fe86d144574ac44a3c2fb8855"
     },
     "evaluation/release-review.md": {
-      "bytes": 14143,
-      "sha256": "7fea94c33f9a3cd69a966cf35af36f132bcba0d6768e4e600ac0283da2bacde4"
+      "bytes": 15696,
+      "sha256": "66950d715f15a2da41f3db9fe3d59e8f6f4c0c481cd8cadffa85854c62a1e5cc"
     },
     "docs/content-agent.md": {
       "bytes": 6397,
       "sha256": "8b9323e32bdf15349fa0b047e8600bf47390135cc789406c14fa630350592adf"
     },
     "docs/architecture.md": {
-      "bytes": 5282,
-      "sha256": "9726fb26c01ed95cf96bfba3150659839ee73b85663c6bf06e7985ee78286531"
+      "bytes": 15388,
+      "sha256": "277fcdb7638bd1ba8e372b0b156f8ac65c202b2996a60310743f166d069d6923"
     },
     "demo/content-workflow/README.md": {
       "bytes": 1128,
@@ -116,20 +116,20 @@
       "sha256": "b6e06fd3d16105901f9e8105dcebb83e72b25d1fc409a9b4c1bc127c773dcbac"
     },
     "docs/quick-start.md": {
-      "bytes": 5957,
-      "sha256": "1d884c7a4d89d447d3240fbbab9e1ef384a83d0dfd7f6f91805ab6be74f38e4f"
+      "bytes": 6825,
+      "sha256": "895efab038b5c16878894d740c4f1bb41242dff64aba98c07b658d844e48b46a"
     },
     "docs/screenshot-plan.md": {
       "bytes": 3211,
       "sha256": "542e7ef04172094580c6d2a8e50d9b198848f5c023b6a267f5f00c1c4314472c"
     },
     "docs/diagrams/architecture.svg": {
-      "bytes": 7401,
-      "sha256": "9f5d3c66baf011983405d5b273d9bb7b1cf2c663b6fe0505902a8a0aedd41815"
+      "bytes": 15422,
+      "sha256": "8caf4ad849bf88c7f9d08298443f268f9d8be6afebb7b762f3b1dc569d28117d"
     },
     "evaluation/github-reading-check.json": {
-      "bytes": 2020,
-      "sha256": "29ca69c94b8771450c6cc5b22c59f0f7395cd7de5afe324a18def98ab5458552"
+      "bytes": 2586,
+      "sha256": "d18b3e4399b9eb1a304ac79cb5bc4c96db8297d4dea210bd3eb4206fd0eb5b42"
     },
     "evaluation/2026-10-17-product-audit/radar-live-runs.json": {
       "bytes": 1098,
@@ -162,6 +162,10 @@
     "evaluation/2026-10-17-product-audit/radar-live-2.json": {
       "bytes": 14394,
       "sha256": "0cefc6908cf183293e6d9aa1ae8e5ba266825e6537088316c0d90160cdd2ec84"
+    },
+    "docs/content-workflow.md": {
+      "bytes": 6020,
+      "sha256": "cd790737e2e739bbe28619555f524fdc85a1b2e2f490f4866cf1e3817317b415"
     }
   },
   "requirements": {
@@ -193,7 +197,11 @@
     "source_screenshots_requested_only_with_evidence_purpose": true,
     "constructed_test_inputs_labeled": true,
     "model_usage_separate_from_hypothetical_prices": true,
-    "architecture_not_a_unified_orchestrator": true
+    "architecture_not_a_unified_orchestrator": true,
+    "script_case_displays_slides_copy_and_three_covers": true,
+    "technical_fallback_conditions_traced_to_source": true,
+    "hosted_image_tool_not_conflated_with_retained_api_generator": true,
+    "architecture_shows_dependencies_and_review_loop": true
   },
   "engineering_checks": {
     "radar": {
@@ -228,12 +236,12 @@
   },
   "documentation_check": {
     "files": 50,
-    "local_links": 298,
+    "local_links": 327,
     "broken": 0,
     "scope": "Reader Markdown paths, HTML image references and heading anchors; not imported source docs"
   },
   "browser_record": "showcase-check.json",
-  "completion_audit": "GitHub content revised with four real tasks and actual artifacts; decision memo separates tradeoffs, metrics, priorities and planned experiments. Added runnable Quick Start, screenshot plan, historical usage analysis and fresh guard/radar tests. Real Codex screenshots pending user supply. No new website.",
+  "completion_audit": "Main reading page now displays the complete script task bundle and representative text and images for other cases. Architecture redrawn as actual independent flows. Technical description traces Whisper, native image generation, retained gpt-image-2 API code, LLM fallback/schema correction and radar backoff to source. No new production model, Whisper or image run.",
   "github_reading_record": "github-reading-check.json",
   "board_materials": {
     "content-workflow": {
