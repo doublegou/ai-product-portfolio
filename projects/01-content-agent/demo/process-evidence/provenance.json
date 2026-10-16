@@ -1,0 +1,25 @@
+{
+  "kind": "用于 GitHub 的静态过程图；不是产品界面或原聊天截图",
+  "prepared_on": "2026-10-17",
+  "paths_relative_to": "demo/",
+  "sha256": {
+    "content-workflow/2026-08-27-literature-review/conversation-excerpts.json": "faf6ee43526dfcb529104bdd3f00b2c9b42b33f103004acfeebbff4ea8b76261",
+    "content-workflow/2026-08-27-literature-review/README.md": "17fbc3e4b4f24d7135c4797353d6fa49740a88ff0f5eb77c9d34b30d241e14ed",
+    "script-workflow/2026-09-26-agentic-video/conversation-excerpts.json": "d55b66ff3680dc00d15ce4f5670acb1a4f24d2aaedf5d663c1695c32ff892ff9",
+    "script-workflow/2026-10-16-version-alignment/README.md": "06127dd749acb905b213db2667adf18c8c74ec2fc96f140258f0d3cb682b3ac2",
+    "content-agent/2026-07-09-birdtracker/events.json": "ecb95c5ab37add0c531902fb0dbc039ae87f34a8f816ba04f5a761a1e06731a2",
+    "content-agent/2026-10-16-draft-review/reviewed-draft.json": "03b339eca10152b4751429f064078c8ec836be7e74ae28f7b1eb06a0bda5a7ae",
+    "daily-trend-radar/2026-10-16-source-check/run-proxy.json": "c644ce8f78194e20daf29cca395f98538eaa98af8e0e793199f9d012717ea97f",
+    "daily-trend-radar/2026-10-16-source-check/report-proxy.json": "40e6cbbcef52e977d8df86c35f215b91a1bc4c20a05d0c947ed336f1293c1b06",
+    "daily-trend-radar/2026-10-16-source-check/brief.md": "ccbb32dde3a52578a8492262307e452af0f1fc2c80bcf37c3490a01c53e0846f",
+    "script-workflow/2026-09-26-agentic-video/README.md": "260647b2a259971fe5c49f0c3cd4be5aac996325b867a564171a6520a445e70d",
+    "content-agent/2026-10-16-draft-review/post.txt": "e6cf2f5e7416fa33b21a8840088b137ec86b69bcd8c780d26eab99b794a01d93"
+  },
+  "display_rule": "原始摘录与当前复盘分栏。流程结合历史记录和现有实现整理；最终检查为作品集复核或取用方式，不虚构用户已采纳。输入原件不覆盖。",
+  "figure_sha256": {
+    "agent.png": "bcc4e0c28e7f05ba160293ac340916c4002c8602d70133803518c5b47da8a08b",
+    "radar.png": "90d9ad8ae8eac38fd5bb70332b4a4fd3233182fdf6ade46ff4d13dfc1adc4226",
+    "content.png": "a20a987d902b80defb7d7731bfcd99e7740f366372e4223153d32ca8ddde4b5d",
+    "script.png": "8d2fa6f7317ae199445792bb6dce6e61b1ba6ac66305951499d4da3f2f2247c0"
+  }
+}

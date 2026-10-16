@@ -6,6 +6,34 @@
 
 analysis.md 恢复自完整文件读取输出；post.md 恢复自新增内容与随后一处原文修改；plan.md 使用六张版本；六张图片依据生成提示中的页号定位。原始生成图按字节复制、记录哈希。历史最终裁切／缩放后的发布文件尚未恢复，不能把原图称为最终 1152×1536 文件。
 
+## 真实使用中的决策节点
+
+用户先提交视频链接，确认分析后继续正文与配图；在八页规划阶段提出：
+
+> 图片八张有点多了   6张吧   然后换个风格     除了首页每页内容稍微多一点  就是我只看图片 我也能看懂在说啥
+
+摘录来源：[2026-08-27 的原始对话，line 214](conversation-excerpts.json)。这条反馈同时改变数量、视觉风格与阅读要求，不能仅将循环次数从八改成六。
+
+| 对照 | 原规划 | 修订后的处理 |
+| --- | --- | --- |
+| 信息组织 | 效率冲击、综述目的分开讲 | 合为一页，直接建立“文档完成 ≠ 研究完成” |
+| 风险解释 | 提问反驳、貌似可信分开讲 | 把问题及对应核查动作放在一起 |
+| 阅读方式 | 八张研究手账风卡片 | 六张手绘解释图；内页补解释，图可以独立阅读 |
+| 交接 | 正文与八页方案已生成 | 保留正文，修订规划后再出图 |
+
+[原八页方案](plan-original-eight.md)与[修订六页方案](plan.md)保留全文。历史对话还有一次多余确认：用户说“可以”后助手仍停下来等待，再次收到“继续吧”才推进。这是交互中断问题，未包装成理想路径。
+
+## 六张原图：按阅读顺序查看
+
+<table>
+<tr><th>01 · 中心冲突</th><th>02 · 效率边界</th><th>03 · 引用核查</th></tr>
+<tr><td align="center"><a href="generated-originals/01.png"><img src="generated-originals/01.png" height="260" alt="封面：文档生成不等于研究完成"></a></td><td align="center"><a href="generated-originals/02.png"><img src="generated-originals/02.png" height="260" alt="解释内页：文档生产与研究成长"></a></td><td align="center"><a href="generated-originals/03.png"><img src="generated-originals/03.png" height="260" alt="解释内页：回到原文核查引用"></a></td></tr>
+<tr><th>04 · 提问反驳</th><th>05 · 历史与重构</th><th>06 · 行动方法</th></tr>
+<tr><td align="center"><a href="generated-originals/04.png"><img src="generated-originals/04.png" height="260" alt="解释内页：质疑和识别貌似可信"></a></td><td align="center"><a href="generated-originals/05.png"><img src="generated-originals/05.png" height="260" alt="解释内页：历史脉络与独立重构"></a></td><td align="center"><a href="generated-originals/06.png"><img src="generated-originals/06.png" height="260" alt="结束页：AI 使用交通灯"></a></td></tr>
+</table>
+
+原图按相同显示高度排列，文件本身未裁切或修改。点击可查看完整尺寸。正文是独立产物：[阅读完整图文正文](result/post.md)。
+
 ## 本轮内容复核
 
 | 检查点 | 输入与产物对应 | 结果 |

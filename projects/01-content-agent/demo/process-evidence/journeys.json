@@ -1,0 +1,326 @@
+[
+  {
+    "id": "content",
+    "name": "content-workflow",
+    "label": "视频 → 中文图文",
+    "date": "历史任务 · 2026.08.27",
+    "lead": "读者没有看过原视频，也要能只看卡片理解观点。",
+    "image": "../content-workflow/2026-08-27-literature-review/generated-originals/03.png",
+    "imageCaption": "历史生成原图 · 第 3 张／6 张；最终裁切版未恢复",
+    "outcome": "一份分析、一篇正文、六张卡片原图",
+    "limit": "内容与修改关系可回查；最终发布规格与采纳未确认。",
+    "doc": "../../docs/content-workflow.md",
+    "steps": [
+      {
+        "title": "提交视频",
+        "action": "在对话中提交视频链接，开始理解素材。",
+        "system": "yt-analysis 获取字幕并形成分析，给出适合二创的形式建议。",
+        "decision": "先判断素材值得讲什么，再决定产物；不把链接直接送入整套出图。",
+        "evidence": {
+          "text": "[https://www.youtube.com/watch?v=1PSMmwQkqME](https://www.youtube.com/watch?v=1PSMmwQkqME)",
+          "href": "../content-workflow/2026-08-27-literature-review/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "进入分析；不代表已完成整套图文。"
+      },
+      {
+        "title": "查看分析",
+        "action": "阅读完整摘要，确认继续制作正文与图片方案。",
+        "system": "正文和配图共享分析；先交付正文及八页规划。",
+        "decision": "共享分析减少主题分叉；分析本身仍需核对来源。",
+        "evidence": {
+          "text": "建议二创形式：图文笔记。",
+          "href": "../content-workflow/2026-08-27-literature-review/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "获得可编辑中间材料，出图前能改变方向。"
+      },
+      {
+        "title": "调整规划",
+        "action": "把八张改为六张，并要求只看图也能理解。",
+        "system": "改为手绘解释图，增加内页解释密度，合并两组内容。",
+        "decision": "把可独立阅读作为验收标准；减少页数时保留解释链。",
+        "evidence": {
+          "text": "图片八张有点多了   6张吧   然后换个风格     除了首页每页内容稍微多一点  就是我只看图片 我也能看懂在说啥",
+          "href": "../content-workflow/2026-08-27-literature-review/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "旧规划保留，新规划成为出图依据。"
+      },
+      {
+        "title": "确认并生成",
+        "action": "确认六页方案后继续生成。",
+        "system": "按照六份提示词生成对应图片；正文单独保留。",
+        "decision": "在高成本出图前确认结构，减少把结构问题带到整套成品的机会。",
+        "evidence": {
+          "text": "6 份最终生成提示词保存在 `prompts/` 目录，发布正文未被改动。",
+          "href": "../content-workflow/2026-08-27-literature-review/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "交付消息与原图可交叉核对；规格以现存文件为准。"
+      },
+      {
+        "title": "检查与取用",
+        "action": "顺序阅读六张图，对照正文与分析，取用需要的产物。",
+        "system": "现存文件支持复核中心命题、引用核查与行动建议。",
+        "decision": "最终消息曾声称统一规格，但现存原图比例不同；缺失的裁切文件不当作已验收。",
+        "evidence": {
+          "text": "原始生成未统一 3:4",
+          "href": "../content-workflow/2026-08-27-literature-review/README.md",
+          "name": "README.md",
+          "kind": "当前文件复核"
+        },
+        "result": "完成内容交付；发布尺寸仍需补齐后才能宣称发布就绪。"
+      }
+    ],
+    "outputHref": "../content-workflow/2026-08-27-literature-review/README.md"
+  },
+  {
+    "id": "script",
+    "name": "script-workflow",
+    "label": "口播稿 → 视频配套素材",
+    "date": "历史任务 · 2026.09.26／修订 · 10.16",
+    "lead": "同一期内容需要可播放的演示、可编辑文案与三比例封面。",
+    "image": "../script-workflow/2026-09-26-agentic-video/artifacts/post/005/16-9.png",
+    "imageCaption": "历史封面文件 · 16:9；三种画幅分别构图",
+    "outcome": "15 页演示、发布文案、3 张比例封面",
+    "limit": "保留历史产物；演示对齐为 10 月修订，未声称所有产物最终采纳。",
+    "doc": "../../docs/script-workflow.md",
+    "steps": [
+      {
+        "title": "选择交付",
+        "action": "提交第 005 期口播稿，先调用演示 Skill。",
+        "system": "按口播顺序组织 15 页 HTML 演示与分步揭示。",
+        "decision": "同一项目允许按需调用；已有实机演示的其他任务可跳过此项。",
+        "evidence": {
+          "text": "这是我005的脚本",
+          "href": "../script-workflow/2026-09-26-agentic-video/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "本期先做演示，不自动扩展到录音、剪辑或发布。"
+      },
+      {
+        "title": "播放与反馈",
+        "action": "打开 HTML 播放，指出控制栏不居中、元素出现时机不合适。",
+        "system": "调整控制栏与分步揭示，保留原有风格和功能。",
+        "decision": "验收单位是讲述过程中的每一步，不只是导出一张漂亮页面。",
+        "evidence": {
+          "text": "这个  样式没错  功能也没错 但是没居中哦",
+          "href": "../script-workflow/2026-09-26-agentic-video/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "可点击或按方向键播放；演示完成后进入发布素材。"
+      },
+      {
+        "title": "确认本期文案",
+        "action": "视频完成后提交修订口播稿，继续标题、正文与封面。",
+        "system": "script-to-post 生成可编辑文案；script-to-image 承接本期主题。",
+        "decision": "每类产物面向不同使用时刻，不能机械复用同一排版。",
+        "evidence": {
+          "text": "ok   现在ppt做完了   视频也搞完了  你知道下一步该干什么了嘛",
+          "href": "../script-workflow/2026-09-26-agentic-video/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "本期文件保存在明确路径；PPT 与 post 编号可以不同。"
+      },
+      {
+        "title": "修订封面",
+        "action": "手动修改标题正文，再反馈人像模糊、泛油和设计感不足。",
+        "system": "按新文案修改三张封面，保留已编辑正文。",
+        "decision": "用户修改是下一步输入；尺寸通过之后仍要判断视觉表达。",
+        "evidence": {
+          "text": "ok   标题正文我稍微修改了一下下  然后我们说你这个图片  内容 布局没啥问题  但是人像不清晰  而且有点泛油    还有就是封面整体设计太朴素了  那有海报的设计感呢",
+          "href": "../script-workflow/2026-09-26-agentic-video/conversation-excerpts.json",
+          "name": "conversation-excerpts.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "三张比例文件可查看；这是具体修改反馈，不等于最终全套认可。"
+      },
+      {
+        "title": "核对与交接",
+        "action": "在作品集复核时，对照修订稿检查演示与文案、封面。",
+        "system": "修订演示第 5–7 页；固定六份输入与产物的交接关系。",
+        "decision": "文件检查提示变化，语义一致仍需回到原稿；本次暴露了版本漂移。",
+        "evidence": {
+          "text": "2026-10-16 在作品集副本中修订第 5–7 页。",
+          "href": "../script-workflow/2026-10-16-version-alignment/README.md",
+          "name": "README.md",
+          "kind": "本轮修订记录"
+        },
+        "result": "可查看 15 页／42 状态；两次视频调用是脚本内容，不是本次实测。"
+      }
+    ],
+    "outputHref": "../script-workflow/2026-09-26-agentic-video/README.md"
+  },
+  {
+    "id": "agent",
+    "name": "content-agent",
+    "label": "产品资料 → 候选内容",
+    "date": "历史运行 · 2026.07.09／审校 · 10.16",
+    "lead": "为 BirdTracker 写清使用价值，同时避免模型编造功能和亲历。",
+    "image": null,
+    "imageCaption": "当前修订候选稿节选 · 非已发布内容",
+    "outcome": "保存的历史草稿、审改记录、修订候选稿",
+    "limit": "历史模型运行与本轮事实审校分开记录；最终人工采纳尚未记录。",
+    "doc": "../../docs/content-agent.md",
+    "steps": [
+      {
+        "title": "选择产品",
+        "action": "维护产品、账号和平台资料，选择 BirdTracker 任务。",
+        "system": "读取持久资料，研究选题后生成候选内容。",
+        "decision": "产品资料限定事实，账号资料限定表达；不能靠一句提示补齐业务上下文。",
+        "evidence": {
+          "text": "{\n  \"ts\": \"2026-07-09T13:15:59+08:00\",\n  \"event\": \"run_start\"\n}",
+          "href": "../content-agent/2026-07-09-birdtracker/events.json",
+          "name": "events.json",
+          "kind": "原始日志字段"
+        },
+        "result": "历史这次任务开启发布演练；现在仅生成草稿须使用 --no-publish。"
+      },
+      {
+        "title": "审阅与改稿",
+        "action": "等待审改，查看分数及问题记录。",
+        "system": "首轮 8.4 未通过，下一轮按反馈修改。",
+        "decision": "分数只是审稿信号；程序有停止条件，避免无限自我修改。",
+        "evidence": {
+          "text": "{\n  \"ts\": \"2026-07-09T13:18:59+08:00\",\n  \"event\": \"review_round\",\n  \"round\": 1,\n  \"overall_score\": 8.4,\n  \"passed\": false\n}",
+          "href": "../content-agent/2026-07-09-birdtracker/events.json",
+          "name": "events.json",
+          "kind": "原始日志字段"
+        },
+        "result": "保留过程；另一条达到五轮仍失败的运行不混入本次成功。"
+      },
+      {
+        "title": "保存候选稿",
+        "action": "取得审稿通过后的本地草稿。",
+        "system": "第二轮 8.6 通过内部规则，保存 JSON。",
+        "decision": "可保存不等于可采用；结构、事实、表达需要分别判断。",
+        "evidence": {
+          "text": "{\n  \"ts\": \"2026-07-09T13:19:43+08:00\",\n  \"event\": \"review_round\",\n  \"round\": 2,\n  \"overall_score\": 8.6,\n  \"passed\": true\n}",
+          "href": "../content-agent/2026-07-09-birdtracker/events.json",
+          "name": "events.json",
+          "kind": "原始日志字段"
+        },
+        "result": "本次通过内部规则，未由此证明事实正确或发布完成。"
+      },
+      {
+        "title": "处理后续失败",
+        "action": "发布准备找不到上传控件，返回保存文件继续处理。",
+        "system": "历史发布演练失败；作品集修复保存计数，使部分成果可见。",
+        "decision": "把写作成功、保存成功、发布结果分开，避免全失败提示掩盖可用草稿。",
+        "evidence": {
+          "text": "{\n  \"ts\": \"2026-07-09T13:20:00+08:00\",\n  \"event\": \"publish_result\",\n  \"status\": \"failed\",\n  \"error_message\": \"Could not find an upload control on the current page.\"\n}",
+          "href": "../content-agent/2026-07-09-birdtracker/events.json",
+          "name": "events.json",
+          "kind": "原始日志字段"
+        },
+        "result": "原始异常日志保留；本次整理不操作发布页。"
+      },
+      {
+        "title": "事实复核与取用",
+        "action": "回到产品资料，逐项判断候选稿是否可以采用。",
+        "system": "本轮复核九项主张，五项有支持，四项删除或调整。",
+        "decision": "先消除无依据表达，再讨论点击率与传播；本轮审校不能替代真实用户验证。",
+        "evidence": {
+          "text": "热点提供地点线索，实际鸟况仍需现场观察。",
+          "href": "../content-agent/2026-10-16-draft-review/reviewed-draft.json",
+          "name": "reviewed-draft.json",
+          "kind": "原始记录摘录"
+        },
+        "result": "得到修订候选稿；等待最终采纳，未补写发布与增长效果。"
+      }
+    ],
+    "previewTitle": "把散步时看到的鸟，\n留在自己的观察记录里",
+    "previewText": "用图鉴查找鸟类资料，遇到不确定信息继续核对\n通过热点地图寻找附近观察地点，不保证实际鸟况",
+    "outputHref": "../content-agent/2026-10-16-draft-review/post.txt"
+  },
+  {
+    "id": "radar",
+    "name": "daily-trend-radar",
+    "label": "公开榜单 → 候选选题",
+    "date": "真实采集与复盘 · 2026.10.16",
+    "lead": "从公开榜单找到可解释、有来源、值得进一步制作的主题。",
+    "image": null,
+    "imageCaption": "真实报告与本轮编辑判断分别保留",
+    "outcome": "3 源 15 条报告、3 个候选角度",
+    "limit": "这是一次采集验证；候选均来自 GitHub，不代表跨平台共振。",
+    "doc": "../../docs/daily-trend-radar.md",
+    "steps": [
+      {
+        "title": "限定范围",
+        "action": "确定 AI 与科技方向，选择三个来源、每源五条。",
+        "system": "按指定来源采集，输出 JSON。",
+        "decision": "先缩小研究范围，控制阅读与验证负担；榜单覆盖不是越多越好。",
+        "evidence": {
+          "text": "node scripts/run.mjs --sources github,hackernews,v2ex --limit 5 --format json --output report-proxy.json",
+          "href": "../daily-trend-radar/2026-10-16-source-check/run-proxy.json",
+          "name": "run-proxy.json",
+          "kind": "真实命令 · 输出路径缩写"
+        },
+        "result": "确定本次交付；脚本采集与后续 Agent 解读分别执行。"
+      },
+      {
+        "title": "查看来源状态",
+        "action": "检查各来源是否成功；失败时查看诊断。",
+        "system": "两次直接请求超时，使用已有代理后获得报告。",
+        "decision": "全失败保留诊断；不把空报告当作没有热点。",
+        "evidence": {
+          "text": "[\n  {\n    \"source\": \"github\",\n    \"sourceName\": \"GitHub Trending\",\n    \"platform\": \"github\",\n    \"stability\": \"stable\",\n    \"ok\": true,\n    \"count\": 5,\n    \"warnings\": []\n  },\n  {\n    \"source\": \"hackernews\",\n    \"sourceName\": \"Hacker News\",\n    \"platform\": \"hackernews\",\n    \"stability\": \"stable\",\n    \"ok\": true,\n    \"count\": 5,\n    \"warnings\": []\n  },\n  {\n    \"source\": \"v2ex\",\n    \"sourceName\": \"V2EX\",\n    \"platform\": \"v2ex\",\n    \"stability\": \"stable\",\n    \"ok\": true,\n    \"count\": 5,\n    \"warnings\": []\n  }\n]",
+          "href": "../daily-trend-radar/2026-10-16-source-check/report-proxy.json",
+          "name": "report-proxy.json",
+          "kind": "真实报告 sourceStatus"
+        },
+        "result": "三个来源各五条；不据一次成功推断长期稳定。"
+      },
+      {
+        "title": "回查条目",
+        "action": "阅读条目、来源链接与时间字段。",
+        "system": "保留 fetchedAt 与 publishedAt，未知发布时间保持为空。",
+        "decision": "抓取时间不是首发时间；十条没有发布时间，只能称当前在榜。",
+        "evidence": {
+          "text": "{\n  \"title\": \"anthropics / claude-plugins-official\",\n  \"url\": \"https://github.com/anthropics/claude-plugins-official\",\n  \"publishedAt\": null,\n  \"fetchedAt\": \"2026-10-16T12:45:23.028Z\"\n}",
+          "href": "../daily-trend-radar/2026-10-16-source-check/report-proxy.json",
+          "name": "report-proxy.json",
+          "kind": "原始条目字段"
+        },
+        "result": "有可回查依据，尚不能直接当作教程结论。"
+      },
+      {
+        "title": "比较候选角度",
+        "action": "结合读者需求和补证成本比较三个候选。",
+        "system": "把已核实事实、内容推断和待验证项分开写进简报。",
+        "decision": "优先能用已有工作流解释的主题；需安装对照的内容暂缓教程化。",
+        "evidence": {
+          "text": "优先选题：第一条。它与本作品集的 Skill 组合和任务交接最贴近，可以用已有三个 Skill 举例。",
+          "href": "../daily-trend-radar/2026-10-16-source-check/brief.md",
+          "name": "brief.md",
+          "kind": "文件内容摘录"
+        },
+        "result": "优先建议是编辑判断，不是热度预测或用户已采用。"
+      },
+      {
+        "title": "选题交接",
+        "action": "从简报选择主题，继续补证或进入创作。",
+        "system": "交付报告与三个角度，保留原始链接及待验证项。",
+        "decision": "自动化停在候选建议；进入哪个创作流程由人决定。",
+        "evidence": {
+          "text": "没有据榜单位置推断首发时间，也没有发送邮件或发布内容。",
+          "href": "../daily-trend-radar/2026-10-16-source-check/brief.md",
+          "name": "brief.md",
+          "kind": "文件内容摘录"
+        },
+        "result": "当前证据到候选交付为止；未记录后续制作及发布。"
+      }
+    ],
+    "previewTitle": "先判断值得做什么",
+    "previewText": "01  装了 Skill，为什么还需要插件目录？\n02  科研 Skill 能替代科研判断吗？\n03  工具输出太多，如何控制上下文？",
+    "outputHref": "../daily-trend-radar/2026-10-16-source-check/brief.md"
+  }
+]

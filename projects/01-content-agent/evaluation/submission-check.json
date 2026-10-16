@@ -1,11 +1,11 @@
 {
-  "checked_on": "2026-10-16",
+  "checked_on": "2026-10-17",
   "audience": "Recruiter reading the GitHub repository independently after an application",
-  "scope": "One content-production project; four equal sections; GitHub README, product case, real outputs, implementation and evaluation; local HTML is supplementary",
+  "scope": "GitHub-first reading: four end-to-end cases, evidence diagrams and original artifacts. No new website. Existing HTML name cleanup only.",
   "artifacts": {
     "demo/index.html": {
-      "bytes": 33940,
-      "sha256": "0518435fa2e7bd50798fd872ae261d0d4a490576c17f97e52d3dabd730ba9803"
+      "bytes": 33935,
+      "sha256": "33224cb4c5219cea14b432eec856bd42311d69c4b8ee1cd2996a00816f1b9843"
     },
     "demo/portfolio.css": {
       "bytes": 16440,
@@ -16,20 +16,20 @@
       "sha256": "04d936d2b17384fa3dcc5c4474bd822caf46e399141f871143292ea622bef5b8"
     },
     "README.md": {
-      "bytes": 10557,
-      "sha256": "ce8852ca03803cc764004228b06d055b5674443bcbe6de94e008276243891e63"
+      "bytes": 14824,
+      "sha256": "4b02103a5af6694189ae6c27bf691040c25c8249c5566d1f56b28108e6012838"
     },
     "docs/case-study.md": {
-      "bytes": 13121,
-      "sha256": "3035c6b99dff6bb2a0533ebde3bbe281a7722132a9bf37f71f540c7a9626e8ad"
+      "bytes": 18778,
+      "sha256": "9fb06dda75846f2357324c484ad166375cfa969aae3437165b4af28cd192f31f"
     },
     "demo/script-workflow/2026-09-25-partial-task/feedback-excerpts.json": {
       "bytes": 2032,
       "sha256": "89bd8373290ffdafa2f99f32b7614a7a618c975832a8f653d278396161f27922"
     },
     "docs/evidence-notes.md": {
-      "bytes": 5743,
-      "sha256": "6bdb081b117868f0cb79363fcf5f8e84f7155cdf865e053a000f67c31cb723cf"
+      "bytes": 6518,
+      "sha256": "cae2e17fcf0ee3fc595199e26220c5efeda4f96c4ebaff5e068b2e8bd787e2f1"
     },
     "demo/README.md": {
       "bytes": 2754,
@@ -68,16 +68,16 @@
       "sha256": "36849a142bfb87d939c58b0209489168c7c5195fe86d144574ac44a3c2fb8855"
     },
     "evaluation/release-review.md": {
-      "bytes": 10222,
-      "sha256": "7d6eaabf6234cfb8875ba2e53b85bacca5ca3cb4394c0c9313f4b7eaa3cf8c65"
+      "bytes": 11944,
+      "sha256": "59275409f5c922996fb1574aad3d85c5fe8ad551e46f236443d3527d4976f6c5"
     },
     "docs/content-agent.md": {
       "bytes": 6397,
       "sha256": "8b9323e32bdf15349fa0b047e8600bf47390135cc789406c14fa630350592adf"
     },
     "docs/architecture.md": {
-      "bytes": 8773,
-      "sha256": "43f18adca7a825530bbc29e39637c9cee0fe45a4854f71b32c4c66465fbbfd78"
+      "bytes": 8767,
+      "sha256": "55203befb162b7ad5c2216c9beaf71253814533e322aaf8134cc091df6e719ec"
     },
     "demo/content-workflow/README.md": {
       "bytes": 1128,
@@ -96,12 +96,52 @@
       "sha256": "e3ad42562d37d48f02979367d27a06f8bc2121b8342712947c66532d6625761e"
     },
     "demo/script-workflow/2026-09-26-agentic-video/README.md": {
-      "bytes": 3033,
-      "sha256": "7eec74e3477627946f70a53c5cc2fdc05340d1bfd3a43bba4db4d1645d33dfc0"
+      "bytes": 4485,
+      "sha256": "260647b2a259971fe5c49f0c3cd4be5aac996325b867a564171a6520a445e70d"
     },
     "demo/script-workflow/2026-10-16-version-alignment/README.md": {
-      "bytes": 2594,
-      "sha256": "adec31db9add53bf909e40032257358e2ef35ab6bccf90acf12a4c1e7bbce45d"
+      "bytes": 3347,
+      "sha256": "06127dd749acb905b213db2667adf18c8c74ec2fc96f140258f0d3cb682b3ac2"
+    },
+    "demo/process-evidence/journeys.json": {
+      "bytes": 18472,
+      "sha256": "a1002791704efea7eb04dd4bc6d2836abca2ab1f3b7e3c3138d7be625f89324d"
+    },
+    "demo/process-evidence/agent.png": {
+      "bytes": 205056,
+      "sha256": "bcc4e0c28e7f05ba160293ac340916c4002c8602d70133803518c5b47da8a08b"
+    },
+    "demo/process-evidence/provenance.json": {
+      "bytes": 2192,
+      "sha256": "e5a9b191edf85c5ad9e4a9bc2ebb55501d354b68d57f1e1e457dc2371206648f"
+    },
+    "demo/process-evidence/radar.png": {
+      "bytes": 201417,
+      "sha256": "90d9ad8ae8eac38fd5bb70332b4a4fd3233182fdf6ade46ff4d13dfc1adc4226"
+    },
+    "demo/process-evidence/content.png": {
+      "bytes": 337169,
+      "sha256": "a20a987d902b80defb7d7731bfcd99e7740f366372e4223153d32ca8ddde4b5d"
+    },
+    "demo/process-evidence/script.png": {
+      "bytes": 438434,
+      "sha256": "8d2fa6f7317ae199445792bb6dce6e61b1ba6ac66305951499d4da3f2f2247c0"
+    },
+    "demo/process-evidence/render-check.json": {
+      "bytes": 590,
+      "sha256": "8cfc44a1725de174fda28c26057e4293e630d1f73e6e3133ecf898d1c13f5c10"
+    },
+    "demo/content-workflow/2026-08-27-literature-review/README.md": {
+      "bytes": 5003,
+      "sha256": "17fbc3e4b4f24d7135c4797353d6fa49740a88ff0f5eb77c9d34b30d241e14ed"
+    },
+    "demo/content-agent/2026-10-16-draft-review/README.md": {
+      "bytes": 5855,
+      "sha256": "8c9999afe5263e4a515e9ed17c2b1ed544df8d86a10e30b6a3c070ce6d67eab7"
+    },
+    "demo/daily-trend-radar/2026-10-16-source-check/README.md": {
+      "bytes": 4148,
+      "sha256": "b6e06fd3d16105901f9e8105dcebb83e72b25d1fc409a9b4c1bc127c773dcbac"
     }
   },
   "requirements": {
@@ -123,7 +163,13 @@
     "candidate_copy_matches_structured_draft_and_page": true,
     "score_document_matches_runtime": true,
     "local_revision_feedback_does_not_prescribe_tool_copy": true,
-    "bounded_review_control_regressions_pass": true
+    "bounded_review_control_regressions_pass": true,
+    "personal_name_removed_from_display": true,
+    "four_parallel_user_journeys": true,
+    "process_figures_labeled_as_explanations_not_app_screenshots": true,
+    "real_feedback_and_before_after_evidence_in_cases": true,
+    "references_and_application_documented": true,
+    "future_comparison_design_not_reported_as_results": true
   },
   "engineering_checks": {
     "radar": {
@@ -155,12 +201,13 @@
     "repository_target": "doublegou/ai-product-portfolio (private)"
   },
   "documentation_check": {
-    "files": 56,
-    "local_links": 280,
-    "broken": 0
+    "files": 47,
+    "local_links": 286,
+    "broken": 0,
+    "scope": "Reader Markdown including HTML image links and heading anchors; not imported source docs"
   },
   "browser_record": "showcase-check.json",
-  "completion_audit": "Recruiter-content pass: problem framing, task scope, concrete decisions, context design, output examples, quality criteria and next investment decisions reviewed. External adoption, economics and growth remain unmeasured. Private repository push authorized; remote verification occurs after commit.",
+  "completion_audit": "GitHub reading pass: four task journeys and aligned evidence diagrams, real changes and artifacts, distinct historical/current/proposed claims. Native Codex conversation screenshots unavailable. User adoption, full cost baseline, card final crops remain outstanding. No new website.",
   "github_reading_record": "github-reading-check.json",
   "board_materials": {
     "content-workflow": {
@@ -203,5 +250,6 @@
       ],
       "result_rows": 1
     }
-  }
+  },
+  "engineering_checks_last_run": "2026-10-16; unchanged source, no engineering suite rerun for this content-only pass"
 }

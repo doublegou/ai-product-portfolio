@@ -1,6 +1,6 @@
 {
-  "checked_on": "2026-10-16",
-  "scope": "Local GFM approximation, not a hosted GitHub rendering; no publication",
+  "checked_on": "2026-10-17",
+  "scope": "GitHub Markdown API HTML, rendered with local approximate GitHub CSS; not a browser screenshot of github.com",
   "checks": [
     {
       "viewport": 1280,
@@ -8,25 +8,30 @@
       "images": [
         {
           "loaded": true,
-          "width": 1024,
-          "height": 1536
+          "width": 1440,
+          "height": 1080
         },
         {
           "loaded": true,
-          "width": 1086,
-          "height": 1448
+          "width": 1440,
+          "height": 1080
         },
         {
           "loaded": true,
-          "width": 1280,
-          "height": 720
+          "width": 1440,
+          "height": 1080
+        },
+        {
+          "loaded": true,
+          "width": 1440,
+          "height": 1080
         }
       ],
       "sections": [
-        "content-workflow · 同一视频，两种阅读方式",
-        "script-workflow · 允许部分执行，也要处理版本变化",
-        "content-agent · 模型通过后，仍要回到产品事实",
-        "daily-trend-radar · 给出选题依据，也说明信息缺失"
+        "01 · content-workflow：从一条视频到能独立阅读的图文",
+        "02 · script-workflow：从口播稿到同一期视频配套素材",
+        "03 · content-agent：从产品资料到可复核的候选稿",
+        "04 · daily-trend-radar：从公开榜单到值得继续研究的选题"
       ]
     },
     {
@@ -35,25 +40,30 @@
       "images": [
         {
           "loaded": true,
-          "width": 1024,
-          "height": 1536
+          "width": 1440,
+          "height": 1080
         },
         {
           "loaded": true,
-          "width": 1086,
-          "height": 1448
+          "width": 1440,
+          "height": 1080
         },
         {
           "loaded": true,
-          "width": 1280,
-          "height": 720
+          "width": 1440,
+          "height": 1080
+        },
+        {
+          "loaded": true,
+          "width": 1440,
+          "height": 1080
         }
       ],
       "sections": [
-        "content-workflow · 同一视频，两种阅读方式",
-        "script-workflow · 允许部分执行，也要处理版本变化",
-        "content-agent · 模型通过后，仍要回到产品事实",
-        "daily-trend-radar · 给出选题依据，也说明信息缺失"
+        "01 · content-workflow：从一条视频到能独立阅读的图文",
+        "02 · script-workflow：从口播稿到同一期视频配套素材",
+        "03 · content-agent：从产品资料到可复核的候选稿",
+        "04 · daily-trend-radar：从公开榜单到值得继续研究的选题"
       ]
     }
   ],

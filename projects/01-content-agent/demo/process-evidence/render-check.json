@@ -1,0 +1,30 @@
+{
+  "checked_on": "2026-10-17",
+  "kind": "静态说明图的版式检查，不是产品运行验证",
+  "figures": [
+    {
+      "id": "content",
+      "width": 1440,
+      "height": 1080,
+      "source": "conversation-excerpts.json"
+    },
+    {
+      "id": "script",
+      "width": 1440,
+      "height": 1080,
+      "source": "conversation-excerpts.json"
+    },
+    {
+      "id": "agent",
+      "width": 1440,
+      "height": 1080,
+      "source": "events.json"
+    },
+    {
+      "id": "radar",
+      "width": 1440,
+      "height": 1080,
+      "source": "report-proxy.json"
+    }
+  ]
+}
