@@ -1,0 +1,37 @@
+Date: 2026-10-17
+Xcode: 27.0 (27A266a)
+Simulator: iPhone 17 Pro / iOS 26.5 / arm64
+Command: xcodebuild -project StayWord.xcodeproj -scheme StayWord -sdk iphonesimulator -destination platform=iOS\ Simulator,id=4A6E6D82-C908-4B4D-A2A7-838F9D892410 -derivedDataPath /tmp/stayword-portfolio-build -only-testing:StayWordTests CODE_SIGNING_ALLOWED=NO test
+Result: TEST SUCCEEDED; xcresult summary 29 passed, 0 failed, 0 skipped
+Environment repairs: downloaded missing Metal Toolchain; completed pinned mlx-c submodule in temporary Swift Package checkout. No application source edits.
+
+Passed cases from xcodebuild log:
+StayWordTests/processingStagesHaveIndependentDisplayLifecycles()
+StayWordTests/timestampFormatting()
+StayWordTests/summaryChunksKeepTranscriptSegmentsWholeAndOrdered()
+StayWordTests/summaryResponseIgnoresClosingTagWithoutMatchingOpeningTag()
+StayWordTests/summaryChunksMayPassTheTargetToKeepTheNextSegmentWhole()
+StayWordTests/structuredSummaryOutputRequiresBothFields()
+StayWordTests/summaryResponseStopsAtClosingSummaryTag()
+StayWordTests/importedAudioKeepsItsSourceExtension()
+StayWordTests/transcriptDraftRetainsSegmentTiming()
+StayWordTests/summaryChunksDoNotSplitAnOversizedTranscriptSegment()
+StayWordTests/summaryResponseWaitsForACompleteClosingTag()
+StayWordTests/bestEffortSummaryRejectsMismatchedTitleOnlyOutput()
+StayWordTests/partialSummaryOutputParsesTaggedBody()
+StayWordTests/summaryMarkupCleanerConvertsHTMLListsToPlainText()
+StayWordTests/partialSummaryOutputKeepsUsableBodyWhenClosingTagIsMissing()
+StayWordTests/structuredSummaryOutputRemovesParagraphMarkup()
+StayWordTests/structuredSummaryOutputParsesTitleAndReadableBody()
+StayWordTests/bestEffortSummaryAcceptsAnUnclosedSummaryTag()
+StayWordTests/bestEffortSummaryAcceptsLabeledPlainText()
+StayWordTests/bestEffortSummaryPreservesUntaggedBody()
+StayWordTests/transcriptPlaybackSyncUsesSpokenSegmentBounds()
+StayWordTests/transcriptPlaybackSyncSupportsLegacyUntimedSegments()
+StayWordTests/recordingDerivedState()
+StayWordTests/recordingTitleUsesLocalizedSystemDateAndTime()
+StayWordTests/swiftDataFolderRelationship()
+StayWordTests/transcriptionCheckpointPersistsWithRecording()
+StayWordTests/aacPreparationStopsCleanlyAtEndOfFile()
+StayWordTests/processingPausesInBackgroundAndResumesWhenActive()
+StayWordTests/recordingsProcessOneAtATimeInFIFOOrder()

@@ -1,0 +1,83 @@
+{
+  "source": "video/already/04_stayword/9月25日.mov",
+  "recording_date": "2026-09-25",
+  "source_sha256": "84f4fe416b1b475bcb41fa38b4da8b398985d9a8147ae5554a1f2bc243ce9519",
+  "duration_seconds": 168.623311,
+  "source_resolution": [
+    1918,
+    1080
+  ],
+  "frames": [
+    {
+      "file": "assets/01-import.jpg",
+      "timestamp_seconds": 60,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    },
+    {
+      "file": "assets/02-processing.jpg",
+      "timestamp_seconds": 90,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    },
+    {
+      "file": "assets/03-transcript-playback.jpg",
+      "timestamp_seconds": 180,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    },
+    {
+      "file": "assets/04-summary.jpg",
+      "timestamp_seconds": 120,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    },
+    {
+      "file": "assets/05-export.jpg",
+      "timestamp_seconds": 270,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    },
+    {
+      "file": "assets/06-favorites.jpg",
+      "timestamp_seconds": 390,
+      "crop_xywh": [
+        470,
+        44,
+        300,
+        636
+      ]
+    }
+  ],
+  "processing": "Extracted phone region from original video; no UI content redrawn. Historical demonstration, not current-version performance test.",
+  "frames_source": {
+    "source": "video/already/04_stayword/source/export-1790330278170.mp4",
+    "sha256": "54325b45d871f0cff010e85a7e6ca5b4b197c5a0a6b49df18c74adb453e41e40",
+    "resolution": [
+      1236,
+      696
+    ],
+    "duration_seconds": 521.666667
+  },
+  "video_processing": "Full introduction transcoded to 1280px H.264 CRF27/AAC96k, no added speed change or cuts."
+}

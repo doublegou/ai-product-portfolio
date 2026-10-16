@@ -1,0 +1,86 @@
+{
+  "scope": "Frozen summary integrity, population recount and arithmetic; NOT raw-prediction metric reproduction or retraining.",
+  "run_id": "base_v3_full_20260817_r2",
+  "population": {
+    "sites": 5600,
+    "bands": {
+      "<0.72": 4756,
+      "0.72–0.75": 708,
+      "0.75–0.80": 107,
+      ">=0.80": 29
+    }
+  },
+  "rf_relative_rmse_reduction_percent": 2.756800908010937,
+  "rf_relative_mae_reduction_percent": 3.9481504293913394,
+  "training_extreme_hits": {
+    "rf": 29,
+    "xgb": 28
+  },
+  "checks": [
+    {
+      "check": "population_5600_unique_sites",
+      "passed": true
+    },
+    {
+      "check": "observed_bands_match_frozen_design",
+      "passed": true
+    },
+    {
+      "check": "sha256:README.md",
+      "passed": true
+    },
+    {
+      "check": "sha256:integrity_checks.csv",
+      "passed": true
+    },
+    {
+      "check": "sha256:outer_selected_recipes.csv",
+      "passed": true
+    },
+    {
+      "check": "sha256:primary_pooled_metrics.csv",
+      "passed": true
+    },
+    {
+      "check": "sha256:primary_repeat_metrics.csv",
+      "passed": true
+    },
+    {
+      "check": "sha256:primary_site_mean_metrics.csv",
+      "passed": true
+    },
+    {
+      "check": "sha256:stress_scheme_metrics.csv",
+      "passed": true
+    },
+    {
+      "check": "rf:pooled_population",
+      "passed": true
+    },
+    {
+      "check": "rf:pooled_rmse_from_repeat_summaries",
+      "passed": true
+    },
+    {
+      "check": "rf:site_mean_population_and_extreme_hits",
+      "passed": true
+    },
+    {
+      "check": "xgb:pooled_population",
+      "passed": true
+    },
+    {
+      "check": "xgb:pooled_rmse_from_repeat_summaries",
+      "passed": true
+    },
+    {
+      "check": "xgb:site_mean_population_and_extreme_hits",
+      "passed": true
+    },
+    {
+      "check": "RF_lower_rmse_in_each_repeat",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

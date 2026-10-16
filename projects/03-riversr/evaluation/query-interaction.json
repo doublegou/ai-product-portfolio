@@ -1,0 +1,23 @@
+{
+  "checked_on": "2026-10-17",
+  "scope": "Chromium interaction against existing local prototype; not real-model prediction",
+  "checks": [
+    {
+      "strontiumCentral50": "0.7100",
+      "otherInputs": "empty",
+      "overlayCount": 1,
+      "overlayHashes": [
+        "e901f970cfdb64f8e43589f8a87f0d3424d26f849eeefbad9d63eddd6d163fe0"
+      ]
+    },
+    {
+      "strontiumCentral50": "0.7500",
+      "otherInputs": "empty",
+      "overlayCount": 1,
+      "overlayHashes": [
+        "e901f970cfdb64f8e43589f8a87f0d3424d26f849eeefbad9d63eddd6d163fe0"
+      ]
+    }
+  ],
+  "overlayUnchanged": true
+}

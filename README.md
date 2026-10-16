@@ -1,39 +1,31 @@
 # AI 产品作品集
 
-围绕三个项目组，展示从问题定义、能力拆解到实现、验证与迭代的过程。三个项目均由本人独立完成。内容生产项目已收录真实任务与产物，其他两个项目的材料仍在整理。
+三个独立完成的项目，分别探索 AI 工作流、端侧语音产品和科研建模应用。每个案例从具体使用任务出发，展示产品取舍、实际产物、技术实现与验证结果。
 
-| 项目 | 关注的问题 | 阅读入口 |
+| 项目 | 核心问题 | 值得先看的证据 |
 | --- | --- | --- |
-| 01 内容生产 Agent 与 Skill 工作流 | 如何把内容生产拆成可复用的能力，并让任务结果可检查、失败可处理 | [项目案例](projects/01-content-agent/README.md) |
-| 02 StayWord 端侧语音产品 | 如何在设备和模型约束下，交付录音、转写、摘要的完整体验 | [项目案例](projects/02-stayword/README.md) |
-| 03 RiverSR 建模与科研应用 | 如何验证陌生水系的泛化能力，诊断失败并限定模型用途 | [项目案例](projects/03-riversr/README.md) |
+| [内容生产 Agent 与 Skill 工作流](projects/01-content-agent/README.md) | 如何将内容任务拆成可复用、可修改、可验收的工作流 | 四类真实任务；图文、演示、文案与多比例封面；失败恢复与模型降级 |
+| [StayWord](projects/02-stayword/README.md) | 如何在手机资源与后台限制下，交付本地录音、转写、摘要体验 | 实机视频与六步使用过程；双端模型路由；中断恢复与降级方案 |
+| [RiverSR](projects/03-riversr/README.md) | 如何判断模型进入陌生水系后还能承担哪些任务 | 5,600 站点严格验证；RF / XGBoost 比较；尾部失败与不发布决策 |
 
-## 内容生产项目
+## 从结果继续深入
 
-[阅读项目作品集](projects/01-content-agent/README.md) · [完整产品案例](projects/01-content-agent/docs/case-study.md)
+**内容工作流：**从资料到可发布准备的多种产物，处理需求变更、部分执行和交接。[阅读完整案例](projects/01-content-agent/docs/case-study.md)
 
-四类真实任务、实际产物、产品取舍和验证结果均在项目内呈现，可直接在 GitHub 阅读。
+**StayWord：**从音频到可核验的本地笔记，把模型能力、系统限制和用户等待体验一起设计。[观看实机演示](projects/02-stayword/demo/assets/stayword-demo-2026-09-25.mp4) · [阅读技术方案](projects/02-stayword/docs/technical-design.md)
 
-<details>
-<summary>项目维护与来源记录</summary>
+**RiverSR：**从数据与验证条件出发选模型；平均误差改善仍不足以批准高值筛查。[查看结果与复核](projects/03-riversr/evaluation/README.md)
 
-- [优化标准与执行计划](PORTFOLIO_PLAN.md)
-- [进度清单](ROADMAP.md)
-- [来源与版本](SOURCES.md)
-- [来源一致性核对](SOURCE_CHECK.md)
-- [来源清单](sources.json)
-
-</details>
-
-## 阅读范围
-
-内容生产项目已按使用过程、产品决策和证据整理。StayWord 与 RiverSR 当前保留实现和阶段材料，继续整理中。三个项目均由本人独立完成。
+各项目首页可以独立阅读；源码、运行指南与证据放在项目内。历史演示、当前实现、本轮验证与后续方案分别标注，没有将规划值或推测写成已测成绩。
 
 <details>
-<summary>来源、运行与仓库说明</summary>
+<summary>维护、来源与运行说明</summary>
 
-本仓库作为独立作品集维护，保留来源作者、许可与版本记录；修改不回推原工程。源码、模型及素材沿用各自许可，未统一重新授权。当前仓库为私有，公开范围另行确定。
+- [优化标准](PORTFOLIO_PLAN.md) · [进度与后续验证](ROADMAP.md)
+- [来源与版本](SOURCES.md) · [一致性核对](SOURCE_CHECK.md) · [来源清单](sources.json)
 
-StayWord 模型与原生依赖使用 Git LFS；各项目的运行要求见对应说明。历史结果、当前修订和待验证设计分别标注。
+本仓库独立维护，修改不回推源工程。源码、模型和素材保留各自作者、许可与版本记录，未统一重新授权。StayWord 模型和原生库使用 Git LFS；RiverSR 的完整 HPC 模型归档不等同于仓库内紧凑验证材料。运行要求见各项目 Quick start。
+
+当前仓库保持私有；作品集整理完成不代表已授权公开所有素材。
 
 </details>

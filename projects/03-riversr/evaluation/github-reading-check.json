@@ -1,0 +1,38 @@
+{
+  "checked_on": "2026-10-17",
+  "scope": "GitHub Markdown API HTML rendered with approximate local GitHub CSS; not a screenshot of github.com",
+  "checks": [
+    {
+      "viewport": 1280,
+      "documentWidth": 1280,
+      "images": [
+        {
+          "loaded": true,
+          "width": 920,
+          "height": 399
+        },
+        {
+          "loaded": true,
+          "width": 920,
+          "height": 694
+        }
+      ]
+    },
+    {
+      "viewport": 390,
+      "documentWidth": 390,
+      "images": [
+        {
+          "loaded": true,
+          "width": 358,
+          "height": 155
+        },
+        {
+          "loaded": true,
+          "width": 358,
+          "height": 270
+        }
+      ]
+    }
+  ]
+}
