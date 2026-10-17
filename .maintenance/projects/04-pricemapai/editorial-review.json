@@ -31,6 +31,7 @@
       "Existing architecture SVG and all source code preserved."
     ],
     "image_validation": "Captured native Chrome; cropped browser chrome and below-fold region; inspected saved JPEG.",
-    "link_validation": "79 markdown files, 723 local links, zero missing targets/fragments."
+    "link_validation": "79 markdown files, 723 local links, zero missing targets/fragments.",
+    "github_visual_validation": "Native Chrome verified updated root README and project 04 README on GitHub, including real homepage image and navigation. Corrected three inline-bold labels after AX inspection."
   }
 }
