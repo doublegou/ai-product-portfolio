@@ -20,5 +20,17 @@
     "links": "724 local links across 79 markdown files; zero missing targets/fragments",
     "preview": "HTTP/index/19 pages/version/count/CSP/blocked paths passed; no new browser visual verification"
   },
-  "publishing": "Personal copy remains private; portfolio stays private; no production deployment."
+  "publishing": "Personal copy remains private; portfolio stays private; no production deployment.",
+  "followup_product_positioning": {
+    "date": "2026-10-17",
+    "changes": [
+      "Root entry defines target users, situations, problems, product mechanisms and current stage for all four cases.",
+      "PriceMap AI homepage rewritten as a product case: positioning, MVP, core journeys, evolution, technical choices, measured results and next stage.",
+      "Product planning adds target-priority rationale and discovery, activation, return and monetization hypotheses.",
+      "Native Chrome visited official homepage; genuine screenshot replaces the video frame at both entry points.",
+      "Existing architecture SVG and all source code preserved."
+    ],
+    "image_validation": "Captured native Chrome; cropped browser chrome and below-fold region; inspected saved JPEG.",
+    "link_validation": "79 markdown files, 723 local links, zero missing targets/fragments."
+  }
 }

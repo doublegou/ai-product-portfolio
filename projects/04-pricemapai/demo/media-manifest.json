@@ -56,5 +56,28 @@
     "duration_seconds": 191.146667,
     "transform": "1280 width, H.264 CRF 27, AAC 96k, faststart; original audio/timing",
     "sha256": "e08584d3a5ee8651312c52ebb4734a0e4a72ba44d2c1fa8d3cbda5e45b9573f7"
-  }
+  },
+  "website_screenshots": [
+    {
+      "file": "assets/00-homepage-2026-10-17.jpg",
+      "url": "https://pricemapai.com/",
+      "captured_on": "2026-10-17",
+      "browser": "User-open Google Chrome via native cua API",
+      "source_sha256": "958a554462577f6ca7e9a2094b7e83efc37405d226cbe954f98f62ada5f593b7",
+      "source_dimensions": [
+        2610,
+        1826
+      ],
+      "source_format": "jpeg",
+      "crop_pixels": {
+        "left": 0,
+        "top": 174,
+        "width": 2610,
+        "height": 1395
+      },
+      "output_width": 1800,
+      "sha256": "e469b4176a369c3b8b13a7212f979e997d79efc5668bd7ae7518d419b19f6cfb",
+      "transform": "Crop browser chrome and below-fold region; resize and JPEG encode. No webpage modification."
+    }
+  ]
 }
