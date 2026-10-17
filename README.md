@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | [内容生产 Agent 与 Skill 工作流](projects/01-content-agent/README.md) | 如何将内容任务拆成可复用、可修改、可验收的工作流 | 四类真实任务；图文、演示、文案与多比例封面；失败恢复与模型降级 |
 | [StayWord](projects/02-stayword/README.md) | 如何在手机资源与后台限制下，交付本地录音、转写、摘要体验 | 从首版到 App Store 发行与反馈迭代；英国区付费效率榜前 100（第三方记录）；双端 AI 与资源取舍 |
-| [RiverSR](projects/03-riversr/README.md) | 如何判断模型进入陌生水系后还能承担哪些任务 | 5,600 站点严格验证；RF / XGBoost 比较；尾部失败与不发布决策 |
+| [RiverSR](projects/03-riversr/README.md) | 如何从科研需求建立预测基线，验证新增信息与应用价值 | 5,600 站点数据主线；水系隔离验证；Natural90 / Human17 研究；训练资源与生物应用基准 |
 
 ## 从结果继续深入
 
@@ -14,7 +14,7 @@
 
 **StayWord：**从音频到可核验的本地笔记，把模型能力、系统限制和用户等待体验一起设计。[观看实机演示](projects/02-stayword/demo/assets/stayword-demo-2026-09-25.mp4) · [阅读技术方案](projects/02-stayword/docs/technical-design.md)
 
-**RiverSR：**从数据与验证条件出发选模型；平均误差改善仍不足以批准高值筛查。[查看结果与复核](projects/03-riversr/evaluation/README.md)
+**RiverSR：**从假设与对照实验推进模型、信息和应用决策，记录训练工程、失败恢复与研究投入。[查看研究演进](projects/03-riversr/docs/decision-timeline.md) · [查看训练与资源](projects/03-riversr/docs/technical-design.md)
 
 各项目首页呈现产品过程与关键决策，关联页面提供技术实现、实际产物和实验依据。
 

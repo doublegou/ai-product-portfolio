@@ -29,7 +29,7 @@
 | 气候 | WorldClim 温度、降水及季节性；Global-AI_ET0 干旱度和蒸散 | 提供气候环境背景 |
 | 地形与土壤 | 高程；SoilGrids 表层 clay 与 pH，含局地/上游汇总 | 补充地表与流域环境特征 |
 
-这 50 个变量是已有基线。人类活动等更完整的候选信息属于 Direction 2，不能写成现有模型已经使用。区域 Process14 则是现有变量上的过程衍生表示，需通过 Full50 / Full64 对照证明增量价值。[完整变量清单](../src/river_sr/training/base/v3/release/full50_predictors.txt)
+这 50 个变量属于早期基线。后续 Natural90 / Human17 已扩展输入，但不能写成这份 Full50 模型已经使用了这些信息。区域 Process14 则是现有变量上的过程衍生表示，需通过 Full50 / Full64 对照证明增量价值。[完整变量清单](../src/river_sr/training/base/v3/release/full50_predictors.txt)
 
 ## 输入、特征与冻结契约
 
@@ -60,7 +60,21 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 
 内层先以 RMSE 确定 0.5% 范围内候选，再以尾部识别、低值误报、偏差等打破近似并列。算法最终选择用 pooled strict Outer-OOF RMSE，MAE 与绝对偏差作确定性平局规则。两个层次的规则不同，不要混写。
 
-## 模型配方与资源控制
+## 模型训练与冻结配方
+
+这里以源码与冻结产物齐全的 **Full50 / Base V3** 展开训练实现；Natural90 / Human17 使用不同特征、人群与模型任务，后续部分单独列出，不套用这份 RF 配方。
+
+训练单位是一个 `model × repeat × outer fold`。流程依次完成：验证输入/分组哈希 → 读取训练分区 → 内层搜索 → 冻结候选 → 外层一次评价 → 保存 OOF、模型与预处理统计。RF 使用 `ranger` 回归，XGBoost 使用平方误差目标与 `hist` 树构建；线程数读取 `SLURM_CPUS_PER_TASK`，没有配置 GPU 训练。
+
+| 训练阶段 | RF | XGBoost | 计算与验证含义 |
+| --- | --- | --- | --- |
+| 粗筛 | 48 结构 × 3 权重 × 5 内折，500 树 | 相同候选/权重/折预算；最多 3,000 轮，50 轮 patience | 先覆盖参数空间，权重与结构一起选 |
+| 细化 | 16 结构 × 3 权重 × 5 内折，1,000 树 | 相同细化预算；仍以内层 early stopping 选轮数 | 在有希望的结构附近继续比较 |
+| 外层评价 | 选定结构，2,000 树 | 使用内层选中轮数的中位数，外层不 early-stop | 外层标签不参与参数或轮数选择 |
+| 部署选参 | 汇总 Primary 结构证据，最多 16 结构重新 grouped tuning | 同样在 Primary 支持的 shortlist 上选择 | 确定单一配方；调参分数不作为新泛化成绩 |
+| 压力与最终拟合 | stress 2,000 树，最终 4,000 树 | 冻结轮数用于 stress 和最终拟合 | 压力测试后不重新追分，最终拟合用于交付与容量诊断 |
+
+单个外层任务的内层 fit 数为 `(48 + 16) × 3 × 5 = 960`，再加 1 次外层拟合。30 个任务的 **Primary 配置预算为 28,830 次 fit 调用**。这是基于配置的计算规模，不是读取完整运行账单得到的实执行次数；部署、stress、最终拟合、smoke 和重试另外计入。[训练脚本](../src/river_sr/training/base/v3/scripts/02_primary_task.R) · [训练函数](../src/river_sr/training/base/v3/R/common.R) · [配置](../src/river_sr/training/base/v3/config/base_v3.yml)
 
 | 项目 | RF | XGBoost |
 | --- | --- | --- |
@@ -73,13 +87,71 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 
 这些空间压力测试是 EPSG:6933 正方形分块，不能描述成“每个测试站点周围清空相应公里数”的距离缓冲实验。后者属于 Direction 2 提出的另一类设计。
 
-## 运行工程与交付物
+## 训练资源、耗时与成本
 
-正式流程：prepare → 15 RF + 15 XGB 主任务 → 聚合 → 部署调参 → 20 RF + 20 XGB stress → 全数据拟合 → check / release。使用 Slurm 调度，各阶段显式指定 run_id；参数、输入、分组与源码哈希组成追溯契约，不能静默复用不同运行的结果。
+### 资源申请与运行规模
 
-交付物包括冻结配方、特征清单、预处理统计、分组清单、主验证及压力测试摘要、科学结论与二进制包哈希。仓库保留紧凑证据；`model_bundle.rds` 在源项目中被 Git 忽略，本作品集没有自动附带该权重。完整 HPC 归档是正式运行的二进制记录，不能把 README 中的 release 状态理解为在线预测服务已经部署。
+| Base V3 阶段 | 任务数 | 每任务 CPU / 内存申请 | 每任务时限 |
+| --- | ---: | --- | --- |
+| RF Primary | 15 | 16 CPU / 32 GiB | 36 h |
+| XGBoost Primary | 15 | 16 CPU / 32 GiB | 48 h |
+| Deployment | 2 | 16 CPU / 32 GiB | 36 h |
+| RF + XGBoost stress | 40 | 16 CPU / 24 GiB | 8 h |
+| 检查、聚合、最终拟合、结果检查 | 4 | 默认提交器统一 8 CPU；内存按阶段 12–32 GiB | 分别 1 / 2 / 12 / 2 h |
 
-来源：[release 目录](../src/river_sr/training/base/v3/release/README.md)、[最终 manifest](../src/river_sr/training/base/v3/release/final_manifest.json)。
+表中是 `run.sh` 与 sbatch 的默认请求，命令行可覆盖。默认 Primary 并发为每算法 5 任务，共 160 CPU；stress 每算法 10 任务，共 320 CPU。正式 RESULTS 记录的申请峰值更高：Primary 480 CPU、stress 640 CPU；这些是该次运行的资源规模记录，不能拿默认配置替代，也不代表实际 CPU 利用率。控制任务以提交器的覆盖值为准，不能只读取 sbatch 中的 `cpus-per-task`。
+
+[Slurm 提交器](../src/river_sr/hpc/slurm/base_v3/run.sh) · [任务配置目录](../src/river_sr/hpc/slurm/base_v3/) · [正式运行结果](../src/river_sr/training/base/v3/RESULTS.md)
+
+### 从保留日志能测出什么
+
+我重新解析了仓库内 **119 份 run.log**，将每个任务最后一组完整开始/结束记录与 `task_info.json` 对齐。V1 日志含早期追加运行，汇总时排除旧记录，不能把重复日志算成新增任务。时间戳精度为 1 秒。
+
+| 日志范围 | 任务 / 模型拟合 | 日志中的应用计时 | 如何解释 |
+| --- | --- | --- | --- |
+| Regional V1 最后一轮 | 85 任务 / 85 次模型拟合 | 09:03:07–09:03:12；任务时长合计 55 s | 多任务并发；单任务 0–1 s，受日志精度限制 |
+| Regional V1.1 | 34 任务 / 578 次 GAM 拟合，另有 34 校准器 | 09:13:25–09:13:39；任务时长合计 271 s | Environment 单任务中位 5 s，Combined 中位 11 s |
+| Base V3 | 正式摘要记录 76 作业单元完成 | 当前保留摘要不含完整任务起止和 sacct | 不能由发布时间倒算总训练时长 |
+
+以上应用时间均来自 2026-08-17 的任务日志；不包含排队、R/包加载前的耗时和其他流程阶段。尤其不能把 V1.1 的 14 秒窗口写成“整个项目训练只用 14 秒”，也不能把并发任务的 271 秒加总当作用户等待时间。[可重复提取脚本](../evaluation/summarize_training.py) · [逐任务记录及哈希](../evaluation/training-evidence.json)
+
+### 成本怎样核算
+
+我将计算成本拆成**有效实验、失败恢复、数据处理与存储**。当前材料可以确定任务结构、申请配置和部分应用计时；尚未取得完整调度账单与集群单价，因此不填造实际金额，也不把科研配额视为零成本。
+
+若集群按分配 CPU 核时计费，核算为：`Σ(AllocCPUS × ElapsedRaw / 3600) × 核时单价`，再加平台适用的内存、存储或其他费用。应逐个任务统计，父 array 汇总与子任务、batch step 不能重复累加。`CPUTimeRAW` 是分配 CPU 时间，`TotalCPU` 是使用的 CPU 时间，两者可用于检查利用情况；实际结算仍以平台规则为准。[Slurm sacct 字段定义](https://slurm.schedmd.com/sacct.html)
+
+项目需要保留的计量字段包括 run_id、任务/attempt、分配 CPU、ElapsedRaw、TotalCPU、MaxRSS、状态和退出码；没有实际运行时间与单价时，只能做配置预算，不能提供实际费用。后续归档恢复可直接补入同一口径，不改变已经冻结的科学指标。
+
+## 失败恢复、资源取舍与交付
+
+正式依赖顺序为：检查 → 两算法 Primary → 聚合 → 部署选参 → 固定配方 stress → 最终拟合 → 结果检查。`afterok` 使下游阶段依赖上游成功；各阶段显式指定 run_id，参数、输入、分组与源码哈希共同标识运行。
+
+| 工程选择 | 节约或保护了什么 | 实际边界 |
+| --- | --- | --- |
+| 500 → 1,000 → 2,000 → 4,000 树逐级增加 | 在候选筛选阶段控制 RF 计算量 | 不能将不同树数的 fit 次数直接换算为等量 CPU 成本 |
+| XGBoost 内层早停 | 不为每个候选都跑满 3,000 轮 | 外层不使用测试标签 early-stop |
+| 完成一个候选的五个内折后原子保存摘要 | 同 run_id 重提时跳过已完成候选 | 当前未完成候选需重新跑；不是每棵树或每轮 boosting 都能恢复 |
+| 轻量可行性 → 校准/阈值 → 更强模型 | 先回答是否存在信号，再决定是否扩大计算 | 研究门槛在看到外层结果前固定 |
+| 结果与工程状态分开 | 避免输出/校验失败使有效计算全部重跑 | 结果内容仍须完整、版本与哈希一致 |
+
+Base V3 正式运行 76 个作业单元完成；Regional V2 最终完成 68 个任务、1,156 次拟合。Regional V2 前两次因计算节点 `libstdc++` 加载顺序在工程检查阶段停止，修复依赖后完成正式运行，没有为环境错误重设科学方案。后续 Human17 重分析的 55 个输出失败任务只恢复对应索引，未重跑有效任务；这是后续执行回报中的恢复记录，不计入 Base V3 成本。[区域工程与结果](../src/river_sr/training/regional_expert/regional_risk_v2/RESULTS.md) · [后续恢复记录](../evaluation/later-research-records.md#执行与恢复)
+
+研究交付包括配方、特征定义、预处理统计、分组、验证摘要、科学结论和二进制哈希。当前作品集没有附带 Base V3 的 `model_bundle.rds`；后续 Natural90 及 Human17 的完整产物也尚未取得本地副本。[Base V3 release](../src/river_sr/training/base/v3/release/README.md)
+
+## 后续 Natural90 / Human17 的实验合同
+
+| 项目 | 后续设计与执行回报 |
+| --- | --- |
+| 数据人群 | canonical 5,600；Natural90 主研究 5,543；Human17 配对 5,517 |
+| 模型任务 | M1 为自然基线；M2/M3 在完全相同配对人群比较自然变量与加入人类活动变量 |
+| 比较范围 | RF / XGBoost / LightGBM；空间 500 / 1,000 / 1,500 km、reference、水文迁移 |
+| 科学约束 | 测试身份、folds、水文 purge、候选、种子和 gate 冻结；H13 修复仅改变应改变的输入 |
+| 配对不确定性 | 每个单元 2,000 次 bootstrap，报告误差差值与区间，区分实质改善、实际等价与不确定 |
+| 重分析规模 | 210 Outer contexts、25,920 candidate-fold checkpoints；不能直接与 Base V3 的配置 fit 次数相加 |
+| 保护性验证 | Natural90 主模型/全球图不变；未受影响的 Human14 与 Sensitivity7 字节不变 |
+
+该部分的精确参数、二进制与调度耗时需以后续冻结工件为准。本页不把早期 Full50 的 `rf_110 / W2`、16 CPU 默认申请或空间分块定义迁移到新实验。[后续回报与完整配对表](../evaluation/later-research-records.md)
 
 ## 如何解释两种 OOF 汇总
 

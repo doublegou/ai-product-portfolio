@@ -35,3 +35,15 @@ npm run dev -- --host 127.0.0.1
 工程提供 `Rscript training/base/v3/scripts/run.R prepare` 与 `smoke --run-id local_smoke`；prepare 会写准备产物，应在独立副本中运行。正式实验面向 Slurm，遵循显式 run_id、冻结配置和数据契约。完整实验需要对应数据资产与计算环境；这里的轻量阅读和复核路径不依赖全量重训。
 
 `release/model_bundle.rds` 未随 Git 收录，只有配方、摘要和权重哈希。因此只克隆作品集不能直接运行冻结 RF 二进制推理。该限制不影响路径一的证据复核。
+
+## 路径四：查看后续研究与训练证据
+
+Natural90 / Human17 的配对结果、共同失败及生物应用基准见[后续研究记录](../evaluation/later-research-records.md)。这部分目前没有附带 HPC 模型快照，不使用早期 Full50 配方替代。
+
+从仓库根目录重新汇总已保留的任务日志：
+
+```bash
+python3 projects/03-riversr/evaluation/summarize_training.py
+```
+
+脚本仅读取日志、元数据和配置，输出 `training-evidence.json`；不会提交训练任务。预期覆盖 119 份任务日志，Base V3 Primary 配置预算为 28,830 次 fit 调用。
