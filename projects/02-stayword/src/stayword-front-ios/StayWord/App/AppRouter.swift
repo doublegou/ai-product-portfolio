@@ -19,6 +19,7 @@ enum RecordingListFilter: Hashable {
 }
 
 enum AppRoute: Hashable {
+    case settings
     case recordings(RecordingListFilter)
     case recentlyDeleted
     case detail(UUID)

@@ -34,6 +34,9 @@
 		B00100000000000000000019 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000019 /* Localizable.xcstrings */; };
 		B0010000000000000000001C /* AudioPCMPreparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001C /* AudioPCMPreparer.swift */; };
 		B0010000000000000000001D /* SherpaOnnxRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001D /* SherpaOnnxRuntime.swift */; };
+		B00100000000000000000023 /* RecordingExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000023 /* RecordingExportService.swift */; };
+		B00100000000000000000024 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000024 /* AppPreferences.swift */; };
+		B00100000000000000000025 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000025 /* SettingsView.swift */; };
 		B0010000000000000000001F /* Models in Resources */ = {isa = PBXBuildFile; fileRef = F0010000000000000000001F /* Models */; };
 		B00100000000000000000020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000020 /* Assets.xcassets */; };
 		B00100000000000000000021 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00100000000000000000021 /* InfoPlist.xcstrings */; };
@@ -127,6 +130,9 @@
 		F00100000000000000000020 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00100000000000000000021 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		F00100000000000000000022 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
+		F00100000000000000000023 /* RecordingExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingExportService.swift; sourceTree = "<group>"; };
+		F00100000000000000000024 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		F00100000000000000000025 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F00200000000000000000001 /* RecordingActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingActivityBundle.swift; sourceTree = "<group>"; };
 		F00200000000000000000002 /* RecordingLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingLiveActivityWidget.swift; sourceTree = "<group>"; };
 		F00200000000000000000003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +197,8 @@
 				F0010000000000000000000E,
 				F0010000000000000000001C,
 				F0010000000000000000001D,
+				F00100000000000000000023,
+				F00100000000000000000024,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 				F00100000000000000000015,
 				F00100000000000000000016,
 				F00100000000000000000017,
+				F00100000000000000000025,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -349,7 +358,8 @@
 				B00100000000000000000010, B00100000000000000000011, B00100000000000000000012,
 				B00100000000000000000013, B00100000000000000000014, B00100000000000000000015,
 				B00100000000000000000016, B00100000000000000000017, B00100000000000000000018,
-				B0010000000000000000001C, B0010000000000000000001D,
+				B0010000000000000000001C, B0010000000000000000001D, B00100000000000000000023,
+				B00100000000000000000024, B00100000000000000000025,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

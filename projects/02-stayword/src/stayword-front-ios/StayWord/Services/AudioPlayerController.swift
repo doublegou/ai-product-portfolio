@@ -7,17 +7,27 @@ protocol AudioPlaybackService: AnyObject {
     var currentTime: TimeInterval { get }
     var duration: TimeInterval { get }
     var isPlaying: Bool { get }
+    var playbackRate: Float { get }
+    var supportedPlaybackRates: [Float] { get }
     func load(_ recording: AudioRecording) throws
     func togglePlayback()
     func seek(to seconds: TimeInterval)
     func skip(by seconds: TimeInterval)
+    func setPlaybackRate(_ rate: Float)
+    func cyclePlaybackRate()
     func stop()
 }
 
 @MainActor
 @Observable
 final class AudioPlayerController: AudioPlaybackService {
+    nonisolated static let availablePlaybackRates: [Float] = [
+        0.5, 0.75, 1, 1.25, 1.5, 2,
+    ]
+    nonisolated static let playbackRateDefaultsKey = "audioPlaybackRate"
+
     private let fileStore: AudioFileStore
+    private let userDefaults: UserDefaults
     private let player = AVPlayer()
     @ObservationIgnored nonisolated(unsafe) private var timeObserver: Any?
     @ObservationIgnored nonisolated(unsafe) private var endObserver: NSObjectProtocol?
@@ -27,9 +37,25 @@ final class AudioPlayerController: AudioPlaybackService {
     var currentTime: TimeInterval = 0
     var duration: TimeInterval = 0
     var isPlaying = false
+    private(set) var playbackRate: Float
 
-    init(fileStore: AudioFileStore) {
+    var supportedPlaybackRates: [Float] {
+        Self.availablePlaybackRates
+    }
+
+    init(
+        fileStore: AudioFileStore,
+        userDefaults: UserDefaults = .standard
+    ) {
         self.fileStore = fileStore
+        self.userDefaults = userDefaults
+        let storedRate = userDefaults.object(
+            forKey: Self.playbackRateDefaultsKey
+        ) as? NSNumber
+        self.playbackRate = Self.validatedPlaybackRate(
+            storedRate?.floatValue
+        )
+        player.defaultRate = playbackRate
         configureRemoteCommands()
         observePlayback()
     }
@@ -57,7 +83,10 @@ final class AudioPlayerController: AudioPlaybackService {
         )
         try AVAudioSession.sharedInstance().setActive(true)
 
-        player.replaceCurrentItem(with: AVPlayerItem(url: url))
+        let item = AVPlayerItem(url: url)
+        item.audioTimePitchAlgorithm = .timeDomain
+        player.replaceCurrentItem(with: item)
+        player.defaultRate = playbackRate
         loadedRecordingID = recording.id
         loadedTitle = recording.title
         duration = recording.duration
@@ -72,7 +101,7 @@ final class AudioPlayerController: AudioPlaybackService {
             player.pause()
             isPlaying = false
         } else {
-            player.play()
+            player.playImmediately(atRate: playbackRate)
             isPlaying = true
         }
         updateNowPlaying()
@@ -91,6 +120,28 @@ final class AudioPlayerController: AudioPlaybackService {
 
     func skip(by seconds: TimeInterval) {
         seek(to: currentTime + seconds)
+    }
+
+    func setPlaybackRate(_ rate: Float) {
+        guard Self.isSupportedPlaybackRate(rate) else { return }
+        playbackRate = rate
+        player.defaultRate = rate
+        if isPlaying {
+            player.rate = rate
+        }
+        userDefaults.set(rate, forKey: Self.playbackRateDefaultsKey)
+        updateNowPlaying()
+    }
+
+    func cyclePlaybackRate() {
+        guard !supportedPlaybackRates.isEmpty else { return }
+        let currentIndex = supportedPlaybackRates.firstIndex {
+            abs($0 - playbackRate) < 0.001
+        } ?? 0
+        let nextIndex = supportedPlaybackRates.index(
+            after: currentIndex
+        ) % supportedPlaybackRates.count
+        setPlaybackRate(supportedPlaybackRates[nextIndex])
     }
 
     func stop() {
@@ -164,6 +215,22 @@ final class AudioPlayerController: AudioPlaybackService {
             }
             return .success
         }
+
+        commands.changePlaybackRateCommand.supportedPlaybackRates =
+            Self.availablePlaybackRates.map { NSNumber(value: $0) }
+        commands.changePlaybackRateCommand.isEnabled = true
+        commands.changePlaybackRateCommand.addTarget { [weak self] event in
+            guard
+                let rateEvent = event as? MPChangePlaybackRateCommandEvent,
+                Self.isSupportedPlaybackRate(rateEvent.playbackRate)
+            else {
+                return .commandFailed
+            }
+            Task { @MainActor [weak self] in
+                self?.setPlaybackRate(rateEvent.playbackRate)
+            }
+            return .success
+        }
     }
 
     private func updateNowPlaying() {
@@ -172,8 +239,31 @@ final class AudioPlayerController: AudioPlaybackService {
             MPMediaItemPropertyTitle: loadedTitle,
             MPMediaItemPropertyPlaybackDuration: duration,
             MPNowPlayingInfoPropertyElapsedPlaybackTime: currentTime,
-            MPNowPlayingInfoPropertyPlaybackRate: isPlaying ? 1.0 : 0.0,
+            MPNowPlayingInfoPropertyPlaybackRate: isPlaying ? playbackRate : 0.0,
+            MPNowPlayingInfoPropertyDefaultPlaybackRate: playbackRate,
             MPNowPlayingInfoPropertyMediaType: MPNowPlayingInfoMediaType.audio.rawValue,
         ]
+    }
+
+    nonisolated static func validatedPlaybackRate(_ rate: Float?) -> Float {
+        guard let rate, isSupportedPlaybackRate(rate) else { return 1 }
+        return rate
+    }
+
+    nonisolated static func isSupportedPlaybackRate(_ rate: Float) -> Bool {
+        availablePlaybackRates.contains { abs($0 - rate) < 0.001 }
+    }
+
+    nonisolated static func playbackRateLabel(
+        _ rate: Float,
+        locale: Locale = .autoupdatingCurrent
+    ) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = locale
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 2
+        let number = formatter.string(from: NSNumber(value: rate)) ?? "1"
+        return number + "×"
     }
 }

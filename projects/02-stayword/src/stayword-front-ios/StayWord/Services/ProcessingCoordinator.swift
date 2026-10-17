@@ -12,6 +12,8 @@ final class ProcessingCoordinator {
     private let transcriptionService: TranscriptionService
     private let summaryService: any SummaryService
     private let summaryGenerationEnabled: Bool
+    private let transcriptionLanguage: @MainActor () -> TranscriptionLanguage
+    private let reviewPrompts: ReviewPromptController?
     private var pendingJobs: [UUID: PendingJob] = [:]
     private var pendingJobIDs: [UUID] = []
     private var activeJobID: UUID?
@@ -23,12 +25,18 @@ final class ProcessingCoordinator {
         fileStore: AudioFileStore,
         transcriptionService: TranscriptionService = TranscriptionService(),
         summaryService: any SummaryService = OnDeviceSummaryService(),
-        summaryGenerationEnabled: Bool = true
+        summaryGenerationEnabled: Bool = true,
+        transcriptionLanguage: @escaping @MainActor () -> TranscriptionLanguage = {
+            .mandarinChinese
+        },
+        reviewPrompts: ReviewPromptController? = nil
     ) {
         self.fileStore = fileStore
         self.transcriptionService = transcriptionService
         self.summaryService = summaryService
         self.summaryGenerationEnabled = summaryGenerationEnabled
+        self.transcriptionLanguage = transcriptionLanguage
+        self.reviewPrompts = reviewPrompts
     }
 
     func enqueue(_ recording: AudioRecording, in context: ModelContext) {
@@ -71,6 +79,11 @@ final class ProcessingCoordinator {
                 pendingJob.recording,
                 in: pendingJob.context
             )
+            if pendingJob.recording.processingState == .completed {
+                self.reviewPrompts?.recordSuccessfulTranscription(
+                    recordingID: pendingJob.recording.id
+                )
+            }
             self.activeTask = nil
             self.activeJobID = nil
 
@@ -176,6 +189,7 @@ final class ProcessingCoordinator {
                 }
             let drafts = try await transcriptionService.transcribe(
                 url: audioURL,
+                language: transcriptionLanguage(),
                 resumeSampleOffset: recording.transcriptionCheckpointSample,
                 existingDrafts: existingDrafts
             ) { stage in

@@ -245,7 +245,7 @@ struct RecordingListView: View {
                         },
                         AdaptiveMenuAction(
                             "Import",
-                            systemImage: "square.and.arrow.up",
+                            systemImage: "square.and.arrow.down",
                             accessibilityIdentifier: "recording-list-import-action"
                         ) {
                             showsImporter = true

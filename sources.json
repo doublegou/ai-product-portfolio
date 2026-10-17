@@ -122,19 +122,26 @@
     {
       "repo": "DualAries-1/stayword-front-ios",
       "branch": "main",
-      "commit": "70e0c0f57074f75985b73f316031f8a10483614b",
-      "tree": "929144a7bb828e7ead6caa3c7062d1067d8267f6",
+      "commit": "6eb0369c0e3e289054cad81a408cb286ffb8f250",
+      "tree": "5b417108a689808f8dd1a0485554bb946bd307ca",
       "path": "projects/02-stayword/src/stayword-front-ios",
       "tree_verified": true,
-      "imported_at": "2026-09-28",
-      "tracked_files": 88,
+      "imported_at": "2026-10-17",
+      "tracked_files": 91,
       "upstream_check": {
-        "checked_on": "2026-10-16",
+        "checked_on": "2026-10-17",
         "default_branch": "main",
         "commit": "70e0c0f57074f75985b73f316031f8a10483614b",
-        "matches_imported_commit": true
+        "matches_imported_commit": false,
+        "note": "Clean local original main is one commit ahead of GitHub main; imported from local original."
       },
-      "portfolio_changes": []
+      "portfolio_changes": [],
+      "local_source": {
+        "path": "/Users/doublegou/Documents/workspace/stayword/coding/stayword-front-ios",
+        "commit": "6eb0369c0e3e289054cad81a408cb286ffb8f250",
+        "working_tree_clean": true,
+        "tracked_files_and_symlinks_equal": true
+      }
     },
     {
       "repo": "DualAries-1/stayword-front-android",
@@ -146,7 +153,7 @@
       "imported_at": "2026-09-28",
       "tracked_files": 74,
       "upstream_check": {
-        "checked_on": "2026-10-16",
+        "checked_on": "2026-10-17",
         "default_branch": "main",
         "commit": "fc0c98ba1503922475a15a58368b954f2c180c9a",
         "matches_imported_commit": true
@@ -163,7 +170,7 @@
       "imported_at": "2026-09-28",
       "tracked_files": 70,
       "upstream_check": {
-        "checked_on": "2026-10-16",
+        "checked_on": "2026-10-17",
         "default_branch": "main",
         "commit": "b0ea849a6058b14b38485860c3fd7e0cae64a401",
         "matches_imported_commit": true

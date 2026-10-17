@@ -1,11 +1,13 @@
 import SwiftData
 import SwiftUI
+import StoreKit
 
 struct RootView: View {
     @Environment(AppRouter.self) private var router
     @Environment(AppServices.self) private var services
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         @Bindable var router = router
@@ -14,6 +16,8 @@ struct RootView: View {
             LibraryView()
                 .navigationDestination(for: AppRoute.self) { route in
                     switch route {
+                    case .settings:
+                        SettingsView()
                     case .recordings(let filter):
                         RecordingListView(filter: filter)
                     case .recentlyDeleted:
@@ -41,6 +45,7 @@ struct RootView: View {
             services.processor.setApplicationActive(isActive)
             if isActive {
                 consumePendingIntent()
+                services.reviewPrompts.requestAutomaticPromptIfEligible()
             }
         }
         .onChange(of: scenePhase) { _, phase in
@@ -48,11 +53,16 @@ struct RootView: View {
             case .active:
                 services.processor.setApplicationActive(true)
                 consumePendingIntent()
+                services.reviewPrompts.requestAutomaticPromptIfEligible()
             case .inactive, .background:
                 services.processor.setApplicationActive(false)
             @unknown default:
                 services.processor.setApplicationActive(false)
             }
+        }
+        .onChange(of: services.reviewPrompts.requestToken) { _, _ in
+            services.reviewPrompts.markAutomaticPromptRequested()
+            requestReview()
         }
         .alert(
             "Couldn't Complete the Action",

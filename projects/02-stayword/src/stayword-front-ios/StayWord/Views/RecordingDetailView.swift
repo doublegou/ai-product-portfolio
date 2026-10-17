@@ -23,6 +23,10 @@ struct RecordingDetailView: View {
     @State private var showsMoveSheet = false
     @State private var confirmsDelete = false
     @State private var playbackError: String?
+    @State private var shareError: String?
+    @State private var isPreparingShare = false
+    @State private var showsShareChoices = false
+    @State private var preparedExport: PreparedRecordingExport?
     @State private var followsTranscriptPlayback = true
 
     init(recordingID: UUID) {
@@ -58,6 +62,12 @@ struct RecordingDetailView: View {
             if let recording {
                 if #available(iOS 26.0, *) {
                     ToolbarItem(placement: .topBarTrailing) {
+                        detailShareMenu(recording)
+                    }
+
+                    ToolbarSpacer(.fixed, placement: .topBarTrailing)
+
+                    ToolbarItem(placement: .topBarTrailing) {
                         detailActionsMenu(recording)
                     }
                 } else {
@@ -76,6 +86,10 @@ struct RecordingDetailView: View {
                     }
 
                     ToolbarItem(placement: .topBarTrailing) {
+                        detailShareMenu(recording)
+                    }
+
+                    ToolbarItem(placement: .topBarTrailing) {
                         detailActionsMenu(recording)
                     }
                 }
@@ -90,6 +104,23 @@ struct RecordingDetailView: View {
             if let recording {
                 MoveRecordingsView(recordings: [recording]) {}
             }
+        }
+        .sheet(item: $preparedExport, onDismiss: cleanupPreparedExport) { export in
+            SystemShareView(itemURL: export.fileURL) {
+                services.exporter.cleanup(export)
+                preparedExport = nil
+            }
+            .ignoresSafeArea()
+        }
+        .alert(
+            "Share",
+            isPresented: $showsShareChoices
+        ) {
+            if let recording {
+                shareChoiceButtons(recording)
+            }
+
+            Button("Cancel", role: .cancel) {}
         }
         .alert(
             "Delete selected recordings?",
@@ -113,6 +144,17 @@ struct RecordingDetailView: View {
             Button("OK", role: .cancel) {}
         } message: {
             Text(playbackError ?? "")
+        }
+        .alert(
+            "Unable to Share",
+            isPresented: Binding(
+                get: { shareError != nil },
+                set: { if !$0 { shareError = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text(shareError ?? "")
         }
         .onDisappear {
             services.player.stop()
@@ -146,18 +188,21 @@ struct RecordingDetailView: View {
                 detailForm(recording, content: .summary)
             } label: {
                 Text("Summary")
+                    .accessibilityIdentifier("detail-summary-tab")
             }
 
             Tab(value: DetailTab.transcript) {
                 detailForm(recording, content: .transcript)
             } label: {
                 Text("Transcript")
+                    .accessibilityIdentifier("detail-transcript-tab")
             }
 
             Tab(value: DetailTab.edit, role: .search) {
                 detailForm(recording, content: lastContentTab)
             } label: {
                 Label("Edit", systemImage: "square.and.pencil")
+                    .accessibilityIdentifier("detail-edit")
             }
         }
         .background(DetailTabBarProbe())
@@ -248,44 +293,142 @@ struct RecordingDetailView: View {
         )
     }
 
+    @ViewBuilder
     private func detailActionsMenu(_ recording: AudioRecording) -> some View {
-        AdaptiveOverflowMenu(actions: [
-            AdaptiveMenuAction(
-                "Copy",
-                systemImage: "doc.on.doc",
-                isEnabled: !currentCopyText(for: recording).isEmpty
-            ) {
-                UIPasteboard.general.string = currentCopyText(for: recording)
-            },
-            AdaptiveMenuAction(
-                recording.isFavorite ? "Unfavorite" : "Favorite",
-                systemImage: recording.isFavorite ? "heart.slash" : "heart"
-            ) {
-                recording.isFavorite.toggle()
-                services.save(modelContext)
-            },
-            AdaptiveMenuAction(
-                "Move",
-                systemImage: "folder",
-                accessibilityIdentifier: "detail-move"
-            ) {
-                showsMoveSheet = true
-            },
-            AdaptiveMenuAction(
-                "Delete",
-                systemImage: "trash",
-                role: .destructive,
-                accessibilityIdentifier: "detail-delete"
-            ) {
-                confirmsDelete = true
+        if #available(iOS 26.0, *) {
+            Menu {
+                Button {
+                    Task { @MainActor in
+                        await Task.yield()
+                        showsShareChoices = true
+                    }
+                } label: {
+                    Label("Share", systemImage: "square.and.arrow.up")
+                }
+                .disabled(isPreparingShare)
+                .accessibilityIdentifier("detail-share-action")
+
+                Button {
+                    recording.isFavorite.toggle()
+                    services.save(modelContext)
+                } label: {
+                    Label(
+                        recording.isFavorite ? "Unfavorite" : "Favorite",
+                        systemImage: recording.isFavorite ? "heart.slash" : "heart"
+                    )
+                }
+
+                Button {
+                    showsMoveSheet = true
+                } label: {
+                    Label("Move", systemImage: "folder")
+                }
+                .accessibilityIdentifier("detail-move")
+
+                Button(role: .destructive) {
+                    confirmsDelete = true
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+                .accessibilityIdentifier("detail-delete")
+            } label: {
+                AdaptiveToolbarMenuIcon(
+                    "More",
+                    systemImage: "ellipsis"
+                )
             }
-        ]) {
-            AdaptiveToolbarMenuIcon(
-                "More",
-                systemImage: "ellipsis"
-            )
+            .accessibilityIdentifier("detail-more")
+        } else {
+            AdaptiveOverflowMenu(actions: [
+                AdaptiveMenuAction(
+                    "Share",
+                    systemImage: "square.and.arrow.up",
+                    isEnabled: !isPreparingShare,
+                    accessibilityIdentifier: "detail-share-action"
+                ) {
+                    showsShareChoices = true
+                },
+                AdaptiveMenuAction(
+                    recording.isFavorite ? "Unfavorite" : "Favorite",
+                    systemImage: recording.isFavorite ? "heart.slash" : "heart"
+                ) {
+                    recording.isFavorite.toggle()
+                    services.save(modelContext)
+                },
+                AdaptiveMenuAction(
+                    "Move",
+                    systemImage: "folder",
+                    accessibilityIdentifier: "detail-move"
+                ) {
+                    showsMoveSheet = true
+                },
+                AdaptiveMenuAction(
+                    "Delete",
+                    systemImage: "trash",
+                    role: .destructive,
+                    accessibilityIdentifier: "detail-delete"
+                ) {
+                    confirmsDelete = true
+                }
+            ]) {
+                AdaptiveToolbarMenuIcon(
+                    "More",
+                    systemImage: "ellipsis"
+                )
+            }
+            .accessibilityIdentifier("detail-more")
         }
-        .accessibilityIdentifier("detail-more")
+    }
+
+    private func detailShareMenu(_ recording: AudioRecording) -> some View {
+        Menu {
+            shareChoiceButtons(recording)
+        } label: {
+            ZStack {
+                AdaptiveToolbarMenuIcon(
+                    "Share",
+                    systemImage: "square.and.arrow.up"
+                )
+                .opacity(isPreparingShare ? 0 : 1)
+
+                if isPreparingShare {
+                    ProgressView()
+                        .frame(width: 44, height: 44)
+                        .accessibilityLabel("Preparing Share")
+                }
+            }
+        }
+        .disabled(isPreparingShare)
+        .accessibilityIdentifier("detail-share")
+    }
+
+    @ViewBuilder
+    private func shareChoiceButtons(_ recording: AudioRecording) -> some View {
+        let snapshot = services.exporter.snapshot(for: recording)
+
+        Button {
+            prepareExport(.audio, from: snapshot)
+        } label: {
+            Label("Share Audio", systemImage: "waveform")
+        }
+        .disabled(!services.exporter.isAvailable(.audio, in: snapshot))
+        .accessibilityIdentifier("detail-share-audio")
+
+        Button {
+            prepareExport(.transcript, from: snapshot)
+        } label: {
+            Label("Share Transcript", systemImage: "text.document")
+        }
+        .disabled(!services.exporter.isAvailable(.transcript, in: snapshot))
+        .accessibilityIdentifier("detail-share-transcript")
+
+        Button {
+            prepareExport(.summary, from: snapshot)
+        } label: {
+            Label("Share Summary", systemImage: "text.page")
+        }
+        .disabled(!services.exporter.isAvailable(.summary, in: snapshot))
+        .accessibilityIdentifier("detail-share-summary")
     }
 
     @ViewBuilder
@@ -331,42 +474,47 @@ struct RecordingDetailView: View {
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
 
-                    HStack(spacing: 12) {
-                        Button {
-                            followsTranscriptPlayback = true
-                            services.player.skip(by: -15)
-                        } label: {
-                            Image(systemName: "gobackward.15")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Back 15 Seconds")
-
-                        Button {
-                            preparePlayerIfNeeded(recording)
-                            if !services.player.isPlaying {
+                    ZStack(alignment: .trailing) {
+                        HStack(spacing: 12) {
+                            Button {
                                 followsTranscriptPlayback = true
+                                services.player.skip(by: -15)
+                            } label: {
+                                Image(systemName: "gobackward.15")
+                                    .font(.title2)
+                                    .frame(width: 44, height: 44)
                             }
-                            services.player.togglePlayback()
-                        } label: {
-                            Image(systemName: services.player.isPlaying ? "pause.fill" : "play.fill")
-                                .font(.largeTitle)
-                                .frame(width: 56, height: 56)
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(services.player.isPlaying ? "Pause" : "Play")
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Back 15 Seconds")
 
-                        Button {
-                            followsTranscriptPlayback = true
-                            services.player.skip(by: 15)
-                        } label: {
-                            Image(systemName: "goforward.15")
-                                .font(.title2)
-                                .frame(width: 44, height: 44)
+                            Button {
+                                preparePlayerIfNeeded(recording)
+                                if !services.player.isPlaying {
+                                    followsTranscriptPlayback = true
+                                }
+                                services.player.togglePlayback()
+                            } label: {
+                                Image(systemName: services.player.isPlaying ? "pause.fill" : "play.fill")
+                                    .font(.largeTitle)
+                                    .frame(width: 56, height: 56)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(services.player.isPlaying ? "Pause" : "Play")
+
+                            Button {
+                                followsTranscriptPlayback = true
+                                services.player.skip(by: 15)
+                            } label: {
+                                Image(systemName: "goforward.15")
+                                    .font(.title2)
+                                    .frame(width: 44, height: 44)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel("Forward 15 Seconds")
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Forward 15 Seconds")
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                        PlaybackRateControl(player: services.player)
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -677,6 +825,31 @@ struct RecordingDetailView: View {
         }
     }
 
+    private func prepareExport(
+        _ kind: RecordingExportKind,
+        from snapshot: RecordingExportSnapshot
+    ) {
+        guard !isPreparingShare else { return }
+        isPreparingShare = true
+        Task {
+            defer { isPreparingShare = false }
+            do {
+                preparedExport = try await services.exporter.prepare(
+                    kind,
+                    from: snapshot
+                )
+            } catch {
+                shareError = error.localizedDescription
+            }
+        }
+    }
+
+    private func cleanupPreparedExport() {
+        guard let preparedExport else { return }
+        services.exporter.cleanup(preparedExport)
+        self.preparedExport = nil
+    }
+
     private func emptySummaryDescription(for recording: AudioRecording) -> String {
         if let summaryFailureMessage = recording.summaryFailureMessage {
             return summaryFailureMessage
@@ -708,17 +881,6 @@ struct RecordingDetailView: View {
         .nativeProminentButtonStyle()
         .scaleEffect(0.94)
         .accessibilityIdentifier("detail-retry")
-    }
-
-    private func currentCopyText(for recording: AudioRecording) -> String {
-        switch lastContentTab {
-        case .summary:
-            summaryCopyText(for: recording)
-        case .transcript:
-            recording.transcriptText
-        case .edit:
-            ""
-        }
     }
 
     private func summaryCopyText(for recording: AudioRecording) -> String {
@@ -756,6 +918,74 @@ struct RecordingDetailView: View {
         itemAppearance.setTitleTextAttributes(nil, for: .selected)
         itemAppearance.titlePositionAdjustment = .zero
     }
+}
+
+@MainActor
+private struct PlaybackRateControl: View {
+    @Bindable var player: AudioPlayerController
+
+    var body: some View {
+        ZStack(alignment: .trailing) {
+            Text(AudioPlayerController.playbackRateLabel(player.playbackRate))
+                .font(.subheadline.weight(.semibold).monospacedDigit())
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(width: 48, height: 44, alignment: .trailing)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+                .transaction { transaction in
+                    transaction.animation = nil
+                }
+
+            Menu {
+                ForEach(player.supportedPlaybackRates, id: \.self) { rate in
+                    Button(
+                        AudioPlayerController.playbackRateLabel(rate)
+                    ) {
+                        player.setPlaybackRate(rate)
+                    }
+                }
+            } label: {
+                Color.clear
+                    .frame(width: 48, height: 44)
+                    .contentShape(Rectangle())
+            } primaryAction: {
+                player.cyclePlaybackRate()
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Playback Speed")
+            .accessibilityValue(
+                AudioPlayerController.playbackRateLabel(player.playbackRate)
+            )
+            .accessibilityHint(
+                "Tap to change speed. Touch and hold for all speeds."
+            )
+            .accessibilityIdentifier("playback-speed")
+        }
+    }
+}
+
+private struct SystemShareView: UIViewControllerRepresentable {
+    let itemURL: URL
+    let onCompletion: @MainActor @Sendable () -> Void
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: [itemURL],
+            applicationActivities: nil
+        )
+        controller.completionWithItemsHandler = { _, _, _, _ in
+            Task { @MainActor in
+                onCompletion()
+            }
+        }
+        return controller
+    }
+
+    func updateUIViewController(
+        _ uiViewController: UIActivityViewController,
+        context: Context
+    ) {}
 }
 
 private extension View {

@@ -45,6 +45,184 @@ struct StayWordTests {
     }
 
     @Test
+    func playbackRatesValidateAndFormat() {
+        #expect(AudioPlayerController.availablePlaybackRates == [
+            0.5, 0.75, 1, 1.25, 1.5, 2,
+        ])
+        for rate in AudioPlayerController.availablePlaybackRates {
+            #expect(AudioPlayerController.validatedPlaybackRate(rate) == rate)
+        }
+        #expect(AudioPlayerController.validatedPlaybackRate(nil) == 1)
+        #expect(AudioPlayerController.validatedPlaybackRate(0) == 1)
+        #expect(AudioPlayerController.validatedPlaybackRate(3) == 1)
+        #expect(
+            AudioPlayerController.playbackRateLabel(
+                1.25,
+                locale: Locale(identifier: "en_US_POSIX")
+            ) == "1.25×"
+        )
+        #expect(
+            AudioPlayerController.playbackRateLabel(
+                1,
+                locale: Locale(identifier: "en_US_POSIX")
+            ) == "1×"
+        )
+    }
+
+    @Test
+    @MainActor
+    func playbackRatePersistsAndInvalidStoredValueFallsBack() throws {
+        let suiteName = "StayWordTests.AudioPlayback.\(UUID().uuidString)"
+        let defaults = try #require(UserDefaults(suiteName: suiteName))
+        defer { defaults.removePersistentDomain(forName: suiteName) }
+
+        var player: AudioPlayerController? = AudioPlayerController(
+            fileStore: AudioFileStore(),
+            userDefaults: defaults
+        )
+        player?.setPlaybackRate(1.5)
+        #expect(player?.playbackRate == 1.5)
+        player = nil
+
+        let reloaded = AudioPlayerController(
+            fileStore: AudioFileStore(),
+            userDefaults: defaults
+        )
+        #expect(reloaded.playbackRate == 1.5)
+
+        defaults.set(3.0, forKey: AudioPlayerController.playbackRateDefaultsKey)
+        let invalidReload = AudioPlayerController(
+            fileStore: AudioFileStore(),
+            userDefaults: defaults
+        )
+        #expect(invalidReload.playbackRate == 1)
+    }
+
+    @Test
+    func exportFileNamesAreSafeAndHaveFallbacks() {
+        #expect(
+            RecordingExportService.sanitizedFileName(
+                "  Product / Review: Q3?  "
+            ) == "Product - Review- Q3"
+        )
+        #expect(
+            RecordingExportService.sanitizedFileName(" /:*? ") == "Recording"
+        )
+        #expect(
+            RecordingExportService.sanitizedFileName(
+                "   ",
+                fallback: "Voice Recording"
+            ) == "Voice Recording"
+        )
+    }
+
+    @Test
+    func transcriptExportSortsTimestampsAndPreservesUTF8() throws {
+        let snapshot = exportSnapshot(
+            title: "中文访谈",
+            transcriptSegments: [
+                .init(startTime: 65, text: " 第二段 "),
+                .init(startTime: 15, text: "第一段"),
+                .init(startTime: 30, text: "   "),
+            ]
+        )
+        let text = try RecordingExportService.transcriptText(
+            for: snapshot,
+            locale: Locale(identifier: "en_US_POSIX"),
+            timeZone: try #require(TimeZone(secondsFromGMT: 0))
+        )
+
+        #expect(text.contains("中文访谈"))
+        #expect(text.contains("Duration: 02:05"))
+        #expect(text.contains("Transcript"))
+        #expect(text.contains("[00:15] 第一段\n[01:05] 第二段"))
+        #expect(String(data: Data(text.utf8), encoding: .utf8) == text)
+    }
+
+    @Test
+    func summaryExportRemovesSupportedMarkup() throws {
+        let snapshot = exportSnapshot(
+            summarySubject: "<strong>迭代主题</strong>",
+            summaryText: "<p>第一段。</p><ul><li>第二项</li></ul>"
+        )
+        let text = try RecordingExportService.summaryText(
+            for: snapshot,
+            locale: Locale(identifier: "en_US_POSIX"),
+            timeZone: try #require(TimeZone(secondsFromGMT: 0))
+        )
+
+        #expect(text.contains("Summary"))
+        #expect(text.contains("迭代主题\n\n第一段。\n\n- 第二项"))
+        #expect(!text.contains("<p>"))
+        #expect(!text.contains("<strong>"))
+    }
+
+    @Test
+    func audioExportPreservesExtensionAndBytesAndCleansUp() async throws {
+        let fileManager = FileManager.default
+        let root = fileManager.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        try fileManager.createDirectory(
+            at: root,
+            withIntermediateDirectories: true
+        )
+        defer { try? fileManager.removeItem(at: root) }
+
+        let sourceURL = root.appendingPathComponent("source.MP3")
+        let sourceData = Data([0x49, 0x44, 0x33, 0x00, 0x7F, 0xFF])
+        try sourceData.write(to: sourceURL)
+        let exportRoot = root.appendingPathComponent("exports", isDirectory: true)
+        let service = RecordingExportService(
+            fileStore: AudioFileStore(),
+            exportRoot: exportRoot
+        )
+        let snapshot = exportSnapshot(
+            title: "Interview / Original",
+            audioURL: sourceURL
+        )
+
+        let prepared = try await service.prepare(.audio, from: snapshot)
+        #expect(prepared.fileURL.lastPathComponent == "Interview - Original.MP3")
+        #expect(try Data(contentsOf: prepared.fileURL) == sourceData)
+        #expect(try Data(contentsOf: sourceURL) == sourceData)
+
+        service.cleanup(prepared)
+        #expect(!fileManager.fileExists(atPath: prepared.directoryURL.path))
+        #expect(fileManager.fileExists(atPath: sourceURL.path))
+    }
+
+    @Test
+    func preparingAnExportRemovesDirectoriesOlderThanOneDay() async throws {
+        let fileManager = FileManager.default
+        let root = fileManager.temporaryDirectory
+            .appendingPathComponent(UUID().uuidString, isDirectory: true)
+        let staleDirectory = root.appendingPathComponent("stale", isDirectory: true)
+        try fileManager.createDirectory(
+            at: staleDirectory,
+            withIntermediateDirectories: true
+        )
+        try fileManager.setAttributes(
+            [.modificationDate: Date().addingTimeInterval(-25 * 60 * 60)],
+            ofItemAtPath: staleDirectory.path
+        )
+        defer { try? fileManager.removeItem(at: root) }
+
+        let service = RecordingExportService(
+            fileStore: AudioFileStore(),
+            exportRoot: root
+        )
+        let prepared = try await service.prepare(
+            .transcript,
+            from: exportSnapshot(
+                transcriptSegments: [.init(startTime: 0, text: "Hello")]
+            )
+        )
+
+        #expect(!fileManager.fileExists(atPath: staleDirectory.path))
+        service.cleanup(prepared)
+    }
+
+    @Test
     func importedAudioKeepsItsSourceExtension() throws {
         let fileStore = AudioFileStore()
         let importedURL = try fileStore.newImportedAudioURL(
@@ -599,6 +777,24 @@ struct StayWordTests {
         #expect(prepared.metadata.channelCount == 1)
         #expect(prepared.metadata.frameCount > 0)
         #expect(abs(prepared.metadata.duration - 0.5) < 0.03)
+    }
+
+    private func exportSnapshot(
+        title: String = "Test Recording",
+        audioURL: URL = URL(fileURLWithPath: "/tmp/test.m4a"),
+        summarySubject: String = "",
+        summaryText: String = "",
+        transcriptSegments: [RecordingExportTranscriptSegment] = []
+    ) -> RecordingExportSnapshot {
+        RecordingExportSnapshot(
+            title: title,
+            createdAt: Date(timeIntervalSince1970: 1_704_164_640),
+            duration: 125,
+            audioURL: audioURL,
+            summarySubject: summarySubject,
+            summaryText: summaryText,
+            transcriptSegments: transcriptSegments
+        )
     }
 }
 

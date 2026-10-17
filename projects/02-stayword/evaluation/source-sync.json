@@ -1,0 +1,46 @@
+{
+  "checked_on": "2026-10-17",
+  "source": "/Users/doublegou/Documents/workspace/stayword/coding/stayword-front-ios",
+  "previous_commit": "70e0c0f57074f75985b73f316031f8a10483614b",
+  "imported_commit": "6eb0369c0e3e289054cad81a408cb286ffb8f250",
+  "source_tree": "5b417108a689808f8dd1a0485554bb946bd307ca",
+  "remote_main_commit": "70e0c0f57074f75985b73f316031f8a10483614b",
+  "tracked_entries_compared": 91,
+  "all_file_sha256_and_symlink_targets_equal": true,
+  "changed_files": [
+    "StayWord.xcodeproj/project.pbxproj",
+    "StayWord/App/AppRouter.swift",
+    "StayWord/Resources/Localizable.xcstrings",
+    "StayWord/Services/AppPreferences.swift",
+    "StayWord/Services/AppServices.swift",
+    "StayWord/Services/AudioPlayerController.swift",
+    "StayWord/Services/ProcessingCoordinator.swift",
+    "StayWord/Services/RecordingExportService.swift",
+    "StayWord/Services/SherpaOnnxRuntime.swift",
+    "StayWord/Services/TranscriptionService.swift",
+    "StayWord/Views/LibraryView.swift",
+    "StayWord/Views/RecordingDetailView.swift",
+    "StayWord/Views/RecordingListView.swift",
+    "StayWord/Views/RootView.swift",
+    "StayWord/Views/SettingsView.swift",
+    "StayWordTests/StayWordTests.swift",
+    "StayWordUITests/StayWordUITests.swift"
+  ],
+  "source_modified": false,
+  "other_sources": [
+    {
+      "repo": "DualAries-1/stayword-front-android",
+      "remote_main_commit": "fc0c98ba1503922475a15a58368b954f2c180c9a",
+      "source_and_portfolio_tree": "42a0aa3a67292d98d40c793455cbdac57563d325",
+      "matches": true
+    },
+    {
+      "repo": "DualAries-1/official-landingpage",
+      "remote_main_commit": "b0ea849a6058b14b38485860c3fd7e0cae64a401",
+      "source_and_portfolio_tree": "b74d088f0cc8926210f28497e56b39722fd574f8",
+      "matches": true
+    }
+  ],
+  "portfolio_staged_tree": "5b417108a689808f8dd1a0485554bb946bd307ca",
+  "git_tree_matches_original": true
+}

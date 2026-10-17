@@ -9,16 +9,20 @@
 | 2026-09-25 实机演示 | 检视原视频与录屏，抽取处理、转写、摘要、回听、分享入口和收藏画面 | 不是当前双端版本的统一测试，剪辑不能用于测速 |
 | App Store 官方查询 | 2026-10-17 返回 1.0.2、9 个评分、均分 4.88889 | 不能推出留存、活跃用户或商业成功 |
 | iOS / Android 源码 | 核对模型路由、分块、队列、检查点、错误状态与抽取降级 | 静态代码不等于所有异常已在真机通过 |
-| 本轮 iOS 工程检查 | iPhone 17 Pro / iOS 26.5 模拟器：29/29 现有单元测试通过 | 模拟器不能验证 MLX 摘要或真实麦克风 / 后台体验 |
+| 本轮 iOS 工程检查 | iPhone 17 Pro / iOS 26.5 模拟器：36/36 现有单元测试通过 | 模拟器不能验证 MLX 摘要或真实麦克风 / 后台体验 |
 | Android 真机与构建 | 本轮未执行 | 当前环境没有配置 Android SDK / 设备 |
 
 来源：[素材 manifest](../demo/media-manifest.json)、[商店快照](app-store-snapshot.json)、[技术代码定位](../docs/technical-design.md)。
 
+## 用户反馈与上线数据
+
+1.0.2 历史需求表和 App Store Connect 后台截图现已进入[用户研究与需求池](../docs/product-discovery.md)及[经营分析](../docs/metrics-and-experiments.md)。原值转录和图片 SHA-256 保存在[材料记录](product-evidence/source-record.json)；未将账号栏和个人姓名重新公开。访谈人数、DAU / MAU 与质量基准尚无数据。
+
 ## 本轮 iOS 运行记录
 
-使用 Xcode 27.0 构建并执行 `StayWordTests`，29 项通过、0 失败、0 跳过。覆盖分块顺序与超长片段、摘要解析、时间戳回听同步、SwiftData 检查点、FIFO 队列、前后台协调和 AAC 文件末尾处理。队列 / 恢复测试使用测试依赖，不能代替系统杀进程或真实模型测试。
+使用 Xcode 27.0 构建并执行 `StayWordTests`，36 项通过、0 失败、0 跳过。同步源提交 `6eb0369` 后重跑，覆盖分块顺序与超长片段、摘要解析、时间戳回听同步、SwiftData 检查点、FIFO 队列、前后台协调、AAC 文件末尾、倍速偏好、转写 / 摘要导出、音频导出与临时清理、语言设置和评分门槛。队列 / 恢复测试使用测试依赖，不能代替系统杀进程或真实模型测试。
 
-初次构建缺少 Metal Toolchain；补齐后又发现临时 Swift Package 缓存中 mlx-c 子模块未取全。按锁定提交补齐依赖后重跑通过，没有修改应用源码。命令与案例名单见 [ios-check.txt](ios-check.txt)，Xcode 结果摘要与源码指纹见 [ios-test-summary.json](ios-test-summary.json)。
+初次构建缺少 Metal Toolchain；补齐后又发现临时 Swift Package 缓存中 mlx-c 子模块未取全。按锁定提交补齐依赖后重跑通过，此前修复仅涉及临时依赖；本次应用源码已同步原始本地提交后重新验证。命令与案例名单见 [ios-check.txt](ios-check.txt)，Xcode 结果摘要与源码指纹见 [ios-test-summary.json](ios-test-summary.json)。
 
 ## 下一轮固定测试集：先质量，再速度
 
@@ -50,3 +54,5 @@ CER = 字符编辑距离 / 参考字符数；WER 使用参考词数。规范化�
 | 导入时存储不足 | 不留下无法解释的半完成记录 | 待验证 |
 
 现有 results-template.csv 保留为空白记录模板，不能当作已经跑完的样本。下一轮用这些测试决定发布候选，不用宣传速度替代质量与恢复能力。
+
+作品集内容组织与指标口径查阅了实际 AIPM 案例、Google PAIR 和 Apple 文档，具体采用方式见[参考记录](portfolio-references.md)。

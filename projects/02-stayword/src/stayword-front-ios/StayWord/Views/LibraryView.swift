@@ -95,6 +95,21 @@ struct LibraryView: View {
         .navigationBarTitleDisplayMode(.large)
         .environment(\.editMode, $editMode)
         .toolbar {
+            if editMode != .active {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        router.path.append(.settings)
+                    } label: {
+                        AdaptiveToolbarButtonIcon(
+                            "Settings",
+                            systemImage: "gearshape"
+                        )
+                    }
+                    .adaptiveToolbarCircleButtonStyle()
+                    .accessibilityIdentifier("library-settings")
+                }
+            }
+
             if editMode == .active {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

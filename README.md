@@ -5,7 +5,7 @@
 | 项目 | 核心问题 | 值得先看的证据 |
 | --- | --- | --- |
 | [内容生产 Agent 与 Skill 工作流](projects/01-content-agent/README.md) | 如何将内容任务拆成可复用、可修改、可验收的工作流 | 四类真实任务；图文、演示、文案与多比例封面；失败恢复与模型降级 |
-| [StayWord](projects/02-stayword/README.md) | 如何在手机资源与后台限制下，交付本地录音、转写、摘要体验 | 实机视频与六步使用过程；双端模型路由；中断恢复与降级方案 |
+| [StayWord](projects/02-stayword/README.md) | 如何在手机资源与后台限制下，交付本地录音、转写、摘要体验 | VOC、MVP 与版本需求池；早期下载与收益；实机使用过程；双端模型与降级方案 |
 | [RiverSR](projects/03-riversr/README.md) | 如何判断模型进入陌生水系后还能承担哪些任务 | 5,600 站点严格验证；RF / XGBoost 比较；尾部失败与不发布决策 |
 
 ## 从结果继续深入

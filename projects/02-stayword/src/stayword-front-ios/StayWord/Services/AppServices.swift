@@ -8,6 +8,9 @@ final class AppServices {
     let recorder: AudioRecorderController
     let player: AudioPlayerController
     let importer: AudioImportService
+    let exporter: RecordingExportService
+    let transcriptionPreferences: TranscriptionPreferences
+    let reviewPrompts: ReviewPromptController
     let processor: ProcessingCoordinator
     let recordingTitleProvider: RecordingTitleProvider
     var operationErrorMessage: String?
@@ -17,6 +20,11 @@ final class AppServices {
         self.recorder = AudioRecorderController(fileStore: fileStore)
         self.player = AudioPlayerController(fileStore: fileStore)
         self.importer = AudioImportService(fileStore: fileStore)
+        self.exporter = RecordingExportService(fileStore: fileStore)
+        let transcriptionPreferences = TranscriptionPreferences()
+        let reviewPrompts = ReviewPromptController()
+        self.transcriptionPreferences = transcriptionPreferences
+        self.reviewPrompts = reviewPrompts
         #if DEBUG
         let summaryGenerationEnabled =
             ProcessInfo.processInfo.environment["STAYWORD_UI_TEST_DISABLE_SUMMARY"] != "1"
@@ -25,7 +33,11 @@ final class AppServices {
         #endif
         self.processor = ProcessingCoordinator(
             fileStore: fileStore,
-            summaryGenerationEnabled: summaryGenerationEnabled
+            summaryGenerationEnabled: summaryGenerationEnabled,
+            transcriptionLanguage: {
+                transcriptionPreferences.preferredLanguage
+            },
+            reviewPrompts: reviewPrompts
         )
         self.recordingTitleProvider = RecordingTitleProvider()
     }

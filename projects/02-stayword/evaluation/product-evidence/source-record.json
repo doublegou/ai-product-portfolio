@@ -1,0 +1,110 @@
+{
+  "recorded_on": "2026-10-17",
+  "method": "Manual transcription of user-supplied screenshots; original screenshots stay with the supplied conversation attachments. Account/name headers are not republished.",
+  "attachments": [
+    {
+      "kind": "voc",
+      "filename": "codex-clipboard-9a14d722-ae56-4206-95a0-28b17de00fec.png",
+      "sha256": "6c5c16f50c48c50a78e112231241d3c530cb67e337c84a3fceb4228cf73b4ea3",
+      "bytes": 182906
+    },
+    {
+      "kind": "analytics",
+      "filename": "codex-clipboard-4cc0c35c-a285-496d-93b2-86414948ecd9.png",
+      "sha256": "6d34a04a317a85408cf9a57c84fab8d446066c05115921de5cdd62f15b505fb3",
+      "bytes": 369563
+    }
+  ],
+  "requirements": {
+    "title": "1.0.2 version requirements",
+    "modified_label": "9月1日修改",
+    "year": null,
+    "rows": [
+      {
+        "id": "R01",
+        "priority": "P0",
+        "source": "voc",
+        "request": "音频倍速播放",
+        "status": "✅"
+      },
+      {
+        "id": "R02",
+        "priority": null,
+        "source": "voc",
+        "request": "iOS系统兼容至16",
+        "note": "付费用户反馈",
+        "status": "不做"
+      },
+      {
+        "id": "R03",
+        "priority": "P1",
+        "source": "内部评估",
+        "request": "设置",
+        "note": "Rating language version contact",
+        "status": "✅"
+      },
+      {
+        "id": "R04",
+        "priority": null,
+        "source": "内部评估",
+        "request": "进入动画",
+        "status": "✅"
+      },
+      {
+        "id": "R05",
+        "priority": null,
+        "source": "voc",
+        "request": "录音、转录和总结分享功能",
+        "note": "apple生态是否考虑?",
+        "status": "✅"
+      },
+      {
+        "id": "R06",
+        "priority": "P2",
+        "source": "voc",
+        "request": "收音问题",
+        "note": "评估是否可以通过技术手段加强",
+        "status": "技术上无法解决"
+      },
+      {
+        "id": "R07",
+        "priority": "P3",
+        "source": "voc",
+        "request": "手表录音",
+        "note": "简单调研",
+        "status": "下一版本"
+      },
+      {
+        "id": "R08",
+        "priority": "in",
+        "source": "内部需求",
+        "request": "Sdk 版本",
+        "status": null
+      }
+    ]
+  },
+  "analytics": {
+    "app_id": "6795797415",
+    "display_date": "October 15",
+    "url_period_hint": "d90",
+    "exact_start": null,
+    "exact_end": null,
+    "year": null,
+    "territory": null,
+    "first_time_downloads": 72,
+    "redownloads": 19,
+    "conversion_rate": {
+      "display": "2.18%",
+      "aggregation": "Daily Average"
+    },
+    "impressions_display": "5.57K",
+    "product_page_views": 415,
+    "updates": 55,
+    "proceeds_display": "$17",
+    "currency_code": null,
+    "paying_users_display": "—",
+    "iap_display": "Not Enough Data",
+    "dau": null,
+    "mau": null
+  }
+}

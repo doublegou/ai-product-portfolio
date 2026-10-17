@@ -9,7 +9,7 @@
 1. 使用一段自己的、无敏感信息的 30–90 秒音频，包含一个日期、一个数字和一项行动；在“所有录音”的菜单导入，或现场录制。
 2. 等待语音检测、转写和摘要状态推进。先确认原音频已保存并可以播放。
 3. 在转写页检查日期、数字与否定词；播放对应段落核对，不仅检查有没有文本。
-4. 切换摘要，检查行动归属和约定时间；保存、收藏或使用当前版本提供的分享入口。
+4. 切换摘要，检查行动归属和约定时间；将播放切到 1.5×，核对暂停后恢复的速率；分别选择音频、转写 TXT、摘要 TXT 分享，确认取消操作后原记录仍在。再收藏记录，重新打开检查。
 5. 记录设备、系统、版本、音频时长、处理时间及发现的错误。当前版本未提供某个历史演示入口时，以实际界面为准。
 
 预期拿到原音频、带时间戳转写以及摘要或独立的摘要失败信息。没有摘要时，先检查转写是否仍可用，避免把整条记录当成丢失。
@@ -27,7 +27,7 @@ xcodebuild -project StayWord.xcodeproj -scheme StayWord \
   -only-testing:StayWordTests CODE_SIGNING_ALLOWED=NO test
 ```
 
-模拟器名称以 `xcrun simctl list devices available` 为准。Xcode 中为应用与扩展设置自己的签名 Team，再选择真机运行。模拟器不能验证 MLX 摘要，显示不支持提示属于实现边界。第一次构建需要下载 Swift Package 依赖及 Xcode Metal Toolchain；Git LFS 失败则先修复模型和原生库，不能用占位指针构建。本轮 Xcode 27.0 / iOS 26.5 模拟器已通过 29 项单元测试。若出现 `_mlx_*` 未定义符号，检查临时 Swift Package checkout 的 `mlx-c` 子模块是否完整，再按锁定提交取回；不要先改模型代码。
+模拟器名称以 `xcrun simctl list devices available` 为准。Xcode 中为应用与扩展设置自己的签名 Team，再选择真机运行。模拟器不能验证 MLX 摘要，显示不支持提示属于实现边界。第一次构建需要下载 Swift Package 依赖及 Xcode Metal Toolchain；Git LFS 失败则先修复模型和原生库，不能用占位指针构建。本轮 Xcode 27.0 / iOS 26.5 模拟器已通过 36 项单元测试。若出现 `_mlx_*` 未定义符号，检查临时 Swift Package checkout 的 `mlx-c` 子模块是否完整，再按锁定提交取回；不要先改模型代码。
 
 ## 运行 Android 工程
 

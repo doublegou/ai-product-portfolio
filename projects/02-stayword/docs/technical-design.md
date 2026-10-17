@@ -58,6 +58,15 @@ Android 的 [ModelInstaller](../src/stayword-front-android/app/src/main/java/com
 
 iOS 音频与处理检查点持久化；摘要加载检查配置和权重是否可读。文件存在检查弱于内容哈希校验，两端模型完整性保证不能混写。原音频仍是核心资产，空间不足、文件丢失与数据库不一致应进入恢复验收。
 
+## 从 VOC 到实现：倍速、三类导出与设置
+
+本轮从原始本地仓库同步 `6eb0369`，而不是在作品集另写一套实现。全部 91 项受版本管理的文件及链接一致；本地源比其 GitHub main 多一个提交。[同步记录](../evaluation/source-sync.json)
+
+- **倍速：**[AudioPlayerController](../src/stayword-front-ios/StayWord/Services/AudioPlayerController.swift) 提供 0.5、0.75、1、1.25、1.5、2×，用 UserDefaults 保存选择，非法保存值回退到 1×。AVPlayer 播放、暂停恢复及 Now Playing 的速率保持一致；系统媒体命令也支持速率变化。
+- **导出：**[RecordingExportService](../src/stayword-front-ios/StayWord/Services/RecordingExportService.swift) 从主线程读取不可变资料快照，在独立任务准备临时文件。音频优先硬链接、失败后复制，保留扩展名；转写按时间排序写 TXT，摘要清理标记后写 TXT。无转写、无摘要、缺音频分别报错；成功关闭分享时清理临时目录，下次准备时清理超过 24 小时的遗留目录。24 小时是清理条件，不是后台定时器的保证。
+- **设置与识别偏好：**[AppPreferences](../src/stayword-front-ios/StayWord/Services/AppPreferences.swift) 保存普通话、粤语、英语、日语、韩语偏好，经协调器传给 SenseVoice。设置提供评分、联系与版本入口。偏好是识别配置，不等价于每种语言经过同等质量评测。
+- **评分时机：**至少 3 天且 3 条不同记录完成后提出评分请求，同版本去重；是否显示由系统决定。这是本地状态机制，不能据此声称有线上活跃统计。
+
 ## 已知风险与验证重点
 
 优先验证跨段信息丢失、摘要关键事实错误、长输入 token 溢出、低内存初始化失败、后台恢复重复计算和取消传播。当前源码与历史演示并不构成这些条件全部通过的证据。具体状态与测试卡见[验证记录](../evaluation/README.md)。

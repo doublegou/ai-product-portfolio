@@ -46,7 +46,6 @@ struct SherpaOnnxRuntime: Sendable {
         static let vadMaximumSpeechDuration: Float = 30
         static let vadBufferSizeInSeconds: Float = 60
 
-        static let senseVoiceLanguage = "zh"
         static let decodingMethod = "greedy_search"
     }
 
@@ -105,13 +104,15 @@ struct SherpaOnnxRuntime: Sendable {
 
     func makeStreamingRecognizer(
         sampleRate: Int32,
-        baseSampleOffset: Int64 = 0
+        baseSampleOffset: Int64 = 0,
+        language: TranscriptionLanguage = .mandarinChinese
     ) throws -> StreamingRecognizer {
         try validate(sampleRate: sampleRate)
         return try StreamingRecognizer(
             models: models,
             sampleRate: sampleRate,
-            baseSampleOffset: baseSampleOffset
+            baseSampleOffset: baseSampleOffset,
+            language: language
         )
     }
 
@@ -126,7 +127,8 @@ struct SherpaOnnxRuntime: Sendable {
         fileprivate init(
             models: ModelPaths,
             sampleRate: Int32,
-            baseSampleOffset: Int64
+            baseSampleOffset: Int64,
+            language: TranscriptionLanguage
         ) throws {
             self.sampleRate = sampleRate
             self.baseSampleOffset = max(0, baseSampleOffset)
@@ -136,7 +138,10 @@ struct SherpaOnnxRuntime: Sendable {
                 sampleRate: sampleRate
             )
             do {
-                recognizer = try Self.makeRecognizer(models: models)
+                recognizer = try Self.makeRecognizer(
+                    models: models,
+                    language: language
+                )
             } catch {
                 SherpaOnnxDestroyVoiceActivityDetector(detector)
                 throw error
@@ -302,10 +307,13 @@ struct SherpaOnnxRuntime: Sendable {
             }
         }
 
-        private static func makeRecognizer(models: ModelPaths) throws -> OpaquePointer {
+        private static func makeRecognizer(
+            models: ModelPaths,
+            language: TranscriptionLanguage
+        ) throws -> OpaquePointer {
             try models.senseVoice.withCString { modelPath in
                 try models.senseVoiceTokens.withCString { tokensPath in
-                    try Constants.senseVoiceLanguage.withCString { language in
+                    try language.rawValue.withCString { languageCode in
                         try Constants.provider.withCString { provider in
                             try Constants.decodingMethod.withCString { decodingMethod in
                                 var config = SherpaOnnxOfflineRecognizerConfig()
@@ -318,7 +326,7 @@ struct SherpaOnnxRuntime: Sendable {
                                 config.model_config.debug = 0
                                 config.model_config.provider = provider
                                 config.model_config.sense_voice.model = modelPath
-                                config.model_config.sense_voice.language = language
+                                config.model_config.sense_voice.language = languageCode
                                 config.model_config.sense_voice.use_itn = 1
                                 config.decoding_method = decodingMethod
                                 config.max_active_paths = 4

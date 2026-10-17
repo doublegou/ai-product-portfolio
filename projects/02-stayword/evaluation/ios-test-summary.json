@@ -12,7 +12,7 @@
       },
       "expectedFailures": 0,
       "failedTests": 0,
-      "passedTests": 29,
+      "passedTests": 36,
       "skippedTests": 0,
       "testPlanConfiguration": {
         "configurationId": "1",
@@ -23,28 +23,22 @@
   "environmentDescription": "StayWord · Built with macOS 26.6.2",
   "expectedFailures": 0,
   "failedTests": 0,
-  "finishTime": 1792172957.806,
-  "passedTests": 29,
+  "finishTime": 1792204775.228,
+  "passedTests": 36,
   "result": "Passed",
   "runtimeWarnings": [],
   "skippedTests": 0,
-  "startTime": 1792172929.241,
+  "startTime": 1792204743.163,
   "statistics": [],
   "testFailures": [],
   "title": "Test - StayWord",
-  "topInsights": [
-    {
-      "category": "Longest Test Runs",
-      "impact": "28% of duration",
-      "text": "1 longest test run with outlier durations exceeding 0.09s (three standard deviations)"
-    }
-  ],
-  "totalTestCount": 29,
+  "topInsights": [],
+  "totalTestCount": 36,
   "portfolio_check": {
     "checked_on": "2026-10-17",
     "xcode": "27.0 (27A266a)",
-    "scope": "StayWordTests only; no UI tests, physical-device inference or quality benchmark",
-    "source_test_sha256": "b3492a2f2e1bf3713c80f9bb8fd59d9e5d98367ff13d8d38c488e8ce0e1149a3",
-    "source_package_lock_sha256": "823fab823fc4e6e993cc4eb107cb53ccae94ccecf60007d7561fba6b65ddb139"
+    "source_commit": "6eb0369c0e3e289054cad81a408cb286ffb8f250",
+    "scope": "StayWordTests only; no UI tests or physical-device model quality benchmark",
+    "source_test_sha256": "33769d8d7a16a0eff04b7c4259d66e37f9bb1262355719188ab5a29f85c2b3b8"
   }
 }

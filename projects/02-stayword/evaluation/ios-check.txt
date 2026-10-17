@@ -1,36 +1,44 @@
 Date: 2026-10-17
+Source commit: 6eb0369c0e3e289054cad81a408cb286ffb8f250
 Xcode: 27.0 (27A266a)
-Simulator: iPhone 17 Pro / iOS 26.5 / arm64
-Command: xcodebuild -project StayWord.xcodeproj -scheme StayWord -sdk iphonesimulator -destination platform=iOS\ Simulator,id=4A6E6D82-C908-4B4D-A2A7-838F9D892410 -derivedDataPath /tmp/stayword-portfolio-build -only-testing:StayWordTests CODE_SIGNING_ALLOWED=NO test
-Result: TEST SUCCEEDED; xcresult summary 29 passed, 0 failed, 0 skipped
-Environment repairs: downloaded missing Metal Toolchain; completed pinned mlx-c submodule in temporary Swift Package checkout. No application source edits.
+Simulator: iPhone 17 Pro / iOS 26.5
+Command: xcodebuild -project StayWord.xcodeproj -scheme StayWord -derivedDataPath /tmp/stayword-portfolio-build -destination 'platform=iOS Simulator,name=iPhone 17 Pro' -only-testing:StayWordTests CODE_SIGNING_ALLOWED=NO test
+Result: 36 passed, 0 failed, 0 skipped
+Scope: existing unit tests, no UI tests or physical-device inference. Prior temporary package dependencies reused.
 
-Passed cases from xcodebuild log:
-StayWordTests/processingStagesHaveIndependentDisplayLifecycles()
-StayWordTests/timestampFormatting()
-StayWordTests/summaryChunksKeepTranscriptSegmentsWholeAndOrdered()
-StayWordTests/summaryResponseIgnoresClosingTagWithoutMatchingOpeningTag()
-StayWordTests/summaryChunksMayPassTheTargetToKeepTheNextSegmentWhole()
-StayWordTests/structuredSummaryOutputRequiresBothFields()
-StayWordTests/summaryResponseStopsAtClosingSummaryTag()
-StayWordTests/importedAudioKeepsItsSourceExtension()
+Passed cases:
 StayWordTests/transcriptDraftRetainsSegmentTiming()
-StayWordTests/summaryChunksDoNotSplitAnOversizedTranscriptSegment()
-StayWordTests/summaryResponseWaitsForACompleteClosingTag()
+StayWordTests/structuredSummaryOutputRequiresBothFields()
+StayWordTests/exportFileNamesAreSafeAndHaveFallbacks()
+StayWordTests/summaryResponseIgnoresClosingTagWithoutMatchingOpeningTag()
 StayWordTests/bestEffortSummaryRejectsMismatchedTitleOnlyOutput()
-StayWordTests/partialSummaryOutputParsesTaggedBody()
+StayWordTests/summaryResponseStopsAtClosingSummaryTag()
+StayWordTests/timestampFormatting()
+StayWordTests/importedAudioKeepsItsSourceExtension()
+StayWordTests/summaryResponseWaitsForACompleteClosingTag()
+StayWordTests/summaryChunksMayPassTheTargetToKeepTheNextSegmentWhole()
+StayWordTests/processingStagesHaveIndependentDisplayLifecycles()
+StayWordTests/summaryChunksKeepTranscriptSegmentsWholeAndOrdered()
+StayWordTests/summaryChunksDoNotSplitAnOversizedTranscriptSegment()
+StayWordTests/playbackRatesValidateAndFormat()
 StayWordTests/summaryMarkupCleanerConvertsHTMLListsToPlainText()
 StayWordTests/partialSummaryOutputKeepsUsableBodyWhenClosingTagIsMissing()
-StayWordTests/structuredSummaryOutputRemovesParagraphMarkup()
-StayWordTests/structuredSummaryOutputParsesTitleAndReadableBody()
+StayWordTests/partialSummaryOutputParsesTaggedBody()
 StayWordTests/bestEffortSummaryAcceptsAnUnclosedSummaryTag()
-StayWordTests/bestEffortSummaryAcceptsLabeledPlainText()
-StayWordTests/bestEffortSummaryPreservesUntaggedBody()
-StayWordTests/transcriptPlaybackSyncUsesSpokenSegmentBounds()
+StayWordTests/structuredSummaryOutputParsesTitleAndReadableBody()
 StayWordTests/transcriptPlaybackSyncSupportsLegacyUntimedSegments()
+StayWordTests/bestEffortSummaryAcceptsLabeledPlainText()
+StayWordTests/transcriptPlaybackSyncUsesSpokenSegmentBounds()
+StayWordTests/bestEffortSummaryPreservesUntaggedBody()
+StayWordTests/structuredSummaryOutputRemovesParagraphMarkup()
 StayWordTests/recordingDerivedState()
 StayWordTests/recordingTitleUsesLocalizedSystemDateAndTime()
+StayWordTests/summaryExportRemovesSupportedMarkup()
+StayWordTests/transcriptExportSortsTimestampsAndPreservesUTF8()
+StayWordTests/preparingAnExportRemovesDirectoriesOlderThanOneDay()
+StayWordTests/audioExportPreservesExtensionAndBytesAndCleansUp()
 StayWordTests/swiftDataFolderRelationship()
+StayWordTests/playbackRatePersistsAndInvalidStoredValueFallsBack()
 StayWordTests/transcriptionCheckpointPersistsWithRecording()
 StayWordTests/aacPreparationStopsCleanlyAtEndOfFile()
 StayWordTests/processingPausesInBackgroundAndResumesWhenActive()

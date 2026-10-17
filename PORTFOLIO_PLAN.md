@@ -141,7 +141,7 @@ content-workflow 以 analysis.md 为共同输入，正文与图片独立生成�
 
 证明能把模型能力变成完整应用，在端侧性能、质量、设备资源和用户体验之间做取舍。
 
-现有入口：[项目 README](projects/02-stayword/README.md)、[产品决策](projects/02-stayword/docs/case-study.md)、[实际产物](projects/02-stayword/demo/README.md)、[评测记录](projects/02-stayword/evaluation/README.md)。
+现有入口：[项目 README](projects/02-stayword/README.md)、[用户研究 / MVP / 需求池](projects/02-stayword/docs/product-discovery.md)、[产品决策](projects/02-stayword/docs/case-study.md)、[经营指标与实验](projects/02-stayword/docs/metrics-and-experiments.md)、[实际产物](projects/02-stayword/demo/README.md)、[评测记录](projects/02-stayword/evaluation/README.md)。
 
 两端工程都保留。先确定一个有真实经历依据的用户场景，选当前最稳定且最能代表核心体验的一端作为主演示；另一端补充跨端实现，不重复整套叙事。
 

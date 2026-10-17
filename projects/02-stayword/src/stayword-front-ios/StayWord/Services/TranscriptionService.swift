@@ -52,9 +52,13 @@ actor TranscriptionService {
         self.injectedRuntime = runtime
     }
 
-    func transcribe(url: URL) async throws -> [TranscriptDraft] {
+    func transcribe(
+        url: URL,
+        language: TranscriptionLanguage = .mandarinChinese
+    ) async throws -> [TranscriptDraft] {
         try await transcribe(
             url: url,
+            language: language,
             resumeSampleOffset: 0,
             existingDrafts: [],
             onStage: { _ in },
@@ -64,6 +68,7 @@ actor TranscriptionService {
 
     func transcribe(
         url: URL,
+        language: TranscriptionLanguage = .mandarinChinese,
         resumeSampleOffset: Int64 = 0,
         existingDrafts: [TranscriptDraft] = [],
         onStage: @escaping @MainActor @Sendable (TranscriptionStage) -> Void,
@@ -91,7 +96,8 @@ actor TranscriptionService {
             await onStage(.detectingSpeech)
             let session = try runtime.makeStreamingRecognizer(
                 sampleRate: Self.sampleRate,
-                baseSampleOffset: boundedResumeOffset
+                baseSampleOffset: boundedResumeOffset,
+                language: language
             )
             let reader = try PreparedPCMReader(
                 prepared: prepared,

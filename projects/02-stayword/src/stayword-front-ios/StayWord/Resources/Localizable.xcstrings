@@ -394,6 +394,16 @@
         }
       }
     },
+    "Duration: %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时长：%@"
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "zh-Hans" : {
@@ -836,12 +846,32 @@
         }
       }
     },
+    "Playback Speed" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "播放速度"
+          }
+        }
+      }
+    },
     "Preparing" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在准备"
+          }
+        }
+      }
+    },
+    "Preparing Share" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在准备分享"
           }
         }
       }
@@ -1136,6 +1166,46 @@
         }
       }
     },
+    "Share" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享"
+          }
+        }
+      }
+    },
+    "Share Audio" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享音频"
+          }
+        }
+      }
+    },
+    "Share Summary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享摘要"
+          }
+        }
+      }
+    },
+    "Share Transcript" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分享转写"
+          }
+        }
+      }
+    },
     "Shows actions for this folder" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1258,6 +1328,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "摘要文本"
+          }
+        }
+      }
+    },
+    "Tap to change speed. Touch and hold for all speeds." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轻点切换播放速度，长按查看全部速度。"
           }
         }
       }
@@ -1406,6 +1486,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "生成设备端摘要耗时过长。"
+          }
+        }
+      }
+    },
+    "The export file could not be prepared." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法准备导出文件。"
           }
         }
       }
@@ -1583,6 +1673,26 @@
         }
       }
     },
+    "There is no summary to share." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有可分享的摘要内容。"
+          }
+        }
+      }
+    },
+    "There is no transcript to share." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有可分享的转写内容。"
+          }
+        }
+      }
+    },
     "Transcript" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1649,6 +1759,156 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法录音"
+          }
+        }
+      }
+    },
+    "Unable to Share" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法分享"
+          }
+        }
+      }
+    },
+    "Cantonese" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "粤语"
+          }
+        }
+      }
+    },
+    "Chinese (Mandarin)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中文（普通话）"
+          }
+        }
+      }
+    },
+    "Choose the main language you usually record. The model can still recognize supported languages mixed into the same recording." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择您通常录音时使用的主要语言。模型仍能识别同一段录音中混合的其他受支持语言。"
+          }
+        }
+      }
+    },
+    "Contact Us" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联系我们"
+          }
+        }
+      }
+    },
+    "English" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英语"
+          }
+        }
+      }
+    },
+    "Japanese" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日语"
+          }
+        }
+      }
+    },
+    "Korean" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "韩语"
+          }
+        }
+      }
+    },
+    "Language Preference" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言偏好"
+          }
+        }
+      }
+    },
+    "Please describe your question or feedback here." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请在此描述您的问题或反馈。"
+          }
+        }
+      }
+    },
+    "Rate StayWord" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "为 StayWord 评分"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "StayWord Feedback" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StayWord 反馈"
+          }
+        }
+      }
+    },
+    "The selected language is prioritized during transcription. Mixed-language speech is still supported." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转写时会优先识别所选语言，同时仍支持混合语言内容。"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
           }
         }
       }

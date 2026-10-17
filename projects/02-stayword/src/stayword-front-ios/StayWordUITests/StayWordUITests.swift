@@ -146,15 +146,18 @@ final class StayWordUITests: XCTestCase {
         }
         firstRecording.tap()
 
-        let detailBack = hittableButton("detail-back", in: app)
+        let detailBack = adaptiveBackButton("detail-back", in: app)
         let detailMore = hittableButton("detail-more", in: app)
         XCTAssertTrue(detailBack.waitForExistence(timeout: 5))
         XCTAssertTrue(detailMore.exists)
         assertMatchingCircularToolbarButtons(detailBack, detailMore)
+
+        let playbackSpeed = hittableButton("playback-speed", in: app)
+        XCTAssertTrue(playbackSpeed.exists)
         attach("05 Recording Summary", app: app)
 
         let transcriptTab = hittableButton("detail-transcript-tab", in: app)
-        XCTAssertTrue(transcriptTab.exists)
+        XCTAssertTrue(transcriptTab.waitForExistence(timeout: 3))
         transcriptTab.tap()
         attach("06 Recording Transcript", app: app)
 
@@ -181,6 +184,39 @@ final class StayWordUITests: XCTestCase {
         assertMinimumTouchTarget(moveClose)
         attach("08 Move Recording", app: app)
         moveClose.tap()
+    }
+
+    @MainActor
+    func testRecordingDetailOffersPlaybackRatesAndThreeShareChoices() throws {
+        let app = testApplication()
+        app.launch()
+
+        element("library-all-recordings", in: app).tap()
+        let firstRecording = app.buttons.matching(recordingRowPredicate).firstMatch
+        guard firstRecording.waitForExistence(timeout: 5) else {
+            throw XCTSkip("A recording is required to inspect detail actions.")
+        }
+        firstRecording.tap()
+
+        let detailMore = hittableButton("detail-more", in: app)
+        let playbackSpeed = hittableButton("playback-speed", in: app)
+        XCTAssertTrue(detailMore.waitForExistence(timeout: 5))
+        XCTAssertTrue(playbackSpeed.exists)
+
+        detailMore.tap()
+        let shareAction = app.buttons["detail-share-action"]
+        XCTAssertTrue(shareAction.waitForExistence(timeout: 3))
+        shareAction.tap()
+        XCTAssertTrue(app.buttons["detail-share-audio"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["detail-share-transcript"].exists)
+        XCTAssertTrue(app.buttons["detail-share-summary"].exists)
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.2, dy: 0.5)).tap()
+
+        playbackSpeed.tap()
+        let fasterRate = app.buttons["1.25×"]
+        XCTAssertTrue(fasterRate.waitForExistence(timeout: 3))
+        fasterRate.tap()
+        XCTAssertEqual(playbackSpeed.value as? String, "1.25×")
     }
 
     @MainActor
