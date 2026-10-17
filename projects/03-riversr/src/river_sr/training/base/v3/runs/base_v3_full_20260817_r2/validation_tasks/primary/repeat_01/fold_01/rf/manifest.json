@@ -1,0 +1,57 @@
+{
+  "status": "complete",
+  "model": "rf",
+  "task": 1,
+  "repeat_id": 1,
+  "outer_fold": 1,
+  "smoke": false,
+  "rows": {
+    "analysis": 4477,
+    "assessment": 1123
+  },
+  "candidates": {
+    "coarse": 144,
+    "refinement": 48
+  },
+  "winner": {
+    "model": "rf",
+    "task": 1,
+    "repeat_id": 1,
+    "outer_fold": 1,
+    "structure_id": "rf_067",
+    "weight_scheme": "W2",
+    "parameters": {
+      "structure_id": "rf_067",
+      "mtry": 8,
+      "min_node_size": 3,
+      "replace": false,
+      "sample_fraction": 0.632
+    },
+    "best_iteration": null,
+    "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks",
+    "outer_test_used_for_selection": false
+  },
+  "outputs": {
+    "coarse_summary.csv": {
+      "sha256": "aa277afe5cd337f6e38959d136197b0d0880353a51c65389860fac8225ef52de"
+    },
+    "refinement_pool.csv": {
+      "sha256": "35d6296f6a1424ae0e804beb91e15fcc0b652b48ef4c65e0b6c791aaf4f13d15"
+    },
+    "refinement_summary.csv": {
+      "sha256": "94eb8e62dc201a1602c83546dd84e1c4b5e39d44e741238efacd0c61d81c5d8e"
+    },
+    "outer_predictions.csv": {
+      "sha256": "768c15e3491af57036203231b3a740a02a3ef9aa20ab9b588550afb1a6968c28"
+    },
+    "outer_metrics.csv": {
+      "sha256": "688c95b64a6d2ac15300835f1303f0c7d6b8b0ab3fd434a09bbbda37ab1f8667"
+    },
+    "selected_outer_fit.rds": {
+      "sha256": "833c3f68536405e41edc817e564ccbd9ee294012a9e48a4215bf0218bc24e0e0"
+    },
+    "selected_recipe.json": {
+      "sha256": "e953fb94333bfc08e3c5688d4f2d9179649f003f7f2835935414de3ae75ed19c"
+    }
+  }
+}

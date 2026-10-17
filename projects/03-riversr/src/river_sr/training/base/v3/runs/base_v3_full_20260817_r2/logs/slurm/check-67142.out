@@ -1,0 +1,32 @@
+WARNING: ignoring environment value of R_HOME
+WARNING: ignoring environment value of R_HOME
+$project
+[1] "base_v3"
+
+$run_id
+[1] "base_v3_full_20260817_r2"
+
+$created_utc
+[1] "2026-08-17 07:40:43 UTC"
+
+$config_sha256
+[1] "4168a7990fb77ae85398da55b8a8972d4a8e9b16139b5bac85ada364ef7fcd5f"
+
+$source_sha256
+[1] "19239e401c321d85c4eaedf2e3413fffa61da14e1dadf3790a3d138c0e6c1558"
+
+$training_sha256
+[1] "568c47d59861c2d0fef2465a4c07a968334d8e9791d6316e4bc87195b719ca02"
+
+$predictors_sha256
+[1] "bcb2e9f24b8ed24f9f5463fa5dfcdf22451a582233064a7a54aca85968bd2a1e"
+
+$r_version
+[1] "R version 4.4.3 (2025-02-28)"
+
+$mode
+[1] "formal"
+
+$folds_manifest_sha256
+[1] "0ef6ea0e4037dfc68c121644601939e8de3b6735564434a8c7b78dd859199b28"
+

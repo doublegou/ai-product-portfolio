@@ -14,3 +14,9 @@
 training/base/v3/folds/*.csv binary
 training/base/v3/folds/*.json binary
 training/base/v3/folds/*.rds binary
+
+# Archived training artifacts are intentionally versioned through Git LFS.
+# This keeps model snapshots available without placing large binary objects in
+# ordinary Git history.
+training/**/runs/**/*.rds filter=lfs diff=lfs merge=lfs -text
+training/base/*/release/*.rds filter=lfs diff=lfs merge=lfs -text

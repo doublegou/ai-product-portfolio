@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "fixed_recipe": true,
+  "retuned": false,
+  "model": "rf",
+  "task": 20,
+  "scheme": "reference",
+  "fold": 5,
+  "analysis_rows": 4480,
+  "assessment_rows": 1120,
+  "structure_id": "rf_110",
+  "weight_scheme": "W2",
+  "best_iteration": null,
+  "predictions_sha256": "b0e217d92f8dbfde3519c350faeea683d52c64c73f50866bb3b67fcd7b0fb63e",
+  "metrics_sha256": "87a8cbc023a539e1af2cb84039fe7bcc911a4b7296761317853a39b9db67f538"
+}

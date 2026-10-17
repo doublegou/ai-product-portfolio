@@ -183,33 +183,47 @@
       "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
       "tree": "21bc62e148f97ce0db98d0599736695f7287e74d",
       "path": "projects/03-riversr/src/river_sr",
-      "tree_verified": true,
+      "tree_verified": false,
       "imported_at": "2026-09-28",
       "tracked_files": 1881,
       "upstream_check": {
-        "checked_on": "2026-10-16",
+        "checked_on": "2026-10-17",
         "default_branch": "main",
         "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
-        "matches_imported_commit": true
+        "matches_imported_commit": true,
+        "note": "Historical shared baseline only. Current portfolio directory additionally imports artifacts from triplemengpaper/river_sr ad12093; this repository has not received that update."
       },
-      "portfolio_changes": []
+      "portfolio_changes": [],
+      "import_scope": {
+        "role": "historical_equivalent_source",
+        "superseded_for_updates_by": "triplemengpaper/river_sr",
+        "note": "tracked_files and commit refer to the original 1881-file baseline, not the current shared directory."
+      }
     },
     {
       "repo": "triplemengpaper/river_sr",
       "branch": "main",
-      "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
-      "tree": "21bc62e148f97ce0db98d0599736695f7287e74d",
+      "commit": "ad120936a965608ba43794742b18d5caebe68b9d",
+      "tree": "e24929c9f78bbb83b70f8748a4b36b5f7ddb2c34",
       "path": "projects/03-riversr/src/river_sr",
-      "tree_verified": true,
-      "imported_at": "2026-09-28",
-      "tracked_files": 1881,
+      "tree_verified": false,
+      "imported_at": "2026-10-17",
+      "tracked_files": 2397,
       "upstream_check": {
-        "checked_on": "2026-10-16",
+        "checked_on": "2026-10-17",
         "default_branch": "main",
-        "commit": "1cc053e3fc6a410bad83ec99e93c36932b70f188",
-        "matches_imported_commit": true
+        "commit": "ad120936a965608ba43794742b18d5caebe68b9d",
+        "matches_imported_commit": true,
+        "note": "Selective artifact import at this commit; complete upstream tree has 8912 files, 2397 selected files are byte-verified. All prior source files retained; .gitattributes updated. No training code changes."
       },
-      "portfolio_changes": []
+      "portfolio_changes": [],
+      "import_scope": {
+        "role": "current_authoritative_source",
+        "full_tree": false,
+        "files_verified": true,
+        "record": "projects/03-riversr/evaluation/source-sync.json",
+        "lfs": "Three paths, two unique final model objects; downloaded and SHA-256 verified."
+      }
     },
     {
       "repo": "doublegou/sr_rf",

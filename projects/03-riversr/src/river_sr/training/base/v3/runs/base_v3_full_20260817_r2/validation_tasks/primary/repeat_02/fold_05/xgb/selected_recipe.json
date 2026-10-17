@@ -1,0 +1,22 @@
+{
+  "model": "xgb",
+  "task": 10,
+  "repeat_id": 2,
+  "outer_fold": 5,
+  "structure_id": "xgb_1053",
+  "weight_scheme": "W2",
+  "parameters": {
+    "structure_id": "xgb_1053",
+    "max_depth": 6,
+    "eta": 0.05,
+    "min_child_weight": 1,
+    "subsample": 1,
+    "colsample_bytree": 1,
+    "lambda": 1,
+    "alpha": 0,
+    "gamma": 0
+  },
+  "best_iteration": 90,
+  "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks",
+  "outer_test_used_for_selection": false
+}

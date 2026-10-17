@@ -14,6 +14,29 @@
 
 图表由 [render_figures.py](render_figures.py) 读取 Base V3 冻结 CSV 生成。[算法比较数据](../src/river_sr/training/base/v3/validation/primary_pooled_metrics.csv) · [站点级汇总](../src/river_sr/training/base/v3/validation/primary_site_mean_metrics.csv) · [训练拟合](../src/river_sr/training/base/v3/release/training_metrics.csv)
 
+## 从逐站结果定位信息缺口
+
+![基于 5,600 站点真实留出预测的误差诊断](assets/prediction-diagnostics.png)
+
+我重新从归档的逐站预测计算分层误差：实测 ≥0.75 的 **136 个站点（2.43%）贡献 82.90% 的平方误差**。其中 29 个极高值站点贡献 69.44%，且全部低估。该结果说明后续研究需要关注少数困难环境，单一平均分数无法说明各类研究任务的可用性。
+
+这是一项事后误差诊断。分层使用已知实测值，不能直接作为未知地点的模型路由；环境机制仍需独立信息和对照实验检验。[重算结果](../evaluation/prediction-reproduction.json)
+
+### 单站复核：输入、留出结果与使用判断
+
+以下示例从四个固定实测区间内，分别选取绝对误差处于中位排名的站点。选择规则与全部结果一起保留，便于理解典型误差；这些是**历史评估回放**，不是新增推理或真实用户使用记录。
+
+| 实测区间 | 站点 ID | 实测值 | 留出预测均值 | 绝对误差 |
+| --- | --- | ---: | ---: | ---: |
+| <0.72 | `d8a215ee07b8fdcc` | 0.707980 | 0.710396 | 0.002416 |
+| 0.72–0.75 | `ea6819ff190e03fe` | 0.728140 | 0.718835 | 0.009305 |
+| 0.75–0.80 | `12125c5e7c247d43` | 0.756253 | 0.713693 | 0.042560 |
+| ≥0.80 | `bef26300f5bf4000` | 0.896269 | 0.724129 | 0.172140 |
+
+复核路径：用站点 ID 在 [Full50 输入](../src/river_sr/data/processed/training/sr_full50_v2.csv)查找坐标、文献来源和 50 项特征 → 在[冻结划分](../src/river_sr/training/base/v3/folds/outer_folds.csv)确认所属水系被留出 → 对照[三次预测及均值](../src/river_sr/training/base/v3/runs/base_v3_full_20260817_r2/reports/primary/site_oof_predictions.csv) → 判断结果是否足以支持目标任务。[示例 CSV](site-review.csv)保留坐标、来源和每次预测。
+
+例如最后一站的三次预测都约为 0.72，彼此接近却与实测 0.896269 相差很大。这说明**重复预测稳定不等于正确**，重复间波动不能直接包装成预测可信度。后续应用仍需独立误差评价与支持范围说明。
+
 ## 交付文件：从输入追溯到结论
 
 这里提供早期 Full50 阶段的一条完整阅读路径：先确认样本与特征，再看模型配方、验证方式和最终结论。
@@ -21,11 +44,13 @@
 | 阅读顺序 | 可直接查看的产物 | 能回答的问题 |
 | --- | --- | --- |
 | 1 · 输入 | [5,600 站点 manifest](../src/river_sr/data/processed/training/sr_full50_v2_manifest.json) · [Full50 定义](../src/river_sr/training/base/v3/release/full50_predictors.txt) | 训练使用了哪些样本与信息？ |
-| 2 · 模型 | [RF 配方](../src/river_sr/training/base/v3/release/rf_recipe.json) · [预处理统计](../src/river_sr/training/base/v3/release/training_medians.csv) | 参数、缺失处理与最终配方是什么？ |
+| 2 · 模型 | [RF 模型（LFS）](../src/river_sr/training/base/v3/release/model_bundle.rds) · [RF 配方](../src/river_sr/training/base/v3/release/rf_recipe.json) · [预处理统计](../src/river_sr/training/base/v3/release/training_medians.csv) | 参数、缺失处理与最终配方是什么？ |
 | 3 · 验证 | [科学设计](../src/river_sr/training/base/v3/SCIENTIFIC_DESIGN.md) · [严格验证摘要](../src/river_sr/training/base/v3/validation/README.md) | 结果对应哪种预测情境，有没有泄漏？ |
 | 4 · 结论 | [冻结结论](../src/river_sr/training/base/v3/release/scientific_conclusion.md) · [版本与哈希](../src/river_sr/training/base/v3/release/final_manifest.json) | 哪些能力得到支持，这些结果属于哪个版本？ |
 
-模型二进制与完整 HPC 归档未随作品集附带；这些文件支持阅读和轻量复核，运行冻结模型还需要对应权重。
+**模型与原始结果已收录。** RF bundle 为 126,650,268 字节，XGBoost 对照 bundle 为 155,584 字节，均与原始 release 中的 SHA-256 一致；RF 发布副本与运行副本是同一 LFS 对象。正式运行的逐折输出、选参汇总、152 份 Slurm 标准输出/错误日志及版本文件已保留。逐折训练模型与其他历史/smoke 归档可从[原仓库固定版本](https://github.com/triplemengpaper/river_sr/tree/ad120936a965608ba43794742b18d5caebe68b9d)获取。
+
+[Quick start](../docs/quick-start.md)提供模型下载与逐站重算入口。运行阶段的 `final_manifest.json` 记录“待科学审核”，随后 release 的 [final_manifest.json](../src/river_sr/training/base/v3/release/final_manifest.json)记录正式冻结与用途限制；最终交付状态以 release 为准。
 
 ## 后续成果：自然基线、信息增量与应用基准
 
@@ -51,6 +76,8 @@
 <summary>补充原始成果：按展示价值排序的查找清单</summary>
 
 ## 待补材料清单
+
+**已补齐：** Base V3 最终 RF / XGBoost 模型、逐站预测、正式运行记录和原始数据源清单。以下仍需查找后期研究与真实使用材料。
 
 优先找能够将“研究判断”与“实际交付”连接起来的小包。以下目录来自历史执行回报；未知的文件名按内容说明，没有假定其已生成。大体积模型可以先提供配方、版本和 manifest，再补二进制。
 
@@ -82,7 +109,7 @@
 
 ### 5 · 完整训练耗时与费用
 
-- **找什么：** Base V3、Natural90 / Human17 的运行 ID、Slurm 作业统计导出、提交配置及主要失败/恢复日志。统计字段优先包括 `JobIDRaw`、`Submit`、`Start`、`End`、`ElapsedRaw`、`AllocCPUS`、`TotalCPU`、`MaxRSS`、`State`、`ExitCode`。
+- **找什么：** Base V3、Natural90 / Human17 的 Slurm 作业统计导出与实际计费记录。Base V3 的运行 ID、提交代码与 stdout/stderr 已补齐，但日志缺少完整任务起止和资源消耗。统计字段优先包括 `JobIDRaw`、`Submit`、`Start`、`End`、`ElapsedRaw`、`AllocCPUS`、`TotalCPU`、`MaxRSS`、`State`、`ExitCode`。
 - **费用材料：** 集群实际计费规则/单价或账单；如按科研配额核算，提供配额消耗记录。
 - **补上后有什么价值：** 写出真实端到端耗时、分配核时、失败恢复开销与费用；避免用任务时限、局部日志或申请峰值代替总成本。
 

@@ -1,0 +1,14 @@
+{
+  "status": "awaiting_scientific_review",
+  "selected_algorithm_from_primary": "rf",
+  "stress_fits": {
+    "rf": 20,
+    "xgb": 20
+  },
+  "final_models": {
+    "rf": "models/rf_final_bundle.rds",
+    "xgb": "models/xgb_final_bundle.rds"
+  },
+  "release_published": false,
+  "note": "Training metrics are fit-capacity sanity checks; Primary OOF and stress metrics are the generalization evidence."
+}

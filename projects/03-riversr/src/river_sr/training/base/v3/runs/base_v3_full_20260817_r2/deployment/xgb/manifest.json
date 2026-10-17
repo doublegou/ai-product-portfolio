@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "model": "xgb",
+  "shortlisted_structures": 16,
+  "evaluated_candidates": 48,
+  "recipe": {
+    "status": "frozen",
+    "model": "xgb",
+    "structure_id": "xgb_1535",
+    "weight_scheme": "W1",
+    "parameters": {
+      "structure_id": "xgb_1535",
+      "max_depth": 8,
+      "eta": 0.05,
+      "min_child_weight": 5,
+      "subsample": 1,
+      "colsample_bytree": 1,
+      "lambda": 1,
+      "alpha": 0.1,
+      "gamma": 0
+    },
+    "best_iteration": 118,
+    "primary_evidence_tasks": 15,
+    "deployment_tuning_folds": 5,
+    "deployment_tuning_is_performance_estimate": false,
+    "stress_may_retune": false,
+    "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks"
+  },
+  "outputs": {
+    "shortlist_sha256": "d3465db7173d9102b4b16ca600f774fa9bd2906e7c3ff66c0bb67d114c440f7a",
+    "tuning_summary_sha256": "edc043f5ffb0898fa71af03b4789f9a35bd1fdf37bc93ff3c54995063f387a51",
+    "frozen_recipe_sha256": "56423ceb3f6d94461c0b6ade874ef868dfb88eab28ffd9eaf80e1aceb2176ab8"
+  }
+}

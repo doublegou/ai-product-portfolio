@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "fixed_recipe": true,
+  "retuned": false,
+  "model": "xgb",
+  "task": 12,
+  "scheme": "spatial_1500",
+  "fold": 2,
+  "analysis_rows": 4479,
+  "assessment_rows": 1121,
+  "structure_id": "xgb_1535",
+  "weight_scheme": "W1",
+  "best_iteration": 118,
+  "predictions_sha256": "21671ead5b05de5a51d1bd8ae7ec4032d0e6a7d4dd5bbe691474189eb3d0d49d",
+  "metrics_sha256": "625afe5a48027be1db8a5c783840fb86fe095ad8cfdcc6fb85f2ca9d447bf152"
+}

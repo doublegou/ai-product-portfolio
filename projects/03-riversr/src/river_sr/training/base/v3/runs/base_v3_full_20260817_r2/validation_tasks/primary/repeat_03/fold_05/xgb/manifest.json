@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "model": "xgb",
+  "task": 15,
+  "repeat_id": 3,
+  "outer_fold": 5,
+  "smoke": false,
+  "rows": {
+    "analysis": 4489,
+    "assessment": 1111
+  },
+  "candidates": {
+    "coarse": 144,
+    "refinement": 48
+  },
+  "winner": {
+    "model": "xgb",
+    "task": 15,
+    "repeat_id": 3,
+    "outer_fold": 5,
+    "structure_id": "xgb_1713",
+    "weight_scheme": "W0",
+    "parameters": {
+      "structure_id": "xgb_1713",
+      "max_depth": 8,
+      "eta": 0.1,
+      "min_child_weight": 15,
+      "subsample": 1,
+      "colsample_bytree": 0.6,
+      "lambda": 0,
+      "alpha": 0,
+      "gamma": 0
+    },
+    "best_iteration": 10,
+    "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks",
+    "outer_test_used_for_selection": false
+  },
+  "outputs": {
+    "coarse_summary.csv": {
+      "sha256": "d7695bdb314e43c531ba6afbaf01e853987a007b1d75ad917c30786bfe29f37a"
+    },
+    "refinement_pool.csv": {
+      "sha256": "a0e840eb321227dbdda868cc0e91ea65425d74e2793a10599b355e93d7d63257"
+    },
+    "refinement_summary.csv": {
+      "sha256": "77db32e6e3473a29eff76d9cd96727906c9df7476a13c9a50fbac108c749566e"
+    },
+    "outer_predictions.csv": {
+      "sha256": "b0a3b38b8eba66c94160407b20fbac9eea049fe1731ecefb429ef2e4c140e96d"
+    },
+    "outer_metrics.csv": {
+      "sha256": "6b59d099f95a28389c488f09ab223396b83a23b9f947960def96a6af18e6bc9f"
+    },
+    "selected_outer_fit.rds": {
+      "sha256": "2d086a10c2c97e769292d2db81fa1f3506f95a3379016a92c9d8f55d6ab1758a"
+    },
+    "selected_recipe.json": {
+      "sha256": "c160022132a2531d60783ea696a1574a8586727a961f0fc53ec324d632fa11da"
+    }
+  }
+}

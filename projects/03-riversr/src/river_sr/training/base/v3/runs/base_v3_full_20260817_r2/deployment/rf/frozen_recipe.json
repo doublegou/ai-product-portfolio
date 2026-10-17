@@ -1,0 +1,19 @@
+{
+  "status": "frozen",
+  "model": "rf",
+  "structure_id": "rf_110",
+  "weight_scheme": "W2",
+  "parameters": {
+    "structure_id": "rf_110",
+    "mtry": 12,
+    "min_node_size": 1,
+    "replace": false,
+    "sample_fraction": 0.8
+  },
+  "best_iteration": null,
+  "primary_evidence_tasks": 15,
+  "deployment_tuning_folds": 5,
+  "deployment_tuning_is_performance_estimate": false,
+  "stress_may_retune": false,
+  "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks"
+}

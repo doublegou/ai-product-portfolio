@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "model": "xgb",
+  "task": 14,
+  "repeat_id": 3,
+  "outer_fold": 4,
+  "smoke": false,
+  "rows": {
+    "analysis": 4478,
+    "assessment": 1122
+  },
+  "candidates": {
+    "coarse": 144,
+    "refinement": 48
+  },
+  "winner": {
+    "model": "xgb",
+    "task": 14,
+    "repeat_id": 3,
+    "outer_fold": 4,
+    "structure_id": "xgb_1625",
+    "weight_scheme": "W1",
+    "parameters": {
+      "structure_id": "xgb_1625",
+      "max_depth": 8,
+      "eta": 0.1,
+      "min_child_weight": 1,
+      "subsample": 1,
+      "colsample_bytree": 1,
+      "lambda": 0,
+      "alpha": 0,
+      "gamma": 0
+    },
+    "best_iteration": 73,
+    "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks",
+    "outer_test_used_for_selection": false
+  },
+  "outputs": {
+    "coarse_summary.csv": {
+      "sha256": "eb7d65a1f8e3d1a582555e6349e5a43f6894390c1af91a4c1dd7225a015ee772"
+    },
+    "refinement_pool.csv": {
+      "sha256": "29e128ccdfd1ce9ff8cf5c3c4d5d06912b3b1dd5291664afa05f244e9d8f44c2"
+    },
+    "refinement_summary.csv": {
+      "sha256": "e903077323b9cc6048b48ebe3596be7df95d9b05dc4b2f5013db5d46b8850c3a"
+    },
+    "outer_predictions.csv": {
+      "sha256": "79417a5892d0094a9ad954cf2d7746b93d0aaa4bebf823bb3e28509aebeef456"
+    },
+    "outer_metrics.csv": {
+      "sha256": "6b2818af305bf48761e218ffb3648d37ac600d9a68243adbb9b752e9c0f7ad14"
+    },
+    "selected_outer_fit.rds": {
+      "sha256": "e2e75cda9ce2af4fbc0a930a4fccec4b2b4fa0852296f77af958cbd41d9fb0e1"
+    },
+    "selected_recipe.json": {
+      "sha256": "e2aced96271a4c9353f21da163adf7d0b8305a30c4c22c128790849852abcecd"
+    }
+  }
+}

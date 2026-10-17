@@ -17,6 +17,8 @@
 
 最后一步保留历史快照，是为了恢复与正式实验一致的输入，而非宣称每个历史特征都能仅凭当前脚本从零重建。旧 4,485 站在 V2 中曾重新提取特征，因此校验的是旧站身份/响应一致，以及 V2 特征与 V2 快照一致；不要求 V2 特征逐格等于 V1。
 
+新增归档的[原始数据下载清单](../src/river_sr/data/raw/features/download_inventory.csv)保存了 36 项资源的来源 URL、字节数和 SHA-256，原清单状态均为 verified，总计约 3.84 GB。作品集保留清单与构建代码，未重新下载整套地理原始数据。
+
 来源：[补充观测管线](../src/river_sr/data_pipeline/observation/sr_supplement_v1/README.md)、[Full50 V2 构建](../src/river_sr/data_pipeline/training/sr_full50_v2/README.md)、[数据 manifest](../src/river_sr/data/processed/training/sr_full50_v2_manifest.json)。
 
 ## 特征如何表达研究问题
@@ -111,7 +113,7 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 | --- | --- | --- | --- |
 | Regional V1 最后一轮 | 85 任务 / 85 次模型拟合 | 09:03:07–09:03:12；任务时长合计 55 s | 多任务并发；单任务 0–1 s，受日志精度限制 |
 | Regional V1.1 | 34 任务 / 578 次 GAM 拟合，另有 34 校准器 | 09:13:25–09:13:39；任务时长合计 271 s | Environment 单任务中位 5 s，Combined 中位 11 s |
-| Base V3 | 正式摘要记录 76 作业单元完成 | 当前保留摘要不含完整任务起止和 sacct | 不能由发布时间倒算总训练时长 |
+| Base V3 | 已收录 76 作业单元对应的 152 份 stdout/stderr、任务产物与作业 ID | 日志包含候选完成与阶段完成信息，缺少完整任务起止和 sacct | 能追溯执行内容，仍不能计算总训练耗时或实际核时 |
 
 以上应用时间均来自 2026-08-17 的任务日志；不包含排队、R/包加载前的耗时和其他流程阶段。尤其不能把 V1.1 的 14 秒窗口写成“整个项目训练只用 14 秒”，也不能把并发任务的 271 秒加总当作用户等待时间。[可重复提取脚本](../evaluation/summarize_training.py) · [逐任务记录及哈希](../evaluation/training-evidence.json)
 
@@ -137,7 +139,7 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 
 Base V3 正式运行 76 个作业单元完成；Regional V2 最终完成 68 个任务、1,156 次拟合。Regional V2 前两次因计算节点 `libstdc++` 加载顺序在工程检查阶段停止，修复依赖后完成正式运行，没有为环境错误重设科学方案。后续 Human17 重分析的 55 个输出失败任务只恢复对应索引，未重跑有效任务；这是后续执行回报中的恢复记录，不计入 Base V3 成本。[区域工程与结果](../src/river_sr/training/regional_expert/regional_risk_v2/RESULTS.md) · [后续恢复记录](../evaluation/later-research-records.md#执行与恢复)
 
-研究交付包括配方、特征定义、预处理统计、分组、验证摘要、科学结论和二进制哈希。当前作品集没有附带 Base V3 的 `model_bundle.rds`；后续 Natural90 及 Human17 的完整产物也尚未取得本地副本。[Base V3 release](../src/river_sr/training/base/v3/release/README.md)
+研究交付包括配方、特征定义、预处理统计、分组、验证结果、科学结论和模型快照。本轮已从上游 LFS 恢复 Base V3 的 RF release bundle 与 RF / XGBoost 最终运行快照，并按发布哈希校验。RF bundle 为 126,650,268 字节，对照 XGBoost 为 155,584 字节；体积差异不用于推断精度或推理速度。后续 Natural90 / Human17 模型仍不在本轮上游归档中。[Base V3 release](../src/river_sr/training/base/v3/release/README.md)
 
 ## 后续 Natural90 / Human17 的实验合同
 
@@ -159,7 +161,9 @@ Base V3 正式运行 76 个作业单元完成；Regional V2 最终完成 68 个�
 - site mean：每站 3 次预测先平均，再在 5,600 站点上评价，便于站点与区间诊断。
 - training：全量拟合后回看训练数据，只用于容量诊断。
 
-三次重复共享站点，不能直接视为独立同分布样本来构造置信区间。作品集中的轻量复核脚本检查冻结摘要与数据的一致性；逐站 OOF 与完整运行记录保留在对应实验归档中。
+三次重复共享站点，不能直接视为独立同分布样本来构造置信区间。本轮新增的[逐站重算脚本](../evaluation/reproduce_predictions.py)读取 33,600 行两算法 Primary 预测与 44,800 行压力测试预测，核对原始逐折输出、测试身份、每站三次预测均值，并重算 RMSE、MAE、Bias、R² 和极高值命中，与冻结摘要一致。该过程未重新训练模型。
+
+RF 的 136 个实测 ≥0.75 站点占 2.43%，贡献 82.90% 的站点均值平方误差。此分层基于实测响应，是失败分析；不能在未知站点直接用该分层选择模型，也不构成机制或因果证明。[误差诊断与单站回放](../demo/README.md#从逐站结果定位信息缺口)
 
 ## 地图原型的真实依赖
 

@@ -2,7 +2,21 @@
 
 [返回项目](../README.md)
 
-## 路径一：几秒钟复核作品集中的数字
+## 路径一：下载模型并复核原始预测
+
+在作品集仓库根目录执行。需要 Git LFS 和 Python 3；这条路径不依赖 R，也不提交训练任务。
+
+```bash
+git lfs install
+git lfs pull --include="projects/03-riversr/src/river_sr/training/base/v3/release/*.rds,projects/03-riversr/src/river_sr/training/base/v3/runs/base_v3_full_20260817_r2/models/*.rds" --exclude=""
+python3 projects/03-riversr/evaluation/reproduce_predictions.py
+```
+
+预期 `passed: true`，Primary 33,600 行、站点均值 11,200 行、stress 44,800 行。这些行包含两种算法及重复/验证方案，不是新增独立样本。脚本核对原始预测与冻结分组、重算主指标、校验两份最终模型，输出 `evaluation/prediction-reproduction.json` 和 `demo/site-review.csv`。若模型仍是 LFS 指针，哈希检查会失败，应先完成下载。
+
+这条路径复核历史结果，未执行新推理。冻结 RF 模型需要原工程的 R / ranger 环境；模型对象内包含 `model`、`predictors`、`medians`、`recipe` 和数据版本。推理前必须按 `predictors` 的顺序构建输入，并使用 bundle 中的中位数处理非有限值；接口见 [v3_fit_predict](../src/river_sr/training/base/v3/R/common.R)。在训练站点上的全量模型预测仅用于拟合检查，不能替代留出评估。
+
+### 不下载模型时，先检查冻结摘要
 
 无需训练模型。从作品集仓库根目录执行（Python 3，仅标准库）：
 
@@ -34,7 +48,7 @@ npm run dev -- --host 127.0.0.1
 
 工程提供 `Rscript training/base/v3/scripts/run.R prepare` 与 `smoke --run-id local_smoke`；prepare 会写准备产物，应在独立副本中运行。正式实验面向 Slurm，遵循显式 run_id、冻结配置和数据契约。完整实验需要对应数据资产与计算环境；这里的轻量阅读和复核路径不依赖全量重训。
 
-`release/model_bundle.rds` 未随 Git 收录，只有配方、摘要和权重哈希。因此只克隆作品集不能直接运行冻结 RF 二进制推理。该限制不影响路径一的证据复核。
+`release/model_bundle.rds` 已通过 LFS 收录。作品集保留正式 Base V3 的两份最终模型和预测记录；完整历史/smoke 运行及逐折模型可从[上游固定提交](https://github.com/triplemengpaper/river_sr/tree/ad120936a965608ba43794742b18d5caebe68b9d)按需取得。本机未配置 R，当前完成的是文件与原始预测复核，未重新训练或执行 R 推理。
 
 ## 路径四：查看后续研究与训练证据
 

@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "fixed_recipe": true,
+  "retuned": false,
+  "model": "rf",
+  "task": 2,
+  "scheme": "spatial_500",
+  "fold": 2,
+  "analysis_rows": 4478,
+  "assessment_rows": 1122,
+  "structure_id": "rf_110",
+  "weight_scheme": "W2",
+  "best_iteration": null,
+  "predictions_sha256": "7c1e87ec2adb8cca88e556213a63cc345da1130ca75649887611215329f16d43",
+  "metrics_sha256": "a4ce1058ac1fb5e19c888039fac87ccc0213d5cd032de36c174e8370d48711d8"
+}

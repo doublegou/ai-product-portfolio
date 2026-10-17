@@ -1,0 +1,18 @@
+{
+  "model": "rf",
+  "task": 10,
+  "repeat_id": 2,
+  "outer_fold": 5,
+  "structure_id": "rf_055",
+  "weight_scheme": "W1",
+  "parameters": {
+    "structure_id": "rf_055",
+    "mtry": 8,
+    "min_node_size": 1,
+    "replace": false,
+    "sample_fraction": 0.632
+  },
+  "best_iteration": null,
+  "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks",
+  "outer_test_used_for_selection": false
+}

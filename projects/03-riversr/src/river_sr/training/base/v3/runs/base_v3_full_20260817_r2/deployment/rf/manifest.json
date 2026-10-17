@@ -1,0 +1,30 @@
+{
+  "status": "complete",
+  "model": "rf",
+  "shortlisted_structures": 16,
+  "evaluated_candidates": 48,
+  "recipe": {
+    "status": "frozen",
+    "model": "rf",
+    "structure_id": "rf_110",
+    "weight_scheme": "W2",
+    "parameters": {
+      "structure_id": "rf_110",
+      "mtry": 12,
+      "min_node_size": 1,
+      "replace": false,
+      "sample_fraction": 0.8
+    },
+    "best_iteration": null,
+    "primary_evidence_tasks": 15,
+    "deployment_tuning_folds": 5,
+    "deployment_tuning_is_performance_estimate": false,
+    "stress_may_retune": false,
+    "selection_rule": "global_rmse_0.5pct_shortlist_then_tail_and_error_tiebreaks"
+  },
+  "outputs": {
+    "shortlist_sha256": "9f2ad757569efe2b33fae6ebaf6aa055acf3d43d98c3c0a08c2bc36a28981963",
+    "tuning_summary_sha256": "62a447980efd86e991b384548498c46d081864a188ccc135300cee755443ee29",
+    "frozen_recipe_sha256": "9469b7e8de05ae5d80de41856888831c2e7cb25c01612ef82c8594a6f307c6d7"
+  }
+}

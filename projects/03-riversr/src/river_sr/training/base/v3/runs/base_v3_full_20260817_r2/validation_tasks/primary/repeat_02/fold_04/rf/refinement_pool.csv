@@ -1,0 +1,17 @@
+structure_id,mtry,min_node_size,replace,sample_fraction
+rf_003,5,1,FALSE,1
+rf_009,5,2,FALSE,1
+rf_015,5,3,FALSE,1
+rf_057,8,1,FALSE,1
+rf_063,8,2,FALSE,1
+rf_021,5,5,FALSE,1
+rf_069,8,3,FALSE,1
+rf_075,8,5,FALSE,1
+rf_027,5,8,FALSE,1
+rf_081,8,8,FALSE,1
+rf_111,12,1,FALSE,1
+rf_117,12,2,FALSE,1
+rf_123,12,3,FALSE,1
+rf_129,12,5,FALSE,1
+rf_033,5,12,FALSE,1
+rf_135,12,8,FALSE,1
