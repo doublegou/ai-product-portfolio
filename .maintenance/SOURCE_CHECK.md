@@ -6,15 +6,15 @@
 
 实时查询确认 `triplemengpaper/river_sr` 为 `ad120936a965608ba43794742b18d5caebe68b9d`，`doublegou/river_sr` 仍为 `1cc053e3`。原目录 1,881 个文件中只有 `.gitattributes` 改变，新增上游归档共 7,031 个文件，训练逻辑未变。本轮选入 Base V3 正式运行、最终模型和资源清单等 516 个新增文件，收录范围共 2,397 个文件，逐字节验证通过。
 
-通过上游 Git LFS 下载并校验了 RF 正式模型与 XGBoost 对照快照，RF 发布/运行两个路径共享同一对象。选取的两份模型共 126,805,852 字节，全部与 release 哈希匹配；未将 LFS 指针当成模型文件。历史/smoke 运行和逐折模型保留在上游，未宣称完整目录树一致。[同步清单](projects/03-riversr/evaluation/source-sync.json)
+通过上游 Git LFS 下载并校验了 RF 正式模型与 XGBoost 对照快照，RF 发布/运行两个路径共享同一对象。选取的两份模型共 126,805,852 字节，全部与 release 哈希匹配；未将 LFS 指针当成模型文件。历史/smoke 运行和逐折模型保留在上游，未宣称完整目录树一致。[同步清单](../projects/03-riversr/evaluation/source-sync.json)
 
-从原始逐折、pooled 与站点均值预测重算主验证和压力测试指标，结果与冻结摘要一致。新增[误差诊断与单站回放](projects/03-riversr/demo/README.md#从逐站结果定位信息缺口)。这次仅恢复归档与复核历史输出，未重训或声明本机 R 推理通过。Natural90 / Human17 / 生物基准后期目录不在该上游提交中。
+从原始逐折、pooled 与站点均值预测重算主验证和压力测试指标，结果与冻结摘要一致。新增[误差诊断与单站回放](../projects/03-riversr/demo/README.md#从逐站结果定位信息缺口)。这次仅恢复归档与复核历史输出，未重训或声明本机 R 推理通过。Natural90 / Human17 / 生物基准后期目录不在该上游提交中。
 
 ## 2026-10-17 StayWord 补充同步
 
 原始本地 iOS 仓库的 `main` 已到 `6eb0369c0e3e289054cad81a408cb286ffb8f250`，比 GitHub `main` 的 `70e0c0f` 多一个提交。此前仅核对远端不足以发现这部分更新。本轮已实际同步 17 个文件更新，包括倍速、导出、设置与测试；全部 91 个跟踪条目的文件 SHA-256 和符号链接目标与本地原工程一致。同步后 36 项现有 iOS 单元测试通过。原工程未修改，也未向原仓库推送。
 
-Android `fc0c98b` 与官网 `b0ea849` 已重新查询远端，作品集目录树分别为 `42a0aa3`、`b74d088`，与来源一致。详细结果见 [StayWord 同步记录](projects/02-stayword/evaluation/source-sync.json)。下方表格保留 10 月 16 日的历史核查结果；当前导入版本以 `sources.json` 为准。
+Android `fc0c98b` 与官网 `b0ea849` 已重新查询远端，作品集目录树分别为 `42a0aa3`、`b74d088`，与来源一致。详细结果见 [StayWord 同步记录](../projects/02-stayword/evaluation/source-sync.json)。下方表格保留 10 月 16 日的历史核查结果；当前导入版本以 `sources.json` 为准。
 
 ## 结论（2026-10-16 历史记录）
 
@@ -71,11 +71,11 @@ Android `fc0c98b` 与官网 `b0ea849` 已重新查询远端，作品集目录树
 
 ## 后续内容生产项目重构
 
-同日，第一个项目进一步从平铺 src/ 迁入 workflows/ 与 tools/。上面的来源版本核对结论仍有效；在三份说明修订之外，social-content-skills 和 content-agent 的 README 增加了作品集使用路径，content-agent 的 .gitignore 补充了本地 .venv/。新增 script-workflow/README.md 属于组合入口，不属于任一原工程。六个工程迁移前后的文件校验和离线测试见[重构验证记录](projects/01-content-agent/evaluation/refactor-check.md)。
+同日，第一个项目进一步从平铺 src/ 迁入 workflows/ 与 tools/。上面的来源版本核对结论仍有效；在三份说明修订之外，social-content-skills 和 content-agent 的 README 增加了作品集使用路径，content-agent 的 .gitignore 补充了本地 .venv/。新增 script-workflow/README.md 属于组合入口，不属于任一原工程。六个工程迁移前后的文件校验和离线测试见[重构验证记录](projects/01-content-agent/refactor-check.md)。
 
 ## 最终结构落地（2026-10-16）
 
-上述 workflows/、tools/ 迁移为历史阶段。当前第一个项目代码已归回 src/，YouTube 板块命名为 content-workflow；其他板块为 script-workflow、content-agent、daily-trend-radar。来源地址与提交保持不变，六项 path 和相关文档已更新。迁移前后 239 个文件（含组合入口）已核对；本轮仅四份 README 因名称／路径调整变化，业务执行文件未变。新的离线测试与校验记录见[结构验证记录](projects/01-content-agent/evaluation/structure-check.md)。此步骤未重新查询远端，远端版本结论沿用本文同日核对快照。
+上述 workflows/、tools/ 迁移为历史阶段。当前第一个项目代码已归回 src/，YouTube 板块命名为 content-workflow；其他板块为 script-workflow、content-agent、daily-trend-radar。来源地址与提交保持不变，六项 path 和相关文档已更新。迁移前后 239 个文件（含组合入口）已核对；本轮仅四份 README 因名称／路径调整变化，业务执行文件未变。新的离线测试与校验记录见[结构验证记录](projects/01-content-agent/structure-check.md)。此步骤未重新查询远端，远端版本结论沿用本文同日核对快照。
 
 ## 后续产品迭代差异（2026-10-16）
 
@@ -85,7 +85,7 @@ Android `fc0c98b` 与官网 `b0ea849` 已重新查询远端，作品集目录树
 - daily-trend-radar/scripts/run.mjs：全源失败仍保存诊断报告，再以非零状态结束；新增 test/cli-failure.test.mjs，README 补充运行与邮件边界。
 - script-workflow/check_handoff.py 与 test_handoff.py：作品集组合层新增的版本交接检查，不属于三个上游 Skill 的源码。
 
-前两项已登记在 sources.json 的 portfolio_changes，三个 script Skill 仍保留导入版本。本节不声称重新查询过远端；最新查询时点仍为本文首次核对。当前验证见[投递材料审查](projects/01-content-agent/evaluation/release-review.md)。原仓库与原本地工程未修改。
+前两项已登记在 sources.json 的 portfolio_changes，三个 script Skill 仍保留导入版本。本节不声称重新查询过远端；最新查询时点仍为本文首次核对。当前验证见[投递材料审查](projects/01-content-agent/release-review.md)。原仓库与原本地工程未修改。
 
 
 ## 审改一致性修订（2026-10-16）

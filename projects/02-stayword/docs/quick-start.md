@@ -27,7 +27,7 @@ xcodebuild -project StayWord.xcodeproj -scheme StayWord \
   -only-testing:StayWordTests CODE_SIGNING_ALLOWED=NO test
 ```
 
-模拟器名称以 `xcrun simctl list devices available` 为准。Xcode 中为应用与扩展设置自己的签名 Team，再选择真机运行。模拟器不能验证 MLX 摘要，显示不支持提示属于实现边界。第一次构建需要下载 Swift Package 依赖及 Xcode Metal Toolchain；Git LFS 失败则先修复模型和原生库，不能用占位指针构建。本轮 Xcode 27.0 / iOS 26.5 模拟器已通过 36 项单元测试。若出现 `_mlx_*` 未定义符号，检查临时 Swift Package checkout 的 `mlx-c` 子模块是否完整，再按锁定提交取回；不要先改模型代码。
+模拟器名称以 `xcrun simctl list devices available` 为准。Xcode 中为应用与扩展设置自己的签名 Team，再选择真机运行。模拟器不能验证 MLX 摘要，显示不支持提示属于实现边界。第一次构建需要下载 Swift Package 依赖及 Xcode Metal Toolchain；Git LFS 失败则先修复模型和原生库，不能用占位指针构建。2026-10-17 在 Xcode 27.0 / iOS 26.5 模拟器上通过 36 项单元测试。若出现 `_mlx_*` 未定义符号，检查临时 Swift Package checkout 的 `mlx-c` 子模块是否完整，再按锁定提交取回；不要先改模型代码。
 
 ## 运行 Android 工程
 

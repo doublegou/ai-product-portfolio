@@ -2,7 +2,7 @@
 
 最新：[2026-10-17 产品评测](2026-10-17-product-audit/README.md)，包括历史日志审计、12 条规则边界探针、图片规格、三次雷达实采与 Token 成本拆解。
 
-各板块任务核验见下表及 results.csv；历史工程修订见[审查记录](release-review.md)。用户采纳、主动修正时间和完整成本对照仍待测量。目录与现有工具的离线验证见[结构验证记录](structure-check.md)，此前迁移记录见[历史记录](refactor-check.md)；工程测试不计为内容质量或传播效果成绩。
+各板块的验收标准与任务结果见下表。用户采纳、主动修正时间和完整成本对照仍待测量；工程测试与内容质量分别评价。
 
 | workflow 值 | 验证对象 | 具体标准 |
 | --- | --- | --- |
@@ -11,7 +11,7 @@
 | content-agent | 选题研究、审改、草稿与独立发布状态 | [验收与样本](content-agent/README.md) |
 | daily-trend-radar | 来源状态、热点报告和选题建议 | [验收与样本](daily-trend-radar/README.md) |
 
-已完成的真实素材核验见[第 005 期检查记录](script-workflow/2026-10-16-sample-review.md)，展示页的桌面／手机交互与链接检查见[浏览器报告](showcase-check.json)。这些检查验证文件和展示行为，不代表业务效果评测完成。
+已完成的真实素材核验见[第 005 期检查记录](script-workflow/2026-10-16-sample-review.md)。这些检查验证文件和展示行为，不代表业务效果评测完成。
 
 ## 首轮与对照
 

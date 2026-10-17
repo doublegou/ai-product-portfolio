@@ -1,6 +1,6 @@
 # script-workflow 验收与记录
 
-状态：已完成对应真实材料的复核，结果见 [results.csv](results.csv) 和[本轮审查](../release-review.md)；采纳、效率与成本对照仍待测量。以下标准用于持续验收。对象：同一期 HTML、发布文案和三比例封面。材料入口见[演示指南](../../demo/script-workflow/README.md)，具体流程见[设计说明](../../docs/script-workflow.md)。
+已完成任务材料复核，结果见 [results.csv](results.csv)；采纳、效率与成本对照仍待测量。以下标准用于持续验收。对象：同一期 HTML、发布文案和三比例封面。材料入口见[演示指南](../../demo/script-workflow/README.md)，具体流程见[设计说明](../../docs/script-workflow.md)。
 
 ## 合格交付
 
@@ -18,4 +18,4 @@
 
 已有 HTML、post、cover 工具可做结构检查，实际产物仍须逐页／逐图复核。记录每类产物重试和修改，费用包含被放弃图片；未测部分不能算整套通过。
 
-按[共用口径](../README.md)记录。新增运行继续按[模板](../run-template.csv)记入本目录 results.csv，workflow 填 script-workflow；记录关联本次输入和最终产物，保留失败与人工修订。没有实际执行时维持方法文档，不创建虚构结果。
+按[共用口径](../README.md)记录。新增运行继续按[模板](../run-template.csv)记入本目录 results.csv，workflow 填 script-workflow；记录关联本次输入和最终产物，保留失败与人工修订。计划与执行结果分别记录。

@@ -9,7 +9,7 @@
 | 高：2026-08-27，聊天“分析 YouTube 视频内容”；搜索“图片八张有点多了” | 用户要求八张改六张、只看图片也能懂，以及助手紧接着的六页方案回复。可用两张连续截图 | 用户真实改变了交付约束，系统如何将数量反馈转为结构修改 | 首页 content-workflow 案例的输入与修改段；与已有六页规划和成图配对 |
 | 高：2026-09-25，第 004 期口播素材任务；搜索“因为是实机演示 我已经搞完了”或对照下方摘录 | 已有实机演示、只做文案与封面的要求，接着保留实际交付路径的回复 | “部分执行”来自实际使用，用户能承接已有工作 | script-workflow 的部分执行案例；首页保留一个入口，不重复放全组 |
 
-定位依据：[图文原始摘录](../demo/content-workflow/2026-08-27-literature-review/conversation-excerpts.json)、[部分执行原始摘录](../demo/script-workflow/2026-09-25-partial-task/feedback-excerpts.json)。按摘录中的实际原文搜索；聊天标题不同也可按日期与 thread_id 定位。
+定位依据：[图文原始摘录](../../../projects/01-content-agent/demo/content-workflow/2026-08-27-literature-review/conversation-excerpts.json)、[部分执行原始摘录](../../../projects/01-content-agent/demo/script-workflow/2026-09-25-partial-task/feedback-excerpts.json)。按摘录中的实际原文搜索；聊天标题不同也可按日期与 thread_id 定位。
 
 ## 有增量价值时再补
 
@@ -18,7 +18,7 @@
 | 2026-09-26 第 005 期：演示播放反馈 | 用户指出控制栏位置或内容出现时机，紧接修订回复；最好保留相关页面编号 | 与仓库已有真实播放截图配对，解释交互为什么这样改。已有播放前后画面，不需再截一套全部页面 |
 | 第 005 期：修改后的封面 | 用户指出人像模糊、泛油或标题问题；若同一记录保留修改前图，可连同原始前后图导出 | 能补充视觉验收的依据。只有最终好看成图而没有修改关系时，不增加聊天截图 |
 
-依据：[第 005 期输入与反馈](../demo/script-workflow/2026-09-26-agentic-video/conversation-excerpts.json)。
+依据：[第 005 期输入与反馈](../../../projects/01-content-agent/demo/script-workflow/2026-09-26-agentic-video/conversation-excerpts.json)。
 
 content-agent 已有原始事件日志和逐项文稿对照；radar 已有报告与选题理由。终端“完成了”或大段日志截图不会增加这些案例的说服力，暂不补。若以后实际采用某篇稿或某个选题，再保存采用记录与对应最终产物，它们比更多运行截图更有价值。
 

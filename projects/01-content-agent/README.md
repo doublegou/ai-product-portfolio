@@ -202,4 +202,4 @@ python3 projects/01-content-agent/src/script-workflow/check_handoff.py \
   projects/01-content-agent/demo/script-workflow/2026-10-16-version-alignment/handoff.json
 ```
 
-检查器比较记录版本，语义质量仍需对照素材。产品设计、整合与迭代由我独立完成；复用来源与修订记录见[来源清单](../../sources.json)。
+检查器比较文件版本；内容质量还需对照原始素材与交付要求。

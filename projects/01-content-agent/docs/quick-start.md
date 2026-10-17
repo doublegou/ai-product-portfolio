@@ -98,7 +98,7 @@ node scripts/run.mjs --sources github,hackernews,v2ex --limit 5 --format json \
 
 将报告与受众方向交给 Agent，要求回查原文并将事实、内容角度、待验证项分开，可参考[选题简报](../demo/daily-trend-radar/2026-10-16-source-check/brief.md)。命令只采集并保存报告，不会发邮件或启动下游创作。
 
-## 6. 复跑本轮产品评测
+## 6. 复跑产品评测
 
 在已装好 content-agent 依赖的 Python 环境，从仓库根目录执行：
 

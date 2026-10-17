@@ -17,7 +17,7 @@
 
 最后一步保留历史快照，是为了恢复与正式实验一致的输入，而非宣称每个历史特征都能仅凭当前脚本从零重建。旧 4,485 站在 V2 中曾重新提取特征，因此校验的是旧站身份/响应一致，以及 V2 特征与 V2 快照一致；不要求 V2 特征逐格等于 V1。
 
-新增归档的[原始数据下载清单](../src/river_sr/data/raw/features/download_inventory.csv)保存了 36 项资源的来源 URL、字节数和 SHA-256，原清单状态均为 verified，总计约 3.84 GB。作品集保留清单与构建代码，未重新下载整套地理原始数据。
+[原始数据下载清单](../src/river_sr/data/raw/features/download_inventory.csv)保存了 36 项资源的来源 URL、字节数和 SHA-256，原清单状态均为 verified，总计约 3.84 GB。仓库保留清单与构建代码，完整地理原始数据按清单取得。
 
 来源：[补充观测管线](../src/river_sr/data_pipeline/observation/sr_supplement_v1/README.md)、[Full50 V2 构建](../src/river_sr/data_pipeline/training/sr_full50_v2/README.md)、[数据 manifest](../src/river_sr/data/processed/training/sr_full50_v2_manifest.json)。
 
@@ -119,7 +119,7 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 
 ### 成本怎样核算
 
-我将计算成本拆成**有效实验、失败恢复、数据处理与存储**。当前材料可以确定任务结构、申请配置和部分应用计时；尚未取得完整调度账单与集群单价，因此不填造实际金额，也不把科研配额视为零成本。
+我将计算成本拆成**有效实验、失败恢复、数据处理与存储**。当前材料可以确定任务结构、申请配置和部分应用计时；实际费用取决于完整调度账单与集群单价；科研配额同样纳入资源预算。
 
 若集群按分配 CPU 核时计费，核算为：`Σ(AllocCPUS × ElapsedRaw / 3600) × 核时单价`，再加平台适用的内存、存储或其他费用。应逐个任务统计，父 array 汇总与子任务、batch step 不能重复累加。`CPUTimeRAW` 是分配 CPU 时间，`TotalCPU` 是使用的 CPU 时间，两者可用于检查利用情况；实际结算仍以平台规则为准。[Slurm sacct 字段定义](https://slurm.schedmd.com/sacct.html)
 
@@ -139,7 +139,7 @@ Base V2 的匹配基准比较验证几何，Base V3 的固定分组比较模型�
 
 Base V3 正式运行 76 个作业单元完成；Regional V2 最终完成 68 个任务、1,156 次拟合。Regional V2 前两次因计算节点 `libstdc++` 加载顺序在工程检查阶段停止，修复依赖后完成正式运行，没有为环境错误重设科学方案。后续 Human17 重分析的 55 个输出失败任务只恢复对应索引，未重跑有效任务；这是后续执行回报中的恢复记录，不计入 Base V3 成本。[区域工程与结果](../src/river_sr/training/regional_expert/regional_risk_v2/RESULTS.md) · [后续恢复记录](../evaluation/later-research-records.md#执行与恢复)
 
-研究交付包括配方、特征定义、预处理统计、分组、验证结果、科学结论和模型快照。本轮已从上游 LFS 恢复 Base V3 的 RF release bundle 与 RF / XGBoost 最终运行快照，并按发布哈希校验。RF bundle 为 126,650,268 字节，对照 XGBoost 为 155,584 字节；体积差异不用于推断精度或推理速度。后续 Natural90 / Human17 模型仍不在本轮上游归档中。[Base V3 release](../src/river_sr/training/base/v3/release/README.md)
+研究交付包括配方、特征定义、预处理统计、分组、验证结果、科学结论和模型快照。Base V3 保留 RF release bundle 与 RF / XGBoost 最终运行快照，通过 LFS 管理并按发布哈希校验。RF bundle 为 126,650,268 字节，对照 XGBoost 为 155,584 字节；体积差异不用于推断精度或推理速度。后续 Natural90 / Human17 模型尚未随执行回报归档。[Base V3 release](../src/river_sr/training/base/v3/release/README.md)
 
 ## 后续 Natural90 / Human17 的实验合同
 
@@ -161,7 +161,7 @@ Base V3 正式运行 76 个作业单元完成；Regional V2 最终完成 68 个�
 - site mean：每站 3 次预测先平均，再在 5,600 站点上评价，便于站点与区间诊断。
 - training：全量拟合后回看训练数据，只用于容量诊断。
 
-三次重复共享站点，不能直接视为独立同分布样本来构造置信区间。本轮新增的[逐站重算脚本](../evaluation/reproduce_predictions.py)读取 33,600 行两算法 Primary 预测与 44,800 行压力测试预测，核对原始逐折输出、测试身份、每站三次预测均值，并重算 RMSE、MAE、Bias、R² 和极高值命中，与冻结摘要一致。该过程未重新训练模型。
+三次重复共享站点，不能直接视为独立同分布样本来构造置信区间。[逐站重算脚本](../evaluation/reproduce_predictions.py)读取 33,600 行两算法 Primary 预测与 44,800 行压力测试预测，核对原始逐折输出、测试身份、每站三次预测均值，并重算 RMSE、MAE、Bias、R² 和极高值命中，与冻结摘要一致。该过程未重新训练模型。
 
 RF 的 136 个实测 ≥0.75 站点占 2.43%，贡献 82.90% 的站点均值平方误差。此分层基于实测响应，是失败分析；不能在未知站点直接用该分层选择模型，也不构成机制或因果证明。[误差诊断与单站回放](../demo/README.md#从逐站结果定位信息缺口)
 

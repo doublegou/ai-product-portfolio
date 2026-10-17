@@ -90,4 +90,4 @@
 | 产品成效与下一轮验证 | [价值指标与实验](docs/metrics-and-experiments.md) |
 | 体验与源码 | [Quick start](docs/quick-start.md) · [iOS](src/stayword-front-ios/README.md) · [Android](src/stayword-front-android/README.md) · [官网](src/official-landingpage/products/stayword/index.html) |
 
-工程可追查至同步的原始提交；36 项 iOS 单元测试通过。源码一致性、测试范围与待验证的真机条件集中保存在[验证记录](evaluation/README.md)。
+模型级诊断、iOS 工程回归与真机体验分别验收；各自的结果和后续质量门槛见[验证记录](evaluation/README.md)。

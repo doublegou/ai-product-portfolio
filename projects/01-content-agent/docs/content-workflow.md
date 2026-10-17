@@ -2,7 +2,7 @@
 
 我用 content-workflow 将值得解释的 YouTube 视频改编为中文图文。重点是保留原内容依据，让正文和卡片分别适合阅读，并允许在生成前后调整结构。
 
-[整体产品设计](case-study.md) · [实际输入与图文产物](../demo/content-workflow/2026-08-27-literature-review/README.md) · [实现依据](evidence-notes.md)
+[整体产品设计](case-study.md) · [实际输入与图文产物](../demo/content-workflow/2026-08-27-literature-review/README.md) · [技术实现](architecture.md)
 
 ## 1. 使用场景与问题定义
 

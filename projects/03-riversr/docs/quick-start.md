@@ -48,7 +48,7 @@ npm run dev -- --host 127.0.0.1
 
 工程提供 `Rscript training/base/v3/scripts/run.R prepare` 与 `smoke --run-id local_smoke`；prepare 会写准备产物，应在独立副本中运行。正式实验面向 Slurm，遵循显式 run_id、冻结配置和数据契约。完整实验需要对应数据资产与计算环境；这里的轻量阅读和复核路径不依赖全量重训。
 
-`release/model_bundle.rds` 已通过 LFS 收录。作品集保留正式 Base V3 的两份最终模型和预测记录；完整历史/smoke 运行及逐折模型可从[上游固定提交](https://github.com/triplemengpaper/river_sr/tree/ad120936a965608ba43794742b18d5caebe68b9d)按需取得。本机未配置 R，当前完成的是文件与原始预测复核，未重新训练或执行 R 推理。
+`release/model_bundle.rds` 已通过 LFS 收录。作品集保留正式 Base V3 的两份最终模型和预测记录；完整历史/smoke 运行及逐折模型可从[上游固定提交](https://github.com/triplemengpaper/river_sr/tree/ad120936a965608ba43794742b18d5caebe68b9d)按需取得。当前复核范围为文件与原始预测；重新训练或执行推理需配置上述 R 环境。
 
 ## 路径四：查看后续研究与训练证据
 

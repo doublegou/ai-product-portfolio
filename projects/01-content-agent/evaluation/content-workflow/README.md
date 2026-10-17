@@ -1,6 +1,6 @@
 # content-workflow 验收与记录
 
-状态：已完成对应真实材料的复核，结果见 [results.csv](results.csv) 和[本轮审查](../release-review.md)；采纳、效率与成本对照仍待测量。以下标准用于持续验收。对象：分析、正文与系列卡片。材料入口见[演示指南](../../demo/content-workflow/README.md)，具体流程见[设计说明](../../docs/content-workflow.md)。
+已完成任务材料复核，结果见 [results.csv](results.csv)；采纳、效率与成本对照仍待测量。以下标准用于持续验收。对象：分析、正文与系列卡片。材料入口见[演示指南](../../demo/content-workflow/README.md)，具体流程见[设计说明](../../docs/content-workflow.md)。
 
 ## 合格交付
 
@@ -18,4 +18,4 @@
 
 分别记录字幕获取、分析、正文、图片耗时和成本；统计人工改事实、改表达、改图片的时间。只有单分支需求时按预定范围验收，不能记为整套图文成功。
 
-按[共用口径](../README.md)记录。新增运行继续按[模板](../run-template.csv)记入本目录 results.csv，workflow 填 content-workflow；记录关联本次输入和最终产物，保留失败与人工修订。没有实际执行时维持方法文档，不创建虚构结果。
+按[共用口径](../README.md)记录。新增运行继续按[模板](../run-template.csv)记入本目录 results.csv，workflow 填 content-workflow；记录关联本次输入和最终产物，保留失败与人工修订。计划与执行结果分别记录。

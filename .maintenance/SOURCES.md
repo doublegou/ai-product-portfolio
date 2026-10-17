@@ -8,27 +8,27 @@
 
 | 项目组 | 来源 | 提交 | 本地副本 |
 | --- | --- | --- | --- |
-| 01-content-agent | [seedxdream/social-content-skills](https://github.com/seedxdream/social-content-skills) | `3f1522abb67d` | [目录](projects/01-content-agent/src/content-workflow/) |
-| 01-content-agent | [DualAries-1/content-agent](https://github.com/DualAries-1/content-agent) | `acd957c8a25c` | [目录](projects/01-content-agent/src/content-agent/) |
-| 01-content-agent | [doublegou/script-to-html-slides](https://github.com/doublegou/script-to-html-slides) | `760772ecb1ff` | [目录](projects/01-content-agent/src/script-workflow/script-to-html-slides/) |
-| 01-content-agent | [doublegou/script-to-post](https://github.com/doublegou/script-to-post) | `85bc30a0fc67` | [目录](projects/01-content-agent/src/script-workflow/script-to-post/) |
-| 01-content-agent | [doublegou/script-to-image](https://github.com/doublegou/script-to-image) | `bff70e6a5bb2` | [目录](projects/01-content-agent/src/script-workflow/script-to-image/) |
-| 01-content-agent | [DualAries-1/daily-trend-radar](https://github.com/DualAries-1/daily-trend-radar) | `eb08b6d5dc30` | [目录](projects/01-content-agent/src/daily-trend-radar/) |
-| 02-stayword | [DualAries-1/stayword-front-ios](https://github.com/DualAries-1/stayword-front-ios) | `70e0c0f57074` | [目录](projects/02-stayword/src/stayword-front-ios/) |
-| 02-stayword | [DualAries-1/stayword-front-android](https://github.com/DualAries-1/stayword-front-android) | `fc0c98ba1503` | [目录](projects/02-stayword/src/stayword-front-android/) |
-| 02-stayword | [DualAries-1/official-landingpage](https://github.com/DualAries-1/official-landingpage) | `b0ea849a6058` | [目录](projects/02-stayword/src/official-landingpage/) |
-| 03-riversr | [doublegou/river_sr](https://github.com/doublegou/river_sr) | `1cc053e3fc6a` | [目录](projects/03-riversr/src/river_sr/) |
-| 03-riversr | [triplemengpaper/river_sr](https://github.com/triplemengpaper/river_sr) | `ad120936a965`（精选归档） | [目录](projects/03-riversr/src/river_sr/) |
-| 03-riversr | [doublegou/sr_rf](https://github.com/doublegou/sr_rf) | `24715b526acc` | [目录](projects/03-riversr/src/sr_rf/) |
-| 03-riversr | [doublegou/sr_o_map_web_pro](https://github.com/doublegou/sr_o_map_web_pro) | `300ccb1b5b86` | [目录](projects/03-riversr/src/sr_o_map_web_pro/) |
-| 03-riversr | [triplemengpaper/sr_o_map_web_pro](https://github.com/triplemengpaper/sr_o_map_web_pro) | `300ccb1b5b86` | [目录](projects/03-riversr/src/sr_o_map_web_pro/) |
-| 03-riversr | [doublegou/probabilistic-map-explorer](https://github.com/doublegou/probabilistic-map-explorer) | `85788f9c9d28` | [目录](projects/03-riversr/src/probabilistic-map-explorer/) |
+| 01-content-agent | [seedxdream/social-content-skills](https://github.com/seedxdream/social-content-skills) | `3f1522abb67d` | [目录](../projects/01-content-agent/src/content-workflow) |
+| 01-content-agent | [DualAries-1/content-agent](https://github.com/DualAries-1/content-agent) | `acd957c8a25c` | [目录](../projects/01-content-agent/src/content-agent) |
+| 01-content-agent | [doublegou/script-to-html-slides](https://github.com/doublegou/script-to-html-slides) | `760772ecb1ff` | [目录](../projects/01-content-agent/src/script-workflow/script-to-html-slides) |
+| 01-content-agent | [doublegou/script-to-post](https://github.com/doublegou/script-to-post) | `85bc30a0fc67` | [目录](../projects/01-content-agent/src/script-workflow/script-to-post) |
+| 01-content-agent | [doublegou/script-to-image](https://github.com/doublegou/script-to-image) | `bff70e6a5bb2` | [目录](../projects/01-content-agent/src/script-workflow/script-to-image) |
+| 01-content-agent | [DualAries-1/daily-trend-radar](https://github.com/DualAries-1/daily-trend-radar) | `eb08b6d5dc30` | [目录](../projects/01-content-agent/src/daily-trend-radar) |
+| 02-stayword | [DualAries-1/stayword-front-ios](https://github.com/DualAries-1/stayword-front-ios) | `70e0c0f57074` | [目录](../projects/02-stayword/src/stayword-front-ios) |
+| 02-stayword | [DualAries-1/stayword-front-android](https://github.com/DualAries-1/stayword-front-android) | `fc0c98ba1503` | [目录](../projects/02-stayword/src/stayword-front-android) |
+| 02-stayword | [DualAries-1/official-landingpage](https://github.com/DualAries-1/official-landingpage) | `b0ea849a6058` | [目录](../projects/02-stayword/src/official-landingpage) |
+| 03-riversr | [doublegou/river_sr](https://github.com/doublegou/river_sr) | `1cc053e3fc6a` | [目录](../projects/03-riversr/src/river_sr) |
+| 03-riversr | [triplemengpaper/river_sr](https://github.com/triplemengpaper/river_sr) | `ad120936a965`（精选归档） | [目录](../projects/03-riversr/src/river_sr) |
+| 03-riversr | [doublegou/sr_rf](https://github.com/doublegou/sr_rf) | `24715b526acc` | [目录](../projects/03-riversr/src/sr_rf) |
+| 03-riversr | [doublegou/sr_o_map_web_pro](https://github.com/doublegou/sr_o_map_web_pro) | `300ccb1b5b86` | [目录](../projects/03-riversr/src/sr_o_map_web_pro) |
+| 03-riversr | [triplemengpaper/sr_o_map_web_pro](https://github.com/triplemengpaper/sr_o_map_web_pro) | `300ccb1b5b86` | [目录](../projects/03-riversr/src/sr_o_map_web_pro) |
+| 03-riversr | [doublegou/probabilistic-map-explorer](https://github.com/doublegou/probabilistic-map-explorer) | `85788f9c9d28` | [目录](../projects/03-riversr/src/probabilistic-map-explorer) |
 
 ## 2026-10-17 RiverSR 归档同步
 
 从 `triplemengpaper/river_sr@ad12093` 收录 Base V3 正式运行产物、最终 RF / XGBoost 模型和原始资源清单。已收录的 2,397 个文件与选定上游内容逐字节一致；保留原有代码，新增 516 个文件，仅 `.gitattributes` 更新。完整上游共 8,912 个文件，历史/smoke 归档和逐折模型未全部复制。
 
-三个模型路径由两个 LFS 对象提供，合计唯一内容 126,805,852 字节；下载内容与上游指针及 release 哈希一致。记录见 [source-sync.json](projects/03-riversr/evaluation/source-sync.json)。这次同步没有把 Base V3 当成 Natural90 / Human17，后期目录在该提交中仍不存在。
+三个模型路径由两个 LFS 对象提供，合计唯一内容 126,805,852 字节；下载内容与上游指针及 release 哈希一致。记录见 [source-sync.json](../projects/03-riversr/evaluation/source-sync.json)。这次同步没有把 Base V3 当成 Natural90 / Human17，后期目录在该提交中仍不存在。
 
 ## 重复与共享内容
 

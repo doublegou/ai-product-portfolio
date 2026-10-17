@@ -6,7 +6,7 @@
 
 13:15:59 启动，publish_dry_run 为 true；13:18:59 第一轮模型审稿 8.4、未通过；13:19:43 第二轮 8.6、通过。随后打开发布页，13:20:00 因找不到上传控件失败。
 
-[草稿](../../../src/content-agent/data/drafts/2026-07-09-BirdTracker-用BirdTracker记录第一次观鸟体验.json)的 created_at 与第二轮审稿时间相符，[失败结果](../../../src/content-agent/data/publish_results/2026-07-09-132000-xhs-failed.json)与日志都指向该草稿路径。因此可确认草稿与失败属于同一任务。是发布页准备阶段失败，不是最终发布按钮点击失败；本轮未登录或发布。
+[草稿](../../../src/content-agent/data/drafts/2026-07-09-BirdTracker-用BirdTracker记录第一次观鸟体验.json)的 created_at 与第二轮审稿时间相符，[失败结果](../../../src/content-agent/data/publish_results/2026-07-09-132000-xhs-failed.json)与日志都指向该草稿路径。因此可确认草稿与失败属于同一任务。是发布页准备阶段失败，不是最终发布按钮点击失败。
 
 run_end 的 saved_count 为 0，但草稿文件确实存在，因此该汇总字段不能直接作为草稿保存量。历史执行版本未核实，先保留这处不一致，不以当前代码重写历史。
 

@@ -6,7 +6,7 @@
 
 这里整理后续研究的原始执行回报，用于连接早期 `river_sr` 工程与全球 isoscape 后续研究。数据来自历史工作记录中粘贴的执行结果，而非对话中的建议文字：2026-10-13 的 Natural90 共同失败重算、Human17 H13 修复与配对重分析，以及 aquatic bioarchive Round 2.5 回报。
 
-当前作品集保留早期 Base V0–V3 源码与冻结摘要，并从 `triplemengpaper/river_sr` 的 `ad12093` 补入 Base V3 正式运行和最终 LFS 模型。`doublegou/river_sr` 本轮查询仍为 `1cc053e3`；两个地址已不再是同一最新快照。新增归档不含本页 Natural90 / Human17 / 生物应用目录。后续回报指向 HPC 的 `river_sr_isoscape_v3_staging/` 及 `AQUATIC_SR_BIOARCHIVE_*` 目录，本轮未取得这些目录的模型二进制、逐折输出或计费账单。因此下列结果标记为**执行回报记录**，不宣称已在本机逐项重算。原始方案中的 Core discovery / lockbox 也不能仅凭 Natural90 已完成而视为全部实现。
+早期 Base V0–V3 保留源码、正式运行结果与最终模型；本页后续研究则来自 **执行回报记录**。对应 HPC 目录为 `river_sr_isoscape_v3_staging/` 与 `AQUATIC_SR_BIOARCHIVE_*`，目前未附模型二进制、逐折输出或计费账单，因此尚未在本机逐项重算。Natural90 的已完成结果与原始方案中的 Core discovery / lockbox 分开记录，不能据前者认定后者全部完成。
 
 ## 1. 训练与比较人群
 
