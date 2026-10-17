@@ -1,27 +1,47 @@
-# RiverSR 实际产物
+# RiverSR 研究产物与应用原型
 
-[返回项目](../README.md)
+[返回项目](../README.md) · [研究案例](../docs/case-study.md) · [Quick start](../docs/quick-start.md)
 
-## 研究结果：比较与用途限制
+## 研究成果如何使用
 
-![正式模型证据](assets/model-evidence.png)
+一套可复用的研究成果，需要让使用者知道输入是什么、怎样比较模型、结果能回答什么，以及如何继续实验。我按这个顺序组织交付。
 
-图表直接读取 Base V3 冻结 CSV，由 [render_figures.py](render_figures.py) 生成。RF 的严格 OOF 误差优于 XGBoost，但两者均未命中 29 个极高值站点。训练集高命中与陌生水系漏检同时展示，避免只选有利结果。
+| 产物 | 直接查看 | 可用于什么 |
+| --- | --- | --- |
+| 数据版本 | [5,600 站点构建 manifest](../src/river_sr/data/processed/training/sr_full50_v2_manifest.json) · [Full50 定义](../src/river_sr/training/base/v3/release/full50_predictors.txt) | 检查样本构成、来源、特征和版本变化 |
+| 验证方法 | [支流方法对照](../src/river_sr/training/base/v2/RESULTS.md) · [完整水系科学设计](../src/river_sr/training/base/v3/SCIENTIFIC_DESIGN.md) | 按预测场景选择验证条件 |
+| 模型比较 | [Base V3 严格验证摘要](../src/river_sr/training/base/v3/validation/README.md) | 在同口径下比较模型，检查均值表现与迁移差异 |
+| 模型配方 | [RF 配方](../src/river_sr/training/base/v3/release/rf_recipe.json) · [预处理统计](../src/river_sr/training/base/v3/release/training_medians.csv) | 理解正式模型的输入和训练配置 |
+| 研究结论 | [冻结结论](../src/river_sr/training/base/v3/release/scientific_conclusion.md) · [区域失败诊断](../src/river_sr/training/regional_expert/regional_failure_audit/results/FAILURE_AUDIT.md) | 确定可用范围，安排下一轮信息采集和实验 |
+| 运行追溯 | [版本及二进制哈希](../src/river_sr/training/base/v3/release/final_manifest.json) | 将配方、结果与正式运行对应起来 |
 
-完整产物还包括：[50 个预测变量](../src/river_sr/training/base/v3/release/full50_predictors.txt)、[RF 冻结配方](../src/river_sr/training/base/v3/release/rf_recipe.json)、[预处理统计](../src/river_sr/training/base/v3/release/training_medians.csv)、[严格验证摘要](../src/river_sr/training/base/v3/validation/README.md)、[科学结论](../src/river_sr/training/base/v3/release/scientific_conclusion.md)与[版本及二进制哈希](../src/river_sr/training/base/v3/release/final_manifest.json)。模型二进制未随 Git 附带，不能仅凭克隆此作品集直接推理。
+模型二进制与完整 HPC 归档未随作品集附带。现有输入、配方及冻结摘要可直接阅读，轻量复核不需要重训。
 
-## 地图：运行已有工程得到的界面
+## 如何读这张结果图
 
-**以下是合成数据交互原型，不是真实模型预测，也不是地理来源结论。**
+![正式模型比较与迁移诊断](assets/model-evidence.png)
 
-![本轮运行的 RiverSR 地图交互原型，合成数据](assets/map-prototype.png)
+**左图是选型，右图是使用条件。** 相同水系隔离验证下，RF 的误差更低；但两个模型都未命中 29 个极高值站点，而全量训练拟合可以命中其中绝大多数。两部分共同支持“选择 RF 作为连续预测基线，同时继续研究极端值迁移”的判断。
 
-2026-10-17 本轮在现有 `sr_o_map_web_pro` 工程运行 Vite 后，由 Chromium 捕获，视口 1440 × 1000；示例在 Strontium central 50% 输入 0.7100 后点击 Run，其余输入为空；没有重绘界面或补造模型结果。底图来源按界面 attribution 保留。
+图表读取 Base V3 冻结 CSV，由 [render_figures.py](render_figures.py) 生成。这里展示的是正式实验数据；模型比较与尾部命中的具体汇总口径见[首页](../README.md)。
 
-使用过程为：在 Sample Query 选择同位素输入 → 点击 Run → 查看地图、修改条件重跑。误差使用域模块默认配置，界面目前没有独立误差输入。表单有计算状态与重置处理，域模块提供合成值和网格分值；但渲染色彩目前使用独立展示函数，未直接消费查询 score。它说明了原型形态，同时暴露了端到端接口缺口。
+## 地图：研究成果的交互探索
 
-这项缺口应先于真实预测接入修复；修复后再用固定输入检查颜色、数值、图例和范围是否一致。现有单测通过不能代替这一验收。当前没有把科研模型输出伪装成已上线的地图服务。
+**以下是已有工程的合成数据原型，展示查询交互；尚未连接真实模型。**
 
-## 后续值得补的证据
+![RiverSR 地图交互原型，使用合成数据](assets/map-prototype.png)
 
-真正有价值的是真实栅格与模型接入后的同一查询全链路：输入与模型版本 → 预测数值和不确定性 → 地图响应 → 不支持区域的提示。Direction 2 的结果图必须等实验完成后生成；目前仅保留方案，不制作模拟成绩截图。
+使用流程是：在 Sample Query 输入同位素条件 → 点击 Run → 查看空间展示 → 修改条件并重新查询。截图来自 2026-10-17 运行的 `sr_o_map_web_pro`，示例在 Strontium central 50% 输入 0.7100，其余输入为空。底图 attribution 保留在界面中。
+
+这个原型探索了研究结果如何被查询，但还有一个关键接口需要接通：域模块已经生成网格分值，地图颜色当前却使用独立展示函数。因此，现有画面可以展示界面组织，不能作为实际来源概率或模型推理证据。
+
+## 接入真实研究结果的验收顺序
+
+| 顺序 | 要完成的接口 | 如何确认完成 |
+| --- | --- | --- |
+| 1 · 查询与显示一致 | 地图颜色、图例与数值读取同一查询输出 | 固定输入能重复得到同一结果，改变输入后各显示同步响应 |
+| 2 · 位置与特征一致 | 坐标匹配、Full50 特征版本、缺失处理与冻结模型一致 | 对已知站点逐项核对输入，返回模型和数据版本 |
+| 3 · 预测与解释一致 | 连续值、输入支持范围和经验证的不确定性一起返回 | 对支持不足区域给出明确状态，不把连续值称为风险概率 |
+| 4 · 来源查询成立 | 加入测量误差、预测误差、空间先验和似然假设 | 用已知来源样本检验空间覆盖及校准后再解释为来源推断 |
+
+以上是后续应用验收计划。截图中不展示尚未取得的真实预测能力；Direction 2 的信息贡献和迁移图也将在实际实验完成后生成。

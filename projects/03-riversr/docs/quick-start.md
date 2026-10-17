@@ -16,7 +16,7 @@ python3 projects/03-riversr/evaluation/audit_results.py
 
 ## 路径二：运行现有地图交互原型
 
-需要 Node.js 与 npm，安装版本以工程锁文件和依赖要求为准。本轮使用现有锁文件完成测试和构建。
+需要 Node.js 与 npm，安装版本以工程锁文件和依赖要求为准。
 
 ```bash
 cd projects/03-riversr/src/sr_o_map_web_pro
@@ -28,12 +28,10 @@ npm run dev -- --host 127.0.0.1
 
 打开终端给出的本地地址。输入同位素值、运行查询，再修改输入并重跑。预期可操作表单并查看地图；底图需要网络。**这是合成数据原型，颜色未直接绑定查询分值；不能把画面作为真实地理来源结论。** 已知问题和真实截图见[演示记录](../demo/README.md)。
 
-此入口供检查已有应用，不是额外制作一个本地 HTML 作品集。
-
 ## 路径三：检查完整研究工程
 
 进入 `projects/03-riversr/src/river_sr`，先阅读 [环境说明](../src/river_sr/env/README.md) 与 [Base V3](../src/river_sr/training/base/v3/README.md)。R、数据空间依赖和完整权重不等同于作品集阅读环境。
 
-工程提供 `Rscript training/base/v3/scripts/run.R prepare` 与 `smoke --run-id local_smoke`；prepare 会写准备产物，应在独立副本中运行。正式实验面向 Slurm，遵循显式 run_id、冻结配置和数据契约。本轮没有执行 HPC 全量重训，不把这个命令描述为一分钟可复现论文全结果。
+工程提供 `Rscript training/base/v3/scripts/run.R prepare` 与 `smoke --run-id local_smoke`；prepare 会写准备产物，应在独立副本中运行。正式实验面向 Slurm，遵循显式 run_id、冻结配置和数据契约。完整实验需要对应数据资产与计算环境；这里的轻量阅读和复核路径不依赖全量重训。
 
 `release/model_bundle.rds` 未随 Git 收录，只有配方、摘要和权重哈希。因此只克隆作品集不能直接运行冻结 RF 二进制推理。该限制不影响路径一的证据复核。
