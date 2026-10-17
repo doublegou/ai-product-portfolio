@@ -1,8 +1,8 @@
 # daily-trend-radar：把多源榜单整理成可判断的选题输入
 
-本板块是独立的热点研究工具，承担公开榜单采集、标准化、候选事件归并和来源状态记录，再由 Agent 解释与提出选题建议。
+我用 daily-trend-radar 收集公开榜单，统一条目、归并候选事件并记录来源状态，再由 Agent 辅助回查与形成选题建议。它服务内容制作之前的研究判断。
 
-本文基于现有 Skill、配置与程序整理产品设计。已补入一次三源联网采集与选题报告；尚未取得持续使用或长期运营效果的证据。依据见[背景记录](evidence-notes.md)。
+[整体产品设计](case-study.md) · [实际来源与选题简报](../demo/daily-trend-radar/2026-10-16-source-check/README.md) · [采集记录](../evaluation/2026-10-17-product-audit/radar-live-runs.json)
 
 ## 1. 使用场景与问题定义
 

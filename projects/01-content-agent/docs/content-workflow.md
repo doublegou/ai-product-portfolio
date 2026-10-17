@@ -1,8 +1,8 @@
 # content-workflow：把视频理解转成可独立阅读的图文
 
-本板块服务本人使用的 YouTube 中文图文改编场景。产品设计的重点是：保留原内容的依据，让正文和卡片分别适合阅读，并允许在生成前后调整内容组织。
+我用 content-workflow 将值得解释的 YouTube 视频改编为中文图文。重点是保留原内容依据，让正文和卡片分别适合阅读，并允许在生成前后调整结构。
 
-本文为基于现有实现与使用记录的产品复盘。方案比较用于解释当前设计，不预设曾经做过对应的对照实验。历史记录与待核验材料见[背景依据](evidence-notes.md)。
+[整体产品设计](case-study.md) · [实际输入与图文产物](../demo/content-workflow/2026-08-27-literature-review/README.md) · [实现依据](evidence-notes.md)
 
 ## 1. 使用场景与问题定义
 
