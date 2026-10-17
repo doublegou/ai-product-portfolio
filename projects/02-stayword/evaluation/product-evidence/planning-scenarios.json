@@ -1,0 +1,39 @@
+{
+  "label": "Planning scenarios, not observed user metrics or a confidence interval",
+  "observed_derived": {
+    "download_events": 91,
+    "redownload_share": 0.2087912087912088,
+    "first_download_share": 0.7912087912087912
+  },
+  "population": "Hypothetical planning cohort of 72 first-download installation units, one unit per event; not distinct people or actual monthly acquisition",
+  "assumptions": "Future 30-day active fraction and active days are deliberately varied, not inferred from screenshots or competitors. D7 is an independent return assumption, not derived from MAU.",
+  "scenarios": [
+    {
+      "name": "low",
+      "assumed_30_day_active_fraction": 0.2,
+      "assumed_days_per_active_unit": 2,
+      "assumed_d7_return_fraction": 0.1,
+      "expected_30_day_active_units": 14.4,
+      "expected_average_daily_active_units": 0.9600000000000001,
+      "expected_day7_return_units": 7.2
+    },
+    {
+      "name": "middle",
+      "assumed_30_day_active_fraction": 0.4,
+      "assumed_days_per_active_unit": 4,
+      "assumed_d7_return_fraction": 0.25,
+      "expected_30_day_active_units": 28.8,
+      "expected_average_daily_active_units": 3.8400000000000003,
+      "expected_day7_return_units": 18.0
+    },
+    {
+      "name": "high",
+      "assumed_30_day_active_fraction": 0.6,
+      "assumed_days_per_active_unit": 8,
+      "assumed_d7_return_fraction": 0.4,
+      "expected_30_day_active_units": 43.199999999999996,
+      "expected_average_daily_active_units": 11.52,
+      "expected_day7_return_units": 28.8
+    }
+  ]
+}

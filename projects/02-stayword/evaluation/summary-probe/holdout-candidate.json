@@ -1,0 +1,98 @@
+{
+  "run_date": "2026-10-17",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "chip": "Apple M5 Pro"
+  },
+  "scope": "macOS Python MLX; bundled weights + extracted iOS single-document prompts; synthetic text only, no ASR/audio, UI, phone performance, multi-chunk pipeline or production traffic",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.20.1"
+  },
+  "source_sha256": "ee5daf8840fdc1bc3114ba252a131348ad0eaea255ae034ff01c6f73e8c39c36",
+  "weights_sha256": "f5a0d9dd3efa73510542a8023d610ff26be2b4b020d181cfc4bedaa1fcc5dd9e",
+  "cases_sha256": "88106e91085b33094b9cba3fdce32d794860dd1276ea5399934226f0c772118c",
+  "variant": "candidate",
+  "candidate_policy_sha256": "06640b30cdd496248ae6e1ef17aff830ddabe0f83b3940f39604050588bfaeee",
+  "settings": {
+    "seeds": [
+      17,
+      29
+    ],
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "repetition_penalty": 1.05,
+    "repetition_context_size": 64,
+    "enable_thinking": false,
+    "max_tokens": 1024,
+    "note": "1024-token safety cap differs from iOS final generation; timing excludes initial model load"
+  },
+  "model_load_seconds": 0.849,
+  "results": [
+    {
+      "id": "H01",
+      "seed": 17,
+      "output": "标题：试用账号切换方案\n摘要：新方案每月收费 120 元，旧方案 150 元；会议未讨论年费折扣，仅决定让三个试用账号切换新方案，其余保持原方案。",
+      "generation_seconds": 0.235,
+      "output_tokens": 52,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H01",
+      "seed": 29,
+      "output": "# 试用账号切换方案\n\n**摘要：** 会议决定让三个试用账号切换至新方案，其余账号保持原费。\n\n**内容：**\n- **变更对象：** 三个试用账号被切换至新收费模式，其他账号维持原费。\n- **费用对比：** 试用期间新方案月费为 120 元，旧方案为 150 元。\n- **决策依据：** 会议未讨论年费折扣，仅基于试用时长决定切换。\n- **后续影响：** 其他账号保持原费，未明确是否继续试用或取消。",
+      "generation_seconds": 0.445,
+      "output_tokens": 129,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H02",
+      "seed": 17,
+      "output": "标题：审核计划与提交安排\n摘要：陈雨将负责审核资料，李宁负责提交申请，目前审核尚未开始，下周一开始，未承诺下周一提交。",
+      "generation_seconds": 0.173,
+      "output_tokens": 38,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H02",
+      "seed": 29,
+      "output": "# 陈雨审核计划与李宁申请提交\n\n摘要：陈雨将负责审核资料，李宁负责提交申请。提交的前提是审核通过，目前审核尚未开始，计划下周一开始审核，没有承诺下周一提交申请。\n\n陈雨将负责审核资料，李宁负责提交申请。提交的前提是审核通过，目前审核尚未开始，计划下周一开始审核，没有承诺下周一提交申请。",
+      "generation_seconds": 0.319,
+      "output_tokens": 87,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H03",
+      "seed": 17,
+      "output": "标题：退款申请未到账的完整流程\n摘要：客服培训中讲师指出订单已提交退款申请，但尚未确定是否到账，因此无法删除投诉记录。具体到账时间尚未确认，该信息属于未确定的状态。",
+      "generation_seconds": 0.207,
+      "output_tokens": 49,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H03",
+      "seed": 29,
+      "output": "# 订单退款与投诉记录的处理流程\n\n**摘要：** 客服培训中引用了错误回复，指出订单已退款成功但需删除投诉记录，讲师强调订单仅提交申请，是否到账未知。\n\n**完整内容：**\n1.  **初始状态确认**：系统显示订单已完成退款操作，但尚未确定资金是否实际到账。\n2.  **后续处理要求**：根据培训指引，客服需删除该订单的投诉记录，以规避后续可能的纠纷。\n3.  **关键不确定性**：最终结果取决于订单资金的实际结算时间，而该时间点目前无法确认。\n4.  **行动建议**：客服应依据此信息，在删除投诉记录的同时，确保退款流程的完整性与合规性。",
+      "generation_seconds": 0.536,
+      "output_tokens": 159,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H04",
+      "seed": 17,
+      "output": "标题：课堂测试中学生导出失败与未测成果\n摘要：七名学生参与课堂测试，其中两名无法导出笔记，Jordan 将于周五调查此问题。测试未约定截止日期，也未测量学习成果，因此无法确定该实验是否有效。",
+      "generation_seconds": 0.221,
+      "output_tokens": 54,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H04",
+      "seed": 29,
+      "output": "# 课堂笔记工具测试报告\n\n## 摘要\n\n七名学生参与了一项关于使用特定笔记工具的课堂实验。其中两名学生未能成功导出其笔记，导致该实验无法完成。由于未约定具体的实施日期，本次实验并未测量学习成果。因此，目前尚无法确定该工具是否有效，以及具体是否存在导出错误。",
+      "generation_seconds": 0.272,
+      "output_tokens": 71,
+      "hit_token_cap": false
+    }
+  ]
+}

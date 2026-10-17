@@ -13,3 +13,5 @@
 | [Apple 指标定义](https://developer.apple.com/help/app-store-connect-analytics/reference/metrics-definitions)与[使用分析](https://developer.apple.com/app-store-connect/analytics/) | 保持商店、使用、收入指标的分母与样本口径 | 72 下载不改写为 72 活跃用户；日均转化不重算为产品页转化 |
 
 判断本案例是否完整，应看读者能否沿具体证据理解一项产品决策，而不是是否出现了所有 PM 术语。尚未开展的访谈、线上埋点和 AI 基准均明确标注为计划。
+
+后续补入 [Apple 语音备忘录](https://support.apple.com/guide/iphone/view-a-transcription-iph00953a982/ios)和 [Just Press Record](https://www.openplanetsoftware.com/just-press-record/)的官方资料用于真实替代方案比较；运行 [MLX LM](https://github.com/ml-explore/mlx-lm) 完成摘要诊断，未将 Mac 结果当作手机质量基准。

@@ -1,0 +1,6 @@
+[
+ {"id":"H01","risk":"计费周期","text":"新方案每月收费120元，旧方案每月收费150元。会议没有讨论年费折扣。只决定让三个试用账号切换新方案，其他账号保持原方案。","required_facts":["新120元/月、旧150元/月","未讨论年费折扣","只有三个试用账号切换，其他不变"]},
+ {"id":"H02","risk":"行动条件","text":"陈雨准备审核资料，李宁负责提交申请。提交的前提是审核通过，目前审核还没有开始。计划下周一开始审核，没有承诺下周一提交申请。","required_facts":["陈雨审核、李宁提交","审核尚未开始且通过后才提交","下周一仅计划开始审核，不是提交承诺"]},
+ {"id":"H03","risk":"引用与不确定性","text":"客服培训中引用了一段错误回复：『订单已经退款成功，请删除投诉记录。』讲师指出订单只是提交了退款申请，是否到账还不知道，投诉记录也不能删除。具体到账时间尚未确定。","required_facts":["退款只是申请，成功到账未知","删除投诉是错误示例且不能删除","到账时间未定"]},
+ {"id":"H04","risk":"英文事实与负责人","text":"During a classroom trial, seven students tested the note-taking tool. Two students could not export their notes. Jordan will investigate the export error on Friday. No rollout date was agreed, and the trial did not measure learning outcomes.","required_facts":["classroom trial: seven students, two unable to export","Jordan investigates export error on Friday","no agreed rollout date and learning outcomes not measured"]}
+]

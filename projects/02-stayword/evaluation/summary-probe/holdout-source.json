@@ -1,0 +1,98 @@
+{
+  "run_date": "2026-10-17",
+  "environment": {
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "chip": "Apple M5 Pro"
+  },
+  "scope": "macOS Python MLX; bundled weights + extracted iOS single-document prompts; synthetic text only, no ASR/audio, UI, phone performance, multi-chunk pipeline or production traffic",
+  "versions": {
+    "mlx": "0.32.4",
+    "mlx-lm": "0.32.2",
+    "transformers": "5.20.1"
+  },
+  "source_sha256": "ee5daf8840fdc1bc3114ba252a131348ad0eaea255ae034ff01c6f73e8c39c36",
+  "weights_sha256": "f5a0d9dd3efa73510542a8023d610ff26be2b4b020d181cfc4bedaa1fcc5dd9e",
+  "cases_sha256": "88106e91085b33094b9cba3fdce32d794860dd1276ea5399934226f0c772118c",
+  "variant": "source",
+  "candidate_policy_sha256": null,
+  "settings": {
+    "seeds": [
+      17,
+      29
+    ],
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "repetition_penalty": 1.05,
+    "repetition_context_size": 64,
+    "enable_thinking": false,
+    "max_tokens": 1024,
+    "note": "1024-token safety cap differs from iOS final generation; timing excludes initial model load"
+  },
+  "model_load_seconds": 0.842,
+  "results": [
+    {
+      "id": "H01",
+      "seed": 17,
+      "output": "标题：试用账号切换方案\n摘要：新方案每月收费 120 元，旧方案为 150 元。会议未讨论年费折扣，仅决定将三个试用账号切换至新方案，其余账号保持原方案。",
+      "generation_seconds": 0.244,
+      "output_tokens": 55,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H01",
+      "seed": 29,
+      "output": "标题：试用账号切换方案\n摘要：新方案每月收费 120 元，旧方案 150 元，会议未讨论年费折扣。决定让三个试用账号切换新方案，其余账号保持原方案。",
+      "generation_seconds": 0.203,
+      "output_tokens": 52,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H02",
+      "seed": 17,
+      "output": "标题：计划审核与提交时间\n摘要：陈雨将负责审核资料，李宁负责提交申请，目前审核尚未开始，下周一开始，未承诺下周一提交。",
+      "generation_seconds": 0.161,
+      "output_tokens": 38,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H02",
+      "seed": 29,
+      "output": "# 陈雨与李宁的审核计划\n\n**摘要：** 陈雨将负责审核资料，李宁负责提交申请，但双方目前尚未开始工作，计划下周一开始审核，未承诺下周一提交申请。\n\n- **时间规划：** 计划下周一开始审核，未承诺下周一提交申请。\n- **人员分工：** 陈雨负责审核，李宁负责提交申请。\n- **当前状态：** 目前审核尚未开始，陈雨和李宁均处于待处理状态。",
+      "generation_seconds": 0.363,
+      "output_tokens": 106,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H03",
+      "seed": 17,
+      "output": "标题：退款申请未到账的客服培训总结\n摘要：客服培训中讲师指出订单已提交退款申请，但尚未确认是否到账，因此无法删除投诉记录。具体到账时间尚未确定，导致该操作缺乏依据。",
+      "generation_seconds": 0.194,
+      "output_tokens": 49,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H03",
+      "seed": 29,
+      "output": "### 标题：退款申请未到账的疑问\n**摘要：** 客服培训中讲师指出，订单已提交退款申请，但尚未确定是否成功到账，因此无法删除投诉记录。具体到账时间尚待确认，该结论基于当前流程未明确。",
+      "generation_seconds": 0.215,
+      "output_tokens": 56,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H04",
+      "seed": 17,
+      "output": "标题：课堂测试中学生导出失败与未测量学习成果\n摘要：七名学生进行了课堂测试，其中两名无法导出笔记，且未商定滚动日期以评估学习成果。",
+      "generation_seconds": 0.164,
+      "output_tokens": 39,
+      "hit_token_cap": false
+    },
+    {
+      "id": "H04",
+      "seed": 29,
+      "output": "# 课堂笔记工具测试与改进计划\n\n## 摘要\n\n在为期七天的课堂实验中，七名学生分别对该笔记工具进行了测试。其中两名学生未能成功导出笔记，导致无法评估该工具的完整功能。目前尚未确定具体的导出错误原因，因此 Jordan 将在周五进行进一步的研究。由于未商定推广日期，此次实验并未测量出学习成果，且缺乏明确的改进方向。\n\n### 核心观点与行动路径\n\n1. **当前状态**：实验已完成，但存在明显的功能缺陷（无法导出）。\n2. **关键人物**：Jordan 将负责后续的分析与改进工作。\n3. **时间窗口**：周五是最佳的研究日期，需安排推广计划。\n4. **未来方向**：必须明确“如何改进”这一核心问题，并据此制定具体行动。\n\n### 结论与建议\n\n*   **现状分析**：实验结果显示工具在导出功能上存在显著障碍，需立即排查原因。\n*   **下一步行动**：Jordan 将利用周五的时间窗口，深入调查并尝试解决上述问题，以验证改进方案的有效性。\n*   **预期影响**：若成功解决问题，该工具将能支持更广泛的教学推广；若失败，则需重新评估现有策略。",
+      "generation_seconds": 0.839,
+      "output_tokens": 265,
+      "hit_token_cap": false
+    }
+  ]
+}
