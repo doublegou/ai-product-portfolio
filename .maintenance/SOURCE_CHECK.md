@@ -91,3 +91,9 @@ Android `fc0c98b` 与官网 `b0ea849` 已重新查询远端，作品集目录树
 ## 审改一致性修订（2026-10-16）
 
 在作品集副本中修正 content-agent/src/create/runtime.py 的事实 guard 改稿提示，避免引导产品稿插入生成工具的实现说明；memory/account/acceptance_standards.md 去掉与实际门槛重复的 8.2 项，保留 8.6。新增 tests/test_review_runtime.py 四项离线回归，内容 Agent 15 项测试全部通过。变更已登记 sources.json，未同步到原仓库。未新增模型生成、发布或远端版本查询；历史评分与原稿保持原样。
+
+## PriceMap AI · 2026-10-17
+
+原始仓库 `seedxdream/pricemapai-web-production` 的完整 main 历史已复制到私人仓库 `doublegou/pricemapai-web-production`，并通过 subtree 导入 `projects/04-pricemapai/src/pricemapai-web-production`。两仓库及导入源码 commit `3c97c452105bce6626ec2c81ef7c940829ddc7a5`，tree `0df3ae16471114652ab75de60b2c7a7ef20d59d5`，268 个文件逐字节一致，无作品集内源码修改。
+
+本地旧 checkout `e00ac36` 落后于原始远端，本次采用最新远端。媒体来自既有本地录屏；公开快照在 10 月 17 日只读抓取，无生产写入或部署。详情见[同步记录](projects/04-pricemapai/source-sync.json)。

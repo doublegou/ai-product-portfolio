@@ -54,3 +54,9 @@ StayWord 模型及原生依赖、RiverSR 新收录的最终模型继续使用 Gi
 ## 内容生产项目目录重构
 
 第一个项目统一使用 docs、demo、evaluation、src。源码按 content-workflow、script-workflow、content-agent、daily-trend-radar 四个板块组织；script 三个原工程一起放在 src/script-workflow/，另有组合入口 README。content-workflow 是约定的展示与目录名称，原 social-content-skills 仓库地址保留用于追溯。六个来源内部结构保留，sources.json 的 path 指向当前根目录；本地 README 引用同步更新；目录迁移本身未改业务逻辑，后续功能修复单独记录。
+
+## PriceMap AI · 2026-10-17
+
+原始仓库 `seedxdream/pricemapai-web-production` 的完整 main 历史已复制到私人仓库 `doublegou/pricemapai-web-production`，并通过 subtree 导入 `projects/04-pricemapai/src/pricemapai-web-production`。两仓库及导入源码 commit `3c97c452105bce6626ec2c81ef7c940829ddc7a5`，tree `0df3ae16471114652ab75de60b2c7a7ef20d59d5`，268 个文件逐字节一致，无作品集内源码修改。
+
+本地旧 checkout `e00ac36` 落后于原始远端，本次采用最新远端。媒体来自既有本地录屏；公开快照在 10 月 17 日只读抓取，无生产写入或部署。详情见[同步记录](projects/04-pricemapai/source-sync.json)。

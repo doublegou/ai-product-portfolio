@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-17",
+  "scope": "Project 04 and root portfolio navigation only",
+  "source": "All 268 imported files match current original and personal remote main/tree; no modifications to source.",
+  "content_review": [
+    "Problem and user decision are stated before technology.",
+    "MVP covers discovery, conditions, timeliness and original-source verification.",
+    "Delivered evolution and next experiments are separated.",
+    "AI pricing semantics are explained with a deterministic worked example.",
+    "Catalog starting price and strict same-specification price are distinguished.",
+    "Metrics distinguish archived observations, synthetic faults, configuration estimates and future studies.",
+    "Existing local video and five real frames show both journeys.",
+    "No DAU, retention, revenue, model-quality or independent monitoring claims invented.",
+    "Existing projects and diagrams unchanged."
+  ],
+  "validation": {
+    "original_tests": "101 passed",
+    "original_build": "passed",
+    "markdown": "GitHub GFM parsed root/project/demo/product design",
+    "links": "724 local links across 79 markdown files; zero missing targets/fragments",
+    "preview": "HTTP/index/19 pages/version/count/CSP/blocked paths passed; no new browser visual verification"
+  },
+  "publishing": "Personal copy remains private; portfolio stays private; no production deployment."
+}

@@ -292,6 +292,24 @@
         "matches_imported_commit": true
       },
       "portfolio_changes": []
+    },
+    {
+      "repo": "seedxdream/pricemapai-web-production",
+      "personal_copy": "doublegou/pricemapai-web-production",
+      "branch": "main",
+      "commit": "3c97c452105bce6626ec2c81ef7c940829ddc7a5",
+      "tree": "0df3ae16471114652ab75de60b2c7a7ef20d59d5",
+      "path": "projects/04-pricemapai/src/pricemapai-web-production",
+      "tree_verified": true,
+      "imported_at": "2026-10-17",
+      "tracked_files": 268,
+      "upstream_check": {
+        "checked_on": "2026-10-17",
+        "default_branch": "main",
+        "commit": "3c97c452105bce6626ec2c81ef7c940829ddc7a5",
+        "matches_imported_commit": true
+      },
+      "portfolio_changes": []
     }
   ],
   "research_notes": [

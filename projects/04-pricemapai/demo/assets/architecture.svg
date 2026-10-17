@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="930" viewBox="0 0 1200 930" role="img" aria-labelledby="title desc">
+<title id="title">PriceMap AI：用户决策、数据生产与公开交付</title>
+<desc id="desc">用户先找候选、核对条件，再回查原站。原站数据经适配和数据库事务进入增量发布链路，最终由浏览器完整读取静态快照。访问兴趣用于采集调度，不改变价格排序。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#70869c"/></marker></defs>
+<rect width="1200" height="930" rx="24" fill="#f4f7fb"/>
+<g font-family="PingFang SC, Microsoft YaHei, sans-serif">
+<text x="40" y="54" font-size="32" fill="#142e48" font-weight="700">PriceMap AI</text>
+<text x="267" y="54" font-size="25" fill="#142e48" font-weight="500">把价格信息转成可核对的选择</text>
+<text x="40" y="88" font-size="18" fill="#41566c" font-weight="400">两条用户路径 · 一条可恢复的数据生产链 · 独立的公开读取</text>
+<text x="40" y="138" font-size="18" fill="#147d78" font-weight="600">01  用户完成决定</text>
+<rect x="40" y="158" width="250" height="112" rx="14" fill="#effaf7" stroke="#d5e0eb"/>
+<text x="58" y="189" font-size="21" fill="#142e48" font-weight="600">发现候选</text>
+<text x="58" y="220" font-size="17" fill="#41566c" font-weight="400">订阅类别 / API 目录</text>
+<text x="58" y="245" font-size="17" fill="#41566c" font-weight="400">搜索、筛选与覆盖</text>
+<rect x="330" y="158" width="250" height="112" rx="14" fill="#effaf7" stroke="#d5e0eb"/>
+<text x="348" y="189" font-size="21" fill="#142e48" font-weight="600">核对条件</text>
+<text x="348" y="220" font-size="17" fill="#41566c" font-weight="400">交付、期限、单位与币种</text>
+<text x="348" y="245" font-size="17" fill="#41566c" font-weight="400">库存、时间与监测范围</text>
+<rect x="620" y="158" width="250" height="112" rx="14" fill="#effaf7" stroke="#d5e0eb"/>
+<text x="638" y="189" font-size="21" fill="#142e48" font-weight="600">比较与判断</text>
+<text x="638" y="220" font-size="17" fill="#41566c" font-weight="400">目录起价 ≠ 同规格最低</text>
+<text x="638" y="245" font-size="17" fill="#41566c" font-weight="400">原始说明随报价保留</text>
+<rect x="910" y="158" width="250" height="112" rx="14" fill="#effaf7" stroke="#d5e0eb"/>
+<text x="928" y="189" font-size="21" fill="#142e48" font-weight="600">回到原站</text>
+<text x="928" y="220" font-size="17" fill="#41566c" font-weight="400">确认商品与服务条件</text>
+<text x="928" y="245" font-size="17" fill="#41566c" font-weight="400">外链意图 ≠ 成交</text>
+<path d="M292 214 L322 214" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="322,214 313,209 313,219" fill="#70869c"/>
+<path d="M582 214 L612 214" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="612,214 603,209 603,219" fill="#70869c"/>
+<path d="M872 214 L902 214" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="902,214 893,209 893,219" fill="#70869c"/>
+<text x="40" y="312" font-size="18" fill="#255caf" font-weight="600">02  后台生产数据</text>
+<rect x="40" y="332" width="250" height="112" rx="14" fill="#ffffff" stroke="#d5e0eb"/>
+<text x="58" y="363" font-size="21" fill="#142e48" font-weight="600">原始商家与中转站</text>
+<text x="58" y="394" font-size="17" fill="#41566c" font-weight="400">公开 JSON / HTML</text>
+<text x="58" y="419" font-size="17" fill="#41566c" font-weight="400">多种协议与计费模式</text>
+<rect x="330" y="332" width="250" height="112" rx="14" fill="#ffffff" stroke="#d5e0eb"/>
+<text x="348" y="363" font-size="21" fill="#142e48" font-weight="600">Edge Functions</text>
+<text x="348" y="394" font-size="17" fill="#41566c" font-weight="400">适配、分类、单位归一</text>
+<text x="348" y="419" font-size="17" fill="#41566c" font-weight="400">超时、退避与完整性</text>
+<rect x="620" y="332" width="250" height="112" rx="14" fill="#ffffff" stroke="#d5e0eb"/>
+<text x="638" y="363" font-size="21" fill="#142e48" font-weight="600">Supabase Postgres</text>
+<text x="638" y="394" font-size="17" fill="#41566c" font-weight="400">唯一报价库 / 租约 / 事务</text>
+<text x="638" y="419" font-size="17" fill="#41566c" font-weight="400">失败保留 · 原时间不重置</text>
+<rect x="910" y="332" width="250" height="112" rx="14" fill="#ffffff" stroke="#d5e0eb"/>
+<text x="928" y="363" font-size="21" fill="#142e48" font-weight="600">增量发布协调</text>
+<text x="928" y="394" font-size="17" fill="#41566c" font-weight="400">Worker → Durable Object</text>
+<text x="928" y="419" font-size="17" fill="#41566c" font-weight="400">私有 R2：检查点恢复</text>
+<path d="M292 388 L322 388" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="322,388 313,383 313,393" fill="#70869c"/>
+<path d="M582 388 L612 388" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="612,388 603,383 603,393" fill="#70869c"/>
+<path d="M872 388 L902 388" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="902,388 893,383 893,393" fill="#70869c"/>
+<text x="40" y="485" font-size="18" fill="#41566c" font-weight="400">策略：关注 × 变化 × 库存 → 分档采集；手动设置优先，热点核验不延长全店有效期</text>
+<path d="M1035 446 L1035 550" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="1035,550 1030,541 1040,541" fill="#70869c"/>
+<text x="715" y="522" font-size="17" fill="#41566c" font-weight="400">批次确认、内容哈希与完整版本发布</text>
+<text x="40" y="548" font-size="18" fill="#255caf" font-weight="600">03  公开交付与反馈</text>
+<rect x="910" y="570" width="250" height="112" rx="14" fill="#eef3ff" stroke="#d5e0eb"/>
+<text x="928" y="601" font-size="21" fill="#142e48" font-weight="600">Static Assets</text>
+<text x="928" y="632" font-size="17" fill="#41566c" font-weight="400">清单 + 版本化 gzip 分页</text>
+<text x="928" y="657" font-size="17" fill="#41566c" font-weight="400">访客不读取 R2 / 数据库</text>
+<rect x="620" y="570" width="250" height="112" rx="14" fill="#eef3ff" stroke="#d5e0eb"/>
+<text x="638" y="601" font-size="21" fill="#142e48" font-weight="600">浏览器完整加载</text>
+<text x="638" y="632" font-size="17" fill="#41566c" font-weight="400">版本、数量、重复校验</text>
+<text x="638" y="657" font-size="17" fill="#41566c" font-weight="400">失败提示并保留旧结果</text>
+<rect x="330" y="570" width="250" height="112" rx="14" fill="#eef3ff" stroke="#d5e0eb"/>
+<text x="348" y="601" font-size="21" fill="#142e48" font-weight="600">产品页面</text>
+<text x="348" y="632" font-size="17" fill="#41566c" font-weight="400">订阅 / API 双路径</text>
+<text x="348" y="657" font-size="17" fill="#41566c" font-weight="400">条件、时间、来源与原站</text>
+<rect x="40" y="570" width="250" height="112" rx="14" fill="#effaf7" stroke="#d5e0eb"/>
+<text x="58" y="601" font-size="21" fill="#142e48" font-weight="600">兴趣反馈</text>
+<text x="58" y="632" font-size="17" fill="#41566c" font-weight="400">去重访问与外链事件</text>
+<text x="58" y="657" font-size="17" fill="#41566c" font-weight="400">用于调度，不改变价格序</text>
+<path d="M908 626 L878 626" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="878,626 887,621 887,631" fill="#70869c"/>
+<path d="M618 626 L588 626" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="588,626 597,621 597,631" fill="#70869c"/>
+<path d="M328 626 L298 626" stroke="#70869c" stroke-width="2" fill="none"/>
+<polygon points="298,626 307,621 307,631" fill="#70869c"/>
+<path d="M165 684 L165 719 L205 719" stroke="#147d78" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+<text x="225" y="725" font-size="17" fill="#147d78" font-weight="400">反馈至后台调度：只传去重兴趣汇总；统计失败不影响用户操作</text>
+<rect x="40" y="761" width="1120" height="125" rx="14" fill="#142e48"/>
+<text x="62" y="795" font-size="21" fill="#ffffff" font-weight="600">时间与成本是产品约束</text>
+<text x="62" y="827" font-size="18" fill="#d9e7f5" font-weight="400">价格批次 30 分钟 · 监测字段 2 小时 · 热点有效期 45 分钟 · 发布最小间隔 5 分钟</text>
+<text x="62" y="857" font-size="17" fill="#d9e7f5" font-weight="400">以上为当前代码配置。实际可见延迟还包含采集与缓存；超预算保留旧版与待确认批次。</text>
+</g></svg>

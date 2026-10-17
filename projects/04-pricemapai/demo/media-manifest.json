@@ -1,0 +1,60 @@
+{
+  "historical_recording_date": "2026-10-10",
+  "note": "Existing local promotional and raw screen recordings. Screenshots are frames, not recreated UIs. Historic prices. No playback speed change.",
+  "source_files": [
+    {
+      "name": "pricemapai.mov",
+      "sha256": "c0544b971fe93702ca1fbffd4cf2beb939e45a099feeddbf8ec14e7d6d593124",
+      "bytes": 243059625
+    },
+    {
+      "name": "pricemapai002.mp4",
+      "sha256": "860af49cd9e4eb3549ef469797bfec766d3af69b76b19da0bf6a3d40b5e3f697",
+      "bytes": 339151487
+    }
+  ],
+  "frames": [
+    {
+      "file": "assets/01-subscription-catalog.jpg",
+      "source": "pricemapai002.mp4",
+      "seconds": 55,
+      "width": 1440,
+      "sha256": "27c4c3c4b086592ada344b22f40d9780c7ed1a59ba2546015af07803c2a65b3b"
+    },
+    {
+      "file": "assets/02-subscription-detail.jpg",
+      "source": "pricemapai002.mp4",
+      "seconds": 90,
+      "width": 1440,
+      "sha256": "4093b66074908b9f0e5e435114e554f94593e38f13163059593e8f4811f5ebb9"
+    },
+    {
+      "file": "assets/03-api-directory.jpg",
+      "source": "pricemapai002.mp4",
+      "seconds": 240,
+      "width": 1440,
+      "sha256": "8b0f49d3abf4fd0cf5981b112be50a1e3f71a4b8207417643c49c07035973bf5"
+    },
+    {
+      "file": "assets/04-api-detail.jpg",
+      "source": "pricemapai002.mp4",
+      "seconds": 275,
+      "width": 1440,
+      "sha256": "401a40f09c89513e682ed596bb5c57e050e6c0af782cca0bbbe5bf33f3e591e7"
+    },
+    {
+      "file": "assets/05-original-product.jpg",
+      "source": "pricemapai002.mp4",
+      "seconds": 150,
+      "width": 1440,
+      "sha256": "2a40bf069e44489c1c401899fe0a90c8f6a3afddf98e0571cedadf4db3dc3d9b"
+    }
+  ],
+  "video": {
+    "file": "assets/pricemapai-demo-2026-10-10.mp4",
+    "source": "pricemapai.mov",
+    "duration_seconds": 191.146667,
+    "transform": "1280 width, H.264 CRF 27, AAC 96k, faststart; original audio/timing",
+    "sha256": "e08584d3a5ee8651312c52ebb4734a0e4a72ba44d2c1fa8d3cbda5e45b9573f7"
+  }
+}

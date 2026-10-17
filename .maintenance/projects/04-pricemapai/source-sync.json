@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-10-17",
+  "original": "seedxdream/pricemapai-web-production",
+  "personal_copy": "doublegou/pricemapai-web-production",
+  "visibility": "private",
+  "branch": "main",
+  "commit": "3c97c452105bce6626ec2c81ef7c940829ddc7a5",
+  "tree": "0df3ae16471114652ab75de60b2c7a7ef20d59d5",
+  "tracked_files": 268,
+  "full_history_preserved": true,
+  "files_byte_equal": true,
+  "portfolio_tree_equal": true,
+  "source_changes": [],
+  "old_local_original": {
+    "commit": "e00ac36",
+    "status": "behind upstream; not used as import source"
+  },
+  "code_path": "projects/04-pricemapai/src/pricemapai-web-production",
+  "maintenance_note": "Full source imported via git subtree. Product docs, archived public data, video, replay and preview helpers live outside source."
+}

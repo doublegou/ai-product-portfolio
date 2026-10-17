@@ -1,0 +1,143 @@
+{
+  "captured_at": "2026-10-17T05:47:16.418770+00:00",
+  "completed_at": "2026-10-17T05:47:21.525491+00:00",
+  "source": "https://pricemapai.com/data/latest.json",
+  "version": "60a34fcc025c6b996c76c405",
+  "manifest_sha256": "e357a7e9e723896c0fef1e6cb92ae0e0c31475755dd464b8fc075bdbf8fe71a4",
+  "pages": [
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/offers-0.json.gz",
+      "local_file": "offers-0.json.gz",
+      "bytes": 107071,
+      "sha256": "25ee11788150ad7ccd15c77eaaa56565bbc8e26cb2fa84bd245f048964f793aa",
+      "uncompressed_bytes": 669053
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/offers-1.json.gz",
+      "local_file": "offers-1.json.gz",
+      "bytes": 105845,
+      "sha256": "55196621569ebc1bcdaeb9e27db4cfecd46ea10b8b33b3af25fff5cc145c5149",
+      "uncompressed_bytes": 668392
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/offers-2.json.gz",
+      "local_file": "offers-2.json.gz",
+      "bytes": 104409,
+      "sha256": "7720e8087cd1475b1008e4b915f3b1cbeb211d23d44b78daf976f85109c1b16e",
+      "uncompressed_bytes": 667106
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/offers-3.json.gz",
+      "local_file": "offers-3.json.gz",
+      "bytes": 106138,
+      "sha256": "10459a7937370981e06296f6234a91842d17018a542c7b89ada3cf859f785c7d",
+      "uncompressed_bytes": 667428
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/offers-4.json.gz",
+      "local_file": "offers-4.json.gz",
+      "bytes": 87650,
+      "sha256": "a925e006c46e32e934b222d1cd94a68a021bdf39b2cbef14ed1c7837277b5b13",
+      "uncompressed_bytes": 552919
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-0.json.gz",
+      "local_file": "transit-0.json.gz",
+      "bytes": 21767,
+      "sha256": "24f99c228959b5d7df82c004dcd645c5a4b7e21de69ef1771d6498efafb96a18",
+      "uncompressed_bytes": 578065
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-1.json.gz",
+      "local_file": "transit-1.json.gz",
+      "bytes": 13661,
+      "sha256": "6ea371c7788f4427aea0dd293b9fdd38e5033916426d62b9f97fd9d7a757fe3a",
+      "uncompressed_bytes": 280161
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-2.json.gz",
+      "local_file": "transit-2.json.gz",
+      "bytes": 10061,
+      "sha256": "cbd8641ef229993d71f7edf361dfe0e1b58e8480490875611a6b1c7c34dc9f98",
+      "uncompressed_bytes": 246055
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-3.json.gz",
+      "local_file": "transit-3.json.gz",
+      "bytes": 8800,
+      "sha256": "84e4d9841e9f2a11446e29eafaaa011992a4287d04c655a91d5d017f81f44738",
+      "uncompressed_bytes": 249535
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-4.json.gz",
+      "local_file": "transit-4.json.gz",
+      "bytes": 36834,
+      "sha256": "758b58ad0887fbef37b5d0b4df381bfa391e1c4963f8de1556cec0ef6c17af92",
+      "uncompressed_bytes": 1139765
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-5.json.gz",
+      "local_file": "transit-5.json.gz",
+      "bytes": 52191,
+      "sha256": "ee84a391df6e5796b0cc258dc46d5dddf0503ad877aec0a0f53da8f934d47e19",
+      "uncompressed_bytes": 1079776
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-6.json.gz",
+      "local_file": "transit-6.json.gz",
+      "bytes": 12395,
+      "sha256": "fccf13cebdb2ca76b2b6cfff7dbc75d0991f02f1dda52969bdc0f4224c0a787e",
+      "uncompressed_bytes": 322160
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-7.json.gz",
+      "local_file": "transit-7.json.gz",
+      "bytes": 10251,
+      "sha256": "95d126bcaed13ec980424b847ea6caaa0011568460e77b1483ab9c797ff5fcce",
+      "uncompressed_bytes": 264597
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-8.json.gz",
+      "local_file": "transit-8.json.gz",
+      "bytes": 10679,
+      "sha256": "8e02e4b464ebb9b46f481f9e6b4b9c759998608a9ba2858b4db93c5de9ac47aa",
+      "uncompressed_bytes": 284006
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-9.json.gz",
+      "local_file": "transit-9.json.gz",
+      "bytes": 5796,
+      "sha256": "e3e65cc7c30f1f2662c141c3be4e2525a517e57972a2093a89eca9282964b6ab",
+      "uncompressed_bytes": 153055
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-10.json.gz",
+      "local_file": "transit-10.json.gz",
+      "bytes": 12526,
+      "sha256": "d961d254d9b2d3b85986b80b421d275d621c6f2b428a4fb15bfd245b65de349c",
+      "uncompressed_bytes": 220418
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-11.json.gz",
+      "local_file": "transit-11.json.gz",
+      "bytes": 10767,
+      "sha256": "3fb924471358f2174d7ee9718ebcb8ff692f6c34a62c7ebf785a46a5defffd81",
+      "uncompressed_bytes": 221840
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-12.json.gz",
+      "local_file": "transit-12.json.gz",
+      "bytes": 14128,
+      "sha256": "d5cc08a97d56061cd35f4722e1f3d459f69d8517c5ae4924915bca36560a4e83",
+      "uncompressed_bytes": 301174
+    },
+    {
+      "path": "/data/v/60a34fcc025c6b996c76c405/transit-13.json.gz",
+      "local_file": "transit-13.json.gz",
+      "bytes": 5017,
+      "sha256": "1c7b9de70e266226c035e6518591a8581b3e269620c675559d69412d99b00d28",
+      "uncompressed_bytes": 116698
+    }
+  ],
+  "scope": "Public snapshot, read-only; no admin credentials, paid model calls, or merchant purchases."
+}

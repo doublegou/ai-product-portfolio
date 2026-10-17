@@ -6,6 +6,7 @@
 - [整理计划](PORTFOLIO_PLAN.md)、[历史进度](ROADMAP.md)。
 - [内容项目](projects/01-content-agent/)：材料恢复、截图计划、目录迁移与编辑审查。
 - [StayWord](projects/02-stayword/)：编辑参考、阅读审查与补录计划。
+- [PriceMap AI 来源同步](projects/04-pricemapai/source-sync.json)：个人仓库复制、完整历史与逐文件一致性。
 - [RiverSR 待补材料](projects/03-riversr/materials-to-add.md)。
 
 `sources.json` 内的工程路径与各项目机器可读记录仍以仓库根目录为基准。维护文件移位不改变原始代码、许可、模型、运行结果或归档身份；计划与审查文件中的旧目录描述按历史时点阅读。

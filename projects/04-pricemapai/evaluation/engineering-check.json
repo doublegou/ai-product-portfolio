@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-17",
+  "source_commit": "3c97c452105bce6626ec2c81ef7c940829ddc7a5",
+  "environment": {
+    "os": "macOS",
+    "node": "v26.8.1"
+  },
+  "install": "npm ci --ignore-scripts --no-audit --no-fund",
+  "tests": {
+    "command": "npm test",
+    "passed": 101,
+    "failed": 0,
+    "skipped": 0,
+    "duration_ms": 10211.328667
+  },
+  "build": {
+    "command": "npm run build",
+    "typescript": "passed",
+    "vite": "passed"
+  },
+  "scope": "Unmodified upstream source in temporary clone; no deployment, backend mutation, merchant crawl or live model call.",
+  "local_preview": {
+    "http_checks": "passed",
+    "index": true,
+    "all_19_archived_pages": true,
+    "version_and_count": true,
+    "local_only_csp": true,
+    "blocked_paths": true,
+    "browser_visual_test": "not performed; native computer locked, browser tool unavailable",
+    "ui_evidence": "Existing genuine recording; new architecture SVG rasterized and inspected."
+  }
+}

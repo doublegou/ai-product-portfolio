@@ -1,0 +1,84 @@
+{
+  "scope": "Archived public snapshot replay, not merchant truth verification, an independent model benchmark, or user conversion measurement.",
+  "source_commit": "3c97c452105bce6626ec2c81ef7c940829ddc7a5",
+  "captured_at": "2026-10-17T05:47:16.418770+00:00",
+  "snapshot_generated_at": "2026-10-17T05:30:00.448171+00:00",
+  "version": "60a34fcc025c6b996c76c405",
+  "snapshot_age_at_capture_minutes": 17.266166666666667,
+  "integrity": {
+    "pages": 19,
+    "manifest_and_page_hashes_verified": true,
+    "production_loaders_accept_all_rows": true,
+    "offer_ids_unique": true,
+    "station_ids_unique": true
+  },
+  "subscription": {
+    "total": 4822,
+    "merchant_identities": 360,
+    "fresh": 4749,
+    "fresh_in_stock": 2873,
+    "stock_distribution": {
+      "in_stock": 2907,
+      "out_of_stock": 812,
+      "unknown": 1103
+    },
+    "review_required": 4808,
+    "strict_eligible_quotes": 6,
+    "strict_groups_with_multiple_merchants": 0,
+    "strict_lowest_badges": 0,
+    "catalog_categories": 50,
+    "categories_with_quotes": 45,
+    "categories_showing_lowest_label": 41,
+    "category_lowest_selected_review_required": 39,
+    "note": "Catalog lowest label means the lowest fresh in-stock CNY quote in a broad category, without requiring comparison_key. Detail lowestIds is stricter. Counts therefore differ."
+  },
+  "api": {
+    "stations": 27,
+    "fresh_stations": 25,
+    "quotes": 3319,
+    "currency_distribution": {
+      "CNY": 2557,
+      "USD": 76,
+      "USD_CREDIT": 686
+    },
+    "billing_distribution": {
+      "image": 3,
+      "per_request": 280,
+      "tiered": 620,
+      "token": 2416
+    },
+    "quotes_eligible_for_combined_rate": 1809,
+    "stations_with_current_disclosed_rate": 23,
+    "monitoring_note": "Merchant-disclosed telemetry; neither independent availability nor model identity verification."
+  },
+  "payload": {
+    "gzip_bytes": 735986,
+    "uncompressed_bytes": 8682203
+  },
+  "fault_injection": [
+    {
+      "case": "missing_page",
+      "rejected": true,
+      "page_requests": 2,
+      "error": "Error: 报价快照分页暂时无法读取，请稍后重试"
+    },
+    {
+      "case": "mixed_version",
+      "rejected": true,
+      "page_requests": 2,
+      "error": "Error: 报价快照版本不一致"
+    },
+    {
+      "case": "duplicate_offer",
+      "rejected": true,
+      "page_requests": 1,
+      "error": "Error: 报价快照存在重复数据"
+    }
+  ],
+  "plus_60_minutes": {
+    "scenario": "Simulated passage of 60 minutes without any new snapshot; not a later production observation.",
+    "fresh_offers": 4363,
+    "fresh_in_stock": 2620
+  },
+  "passed": true
+}
