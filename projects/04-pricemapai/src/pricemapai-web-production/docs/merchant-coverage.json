@@ -1,0 +1,5910 @@
+{
+  "checked_at": "2026-10-08T20:08:55.058Z",
+  "reference": "https://priceai.cc/channels?view=merchants",
+  "reference_rows": 699,
+  "reference_unique_addresses": 664,
+  "unidentified_rows": 32,
+  "duplicate_rows": 3,
+  "before": {
+    "registered": 236,
+    "shared": 218,
+    "missing": 446,
+    "extra": 18
+  },
+  "after": {
+    "registered": 374,
+    "added": 138,
+    "covered_reference_addresses": 358,
+    "unconnected_reference_addresses": 306
+  },
+  "results": [
+    {
+      "reference": {
+        "name": "FF01",
+        "url": "https://www.16688.com.cn/shop/S687067",
+        "entry_url": "https://16688.com.cn/shop/S687067",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "FF01",
+        "base_url": "https://www.16688.com.cn/shop/S687067",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "CC卡网",
+        "url": "https://cccrad.uk",
+        "entry_url": "https://cccrad.uk/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "CC卡网",
+        "base_url": "https://cccrad.uk",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "Gemini源头供货商",
+        "url": "https://wzyp.cn/shop/pixelshop",
+        "entry_url": "https://wzyp.cn/shop/pixelshop",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Gemini源头供货商",
+        "base_url": "https://wzyp.cn/shop/pixelshop",
+        "config": {
+          "shop_token": "pixelshop"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 11,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "GPT 自助下单充值系统 tehuio.com",
+        "url": "https://tehuio.com",
+        "entry_url": "https://tehuio.com/",
+        "collector": "kami"
+      },
+      "status": "failed",
+      "source": {
+        "name": "GPT 自助下单充值系统 tehuio.com",
+        "base_url": "https://tehuio.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "Moming AI",
+        "url": "https://www.16688.com.cn/shop/S532328",
+        "entry_url": "https://16688.com.cn/shop/S532328",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Moming AI",
+        "base_url": "https://www.16688.com.cn/shop/S532328",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "CDK668（源头出货，可开发票，有量有价，欢迎代理对接）",
+        "url": "https://www.16688.com.cn/shop/S855142",
+        "entry_url": "https://16688.com.cn/shop/S855142",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "CDK668（源头出货，可开发票，有量有价，欢迎代理对接）",
+        "base_url": "https://www.16688.com.cn/shop/S855142",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "TOPSTAR",
+        "url": "https://wzyp.cn/shop/COQNA6PX",
+        "entry_url": "https://wzyp.cn/shop/COQNA6PX",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "TOPSTAR",
+        "base_url": "https://wzyp.cn/shop/COQNA6PX",
+        "config": {
+          "shop_token": "COQNA6PX"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "openai官方",
+        "url": "https://www.16688.com.cn/shop/S274389",
+        "entry_url": "https://16688.com.cn/shop/S274389",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "openai官方",
+        "base_url": "https://www.16688.com.cn/shop/S274389",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "千羽ai批发",
+        "url": "https://www.16688.com.cn/shop/S358780",
+        "entry_url": "https://16688.com.cn/shop/S358780",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "千羽ai批发",
+        "base_url": "https://www.16688.com.cn/shop/S358780",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "sms688🔥对接码qy688",
+        "url": "https://wzyp.cn/shop/OCBP9CJZ",
+        "entry_url": "https://wzyp.cn/shop/OCBP9CJZ",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "sms688🔥对接码qy688",
+        "base_url": "https://wzyp.cn/shop/OCBP9CJZ",
+        "config": {
+          "shop_token": "OCBP9CJZ"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 19,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "与世隔绝的AI小店",
+        "url": "https://wzyp.cn/shop/luoerl",
+        "entry_url": "https://wzyp.cn/shop/luoerl",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "与世隔绝的AI小店",
+        "base_url": "https://wzyp.cn/shop/luoerl",
+        "config": {
+          "shop_token": "luoerl"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 68,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "优质AI科技",
+        "url": "https://wzyp.cn/shop/youzhi",
+        "entry_url": "https://wzyp.cn/shop/youzhi",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "优质AI科技",
+        "base_url": "https://wzyp.cn/shop/youzhi",
+        "config": {
+          "shop_token": "youzhi"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 212,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "02Nova（Gtp出货 可开发票 源头直供）",
+        "url": "https://www.16688.com.cn/shop/S881067",
+        "entry_url": "https://16688.com.cn/shop/S881067",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "02Nova（Gtp出货 可开发票 源头直供）",
+        "base_url": "https://www.16688.com.cn/shop/S881067",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "王哈哈Ai",
+        "url": "http://shop.whh985.com",
+        "entry_url": "http://shop.whh985.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "detail": "来源必须使用公开域名的 HTTPS 地址"
+    },
+    {
+      "reference": {
+        "name": "Fkai-Plus Pro源头直供【招代理】",
+        "url": "https://wzyp.cn/shop/subaicc",
+        "entry_url": "https://wzyp.cn/shop/subaicc",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Fkai-Plus Pro源头直供【招代理】",
+        "base_url": "https://wzyp.cn/shop/subaicc",
+        "config": {
+          "shop_token": "subaicc"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 21,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI海外账号",
+        "url": "https://wzyp.cn/shop/0000",
+        "entry_url": "https://wzyp.cn/shop/0000",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI海外账号",
+        "base_url": "https://wzyp.cn/shop/0000",
+        "config": {
+          "shop_token": "0000"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 24,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "直连AI",
+        "url": "https://wzyp.cn/shop/3GYP7PKO",
+        "entry_url": "https://wzyp.cn/shop/3GYP7PKO",
+        "collector": "shopApi"
+      },
+      "status": "verified",
+      "source": {
+        "name": "直连AI",
+        "base_url": "https://wzyp.cn/shop/3GYP7PKO",
+        "config": {
+          "shop_token": "3GYP7PKO"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "offer_count": 88,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "鲸鲨源头",
+        "url": "https://chong.nerver.cc",
+        "entry_url": "https://chong.nerver.cc/",
+        "collector": "genericHtml"
+      },
+      "status": "needs_adapter",
+      "detail": "原站 HTTP 200，需核验独立页面结构",
+      "title": "nerver.cc | nerver.cc"
+    },
+    {
+      "reference": {
+        "name": "JieAiTop",
+        "url": "https://wzyp.cn/shop/N90HTB7K",
+        "entry_url": "https://wzyp.cn/shop/N90HTB7K",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "source": {
+        "name": "JieAiTop",
+        "base_url": "https://wzyp.cn/shop/N90HTB7K",
+        "config": {
+          "shop_token": "N90HTB7K"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "detail": "源站 HTTP 520"
+    },
+    {
+      "reference": {
+        "name": "王哈哈Ai-Plus Pro源头直供【招代理】",
+        "url": "https://wzyp.cn/shop/whh985",
+        "entry_url": "https://wzyp.cn/shop/whh985",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "source": {
+        "name": "王哈哈Ai-Plus Pro源头直供【招代理】",
+        "base_url": "https://wzyp.cn/shop/whh985",
+        "config": {
+          "shop_token": "whh985"
+        },
+        "interval_minutes": 15,
+        "collector": "shopapi"
+      },
+      "detail": "源站 HTTP 520"
+    },
+    {
+      "reference": {
+        "name": "彩虹AI",
+        "url": "https://wzyp.cn/shop/ONX6ZOWB",
+        "entry_url": "https://wzyp.cn/shop/ONX6ZOWB",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI搬运工",
+        "url": "https://wzyp.cn/shop/2WMCCNSQ",
+        "entry_url": "https://wzyp.cn/shop/2WMCCNSQ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小恐龙发卡网",
+        "url": "https://morimm.com",
+        "entry_url": "https://morimm.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "小恐龙发卡网",
+        "base_url": "https://morimm.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "柴犬 AI",
+        "url": "https://www.16688.com.cn/shop/S591295",
+        "entry_url": "https://16688.com.cn/shop/S591295",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "柴犬 AI",
+        "base_url": "https://www.16688.com.cn/shop/S591295",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "小久",
+        "url": "https://wzyp.cn/shop/xiaojiuban",
+        "entry_url": "https://wzyp.cn/shop/xiaojiuban",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI源头批发旗舰店",
+        "url": "https://wzyp.cn/shop/SubAIP",
+        "entry_url": "https://wzyp.cn/shop/SubAIP",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "星连ai旗舰店",
+        "url": "https://wzyp.cn/shop/aiplus666",
+        "entry_url": "https://wzyp.cn/shop/aiplus666",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小久",
+        "url": "https://98-xj.com",
+        "entry_url": "https://98-xj.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "小久",
+        "base_url": "https://98-xj.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "AI 云智聪聪",
+        "url": "https://wzyp.cn/shop/Z6I0VZ0Q",
+        "entry_url": "https://wzyp.cn/shop/Z6I0VZ0Q",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "CC卡网",
+        "url": "https://wzyp.cn/shop/cccard",
+        "entry_url": "https://wzyp.cn/shop/cccard",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "陆柒科技",
+        "url": "https://wzyp.cn/shop/M18V0XVF",
+        "entry_url": "https://wzyp.cn/shop/M18V0XVF",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "沐风源头",
+        "url": "https://shop.mfttai.com",
+        "entry_url": "https://shop.mfttai.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "沐风源头",
+        "base_url": "https://shop.mfttai.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "Oiai",
+        "url": "https://wzyp.cn/shop/oiai",
+        "entry_url": "https://wzyp.cn/shop/oiai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "My的Ai小铺",
+        "url": "https://wzyp.cn/shop/ZZ88VR4W",
+        "entry_url": "https://wzyp.cn/shop/ZZ88VR4W",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小铺",
+        "url": "https://wzyp.cn/shop/echo_dream",
+        "entry_url": "https://wzyp.cn/shop/echo_dream",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "稳中求胜",
+        "url": "https://wzyp.cn/shop/P98T49H8",
+        "entry_url": "https://wzyp.cn/shop/P98T49H8",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI_云顶👑【源头认证】",
+        "url": "https://wzyp.cn/shop/9M16S7R3",
+        "entry_url": "https://wzyp.cn/shop/9M16S7R3",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai能量小铺",
+        "url": "https://wzyp.cn/shop/S5UL3UHI",
+        "entry_url": "https://wzyp.cn/shop/S5UL3UHI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "鹰鹰小铺",
+        "url": "https://wzyp.cn/shop/GUEOI7Z9",
+        "entry_url": "https://wzyp.cn/shop/GUEOI7Z9",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "狗ai",
+        "url": "https://www.16688.com.cn/shop/S114445",
+        "entry_url": "https://16688.com.cn/shop/S114445",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "狗ai",
+        "base_url": "https://www.16688.com.cn/shop/S114445",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Ai俱乐部",
+        "url": "https://wzyp.cn/shop/Aying",
+        "entry_url": "https://wzyp.cn/shop/Aying",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G 优惠成品代充",
+        "url": "https://wzyp.cn/shop/JLDAK3FZ",
+        "entry_url": "https://wzyp.cn/shop/JLDAK3FZ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai小铺-源头供货-招代理-分销码：k6u37bm4",
+        "url": "https://wzyp.cn/shop/IY16OXB7",
+        "entry_url": "https://wzyp.cn/shop/IY16OXB7",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小家",
+        "url": "https://wzyp.cn/shop/5KF19IU0",
+        "entry_url": "https://wzyp.cn/shop/5KF19IU0",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "商家8719",
+        "url": "https://wzyp.cn/shop/SJ1BEJAC",
+        "entry_url": "https://wzyp.cn/shop/SJ1BEJAC",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "亚米整合服务供应商",
+        "url": "https://wzyp.cn/shop/ymymai",
+        "entry_url": "https://wzyp.cn/shop/ymymai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "海海星星AI",
+        "url": "https://wzyp.cn/shop/J8CANM9Q",
+        "entry_url": "https://wzyp.cn/shop/J8CANM9Q",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai稳定供应（Grok/G.pt/Gemini源头直供）招代理对接码grok888",
+        "url": "https://wzyp.cn/shop/ai16888",
+        "entry_url": "https://wzyp.cn/shop/ai16888",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai小伙计",
+        "url": "https://wzyp.cn/shop/153180461",
+        "entry_url": "https://wzyp.cn/shop/153180461",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "狗儿",
+        "url": "https://wzyp.cn/shop/2TF3CYFL",
+        "entry_url": "https://wzyp.cn/shop/2TF3CYFL",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "NiuGe AI 加钟站",
+        "url": "https://wzyp.cn/shop/GU3XQH61",
+        "entry_url": "https://wzyp.cn/shop/GU3XQH61",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "迷途小铺",
+        "url": "https://wzyp.cn/shop/gpt88",
+        "entry_url": "https://wzyp.cn/shop/gpt88",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Tora-雪诺AI代购娘小铺",
+        "url": "https://wzyp.cn/shop/Tora",
+        "entry_url": "https://wzyp.cn/shop/Tora",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "我有米奇妙妙屋",
+        "url": "https://wzyp.cn/shop/8U6H8VI3",
+        "entry_url": "https://wzyp.cn/shop/8U6H8VI3",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "橘子Ai源头🍊成品号批发",
+        "url": "https://wzyp.cn/shop/KFLA",
+        "entry_url": "https://wzyp.cn/shop/KFLA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "琪琪科技",
+        "url": "https://wzyp.cn/shop/ZPISRC7G",
+        "entry_url": "https://wzyp.cn/shop/ZPISRC7G",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "SkyAI源头---欢迎分销---对接：AI166888",
+        "url": "https://www.16688.com.cn/shop/S598150",
+        "entry_url": "https://16688.com.cn/shop/S598150",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "SkyAI源头---欢迎分销---对接：AI166888",
+        "base_url": "https://www.16688.com.cn/shop/S598150",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "卡比拉",
+        "url": "https://wzyp.cn/shop/kabila",
+        "entry_url": "https://wzyp.cn/shop/kabila",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小JIANG的商店",
+        "url": "https://wzyp.cn/shop/XSMWW894",
+        "entry_url": "https://wzyp.cn/shop/XSMWW894",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "SHEN",
+        "url": "https://wzyp.cn/shop/DF6CKF46",
+        "entry_url": "https://wzyp.cn/shop/DF6CKF46",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ZZ源头批发",
+        "url": "https://wzyp.cn/shop/XiaoYie",
+        "entry_url": "https://wzyp.cn/shop/XiaoYie",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Tim的AI便利店",
+        "url": "https://wzyp.cn/shop/Tim_AI",
+        "entry_url": "https://wzyp.cn/shop/Tim_AI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "GAI源头",
+        "url": "https://wzyp.cn/shop/aimfshop",
+        "entry_url": "https://wzyp.cn/shop/aimfshop",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "炒鸡变黑的AI店（对接码chaoji，Plus龟头卷价版）",
+        "url": "https://wzyp.cn/shop/chaoji",
+        "entry_url": "https://wzyp.cn/shop/chaoji",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "极客ai Hub",
+        "url": "https://wzyp.cn/shop/93FVU5NK",
+        "entry_url": "https://wzyp.cn/shop/93FVU5NK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI万能工具箱",
+        "url": "https://wzyp.cn/shop/grok",
+        "entry_url": "https://wzyp.cn/shop/grok",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "moyanovo",
+        "url": "https://wzyp.cn/shop/moyanovo",
+        "entry_url": "https://wzyp.cn/shop/moyanovo",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "冷热lab",
+        "url": "https://wzyp.cn/shop/5OFQXIM1",
+        "entry_url": "https://wzyp.cn/shop/5OFQXIM1",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "海神-Ai-大玩家（招代理）",
+        "url": "https://wzyp.cn/shop/KFNRCFGC",
+        "entry_url": "https://wzyp.cn/shop/KFNRCFGC",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "52AI店铺",
+        "url": "https://wzyp.cn/shop/52AI",
+        "entry_url": "https://wzyp.cn/shop/52AI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "HZ-API",
+        "url": "https://wzyp.cn/shop/hzapi",
+        "entry_url": "https://wzyp.cn/shop/hzapi",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "602",
+        "url": "https://wzyp.cn/shop/602",
+        "entry_url": "https://wzyp.cn/shop/602",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "YUJI",
+        "url": "https://wzyp.cn/shop/YUJI",
+        "entry_url": "https://wzyp.cn/shop/YUJI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "iKun AI源头小铺",
+        "url": "https://wzyp.cn/shop/ikun666",
+        "entry_url": "https://wzyp.cn/shop/ikun666",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "牟利ai",
+        "url": "https://wzyp.cn/shop/2VWX76A4",
+        "entry_url": "https://wzyp.cn/shop/2VWX76A4",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "个性个性AI源头批发",
+        "url": "https://wzyp.cn/shop/WURK0XWX",
+        "entry_url": "https://wzyp.cn/shop/WURK0XWX",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "464",
+        "url": "https://wzyp.cn/shop/7HVUEC3Y",
+        "entry_url": "https://wzyp.cn/shop/7HVUEC3Y",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "口粮Mail",
+        "url": "https://www.16688.com.cn/shop/S644276",
+        "entry_url": "https://16688.com.cn/shop/S644276",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "口粮Mail",
+        "base_url": "https://www.16688.com.cn/shop/S644276",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "金幺の小店",
+        "url": "https://wzyp.cn/shop/911",
+        "entry_url": "https://wzyp.cn/shop/911",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "卷子ai ( Lucky )",
+        "url": "https://wzyp.cn/shop/X23TO6QE",
+        "entry_url": "https://wzyp.cn/shop/X23TO6QE",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "黑白小狗AI旗舰店",
+        "url": "https://wzyp.cn/shop/5R8T9H0Q",
+        "entry_url": "https://wzyp.cn/shop/5R8T9H0Q",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小猫【招代理】",
+        "url": "https://wzyp.cn/shop/aixiaomao",
+        "entry_url": "https://wzyp.cn/shop/aixiaomao",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "青蛙AI·低价源头",
+        "url": "https://wzyp.cn/shop/qingwaAA",
+        "entry_url": "https://wzyp.cn/shop/qingwaAA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小高老板娘的AI",
+        "url": "https://wzyp.cn/shop/O1PF7YKC",
+        "entry_url": "https://wzyp.cn/shop/O1PF7YKC",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "幻境MirageAI",
+        "url": "https://wzyp.cn/shop/mirage",
+        "entry_url": "https://wzyp.cn/shop/mirage",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "66AI小铺",
+        "url": "https://www.16688.com.cn/shop/S134923",
+        "entry_url": "https://16688.com.cn/shop/S134923",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "66AI小铺",
+        "base_url": "https://www.16688.com.cn/shop/S134923",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "flyai.qzz.io",
+        "url": "https://flyai.qzz.io",
+        "entry_url": "https://flyai.qzz.io/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "flyai.qzz.io",
+        "base_url": "https://flyai.qzz.io",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "G小铺",
+        "url": "https://wzyp.cn/shop/gptxp",
+        "entry_url": "https://wzyp.cn/shop/gptxp",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "大魔王的店铺",
+        "url": "https://wzyp.cn/shop/EREZLCWN",
+        "entry_url": "https://wzyp.cn/shop/EREZLCWN",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI批发商（全网底价）（低价走量）",
+        "url": "https://www.16688.com.cn/shop/S315247",
+        "entry_url": "https://16688.com.cn/shop/S315247",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI批发商（全网底价）（低价走量）",
+        "base_url": "https://www.16688.com.cn/shop/S315247",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "教父",
+        "url": "https://wzyp.cn/shop/yanfu",
+        "entry_url": "https://wzyp.cn/shop/yanfu",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "【AI源头直供】AICA",
+        "url": "https://wzyp.cn/shop/aica",
+        "entry_url": "https://wzyp.cn/shop/aica",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "抢抢的AI小铺",
+        "url": "https://wzyp.cn/shop/GQ6OBICY",
+        "entry_url": "https://wzyp.cn/shop/GQ6OBICY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "云边小铺（招代理）",
+        "url": "https://wzyp.cn/shop/one",
+        "entry_url": "https://wzyp.cn/shop/one",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "OpcAi_Family",
+        "url": "https://wzyp.cn/shop/TVHUVT0A",
+        "entry_url": "https://wzyp.cn/shop/TVHUVT0A",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "GCard",
+        "url": "https://wzyp.cn/shop/YY4KVE2T",
+        "entry_url": "https://wzyp.cn/shop/YY4KVE2T",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "哈哈的ai杂货铺",
+        "url": "https://wzyp.cn/shop/22DHYNNV",
+        "entry_url": "https://wzyp.cn/shop/22DHYNNV",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "yes_code",
+        "url": "https://wzyp.cn/shop/yes_code",
+        "entry_url": "https://wzyp.cn/shop/yes_code",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "aihome",
+        "url": "https://wzyp.cn/shop/gpt_plus",
+        "entry_url": "https://wzyp.cn/shop/gpt_plus",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "FranklyBuilds的AI小店",
+        "url": "https://wzyp.cn/shop/7LFUCYI0",
+        "entry_url": "https://wzyp.cn/shop/7LFUCYI0",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "2632036440",
+        "url": "https://www.16688.com.cn/shop/S261171",
+        "entry_url": "https://16688.com.cn/shop/S261171",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "2632036440",
+        "base_url": "https://www.16688.com.cn/shop/S261171",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "OF会员服务商",
+        "url": "https://wzyp.cn/shop/OFAI",
+        "entry_url": "https://wzyp.cn/shop/OFAI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ydd",
+        "url": "https://wzyp.cn/shop/TH52WUW7",
+        "entry_url": "https://wzyp.cn/shop/TH52WUW7",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "杂货铺",
+        "url": "https://www.16688.com.cn/shop/S235521",
+        "entry_url": "https://16688.com.cn/shop/S235521",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "杂货铺",
+        "base_url": "https://www.16688.com.cn/shop/S235521",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI小屋",
+        "url": "https://wzyp.cn/shop/rgzn",
+        "entry_url": "https://wzyp.cn/shop/rgzn",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "追梦AI",
+        "url": "https://wzyp.cn/shop/FRNX1ZU8",
+        "entry_url": "https://wzyp.cn/shop/FRNX1ZU8",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小熊AI",
+        "url": "https://wzyp.cn/shop/YTR60TGVK",
+        "entry_url": "https://wzyp.cn/shop/YTR60TGVK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "chiyu",
+        "url": "https://wzyp.cn/shop/OUJ1HPBV",
+        "entry_url": "https://wzyp.cn/shop/OUJ1HPBV",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "kuala",
+        "url": "https://www.16688.com.cn/shop/S610658",
+        "entry_url": "https://16688.com.cn/shop/S610658",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "kuala",
+        "base_url": "https://www.16688.com.cn/shop/S610658",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI-小站",
+        "url": "https://wzyp.cn/shop/8998TM6I",
+        "entry_url": "https://wzyp.cn/shop/8998TM6I",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai小助手",
+        "url": "https://wzyp.cn/shop/1PY3OQ46",
+        "entry_url": "https://wzyp.cn/shop/1PY3OQ46",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "低价稳定源头（招代理）",
+        "url": "https://www.16688.com.cn/shop/S878919",
+        "entry_url": "https://16688.com.cn/shop/S878919",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "低价稳定源头（招代理）",
+        "base_url": "https://www.16688.com.cn/shop/S878919",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "沈万三的AI聚宝盆",
+        "url": "https://wzyp.cn/shop/shenwansan",
+        "entry_url": "https://wzyp.cn/shop/shenwansan",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "超级码少",
+        "url": "https://wzyp.cn/shop/cjms",
+        "entry_url": "https://wzyp.cn/shop/cjms",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "猫咔 - Gemini源头批发",
+        "url": "https://catcard.uk",
+        "entry_url": "https://catcard.uk/",
+        "collector": "publicProductsApi"
+      },
+      "status": "failed",
+      "detail": "原站商品 API 返回 Cloudflare 验证页，未绕过访问限制",
+      "title": "AI账号 · 直充 · 中转汇总｜猫咔"
+    },
+    {
+      "reference": {
+        "name": "奥特曼严选",
+        "url": "https://wzyp.cn/shop/PAXOVOVJ",
+        "entry_url": "https://wzyp.cn/shop/PAXOVOVJ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "词生量",
+        "url": "https://wzyp.cn/shop/2POVTUTK",
+        "entry_url": "https://wzyp.cn/shop/2POVTUTK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "La ai",
+        "url": "https://wzyp.cn/shop/aisell",
+        "entry_url": "https://wzyp.cn/shop/aisell",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "沐沐的店",
+        "url": "https://wzyp.cn/shop/8Q9RHH0W",
+        "entry_url": "https://wzyp.cn/shop/8Q9RHH0W",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai成品",
+        "url": "https://wzyp.cn/shop/6YEJH8PE",
+        "entry_url": "https://wzyp.cn/shop/6YEJH8PE",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小猴源头（越南实卡源头）对接码：33",
+        "url": "https://wzyp.cn/shop/xiaohou",
+        "entry_url": "https://wzyp.cn/shop/xiaohou",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai聚合--分销码 ADEFAI",
+        "url": "https://www.16688.com.cn/shop/S981603",
+        "entry_url": "https://16688.com.cn/shop/S981603",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "ai聚合--分销码 ADEFAI",
+        "base_url": "https://www.16688.com.cn/shop/S981603",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 56,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "以太 AI服务订阅充值",
+        "url": "https://google7676.top",
+        "entry_url": "https://google7676.top/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "以太 AI服务订阅充值",
+        "base_url": "https://google7676.top",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 17,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "哈基米站",
+        "url": "https://wzyp.cn/shop/DGF2IE5W",
+        "entry_url": "https://wzyp.cn/shop/DGF2IE5W",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G plus专卖",
+        "url": "https://wzyp.cn/shop/gptpluspro",
+        "entry_url": "https://wzyp.cn/shop/gptpluspro",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "稳问AI --AI 大玩家（AI真源头，招代理）",
+        "url": "https://wzyp.cn/shop/aishop1",
+        "entry_url": "https://wzyp.cn/shop/aishop1",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI低价源头店",
+        "url": "https://wzyp.cn/shop/RRIM3VSF",
+        "entry_url": "https://wzyp.cn/shop/RRIM3VSF",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Hug AI",
+        "url": "https://wzyp.cn/shop/4UOATQTU",
+        "entry_url": "https://wzyp.cn/shop/4UOATQTU",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "797",
+        "url": "https://wzyp.cn/shop/42KWTJGE",
+        "entry_url": "https://wzyp.cn/shop/42KWTJGE",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ton",
+        "url": "https://wzyp.cn/shop/ton",
+        "entry_url": "https://wzyp.cn/shop/ton",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "光之国AI",
+        "url": "https://wzyp.cn/shop/GT7KX1TN",
+        "entry_url": "https://wzyp.cn/shop/GT7KX1TN",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI华强北",
+        "url": "https://wzyp.cn/shop/1001",
+        "entry_url": "https://wzyp.cn/shop/1001",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ALL IN AI",
+        "url": "https://wzyp.cn/shop/6H72NFWO",
+        "entry_url": "https://wzyp.cn/shop/6H72NFWO",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "91TOPGO",
+        "url": "https://www.16688.com.cn/shop/S159512",
+        "entry_url": "https://16688.com.cn/shop/S159512",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "91TOPGO",
+        "base_url": "https://www.16688.com.cn/shop/S159512",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "aicloudhub",
+        "url": "https://wzyp.cn/shop/aicloudhub",
+        "entry_url": "https://wzyp.cn/shop/aicloudhub",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "梦泽Ai",
+        "url": "https://www.16688.com.cn/shop/MENGZE",
+        "entry_url": "https://16688.com.cn/shop/MENGZE",
+        "collector": "16688_shop_api"
+      },
+      "status": "alias_existing",
+      "source": {
+        "name": "梦泽Ai",
+        "base_url": "https://www.16688.com.cn/shop/S528762",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "detail": "原站证实与已接入地址指向同一店铺"
+    },
+    {
+      "reference": {
+        "name": "张啊三",
+        "url": "https://wzyp.cn/shop/623I7MCW",
+        "entry_url": "https://wzyp.cn/shop/623I7MCW",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI杂货",
+        "url": "https://wzyp.cn/shop/2E2KPQD1",
+        "entry_url": "https://wzyp.cn/shop/2E2KPQD1",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "猫王AI高品质源头 · 官方自营小铺",
+        "url": "https://wzyp.cn/shop/CZSYP67X",
+        "entry_url": "https://wzyp.cn/shop/CZSYP67X",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "蜗的AI(招代理)",
+        "url": "https://wzyp.cn/shop/woniu",
+        "entry_url": "https://wzyp.cn/shop/woniu",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "tototo",
+        "url": "https://wzyp.cn/shop/FZKZDJ3U",
+        "entry_url": "https://wzyp.cn/shop/FZKZDJ3U",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "麦门商店",
+        "url": "https://ouvg.top",
+        "entry_url": "https://ouvg.top/",
+        "collector": "unicornHtml"
+      },
+      "status": "needs_adapter",
+      "detail": "原站 HTTP 200，需核验独立页面结构",
+      "title": "首页 | 麦门商店"
+    },
+    {
+      "reference": {
+        "name": "唛选ai（可以开发票）",
+        "url": "https://www.16688.com.cn/shop/S965521",
+        "entry_url": "https://16688.com.cn/shop/S965521",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "唛选ai（可以开发票）",
+        "base_url": "https://www.16688.com.cn/shop/S965521",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "灰灰的小铺",
+        "url": "https://www.16688.com.cn/shop/S265995",
+        "entry_url": "https://16688.com.cn/shop/S265995",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "灰灰的小铺",
+        "base_url": "https://www.16688.com.cn/shop/S265995",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "咔咔",
+        "url": "https://wzyp.cn/shop/D92VW084",
+        "entry_url": "https://wzyp.cn/shop/D92VW084",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai小铺",
+        "url": "https://wzyp.cn/shop/WPXSCE1B",
+        "entry_url": "https://wzyp.cn/shop/WPXSCE1B",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "猫猫豆",
+        "url": "https://wzyp.cn/shop/mmdou",
+        "entry_url": "https://wzyp.cn/shop/mmdou",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "郁川 G源头【招代理】对接码：yuchuan666",
+        "url": "https://wzyp.cn/shop/Yu_1an666",
+        "entry_url": "https://wzyp.cn/shop/Yu_1an666",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "伊莉雅·曜辰",
+        "url": "https://wzyp.cn/shop/ZM24RG4J",
+        "entry_url": "https://wzyp.cn/shop/ZM24RG4J",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "土豆",
+        "url": "https://wzyp.cn/shop/tudou",
+        "entry_url": "https://wzyp.cn/shop/tudou",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "屿风ai-可开发票-注意看商品说明",
+        "url": "https://www.16688.com.cn/shop/S755531",
+        "entry_url": "https://16688.com.cn/shop/S755531",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "屿风ai-可开发票-注意看商品说明",
+        "base_url": "https://www.16688.com.cn/shop/S755531",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "蛋的AI🔥",
+        "url": "https://wzyp.cn/shop/M5WLYYQV",
+        "entry_url": "https://wzyp.cn/shop/M5WLYYQV",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "初草的AI学习商品小铺",
+        "url": "https://wzyp.cn/shop/V2M14U73",
+        "entry_url": "https://wzyp.cn/shop/V2M14U73",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "喵喵AI小铺2061",
+        "url": "https://wzyp.cn/shop/AG7CVCOD",
+        "entry_url": "https://wzyp.cn/shop/AG7CVCOD",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "精选好货AI",
+        "url": "https://wzyp.cn/shop/jingxuan",
+        "entry_url": "https://wzyp.cn/shop/jingxuan",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "LynnZee",
+        "url": "https://wzyp.cn/shop/GAXW96YR",
+        "entry_url": "https://wzyp.cn/shop/GAXW96YR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小店",
+        "url": "https://wzyp.cn/shop/YA3NLPX6",
+        "entry_url": "https://wzyp.cn/shop/YA3NLPX6",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "幽羊 AI",
+        "url": "https://wzyp.cn/shop/Z65QS0QG",
+        "entry_url": "https://wzyp.cn/shop/Z65QS0QG",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI批发",
+        "url": "https://wzyp.cn/shop/ai-plus",
+        "entry_url": "https://wzyp.cn/shop/ai-plus",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "良心小铺",
+        "url": "https://www.16688.com.cn/shop/S307788",
+        "entry_url": "https://16688.com.cn/shop/S307788",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "良心小铺",
+        "base_url": "https://www.16688.com.cn/shop/S307788",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 8,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "还没想好",
+        "url": "https://wzyp.cn/shop/KIJSS7TJ",
+        "entry_url": "https://wzyp.cn/shop/KIJSS7TJ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "卡卡丨货源",
+        "url": "https://wzyp.cn/shop/kaka",
+        "entry_url": "https://wzyp.cn/shop/kaka",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小店",
+        "url": "https://www.16688.com.cn/shop/S485596",
+        "entry_url": "https://16688.com.cn/shop/S485596",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI小店",
+        "base_url": "https://www.16688.com.cn/shop/S485596",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "懒羊羊AI",
+        "url": "https://wzyp.cn/shop/lanyy",
+        "entry_url": "https://wzyp.cn/shop/lanyy",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "会员直充",
+        "url": "https://www.16688.com.cn/shop/S981397",
+        "entry_url": "https://16688.com.cn/shop/S981397",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "会员直充",
+        "base_url": "https://www.16688.com.cn/shop/S981397",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "GiPiTa 菲区源头 诚招代理",
+        "url": "https://www.16688.com.cn/shop/S848708",
+        "entry_url": "https://16688.com.cn/shop/S848708",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "GiPiTa 菲区源头 诚招代理",
+        "base_url": "https://www.16688.com.cn/shop/S848708",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 8,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "CallAI",
+        "url": "https://www.16688.com.cn/shop/S161857",
+        "entry_url": "https://16688.com.cn/shop/S161857",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "CallAI",
+        "base_url": "https://www.16688.com.cn/shop/S161857",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "撸秃奥特曼",
+        "url": "https://wzyp.cn/shop/RT2XW6IY",
+        "entry_url": "https://wzyp.cn/shop/RT2XW6IY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "晴天小店",
+        "url": "https://cool.cheggnow.com",
+        "entry_url": "https://cool.cheggnow.com/",
+        "collector": "kami"
+      },
+      "status": "failed",
+      "source": {
+        "name": "晴天小店",
+        "base_url": "https://cool.cheggnow.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "云智仓AI",
+        "url": "https://wzyp.cn/shop/2XZ9M71J",
+        "entry_url": "https://wzyp.cn/shop/2XZ9M71J",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "悦AI",
+        "url": "https://wzyp.cn/shop/3BFKDGS3",
+        "entry_url": "https://wzyp.cn/shop/3BFKDGS3",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "cc-cat",
+        "url": "https://ccdawang.win/products",
+        "entry_url": "https://ccdawang.win/products",
+        "collector": "dujiao"
+      },
+      "status": "alias_existing",
+      "source": {
+        "name": "cc-cat",
+        "base_url": "https://ccdawang.win",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "原站证实与已接入地址指向同一店铺"
+    },
+    {
+      "reference": {
+        "name": "小熊AI充值",
+        "url": "https://aichongz.cc",
+        "entry_url": "https://aichongz.cc/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "小熊AI充值",
+        "base_url": "https://aichongz.cc",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 13,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "mymxhbyf888",
+        "url": "https://www.16688.com.cn/shop/S714081",
+        "entry_url": "https://16688.com.cn/shop/S714081",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "mymxhbyf888",
+        "base_url": "https://www.16688.com.cn/shop/S714081",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "葫芦娃",
+        "url": "https://wzyp.cn/shop/B9KFCWFO",
+        "entry_url": "https://wzyp.cn/shop/B9KFCWFO",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "奥特曼大表哥",
+        "url": "https://wzyp.cn/shop/I7G8TG30",
+        "entry_url": "https://wzyp.cn/shop/I7G8TG30",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小店",
+        "url": "https://wzyp.cn/shop/cwyhlt",
+        "entry_url": "https://wzyp.cn/shop/cwyhlt",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "福利吧",
+        "url": "https://www.16688.com.cn/shop/S559923",
+        "entry_url": "https://16688.com.cn/shop/S559923",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "福利吧",
+        "base_url": "https://www.16688.com.cn/shop/S559923",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 11,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "ai小店",
+        "url": "https://wzyp.cn/shop/YAPYIJ9E",
+        "entry_url": "https://wzyp.cn/shop/YAPYIJ9E",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "蜗牛小店",
+        "url": "https://www.16688.com.cn/shop/S644029",
+        "entry_url": "https://16688.com.cn/shop/S644029",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "蜗牛小店",
+        "base_url": "https://www.16688.com.cn/shop/S644029",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Asuka的小店",
+        "url": "https://wzyp.cn/shop/36XN8ELM",
+        "entry_url": "https://wzyp.cn/shop/36XN8ELM",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "咕咕嘎嘎",
+        "url": "https://wzyp.cn/shop/oaoi",
+        "entry_url": "https://wzyp.cn/shop/oaoi",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小票的ai小铺",
+        "url": "https://wzyp.cn/shop/xiaopiao",
+        "entry_url": "https://wzyp.cn/shop/xiaopiao",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "YCYAPI",
+        "url": "https://wzyp.cn/shop/ycyapi",
+        "entry_url": "https://wzyp.cn/shop/ycyapi",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "星宝小店",
+        "url": "https://xingbao-ai.shop",
+        "entry_url": "https://xingbao-ai.shop/",
+        "collector": "genericHtml"
+      },
+      "status": "verified",
+      "detail": "已按原站页面/接口完成映射",
+      "title": "星星小店｜ChatGPT Plus / Pro 代充，Claude、Gemini、Grok 会员充值，卡密自动发货",
+      "source": {
+        "name": "星宝小店",
+        "base_url": "https://xingbao-ai.shop",
+        "collector": "html",
+        "config": {
+          "item_selector": "article.stitch-product-card",
+          "title_selector": "h3",
+          "price_selector": ".stitch-price-block strong",
+          "link_selector": ".stitch-detail-button",
+          "stock_selector": ".stitch-stock-badge:not(.is-sold)",
+          "stock_map": {
+            "库存充足": "in_stock",
+            "还有少量": "in_stock",
+            "暂时缺货": "out_of_stock"
+          },
+          "full_snapshot": true,
+          "price_note": "商品标价；原站说明部分支付方式另收通道费"
+        },
+        "interval_minutes": 15
+      },
+      "offer_count": 16,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "蚂蚁AI",
+        "url": "https://wzyp.cn/shop/antmall",
+        "entry_url": "https://wzyp.cn/shop/antmall",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "兔子AI百宝箱",
+        "url": "https://www.16688.com.cn/shop/S603736",
+        "entry_url": "https://16688.com.cn/shop/S603736",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "兔子AI百宝箱",
+        "base_url": "https://www.16688.com.cn/shop/S603736",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 18,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "元筑AI 分销码 h8wthq46",
+        "url": "https://wzyp.cn/shop/laoyang",
+        "entry_url": "https://wzyp.cn/shop/laoyang",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "月饼店铺",
+        "url": "https://fk.ybkjs.top",
+        "entry_url": "https://fk.ybkjs.top/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "月饼店铺",
+        "base_url": "https://fk.ybkjs.top",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 58,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "晓风ai",
+        "url": "https://wzyp.cn/shop/xiaofeng",
+        "entry_url": "https://wzyp.cn/shop/xiaofeng",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Jin AI",
+        "url": "https://wzyp.cn/shop/QGBCRJL0",
+        "entry_url": "https://wzyp.cn/shop/QGBCRJL0",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "诺亚的AI小铺",
+        "url": "https://www.16688.com.cn/shop/S461375",
+        "entry_url": "https://16688.com.cn/shop/S461375",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "诺亚的AI小铺",
+        "base_url": "https://www.16688.com.cn/shop/S461375",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "7QAI批发市场",
+        "url": "https://wzyp.cn/shop/1490777",
+        "entry_url": "https://wzyp.cn/shop/1490777",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai教父",
+        "url": "https://www.16688.com.cn/shop/S856265",
+        "entry_url": "https://16688.com.cn/shop/S856265",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "ai教父",
+        "base_url": "https://www.16688.com.cn/shop/S856265",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "555AI",
+        "url": "https://www.16688.com.cn/shop/S412469",
+        "entry_url": "https://16688.com.cn/shop/S412469",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "555AI",
+        "base_url": "https://www.16688.com.cn/shop/S412469",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "陈平安",
+        "url": "https://wzyp.cn/shop/NFCG5CVM",
+        "entry_url": "https://wzyp.cn/shop/NFCG5CVM",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "太一的店铺",
+        "url": "https://wzyp.cn/shop/IHWX6MX8",
+        "entry_url": "https://wzyp.cn/shop/IHWX6MX8",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "BBAI 官方充值",
+        "url": "https://faka.bbanai.site",
+        "entry_url": "https://faka.bbanai.site/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "BBAI 官方充值",
+        "base_url": "https://faka.bbanai.site",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 11,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "飞龙 AI 小铺",
+        "url": "https://wzyp.cn/shop/rimon",
+        "entry_url": "https://wzyp.cn/shop/rimon",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "乐易",
+        "url": "https://www.16688.com.cn/shop/S217110",
+        "entry_url": "https://16688.com.cn/shop/S217110",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "乐易",
+        "base_url": "https://www.16688.com.cn/shop/S217110",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 9,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "E ai",
+        "url": "https://wzyp.cn/shop/2NAVZ50J",
+        "entry_url": "https://wzyp.cn/shop/2NAVZ50J",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "云境AI",
+        "url": "https://www.16688.com.cn/shop/S263233",
+        "entry_url": "https://16688.com.cn/shop/S263233",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "云境AI",
+        "base_url": "https://www.16688.com.cn/shop/S263233",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 9,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "狗头AI（招代理）",
+        "url": "https://wzyp.cn/shop/L9O8CDHA",
+        "entry_url": "https://wzyp.cn/shop/L9O8CDHA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ChatGPlus 陌路专营店 分销码molu",
+        "url": "https://wzyp.cn/shop/TD6GILQR",
+        "entry_url": "https://wzyp.cn/shop/TD6GILQR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI练习生",
+        "url": "https://wzyp.cn/shop/5H4X93E5",
+        "entry_url": "https://wzyp.cn/shop/5H4X93E5",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "lyc1205159369",
+        "url": "https://www.16688.com.cn/shop/S629329",
+        "entry_url": "https://16688.com.cn/shop/S629329",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "lyc1205159369",
+        "base_url": "https://www.16688.com.cn/shop/S629329",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "wensiyaya",
+        "url": "https://www.16688.com.cn/shop/S409411",
+        "entry_url": "https://16688.com.cn/shop/S409411",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "wensiyaya",
+        "base_url": "https://www.16688.com.cn/shop/S409411",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "G屁T&Claude",
+        "url": "https://www.16688.com.cn/shop/S829385",
+        "entry_url": "https://16688.com.cn/shop/S829385",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "G屁T&amp;Claude",
+        "base_url": "https://www.16688.com.cn/shop/S829385",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI魔法铺",
+        "url": "https://wzyp.cn/shop/magic_paw",
+        "entry_url": "https://wzyp.cn/shop/magic_paw",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "芙芙的宝箱",
+        "url": "https://wzyp.cn/shop/fufu",
+        "entry_url": "https://wzyp.cn/shop/fufu",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "风起Ai小卖铺",
+        "url": "https://wzyp.cn/shop/FengAi",
+        "entry_url": "https://wzyp.cn/shop/FengAi",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小小小铺",
+        "url": "https://www.16688.com.cn/shop/S926319",
+        "entry_url": "https://16688.com.cn/shop/S926319",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "小小小铺",
+        "base_url": "https://www.16688.com.cn/shop/S926319",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "剑心AI小铺GiPiTa",
+        "url": "https://www.16688.com.cn/shop/S785267",
+        "entry_url": "https://16688.com.cn/shop/S785267",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "剑心AI小铺GiPiTa",
+        "base_url": "https://www.16688.com.cn/shop/S785267",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "edu邮箱",
+        "url": "https://www.16688.com.cn/shop/S975721",
+        "entry_url": "https://16688.com.cn/shop/S975721",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "edu邮箱",
+        "base_url": "https://www.16688.com.cn/shop/S975721",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "小月 Gro​k 质保专营店",
+        "url": "https://www.16688.com.cn/shop/S848121",
+        "entry_url": "https://16688.com.cn/shop/S848121",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "小月 Gro​k 质保专营店",
+        "base_url": "https://www.16688.com.cn/shop/S848121",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "ai1998",
+        "url": "https://wzyp.cn/shop/ai1998",
+        "entry_url": "https://wzyp.cn/shop/ai1998",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "gemini源头直供",
+        "url": "https://wzyp.cn/shop/W50I8DVY",
+        "entry_url": "https://wzyp.cn/shop/W50I8DVY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "映核资源站",
+        "url": "https://wzyp.cn/shop/DJFT26BF",
+        "entry_url": "https://wzyp.cn/shop/DJFT26BF",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "RoAi",
+        "url": "https://wzyp.cn/shop/JNPC971G",
+        "entry_url": "https://wzyp.cn/shop/JNPC971G",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "旺旺铺子",
+        "url": "https://wzyp.cn/shop/6D0QLK0N",
+        "entry_url": "https://wzyp.cn/shop/6D0QLK0N",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "灵AI",
+        "url": "https://wzyp.cn/shop/H2QPI3X2",
+        "entry_url": "https://wzyp.cn/shop/H2QPI3X2",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI源头代充",
+        "url": "https://www.16688.com.cn/shop/S945852",
+        "entry_url": "https://16688.com.cn/shop/S945852",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI源头代充",
+        "base_url": "https://www.16688.com.cn/shop/S945852",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 11,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Royce",
+        "url": "https://wzyp.cn/shop/IK1XF5CA",
+        "entry_url": "https://wzyp.cn/shop/IK1XF5CA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "stayAI",
+        "url": "https://wzyp.cn/shop/QHN4YVQP",
+        "entry_url": "https://wzyp.cn/shop/QHN4YVQP",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "jev",
+        "url": "https://wzyp.cn/shop/WR09NYJN",
+        "entry_url": "https://wzyp.cn/shop/WR09NYJN",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "【换地址了】ChihayaAI 【https://shop.sakisaki.top/】",
+        "url": "https://wzyp.cn/shop/anon",
+        "entry_url": "https://wzyp.cn/shop/anon",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "翻车咩萝",
+        "url": "https://wzyp.cn/shop/TSYOVSIV",
+        "entry_url": "https://wzyp.cn/shop/TSYOVSIV",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Reverse",
+        "url": "https://wzyp.cn/shop/8TD03O0W",
+        "entry_url": "https://wzyp.cn/shop/8TD03O0W",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI-Tibo-LLDCard（代理对接：TIBO666）",
+        "url": "https://www.16688.com.cn/shop/S247817",
+        "entry_url": "https://16688.com.cn/shop/S247817",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI-Tibo-LLDCard（代理对接：TIBO666）",
+        "base_url": "https://www.16688.com.cn/shop/S247817",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Justzqzb",
+        "url": "https://www.16688.com.cn/shop/S390435",
+        "entry_url": "https://16688.com.cn/shop/S390435",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Justzqzb",
+        "base_url": "https://www.16688.com.cn/shop/S390435",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "SMS-AIShop",
+        "url": "https://wzyp.cn/shop/66666SMS",
+        "entry_url": "https://wzyp.cn/shop/66666SMS",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai小卖部",
+        "url": "https://wzyp.cn/shop/SGJ71TXK",
+        "entry_url": "https://wzyp.cn/shop/SGJ71TXK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai链动",
+        "url": "https://wzyp.cn/shop/1H2U5JTI",
+        "entry_url": "https://wzyp.cn/shop/1H2U5JTI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Gemini AI折扣站",
+        "url": "https://wzyp.cn/shop/8888",
+        "entry_url": "https://wzyp.cn/shop/8888",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "彩虹马的AI店",
+        "url": "https://wzyp.cn/shop/AWXK3UJY",
+        "entry_url": "https://wzyp.cn/shop/AWXK3UJY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "MMB补给站",
+        "url": "https://wzyp.cn/shop/KLAOH7AK",
+        "entry_url": "https://wzyp.cn/shop/KLAOH7AK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AIFXO",
+        "url": "https://wzyp.cn/shop/aifxo",
+        "entry_url": "https://wzyp.cn/shop/aifxo",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "御風AI",
+        "url": "https://yufenggpt.com",
+        "entry_url": "https://yufenggpt.com/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "御風AI",
+        "base_url": "https://yufenggpt.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 12,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "人机验证",
+        "url": "https://kbshub.store",
+        "entry_url": "https://kbshub.store/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "人机验证",
+        "base_url": "https://kbshub.store",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "huihuiaoao",
+        "url": "https://wzyp.cn/shop/N3BQ0GOI",
+        "entry_url": "https://wzyp.cn/shop/N3BQ0GOI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "商家3500",
+        "url": "https://wzyp.cn/shop/JXFBLWPZ",
+        "entry_url": "https://wzyp.cn/shop/JXFBLWPZ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G成品号",
+        "url": "https://wzyp.cn/shop/FDX91PV6",
+        "entry_url": "https://wzyp.cn/shop/FDX91PV6",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Auto Subscribe",
+        "url": "https://shop.auto-subscribe.com",
+        "entry_url": "https://shop.auto-subscribe.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "Auto Subscribe",
+        "base_url": "https://shop.auto-subscribe.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "Xai代充",
+        "url": "https://www.16688.com.cn/shop/S686765",
+        "entry_url": "https://16688.com.cn/shop/S686765",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Xai代充",
+        "base_url": "https://www.16688.com.cn/shop/S686765",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "怪兽AI",
+        "url": "https://wzyp.cn/shop/NWH6ORAI",
+        "entry_url": "https://wzyp.cn/shop/NWH6ORAI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "蓝创API",
+        "url": "https://wzyp.cn/shop/X2MZJRAY",
+        "entry_url": "https://wzyp.cn/shop/X2MZJRAY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Grape AI🍇",
+        "url": "https://wzyp.cn/shop/JYO0X15L",
+        "entry_url": "https://wzyp.cn/shop/JYO0X15L",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "KeikoAI小店",
+        "url": "https://wzyp.cn/shop/keiko",
+        "entry_url": "https://wzyp.cn/shop/keiko",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "10886源头发卡网",
+        "url": "https://fk.10886.xyz",
+        "entry_url": "https://fk.10886.xyz/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "10886源头发卡网",
+        "base_url": "https://fk.10886.xyz",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 14,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI小铺（源头直供，招代理）",
+        "url": "https://wzyp.cn/shop/chatgpt_ai",
+        "entry_url": "https://wzyp.cn/shop/chatgpt_ai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Doro AI",
+        "url": "https://wzyp.cn/shop/doroai",
+        "entry_url": "https://wzyp.cn/shop/doroai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "海飞丝AI",
+        "url": "https://wzyp.cn/shop/haifs",
+        "entry_url": "https://wzyp.cn/shop/haifs",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "TFENG AI",
+        "url": "https://www.16688.com.cn/shop/S566569",
+        "entry_url": "https://16688.com.cn/shop/S566569",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "TFENG AI",
+        "base_url": "https://www.16688.com.cn/shop/S566569",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "ai小铺",
+        "url": "https://wzyp.cn/shop/8DUJDZSR",
+        "entry_url": "https://wzyp.cn/shop/8DUJDZSR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "像素 AI 工具馆",
+        "url": "https://www.16688.com.cn/shop/S538681",
+        "entry_url": "https://16688.com.cn/shop/S538681",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "像素 AI 工具馆",
+        "base_url": "https://www.16688.com.cn/shop/S538681",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 9,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Kstar",
+        "url": "https://wzyp.cn/shop/UJLFBVR9",
+        "entry_url": "https://wzyp.cn/shop/UJLFBVR9",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "启灵AI",
+        "url": "https://wzyp.cn/shop/H81FWD0T",
+        "entry_url": "https://wzyp.cn/shop/H81FWD0T",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "鱼ai",
+        "url": "https://wzyp.cn/shop/S8EK3HL5",
+        "entry_url": "https://wzyp.cn/shop/S8EK3HL5",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "diyun小铺",
+        "url": "https://wzyp.cn/shop/IUWAYNYR",
+        "entry_url": "https://wzyp.cn/shop/IUWAYNYR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "kiro源头",
+        "url": "https://wzyp.cn/shop/1XZXKYZB",
+        "entry_url": "https://wzyp.cn/shop/1XZXKYZB",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "时雨商城",
+        "url": "https://www.16688.com.cn/shop/S9527",
+        "entry_url": "https://16688.com.cn/shop/S9527",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "时雨商城",
+        "base_url": "https://www.16688.com.cn/shop/S840665",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "星链阁",
+        "url": "https://www.16688.com.cn/shop/S193033",
+        "entry_url": "https://16688.com.cn/shop/S193033",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "星链阁",
+        "base_url": "https://www.16688.com.cn/shop/S193033",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "养乐多",
+        "url": "https://wzyp.cn/shop/FC6GCKGG",
+        "entry_url": "https://wzyp.cn/shop/FC6GCKGG",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "大卖 AI",
+        "url": "https://wzyp.cn/shop/damai",
+        "entry_url": "https://wzyp.cn/shop/damai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "星光ai",
+        "url": "https://wzyp.cn/shop/8X8DYGEW",
+        "entry_url": "https://wzyp.cn/shop/8X8DYGEW",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Apex AI",
+        "url": "https://wzyp.cn/shop/ApexAI",
+        "entry_url": "https://wzyp.cn/shop/ApexAI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "天空之上",
+        "url": "https://www.16688.com.cn/shop/S419378",
+        "entry_url": "https://16688.com.cn/shop/S419378",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "天空之上",
+        "base_url": "https://www.16688.com.cn/shop/S419378",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "云卡铺AI",
+        "url": "https://www.16688.com.cn/shop/S360055",
+        "entry_url": "https://16688.com.cn/shop/S360055",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "云卡铺AI",
+        "base_url": "https://www.16688.com.cn/shop/S360055",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "源头卡密",
+        "url": "https://wzyp.cn/shop/F06LXGPS",
+        "entry_url": "https://wzyp.cn/shop/F06LXGPS",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "TiboProMax",
+        "url": "https://wzyp.cn/shop/OP96OFEN",
+        "entry_url": "https://wzyp.cn/shop/OP96OFEN",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "BrothersAI",
+        "url": "https://wzyp.cn/shop/TJFXRQD5",
+        "entry_url": "https://wzyp.cn/shop/TJFXRQD5",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai小店1150",
+        "url": "https://wzyp.cn/shop/QLL06630",
+        "entry_url": "https://wzyp.cn/shop/QLL06630",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "CC的AI小店",
+        "url": "https://www.16688.com.cn/shop/S328141",
+        "entry_url": "https://16688.com.cn/shop/S328141",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "CC的AI小店",
+        "base_url": "https://www.16688.com.cn/shop/S328141",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "mortyAI小铺",
+        "url": "https://wzyp.cn/shop/C7MLWX4N",
+        "entry_url": "https://wzyp.cn/shop/C7MLWX4N",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "OEKK",
+        "url": "https://www.16688.com.cn/shop/S411233",
+        "entry_url": "https://16688.com.cn/shop/S411233",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "OEKK",
+        "base_url": "https://www.16688.com.cn/shop/S411233",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "食过夜粥",
+        "url": "https://www.16688.com.cn/shop/S313118",
+        "entry_url": "https://16688.com.cn/shop/S313118",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "食过夜粥",
+        "base_url": "https://www.16688.com.cn/shop/S313118",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "乌鸦AI",
+        "url": "https://wzyp.cn/shop/B8JKQFDK",
+        "entry_url": "https://wzyp.cn/shop/B8JKQFDK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "DeepToken",
+        "url": "https://wzyp.cn/shop/DeepToken",
+        "entry_url": "https://wzyp.cn/shop/DeepToken",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "LMark",
+        "url": "https://wzyp.cn/shop/ELSXOANJ",
+        "entry_url": "https://wzyp.cn/shop/ELSXOANJ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "乐天图书馆",
+        "url": "https://wzyp.cn/shop/lotte-library",
+        "entry_url": "https://wzyp.cn/shop/lotte-library",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "PLUS直营店",
+        "url": "https://wzyp.cn/shop/FNAOIGBK",
+        "entry_url": "https://wzyp.cn/shop/FNAOIGBK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Apexqt",
+        "url": "https://www.16688.com.cn/shop/S356114",
+        "entry_url": "https://16688.com.cn/shop/S356114",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Apexqt",
+        "base_url": "https://www.16688.com.cn/shop/S356114",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "犀利ai",
+        "url": "https://www.16688.com.cn/shop/S177192",
+        "entry_url": "https://16688.com.cn/shop/S177192",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "犀利ai",
+        "base_url": "https://www.16688.com.cn/shop/S177192",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "ali.shop",
+        "url": "https://wzyp.cn/shop/9P102ZA3",
+        "entry_url": "https://wzyp.cn/shop/9P102ZA3",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "1633757959",
+        "url": "https://www.16688.com.cn/shop/S377741",
+        "entry_url": "https://16688.com.cn/shop/S377741",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "1633757959",
+        "base_url": "https://www.16688.com.cn/shop/S377741",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "喵懂AI",
+        "url": "https://www.16688.com.cn/shop/S590689",
+        "entry_url": "https://16688.com.cn/shop/S590689",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "喵懂AI",
+        "base_url": "https://www.16688.com.cn/shop/S590689",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "传统ai",
+        "url": "https://www.16688.com.cn/shop/S654941",
+        "entry_url": "https://16688.com.cn/shop/S654941",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "传统ai",
+        "base_url": "https://www.16688.com.cn/shop/S654941",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "独角兽AI阵地",
+        "url": "https://www.16688.com.cn/shop/S449417",
+        "entry_url": "https://16688.com.cn/shop/S449417",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "独角兽AI阵地",
+        "base_url": "https://www.16688.com.cn/shop/S449417",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI小圈",
+        "url": "https://www.16688.com.cn/shop/S428803",
+        "entry_url": "https://16688.com.cn/shop/S428803",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI小圈",
+        "base_url": "https://www.16688.com.cn/shop/S428803",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "开放ai",
+        "url": "https://www.16688.com.cn/shop/S494609",
+        "entry_url": "https://16688.com.cn/shop/S494609",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "开放ai",
+        "base_url": "https://www.16688.com.cn/shop/S494609",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "青卿",
+        "url": "https://wzyp.cn/shop/qingqing",
+        "entry_url": "https://wzyp.cn/shop/qingqing",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "恶小梦",
+        "url": "https://wzyp.cn/shop/J6F0Z1MF",
+        "entry_url": "https://wzyp.cn/shop/J6F0Z1MF",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "柠檬西瓜",
+        "url": "https://lemon-watermelon.com",
+        "entry_url": "https://lemon-watermelon.com/",
+        "collector": "genericHtml"
+      },
+      "status": "needs_adapter",
+      "detail": "原站 HTTP 200，需核验独立页面结构"
+    },
+    {
+      "reference": {
+        "name": "双子星AI",
+        "url": "https://wzyp.cn/shop/hajimi3303",
+        "entry_url": "https://wzyp.cn/shop/hajimi3303",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Apexqt",
+        "url": "https://www.16688.com.cn/shop/S451589",
+        "entry_url": "https://16688.com.cn/shop/S451589",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Apexqt",
+        "base_url": "https://www.16688.com.cn/shop/S451589",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "297jun的ai小铺",
+        "url": "https://www.16688.com.cn/shop/S494767",
+        "entry_url": "https://16688.com.cn/shop/S494767",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "297jun的ai小铺",
+        "base_url": "https://www.16688.com.cn/shop/S494767",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "sol批发谷歌",
+        "url": "https://gmailsol.com",
+        "entry_url": "https://gmailsol.com/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "sol批发谷歌",
+        "base_url": "https://gmailsol.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 9,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "花生店铺",
+        "url": "https://store.codesky.qzz.io",
+        "entry_url": "https://store.codesky.qzz.io/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "花生店铺",
+        "base_url": "https://store.codesky.qzz.io",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 13,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI充电站",
+        "url": "https://www.16688.com.cn/shop/S522050",
+        "entry_url": "https://16688.com.cn/shop/S522050",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI充电站",
+        "base_url": "https://www.16688.com.cn/shop/S522050",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "xiaofan",
+        "url": "https://www.16688.com.cn/shop/S103121",
+        "entry_url": "https://16688.com.cn/shop/S103121",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "xiaofan",
+        "base_url": "https://www.16688.com.cn/shop/S103121",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "TxyxT小店 - GPT Plus、GPT Pro、Gemini Pro等AI充值服务",
+        "url": "https://shop.txyxt.dpdns.org",
+        "entry_url": "https://shop.txyxt.dpdns.org/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "TxyxT小店 - GPT Plus、GPT Pro、Gemini Pro等AI充值服务",
+        "base_url": "https://shop.txyxt.dpdns.org",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "PopcornAPI",
+        "url": "https://wzyp.cn/shop/A7QPIQGQ",
+        "entry_url": "https://wzyp.cn/shop/A7QPIQGQ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Moert AI（招代理）",
+        "url": "https://wzyp.cn/shop/D8EH8M0Y",
+        "entry_url": "https://wzyp.cn/shop/D8EH8M0Y",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "1206157587",
+        "url": "https://www.16688.com.cn/shop/S757907",
+        "entry_url": "https://16688.com.cn/shop/S757907",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "1206157587",
+        "base_url": "https://www.16688.com.cn/shop/S757907",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "561237",
+        "url": "https://www.16688.com.cn/shop/S880200",
+        "entry_url": "https://16688.com.cn/shop/S880200",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "561237",
+        "base_url": "https://www.16688.com.cn/shop/S880200",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "LF-Plus小铺",
+        "url": "https://www.16688.com.cn/shop/S419051",
+        "entry_url": "https://16688.com.cn/shop/S419051",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "LF-Plus小铺",
+        "base_url": "https://www.16688.com.cn/shop/S419051",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "雨辉小店",
+        "url": "https://wzyp.cn/shop/JDMUNQEK",
+        "entry_url": "https://wzyp.cn/shop/JDMUNQEK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "2061988325",
+        "url": "https://www.16688.com.cn/shop/S593431",
+        "entry_url": "https://16688.com.cn/shop/S593431",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "2061988325",
+        "base_url": "https://www.16688.com.cn/shop/S593431",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "好又来",
+        "url": "https://www.16688.com.cn/shop/S981692",
+        "entry_url": "https://16688.com.cn/shop/S981692",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "好又来",
+        "base_url": "https://www.16688.com.cn/shop/S981692",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "祖传手艺人",
+        "url": "https://wzyp.cn/shop/Qudong",
+        "entry_url": "https://wzyp.cn/shop/Qudong",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "xinai",
+        "url": "https://wzyp.cn/shop/Z3N2T2TB",
+        "entry_url": "https://wzyp.cn/shop/Z3N2T2TB",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "weiloo",
+        "url": "https://shop.sunnydolls.dpdns.org",
+        "entry_url": "https://shop.sunnydolls.dpdns.org/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "weiloo",
+        "base_url": "https://shop.sunnydolls.dpdns.org",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 7,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "大力小丸子",
+        "url": "https://www.16688.com.cn/shop/S154129",
+        "entry_url": "https://16688.com.cn/shop/S154129",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "大力小丸子",
+        "base_url": "https://www.16688.com.cn/shop/S154129",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "鸡皮提",
+        "url": "https://www.16688.com.cn/shop/S459971",
+        "entry_url": "https://16688.com.cn/shop/S459971",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "鸡皮提",
+        "base_url": "https://www.16688.com.cn/shop/S459971",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "LLMOps",
+        "url": "https://www.16688.com.cn/shop/S104738",
+        "entry_url": "https://16688.com.cn/shop/S104738",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "LLMOps",
+        "base_url": "https://www.16688.com.cn/shop/S104738",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "惟源ai批发",
+        "url": "https://www.16688.com.cn/shop/S877035",
+        "entry_url": "https://16688.com.cn/shop/S877035",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "惟源ai批发",
+        "base_url": "https://www.16688.com.cn/shop/S877035",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "麦当劳AI源头直供 对接马 MDLCARD",
+        "url": "https://www.16688.com.cn/shop/S294441",
+        "entry_url": "https://16688.com.cn/shop/S294441",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "麦当劳AI源头直供 对接马 MDLCARD",
+        "base_url": "https://www.16688.com.cn/shop/S294441",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI 加油站",
+        "url": "https://www.16688.com.cn/shop/S658333",
+        "entry_url": "https://16688.com.cn/shop/S658333",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "AI 加油站",
+        "base_url": "https://www.16688.com.cn/shop/S658333",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "小七AI 实验室",
+        "url": "https://wzyp.cn/shop/JZJOPMQD",
+        "entry_url": "https://wzyp.cn/shop/JZJOPMQD",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI深研社",
+        "url": "https://wzyp.cn/shop/FAJMDFWV",
+        "entry_url": "https://wzyp.cn/shop/FAJMDFWV",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI天使",
+        "url": "https://wzyp.cn/shop/X3LOY3DI",
+        "entry_url": "https://wzyp.cn/shop/X3LOY3DI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai小兔",
+        "url": "https://www.16688.com.cn/shop/S123418",
+        "entry_url": "https://16688.com.cn/shop/S123418",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "ai小兔",
+        "base_url": "https://www.16688.com.cn/shop/S123418",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "saul！",
+        "url": "https://www.16688.com.cn/shop/S500854",
+        "entry_url": "https://16688.com.cn/shop/S500854",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "saul！",
+        "base_url": "https://www.16688.com.cn/shop/S500854",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "YYYYD",
+        "url": "https://wzyp.cn/shop/LD52LLPD",
+        "entry_url": "https://wzyp.cn/shop/LD52LLPD",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI开发商",
+        "url": "https://wzyp.cn/shop/ai.shop",
+        "entry_url": "https://wzyp.cn/shop/ai.shop",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "qqi425191",
+        "url": "https://www.16688.com.cn/shop/S984573",
+        "entry_url": "https://16688.com.cn/shop/S984573",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "qqi425191",
+        "base_url": "https://www.16688.com.cn/shop/S984573",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Auto Subscribe / ultra.makelove.cloud",
+        "url": "https://ultra.makelove.cloud",
+        "entry_url": "https://ultra.makelove.cloud/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "Auto Subscribe / ultra.makelove.cloud",
+        "base_url": "https://ultra.makelove.cloud",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "悦动ai",
+        "url": "https://wzyp.cn/shop/DUMGWJ8A",
+        "entry_url": "https://wzyp.cn/shop/DUMGWJ8A",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI铺子",
+        "url": "https://wzyp.cn/shop/claudeai",
+        "entry_url": "https://wzyp.cn/shop/claudeai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "楠小铺",
+        "url": "https://www.16688.com.cn/shop/S594703",
+        "entry_url": "https://16688.com.cn/shop/S594703",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "楠小铺",
+        "base_url": "https://www.16688.com.cn/shop/S594703",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI大卖家",
+        "url": "https://wzyp.cn/shop/W89ITLDC",
+        "entry_url": "https://wzyp.cn/shop/W89ITLDC",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "23754956",
+        "url": "https://www.16688.com.cn/shop/S617277",
+        "entry_url": "https://16688.com.cn/shop/S617277",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "23754956",
+        "base_url": "https://www.16688.com.cn/shop/S617277",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "7878",
+        "url": "https://wzyp.cn/shop/6TKPIT5E",
+        "entry_url": "https://wzyp.cn/shop/6TKPIT5E",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "956140531",
+        "url": "https://www.16688.com.cn/shop/S555335",
+        "entry_url": "https://16688.com.cn/shop/S555335",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "956140531",
+        "base_url": "https://www.16688.com.cn/shop/S555335",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "奥特曼的山姆店",
+        "url": "https://www.16688.com.cn/shop/S405392",
+        "entry_url": "https://16688.com.cn/shop/S405392",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "奥特曼的山姆店",
+        "base_url": "https://www.16688.com.cn/shop/S405392",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "北极星",
+        "url": "https://wzyp.cn/shop/beijixing",
+        "entry_url": "https://wzyp.cn/shop/beijixing",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "大力小丸子",
+        "url": "https://wzyp.cn/shop/CWMYU83X",
+        "entry_url": "https://wzyp.cn/shop/CWMYU83X",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "便宜的codex的小铺",
+        "url": "https://wzyp.cn/shop/E0Y14IRF",
+        "entry_url": "https://wzyp.cn/shop/E0Y14IRF",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "超梦ai",
+        "url": "https://wzyp.cn/shop/R45NG4A8",
+        "entry_url": "https://wzyp.cn/shop/R45NG4A8",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "龟龟的ai小铺",
+        "url": "https://www.16688.com.cn/shop/S229837",
+        "entry_url": "https://16688.com.cn/shop/S229837",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "龟龟的ai小铺",
+        "base_url": "https://www.16688.com.cn/shop/S229837",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "豪猪",
+        "url": "https://wzyp.cn/shop/GNS3838K",
+        "entry_url": "https://wzyp.cn/shop/GNS3838K",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "教长",
+        "url": "https://wzyp.cn/shop/DFT712GK",
+        "entry_url": "https://wzyp.cn/shop/DFT712GK",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "鸡排小铺",
+        "url": "https://www.16688.com.cn/shop/S844301",
+        "entry_url": "https://16688.com.cn/shop/S844301",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "鸡排小铺",
+        "base_url": "https://www.16688.com.cn/shop/S844301",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "靠谱 AI",
+        "url": "https://wzyp.cn/shop/1I2Y9GEC",
+        "entry_url": "https://wzyp.cn/shop/1I2Y9GEC",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "李页的小店",
+        "url": "https://wzyp.cn/shop/liye",
+        "entry_url": "https://wzyp.cn/shop/liye",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "乐乐的AI小铺",
+        "url": "https://www.16688.com.cn/shop/S822189",
+        "entry_url": "https://16688.com.cn/shop/S822189",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "乐乐的AI小铺",
+        "base_url": "https://www.16688.com.cn/shop/S822189",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "烈阳AI",
+        "url": "https://www.16688.com.cn/shop/S215070",
+        "entry_url": "https://16688.com.cn/shop/S215070",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "烈阳AI",
+        "base_url": "https://www.16688.com.cn/shop/S215070",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "码愿AI",
+        "url": "https://wzyp.cn/shop/6YHGJOPN",
+        "entry_url": "https://wzyp.cn/shop/6YHGJOPN",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "卖点AI",
+        "url": "https://wzyp.cn/shop/7TCL10MR",
+        "entry_url": "https://wzyp.cn/shop/7TCL10MR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "猫猫AI",
+        "url": "https://wzyp.cn/shop/O5JHRJFZ",
+        "entry_url": "https://wzyp.cn/shop/O5JHRJFZ",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "摸鱼工坊",
+        "url": "https://wzyp.cn/shop/zcboy",
+        "entry_url": "https://wzyp.cn/shop/zcboy",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "模型契约",
+        "url": "https://wzyp.cn/shop/atm",
+        "entry_url": "https://wzyp.cn/shop/atm",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "魔仙堡AI",
+        "url": "https://www.16688.com.cn/shop/S494090",
+        "entry_url": "https://16688.com.cn/shop/S494090",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "魔仙堡AI",
+        "base_url": "https://www.16688.com.cn/shop/S494090",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "牧之codex",
+        "url": "https://www.16688.com.cn/shop/S683314",
+        "entry_url": "https://16688.com.cn/shop/S683314",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "牧之codex",
+        "base_url": "https://www.16688.com.cn/shop/S683314",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "南乔ai",
+        "url": "https://wzyp.cn/shop/X273D51R",
+        "entry_url": "https://wzyp.cn/shop/X273D51R",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "青蛙的AI小铺",
+        "url": "https://www.16688.com.cn/shop/S688003",
+        "entry_url": "https://16688.com.cn/shop/S688003",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "青蛙的AI小铺",
+        "base_url": "https://www.16688.com.cn/shop/S688003",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "全球代理发",
+        "url": "https://www.16688.com.cn/shop/S993490",
+        "entry_url": "https://16688.com.cn/shop/S993490",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "全球代理发",
+        "base_url": "https://www.16688.com.cn/shop/S993490",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "四米名字",
+        "url": "https://wzyp.cn/shop/P5034CNR",
+        "entry_url": "https://wzyp.cn/shop/P5034CNR",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "桃子的ai大店",
+        "url": "https://wzyp.cn/shop/taozi168",
+        "entry_url": "https://wzyp.cn/shop/taozi168",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "图灵小店",
+        "url": "https://www.16688.com.cn/shop/S957578",
+        "entry_url": "https://16688.com.cn/shop/S957578",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "图灵小店",
+        "base_url": "https://www.16688.com.cn/shop/S957578",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "团子Ai",
+        "url": "https://www.16688.com.cn/shop/S284857",
+        "entry_url": "https://16688.com.cn/shop/S284857",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "团子Ai",
+        "base_url": "https://www.16688.com.cn/shop/S284857",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "无限AI",
+        "url": "https://wzyp.cn/shop/T4JGK0GX",
+        "entry_url": "https://wzyp.cn/shop/T4JGK0GX",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "希音数卡",
+        "url": "https://www.16688.com.cn/shop/S718514",
+        "entry_url": "https://16688.com.cn/shop/S718514",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "希音数卡",
+        "base_url": "https://www.16688.com.cn/shop/S718514",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "祥祥AI",
+        "url": "https://wzyp.cn/shop/8ALLUCG3",
+        "entry_url": "https://wzyp.cn/shop/8ALLUCG3",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小易AI",
+        "url": "https://wzyp.cn/shop/V3N6D2JM",
+        "entry_url": "https://wzyp.cn/shop/V3N6D2JM",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小L专卖",
+        "url": "https://wzyp.cn/shop/M4XS1E3Q",
+        "entry_url": "https://wzyp.cn/shop/M4XS1E3Q",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "小鱼的Ai小店",
+        "url": "https://www.16688.com.cn/shop/S587759",
+        "entry_url": "https://16688.com.cn/shop/S587759",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "小鱼的Ai小店",
+        "base_url": "https://www.16688.com.cn/shop/S587759",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "新教长",
+        "url": "https://www.16688.com.cn/shop/S806917",
+        "entry_url": "https://16688.com.cn/shop/S806917",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "新教长",
+        "base_url": "https://www.16688.com.cn/shop/S806917",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "优质源头科技",
+        "url": "https://wzyp.cn/shop/N6MIRGLW",
+        "entry_url": "https://wzyp.cn/shop/N6MIRGLW",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "玉米的AI小铺",
+        "url": "https://www.16688.com.cn/shop/S839885",
+        "entry_url": "https://16688.com.cn/shop/S839885",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "玉米的AI小铺",
+        "base_url": "https://www.16688.com.cn/shop/S839885",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 6,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "鱼泡AI",
+        "url": "https://www.16688.com.cn/shop/S559420",
+        "entry_url": "https://16688.com.cn/shop/S559420",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "鱼泡AI",
+        "base_url": "https://www.16688.com.cn/shop/S559420",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "悦动ai",
+        "url": "https://www.16688.com.cn/shop/S855300",
+        "entry_url": "https://16688.com.cn/shop/S855300",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "悦动ai",
+        "base_url": "https://www.16688.com.cn/shop/S855300",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "云枢AI",
+        "url": "https://wzyp.cn/shop/nextpro",
+        "entry_url": "https://wzyp.cn/shop/nextpro",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "智域AI服务",
+        "url": "https://wzyp.cn/shop/591J6Q87",
+        "entry_url": "https://wzyp.cn/shop/591J6Q87",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "知客AI",
+        "url": "https://wzyp.cn/shop/ESDBYE2X",
+        "entry_url": "https://wzyp.cn/shop/ESDBYE2X",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "中国小作坊",
+        "url": "https://www.16688.com.cn/shop/S594312",
+        "entry_url": "https://16688.com.cn/shop/S594312",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "中国小作坊",
+        "base_url": "https://www.16688.com.cn/shop/S594312",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "专注ai",
+        "url": "https://wzyp.cn/shop/29YZ9FO2",
+        "entry_url": "https://wzyp.cn/shop/29YZ9FO2",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI 批发",
+        "url": "https://gpt.ybkjs.top",
+        "entry_url": "https://gpt.ybkjs.top/",
+        "collector": "genericHtml"
+      },
+      "status": "verified",
+      "detail": "已按原站页面/接口完成映射",
+      "title": "月饼科技社 | Orion Key",
+      "source": {
+        "name": "AI 批发",
+        "base_url": "https://gpt.ybkjs.top",
+        "collector": "html",
+        "config": {
+          "item_selector": "div.flex.flex-1.flex-col:has(h3)",
+          "title_selector": "h3",
+          "price_selector": "span.text-xl",
+          "link_selector": "a[href^=\"/product/\"]",
+          "stock_selector": "span:contains(\"库存\")",
+          "stock_prefix": "库存",
+          "full_snapshot": true
+        },
+        "interval_minutes": 15
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI聚合商铺",
+        "url": "https://wzyp.cn/shop/Y1ZQF0RS",
+        "entry_url": "https://wzyp.cn/shop/Y1ZQF0RS",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Ai集成商",
+        "url": "https://wzyp.cn/shop/6DV9N2BT",
+        "entry_url": "https://wzyp.cn/shop/6DV9N2BT",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "专业AI订阅服务",
+        "url": "https://kapay.shop",
+        "entry_url": "https://kapay.shop/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "专业AI订阅服务",
+        "base_url": "https://kapay.shop",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "AI小店",
+        "url": "https://wzyp.cn/shop/HV676A0A",
+        "entry_url": "https://wzyp.cn/shop/HV676A0A",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小地摊",
+        "url": "https://wzyp.cn/shop/openAI_codex",
+        "entry_url": "https://wzyp.cn/shop/openAI_codex",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小铺",
+        "url": "https://wzyp.cn/shop/25G53A8F",
+        "entry_url": "https://wzyp.cn/shop/25G53A8F",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI小铺",
+        "url": "https://wzyp.cn/shop/AGQPN4LL",
+        "entry_url": "https://wzyp.cn/shop/AGQPN4LL",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai源头店铺",
+        "url": "https://wzyp.cn/shop/EIQ423GT",
+        "entry_url": "https://wzyp.cn/shop/EIQ423GT",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "AI杂货铺",
+        "url": "https://wzyp.cn/shop/5HJZN0Q1",
+        "entry_url": "https://wzyp.cn/shop/5HJZN0Q1",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "BugTeam源头",
+        "url": "https://wzyp.cn/shop/RINGYCWY",
+        "entry_url": "https://wzyp.cn/shop/RINGYCWY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ai主理人",
+        "url": "https://wzyp.cn/shop/TSW7DIEI",
+        "entry_url": "https://wzyp.cn/shop/TSW7DIEI",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Bzcq的小店",
+        "url": "https://www.16688.com.cn/shop/S926745",
+        "entry_url": "https://16688.com.cn/shop/S926745",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Bzcq的小店",
+        "base_url": "https://www.16688.com.cn/shop/S926745",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "CodeCtrclc-对接码1101",
+        "url": "https://wzyp.cn/shop/1101",
+        "entry_url": "https://wzyp.cn/shop/1101",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Cookie AI",
+        "url": "https://wzyp.cn/shop/cookieai",
+        "entry_url": "https://wzyp.cn/shop/cookieai",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G-gemini会员稳定低价",
+        "url": "https://wzyp.cn/shop/NUX4KNC4",
+        "entry_url": "https://wzyp.cn/shop/NUX4KNC4",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G商号",
+        "url": "https://wzyp.cn/shop/FW0Q6UDA",
+        "entry_url": "https://wzyp.cn/shop/FW0Q6UDA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "G小站",
+        "url": "https://wzyp.cn/shop/gptpromax",
+        "entry_url": "https://wzyp.cn/shop/gptpromax",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Gemini批发",
+        "url": "https://wzyp.cn/shop/AZX4SPJ0",
+        "entry_url": "https://wzyp.cn/shop/AZX4SPJ0",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Hoshino",
+        "url": "https://www.16688.com.cn/shop/S417540",
+        "entry_url": "https://16688.com.cn/shop/S417540",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Hoshino",
+        "base_url": "https://www.16688.com.cn/shop/S417540",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "GOPLUS",
+        "url": "https://www.16688.com.cn/shop/S625784",
+        "entry_url": "https://16688.com.cn/shop/S625784",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "GOPLUS",
+        "base_url": "https://www.16688.com.cn/shop/S625784",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Ice Ai X",
+        "url": "https://wzyp.cn/shop/iceaix",
+        "entry_url": "https://wzyp.cn/shop/iceaix",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "ixxxn",
+        "url": "https://www.16688.com.cn/shop/S293116",
+        "entry_url": "https://16688.com.cn/shop/S293116",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "ixxxn",
+        "base_url": "https://www.16688.com.cn/shop/S293116",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "jack神秘商店",
+        "url": "https://www.16688.com.cn/shop/S519281",
+        "entry_url": "https://16688.com.cn/shop/S519281",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "jack神秘商店",
+        "base_url": "https://www.16688.com.cn/shop/S519281",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Jin AI",
+        "url": "https://www.16688.com.cn/shop/S790246",
+        "entry_url": "https://16688.com.cn/shop/S790246",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Jin AI",
+        "base_url": "https://www.16688.com.cn/shop/S790246",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 3,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Mi的小铺",
+        "url": "https://www.16688.com.cn/shop/S624450",
+        "entry_url": "https://16688.com.cn/shop/S624450",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Mi的小铺",
+        "base_url": "https://www.16688.com.cn/shop/S624450",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "MortalAi",
+        "url": "https://wzyp.cn/shop/ZYGCPJD7",
+        "entry_url": "https://wzyp.cn/shop/ZYGCPJD7",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "moyanovo",
+        "url": "https://www.16688.com.cn/shop/S835509",
+        "entry_url": "https://16688.com.cn/shop/S835509",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "moyanovo",
+        "base_url": "https://www.16688.com.cn/shop/S835509",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 11,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "NBPLUS",
+        "url": "https://www.16688.com.cn/shop/S600383",
+        "entry_url": "https://16688.com.cn/shop/S600383",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "NBPLUS",
+        "base_url": "https://www.16688.com.cn/shop/S600383",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "NPC小铺",
+        "url": "https://wzyp.cn/shop/RN3DIJIY",
+        "entry_url": "https://wzyp.cn/shop/RN3DIJIY",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "Tibo店铺-重置",
+        "url": "https://www.16688.com.cn/shop/S153234",
+        "entry_url": "https://16688.com.cn/shop/S153234",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Tibo店铺-重置",
+        "base_url": "https://www.16688.com.cn/shop/S153234",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "X的ai小店",
+        "url": "https://wzyp.cn/shop/KN6NZBLA",
+        "entry_url": "https://wzyp.cn/shop/KN6NZBLA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "xxxxxn",
+        "url": "https://www.16688.com.cn/shop/S891002",
+        "entry_url": "https://16688.com.cn/shop/S891002",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "xxxxxn",
+        "base_url": "https://www.16688.com.cn/shop/S891002",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 2,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Zero AI gmail超级老号批发",
+        "url": "https://www.16688.com.cn/shop/S841306",
+        "entry_url": "https://16688.com.cn/shop/S841306",
+        "collector": "16688_shop_api"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Zero AI gmail超级老号批发",
+        "base_url": "https://www.16688.com.cn/shop/S841306",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "16688"
+      },
+      "offer_count": 1,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "ZhiYu Ai",
+        "url": "https://wzyp.cn/shop/mengyu",
+        "entry_url": "https://wzyp.cn/shop/mengyu",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "91网|一手货源",
+        "url": "https://gmail91.shop",
+        "entry_url": "https://gmail91.shop/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "91网|一手货源",
+        "base_url": "https://gmail91.shop",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "无法确认 robots.txt (301)"
+    },
+    {
+      "reference": {
+        "name": "ShopGPT",
+        "url": "https://shopgpt.plus",
+        "entry_url": "https://shopgpt.plus/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "ShopGPT",
+        "base_url": "https://shopgpt.plus",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "Acc-OTAOR",
+        "url": "https://xtacc.top",
+        "entry_url": "https://xtacc.top/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "Acc-OTAOR",
+        "base_url": "https://xtacc.top",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "萃选ai（可开发票）联系客服下单免手续费",
+        "url": "https://www.16688.com.cn/shop/S428748",
+        "entry_url": "https://16688.com.cn/shop/S428748",
+        "collector": "16688_shop_api"
+      },
+      "status": "failed",
+      "detail": "原站无法确认店铺身份"
+    },
+    {
+      "reference": {
+        "name": "德玛西亚ai",
+        "url": "https://pay.ldxp.cn/shop/Q5AIW19X",
+        "entry_url": "https://pay.ldxp.cn/shop/Q5AIW19X",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "老饕AI源头",
+        "url": "https://www.16688.com.cn/shop/S990848",
+        "entry_url": "https://16688.com.cn/shop/S990848",
+        "collector": "16688_shop_api"
+      },
+      "status": "failed",
+      "detail": "原站无法确认店铺身份"
+    },
+    {
+      "reference": {
+        "name": "购物 - NoDeexs",
+        "url": "https://nodeexs.com",
+        "entry_url": "https://nodeexs.com/",
+        "collector": "kami"
+      },
+      "status": "failed",
+      "source": {
+        "name": "购物 - NoDeexs",
+        "base_url": "https://nodeexs.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "detail": "fetch failed"
+    },
+    {
+      "reference": {
+        "name": "老中医X",
+        "url": "https://wzyp.cn/shop/A3H9BD10",
+        "entry_url": "https://wzyp.cn/shop/A3H9BD10",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "青熵",
+        "url": "https://pay.ldxp.cn/shop/P9HPIPWA",
+        "entry_url": "https://pay.ldxp.cn/shop/P9HPIPWA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "艾琳",
+        "url": "https://shop.aictk.shop",
+        "entry_url": "https://shop.aictk.shop/",
+        "collector": "dujiao"
+      },
+      "status": "verified",
+      "source": {
+        "name": "艾琳",
+        "base_url": "https://shop.aictk.shop",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "offer_count": 12,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "全网低价GPT Team账号",
+        "url": "https://pay.ldxp.cn/shop/ZKVLK6KL",
+        "entry_url": "https://pay.ldxp.cn/shop/ZKVLK6KL",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "轻点小铺 | 对接码：AA8PL",
+        "url": "https://wzyp.cn/shop/468E0S05",
+        "entry_url": "https://wzyp.cn/shop/468E0S05",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (520)"
+    },
+    {
+      "reference": {
+        "name": "若真AI",
+        "url": "https://www.16688.com.cn/shop/S782319",
+        "entry_url": "https://16688.com.cn/shop/S782319",
+        "collector": "16688_shop_api"
+      },
+      "status": "failed",
+      "detail": "原站无法确认店铺身份"
+    },
+    {
+      "reference": {
+        "name": "源头GPT/GEMINI（招代理）",
+        "url": "https://pay.ldxp.cn/shop/ai0001.com",
+        "entry_url": "https://pay.ldxp.cn/shop/ai0001.com",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "A1gmail",
+        "url": "https://www.16688.com.cn/shop/S799620",
+        "entry_url": "https://16688.com.cn/shop/S799620",
+        "collector": "16688_shop_api"
+      },
+      "status": "failed",
+      "detail": "原站无法确认店铺身份"
+    },
+    {
+      "reference": {
+        "name": "棱镜店铺",
+        "url": "https://shop.558686.xyz",
+        "entry_url": "https://shop.558686.xyz/",
+        "collector": "kami"
+      },
+      "status": "failed",
+      "source": {
+        "name": "棱镜店铺",
+        "base_url": "https://shop.558686.xyz",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "kami"
+      },
+      "detail": "无法确认 robots.txt (502)"
+    },
+    {
+      "reference": {
+        "name": "Ai小卖部",
+        "url": "https://pay.ldxp.cn/shop/D13I8BK4",
+        "entry_url": "https://pay.ldxp.cn/shop/D13I8BK4",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "大白发卡",
+        "url": "https://19cm.tech",
+        "entry_url": "https://19cm.tech/",
+        "collector": "genericHtml"
+      },
+      "status": "verified",
+      "detail": "旧站首页迁移公告明确链接至新域名；跳转到第三方站点的推广卡片不作为本店商品采集",
+      "title": "站点域名变更通知",
+      "source": {
+        "name": "大白发卡",
+        "base_url": "https://geminipro.vip/",
+        "collector": "html",
+        "interval_minutes": 15,
+        "config": {
+          "item_selector": "a.goods-card[href^=\"/post-\"]",
+          "title_selector": ".card-title",
+          "price_selector": ".price",
+          "link_selector": ".unused",
+          "stock_selector": ".card-stats span:first-child",
+          "stock_prefix": "库存",
+          "full_snapshot": true
+        }
+      },
+      "offer_count": 5,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "AI杂货铺",
+        "url": "https://pay.ldxp.cn/shop/009527",
+        "entry_url": "https://pay.ldxp.cn/shop/009527",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "BMCCA小铺",
+        "url": "https://pay.ldxp.cn/shop/BMCCA",
+        "entry_url": "https://pay.ldxp.cn/shop/BMCCA",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "beibei",
+        "url": "https://bei-bei.shop",
+        "entry_url": "https://bei-bei.shop/",
+        "collector": "beibeiHtml"
+      },
+      "status": "failed",
+      "detail": "源站 HTTP 403"
+    },
+    {
+      "reference": {
+        "name": "freejson",
+        "url": "https://pay.ldxp.cn/shop/3KBNYI29",
+        "entry_url": "",
+        "collector": null
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "Auto Subscribe / shop.aitonse.com",
+        "url": "https://shop.aitonse.com",
+        "entry_url": "https://shop.aitonse.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "Auto Subscribe / shop.aitonse.com",
+        "base_url": "https://shop.aitonse.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "无法确认 robots.txt (521)"
+    },
+    {
+      "reference": {
+        "name": "Desolate 店铺",
+        "url": "https://fk.desolate.codes",
+        "entry_url": "https://fk.desolate.codes/",
+        "collector": "kami"
+      },
+      "status": "verified",
+      "source": {
+        "name": "Desolate 店铺",
+        "base_url": "https://shop.desolate.run/",
+        "collector": "html",
+        "interval_minutes": 15,
+        "config": {
+          "item_selector": "div.flex.flex-1.flex-col:has(h3)",
+          "title_selector": "h3",
+          "price_selector": "span.text-xl",
+          "link_selector": "a[href^=\"/product/\"]",
+          "stock_selector": "span:contains(\"库存\")",
+          "stock_prefix": "库存",
+          "full_snapshot": true
+        }
+      },
+      "detail": "旧站 HTTP 302 直接指向新域名",
+      "offer_count": 4,
+      "complete": true
+    },
+    {
+      "reference": {
+        "name": "GPT pro20x",
+        "url": "https://sulanjun.cc",
+        "entry_url": "https://sulanjun.cc/",
+        "collector": "genericHtml"
+      },
+      "status": "failed",
+      "detail": "无法确认 robots.txt (403)"
+    },
+    {
+      "reference": {
+        "name": "LynnZee 店铺",
+        "url": "http://lynnzee.myweb999.cfd",
+        "entry_url": "http://lynnzee.myweb999.cfd/",
+        "collector": "kami"
+      },
+      "status": "failed",
+      "detail": "来源必须使用公开域名的 HTTPS 地址"
+    },
+    {
+      "reference": {
+        "name": "geekaihub.com",
+        "url": "https://geekaihub.com",
+        "entry_url": "https://geekaihub.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "geekaihub.com",
+        "base_url": "https://geekaihub.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "源站 HTTP 404"
+    },
+    {
+      "reference": {
+        "name": "shop.olimap.top",
+        "url": "https://shop.olimap.top",
+        "entry_url": "https://shop.olimap.top/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "shop.olimap.top",
+        "base_url": "https://shop.olimap.top",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "robots.txt 禁止该路径采集"
+    },
+    {
+      "reference": {
+        "name": "team",
+        "url": "https://faka.aiceo.dev",
+        "entry_url": "https://faka.aiceo.dev/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "team",
+        "base_url": "https://faka.aiceo.dev",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "无法确认 robots.txt (403)"
+    },
+    {
+      "reference": {
+        "name": "账号小卖铺",
+        "url": "https://11.id2323.top",
+        "entry_url": "https://11.id2323.top/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "账号小卖铺",
+        "base_url": "https://11.id2323.top",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "YOYO小卖部",
+        "url": "https://pay.ldxp.cn/shop/RYRCN59O",
+        "entry_url": "https://pay.ldxp.cn/shop/RYRCN59O",
+        "collector": "shopApi"
+      },
+      "status": "failed",
+      "detail": "旧域名未返回可验证的跳转"
+    },
+    {
+      "reference": {
+        "name": "xxxyan",
+        "url": "https://xxxyan.cc",
+        "entry_url": "https://xxxyan.cc/",
+        "collector": "genericHtml"
+      },
+      "status": "failed",
+      "detail": "robots.txt 禁止该路径采集",
+      "title": ""
+    },
+    {
+      "reference": {
+        "name": "jzai1688.com",
+        "url": "https://jzai1688.com",
+        "entry_url": "https://jzai1688.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "jzai1688.com",
+        "base_url": "https://jzai1688.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    },
+    {
+      "reference": {
+        "name": "n1.ccnmgpt.com",
+        "url": "https://n1.ccnmgpt.com",
+        "entry_url": "https://n1.ccnmgpt.com/",
+        "collector": "dujiao"
+      },
+      "status": "failed",
+      "source": {
+        "name": "n1.ccnmgpt.com",
+        "base_url": "https://n1.ccnmgpt.com",
+        "config": {},
+        "interval_minutes": 15,
+        "collector": "dujiao"
+      },
+      "detail": "The operation was aborted due to timeout"
+    }
+  ],
+  "initial_extra": [
+    {
+      "name": "环球小铺",
+      "url": "https://gospv.com/"
+    },
+    {
+      "name": "炼丹师小铺",
+      "url": "https://lianduang.com/"
+    },
+    {
+      "name": "V3小店",
+      "url": "https://shop.gpt.ge/"
+    },
+    {
+      "name": "T佬的gmail批发渠道",
+      "url": "https://ai666.dnxb.cc/"
+    },
+    {
+      "name": "AI 会员代充，即买即用 - Florence AI",
+      "url": "https://faka.redeemai.me/"
+    },
+    {
+      "name": "异次元店铺",
+      "url": "https://shihuiai.cn/"
+    },
+    {
+      "name": "蔚莱云Ai出海跨境账号",
+      "url": "https://web3chirou.com/"
+    },
+    {
+      "name": "yh-mo源头批发",
+      "url": "https://yh-mo.xyz/"
+    },
+    {
+      "name": "ac-card.org",
+      "url": "https://ac-card.org/"
+    },
+    {
+      "name": "ccdawang.win",
+      "url": "https://ccdawang.win/"
+    },
+    {
+      "name": "AUTO FK",
+      "url": "https://aifk.opensora.de/"
+    },
+    {
+      "name": "小黑丸",
+      "url": "https://upgrade.xiaoheiwan.com/"
+    },
+    {
+      "name": "阿库娅ai源头",
+      "url": "https://www.16688.com.cn/shop/S703125"
+    },
+    {
+      "name": "mobais",
+      "url": "https://www.16688.com.cn/shop/S672828"
+    },
+    {
+      "name": "Pp小店",
+      "url": "https://www.16688.com.cn/shop/S543798"
+    },
+    {
+      "name": "梦泽Ai",
+      "url": "https://www.16688.com.cn/shop/S528762"
+    },
+    {
+      "name": "AI智充",
+      "url": "https://aicz.ink/"
+    },
+    {
+      "name": "西瓜小铺",
+      "url": "https://xigua.ink/"
+    }
+  ]
+}

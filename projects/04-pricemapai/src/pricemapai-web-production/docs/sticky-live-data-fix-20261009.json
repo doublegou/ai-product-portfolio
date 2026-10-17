@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-08T20:30:19.359Z",
+  "issue": "Live quote rows overlapped transparent sticky title, controls, and table heading after initial async data load.",
+  "cause": "useStickyStack captured result nodes only at mount; the live API response inserted rows later.",
+  "change": "Resolve current rows and table heading on update; remeasure after DOM content and layout changes, including restored scroll positions. Preserve prototype transparent styling.",
+  "verification": {
+    "typecheck": "passed",
+    "production_build": "passed",
+    "local_production_build": "Real API data; list and grid scroll checks passed",
+    "production": "Hard reload and scroll on ChatGPT Plus detail passed in Chrome",
+    "public_asset": "assets/public-DceSkedY.js",
+    "health": {
+      "ok": true
+    }
+  },
+  "deployment": {
+    "url": "https://pricemapai-web-production.pricemapai.workers.dev",
+    "version_id": "fdcdf66f-38e9-4295-9b84-f9906142362c"
+  },
+  "api_integration": "Paused at user request; only read-only inspection performed."
+}

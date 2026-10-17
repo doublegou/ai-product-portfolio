@@ -1,0 +1,9 @@
+{
+  "name": "pricemapai-public-snapshots",
+  "account_id": "c1ce7f8d4d7018d071afb6b70f29b787",
+  "compatibility_date": "2026-10-07",
+  "assets": { "directory": "./artifacts/snapshot-assets", "not_found_handling": "none" },
+  "routes": [{ "pattern": "pricemapai.com/data/*", "zone_name": "pricemapai.com" }],
+  "workers_dev": false,
+  "preview_urls": false
+}

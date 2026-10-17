@@ -1,0 +1,45 @@
+name: umami
+services:
+  db:
+    image: public.ecr.aws/docker/library/postgres:15-alpine
+    restart: unless-stopped
+    mem_limit: 384m
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      TZ: UTC
+    command: [postgres, -c, shared_buffers=64MB, -c, max_connections=30]
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    logging:
+      options: {max-size: 10m, max-file: "3"}
+  umami:
+    image: ghcr.io/umami-software/umami:3.4.0
+    init: true
+    restart: unless-stopped
+    mem_limit: 768m
+    ports: ["127.0.0.1:3000:3000"]
+    environment:
+      DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@db:5432/umami
+      APP_SECRET: ${APP_SECRET:?set APP_SECRET}
+      TWO_FACTOR_ENCRYPTION_KEY: ${TWO_FACTOR_ENCRYPTION_KEY:?set TWO_FACTOR_ENCRYPTION_KEY}
+      NODE_OPTIONS: --max-old-space-size=512
+      TZ: UTC
+    depends_on:
+      db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD-SHELL, "curl -fsS http://localhost:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    logging:
+      options: {max-size: 10m, max-file: "3"}
+volumes:
+  db-data:

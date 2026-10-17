@@ -1,0 +1,170 @@
+[
+  {
+    "name": "贝贝",
+    "website_url": "https://www.bb-api.com/",
+    "status": "connected_original_source",
+    "source_id": "bb-api-com"
+  },
+  {
+    "name": "Codebot",
+    "website_url": "https://codebot.one/",
+    "status": "connected_original_source",
+    "source_id": "codebot-one"
+  },
+  {
+    "name": "GPTZZZ",
+    "website_url": "https://gptzzz.ai/",
+    "status": "connected_original_source",
+    "source_id": "gptzzz-ai"
+  },
+  {
+    "name": "NC API",
+    "website_url": "https://ncncapi.top/",
+    "status": "connected_original_source",
+    "source_id": "ncncapi-top"
+  },
+  {
+    "name": "AllTokens",
+    "website_url": "https://alltokens.cc/",
+    "status": "connected_original_source",
+    "source_id": "alltokens-cc"
+  },
+  {
+    "name": "灵绘 AI",
+    "website_url": "https://xn--ai-xg4e312c.com/",
+    "status": "connected_original_source",
+    "source_id": "linghui-ai-com"
+  },
+  {
+    "name": "卡拉 Khala",
+    "website_url": "https://khala.online/",
+    "status": "connected_original_source",
+    "source_id": "khala-online"
+  },
+  {
+    "name": "合聚API",
+    "website_url": "https://www.hejuapi.com/",
+    "status": "connected_original_source",
+    "source_id": "hejuapi-com"
+  },
+  {
+    "name": "DragonAPI",
+    "website_url": "https://newapi.dragon3api.com/",
+    "status": "connected_original_source",
+    "source_id": "newapi-dragon3api-com"
+  },
+  {
+    "name": "Top-API",
+    "website_url": "https://topapi.io/",
+    "status": "connected_original_source",
+    "source_id": "topapi-io"
+  },
+  {
+    "name": "悠米AI中转",
+    "website_url": "https://www.umapis.com/",
+    "status": "connected_original_source",
+    "source_id": "umapis-com"
+  },
+  {
+    "name": "鑫旺Neko API",
+    "website_url": "https://790053500.com/",
+    "status": "connected_original_source",
+    "source_id": "790053500-com"
+  },
+  {
+    "name": "天机阁",
+    "website_url": "https://yujianwudi.top/",
+    "status": "connected_original_source",
+    "source_id": "yujianwudi-top"
+  },
+  {
+    "name": "RTOC AI",
+    "website_url": "https://ai.rtoc.cc/",
+    "status": "connected_original_source",
+    "source_id": "ai-rtoc-cc"
+  },
+  {
+    "name": "猫肥NekoAPI",
+    "website_url": "https://www.999555999.com/",
+    "status": "connected_original_source",
+    "source_id": "999555999-com"
+  },
+  {
+    "name": "AL-API",
+    "website_url": "https://aliuapi.top/",
+    "status": "connected_original_source",
+    "source_id": "aliuapi-top"
+  },
+  {
+    "name": "WAWA ZZ API",
+    "website_url": "https://wawazz.xyz/",
+    "status": "connected_original_source",
+    "source_id": "wawazz-xyz"
+  },
+  {
+    "name": "APINode",
+    "website_url": "https://apinode.ltd/",
+    "status": "connected_original_source",
+    "source_id": "apinode-ltd"
+  },
+  {
+    "name": "MFAPI",
+    "website_url": "https://mfttai.com/register?aff=PRICEAI",
+    "status": "connected_original_source",
+    "source_id": "mfttai-com"
+  },
+  {
+    "name": "星链AI",
+    "website_url": "https://aixlau.me/",
+    "status": "connected_original_source",
+    "source_id": "aixlau-me"
+  },
+  {
+    "name": "OneHop",
+    "website_url": "https://onehop.ai/",
+    "status": "connected_original_source",
+    "source_id": "onehop-ai"
+  },
+  {
+    "name": "Zivv",
+    "website_url": "https://zivv.pro/",
+    "status": "connected_original_source",
+    "source_id": "zivv-pro"
+  },
+  {
+    "name": "WC AI",
+    "website_url": "https://ai.wcapis.com/",
+    "status": "connected_original_source",
+    "source_id": "wcapis-com"
+  },
+  {
+    "name": "远桥云 API",
+    "website_url": "https://yuanqiaoyun.com/",
+    "status": "connected_original_source",
+    "source_id": "yuanqiaoyun-com"
+  },
+  {
+    "name": "皓悦 API",
+    "website_url": "https://1pkapi.com/",
+    "status": "connected_original_source",
+    "source_id": "api-1pkapi-com"
+  },
+  {
+    "name": "Sub Callai One",
+    "website_url": "https://sub.callai.one/",
+    "status": "connected_original_source",
+    "source_id": "sub-callai-one"
+  },
+  {
+    "name": "codex666ai",
+    "website_url": "https://codex666ai.com/",
+    "status": "connected_original_source",
+    "source_id": "codex666ai-com"
+  },
+  {
+    "name": "BMCCA",
+    "website_url": "https://cca.maya.today/register?aff=HNK4CMBW2P6W",
+    "status": "public_api_unavailable",
+    "reason": "原站未启用公开模型广场；监测接口要求登录。"
+  }
+]

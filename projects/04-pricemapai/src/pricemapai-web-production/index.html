@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14161c" media="(prefers-color-scheme: dark)" />
+    <script>document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';</script>
+    <meta
+      name="description"
+      content="PriceMap AI，清晰比较 AI 订阅与渠道报价。找到适合你的 AI，让每一次选择更有把握。"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=globe" />
+    <title>PriceMap AI — 好工具，明白选。</title>
+    <script
+      defer
+      src="https://stats.pricemapai.com/script.js"
+      data-website-id="89ee5fce-9013-4146-a0bd-32e85e49cf15"
+      data-domains="pricemapai.com"
+      data-exclude-search="true"
+      data-exclude-hash="true"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

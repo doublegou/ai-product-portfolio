@@ -1,0 +1,2665 @@
+[
+  {
+    "name": "环球小铺",
+    "base_url": "https://gospv.com/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI能量小店",
+    "base_url": "https://dimosky.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "炼丹师小铺",
+    "base_url": "https://lianduang.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "V3小店",
+    "base_url": "https://shop.gpt.ge/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "path": "/",
+      "item_selector": "a[href^='/buy/']",
+      "title_selector": "h3",
+      "price_selector": "strong",
+      "link_selector": "a",
+      "stock_selector": "p",
+      "currency": "CNY",
+      "full_snapshot": false,
+      "stock_map": {
+        "自动发货·库存 充足": "in_stock",
+        "自动发货·库存 一般": "in_stock",
+        "缺货·库存 无货": "out_of_stock"
+      }
+    }
+  },
+  {
+    "name": "Aisou智充",
+    "base_url": "https://aisou.pro/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "T佬的gmail批发渠道",
+    "base_url": "https://ai666.dnxb.cc/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "Gemini账号批发douyiner.cn",
+    "base_url": "https://douyiner.cn/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "七叔数字社",
+    "base_url": "https://ai666.id/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}", "excluded_product_ids": ["527"]}
+  },
+  {
+    "name": "AI 会员代充，即买即用 - Florence AI",
+    "base_url": "https://faka.redeemai.me/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "86GameStore",
+    "base_url": "https://faka.redeemgpt.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "Goutou小铺",
+    "base_url": "https://fk.gptcz.cc/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "谷歌邮箱 AI源头批发",
+    "base_url": "https://hiemail.store/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "NikoCard",
+    "base_url": "https://nikoers.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "笔墨小铺-  专供GPT Claude Gemini相关羊毛",
+    "base_url": "https://shop.bmoplus.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "shopcardai.click",
+    "base_url": "https://shopcardai.click/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "异次元店铺",
+    "base_url": "https://shihuiai.cn/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": { "purchase_path": "/item/{id}" }
+  },
+  {
+    "name": "蔚莱云Ai出海跨境账号",
+    "base_url": "https://web3chirou.com/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "Wiki123 卡网",
+    "base_url": "https://wiki123.top/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "yh-mo源头批发",
+    "base_url": "https://yh-mo.xyz/",
+    "collector": "kami",
+    "interval_minutes": 15,
+    "config": {"purchase_path": "/item/{id}"}
+  },
+  {
+    "name": "ac-card.org",
+    "base_url": "https://ac-card.org/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "burstpro-ai.online",
+    "base_url": "https://burstpro-ai.online/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "ccdawang.win",
+    "base_url": "https://ccdawang.win/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "zhang520.store",
+    "base_url": "https://zhang520.store/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AUTO FK",
+    "base_url": "https://aifk.opensora.de/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "path": "/",
+      "item_selector": ".card:has(a[href*=\"/buy/\"]):not(:contains(\"打赏\"))",
+      "title_selector": ".card-title",
+      "price_selector": "strong",
+      "link_selector": "a[href*=\"/buy/\"]",
+      "stock_selector": ".text-muted",
+      "stock_prefix": "库存：",
+      "full_snapshot": false
+    }
+  },
+  {
+    "name": "小黑丸",
+    "base_url": "https://upgrade.xiaoheiwan.com/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "path": "/",
+      "item_selector": "a.xhw-product-card",
+      "title_selector": "h3",
+      "price_selector": ".tabular-nums",
+      "link_selector": "a",
+      "stock_selector": "span:has(svg.lucide-circle-check-big)",
+      "stock_map": {
+        "可购买": "in_stock"
+      },
+      "full_snapshot": false
+    }
+  },
+  {
+    "name": "蜘蛛侠AI代充源头",
+    "base_url": "https://www.16688.com.cn/shop/S286366",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI源头(销量第一，可开发票，C.hat.gp.t /codex源头，有平台保障，可开发票）",
+    "base_url": "https://www.16688.com.cn/shop/S686646",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "老杭AI海外源头",
+    "base_url": "https://www.16688.com.cn/shop/S294947",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI批发站｜渠道供货｜自助下单",
+    "base_url": "https://www.16688.com.cn/shop/S103573",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "大个儿---欢迎分销--对接：97dg",
+    "base_url": "https://www.16688.com.cn/shop/S677698",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "山姆AI（源头直供，诚招代理）",
+    "base_url": "https://www.16688.com.cn/shop/S572891",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI小墨",
+    "base_url": "https://www.16688.com.cn/shop/S396961",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI海外账号",
+    "base_url": "https://www.16688.com.cn/shop/S590223",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小鸟 ai",
+    "base_url": "https://www.16688.com.cn/shop/S569657",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "ZH API",
+    "base_url": "https://www.16688.com.cn/shop/S946133",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI奥特曼|代充源头招代理",
+    "base_url": "https://www.16688.com.cn/shop/S205325",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "尼克的AI工具箱",
+    "base_url": "https://www.16688.com.cn/shop/S133868",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Aqvyn Token超市",
+    "base_url": "https://www.16688.com.cn/shop/S890464",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI咕咕嘎嘎【直充源头】",
+    "base_url": "https://www.16688.com.cn/shop/S166169",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "弗莱彻AI",
+    "base_url": "https://www.16688.com.cn/shop/S149240",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小久",
+    "base_url": "https://www.16688.com.cn/shop/S974686",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Yuan",
+    "base_url": "https://www.16688.com.cn/shop/S753205",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "gemini反重力源头",
+    "base_url": "https://www.16688.com.cn/shop/S801630",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "【低倍中转站】【官方正价】充值",
+    "base_url": "https://www.16688.com.cn/shop/S814032",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "肖恩的出海商城",
+    "base_url": "https://www.16688.com.cn/shop/S539740",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "皮特小铺",
+    "base_url": "https://www.16688.com.cn/shop/S231625",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "KK发卡网（千人大群售后有保障）",
+    "base_url": "https://www.16688.com.cn/shop/S701018",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Ai充值",
+    "base_url": "https://www.16688.com.cn/shop/S456099",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "老源头AI--可开发票可对公--量大谈价",
+    "base_url": "https://www.16688.com.cn/shop/S332095",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "zb10000",
+    "base_url": "https://www.16688.com.cn/shop/S191336",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "凌小创ai",
+    "base_url": "https://www.16688.com.cn/shop/S402946",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "老白ai对接：SSS333",
+    "base_url": "https://www.16688.com.cn/shop/S442331",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "3364901671",
+    "base_url": "https://www.16688.com.cn/shop/S382980",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "鸭鸭小店",
+    "base_url": "https://www.16688.com.cn/shop/S325198",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "王哈哈Ai",
+    "base_url": "https://www.16688.com.cn/shop/S206803",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小林发卡",
+    "base_url": "https://www.16688.com.cn/shop/S189351",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "杰哥AI订阅小铺",
+    "base_url": "https://www.16688.com.cn/shop/S393570",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "52XUEAI-可开发票",
+    "base_url": "https://www.16688.com.cn/shop/S937885",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "一米阳光",
+    "base_url": "https://www.16688.com.cn/shop/S908105",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AIHub订阅批发站｜渠道供货｜自助下单(招代理）",
+    "base_url": "https://www.16688.com.cn/shop/S580515",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI杂货铺",
+    "base_url": "https://www.16688.com.cn/shop/S627299",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "sms688 对接QY688",
+    "base_url": "https://www.16688.com.cn/shop/S799286",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "千俞",
+    "base_url": "https://www.16688.com.cn/shop/S163607",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "奥特曼直销",
+    "base_url": "https://www.16688.com.cn/shop/S802470",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AK老鬼",
+    "base_url": "https://www.16688.com.cn/shop/S383922",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "气田",
+    "base_url": "https://www.16688.com.cn/shop/S201135",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小魏Ai批发",
+    "base_url": "https://www.16688.com.cn/shop/S618739",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "源点数字",
+    "base_url": "https://www.16688.com.cn/shop/S396555",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "21℃",
+    "base_url": "https://www.16688.com.cn/shop/S853492",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "NexusAI",
+    "base_url": "https://www.16688.com.cn/shop/S274051",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "CIM 对接马CIMCIM",
+    "base_url": "https://www.16688.com.cn/shop/S216476",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "源头Ai供应/招代理",
+    "base_url": "https://www.16688.com.cn/shop/S122191",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "超梦ai【可开发票-注意看商品说明】",
+    "base_url": "https://www.16688.com.cn/shop/S579520",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "北橘号铺-对接:DC260818VOY2Y7AD",
+    "base_url": "https://www.16688.com.cn/shop/S605033",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "一苇的ai小铺",
+    "base_url": "https://www.16688.com.cn/shop/S542868",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI源头供货商/招代理",
+    "base_url": "https://www.16688.com.cn/shop/S840735",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "蜡笔小新",
+    "base_url": "https://www.16688.com.cn/shop/S301515",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI哈哈小胖（诚招代理）",
+    "base_url": "https://www.16688.com.cn/shop/S692020",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "天青优质",
+    "base_url": "https://www.16688.com.cn/shop/S644467",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI会员代充拼车",
+    "base_url": "https://www.16688.com.cn/shop/S738947",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "可可鸭AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S195687",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Tl 菲区源头 诚招代理",
+    "base_url": "https://www.16688.com.cn/shop/S497361",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "霜星的AI小店",
+    "base_url": "https://www.16688.com.cn/shop/S248535",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "jz的店",
+    "base_url": "https://www.16688.com.cn/shop/S778259",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "鸡皮踢 全网最权威渠道",
+    "base_url": "https://www.16688.com.cn/shop/S120607",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI充值",
+    "base_url": "https://www.16688.com.cn/shop/S361816",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "旺旺小铺",
+    "base_url": "https://www.16688.com.cn/shop/S609525",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "雷动九天",
+    "base_url": "https://www.16688.com.cn/shop/S113713",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "一梦AI货源 招代理 对接马yimeng",
+    "base_url": "https://www.16688.com.cn/shop/S104052",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "痞老板Ai批发 招代理",
+    "base_url": "https://www.16688.com.cn/shop/S584292",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "海螺AI服务",
+    "base_url": "https://www.16688.com.cn/shop/S688779",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "101科技",
+    "base_url": "https://www.16688.com.cn/shop/S331133",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "派大星（2500人群售后无忧）对接马 HARVEY",
+    "base_url": "https://www.16688.com.cn/shop/S343514",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "2127487507",
+    "base_url": "https://www.16688.com.cn/shop/S949752",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Tcc谷歌邮箱批发-【招代理】",
+    "base_url": "https://www.16688.com.cn/shop/S689928",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小少",
+    "base_url": "https://www.16688.com.cn/shop/S226302",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI team的神",
+    "base_url": "https://www.16688.com.cn/shop/S454961",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "阿库娅ai源头",
+    "base_url": "https://www.16688.com.cn/shop/S703125",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小勇同学",
+    "base_url": "https://www.16688.com.cn/shop/S335399",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "KFC卡网🍟可开发票  源头AI稳定供应",
+    "base_url": "https://www.16688.com.cn/shop/S311799",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "铃铛的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S721790",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "花若的小铺子",
+    "base_url": "https://www.16688.com.cn/shop/S462029",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "啊富",
+    "base_url": "https://www.16688.com.cn/shop/S626428",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "domi卡密专供",
+    "base_url": "https://www.16688.com.cn/shop/S855961",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "CodexTool-对接：CODEXTOOL",
+    "base_url": "https://www.16688.com.cn/shop/S909910",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "2705609672",
+    "base_url": "https://www.16688.com.cn/shop/S391421",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "海帆科技",
+    "base_url": "https://www.16688.com.cn/shop/S295083",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "格洛克Ai（招代理 对接马G-ROK888）",
+    "base_url": "https://www.16688.com.cn/shop/S158155",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "落雪AI",
+    "base_url": "https://www.16688.com.cn/shop/S325514",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "人民的AI",
+    "base_url": "https://www.16688.com.cn/shop/S584797",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "前进四",
+    "base_url": "https://www.16688.com.cn/shop/S581509",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "壹号铺",
+    "base_url": "https://www.16688.com.cn/shop/S962873",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "浅梦杂货铺",
+    "base_url": "https://www.16688.com.cn/shop/S301156",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "葡萄Ai小铺",
+    "base_url": "https://www.16688.com.cn/shop/S194067",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "源头AI - Bot | 对接：team",
+    "base_url": "https://www.16688.com.cn/shop/S513295",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "樱花AI小店 对接马 ：YINGHUA",
+    "base_url": "https://www.16688.com.cn/shop/S492597",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI卡网小铺",
+    "base_url": "https://www.16688.com.cn/shop/S356374",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小白AI订阅源头--对接 XIAOBAI",
+    "base_url": "https://www.16688.com.cn/shop/S678924",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "嘿嘿小店",
+    "base_url": "https://www.16688.com.cn/shop/S115731",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI效率工坊",
+    "base_url": "https://www.16688.com.cn/shop/S177627",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "QX店铺 - 源头ai - 对接：QINXI",
+    "base_url": "https://www.16688.com.cn/shop/S366907",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Candy小铺",
+    "base_url": "https://www.16688.com.cn/shop/S765071",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "阿秋AI",
+    "base_url": "https://www.16688.com.cn/shop/S899766",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "华润",
+    "base_url": "https://www.16688.com.cn/shop/S552918",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Xai 大玩家",
+    "base_url": "https://www.16688.com.cn/shop/S103032",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "冷热lab",
+    "base_url": "https://www.16688.com.cn/shop/S424005",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "智能的mee",
+    "base_url": "https://www.16688.com.cn/shop/S249990",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "ai跑起来",
+    "base_url": "https://www.16688.com.cn/shop/S704668",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "全球云充AI旗舰服务",
+    "base_url": "https://www.16688.com.cn/shop/S928966",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "若依的小铺",
+    "base_url": "https://www.16688.com.cn/shop/S639222",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小飞AI服务代理站",
+    "base_url": "https://www.16688.com.cn/shop/S703574",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI集合铺",
+    "base_url": "https://www.16688.com.cn/shop/S677320",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "卡卡大魔王",
+    "base_url": "https://www.16688.com.cn/shop/S969433",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "齊AI",
+    "base_url": "https://www.16688.com.cn/shop/S329295",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "勇闯AI",
+    "base_url": "https://www.16688.com.cn/shop/S603222",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AGI充值平台",
+    "base_url": "https://www.16688.com.cn/shop/S133580",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "蓝博ai",
+    "base_url": "https://www.16688.com.cn/shop/S683508",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小小杂货铺",
+    "base_url": "https://www.16688.com.cn/shop/S571979",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI批发",
+    "base_url": "https://www.16688.com.cn/shop/S526627",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI-TECH-STORE",
+    "base_url": "https://www.16688.com.cn/shop/S417643",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI小狗代充",
+    "base_url": "https://www.16688.com.cn/shop/S894156",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AITOP",
+    "base_url": "https://www.16688.com.cn/shop/S358448",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "希思罗AI",
+    "base_url": "https://www.16688.com.cn/shop/S872517",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "柯炀网络",
+    "base_url": "https://www.16688.com.cn/shop/S221796",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "绘梦小铺",
+    "base_url": "https://www.16688.com.cn/shop/S318404",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "带鱼ai",
+    "base_url": "https://www.16688.com.cn/shop/S888822",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "juenjay1",
+    "base_url": "https://www.16688.com.cn/shop/S253058",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "SIMON的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S741986",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "BigbananaAI",
+    "base_url": "https://www.16688.com.cn/shop/S966321",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "liuyuxiangzzz",
+    "base_url": "https://www.16688.com.cn/shop/S750592",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "知悦科技",
+    "base_url": "https://www.16688.com.cn/shop/S100773",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "墨小云Token商店",
+    "base_url": "https://www.16688.com.cn/shop/S865638",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "凌越穹顶源头招代理",
+    "base_url": "https://www.16688.com.cn/shop/S230844",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Ai猫",
+    "base_url": "https://www.16688.com.cn/shop/S199223",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "东东大王",
+    "base_url": "https://www.16688.com.cn/shop/S375979",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "柠檬茶的小铺",
+    "base_url": "https://www.16688.com.cn/shop/S480340",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI零度",
+    "base_url": "https://www.16688.com.cn/shop/S645138",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小乐Ai",
+    "base_url": "https://www.16688.com.cn/shop/S463855",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "办办ai",
+    "base_url": "https://www.16688.com.cn/shop/S803935",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "奶龙Gemini订阅(源头招代理)",
+    "base_url": "https://www.16688.com.cn/shop/S323867",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "喵喵ai",
+    "base_url": "https://www.16688.com.cn/shop/S301395",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AAA批发多儿王哥",
+    "base_url": "https://www.16688.com.cn/shop/S587901",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小K源头",
+    "base_url": "https://www.16688.com.cn/shop/S390418",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "自营 AI 小铺接马源头",
+    "base_url": "https://www.16688.com.cn/shop/S156171",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "1225069983",
+    "base_url": "https://www.16688.com.cn/shop/S677335",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "带鱼 Ai 代理对接：chongpro",
+    "base_url": "https://www.16688.com.cn/shop/S402690",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "千云科技",
+    "base_url": "https://www.16688.com.cn/shop/S689386",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "wenqi168168168",
+    "base_url": "https://www.16688.com.cn/shop/S349849",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Gemini18月链接专卖",
+    "base_url": "https://www.16688.com.cn/shop/S396009",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小黑Ai【招代理】",
+    "base_url": "https://www.16688.com.cn/shop/S165628",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "1159165373",
+    "base_url": "https://www.16688.com.cn/shop/S415348",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "启元Ai",
+    "base_url": "https://www.16688.com.cn/shop/S170365",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Po1nt9",
+    "base_url": "https://www.16688.com.cn/shop/S316019",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小店",
+    "base_url": "https://www.16688.com.cn/shop/S797217",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "派大星Ai",
+    "base_url": "https://www.16688.com.cn/shop/S305111",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "智充云卡",
+    "base_url": "https://www.16688.com.cn/shop/S423370",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小高老板娘的店",
+    "base_url": "https://www.16688.com.cn/shop/S763680",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Kris的AI资源站",
+    "base_url": "https://www.16688.com.cn/shop/S807784",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "1452948271",
+    "base_url": "https://www.16688.com.cn/shop/S802198",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "圆梦AI",
+    "base_url": "https://www.16688.com.cn/shop/S123284",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "大牛Ai集合站",
+    "base_url": "https://www.16688.com.cn/shop/S737485",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI充值小铺",
+    "base_url": "https://www.16688.com.cn/shop/S588147",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "与世无争的AI小店",
+    "base_url": "https://www.16688.com.cn/shop/S649528",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Ai家族（分）",
+    "base_url": "https://www.16688.com.cn/shop/S147808",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "智云AI",
+    "base_url": "https://www.16688.com.cn/shop/S719990",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "桃子的Ai小店",
+    "base_url": "https://www.16688.com.cn/shop/S732628",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "2898039401",
+    "base_url": "https://www.16688.com.cn/shop/S170432",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "寰宇订阅｜全球 AI 会员订阅服务",
+    "base_url": "https://www.16688.com.cn/shop/S402092",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "猪猪侠ai",
+    "base_url": "https://www.16688.com.cn/shop/S557565",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "正版Ai服务站",
+    "base_url": "https://www.16688.com.cn/shop/S698830",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "北海AI",
+    "base_url": "https://www.16688.com.cn/shop/S935459",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "YOYO云",
+    "base_url": "https://www.16688.com.cn/shop/S235580",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI中转仓",
+    "base_url": "https://www.16688.com.cn/shop/S841629",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI客栈",
+    "base_url": "https://www.16688.com.cn/shop/S981664",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "gmd",
+    "base_url": "https://www.16688.com.cn/shop/S500101",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI源头",
+    "base_url": "https://www.16688.com.cn/shop/S654368",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小鑫店铺",
+    "base_url": "https://www.16688.com.cn/shop/S479033",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "1312237960",
+    "base_url": "https://www.16688.com.cn/shop/S228858",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "mobais",
+    "base_url": "https://www.16688.com.cn/shop/S672828",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "阮旭东.Al",
+    "base_url": "https://www.16688.com.cn/shop/S366726",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI优速通",
+    "base_url": "https://www.16688.com.cn/shop/S790173",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI风控大王",
+    "base_url": "https://www.16688.com.cn/shop/S558218",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "ton",
+    "base_url": "https://www.16688.com.cn/shop/S136056",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Pp小店",
+    "base_url": "https://www.16688.com.cn/shop/S543798",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "青山AI小店",
+    "base_url": "https://www.16688.com.cn/shop/S821109",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "云吞小卖部",
+    "base_url": "https://www.16688.com.cn/shop/S472977",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "临期plus小店",
+    "base_url": "https://www.16688.com.cn/shop/S265669",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI练习生",
+    "base_url": "https://www.16688.com.cn/shop/S943903",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Codex 验证小铺",
+    "base_url": "https://www.16688.com.cn/shop/S721127",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "Esfine",
+    "base_url": "https://www.16688.com.cn/shop/S409622",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "jackbao",
+    "base_url": "https://www.16688.com.cn/shop/S508814",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "伯牙AI",
+    "base_url": "https://www.16688.com.cn/shop/S379897",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "7237846",
+    "base_url": "https://www.16688.com.cn/shop/S358946",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "咕咕鸡｜蓝V代充",
+    "base_url": "https://www.16688.com.cn/shop/S717642",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "赛博小铺",
+    "base_url": "https://www.16688.com.cn/shop/S118330",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "ly13203696568",
+    "base_url": "https://www.16688.com.cn/shop/S571041",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "xl百货店",
+    "base_url": "https://www.16688.com.cn/shop/S223903",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "望月代充小店",
+    "base_url": "https://www.16688.com.cn/shop/S725296",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "方糖AI",
+    "base_url": "https://www.16688.com.cn/shop/S439808",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "方脸",
+    "base_url": "https://www.16688.com.cn/shop/S851838",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "岚 源头批发 支持对公、开票",
+    "base_url": "https://www.16688.com.cn/shop/S388414",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "骆伯秋",
+    "base_url": "https://www.16688.com.cn/shop/S295983",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "全域 AI 克劳德",
+    "base_url": "https://www.16688.com.cn/shop/S557522",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "小庄 AI 会员订阅服务",
+    "base_url": "https://www.16688.com.cn/shop/S176014",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI_云顶👑【源头认证】",
+    "base_url": "https://www.16688.com.cn/shop/S957347",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "蛋AI🔥",
+    "base_url": "https://www.16688.com.cn/shop/S476976",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "橘子Ai源头",
+    "base_url": "https://www.16688.com.cn/shop/S126330",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "齊AI",
+    "base_url": "https://www.16688.com.cn/shop/S162108",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI源头（招代理，可开发票）",
+    "base_url": "https://www.16688.com.cn/shop/S332568",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AIAuto",
+    "base_url": "https://www.16688.com.cn/shop/S372381",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "vvv988",
+    "base_url": "https://www.16688.com.cn/shop/S608038",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "梦泽Ai",
+    "base_url": "https://www.16688.com.cn/shop/S528762",
+    "collector": "16688",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "AI智充",
+    "base_url": "https://aicz.ink/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "path": "/",
+      "purchase_path": "/",
+      "item_selector": ".goods-card",
+      "title_selector": ".goods-title",
+      "price_selector": ".goods-price",
+      "link_selector": "a",
+      "full_snapshot": true
+    }
+  },
+  {
+    "name": "西瓜小铺",
+    "base_url": "https://xigua.ink/",
+    "collector": "dujiao",
+    "interval_minutes": 15,
+    "config": {}
+  },
+  {
+    "name": "FF01",
+    "base_url": "https://www.16688.com.cn/shop/S687067",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Gemini源头供货商",
+    "base_url": "https://wzyp.cn/shop/pixelshop",
+    "config": {
+      "shop_token": "pixelshop"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "Moming AI",
+    "base_url": "https://www.16688.com.cn/shop/S532328",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "CDK668（源头出货，可开发票，有量有价，欢迎代理对接）",
+    "base_url": "https://www.16688.com.cn/shop/S855142",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "TOPSTAR",
+    "base_url": "https://wzyp.cn/shop/COQNA6PX",
+    "config": {
+      "shop_token": "COQNA6PX"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "openai官方",
+    "base_url": "https://www.16688.com.cn/shop/S274389",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "千羽ai批发",
+    "base_url": "https://www.16688.com.cn/shop/S358780",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "sms688🔥对接码qy688",
+    "base_url": "https://wzyp.cn/shop/OCBP9CJZ",
+    "config": {
+      "shop_token": "OCBP9CJZ"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "与世隔绝的AI小店",
+    "base_url": "https://wzyp.cn/shop/luoerl",
+    "config": {
+      "shop_token": "luoerl"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "优质AI科技",
+    "base_url": "https://wzyp.cn/shop/youzhi",
+    "config": {
+      "shop_token": "youzhi"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "02Nova（Gtp出货 可开发票 源头直供）",
+    "base_url": "https://www.16688.com.cn/shop/S881067",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Fkai-Plus Pro源头直供【招代理】",
+    "base_url": "https://wzyp.cn/shop/subaicc",
+    "config": {
+      "shop_token": "subaicc"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "AI海外账号",
+    "base_url": "https://wzyp.cn/shop/0000",
+    "config": {
+      "shop_token": "0000"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "直连AI",
+    "base_url": "https://wzyp.cn/shop/3GYP7PKO",
+    "config": {
+      "shop_token": "3GYP7PKO"
+    },
+    "interval_minutes": 15,
+    "collector": "shopapi"
+  },
+  {
+    "name": "柴犬 AI",
+    "base_url": "https://www.16688.com.cn/shop/S591295",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "狗ai",
+    "base_url": "https://www.16688.com.cn/shop/S114445",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "SkyAI源头---欢迎分销---对接：AI166888",
+    "base_url": "https://www.16688.com.cn/shop/S598150",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "口粮Mail",
+    "base_url": "https://www.16688.com.cn/shop/S644276",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "66AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S134923",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI批发商（全网底价）（低价走量）",
+    "base_url": "https://www.16688.com.cn/shop/S315247",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "2632036440",
+    "base_url": "https://www.16688.com.cn/shop/S261171",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "杂货铺",
+    "base_url": "https://www.16688.com.cn/shop/S235521",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "kuala",
+    "base_url": "https://www.16688.com.cn/shop/S610658",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "低价稳定源头（招代理）",
+    "base_url": "https://www.16688.com.cn/shop/S878919",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "ai聚合--分销码 ADEFAI",
+    "base_url": "https://www.16688.com.cn/shop/S981603",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "以太 AI服务订阅充值",
+    "base_url": "https://google7676.top",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "91TOPGO",
+    "base_url": "https://www.16688.com.cn/shop/S159512",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "唛选ai（可以开发票）",
+    "base_url": "https://www.16688.com.cn/shop/S965521",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "灰灰的小铺",
+    "base_url": "https://www.16688.com.cn/shop/S265995",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "屿风ai-可开发票-注意看商品说明",
+    "base_url": "https://www.16688.com.cn/shop/S755531",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "良心小铺",
+    "base_url": "https://www.16688.com.cn/shop/S307788",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI小店",
+    "base_url": "https://www.16688.com.cn/shop/S485596",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "会员直充",
+    "base_url": "https://www.16688.com.cn/shop/S981397",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "GiPiTa 菲区源头 诚招代理",
+    "base_url": "https://www.16688.com.cn/shop/S848708",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "CallAI",
+    "base_url": "https://www.16688.com.cn/shop/S161857",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "小熊AI充值",
+    "base_url": "https://aichongz.cc",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "mymxhbyf888",
+    "base_url": "https://www.16688.com.cn/shop/S714081",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "福利吧",
+    "base_url": "https://www.16688.com.cn/shop/S559923",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "蜗牛小店",
+    "base_url": "https://www.16688.com.cn/shop/S644029",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "兔子AI百宝箱",
+    "base_url": "https://www.16688.com.cn/shop/S603736",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "诺亚的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S461375",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "ai教父",
+    "base_url": "https://www.16688.com.cn/shop/S856265",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "555AI",
+    "base_url": "https://www.16688.com.cn/shop/S412469",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "BBAI 官方充值",
+    "base_url": "https://faka.bbanai.site",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "乐易",
+    "base_url": "https://www.16688.com.cn/shop/S217110",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "云境AI",
+    "base_url": "https://www.16688.com.cn/shop/S263233",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "lyc1205159369",
+    "base_url": "https://www.16688.com.cn/shop/S629329",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "wensiyaya",
+    "base_url": "https://www.16688.com.cn/shop/S409411",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "G屁T&amp;Claude",
+    "base_url": "https://www.16688.com.cn/shop/S829385",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "小小小铺",
+    "base_url": "https://www.16688.com.cn/shop/S926319",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "剑心AI小铺GiPiTa",
+    "base_url": "https://www.16688.com.cn/shop/S785267",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "edu邮箱",
+    "base_url": "https://www.16688.com.cn/shop/S975721",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "小月 Gro​k 质保专营店",
+    "base_url": "https://www.16688.com.cn/shop/S848121",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI源头代充",
+    "base_url": "https://www.16688.com.cn/shop/S945852",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI-Tibo-LLDCard（代理对接：TIBO666）",
+    "base_url": "https://www.16688.com.cn/shop/S247817",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Justzqzb",
+    "base_url": "https://www.16688.com.cn/shop/S390435",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "御風AI",
+    "base_url": "https://yufenggpt.com",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "人机验证",
+    "base_url": "https://kbshub.store",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "Xai代充",
+    "base_url": "https://www.16688.com.cn/shop/S686765",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "10886源头发卡网",
+    "base_url": "https://fk.10886.xyz",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "TFENG AI",
+    "base_url": "https://www.16688.com.cn/shop/S566569",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "像素 AI 工具馆",
+    "base_url": "https://www.16688.com.cn/shop/S538681",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "星链阁",
+    "base_url": "https://www.16688.com.cn/shop/S193033",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "天空之上",
+    "base_url": "https://www.16688.com.cn/shop/S419378",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "云卡铺AI",
+    "base_url": "https://www.16688.com.cn/shop/S360055",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "CC的AI小店",
+    "base_url": "https://www.16688.com.cn/shop/S328141",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "OEKK",
+    "base_url": "https://www.16688.com.cn/shop/S411233",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "食过夜粥",
+    "base_url": "https://www.16688.com.cn/shop/S313118",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Apexqt",
+    "base_url": "https://www.16688.com.cn/shop/S356114",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "犀利ai",
+    "base_url": "https://www.16688.com.cn/shop/S177192",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "1633757959",
+    "base_url": "https://www.16688.com.cn/shop/S377741",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "喵懂AI",
+    "base_url": "https://www.16688.com.cn/shop/S590689",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "传统ai",
+    "base_url": "https://www.16688.com.cn/shop/S654941",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "独角兽AI阵地",
+    "base_url": "https://www.16688.com.cn/shop/S449417",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI小圈",
+    "base_url": "https://www.16688.com.cn/shop/S428803",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "开放ai",
+    "base_url": "https://www.16688.com.cn/shop/S494609",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Apexqt",
+    "base_url": "https://www.16688.com.cn/shop/S451589",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "297jun的ai小铺",
+    "base_url": "https://www.16688.com.cn/shop/S494767",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "sol批发谷歌",
+    "base_url": "https://gmailsol.com",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "花生店铺",
+    "base_url": "https://store.codesky.qzz.io",
+    "config": { "purchase_path": "/item/{id}" },
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "AI充电站",
+    "base_url": "https://www.16688.com.cn/shop/S522050",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "xiaofan",
+    "base_url": "https://www.16688.com.cn/shop/S103121",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "1206157587",
+    "base_url": "https://www.16688.com.cn/shop/S757907",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "561237",
+    "base_url": "https://www.16688.com.cn/shop/S880200",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "LF-Plus小铺",
+    "base_url": "https://www.16688.com.cn/shop/S419051",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "2061988325",
+    "base_url": "https://www.16688.com.cn/shop/S593431",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "好又来",
+    "base_url": "https://www.16688.com.cn/shop/S981692",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "weiloo",
+    "base_url": "https://shop.sunnydolls.dpdns.org",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "大力小丸子",
+    "base_url": "https://www.16688.com.cn/shop/S154129",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "鸡皮提",
+    "base_url": "https://www.16688.com.cn/shop/S459971",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "LLMOps",
+    "base_url": "https://www.16688.com.cn/shop/S104738",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "惟源ai批发",
+    "base_url": "https://www.16688.com.cn/shop/S877035",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "麦当劳AI源头直供 对接马 MDLCARD",
+    "base_url": "https://www.16688.com.cn/shop/S294441",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "AI 加油站",
+    "base_url": "https://www.16688.com.cn/shop/S658333",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "ai小兔",
+    "base_url": "https://www.16688.com.cn/shop/S123418",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "saul！",
+    "base_url": "https://www.16688.com.cn/shop/S500854",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "qqi425191",
+    "base_url": "https://www.16688.com.cn/shop/S984573",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "楠小铺",
+    "base_url": "https://www.16688.com.cn/shop/S594703",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "23754956",
+    "base_url": "https://www.16688.com.cn/shop/S617277",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "956140531",
+    "base_url": "https://www.16688.com.cn/shop/S555335",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "奥特曼的山姆店",
+    "base_url": "https://www.16688.com.cn/shop/S405392",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "龟龟的ai小铺",
+    "base_url": "https://www.16688.com.cn/shop/S229837",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "鸡排小铺",
+    "base_url": "https://www.16688.com.cn/shop/S844301",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "乐乐的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S822189",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "烈阳AI",
+    "base_url": "https://www.16688.com.cn/shop/S215070",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "魔仙堡AI",
+    "base_url": "https://www.16688.com.cn/shop/S494090",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "牧之codex",
+    "base_url": "https://www.16688.com.cn/shop/S683314",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "青蛙的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S688003",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "全球代理发",
+    "base_url": "https://www.16688.com.cn/shop/S993490",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "图灵小店",
+    "base_url": "https://www.16688.com.cn/shop/S957578",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "团子Ai",
+    "base_url": "https://www.16688.com.cn/shop/S284857",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "希音数卡",
+    "base_url": "https://www.16688.com.cn/shop/S718514",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "小鱼的Ai小店",
+    "base_url": "https://www.16688.com.cn/shop/S587759",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "新教长",
+    "base_url": "https://www.16688.com.cn/shop/S806917",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "玉米的AI小铺",
+    "base_url": "https://www.16688.com.cn/shop/S839885",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "鱼泡AI",
+    "base_url": "https://www.16688.com.cn/shop/S559420",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "悦动ai",
+    "base_url": "https://www.16688.com.cn/shop/S855300",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "中国小作坊",
+    "base_url": "https://www.16688.com.cn/shop/S594312",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Bzcq的小店",
+    "base_url": "https://www.16688.com.cn/shop/S926745",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Hoshino",
+    "base_url": "https://www.16688.com.cn/shop/S417540",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "GOPLUS",
+    "base_url": "https://www.16688.com.cn/shop/S625784",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "ixxxn",
+    "base_url": "https://www.16688.com.cn/shop/S293116",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "jack神秘商店",
+    "base_url": "https://www.16688.com.cn/shop/S519281",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Jin AI",
+    "base_url": "https://www.16688.com.cn/shop/S790246",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Mi的小铺",
+    "base_url": "https://www.16688.com.cn/shop/S624450",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "moyanovo",
+    "base_url": "https://www.16688.com.cn/shop/S835509",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "NBPLUS",
+    "base_url": "https://www.16688.com.cn/shop/S600383",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Tibo店铺-重置",
+    "base_url": "https://www.16688.com.cn/shop/S153234",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "xxxxxn",
+    "base_url": "https://www.16688.com.cn/shop/S891002",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "Zero AI gmail超级老号批发",
+    "base_url": "https://www.16688.com.cn/shop/S841306",
+    "config": {},
+    "interval_minutes": 15,
+    "collector": "16688"
+  },
+  {
+    "name": "ShopGPT",
+    "base_url": "https://shopgpt.plus",
+    "config": {"purchase_path": "/item/{id}"},
+    "interval_minutes": 15,
+    "collector": "kami"
+  },
+  {
+    "name": "星宝小店",
+    "base_url": "https://xingbao-ai.shop",
+    "collector": "html",
+    "config": {
+      "item_selector": "article.stitch-product-card",
+      "title_selector": "h3",
+      "price_selector": ".stitch-price-block strong",
+      "link_selector": ".stitch-detail-button",
+      "stock_selector": ".stitch-stock-badge:not(.is-sold)",
+      "stock_map": {
+        "库存充足": "in_stock",
+        "还有少量": "in_stock",
+        "暂时缺货": "out_of_stock"
+      },
+      "full_snapshot": true,
+      "price_note": "商品标价；原站说明部分支付方式另收通道费"
+    },
+    "interval_minutes": 15
+  },
+  {
+    "name": "大白发卡",
+    "base_url": "https://geminipro.vip/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "item_selector": "a.goods-card[href^=\"/post-\"]",
+      "title_selector": ".card-title",
+      "price_selector": ".price",
+      "link_selector": ".unused",
+      "stock_selector": ".card-stats span:first-child",
+      "stock_prefix": "库存",
+      "full_snapshot": true
+    }
+  },
+  {
+    "name": "Desolate 店铺",
+    "base_url": "https://shop.desolate.run/",
+    "collector": "html",
+    "interval_minutes": 15,
+    "config": {
+      "item_selector": "div.flex.flex-1.flex-col:has(h3)",
+      "title_selector": "h3",
+      "price_selector": "span.text-xl",
+      "link_selector": "a[href^=\"/product/\"]",
+      "stock_selector": "span:contains(\"库存\")",
+      "stock_prefix": "库存",
+      "full_snapshot": true
+    }
+  }
+]

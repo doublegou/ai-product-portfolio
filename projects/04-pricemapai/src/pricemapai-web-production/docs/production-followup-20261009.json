@@ -1,0 +1,291 @@
+{
+  "checked_at": "2026-10-08T20:20:24.509791+00:00",
+  "sources": {
+    "failed": 14,
+    "healthy_last_20_minutes": 344,
+    "healthy_latest_result": 360,
+    "overdue_5_minutes": 16,
+    "registered": 374
+  },
+  "failure_details": [
+    {
+      "name": "蔚莱云Ai出海跨境账号",
+      "url": "https://web3chirou.com/",
+      "error": "error sending request from 10.32.53.29:60388 for https://web3chirou.com/robots.txt (23.238.110.217:443): client error (SendRequest): http2 error: connection error received: not a result of an error"
+    },
+    {
+      "name": "mobais",
+      "url": "https://www.16688.com.cn/shop/S672828",
+      "error": "商品列表为空，保留旧报价并等待检查"
+    },
+    {
+      "name": "Pp小店",
+      "url": "https://www.16688.com.cn/shop/S543798",
+      "error": "商品列表为空，保留旧报价并等待检查"
+    },
+    {
+      "name": "AI 会员代充，即买即用 - Florence AI",
+      "url": "https://faka.redeemai.me/",
+      "error": "无法确认 robots.txt (502)"
+    },
+    {
+      "name": "阿库娅ai源头",
+      "url": "https://www.16688.com.cn/shop/S703125",
+      "error": "商品列表为空，保留旧报价并等待检查"
+    },
+    {
+      "name": "Gemini源头供货商",
+      "url": "https://wzyp.cn/shop/pixelshop",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "TOPSTAR",
+      "url": "https://wzyp.cn/shop/COQNA6PX",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "sms688🔥对接码qy688",
+      "url": "https://wzyp.cn/shop/OCBP9CJZ",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "与世隔绝的AI小店",
+      "url": "https://wzyp.cn/shop/luoerl",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "优质AI科技",
+      "url": "https://wzyp.cn/shop/youzhi",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "Fkai-Plus Pro源头直供【招代理】",
+      "url": "https://wzyp.cn/shop/subaicc",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "AI海外账号",
+      "url": "https://wzyp.cn/shop/0000",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "直连AI",
+      "url": "https://wzyp.cn/shop/3GYP7PKO",
+      "error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    {
+      "name": "月饼店铺",
+      "url": "https://fk.ybkjs.top",
+      "error": "Signal timed out."
+    }
+  ],
+  "alternative_stores": [
+    {
+      "status": "verified",
+      "reference_url": "https://19cm.tech",
+      "evidence": "旧站首页迁移公告明确链接至新域名；跳转到第三方站点的推广卡片不作为本店商品采集",
+      "source": {
+        "name": "大白发卡",
+        "base_url": "https://geminipro.vip/",
+        "collector": "html",
+        "interval_minutes": 15,
+        "config": {
+          "item_selector": "a.goods-card[href^=\"/post-\"]",
+          "title_selector": ".card-title",
+          "price_selector": ".price",
+          "link_selector": ".unused",
+          "stock_selector": ".card-stats span:first-child",
+          "stock_prefix": "库存",
+          "full_snapshot": true
+        }
+      },
+      "count": 5,
+      "complete": true
+    },
+    {
+      "status": "verified",
+      "reference_url": "https://fk.desolate.codes",
+      "evidence": "旧站 HTTP 302 直接指向新域名",
+      "source": {
+        "name": "Desolate 店铺",
+        "base_url": "https://shop.desolate.run/",
+        "collector": "html",
+        "interval_minutes": 15,
+        "config": {
+          "item_selector": "div.flex.flex-1.flex-col:has(h3)",
+          "title_selector": "h3",
+          "price_selector": "span.text-xl",
+          "link_selector": "a[href^=\"/product/\"]",
+          "stock_selector": "span:contains(\"库存\")",
+          "stock_prefix": "库存",
+          "full_snapshot": true
+        }
+      },
+      "count": 4,
+      "complete": true
+    },
+    {
+      "status": "failed",
+      "reference_url": "https://wzyp.cn/shop/GUEOI7Z9",
+      "evidence": "独立店铺原站公告明确公布旧平台店铺地址，采集独立站自己的商品；两个店铺的商品不视为完全相同",
+      "source": {
+        "name": "鹰鹰发卡",
+        "base_url": "https://fk.apiway.cc/",
+        "collector": "kami",
+        "interval_minutes": 15,
+        "config": {}
+      },
+      "error": "商品列表为空，保留旧报价并等待检查"
+    }
+  ],
+  "common_platform": {
+    "pending_original_addresses": 271,
+    "local_sample": {
+      "url": "https://wzyp.cn/shop/N90HTB7K",
+      "original_offers": 32
+    },
+    "cloud_sample": {
+      "url": "https://wzyp.cn/shop/pixelshop",
+      "last_error": "Unexpected token '<', \"<!doctypeh\"... is not valid JSON"
+    },
+    "known_redirect": "https://pay.ldxp.cn/shop/jinyao → https://wzyp.cn/shop/jinyao",
+    "decision": "Keep working original shops; use verified merchant migration announcements and independent storefronts. A matching name alone is not proof of the same merchant. Do not import aggregator quotes or treat challenged cloud responses as successful collection."
+  },
+  "public_api_verification": {
+    "checked_at": "2026-10-08T20:19:44.962Z",
+    "health": {
+      "ok": true
+    },
+    "registered": 374,
+    "healthy_sources": 360,
+    "latest_success": "2026-10-08T20:19:43.857954+00:00",
+    "offer_rows": 4482,
+    "unique_offer_ids": 4482,
+    "added_store_offers": [
+      {
+        "merchant": "大白发卡",
+        "price": 115,
+        "stock_text": null,
+        "stock_quantity": 4,
+        "last_seen_at": "2026-10-08T20:10:17.408264+00:00"
+      },
+      {
+        "merchant": "Desolate 店铺",
+        "price": 0.2,
+        "stock_text": null,
+        "stock_quantity": null,
+        "last_seen_at": "2026-10-08T20:10:19.706308+00:00"
+      },
+      {
+        "merchant": "大白发卡",
+        "price": 650,
+        "stock_text": null,
+        "stock_quantity": 2,
+        "last_seen_at": "2026-10-08T20:10:17.408264+00:00"
+      },
+      {
+        "merchant": "大白发卡",
+        "price": 13.8,
+        "stock_text": null,
+        "stock_quantity": 0,
+        "last_seen_at": "2026-10-08T20:10:17.408264+00:00"
+      },
+      {
+        "merchant": "大白发卡",
+        "price": 16,
+        "stock_text": null,
+        "stock_quantity": 0,
+        "last_seen_at": "2026-10-08T20:10:17.408264+00:00"
+      },
+      {
+        "merchant": "Desolate 店铺",
+        "price": 116,
+        "stock_text": null,
+        "stock_quantity": 4,
+        "last_seen_at": "2026-10-08T20:10:19.706308+00:00"
+      },
+      {
+        "merchant": "大白发卡",
+        "price": 8,
+        "stock_text": null,
+        "stock_quantity": 0,
+        "last_seen_at": "2026-10-08T20:10:17.408264+00:00"
+      },
+      {
+        "merchant": "Desolate 店铺",
+        "price": 1100,
+        "stock_text": null,
+        "stock_quantity": 1,
+        "last_seen_at": "2026-10-08T20:10:19.706308+00:00"
+      },
+      {
+        "merchant": "Desolate 店铺",
+        "price": 680,
+        "stock_text": null,
+        "stock_quantity": 1,
+        "last_seen_at": "2026-10-08T20:10:19.706308+00:00"
+      }
+    ]
+  },
+  "initial_followup_source_check": {
+    "checked_at": "2026-10-08T20:11:40.299Z",
+    "registered": 374,
+    "healthy_last_20_minutes": 241,
+    "failed": 14,
+    "overdue_5_minutes": 119
+  },
+  "final_scheduler_audit": {
+    "checked_at": "2026-10-08T20:20:24.509791+00:00",
+    "function_responses": [
+      {
+        "created": "2026-10-08T20:19:00.019804+00:00",
+        "error_msg": null,
+        "sources": 64,
+        "status_code": 200,
+        "success": 64,
+        "timed_out": false
+      },
+      {
+        "created": "2026-10-08T20:18:00.143492+00:00",
+        "error_msg": null,
+        "sources": 64,
+        "status_code": 200,
+        "success": 64,
+        "timed_out": false
+      }
+    ],
+    "scheduler_runs": [
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:20:00.030945+00:00",
+        "status": "succeeded"
+      },
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:19:00.012082+00:00",
+        "status": "succeeded"
+      },
+      {
+        "jobname": "pricemapai-collect-prices",
+        "schedule": "* * * * *",
+        "start_time": "2026-10-08T20:18:00.116622+00:00",
+        "status": "succeeded"
+      }
+    ],
+    "sources": {
+      "failed": 14,
+      "healthy_last_20_minutes": 344,
+      "healthy_latest_result": 360,
+      "overdue_5_minutes": 16,
+      "registered": 374
+    }
+  },
+  "post_backlog_check": {
+    "checked_at": "2026-10-08T20:21:10Z",
+    "healthy_last_20_minutes": 360,
+    "overdue_5_minutes": 0,
+    "latest_success": "2026-10-08T20:21:09.739795Z"
+  }
+}

@@ -1,0 +1,877 @@
+{
+  "verified_at": "2026-10-08T21:47:07.761Z",
+  "page_size": 1,
+  "public_stations": 27,
+  "public_quotes": 3185,
+  "newly_connected": [
+    "codebot-one",
+    "gptzzz-ai",
+    "mfttai-com",
+    "ai-rtoc-cc",
+    "yujianwudi-top",
+    "hejuapi-com",
+    "onehop-ai",
+    "zivv-pro",
+    "aixlau-me"
+  ],
+  "rate_stations": 25,
+  "latency_stations": 24,
+  "throughput_stations": 8,
+  "public_asset": "assets/public-Bac1y_vI.js",
+  "unit_tests": 68,
+  "build": "passed",
+  "monitoring": [
+    {
+      "id": "790053500-com",
+      "name": "鑫旺Neko API",
+      "quotes": 180,
+      "updated_at": "2026-10-08T21:34:51.780883+00:00",
+      "rate": 0.9556666644042031,
+      "latency_ms": 3977.6666666666665,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 9 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "999555999-com",
+      "name": "猫肥Neko API",
+      "quotes": 49,
+      "updated_at": "2026-10-08T21:34:53.358476+00:00",
+      "rate": 0.9553852668452035,
+      "latency_ms": 4330.833333333333,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 6 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "ai-rtoc-cc",
+      "name": "旋转智能｜Radius to Core",
+      "quotes": 123,
+      "updated_at": "2026-10-08T21:34:53.208661+00:00",
+      "rate": 0.8887173076923077,
+      "latency_ms": 25730.05769230769,
+      "tokens_per_second": 54.25615384615386,
+      "throughput_label": "平均生成速度",
+      "scope": "公开 52 个模型汇总 · 24 小时",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "aixlau-me",
+      "name": "星链 AI",
+      "quotes": 30,
+      "updated_at": "2026-10-08T21:46:20.308343+00:00",
+      "rate": 1,
+      "latency_ms": 2294.9191653058974,
+      "tokens_per_second": null,
+      "throughput_label": "总 Token 吞吐",
+      "scope": "全站 · 7 天",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "aliuapi-top",
+      "name": "AL",
+      "quotes": 199,
+      "updated_at": "2026-10-08T21:37:56.641693+00:00",
+      "rate": null,
+      "latency_ms": null,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": null,
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "alltokens-cc",
+      "name": "AllTokens",
+      "quotes": 75,
+      "updated_at": "2026-10-08T21:35:00.493737+00:00",
+      "rate": 0.835221880395068,
+      "latency_ms": 5928.875,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 8 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "api-1pkapi-com",
+      "name": "1pkAPI",
+      "quotes": 83,
+      "updated_at": "2026-10-08T21:34:57.349715+00:00",
+      "rate": 1,
+      "latency_ms": 1529,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 6 个分组汇总 · 1 天",
+      "aggregation": "按公开样本数加权",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "apinode-ltd",
+      "name": "APINode",
+      "quotes": 39,
+      "updated_at": "2026-10-08T21:35:00.276015+00:00",
+      "rate": 0.9108610640142738,
+      "latency_ms": 23905.75,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 9 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "bb-api-com",
+      "name": "贝贝",
+      "quotes": 237,
+      "updated_at": "2026-10-08T21:42:51.294066+00:00",
+      "rate": 0.85745219882345,
+      "latency_ms": 6148,
+      "tokens_per_second": 169576.9865564932,
+      "throughput_label": "总 Token 吞吐",
+      "scope": "全站 · 24 小时",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "codebot-one",
+      "name": "Codebot",
+      "quotes": 428,
+      "updated_at": "2026-10-08T21:35:01.453201+00:00",
+      "rate": 1,
+      "latency_ms": 4521,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 1 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "codex666ai-com",
+      "name": "codex666ai",
+      "quotes": 461,
+      "updated_at": "2026-10-08T21:35:02.191754+00:00",
+      "rate": 0.8716773605442083,
+      "latency_ms": 5716.5625,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 16 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "gptzzz-ai",
+      "name": "gptzzz.ai",
+      "quotes": 88,
+      "updated_at": "2026-10-08T21:35:01.155065+00:00",
+      "rate": 0.9082541005341112,
+      "latency_ms": 7951,
+      "tokens_per_second": 55442.178948609144,
+      "throughput_label": "总 Token 吞吐",
+      "scope": "全站 · 24 小时",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "hejuapi-com",
+      "name": "合聚 API",
+      "quotes": 116,
+      "updated_at": "2026-10-08T21:35:02.077637+00:00",
+      "rate": null,
+      "latency_ms": null,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": null,
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "khala-online",
+      "name": "卡拉 Khala",
+      "quotes": 92,
+      "updated_at": "2026-10-08T21:35:04.365408+00:00",
+      "rate": 0.9797265084360168,
+      "latency_ms": 3043.6666666666665,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 3 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "linghui-ai-com",
+      "name": "灵绘AI",
+      "quotes": 58,
+      "updated_at": "2026-10-08T21:35:06.909858+00:00",
+      "rate": 0.9910103223675575,
+      "latency_ms": 3867.285714285714,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 7 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "mfttai-com",
+      "name": "MFAPI",
+      "quotes": 91,
+      "updated_at": "2026-10-08T21:35:06.05335+00:00",
+      "rate": 0.8850316066402322,
+      "latency_ms": 11849.375,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 9 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "ncncapi-top",
+      "name": "NC API",
+      "quotes": 94,
+      "updated_at": "2026-10-08T21:35:09.234738+00:00",
+      "rate": 0.9692770365013507,
+      "latency_ms": 4245.833333333333,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 6 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "newapi-dragon3api-com",
+      "name": "DragonAPI",
+      "quotes": 164,
+      "updated_at": "2026-10-08T21:35:08.725709+00:00",
+      "rate": 0.6791084745762712,
+      "latency_ms": 15256.35593220339,
+      "tokens_per_second": 83.34711864406779,
+      "throughput_label": "平均生成速度",
+      "scope": "公开 59 个模型汇总 · 24 小时",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "onehop-ai",
+      "name": "OneHop",
+      "quotes": 38,
+      "updated_at": "2026-10-08T21:35:09.726638+00:00",
+      "rate": 0.9684446637560388,
+      "latency_ms": null,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 37 个模型汇总 · 原站近况",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "sub-callai-one",
+      "name": "Sub Callai One",
+      "quotes": 25,
+      "updated_at": "2026-10-08T21:35:08.111071+00:00",
+      "rate": 0.8698904256997352,
+      "latency_ms": 4277.5,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 4 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "topapi-io",
+      "name": "Top-API",
+      "quotes": 76,
+      "updated_at": "2026-10-08T21:35:12.151377+00:00",
+      "rate": 0.9927446102819237,
+      "latency_ms": 2803.275832376579,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 13 个分组汇总 · 7 天",
+      "aggregation": "按公开样本数加权",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "umapis-com",
+      "name": "悠米AI中转",
+      "quotes": 22,
+      "updated_at": "2026-10-08T21:35:11.535976+00:00",
+      "rate": 0.8896,
+      "latency_ms": 22597,
+      "tokens_per_second": 41.59,
+      "throughput_label": "平均生成速度",
+      "scope": "全站 · 24 小时",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "wawazz-xyz",
+      "name": "WAWA ZZ API",
+      "quotes": 106,
+      "updated_at": "2026-10-08T21:35:13.621599+00:00",
+      "rate": 0.9689908897934268,
+      "latency_ms": 4807.5,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 4 个分组汇总 · 7 天",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "wcapis-com",
+      "name": "WC AI",
+      "quotes": 76,
+      "updated_at": "2026-10-08T21:35:13.062105+00:00",
+      "rate": 0.9784999999999999,
+      "latency_ms": 36956,
+      "tokens_per_second": 54.57,
+      "throughput_label": "平均生成速度",
+      "scope": "全站 · 24 小时",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "yuanqiaoyun-com",
+      "name": "远桥云 API",
+      "quotes": 73,
+      "updated_at": "2026-10-08T21:35:16.915385+00:00",
+      "rate": 0.8662055555555557,
+      "latency_ms": 19560.083333333332,
+      "tokens_per_second": 277.9425,
+      "throughput_label": "平均生成速度",
+      "scope": "公开 36 个模型汇总 · 24 小时",
+      "aggregation": "按公开分组/模型等权；样本数未公开",
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "yujianwudi-top",
+      "name": "天机阁",
+      "quotes": 74,
+      "updated_at": "2026-10-08T21:35:15.477057+00:00",
+      "rate": 0.9693,
+      "latency_ms": 27995,
+      "tokens_per_second": 35.61,
+      "throughput_label": "平均生成速度",
+      "scope": "全站 · 24 小时",
+      "aggregation": null,
+      "monitor_error": null,
+      "stale": false
+    },
+    {
+      "id": "zivv-pro",
+      "name": "Zivv",
+      "quotes": 88,
+      "updated_at": "2026-10-08T21:35:17.603153+00:00",
+      "rate": 0.9583333333333334,
+      "latency_ms": 4606.260165337321,
+      "tokens_per_second": null,
+      "throughput_label": null,
+      "scope": "公开 4 个分组汇总 · 原站返回窗口",
+      "aggregation": "按公开样本数加权",
+      "monitor_error": null,
+      "stale": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "790053500-com",
+      "last_success_at": "2026-10-08T21:34:51.780883+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:49:51.780883+00:00"
+    },
+    {
+      "id": "999555999-com",
+      "last_success_at": "2026-10-08T21:34:53.358476+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:49:53.358476+00:00"
+    },
+    {
+      "id": "mfttai-com",
+      "last_success_at": "2026-10-08T21:35:06.05335+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:06.05335+00:00"
+    },
+    {
+      "id": "sub-callai-one",
+      "last_success_at": "2026-10-08T21:35:08.111071+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:08.111071+00:00"
+    },
+    {
+      "id": "newapi-dragon3api-com",
+      "last_success_at": "2026-10-08T21:35:08.725709+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:08.725709+00:00"
+    },
+    {
+      "id": "ncncapi-top",
+      "last_success_at": "2026-10-08T21:35:09.234738+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:09.234738+00:00"
+    },
+    {
+      "id": "umapis-com",
+      "last_success_at": "2026-10-08T21:35:11.535976+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:11.535976+00:00"
+    },
+    {
+      "id": "topapi-io",
+      "last_success_at": "2026-10-08T21:35:12.151377+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:12.151377+00:00"
+    },
+    {
+      "id": "wcapis-com",
+      "last_success_at": "2026-10-08T21:35:13.062105+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:13.062105+00:00"
+    },
+    {
+      "id": "wawazz-xyz",
+      "last_success_at": "2026-10-08T21:35:13.621599+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:13.621599+00:00"
+    },
+    {
+      "id": "ai-rtoc-cc",
+      "last_success_at": "2026-10-08T21:34:53.208661+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:49:53.208661+00:00"
+    },
+    {
+      "id": "apinode-ltd",
+      "last_success_at": "2026-10-08T21:35:00.276015+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:00.276015+00:00"
+    },
+    {
+      "id": "gptzzz-ai",
+      "last_success_at": "2026-10-08T21:35:01.155065+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:01.155065+00:00"
+    },
+    {
+      "id": "api-1pkapi-com",
+      "last_success_at": "2026-10-08T21:34:57.349715+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:49:57.349715+00:00"
+    },
+    {
+      "id": "aliuapi-top",
+      "last_success_at": "2026-10-08T21:37:56.641693+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:52:56.641693+00:00"
+    },
+    {
+      "id": "codebot-one",
+      "last_success_at": "2026-10-08T21:35:01.453201+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:01.453201+00:00"
+    },
+    {
+      "id": "hejuapi-com",
+      "last_success_at": "2026-10-08T21:35:02.077637+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:02.077637+00:00"
+    },
+    {
+      "id": "khala-online",
+      "last_success_at": "2026-10-08T21:35:04.365408+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:04.365408+00:00"
+    },
+    {
+      "id": "bb-api-com",
+      "last_success_at": "2026-10-08T21:42:51.294066+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:57:51.294066+00:00"
+    },
+    {
+      "id": "alltokens-cc",
+      "last_success_at": "2026-10-08T21:35:00.493737+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:00.493737+00:00"
+    },
+    {
+      "id": "codex666ai-com",
+      "last_success_at": "2026-10-08T21:35:02.191754+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:02.191754+00:00"
+    },
+    {
+      "id": "linghui-ai-com",
+      "last_success_at": "2026-10-08T21:35:06.909858+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:06.909858+00:00"
+    },
+    {
+      "id": "onehop-ai",
+      "last_success_at": "2026-10-08T21:35:09.726638+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:09.726638+00:00"
+    },
+    {
+      "id": "aixlau-me",
+      "last_success_at": "2026-10-08T21:46:20.308343+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T22:01:20.308343+00:00"
+    },
+    {
+      "id": "yujianwudi-top",
+      "last_success_at": "2026-10-08T21:35:15.477057+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:15.477057+00:00"
+    },
+    {
+      "id": "yuanqiaoyun-com",
+      "last_success_at": "2026-10-08T21:35:16.915385+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:16.915385+00:00"
+    },
+    {
+      "id": "zivv-pro",
+      "last_success_at": "2026-10-08T21:35:17.603153+00:00",
+      "last_error": null,
+      "enabled": true,
+      "next_crawl_at": "2026-10-08T21:50:17.603153+00:00"
+    }
+  ],
+  "live_url": "https://pricemapai-web-production.pricemapai.workers.dev/api-pricing",
+  "cloudflare_version": "d56315c6-4004-41db-93f3-0319391c43d9",
+  "coverage_candidates": 28,
+  "coverage_remaining": 1,
+  "healthy_sources": 27,
+  "expiry_minutes": 45,
+  "source_interval_minutes": 15,
+  "front_refresh_minutes": 5,
+  "worker_cache_max_minutes": 5,
+  "targeted_tests_after_timeout_and_empty_monitor_fixes": {
+    "total": 16,
+    "passed": 16
+  },
+  "public_pagination": "Both page sizes 2 and 1 loaded all 27 stations; freshest counts above were verified using page size 1.",
+  "scheduler_evidence": "transit-scheduler-verification.json",
+  "statuses": {
+    "/api/health": 200,
+    "/api/offers?limit=1": 200,
+    "/api/admin/transit/sources (unauthenticated)": 401,
+    "/api/admin/transit/runs (unauthenticated)": 401
+  },
+  "runs": [
+    {
+      "source_id": "aixlau-me",
+      "started_at": "2026-10-08T21:46:17.935933+00:00",
+      "status": "success",
+      "offer_count": 30,
+      "error": null
+    },
+    {
+      "source_id": "bb-api-com",
+      "started_at": "2026-10-08T21:42:33.507055+00:00",
+      "status": "success",
+      "offer_count": 237,
+      "error": null
+    },
+    {
+      "source_id": "aliuapi-top",
+      "started_at": "2026-10-08T21:37:54.329486+00:00",
+      "status": "success",
+      "offer_count": 199,
+      "error": null
+    },
+    {
+      "source_id": "zivv-pro",
+      "started_at": "2026-10-08T21:35:15.73929+00:00",
+      "status": "success",
+      "offer_count": 88,
+      "error": null
+    },
+    {
+      "source_id": "yuanqiaoyun-com",
+      "started_at": "2026-10-08T21:35:14.468331+00:00",
+      "status": "success",
+      "offer_count": 73,
+      "error": null
+    },
+    {
+      "source_id": "yujianwudi-top",
+      "started_at": "2026-10-08T21:35:14.464518+00:00",
+      "status": "success",
+      "offer_count": 74,
+      "error": null
+    },
+    {
+      "source_id": "wcapis-com",
+      "started_at": "2026-10-08T21:35:12.279633+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "wawazz-xyz",
+      "started_at": "2026-10-08T21:35:11.657659+00:00",
+      "status": "success",
+      "offer_count": 106,
+      "error": null
+    },
+    {
+      "source_id": "umapis-com",
+      "started_at": "2026-10-08T21:35:10.707856+00:00",
+      "status": "success",
+      "offer_count": 22,
+      "error": null
+    },
+    {
+      "source_id": "topapi-io",
+      "started_at": "2026-10-08T21:35:10.682626+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "onehop-ai",
+      "started_at": "2026-10-08T21:35:09.020545+00:00",
+      "status": "success",
+      "offer_count": 38,
+      "error": null
+    },
+    {
+      "source_id": "ncncapi-top",
+      "started_at": "2026-10-08T21:35:08.357133+00:00",
+      "status": "success",
+      "offer_count": 94,
+      "error": null
+    },
+    {
+      "source_id": "newapi-dragon3api-com",
+      "started_at": "2026-10-08T21:35:07.892079+00:00",
+      "status": "success",
+      "offer_count": 164,
+      "error": null
+    },
+    {
+      "source_id": "sub-callai-one",
+      "started_at": "2026-10-08T21:35:07.734633+00:00",
+      "status": "success",
+      "offer_count": 25,
+      "error": null
+    },
+    {
+      "source_id": "linghui-ai-com",
+      "started_at": "2026-10-08T21:35:04.644285+00:00",
+      "status": "success",
+      "offer_count": 58,
+      "error": null
+    },
+    {
+      "source_id": "khala-online",
+      "started_at": "2026-10-08T21:35:02.231453+00:00",
+      "status": "success",
+      "offer_count": 92,
+      "error": null
+    },
+    {
+      "source_id": "hejuapi-com",
+      "started_at": "2026-10-08T21:35:01.581392+00:00",
+      "status": "success",
+      "offer_count": 116,
+      "error": null
+    },
+    {
+      "source_id": "mfttai-com",
+      "started_at": "2026-10-08T21:35:01.577114+00:00",
+      "status": "success",
+      "offer_count": 91,
+      "error": null
+    },
+    {
+      "source_id": "codex666ai-com",
+      "started_at": "2026-10-08T21:35:01.530285+00:00",
+      "status": "success",
+      "offer_count": 461,
+      "error": null
+    },
+    {
+      "source_id": "bb-api-com",
+      "started_at": "2026-10-08T21:35:01.20216+00:00",
+      "status": "failed",
+      "offer_count": 0,
+      "error": "Signal timed out."
+    },
+    {
+      "source_id": "gptzzz-ai",
+      "started_at": "2026-10-08T21:35:00.343665+00:00",
+      "status": "success",
+      "offer_count": 88,
+      "error": null
+    },
+    {
+      "source_id": "codebot-one",
+      "started_at": "2026-10-08T21:35:00.343454+00:00",
+      "status": "success",
+      "offer_count": 428,
+      "error": null
+    },
+    {
+      "source_id": "alltokens-cc",
+      "started_at": "2026-10-08T21:34:59.255865+00:00",
+      "status": "success",
+      "offer_count": 75,
+      "error": null
+    },
+    {
+      "source_id": "apinode-ltd",
+      "started_at": "2026-10-08T21:34:57.654664+00:00",
+      "status": "success",
+      "offer_count": 39,
+      "error": null
+    },
+    {
+      "source_id": "aliuapi-top",
+      "started_at": "2026-10-08T21:34:56.790041+00:00",
+      "status": "success",
+      "offer_count": 199,
+      "error": null
+    },
+    {
+      "source_id": "api-1pkapi-com",
+      "started_at": "2026-10-08T21:34:56.778182+00:00",
+      "status": "success",
+      "offer_count": 83,
+      "error": null
+    },
+    {
+      "source_id": "aixlau-me",
+      "started_at": "2026-10-08T21:34:53.334335+00:00",
+      "status": "success",
+      "offer_count": 30,
+      "error": null
+    },
+    {
+      "source_id": "ai-rtoc-cc",
+      "started_at": "2026-10-08T21:34:51.902885+00:00",
+      "status": "success",
+      "offer_count": 123,
+      "error": null
+    },
+    {
+      "source_id": "999555999-com",
+      "started_at": "2026-10-08T21:34:43.763459+00:00",
+      "status": "success",
+      "offer_count": 49,
+      "error": null
+    },
+    {
+      "source_id": "790053500-com",
+      "started_at": "2026-10-08T21:34:43.58584+00:00",
+      "status": "success",
+      "offer_count": 180,
+      "error": null
+    },
+    {
+      "source_id": "yuanqiaoyun-com",
+      "started_at": "2026-10-08T21:26:01.189094+00:00",
+      "status": "success",
+      "offer_count": 73,
+      "error": null
+    },
+    {
+      "source_id": "wcapis-com",
+      "started_at": "2026-10-08T21:26:01.187597+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    },
+    {
+      "source_id": "wawazz-xyz",
+      "started_at": "2026-10-08T21:25:01.133196+00:00",
+      "status": "success",
+      "offer_count": 106,
+      "error": null
+    },
+    {
+      "source_id": "umapis-com",
+      "started_at": "2026-10-08T21:25:00.420246+00:00",
+      "status": "success",
+      "offer_count": 22,
+      "error": null
+    },
+    {
+      "source_id": "topapi-io",
+      "started_at": "2026-10-08T21:25:00.415993+00:00",
+      "status": "success",
+      "offer_count": 76,
+      "error": null
+    }
+  ],
+  "browser_qa": {
+    "environment": "Google Chrome on macOS, desktop",
+    "verified_at": "2026-10-08T21:43:50Z",
+    "checks": {
+      "directory": "Visible count: 27 stations, 3185 quotes.",
+      "aggregation": "Outer station availability, aggregate method, scope and latency were visible.",
+      "performance": "RTOC visible: 54.3 tok/s, average generation speed; 25.73 s average response latency.",
+      "missing_metrics": "Stations without a public throughput field displayed 未公开.",
+      "sticky_header": "After scrolling, table rows stayed beneath an opaque fixed header without overlap."
+    },
+    "limits": [
+      "Mac locked again while opening the new Zivv detail page; latest detail and responsive viewport checks were not completed.",
+      "Earlier responsive/detail checks are recorded in transit-browser-verification-20261009.json; they apply to the previous deployment."
+    ]
+  }
+}

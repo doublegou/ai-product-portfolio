@@ -1,0 +1,10 @@
+Eye-following interaction adapted from:
+https://github.com/gokuscraper/Eyes-Follow-Mouse-Login-Website
+Original upstream acknowledged by that project: https://github.com/arsh342/careercompass
+License: Apache License 2.0, included in LICENSE.
+
+Modified for PriceMap AI on 2026-10-08:
+Reimplemented in React with one original CSS sphere, bounded pupil/face movement,
+requestAnimationFrame scheduling, keyboard focus tracking, cleanup, reduced-motion
+support, click expressions, and separate platform navigation links.
+The login page, login behavior, branding, and other character artwork are not used.

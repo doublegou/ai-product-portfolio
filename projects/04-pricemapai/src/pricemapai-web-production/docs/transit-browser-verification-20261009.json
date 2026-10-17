@@ -1,0 +1,30 @@
+{
+  "verified_at": "2026-10-08T21:15:06.127Z",
+  "environment": "Google Chrome on macOS; desktop and DevTools responsive viewport 390 × 844 (not a physical phone)",
+  "url": "https://pricemapai-web-production.pricemapai.workers.dev/api-pricing",
+  "cloudflare_version": "5e403e67-6f53-4f98-97be-98fddb3d4d64",
+  "public_asset": "assets/public-BoOmULiL.js",
+  "public_css": "assets/public-is4TBwwm.css",
+  "checks": {
+    "directory": "18 original merchant sources loaded with real quotes",
+    "detail": "bb-api-com loaded 60 models and 237 group/spec quotes",
+    "search": "gpt-5.5 returned 2 models and 12 quotes",
+    "sort": "availability descending updated the URL, visible label, and order",
+    "pagination": "next page updated page=2 and enabled previous page",
+    "official_directory": "12 platforms; Claude filter returned 1 platform",
+    "sticky_headers": "directory and details remained opaque without row overlap when scrolled",
+    "mobile": "list and grid checked; grid uses one column below 600px; metrics fit inside cards",
+    "billing": "tiered quotes show 阶梯计费 · 见原站",
+    "monitoring": "low availability uses warning/failure colors",
+    "admin_entry": "login page rendered; invalid credential submission displayed 管理密钥无效"
+  },
+  "limits": [
+    "Authenticated admin API verified separately; authenticated admin UI editing was not exercised.",
+    "Responsive emulation does not constitute physical device testing."
+  ],
+  "fixes": [
+    "Preserve tiered billing mode during normalization and display existing tiered snapshots correctly.",
+    "Use warning/failure colors for lower availability.",
+    "Prevent narrow API cards from overflowing on mobile."
+  ]
+}

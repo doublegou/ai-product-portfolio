@@ -1,0 +1,259 @@
+{
+  "checked_at": "2026-10-08T21:47:07.761Z",
+  "reference_role": "仅用于发现商家原站地址，不导入参考站价格或监测",
+  "verified": [
+    {
+      "id": "ncncapi-top",
+      "name": "NC API",
+      "website": "https://ncncapi.top/",
+      "snapshot": "https://ncncapi.top/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 94
+    },
+    {
+      "id": "linghui-ai-com",
+      "name": "灵绘 AI",
+      "website": "https://xn--ai-xg4e312c.com/",
+      "snapshot": "https://xn--ai-xg4e312c.com/api/public/transit/snapshot",
+      "collector": "transit",
+      "quotes": 58
+    },
+    {
+      "id": "alltokens-cc",
+      "name": "AllTokens",
+      "website": "https://alltokens.cc/",
+      "snapshot": "https://alltokens.cc/api/public/transit/snapshot",
+      "collector": "transit",
+      "quotes": 75
+    },
+    {
+      "id": "khala-online",
+      "name": "卡拉 Khala",
+      "website": "https://khala.online/",
+      "snapshot": "https://api.khala.online/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 92
+    },
+    {
+      "id": "newapi-dragon3api-com",
+      "name": "DragonAPI",
+      "website": "https://newapi.dragon3api.com/",
+      "snapshot": "https://newapi.dragon3api.com/api/pricing",
+      "collector": "newapi",
+      "monitoring": "https://newapi.dragon3api.com/api/perf-metrics/summary?period=24",
+      "quotes": 164
+    },
+    {
+      "id": "topapi-io",
+      "name": "Top-API",
+      "website": "https://topapi.io/",
+      "snapshot": "https://topapi.io/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 76
+    },
+    {
+      "id": "umapis-com",
+      "name": "悠米AI中转",
+      "website": "https://www.umapis.com/",
+      "snapshot": "https://www.umapis.com/api/pricing",
+      "collector": "newapi",
+      "monitoring": "https://www.umapis.com/api/perf-metrics/summary?period=24",
+      "quotes": 22
+    },
+    {
+      "id": "790053500-com",
+      "name": "鑫旺Neko API",
+      "website": "https://790053500.com/",
+      "snapshot": "https://790053500.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 180
+    },
+    {
+      "id": "aliuapi-top",
+      "name": "AL-API",
+      "website": "https://aliuapi.top/",
+      "snapshot": "https://api.aliuapi.top/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 199
+    },
+    {
+      "id": "wawazz-xyz",
+      "name": "WAWA ZZ API",
+      "website": "https://wawazz.xyz/",
+      "snapshot": "https://wawazz.xyz/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 106
+    },
+    {
+      "id": "bb-api-com",
+      "name": "贝贝",
+      "website": "https://www.bb-api.com/",
+      "snapshot": "https://www.bb-api.com/api/public/transit/snapshot",
+      "collector": "transit",
+      "quotes": 237
+    },
+    {
+      "id": "apinode-ltd",
+      "name": "APINode",
+      "website": "https://apinode.ltd/",
+      "snapshot": "https://apinode.ltd/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 39
+    },
+    {
+      "id": "999555999-com",
+      "name": "猫肥NekoAPI",
+      "website": "https://www.999555999.com/",
+      "snapshot": "https://api.999555999.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 49
+    },
+    {
+      "id": "wcapis-com",
+      "name": "WC AI",
+      "website": "https://ai.wcapis.com/",
+      "snapshot": "https://ai.wcapis.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "monitoring": "https://ai.wcapis.com/api/perf-metrics/summary?period=24",
+      "quotes": 76
+    },
+    {
+      "id": "yuanqiaoyun-com",
+      "name": "远桥云 API",
+      "website": "https://yuanqiaoyun.com/",
+      "snapshot": "https://yuanqiaoyun.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "monitoring": "https://yuanqiaoyun.com/api/perf-metrics/summary?period=24",
+      "quotes": 73
+    },
+    {
+      "id": "api-1pkapi-com",
+      "name": "皓悦 API",
+      "website": "https://1pkapi.com/",
+      "snapshot": "https://1pkapi.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 83
+    },
+    {
+      "id": "sub-callai-one",
+      "name": "Sub Callai One",
+      "website": "https://sub.callai.one/",
+      "snapshot": "https://sub.callai.one/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 25
+    },
+    {
+      "id": "codex666ai-com",
+      "name": "codex666ai",
+      "website": "https://codex666ai.com/",
+      "snapshot": "https://codex666ai.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 461
+    },
+    {
+      "id": "codebot-one",
+      "name": "Codebot",
+      "website": "https://codebot.one/",
+      "snapshot": "https://codebot.one/api/public/transit/snapshot",
+      "collector": "transit",
+      "quotes": 428
+    },
+    {
+      "id": "gptzzz-ai",
+      "name": "GPTZZZ",
+      "website": "https://gptzzz.ai/",
+      "snapshot": "https://gptzzz.ai/api/public/transit/v2/snapshot",
+      "collector": "transit",
+      "quotes": 88
+    },
+    {
+      "id": "mfttai-com",
+      "name": "MFAPI",
+      "website": "https://mfttai.com/",
+      "snapshot": "https://mfttai.com/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "quotes": 91
+    },
+    {
+      "id": "ai-rtoc-cc",
+      "name": "旋转智能 RTOC",
+      "website": "https://ai.rtoc.cc/",
+      "snapshot": "https://api.rtoc.cc/api/public/transit/v1/snapshot",
+      "collector": "transit",
+      "monitoring": "https://api.rtoc.cc/api/perf-metrics/summary?period=24",
+      "quotes": 123
+    },
+    {
+      "id": "yujianwudi-top",
+      "name": "天机阁",
+      "website": "https://yujianwudi.top/",
+      "snapshot": "https://yujianwudi.top/api/pricing",
+      "collector": "newapi",
+      "monitoring": "https://yujianwudi.top/api/perf-metrics/summary?period=24",
+      "quotes": 74
+    },
+    {
+      "id": "hejuapi-com",
+      "name": "合聚 API",
+      "website": "https://www.hejuapi.com/",
+      "snapshot": "https://www.hejuapi.com/api/pricing",
+      "collector": "newapi",
+      "quotes": 116
+    },
+    {
+      "id": "onehop-ai",
+      "name": "OneHop",
+      "website": "https://onehop.ai/",
+      "snapshot": "https://api.onehop.ai/public/models?locale=zh-Hans&limit=100",
+      "collector": "onehop",
+      "quotes": 38
+    },
+    {
+      "id": "zivv-pro",
+      "name": "Zivv",
+      "website": "https://zivv.pro/",
+      "snapshot": "https://zivv.pro/api/models/hub",
+      "collector": "zivv",
+      "monitoring": "https://status.zivv.pro/api/status?window=7d",
+      "quotes": 88
+    },
+    {
+      "id": "aixlau-me",
+      "name": "星链 AI",
+      "website": "https://aixlau.me/",
+      "snapshot": "https://aixlau.me/api/v1/models/public",
+      "collector": "public_models",
+      "monitoring": "https://aixlau.me/api/public/transit/v1/snapshot",
+      "quotes": 30
+    }
+  ],
+  "pending": [
+    {
+      "id": "cca-maya-today",
+      "name": "BMCCA",
+      "website": "https://cca.maya.today/",
+      "reason": "商家未启用公开模型广场；监测接口要求登录。已核实公开设置 model_plaza_enabled=false。",
+      "attempts": [
+        {
+          "url": "https://cca.maya.today/api/v1/model-plaza",
+          "status": 404,
+          "message": "Model plaza is not enabled"
+        },
+        {
+          "url": "https://cca.maya.today/api/v1/models/public",
+          "status": 404
+        },
+        {
+          "url": "https://cca.maya.today/api/v1/channel-monitors",
+          "status": 401,
+          "message": "Authorization header is required"
+        },
+        {
+          "url": "https://cca.maya.today/api/v1/channel-monitor-v2/snapshot",
+          "status": 401
+        }
+      ],
+      "required_change": "商家开启公开报价/监测接口，或提供授权的数据源；当前不伪造报价。"
+    }
+  ]
+}
