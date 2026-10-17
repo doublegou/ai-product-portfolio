@@ -26,7 +26,7 @@ Android 的说话人处理不能推导为 iOS 同样具备。模型与原生库�
 
 提示词要求只依据输入、保留不确定性，并把输入中的命令作为资料处理。解析器兼容标记结构、纯文本标题和部分不完整标签。格式容错解决可用输出解析，不能证明事实正确，也不能保证抵御所有提示注入。
 
-较旧 GPU 使用更小 prefill 批次：Apple GPU family 8 及以上为 256，否则为 4，减少单次分派压力。代码注释记载 iPhone 12 验证背景，本轮没有重新测量该设备。模拟器明确返回摘要不支持错误，必须用真机验证 MLX。
+较旧 GPU 使用更小 prefill 批次：Apple GPU family 8 及以上为 256，否则为 4，减少单次分派压力。代码保留了 iPhone 12 调试背景；这里不报告新的该设备性能数据。模拟器明确返回摘要不支持错误，必须用真机验证 MLX。
 
 摘要异常交给协调器：保留转写，记录 `summaryFailureMessage`，整体记录完成；没有自动切到云端或抽取摘要。取消则保留处理状态，以便恢复。
 
@@ -62,7 +62,7 @@ iOS 音频与处理检查点持久化；摘要加载检查配置和权重是否�
 
 ## 从 VOC 到实现：倍速、三类导出与设置
 
-本轮从原始本地仓库同步 `6eb0369`，而不是在作品集另写一套实现。全部 91 项受版本管理的文件及链接一致；本地源比其 GitHub main 多一个提交。[同步记录](../evaluation/source-sync.json)
+以下实现对应 iOS `6eb0369`，与原始本地工程的 91 项受版本管理文件及链接一致。[同步记录](../evaluation/source-sync.json)
 
 - **倍速：**[AudioPlayerController](../src/stayword-front-ios/StayWord/Services/AudioPlayerController.swift) 提供 0.5、0.75、1、1.25、1.5、2×，用 UserDefaults 保存选择，非法保存值回退到 1×。AVPlayer 播放、暂停恢复及 Now Playing 的速率保持一致；系统媒体命令也支持速率变化。
 - **导出：**[RecordingExportService](../src/stayword-front-ios/StayWord/Services/RecordingExportService.swift) 从主线程读取不可变资料快照，在独立任务准备临时文件。音频优先硬链接、失败后复制，保留扩展名；转写按时间排序写 TXT，摘要清理标记后写 TXT。无转写、无摘要、缺音频分别报错；成功关闭分享时清理临时目录，下次准备时清理超过 24 小时的遗留目录。24 小时是清理条件，不是后台定时器的保证。

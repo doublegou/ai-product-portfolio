@@ -106,5 +106,73 @@
     "iap_display": "Not Enough Data",
     "dau": null,
     "mau": null
+  },
+  "version_history": {
+    "checked_on": "2026-10-17",
+    "commits": [
+      {
+        "commit": "ae5f648e521f453b1633e74cf01607af06d52338",
+        "authored_at": "2026-07-28T12:29:46+08:00",
+        "subject": "Add StayWord iOS project"
+      },
+      {
+        "commit": "01166ab06640e154b4c93f9339cad938ecad26dc",
+        "authored_at": "2026-07-28T16:19:38+08:00",
+        "subject": "Keep recordings completed when summaries fail"
+      },
+      {
+        "commit": "12e2ee9068f07a04ea47d91b1032e7ab6af0d5b0",
+        "authored_at": "2026-07-28T16:21:26+08:00",
+        "subject": "Release 1.0.1"
+      },
+      {
+        "commit": "57170c170abaf31aadd4e51d324bd1fb5903f5d6",
+        "authored_at": "2026-07-28T18:08:00+08:00",
+        "subject": "Optimize long recording transcription pipeline"
+      },
+      {
+        "commit": "0a33e28ca40ee32364dc26070c751b96f115839c",
+        "authored_at": "2026-07-29T02:32:25+08:00",
+        "subject": "Refine on-device processing and summaries"
+      },
+      {
+        "commit": "521a90468be83eebe8d2cd0c2dae0d8d2fdb4f12",
+        "authored_at": "2026-07-30T16:25:02+08:00",
+        "subject": "Stabilize Qwen3.5 inference on older iPhones"
+      },
+      {
+        "commit": "c2c83c9f5c9d64b504e5d320a24884799e920d48",
+        "authored_at": "2026-07-30T17:04:12+08:00",
+        "subject": "Tune Qwen prefill for A14 devices"
+      },
+      {
+        "commit": "70e0c0f57074f75985b73f316031f8a10483614b",
+        "authored_at": "2026-08-06T11:59:07+08:00",
+        "subject": "Complete Chinese localization and recording UX updates"
+      },
+      {
+        "commit": "6eb0369c0e3e289054cad81a408cb286ffb8f250",
+        "authored_at": "2026-08-27T23:57:53+08:00",
+        "subject": "Add playback speed, exports, and settings"
+      }
+    ],
+    "engineering_initial_version": "1.0",
+    "engineering_initial_build": "1",
+    "app_store_url": "https://apps.apple.com/gb/app/stayword-ai-voice-to-text/id6795797415",
+    "store_labels": [
+      {
+        "version": "1.0.1",
+        "date_label": "18 Aug"
+      },
+      {
+        "version": "1.0.2",
+        "date_label": "1 Sept"
+      }
+    ],
+    "distinction": "Engineering 1.0 is not presented as an App Store release. Store labels omit year; current release year is corroborated by Apple lookup metadata. Early README ASR claims differ from executable TranscriptionService; narrative follows code.",
+    "early_asr": "SenseVoice via Sherpa; includes speaker alignment",
+    "early_summary": "Foundation Models when available, bundled Qwen fallback",
+    "later_ios": "0a33e28 removes system-summary path and simplifies speaker pipeline",
+    "apple_lookup_release_date": "2026-08-18T07:00:00Z"
   }
 }
