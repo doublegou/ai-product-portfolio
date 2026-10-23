@@ -39,7 +39,7 @@ flowchart TD
 | 长期上下文 | content-agent 的四份固定账号／平台文件、products 下的 Markdown | 文件式上下文；新增目录不会自动成为记忆，需经确认维护输入 |
 | 本期创作 | analysis.md、plan.md、原稿、post.txt、图片和 HTML | 按任务路径关联；PPT 与 post 编号独立 |
 | 审改与运行 | JSON 草稿、JSONL 日志、来源报告 | 保存模型反馈、运行原因；日志不完整时保留未知字段 |
-| 验收版本 | script-workflow 的 handoff.json 与 SHA-256 | 检测验收后变更，不自动判断语义一致性 |
+| 验收版本 | 作品集整理阶段补充的 script-workflow handoff.json 与 SHA-256 | 检测验收后变更，不自动判断语义一致性；不追溯为历史生产能力 |
 
 模型调用与图像生成依赖宿主或外部服务；稳定规则由程序执行。源码、原件、当前修订与未来设计分别记录，以便解释实际已经实现的范围。
 
